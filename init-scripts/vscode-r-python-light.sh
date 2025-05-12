@@ -8,3 +8,8 @@ sudo apt install tree -y
 sudo apt install cmake -y
 sudo apt install zlib1g-dev -y
 sudo apt install libglpk-dev -y
+
+# Clônage du projet
+cd ~/work/
+git clone https://github.com/InseeFrLab/formation_protection_donnees.git
+cd ~/work/formation_protection_donnees/

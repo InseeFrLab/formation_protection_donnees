@@ -9,10 +9,12 @@ sudo apt install cmake -y
 sudo apt install zlib1g-dev -y
 sudo apt install libglpk-dev -y
 
-#!/bin/bash
+# Clônage du projet
+cd ~/work/
+git clone https://github.com/InseeFrLab/formation_protection_donnees.git
+cd ~/work/formation_protection_donnees/
 
 # Installation des packages R nécessaires
-
 Rscript -e "if (!requireNamespace('haven', quietly = TRUE)) install.packages('haven', repos='https://cloud.r-project.org')"
 Rscript -e "if (!requireNamespace('sdcMicro', quietly = TRUE)) install.packages('sdcMicro', dependencies=TRUE, repos='https://cloud.r-project.org')"
 Rscript -e "if (!requireNamespace('GaussSuppression', quietly = TRUE)) install.packages('GaussSuppression', dependencies=TRUE, repos='https://cloud.r-project.org')"
