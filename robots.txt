@@ -1,1 +1,1 @@
-Sitemap: https://insee.formation.confidentialite.org/sitemap.xml
+Sitemap: https://InseeFrLab.github.io/formation_protection_donnees/sitemap.xml
