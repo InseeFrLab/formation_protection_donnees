@@ -1,0 +1,19 @@
+---
+title: "Ressources"
+---
+
+## Bibliographie indicative
+
+
+### Ressources généralistes
+
+- [Handbook on Statistical Disclosure Control](https://sdctools.github.io/HandbookSDC/)
+
+### Les méthodes suppressives
+
+- [Manuel de protection des données tabulées](https://inseefrlab.github.io/manuel-protection-tableaux/)
+
+
+## Outils
+
+- [Documentation du package `rtauargus`](https://inseefrlab.github.io/rtauargus/)

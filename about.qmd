@@ -1,0 +1,13 @@
+---
+title: "À propos"
+---
+
+# Origine du projet
+
+Ce projet est né de la volonté de partager connaissances et matériaux auprès des statisticiens publics en charge d'assurer la protection des données statistiques
+avant leur diffusion auprès du public.
+
+# Auteurs
+
+- Julien Jamme, Insee
+- Clara Baudry, Insee

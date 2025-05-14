@@ -1,0 +1,26 @@
+---
+title: "En pratique"
+---
+
+## Les fiches pratiques
+
+### Réaliser un arbitrage
+
+- [Mesurer le risque](fiches/mesurer-risque.qmd)
+- [Mesurer la perte d'utilité](fiches/mesurer-utilite.qmd)
+
+### Traiter des données tabulées
+
+- [Traiter des données tabulées avec une méthode suppressive](fiches/proteger-tableaux-suppressif.qmd)
+- [Traiter des données tabulées avec la méthode des clés aléatoires](fiches/proteger-tableaux-cellkey.qmd)
+
+### Traiter des données individuelles
+
+- [Traiter des données individuelles avec un swapping](fiches/proteger-micro-swapping.qmd)
+- [Traiter des données individuelles avec PRAM](fiches/proteger-micro-pram.qmd)
+- [Générer des données synthétiques](fiches/generer-synth.qmd)
+
+### Introduction à la confidentialité différentielle
+
+- [Appliquer des mécanismes de la confidentialité différentielle](fiches/confidentialite-differentielle.qmd)
+

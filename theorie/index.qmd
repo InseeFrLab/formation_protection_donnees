@@ -1,0 +1,10 @@
+---
+title: "Un peu de théorie"
+---
+
+## Les supports
+
+- [Arbitrer entre risque et utilité](supports/arbitrer-risque-utilite.qmd)
+- [Traiter des données tabulées](supports/donnees-tabulees.qmd)
+- [Traiter des données individuelles](supports/donnees-individuelles.qmd)
+- [La confidentialité différentielle](supports/confidentialite-differentielle.qmd)

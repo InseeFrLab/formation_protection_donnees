@@ -1,0 +1,9 @@
+---
+title: "Arbitrer entre risque et utilité"
+format: revealjs
+---
+
+# Arbitrer entre risque et utilité
+
+## Introduction
+

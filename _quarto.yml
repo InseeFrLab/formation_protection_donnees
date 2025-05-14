@@ -1,0 +1,42 @@
+project:
+  type: website
+
+website:
+  title: "La protection des données statistiques publiques"
+  navbar:
+    right:
+      - href: index.qmd
+        text: "Accueil"
+      - href: theorie/index.qmd
+        text: "Un peu de théorie"
+      - href: pratique/index.qmd
+        text: "En pratique"
+      - href: about.qmd
+        text: "À propos"
+  page-footer:
+    left: "© 2025 - Insee"
+    right: "Site réalisé avec Quarto"
+  sidebar:
+    - title: "Un peu de théorie"
+      style: "docked"
+      contents:
+        - theorie/arbitrer-risque-utilite.qmd
+        - theorie/donnees-tabulees.qmd
+        - theorie/donnees-individuelles.qmd
+        - theorie/confidentialite-differentielle.qmd
+    - title: "En pratique"
+      style: "docked"
+      contents:
+        - pratique/arbitrer-risque-utilite-pratique.qmd
+        - pratique/donnees-tabulees-pratique.qmd
+        - pratique/donnees-individuelles-pratique.qmd
+        - pratique/confidentialite-differentielle-pratique.qmd
+
+format:
+  html:
+    theme: 
+      light: [cosmo, styles/custom-light.scss]
+      dark: [cosmo, styles/custom-dark.scss]
+    toc: true
+    code-fold: true
+    code-tools: true

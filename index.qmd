@@ -1,0 +1,39 @@
+---
+title: "Se former à la protection des données statistiques"
+format: 
+  html:
+    sidebar-width: 50px
+    body-width: 1200px
+    margin-width: 50px
+---
+
+Ce site vous propose un ensemble de supports théoriques et pratiques pour vous former à la protection des données statistiques.
+
+
+::: {.grid}
+
+::: {.g-col-4}
+### Un peu de théorie
+
+[![Un peu de théorie](images/theorie.png)](theorie/index.qmd)
+
+Découvrez les principaux concepts relatifs à la protection des données contre les risques de divulgation et les méthodes les plus courantes pour traiter ce problème.
+:::
+
+::: {.g-col-4}
+### En pratique
+
+[![En pratique](images/pratique.png)](pratique/index.qmd)
+
+Découvrez les méthodes adaptées à la protection des tableaux statistiques.
+:::
+
+::: {.g-col-4}
+### Ressources
+
+[![Ressources](images/ressources.png)](ressources/index.qmd)
+
+Retrouvez ici une bibliographie indicative pour approfondir les sujets.
+:::
+
+:::
