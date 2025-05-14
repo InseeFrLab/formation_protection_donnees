@@ -1,10 +1,45 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Se former à la protection des données statistiques",
+    "section": "",
+    "text": "Ce site vous propose un ensemble de supports théoriques et pratiques pour vous former à la protection des données statistiques.\n\n\nUn peu de théorie\n\n\n\nUn peu de théorie\n\n\nDécouvrez les principaux concepts relatifs à la protection des données contre les risques de divulgation et les méthodes les plus courantes pour traiter ce problème.\n\n\nEn pratique\n\n\n\nEn pratique\n\n\nDécouvrez les méthodes adaptées à la protection des tableaux statistiques.\n\n\nRessources\n\n\n\nRessources\n\n\nRetrouvez ici une bibliographie indicative pour approfondir les sujets."
+  },
+  {
+    "objectID": "theorie/supports/donnees-individuelles.html",
+    "href": "theorie/supports/donnees-individuelles.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "theorie/supports/donnees-tabulees.html",
+    "href": "theorie/supports/donnees-tabulees.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "À propos",
+    "section": "",
+    "text": "Origine du projet\nCe projet est né de la volonté de partager connaissances et matériaux auprès des statisticiens publics en charge d’assurer la protection des données statistiques avant leur diffusion auprès du public.\n\n\nAuteurs\n\nJulien Jamme, Insee\nClara Baudry, Insee"
+  },
+  {
     "objectID": "pratique/fiches/proteger-micro-swapping.html",
     "href": "pratique/fiches/proteger-micro-swapping.html",
     "title": "",
     "section": "",
     "text": "Code"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "",
+    "text": "Code\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n\n\n\n\n\n\n\n\nFigure 1: Temperature and ozone level."
   },
   {
     "objectID": "pratique/fiches/mesurer-risque.html",
@@ -14,15 +49,8 @@
     "text": "Code"
   },
   {
-    "objectID": "pratique/fiches/mesurer-utilite.html",
-    "href": "pratique/fiches/mesurer-utilite.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/fiches/proteger-tableaux-cellkey.html",
-    "href": "pratique/fiches/proteger-tableaux-cellkey.html",
+    "objectID": "pratique/fiches/confidentialite-differentielle.html",
+    "href": "pratique/fiches/confidentialite-differentielle.html",
     "title": "",
     "section": "",
     "text": "Code"
@@ -40,6 +68,34 @@
     "title": "En pratique",
     "section": "",
     "text": "Mesurer le risque\nMesurer la perte d’utilité\n\n\n\n\n\nTraiter des données tabulées avec une méthode suppressive\nTraiter des données tabulées avec la méthode des clés aléatoires\n\n\n\n\n\nTraiter des données individuelles avec un swapping\nTraiter des données individuelles avec PRAM\nGénérer des données synthétiques\n\n\n\n\n\nAppliquer des mécanismes de la confidentialité différentielle"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-micro-pram.html",
+    "href": "pratique/fiches/proteger-micro-pram.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/fiches/generer-synth.html",
+    "href": "pratique/fiches/generer-synth.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-cellkey.html",
+    "href": "pratique/fiches/proteger-tableaux-cellkey.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/fiches/mesurer-utilite.html",
+    "href": "pratique/fiches/mesurer-utilite.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
   },
   {
     "objectID": "ressources/index.html",
@@ -63,18 +119,18 @@
     "text": "Outils\n\nDocumentation du package rtauargus"
   },
   {
-    "objectID": "theorie/supports/donnees-tabulees.html",
-    "href": "theorie/supports/donnees-tabulees.html",
+    "objectID": "theorie/supports/confidentialite-differentielle.html",
+    "href": "theorie/supports/confidentialite-differentielle.html",
     "title": "",
     "section": "",
     "text": "Code"
   },
   {
-    "objectID": "theorie/supports/donnees-individuelles.html",
-    "href": "theorie/supports/donnees-individuelles.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#introduction",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#introduction",
+    "title": "Arbitrer entre risque et utilité",
+    "section": "Introduction",
+    "text": "Introduction"
   },
   {
     "objectID": "theorie/index.html",
@@ -89,61 +145,5 @@
     "title": "Un peu de théorie",
     "section": "",
     "text": "Arbitrer entre risque et utilité\nTraiter des données tabulées\nTraiter des données individuelles\nLa confidentialité différentielle"
-  },
-  {
-    "objectID": "theorie/supports/arbitrer-risque-utilite.html#introduction",
-    "href": "theorie/supports/arbitrer-risque-utilite.html#introduction",
-    "title": "Arbitrer entre risque et utilité",
-    "section": "Introduction",
-    "text": "Introduction"
-  },
-  {
-    "objectID": "theorie/supports/confidentialite-differentielle.html",
-    "href": "theorie/supports/confidentialite-differentielle.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Se former à la protection des données statistiques",
-    "section": "",
-    "text": "Ce site vous propose un ensemble de supports théoriques et pratiques pour vous former à la protection des données statistiques.\n\n\nUn peu de théorie\n\n\n\nUn peu de théorie\n\n\nDécouvrez les principaux concepts relatifs à la protection des données contre les risques de divulgation et les méthodes les plus courantes pour traiter ce problème.\n\n\nEn pratique\n\n\n\nEn pratique\n\n\nDécouvrez les méthodes adaptées à la protection des tableaux statistiques.\n\n\nRessources\n\n\n\nRessources\n\n\nRetrouvez ici une bibliographie indicative pour approfondir les sujets."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "À propos",
-    "section": "",
-    "text": "Origine du projet\nCe projet est né de la volonté de partager connaissances et matériaux auprès des statisticiens publics en charge d’assurer la protection des données statistiques avant leur diffusion auprès du public.\n\n\nAuteurs\n\nJulien Jamme, Insee\nClara Baudry, Insee"
-  },
-  {
-    "objectID": "pratique/fiches/proteger-micro-pram.html",
-    "href": "pratique/fiches/proteger-micro-pram.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html",
-    "href": "pratique/fiches/proteger-tableaux-suppressif.html",
-    "title": "Protéger des tableaux avec une méthode suppressive",
-    "section": "",
-    "text": "Code\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n\n\n\n\n\n\n\n\nFigure 1: Temperature and ozone level."
-  },
-  {
-    "objectID": "pratique/fiches/confidentialite-differentielle.html",
-    "href": "pratique/fiches/confidentialite-differentielle.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/fiches/generer-synth.html",
-    "href": "pratique/fiches/generer-synth.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
   }
 ]
