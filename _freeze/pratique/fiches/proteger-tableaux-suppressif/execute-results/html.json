@@ -1,0 +1,17 @@
+{
+  "hash": "eceb599baf12a111a7b00522e9d1277f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: Protéger des tableaux avec une méthode suppressive\n---\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n```\n\n::: {.cell-output-display}\n![Temperature and ozone level.](proteger-tableaux-suppressif_files/figure-html/fig-airquality-1.png){#fig-airquality width=672}\n:::\n:::\n\n",
+    "supporting": [
+      "proteger-tableaux-suppressif_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

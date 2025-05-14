@@ -30,6 +30,7 @@ Rscript -e "install.packages('tidyverse', repos='${REPOSITR}', dependencies=TRUE
 Rscript -e "install.packages('sdcMicro', repos='${REPOSITR}', dependencies=TRUE)"
 Rscript -e "install.packages('GaussSuppression', repos='${REPOSITR}', dependencies=TRUE)"
 Rscript -e "install.packages('cellKey', repos='${REPOSITR}', dependencies=TRUE)"
+Rscript -e "install.packages('synthpop', repos='${REPOSITR}', dependencies=TRUE)"
 
 # Installation de la dernière version de rtauargus
 Rscript -e "install.packages('remotes', repos='${REPOSITR}')"
