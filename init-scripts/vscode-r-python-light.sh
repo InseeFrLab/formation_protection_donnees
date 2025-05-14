@@ -5,9 +5,9 @@
 
 sudo apt update -y
 sudo apt install tree -y
-sudo apt install cmake -y
-sudo apt install zlib1g-dev -y
-sudo apt install libglpk-dev -y
+# sudo apt install cmake -y
+# sudo apt install zlib1g-dev -y
+# sudo apt install libglpk-dev -y
 
 # Clônage du projet
 cd ~/work/
