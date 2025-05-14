@@ -5,21 +5,32 @@
 
 sudo apt update -y
 sudo apt install tree -y
-sudo apt install cmake -y
-sudo apt install zlib1g-dev -y
-sudo apt install libglpk-dev -y
+# sudo apt install cmake -y
+# sudo apt install zlib1g-dev -y
+# sudo apt install libglpk-dev -y
 
 # Clônage du projet
 cd ~/work/
 git clone https://github.com/InseeFrLab/formation_protection_donnees.git
 cd ~/work/formation_protection_donnees/
 
+# Récupération du nom de code Ubuntu (ex: focal, jammy)
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    UBUNTUNAME="$VERSION_CODENAME"
+else
+    UBUNTUNAME=$(lsb_release -cs 2>/dev/null || echo "unknown")
+fi
+
+# Construction de l'URL du dépôt
+REPOSITR="https://packagemanager.posit.co/cran/__linux__/${UBUNTUNAME}/latest/"
+
 # Installation des packages R nécessaires
-Rscript -e "if (!requireNamespace('haven', quietly = TRUE)) install.packages('haven', repos='https://cloud.r-project.org')"
-Rscript -e "if (!requireNamespace('sdcMicro', quietly = TRUE)) install.packages('sdcMicro', dependencies=TRUE, repos='https://cloud.r-project.org')"
-Rscript -e "if (!requireNamespace('GaussSuppression', quietly = TRUE)) install.packages('GaussSuppression', dependencies=TRUE, repos='https://cloud.r-project.org')"
-Rscript -e "if (!requireNamespace('cellKey', quietly = TRUE)) install.packages('cellKey', dependencies=TRUE, repos='https://cloud.r-project.org')"
+Rscript -e "install.packages('tidyverse', repos='${REPOSITR}', dependencies=TRUE)"
+Rscript -e "install.packages('sdcMicro', repos='${REPOSITR}', dependencies=TRUE)"
+Rscript -e "install.packages('GaussSuppression', repos='${REPOSITR}', dependencies=TRUE)"
+Rscript -e "install.packages('cellKey', repos='${REPOSITR}', dependencies=TRUE)"
 
 # Installation de la dernière version de rtauargus
-Rscript -e "if (!requireNamespace('remotes', quietly = TRUE)) install.packages('remotes', repos='https://cloud.r-project.org')"
-Rscript -e "if (!requireNamespace('rtauargus', quietly = TRUE)) remotes::install_github('InseeFrLab/rtauargus', dependencies = TRUE, build_vignettes = FALSE, upgrade = 'never')"
+Rscript -e "install.packages('remotes', repos='${REPOSITR}')"
+Rscript -e "remotes::install_github('InseeFrLab/rtauargus', dependencies = TRUE, build_vignettes = FALSE, upgrade = 'never')"
