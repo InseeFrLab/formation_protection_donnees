@@ -2,100 +2,16 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Se former à la protection des données statistiques",
-    "section": "",
-    "text": "Ce site vous propose un ensemble de supports théoriques et pratiques pour vous former à la protection des données statistiques.\n\n\nUn peu de théorie\n\n\n\nUn peu de théorie\n\n\nDécouvrez les principaux concepts relatifs à la protection des données contre les risques de divulgation et les méthodes les plus courantes pour traiter ce problème.\n\n\nEn pratique\n\n\n\nEn pratique\n\n\nDécouvrez les méthodes adaptées à la protection des tableaux statistiques.\n\n\nRessources\n\n\n\nRessources\n\n\nRetrouvez ici une bibliographie indicative pour approfondir les sujets."
-  },
-  {
-    "objectID": "theorie/supports/donnees-individuelles.html",
-    "href": "theorie/supports/donnees-individuelles.html",
     "title": "",
     "section": "",
-    "text": "Code"
+    "text": "Code\n\n\n\n\n\nCe site vous propose un ensemble de supports théoriques et pratiques pour vous former à la protection des données statistiques.\n\n\n\n\n\n\n\n\n\n\n\nUn peu de théorie\n\n\nComprendre les principaux enjeux de la protection des données et maîtriser les concepts et les méthodes.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEn pratique\n\n\nApprendre à manipuler les concepts, mesurer les risques et utiliser les méthodes.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRessources\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "theorie/supports/donnees-tabulees.html",
-    "href": "theorie/supports/donnees-tabulees.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "À propos",
-    "section": "",
-    "text": "Origine du projet\nCe projet est né de la volonté de partager connaissances et matériaux auprès des statisticiens publics en charge d’assurer la protection des données statistiques avant leur diffusion auprès du public.\n\n\nAuteurs\n\nJulien Jamme, Insee\nClara Baudry, Insee"
-  },
-  {
-    "objectID": "pratique/fiches/proteger-micro-swapping.html",
-    "href": "pratique/fiches/proteger-micro-swapping.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html",
-    "href": "pratique/fiches/proteger-tableaux-suppressif.html",
-    "title": "Protéger des tableaux avec une méthode suppressive",
-    "section": "",
-    "text": "Code\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n\n\n\n\n\n\n\n\nFigure 1: Temperature and ozone level."
-  },
-  {
-    "objectID": "pratique/fiches/mesurer-risque.html",
-    "href": "pratique/fiches/mesurer-risque.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/fiches/confidentialite-differentielle.html",
-    "href": "pratique/fiches/confidentialite-differentielle.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/index.html",
-    "href": "pratique/index.html",
-    "title": "En pratique",
-    "section": "",
-    "text": "Mesurer le risque\nMesurer la perte d’utilité\n\n\n\n\n\nTraiter des données tabulées avec une méthode suppressive\nTraiter des données tabulées avec la méthode des clés aléatoires\n\n\n\n\n\nTraiter des données individuelles avec un swapping\nTraiter des données individuelles avec PRAM\nGénérer des données synthétiques\n\n\n\n\n\nAppliquer des mécanismes de la confidentialité différentielle"
-  },
-  {
-    "objectID": "pratique/index.html#les-fiches-pratiques",
-    "href": "pratique/index.html#les-fiches-pratiques",
-    "title": "En pratique",
-    "section": "",
-    "text": "Mesurer le risque\nMesurer la perte d’utilité\n\n\n\n\n\nTraiter des données tabulées avec une méthode suppressive\nTraiter des données tabulées avec la méthode des clés aléatoires\n\n\n\n\n\nTraiter des données individuelles avec un swapping\nTraiter des données individuelles avec PRAM\nGénérer des données synthétiques\n\n\n\n\n\nAppliquer des mécanismes de la confidentialité différentielle"
-  },
-  {
-    "objectID": "pratique/fiches/proteger-micro-pram.html",
-    "href": "pratique/fiches/proteger-micro-pram.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/fiches/generer-synth.html",
-    "href": "pratique/fiches/generer-synth.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/fiches/proteger-tableaux-cellkey.html",
-    "href": "pratique/fiches/proteger-tableaux-cellkey.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/fiches/mesurer-utilite.html",
-    "href": "pratique/fiches/mesurer-utilite.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#introduction",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#introduction",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Introduction",
+    "text": "Introduction"
   },
   {
     "objectID": "ressources/index.html",
@@ -119,31 +35,570 @@
     "text": "Outils\n\nDocumentation du package rtauargus"
   },
   {
-    "objectID": "theorie/supports/confidentialite-differentielle.html",
-    "href": "theorie/supports/confidentialite-differentielle.html",
+    "objectID": "pratique/fiches/mesurer-utilite.html",
+    "href": "pratique/fiches/mesurer-utilite.html",
     "title": "",
     "section": "",
     "text": "Code"
   },
   {
-    "objectID": "theorie/supports/arbitrer-risque-utilite.html#introduction",
-    "href": "theorie/supports/arbitrer-risque-utilite.html#introduction",
-    "title": "Arbitrer entre risque et utilité",
-    "section": "Introduction",
-    "text": "Introduction"
+    "objectID": "pratique/fiches/proteger-tableaux-cellkey.html",
+    "href": "pratique/fiches/proteger-tableaux-cellkey.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/fiches/generer-synth.html",
+    "href": "pratique/fiches/generer-synth.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-micro-pram.html",
+    "href": "pratique/fiches/proteger-micro-pram.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/index.html",
+    "href": "pratique/index.html",
+    "title": "En pratique",
+    "section": "",
+    "text": "Mesurer le risque\nMesurer la perte d’utilité\n\n\n\n\n\nTraiter des données tabulées avec une méthode suppressive\nTraiter des données tabulées avec la méthode des clés aléatoires\n\n\n\n\n\nTraiter des données individuelles avec un swapping\nTraiter des données individuelles avec PRAM\nGénérer des données synthétiques\n\n\n\n\n\nAppliquer des mécanismes de la confidentialité différentielle"
+  },
+  {
+    "objectID": "pratique/index.html#les-fiches-pratiques",
+    "href": "pratique/index.html#les-fiches-pratiques",
+    "title": "En pratique",
+    "section": "",
+    "text": "Mesurer le risque\nMesurer la perte d’utilité\n\n\n\n\n\nTraiter des données tabulées avec une méthode suppressive\nTraiter des données tabulées avec la méthode des clés aléatoires\n\n\n\n\n\nTraiter des données individuelles avec un swapping\nTraiter des données individuelles avec PRAM\nGénérer des données synthétiques\n\n\n\n\n\nAppliquer des mécanismes de la confidentialité différentielle"
+  },
+  {
+    "objectID": "pratique/fiches/confidentialite-differentielle.html",
+    "href": "pratique/fiches/confidentialite-differentielle.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/fiches/mesurer-risque.html",
+    "href": "pratique/fiches/mesurer-risque.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "",
+    "text": "Code\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n\n\n\n\n\n\n\n\nFigure 1: Temperature and ozone level."
+  },
+  {
+    "objectID": "pratique/fiches/proteger-micro-swapping.html",
+    "href": "pratique/fiches/proteger-micro-swapping.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "À propos",
+    "section": "",
+    "text": "Origine du projet\nCe projet est né de la volonté de partager connaissances et matériaux auprès des statisticiens publics en charge d’assurer la protection des données statistiques avant leur diffusion auprès du public.\n\n\nAuteurs\n\nJulien Jamme, Insee\nClara Baudry, Insee"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#méthodes-classiques-de-protection-des-données-disponibles",
+    "href": "theorie/supports/tour-des-methodes.html#méthodes-classiques-de-protection-des-données-disponibles",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Méthodes classiques de protection des données disponibles",
+    "text": "Méthodes classiques de protection des données disponibles\n\n\n\nUn tour d’horizon des méthodes de protection des données\n\n\nType de données\nMéthodes non-perturbatrices\nMéthodes perturbatrices\n\n\n\n\nMicrodonnées\nTechniques de sous-échantillonnage\nPerturbation par un bruit (additif, multiplicatif)\n\n\n\nRecodage des variables\nMicroagrégation\n\n\n\nSuppression locale\nTechniques de swapping\n\n\nDonnées tabulées\nSuppression de cellules\nBruitage des sorties\n\n\n\nRecodage des variables\nMéthodes d’arrondi\n\n\n\n\nAjouter du bruit (CKM)"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#perturbation-vs-non-perturbation",
+    "href": "theorie/supports/tour-des-methodes.html#perturbation-vs-non-perturbation",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Perturbation vs Non-Perturbation",
+    "text": "Perturbation vs Non-Perturbation\n\n\nLes méthodes non-perturbatrices réduisent l’information en supprimant les données de certaines valeurs sans changer leur structure.\nLes méthodes perturbatrices ne suppriment pas les données, mais peuvent conduire à perturber toutes les valeurs\nAvec des méthodes perturbatrices, impossible pour l’utilisateur de savoir si l’information diffusée est la \"vraie\".\nProblème des méthodes perturbatrices: impression pour l’utilisateur que les données n’ont pas été protégées."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#méthodes-non-perturbatrices",
+    "href": "theorie/supports/tour-des-methodes.html#méthodes-non-perturbatrices",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Méthodes non-perturbatrices",
+    "text": "Méthodes non-perturbatrices\n\n\nRecodage des variables\nSuppressions primaire et secondaire"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#recodage-des-variables",
+    "href": "theorie/supports/tour-des-methodes.html#recodage-des-variables",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Recodage des variables",
+    "text": "Recodage des variables\n\n\nRegrouper des catégories d’une variable catégorielle\nCréer des variables catégorielles à partir d’une variable continue\nÉlargir le champ de diffusion s’il s’avère trop restreint"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#recodage-des-variables-un-exemple",
+    "href": "theorie/supports/tour-des-methodes.html#recodage-des-variables-un-exemple",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Recodage des variables: Un exemple",
+    "text": "Recodage des variables: Un exemple\n\n\n\n\n\nHarpe\nPiano\nOrgue\nAutre\nTotal\n\n\n\n\nNord\n5\n17\n2\n12\n36\n\n\nCentre\n4\n11\n2\n7\n24\n\n\nSud\n3\n6\n1\n4\n14\n\n\nTotal\n12\n34\n5\n23\n74\n\n\n\n\n\n\n\nHarpe\nPiano\nAutre\nTotal\n\n\n\n\nNord\n5\n17\n14\n36\n\n\nCentre\n4\n11\n9\n24\n\n\nSud\n3\n6\n5\n14\n\n\nTotal\n12\n34\n28\n74"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#recodage-des-variables-avantages-inconvénients",
+    "href": "theorie/supports/tour-des-methodes.html#recodage-des-variables-avantages-inconvénients",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Recodage des variables: Avantages / inconvénients",
+    "text": "Recodage des variables: Avantages / inconvénients\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nFacile à appliquer (pas d’algorithme)\nPerte de détail et donc\n\n\nTrès efficace dans la réduction du risque\nd’information parfois importante\n\n\nFacile à comprendre pour l’utilisateur"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#suppression-de-cellules",
+    "href": "theorie/supports/tour-des-methodes.html#suppression-de-cellules",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Suppression de cellules",
+    "text": "Suppression de cellules\n\n\nSupprimer certaines cellules pour réduire le risque de ré-identification, tout en minimisant la perte d’information (Secret primaire).\nEn général pas suffisant car les marges du tableau font que les cellules sont liées entre elles par des équations (Secret secondaire).\nOutils : \\(\\tau\\)-Argus et le package R rtauargus"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#le-secret-primaire",
+    "href": "theorie/supports/tour-des-methodes.html#le-secret-primaire",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Le secret primaire",
+    "text": "Le secret primaire\n\n\nNombre d’entreprises polluantes par région - secret primaire\n\n\n\nRégion\n\n\n\n\n\n\n\n\n\n3-7\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nOui\n2\n5\n7\n6\n20\n\n\n2-7\nNon\n8\n15\n17\n20\n60\n\n\n2-7\nTotal\n10\n20\n24\n26\n80"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#le-secret-secondaire",
+    "href": "theorie/supports/tour-des-methodes.html#le-secret-secondaire",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Le secret secondaire",
+    "text": "Le secret secondaire\n\n\nNombre d’entreprises polluantes par région - marges problématiques\n\n\n\nRégion\n\n\n\n\n\n\n\n\n\n3-7\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nOui\nx\n5\n7\n6\n20\n\n\n2-7\nNon\n8\n15\n17\n20\n60\n\n\n2-7\nTotal\n10\n20\n24\n26\n80"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#le-secret-secondaire-1",
+    "href": "theorie/supports/tour-des-methodes.html#le-secret-secondaire-1",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Le secret secondaire",
+    "text": "Le secret secondaire\n\n\nNombre d’entreprises polluantes par région - masque du secret\n\n\n\nRégion\n\n\n\n\n\n\n\n\n\n3-7\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nOui\nx\nx\n7\n6\n20\n\n\n2-7\nNon\nx\nx\n17\n20\n60\n\n\n2-7\nTotal\n10\n20\n24\n26\n80"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#suppression-de-cellules-avantages-inconvénients",
+    "href": "theorie/supports/tour-des-methodes.html#suppression-de-cellules-avantages-inconvénients",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Suppression de cellules: Avantages / inconvénients",
+    "text": "Suppression de cellules: Avantages / inconvénients\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nMéthode très commune à l’Insee et au sein des INS européens\nFonctionne uniquement pour un champ de diffusion défini en amont.\n\n\nMéthode assez bien comprise des utilisateurs\nPeut mener à une grande perte d’information s’il y a beaucoup de liens entre les tableaux.\n\n\n\nDifficile à implémenter pour des diffusions réalistes"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#méthodes-perturbatrices",
+    "href": "theorie/supports/tour-des-methodes.html#méthodes-perturbatrices",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Méthodes perturbatrices",
+    "text": "Méthodes perturbatrices\n\n\nÉtendue de la perturbation:\n\nSeulement sur les plus petits comptages (données les plus à risque de divulgation)\nSur toutes les cellules: toutes les cellules du tableau sont perturbées (arrondi, Méthode des clés aléatoires (CKM))\n\nProblématiques des méthodes perturbatrices:\n\nComment assurer la cohérence des tableaux entre eux ?\nComment préserver l’additivité au sein des tableaux ?"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#méthodes-darrondi-et-apparentées",
+    "href": "theorie/supports/tour-des-methodes.html#méthodes-darrondi-et-apparentées",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Méthodes d’arrondi et apparentées",
+    "text": "Méthodes d’arrondi et apparentées\n\nIl existe plusieurs méthodes basées sur des arrondis, dont:\n\nArrondi des petits comptages avec préservation de l’additivité des tableaux (Small Count Rounding) \\(\\Rightarrow\\) une protection limitée.\nArrondi contrôlé (Controlled Rounding): Arrondi de l’ensemble des cellules du tableau tout en conservant l’additivité.\nControlled Tabular adjustment (CTA): Les valeurs des cellules sensibles sont perturbées pour respecter un intervalle de protection. Les autres cellules sont ajustées pour restaurer l’additivité dans les tableaux."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#méthodes-darrondi-et-apparentées-un-exemple",
+    "href": "theorie/supports/tour-des-methodes.html#méthodes-darrondi-et-apparentées-un-exemple",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Méthodes d’arrondi et apparentées: Un exemple",
+    "text": "Méthodes d’arrondi et apparentées: Un exemple\n\nTableau de comptage original:\n\n\n\n\nRégion\n\n\n\n\n\n\n\n\n\n3-7\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nOui\n6\n14\n1\n7\n28\n\n\n2-7\nNon\n3\n2\n1\n13\n19\n\n\n2-7\nTotal\n9\n16\n2\n20\n47\n\n\n\nSecret primaire = les comptages inférieurs strictement à 5."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#méthodes-darrondi-et-apparentées-un-exemple-1",
+    "href": "theorie/supports/tour-des-methodes.html#méthodes-darrondi-et-apparentées-un-exemple-1",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Méthodes d’arrondi et apparentées: Un exemple",
+    "text": "Méthodes d’arrondi et apparentées: Un exemple\n\nSmall Count Rounding, base d’arrondi = 5.\n\n\n\n\nRégion\n\n\n\n\n\n\n\n\n\n3-7\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nOui\n6\n14\n0\n7\n27\n\n\n2-7\nNon\n5\n0\n0\n13\n18\n\n\n2-7\nTotal\n11\n14\n0\n20\n45\n\n\n\nMoyenne des écarts absolus: \\(1.067\\)."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#méthodes-darrondi-et-apparentées-un-exemple-2",
+    "href": "theorie/supports/tour-des-methodes.html#méthodes-darrondi-et-apparentées-un-exemple-2",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Méthodes d’arrondi et apparentées: Un exemple",
+    "text": "Méthodes d’arrondi et apparentées: Un exemple\n\nArrondi contrôlé avec b = 5\n\n\n\n\nRégion\n\n\n\n\n\n\n\n\n\n3-7\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nOui\n5\n15\n0\n5\n25\n\n\n2-7\nNon\n5\n0\n0\n15\n20\n\n\n2-7\nTotal\n10\n15\n0\n20\n45\n\n\n\nMoyenne des écarts absolus: \\(1.467\\)."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#méthodes-darrondi-et-apparentées-un-exemple-3",
+    "href": "theorie/supports/tour-des-methodes.html#méthodes-darrondi-et-apparentées-un-exemple-3",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Méthodes d’arrondi et apparentées: Un exemple",
+    "text": "Méthodes d’arrondi et apparentées: Un exemple\n\nControlled Tabular Adjustment avec un intervalle de protection = \\([0;5]\\)\n\n\n\n\nRégion\n\n\n\n\n\n\n\n\n\n3-7\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nOui\n5\n16\n0\n7\n28\n\n\n2-7\nNon\n6\n0\n0\n13\n19\n\n\n2-7\nTotal\n11\n16\n0\n20\n47\n\n\n\nMoyenne des écarts absolus: \\(0.933\\)."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#méthodes-darrondi-et-apparentées-avantages-inconvénients",
+    "href": "theorie/supports/tour-des-methodes.html#méthodes-darrondi-et-apparentées-avantages-inconvénients",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Méthodes d’arrondi et apparentées: Avantages / inconvénients",
+    "text": "Méthodes d’arrondi et apparentées: Avantages / inconvénients\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nConservation de l’additivité\nCR et CTA: Recherche de la solution optimale sur grands tableaux très couteuse en temps (optim. lin.)\n\n\nSCR: Algorithme très efficace sur R\nCR: Une perte d’information parfois excessive\n\n\nPerception de la protection (en particulier des petites valeurs)\nDifficile à utiliser dans le cadre d’une diffusion complexe"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#la-méthode-des-clés-aléatoires-ckm",
+    "href": "theorie/supports/tour-des-methodes.html#la-méthode-des-clés-aléatoires-ckm",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "La méthode des clés aléatoires (CKM)",
+    "text": "La méthode des clés aléatoires (CKM)\n\nPrincipales caractéristiques de la méthode:\n\nToutes les cellules sont perturbées\nLes cellules sont perturbées indépendamment les unes des autres\nUne même cellule est toujours perturbée de la même manière\nLes zéros originaux ne sont pas perturbés (mais un effectif faible peut devenir un zéro)"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#la-méthode-des-clés-aléatoires-ckm-1",
+    "href": "theorie/supports/tour-des-methodes.html#la-méthode-des-clés-aléatoires-ckm-1",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "La méthode des clés aléatoires (CKM)",
+    "text": "La méthode des clés aléatoires (CKM)\n\nLa distribution de probabilité du bruit injecté est tel que :\n\nUne déviation maximale D et une variance V sont fixés en amont\nLe bruit injecté est sans biais\nLa loi de probabilité de la déviation injectée est définie à partir d’une matrice de transition"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#méthodes-darrondi-et-apparentées-un-exemple-4",
+    "href": "theorie/supports/tour-des-methodes.html#méthodes-darrondi-et-apparentées-un-exemple-4",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Méthodes d’arrondi et apparentées: Un exemple",
+    "text": "Méthodes d’arrondi et apparentées: Un exemple\n\nCKM avec \\(D = [0;5]\\) et \\(V = 3\\)\n\n\n\n\nRégion\n\n\n\n\n\n\n\n\n\n3-7\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nOui\n4\n15\n0\n8\n28\n\n\n2-7\nNon\n1\n3\n2\n15\n20\n\n\n2-7\nTotal\n10\n16\n4\n21\n46"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#la-méthode-des-clés-aléatoires-ckm-les-usages",
+    "href": "theorie/supports/tour-des-methodes.html#la-méthode-des-clés-aléatoires-ckm-les-usages",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "La méthode des clés aléatoires (CKM): Les usages",
+    "text": "La méthode des clés aléatoires (CKM): Les usages\n\nLa méthode est utilisée par plusieurs INS:\n\nDepuis 2006, ABS met à disposition un outil de requêtage en ligne pour obtenir des données de son recensement quinquennal. Les données sont protégées avec la CKM. (https://tablebuilder.abs.gov.au)\nLa CKM est une des méthodes préconisées par Eurostat pour protéger les données du Census européen 2021.\nDans ce cadre, Destatis utilise la CKM pour diffuser des données sur des grilles de 500m.\n2024: diffusion de données sur les Quartiers de la Politique de la Ville (QPV)."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#un-exemple-pour-illustrer-la-ckm",
+    "href": "theorie/supports/tour-des-methodes.html#un-exemple-pour-illustrer-la-ckm",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Un exemple pour illustrer la CKM",
+    "text": "Un exemple pour illustrer la CKM\n\nEtape 1 : Construction de la matrice de transition\nPrenons D = 3 et V = 1.5. Avec le package ptable de R on peut calculer une matrice de transition :"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#un-exemple-pour-illustrer-la-ckm-1",
+    "href": "theorie/supports/tour-des-methodes.html#un-exemple-pour-illustrer-la-ckm-1",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Un exemple pour illustrer la CKM",
+    "text": "Un exemple pour illustrer la CKM\n\nEtape 2 : Création d’une clé individuelle aléatoire\nSupposons que la base \\(\\mathcal{B}\\) soit composé des 6 individus suivant et qu’à chacun on associe une clé :\n\n\n\n\nid\nVille\nEcole\nKEY\n\n\n\n\n1\nRennes\nEnsai\n0.9177275\n\n\n2\nParis\nMines\n0.1850062\n\n\n3\nRennes\nEnsai\n0.6266963\n\n\n4\nLyon\nCentrale\n0.1117820\n\n\n5\nMarseille\nCentrale\n0.6496634\n\n\n6\nLille\nCentrale\n0.2813433"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#un-exemple-pour-illustrer-la-ckm-2",
+    "href": "theorie/supports/tour-des-methodes.html#un-exemple-pour-illustrer-la-ckm-2",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Un exemple pour illustrer la CKM",
+    "text": "Un exemple pour illustrer la CKM\n\nEtape 3 : Construction de la clé d’une cellule\nNous souhaitons diffuser le nombre d’individus selon leur école.\nOn a :\n\n\n\n\nEcole\ni\nindividus\nSkey\nCK\n\n\n\n\nEnsai\n2\n{1,3}\n1.544424\n0.544425\n\n\nMines\n1\n{2}\n0.1805062\n0.1805062\n\n\nCentrale\n3\n{4,5,6}\n1.0422789\n0.42789\n\n\nTotal\n6\n{1,2,3,4,5,6}\n2.772219\n0.772219"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#un-exemple-pour-illustrer-la-ckm-3",
+    "href": "theorie/supports/tour-des-methodes.html#un-exemple-pour-illustrer-la-ckm-3",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Un exemple pour illustrer la CKM",
+    "text": "Un exemple pour illustrer la CKM\n\nEtape 4 : Déterminer la perturbation à injecter\n\n\n\ni\nj\np\nv\np_int_lb\np_int_ub\n\n\n\n\n0\n0\n1.00000000\n0\n0.00000000\n1.00000000\n\n\n1\n0\n0.37967089\n-1\n0.00000000\n0.37967089\n\n\n1\n1\n0.37967089\n0\n0.37967089\n0.75934178\n\n\n1\n2\n0.13660124\n1\n0.75934178\n0.89594302\n\n\n1\n3\n0.06910130\n2\n0.89594302\n0.96504432\n\n\n1\n4\n0.03495568\n3\n0.96504432\n1.00000000\n\n\n2\n0\n0.11466600\n-2\n0.00000000\n0.11466600\n\n\n2\n1\n0.24491770\n-1\n0.11466600\n0.35958370\n\n\n2\n2\n0.30449462\n0\n0.35958370\n0.66407832\n\n\n2\n3\n0.22034995\n1\n0.66407832\n0.88442827\n\n\n2\n4\n0.09281544\n2\n0.88442827\n0.97724371\n\n\n2\n5\n0.02275629\n3\n0.97724371\n1.00000000\n\n\n3\n0\n0.01792237\n-3\n0.00000000\n0.01792237\n\n\n3\n1\n0.08898737\n-2\n0.01792237\n0.10690974\n\n\n3\n2\n0.23274919\n-1\n0.10690974\n0.33965893\n\n\n3\n3\n0.32068214\n0\n0.33965893\n0.66034107\n\n\n3\n4\n0.23274919\n1\n0.66034107\n0.89309026\n\n\n3\n5\n0.08898737\n2\n0.89309026\n0.98207763\n\n\n3\n6\n0.01792237\n3\n0.98207763\n1.00000000"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#un-exemple-pour-illustrer-la-ckm-4",
+    "href": "theorie/supports/tour-des-methodes.html#un-exemple-pour-illustrer-la-ckm-4",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Un exemple pour illustrer la CKM",
+    "text": "Un exemple pour illustrer la CKM\n\nEtape 5 : Conclusion\n\n\n\n\nEcole\nValeur originale i\nValeur pertubée j\n\n\n\n\n\n\nEnsai\n2\n2\n\n\n\n\nMines\n1\n0\n\n\n\n\nCentrale\n3\n3\n\n\n\n\nTotal\n6\n7"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#la-méthode-des-clés-aléatoires-ckm-avantages-inconvénients",
+    "href": "theorie/supports/tour-des-methodes.html#la-méthode-des-clés-aléatoires-ckm-avantages-inconvénients",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "La méthode des clés aléatoires (CKM): Avantages / inconvénients",
+    "text": "La méthode des clés aléatoires (CKM): Avantages / inconvénients\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nFacile d’implémentation\nPerte d’additivité\n\n\nAssure la cohérence des tableaux\nPerception potentielle d’une non-protection de la part des utilisateurs\n\n\nRéduit drastiquement le risque de différenciation géographique\n\n\n\nCompatible avec le requêtage / la diffusion sur mesure\n\n\n\nUtilité statistique des données très forte par rapport à des arrondis ou des suppressions"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#méthodes-non-perturbatrices-1",
+    "href": "theorie/supports/tour-des-methodes.html#méthodes-non-perturbatrices-1",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Méthodes non-perturbatrices",
+    "text": "Méthodes non-perturbatrices\n\nRecodage des variables: Un exemple\n\nExemple d’un fichier individuel 1-anonyme, l’âge et le genre étant considérés comme quasi-identifiants\n\n\nId\nAge\nGenre\nMaladie(s)\n\n\n\n\n1\n51\nM\nDiabète\n\n\n2\n46\nM\nHypertension artérielle\n\n\n3\n53\nF\nCancer\n\n\n4\n50\nF\nGrippe\n\n\n5\n54\nM\nDiabète\n\n\n6\n51\nM\nDiabète"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#recodage-des-variables-un-exemple-1",
+    "href": "theorie/supports/tour-des-methodes.html#recodage-des-variables-un-exemple-1",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Recodage des variables: Un exemple",
+    "text": "Recodage des variables: Un exemple\n\n\nExemple d’un fichier individuel 1-anonyme, l’âge et le genre étant considérés comme quasi-identifiants\n\n\nId\nAge\nGenre\nMaladie(s)\n\n\n\n\n1\n51\nM\nDiabète\n\n\n2\n46\nM\nHypertension artérielle\n\n\n3\n53\nF\nCancer\n\n\n4\n50\nF\nGrippe\n\n\n5\n54\nM\nDiabète\n\n\n6\n51\nM\nDiabète"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#recodage-des-variables-un-exemple-2",
+    "href": "theorie/supports/tour-des-methodes.html#recodage-des-variables-un-exemple-2",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Recodage des variables: Un exemple",
+    "text": "Recodage des variables: Un exemple\n\n\nRecodage de la variable âge permettant d’obtenir un fichier 2-anonyme, l’âge et le genre étant considérés comme quasi-identifiants\n\n\nId\nAge\nGenre\nMaladie(s)\n\n\n\n\n1\n[50;55[\nM\nDiabète\n\n\n2\n[50;55[\nM\nHypertension artérielle\n\n\n3\n[50;55[\nF\nCancer\n\n\n4\n[50;55[\nF\nGrippe\n\n\n5\n[50;55[\nM\nDiabète\n\n\n6\n[50;55[\nM\nDiabète"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#suppression-locale",
+    "href": "theorie/supports/tour-des-methodes.html#suppression-locale",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Suppression locale",
+    "text": "Suppression locale\n\n\nLa suppression locale consiste à supprimer certaines valeur pour réduire le risque de ré-identification;\nTout en minimisant la perte d’information ;\nDe l’information sera supprimée pour atteindre un seuil de risque préalablement défini ;\nMéthode généralement associée au k-anonymat ;\nImplémenté dans le package R sdcMicro et dans le logiciel \\(\\mu\\)-Argus."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#techniques-de-sous-échantillonnage",
+    "href": "theorie/supports/tour-des-methodes.html#techniques-de-sous-échantillonnage",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Techniques de sous-échantillonnage",
+    "text": "Techniques de sous-échantillonnage\n\n\nDiffusion d’un échantillon d’observations par rapport aux données originales\nMéthode peu adaptée si les variables quasi-identifiantes sont continues ou avec des modalités rares\nExemple : Statistics Catalonia a diffusé en 1995 un sous-échantillon du recensement exhaustif de la population effectué en 1991\nVariante : sous-échnatillonnage déterministe, seuls les enregistrements ne présentant pas de risque de ré-identification sont conservés"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#méthodes-perturbatrices-1",
+    "href": "theorie/supports/tour-des-methodes.html#méthodes-perturbatrices-1",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Méthodes perturbatrices",
+    "text": "Méthodes perturbatrices\n\nLa microagrégation\n\nMéthode perturbatrice, plus adaptée aux variables continues, mais peut-être adaptée aux variables catégorielles ordonnées\nIdée principale :\n\nCréer des petits groupes homogènes en prenant en compte les valeurs des variables sélectionnées\nRemplacer les valeurs de tous les individus appartenant au groupe par une unique valeur (peut être la valeur moyenne de valeurs observées dans le groupe)"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#microagrégation-un-exemple",
+    "href": "theorie/supports/tour-des-methodes.html#microagrégation-un-exemple",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Microagrégation: Un exemple",
+    "text": "Microagrégation: Un exemple\n\n\n\n\nRégion\nAge\nHeures travaillées\nPoids\n\n\n\n\n\npar semaine\nde sondage\n\n\n\n92\n36\n17\n1000\n\n\n\n75\n41\n35\n2000\n\n\n\n75\n52\n0\n1100\n\n\n\n94\n45\n35\n2500\n\n\n\n75\n41\n0\n1900\n\n\n\n92\n26\n46\n1500\n\n\n\n92\n31\n38\n800\n\n\n\n94\n48\n30\n1200\n\n\n\n\n\nIl y a des croisements uniques pour la clef Age \\(\\times\\) Région"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#microagrégation-un-exemple-1",
+    "href": "theorie/supports/tour-des-methodes.html#microagrégation-un-exemple-1",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Microagrégation: Un exemple",
+    "text": "Microagrégation: Un exemple\n\n\n\n\nRégion\nAge\nHeures travaillées\nPoids\n\n\n\n\npar semaine\nde sondage\n\n\n92\n36 31\n17\n1000\n\n\n75\n41 45\n35\n2000\n\n\n75\n52 45\n0\n1100\n\n\n94\n45 47\n35\n2500\n\n\n75\n41 45\n0\n1900\n\n\n92\n26 31\n46\n1500\n\n\n92\n31 31\n38\n800\n\n\n94\n48 47\n30\n1200\n\n\n\n\n\\(\\mu_{red} = 45\\), \\(\\mu_{yellow} = 31\\), \\(\\mu_{green} = 47\\)"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#microagrégation-paramètres",
+    "href": "theorie/supports/tour-des-methodes.html#microagrégation-paramètres",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Microagrégation: Paramètres",
+    "text": "Microagrégation: Paramètres\n\nUn grand nombre de sorties possibles pour cette méthode selon :\n\nla définition d’homogénéité choisie\nl’algorithme utilisé pour construire les groupes\nla détermination de la valeur de remplacement\n\nLes paramètres à définir :\n\nTaille \\(g\\) de chaque groupe (plus la taille du groupe est grande, plus grande sera la perte d’information, et plus celle-ci est grande, plus le niveau de protection est élevé ..)\nQuelles variables sont utilisées pour calculer la distance ?\nQuelles statistiques choisir une fois que les groupes ont été formés ? (moyenne, médiane ?)"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#microagrégation-variance-intra-groupe",
+    "href": "theorie/supports/tour-des-methodes.html#microagrégation-variance-intra-groupe",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Microagrégation: variance intra-groupe",
+    "text": "Microagrégation: variance intra-groupe\n\nL’algorithme cherche à minimiser la somme des carrés intra-groupe \\[SSE = \\sum_{i=1}^g\\sum_{j \\in i} (x_{ij}-\\bar x_{i})^T(x_{ij}-\\bar x_{i})\\]"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#microagrégation-avantages-inconvénients",
+    "href": "theorie/supports/tour-des-methodes.html#microagrégation-avantages-inconvénients",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Microagrégation: Avantages / inconvénients",
+    "text": "Microagrégation: Avantages / inconvénients\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nAdapté au \\(k\\)-anonymat\nTemps de calcul important\n\n\nConstruction de classes pertinentes"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#injection-de-bruit",
+    "href": "theorie/supports/tour-des-methodes.html#injection-de-bruit",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Injection de bruit",
+    "text": "Injection de bruit\n\n\nMéthode adaptée pour traiter les variables continues\nEn général, on injecte un bruit additif sans biais et à variance fixe"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#perturbation-par-un-bruit-additif",
+    "href": "theorie/supports/tour-des-methodes.html#perturbation-par-un-bruit-additif",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Perturbation par un bruit additif",
+    "text": "Perturbation par un bruit additif\n\n\nAdaptée pour les variables continues\nPas d’hypothèses faites sur les valeurs possiblement prises par les variables à perturber\nLe bruit ajouté est généralement continu et d’espérance nulle"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#trois-types-de-perturbation-par-un-bruit-additif",
+    "href": "theorie/supports/tour-des-methodes.html#trois-types-de-perturbation-par-un-bruit-additif",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Trois types de perturbation par un bruit additif",
+    "text": "Trois types de perturbation par un bruit additif\n\n\nBruits indépendants\n\nLes moyennes et covariances sont préservées\nLes variances et les coefficients de corrélation ne sont pas conservés\n\nBruits corrélés\n\nConservation des coefficients de corrélation et de l’espérance\nPréférable à l’ajout des bruits indépendants car on peut obtenir des estimations non biaisées pour plusieurs statistiques importantes"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#trois-types-de-perturbation-par-un-bruit-additif-1",
+    "href": "theorie/supports/tour-des-methodes.html#trois-types-de-perturbation-par-un-bruit-additif-1",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Trois types de perturbation par un bruit additif",
+    "text": "Trois types de perturbation par un bruit additif\n\nCes deux méthodes sont rarement utilisées en pratique car apporte une protection relativement faible contre la divulgation d’identité (valeurs extrêmes).\n\nAddition de bruit et transformation linéaire\n\nMatrice de variance-covariance des variables perturbées est un estimateur sans biais de la matrice de variance-covariance des variables originelles"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#perturbation-par-un-bruit-additif-avantages-inconvénients",
+    "href": "theorie/supports/tour-des-methodes.html#perturbation-par-un-bruit-additif-avantages-inconvénients",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Perturbation par un bruit additif: Avantages / inconvénients",
+    "text": "Perturbation par un bruit additif: Avantages / inconvénients\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nTraitement de variables sensibles continues\nPas adapté aux traitements des outliers de grandes valeurs"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#targeted-record-swapping-trs",
+    "href": "theorie/supports/tour-des-methodes.html#targeted-record-swapping-trs",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Targeted Record Swapping (TRS)",
+    "text": "Targeted Record Swapping (TRS)\n\n\nRaffinement de méthodes de swapping\nConsiste à échanger la localisation de certains individus jugés à risque avec d’autres individus d’une autre entité géographique\nRéalisé de telle sorte que les individus échangés se ressemblent suffisamment pour limiter l’effet perturbatif de l’échange\nCiblage des individus préalablement détectés comme à risque de ré-identification (voire risque de divulgation d’attributs sensibles)"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#targeted-record-swapping-trs-une-méthode-très-utilisée",
+    "href": "theorie/supports/tour-des-methodes.html#targeted-record-swapping-trs-une-méthode-très-utilisée",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Targeted Record Swapping (TRS): Une méthode très utilisée",
+    "text": "Targeted Record Swapping (TRS): Une méthode très utilisée\n\n\nInsee: Données européennes du recensement 2021\nEurostat préconise cette méthode (couplée à la CKM) pour la diffusion du Census européen\nUS Census Bureau: Recensement US 2010\nONS (UK): Recensement depuis 2010"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#targeted-record-swapping-trs-un-exemple",
+    "href": "theorie/supports/tour-des-methodes.html#targeted-record-swapping-trs-un-exemple",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Targeted Record Swapping (TRS): Un exemple",
+    "text": "Targeted Record Swapping (TRS): Un exemple"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#targeted-record-swapping-trs-avantages-inconvénients",
+    "href": "theorie/supports/tour-des-methodes.html#targeted-record-swapping-trs-avantages-inconvénients",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Targeted Record Swapping (TRS): Avantages / inconvénients",
+    "text": "Targeted Record Swapping (TRS): Avantages / inconvénients\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nTrès efficace pour traiter différents types de risque.\nNécessite de fixer un grand nombre de paramètres (mesure de risque, variables similarité, taux de swapping).\n\n\nMéthode souple, adaptation à des cas très différents (structures ménages-individus par ex.).\nBruit injecté dans les données n’est pas vraiment contrôlable\n\n\nPréserve les agrégats du niveau géographique au sein duquel le swapping a été opéré.\nGénère localement du biais dans les données."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#post-randomisation-method-pram",
+    "href": "theorie/supports/tour-des-methodes.html#post-randomisation-method-pram",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Post-Randomisation Method (PRAM)",
+    "text": "Post-Randomisation Method (PRAM)\n\n\nPermet de traiter les variables sensibles en bruitant les données de variables catégorielles.\nConsiste à modifier aléatoirement l’appartenance des individus à une classe donnée.\nMéthode particulièrement intéressante pour traiter les divulgations d’attributs sensibles : un attaquant ne peut avoir aucune certitude sur l’attribut d’une observation."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#post-randomization-method-pramun-exemple",
+    "href": "theorie/supports/tour-des-methodes.html#post-randomization-method-pramun-exemple",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Post Randomization Method (PRAM)Un exemple",
+    "text": "Post Randomization Method (PRAM)Un exemple\n\n\n\n\nRegion\nAge\nSituation\n\n\n\n\nProfessionnelle\n\n\n92\n14\nInactif\n\n\n75\n41\nChômeur\n\n\n75\n52\nActif\n\n\n94\n45\nActif\n\n\n75\n41\nChômeur\n\n\n92\n26\nActif\n\n\n92\n31\nActif\n\n\n94\n14\nInactif\n\n\n\n\nInactif : 2 ind., Chômeur = 2 ind., Actif = 4 ind."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#post-randomization-method-pram-un-exemple",
+    "href": "theorie/supports/tour-des-methodes.html#post-randomization-method-pram-un-exemple",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Post Randomization Method (PRAM): Un exemple",
+    "text": "Post Randomization Method (PRAM): Un exemple\n\n\n\n\nRegion\nAge\nSituation\nSituation\n\n\n\n\nProfessionnelle\nProfessionnelle (PRAM)\n\n\n92\n14\nInactif\nChômeur\n\n\n75\n41\nChômeur\nActif\n\n\n75\n52\nActif\nActif\n\n\n94\n45\nActif\nActif\n\n\n75\n41\nChômeur\nInactif\n\n\n92\n26\nActif\nActif\n\n\n92\n31\nActif\nChômeur\n\n\n94\n48\nInactif\nInactif\n\n\n\n\nInactif : 2 ind., Chômeur = 2 ind., Actif = 4 ind."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#post-randomization-method-pram-un-exemple-1",
+    "href": "theorie/supports/tour-des-methodes.html#post-randomization-method-pram-un-exemple-1",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Post Randomization Method (PRAM): Un exemple",
+    "text": "Post Randomization Method (PRAM): Un exemple\n\n\n\n\nRegion\nAge\nSituation\nSituation\n\n\n\n\nProfessionnelle\nProfessionnelle (PRAM)\n\n\n92\n14\nInactif\nChômeur\n\n\n75\n41\nChômeur\nActif\n\n\n75\n52\nActif\nActif\n\n\n94\n45\nActif\nActif\n\n\n75\n41\nChômeur\nInactif\n\n\n92\n26\nActif\nActif\n\n\n92\n31\nActif\nChômeur\n\n\n94\n48\nInactif\nInactif\n\n\n\n\nAttention aux incohérences !"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#pram-la-matrice-de-transition",
+    "href": "theorie/supports/tour-des-methodes.html#pram-la-matrice-de-transition",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "PRAM : la matrice de transition",
+    "text": "PRAM : la matrice de transition\n\nOn a besoin de définir une matrice de transition pour pouvoir définir les probabilités de transition.\n\nSoit \\(\\xi\\) la variable catégorielle initiale \\(K\\) categories \\(1 \\dots K\\)\n\\(\\longrightarrow\\) dans l’exemple \\(\\xi\\) = Situation professionnelle, K = 3\nSoit \\(X\\) la même variable catégorielle dans le jeu de données perturbé\n\\(\\longrightarrow\\) dans l’exemple \\(X\\) = Situation professionnelle (PRAM)\n\nOn peut définir la matrice de transition \\(P\\), \\(P =(p_{kl})_{1 \\leq k,l \\leq K}\\), où \\(p_{kl} = P(X =l|\\xi = k)\\)\n\n\n\n\nInactif\nActif\nChômeur\n\n\n\n\nInactif\n0,8\n0,05\n0,15\n\n\nActif\n0\n0,8\n0,2\n\n\nChômeur\n0,1\n0,1\n0,8"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#pram-comment-choisir-la-matrice-de-transition",
+    "href": "theorie/supports/tour-des-methodes.html#pram-comment-choisir-la-matrice-de-transition",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "PRAM : Comment choisir la matrice de transition ?",
+    "text": "PRAM : Comment choisir la matrice de transition ?\n\n\nPRAM change aléatoirement les comptages de la population :\n\\[\\mathbb{E}\\begin{pmatrix} N^{pram}_{I} \\\\N^{pram}_{E}\\\\ N^{pram}_{U} \\end{pmatrix} = P^{T} \\begin{pmatrix}N_{I} \\\\N_{E}\\\\ N_{U} \\end{pmatrix}\\]\nSelon P et les comptages originaux, les marges peuvent être beaucoup perturbées !\nDes coefficients diagonaux élevés peuvent être insuffisants"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#pram-exemple-numérique",
+    "href": "theorie/supports/tour-des-methodes.html#pram-exemple-numérique",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "PRAM : exemple numérique",
+    "text": "PRAM : exemple numérique\n\n\nMarges originales\n\n\n\n\n2-4\nInactif\nActif\nChômeur\n\n\n\n\nFréquence (million)\n16.8\n49\n4.2\n\n\nPourcentage\n24 %\n70 %\n6 %\n\n\n\n\nMatrice de transition \\(P\\) :\n\n\n\n\nInactif\nActif\nChômeur\n\n\n\n\nInactif\n0,8\n0,05\n0,15\n\n\nActif\n0\n0,8\n0,2\n\n\nChômeur\n0,1\n0,1\n0,8\n\n\n\nOn peut maintenant calculer les marges perturbées !"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#pram-exemple-numérique-1",
+    "href": "theorie/supports/tour-des-methodes.html#pram-exemple-numérique-1",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "PRAM : exemple numérique",
+    "text": "PRAM : exemple numérique\n\n\nMarges originales\n\n\n\n\n2-4\nInactif\nActif\nChômeur\n\n\n\n\nFréquence (million)\n17\n49\n4\n\n\nPourcentage\n24 %\n70 %\n6 %\n\n\n\n\nNouvelles marges\n\n\n\n\n2-4\nInactif\nActif\nChômeur\n\n\n\n\nFréquence (million)\n14\n41\n16\n\n\nPourcentage\n20 %\n58 %\n22 %"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#pram-invariant",
+    "href": "theorie/supports/tour-des-methodes.html#pram-invariant",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "PRAM Invariant",
+    "text": "PRAM Invariant\n\n\nPossibilité de choisir la matrice \\(P\\) de telle sorte que la perturbation soit sans biais \\(\\longrightarrow\\) PRAM invariant\nComme : \\[\\mathbb{E}\\begin{pmatrix} N^{pram}_{I} \\\\N^{pram}_{E}\\\\ N^{pram}_{U} \\end{pmatrix} = P^{T} \\begin{pmatrix}N_{I} \\\\N_{E}\\\\ N_{U} \\end{pmatrix}\\]\nIl faut, pour cela, choisir \\(P\\) telle que les fréquences marginales originales soient un vecteur propre de \\(P\\) associé à la valeur propre \\(1\\)."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#post-randomisation-method-pram-1",
+    "href": "theorie/supports/tour-des-methodes.html#post-randomisation-method-pram-1",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Post-Randomisation Method (PRAM)",
+    "text": "Post-Randomisation Method (PRAM)\n\nComment mesurer le niveau de protection du fichier obtenu ?\n\nLe niveau de protection est mesuré à partir des paramètres de la méthode (matrice de transition)\nIdée: faire en sorte que la rareté de certaines modalités soient rendues suffisamment incertaines à inférer \\(\\longrightarrow\\) utiliser les posterior odds ratio\n\\[POST\\_ODDS(k) = \\frac{P(\\xi = k|X=k)}{P(\\xi \\neq k|X=k)} = \\frac{p_{kk}P(\\xi = k)}{\\sum_{l \\neq k}p_{lk}P(\\xi=l)}\\]\n\\(p_{kk}\\) sont connus et dépendent du plan de sondage, mais \\(P(\\xi = k)\\) peut être difficile à estimer.\nInterprétation:\n\nSi \\(POST\\_ODDS(k) &gt; 1\\), alors la valeur originale est plus probablement \\(k\\) plutôt qu’une autre valeur, si on observe la modalité \\(k\\) dans le jeu perturbé.\nSi \\(POST\\_ODDS(k) &lt; 1\\), alors la valeur originale est plus probablement une autre valeur que \\(k\\), si on observe la modalité \\(k\\) dans le jeu perturbé."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#post-randomisation-method-pram-2",
+    "href": "theorie/supports/tour-des-methodes.html#post-randomisation-method-pram-2",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Post-Randomisation Method (PRAM)",
+    "text": "Post-Randomisation Method (PRAM)\n\nComment mesurer le niveau de protection du fichier obtenu? Interprétation :\n\nSi \\(POST\\_ODDS(k) &gt; 1\\), alors la valeur originale est plus probablement \\(k\\) plutôt qu’une autre valeur, si on observe la modalité \\(k\\) dans le jeu perturbé.\nSi \\(POST\\_ODDS(k) &lt; 1\\), alors la valeur originale est plus probablement une autre valeur que \\(k\\), si on observe la modalité \\(k\\) dans le jeu perturbé."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#post-randomisation-method-pram-avantages-inconvénients",
+    "href": "theorie/supports/tour-des-methodes.html#post-randomisation-method-pram-avantages-inconvénients",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Post-Randomisation Method (PRAM): Avantages / inconvénients",
+    "text": "Post-Randomisation Method (PRAM): Avantages / inconvénients\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nPermet de fournir le niveau de protection associé au bruit injecté en calculant les probabilités de transition inverses.\nCréation d’éventuelles combinaisons impossibles (ex : enfant à la retraite).\n\n\nConserve l’additivité des tableaux générés à partir des micro-données bruitées.\nDifficile de définir une matrice de protection qui prend en compte les liens avec toutes les variables.\n\n\n.\n."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#les-données-synthétiques",
+    "href": "theorie/supports/tour-des-methodes.html#les-données-synthétiques",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Les données synthétiques",
+    "text": "Les données synthétiques\n\n\nIdée: Générer tout ou partie des données individuelles.\nDeux types de synthèse:\n\nSynthèse complète: toutes les variables et tous les individus sont générés.\nSynthèse partielle: Seulement certaines variables sont générées (principalement les variables sensibles)."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#les-données-synthétiques-les-méthodes-de-génération-i",
+    "href": "theorie/supports/tour-des-methodes.html#les-données-synthétiques-les-méthodes-de-génération-i",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Les données synthétiques: Les méthodes de génération (I)",
+    "text": "Les données synthétiques: Les méthodes de génération (I)\n\nLes principales méthodes de génération sont:\n\nModélisation séquentielle conditionnelle (Fully Conditional Specification, FCS): Chaque variable est modélisée l’une après l’autre, conditionnellement aux variables déjà modélisées.\n\nMéthode très populaire et efficace\nPour générer la \\(p^e\\) variable, on cherche à modéliser sa distribution conditionnelle : \\[f_{X_p | X_1 , X_2 , \\dots , X_{p-1}}\\]\nModélisation paramétrique (régression linéaire ou logistique) ou non paramétrique (en particulier méthodes à base d’arbres: CART, Boosting, random forest, XGBoost)."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#les-données-synthétiques-les-méthodes-de-génération-ii",
+    "href": "theorie/supports/tour-des-methodes.html#les-données-synthétiques-les-méthodes-de-génération-ii",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Les données synthétiques: Les méthodes de génération (II)",
+    "text": "Les données synthétiques: Les méthodes de génération (II)\n\nLes principales méthodes de génération sont (suite):\n\nMéthodes de Deep Learning:\n\nTabular Variational Auto Encoder (TVAE): L’auto encodage consiste à combiner une phase d’encodage qui réduit la dimension des données pour apprendre les caractéristiques les plus importantes et une phase de décodage pour reconstituer des données dans leur dimension originale.\nConditional Tabular Generative Adversarial Network (CTGAN): Les GAN sont très populaires dans la génération d’images. Les CTGAN sont une adaptation des GAN pour générer des données tabulaires (microdonnées ou données agrégées). Un générateur construit des données synthétiques et les soumet à un discriminateur dont l’objectif est de distinguer ces données générées des données originales."
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#un-exemple-avec-le-labour-force-survey-lfs",
+    "href": "theorie/supports/tour-des-methodes.html#un-exemple-avec-le-labour-force-survey-lfs",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Un exemple avec le Labour Force Survey (LFS)",
+    "text": "Un exemple avec le Labour Force Survey (LFS)\n\n\nContexte Eurostat\nCombinaison de méthodes\nPublication d’un fichier de microdonnées à usage public à partir de l’enquête emploi en continu\nApproche traditionnelle : recodage global et suppression locale"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#étapes-de-lapproche-traditionnelle",
+    "href": "theorie/supports/tour-des-methodes.html#étapes-de-lapproche-traditionnelle",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Étapes de l’approche traditionnelle",
+    "text": "Étapes de l’approche traditionnelle\n\n\nSupprimer certaines variables (comme la région ou des variables utiles pour reconstruire les ménages)\nRepérer les variables identifiantes (ex : sexe, âge, nationalité, profession, niveau d’éducation)\nRecodage global (ex : âge en 6 catégories, nationalité en 3, niveau d’éducation en 3)\nDéterminer le niveau de risque avec le k-anonymat (ici k = 5)\nChoisir les variables clés parmi les variables identifiantes (degré d’urbanisation, sexe, âge, nationalité, profession, années d’expériences et plus haut niveau d’éducation)"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#étapes-de-lapproche-traditionnelle-1",
+    "href": "theorie/supports/tour-des-methodes.html#étapes-de-lapproche-traditionnelle-1",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Étapes de l’approche traditionnelle",
+    "text": "Étapes de l’approche traditionnelle\n\n\nSuppression locale et PRAM pour des individus à risque :\n\nSuppression locale sur les variables clés\nPRAM sur les autres variables (probabilité de rester identique mise à 0.8)\n\nSuppression locale à partir de toutes les combinaisons m-dimensionnelles sur toutes les variables identifiantes (m = 4 et k = 10)"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#pour-aller-plus-loin",
+    "href": "theorie/supports/tour-des-methodes.html#pour-aller-plus-loin",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Pour aller plus loin",
+    "text": "Pour aller plus loin\n\n\nHundepool and alt., Handbook on Statistical Disclosure Control, Wiley, 2012\nUne version libre et gratuite est disponible ici: https://ec.europa.eu/eurostat/cros/system/files/SDC_Handbook.pdf (2010)\nGouweleeuw, J. M., Kooiman, P., & De Wolf, P. P. (1998). Post randomisation for statistical disclosure control: Theory and implementation. Journal of official Statistics, 14(4), 463.\nDrechsler, J. and Reiter, J.P. (2009). Disclosure Risk and Data Utility for Partially Synthetic Data: An empirical Study Using the German IAB Establishment Survey., Journal of Official Statistics, 25, 589–603"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#pour-aller-plus-loin-1",
+    "href": "theorie/supports/tour-des-methodes.html#pour-aller-plus-loin-1",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Pour aller plus loin",
+    "text": "Pour aller plus loin\n\n\nLe package R sdcMicro : https://github.com/sdcTools/sdcMicro\nGuide théorique : https://sdctheory.readthedocs.io/en/latest/\nGuide pratique: https://sdcpractice.readthedocs.io/en/latest/"
+  },
+  {
+    "objectID": "theorie/supports/tour-des-methodes.html#pour-aller-plus-loin-2",
+    "href": "theorie/supports/tour-des-methodes.html#pour-aller-plus-loin-2",
+    "title": "Les méthodes de protection statistique des données confidentielles",
+    "section": "Pour aller plus loin",
+    "text": "Pour aller plus loin\n\nDeux exemples d’application sur microdonnées réalisés par Eurostat:\nhttps://ec.europa.eu/eurostat/cros/system/files/d4.1presentationhelsinki.pdf"
   },
   {
     "objectID": "theorie/index.html",
     "href": "theorie/index.html",
     "title": "Un peu de théorie",
     "section": "",
-    "text": "Arbitrer entre risque et utilité\nTraiter des données tabulées\nTraiter des données individuelles\nLa confidentialité différentielle"
-  },
-  {
-    "objectID": "theorie/index.html#les-supports",
-    "href": "theorie/index.html#les-supports",
-    "title": "Un peu de théorie",
-    "section": "",
-    "text": "Arbitrer entre risque et utilité\nTraiter des données tabulées\nTraiter des données individuelles\nLa confidentialité différentielle"
+    "text": "L’Arbitrage Risque/Utilité\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLes méthodes de protection statistique des données confidentielles\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLe traitement des données tabulées\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLe traitement des données individuelles\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLa confidentialité différentielle\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   }
 ]

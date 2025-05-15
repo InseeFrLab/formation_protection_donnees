@@ -2,70 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://InseeFrLab.github.io/formation_protection_donnees/index.html</loc>
-    <lastmod>2025-05-15T09:14:06.384Z</lastmod>
+    <lastmod>2025-05-15T18:34:46.002Z</lastmod>
   </url>
   <url>
     <loc>https://InseeFrLab.github.io/formation_protection_donnees/theorie/supports/donnees-individuelles.html</loc>
-    <lastmod>2025-05-15T09:14:06.385Z</lastmod>
-  </url>
-  <url>
-    <loc>https://InseeFrLab.github.io/formation_protection_donnees/theorie/supports/donnees-tabulees.html</loc>
-    <lastmod>2025-05-15T09:14:06.385Z</lastmod>
-  </url>
-  <url>
-    <loc>https://InseeFrLab.github.io/formation_protection_donnees/about.html</loc>
-    <lastmod>2025-05-15T09:14:06.375Z</lastmod>
-  </url>
-  <url>
-    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/proteger-micro-swapping.html</loc>
-    <lastmod>2025-05-15T09:14:06.385Z</lastmod>
-  </url>
-  <url>
-    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/proteger-tableaux-suppressif.html</loc>
-    <lastmod>2025-05-15T09:14:06.385Z</lastmod>
-  </url>
-  <url>
-    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/mesurer-risque.html</loc>
-    <lastmod>2025-05-15T09:14:06.384Z</lastmod>
-  </url>
-  <url>
-    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/confidentialite-differentielle.html</loc>
-    <lastmod>2025-05-15T09:14:06.384Z</lastmod>
-  </url>
-  <url>
-    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/index.html</loc>
-    <lastmod>2025-05-15T09:14:06.385Z</lastmod>
-  </url>
-  <url>
-    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/proteger-micro-pram.html</loc>
-    <lastmod>2025-05-15T09:14:06.385Z</lastmod>
-  </url>
-  <url>
-    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/generer-synth.html</loc>
-    <lastmod>2025-05-15T09:14:06.384Z</lastmod>
-  </url>
-  <url>
-    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/proteger-tableaux-cellkey.html</loc>
-    <lastmod>2025-05-15T09:14:06.385Z</lastmod>
-  </url>
-  <url>
-    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/mesurer-utilite.html</loc>
-    <lastmod>2025-05-15T09:14:06.384Z</lastmod>
-  </url>
-  <url>
-    <loc>https://InseeFrLab.github.io/formation_protection_donnees/ressources/index.html</loc>
-    <lastmod>2025-05-15T09:14:06.385Z</lastmod>
-  </url>
-  <url>
-    <loc>https://InseeFrLab.github.io/formation_protection_donnees/theorie/supports/confidentialite-differentielle.html</loc>
-    <lastmod>2025-05-15T09:14:06.385Z</lastmod>
+    <lastmod>2025-05-15T18:34:46.005Z</lastmod>
   </url>
   <url>
     <loc>https://InseeFrLab.github.io/formation_protection_donnees/theorie/supports/arbitrer-risque-utilite.html</loc>
-    <lastmod>2025-05-15T09:14:06.385Z</lastmod>
+    <lastmod>2025-05-15T18:34:46.005Z</lastmod>
+  </url>
+  <url>
+    <loc>https://InseeFrLab.github.io/formation_protection_donnees/theorie/supports/confidentialite-differentielle.html</loc>
+    <lastmod>2025-05-15T18:34:46.005Z</lastmod>
+  </url>
+  <url>
+    <loc>https://InseeFrLab.github.io/formation_protection_donnees/ressources/index.html</loc>
+    <lastmod>2025-05-15T18:34:46.004Z</lastmod>
+  </url>
+  <url>
+    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/mesurer-utilite.html</loc>
+    <lastmod>2025-05-15T18:34:46.003Z</lastmod>
+  </url>
+  <url>
+    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/proteger-tableaux-cellkey.html</loc>
+    <lastmod>2025-05-15T18:34:46.003Z</lastmod>
+  </url>
+  <url>
+    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/generer-synth.html</loc>
+    <lastmod>2025-05-15T18:34:46.003Z</lastmod>
+  </url>
+  <url>
+    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/proteger-micro-pram.html</loc>
+    <lastmod>2025-05-15T18:34:46.003Z</lastmod>
+  </url>
+  <url>
+    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/index.html</loc>
+    <lastmod>2025-05-15T18:34:46.003Z</lastmod>
+  </url>
+  <url>
+    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/confidentialite-differentielle.html</loc>
+    <lastmod>2025-05-15T18:34:46.003Z</lastmod>
+  </url>
+  <url>
+    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/mesurer-risque.html</loc>
+    <lastmod>2025-05-15T18:34:46.003Z</lastmod>
+  </url>
+  <url>
+    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/proteger-tableaux-suppressif.html</loc>
+    <lastmod>2025-05-15T18:34:46.003Z</lastmod>
+  </url>
+  <url>
+    <loc>https://InseeFrLab.github.io/formation_protection_donnees/pratique/fiches/proteger-micro-swapping.html</loc>
+    <lastmod>2025-05-15T18:34:46.003Z</lastmod>
+  </url>
+  <url>
+    <loc>https://InseeFrLab.github.io/formation_protection_donnees/about.html</loc>
+    <lastmod>2025-05-15T18:34:45.993Z</lastmod>
+  </url>
+  <url>
+    <loc>https://InseeFrLab.github.io/formation_protection_donnees/theorie/supports/donnees-tabulees.html</loc>
+    <lastmod>2025-05-15T18:34:46.005Z</lastmod>
+  </url>
+  <url>
+    <loc>https://InseeFrLab.github.io/formation_protection_donnees/theorie/supports/tour-des-methodes.html</loc>
+    <lastmod>2025-05-15T18:34:46.005Z</lastmod>
   </url>
   <url>
     <loc>https://InseeFrLab.github.io/formation_protection_donnees/theorie/index.html</loc>
-    <lastmod>2025-05-15T09:14:06.385Z</lastmod>
+    <lastmod>2025-05-15T18:34:46.004Z</lastmod>
   </url>
 </urlset>

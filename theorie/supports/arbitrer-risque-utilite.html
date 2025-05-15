@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="fr-FR"><head>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.31">
 
-  <title>La protection des données statistiques publiques – Arbitrer entre risque et utilité</title>
+  <title>La protection des données statistiques publiques – L’Arbitrage Risque/Utilité</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,7 +28,9 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-7230c0af59ab1606bc2ed49e76979e8e.css">
+  <link rel="stylesheet" href="_extensions/InseeFrLab/onyxia/logo.css">
+  <link rel="stylesheet" href="custom.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -120,32 +122,37 @@
       margin-right: 0; 
     }
   </style>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Arbitrer entre risque et utilité</h1>
+<section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center">
+  <h1 class="title">L’Arbitrage Risque/Utilité</h1>
+  <p class="subtitle"></p><p><strong><span class="orange">Arbitrer pour mieux maîtriser</span></strong></p><p></p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
 <section>
-<section id="arbitrer-entre-risque-et-utilité" class="title-slide slide level1 center">
+<section id="arbitrer-entre-risque-et-utilité" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
 <h1>Arbitrer entre risque et utilité</h1>
 
 </section>
-<section id="introduction" class="slide level2">
+<section id="introduction" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Introduction</h2>
+<div class="frame">
+
+</div>
 
 
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-
+<p>L’arbitrage risque/utilité</p>
 </div>
 </div></div>
 
@@ -170,7 +177,7 @@
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-'controlsAuto': true,
+'controlsAuto': false,
 'previewLinksAuto': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
@@ -181,7 +188,7 @@
 'smaller': false,
  
         // Display controls in the bottom right corner
-        controls: false,
+        controls: true,
 
         // Help the user learn the controls by providing hints, for example by
         // bouncing the down arrow when they first encounter a vertical slide
@@ -198,7 +205,7 @@
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -379,12 +386,12 @@
           // flash "checked"
           button.classList.add('code-copy-button-checked');
           var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
+          button.setAttribute("title", "Copié");
           let tooltip;
           if (window.bootstrap) {
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
+            button.setAttribute("data-bs-title", "Copié");
             tooltip = new bootstrap.Tooltip(button, 
               { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",
