@@ -1,0 +1,8 @@
+---
+title: Le traitement des données tabulées
+subtitle: |
+  **[Données tabulées]{.orange}**
+order: 3
+href: theorie/supports/donnees-tabulees.html
+image: ../../images/theorie.png
+---

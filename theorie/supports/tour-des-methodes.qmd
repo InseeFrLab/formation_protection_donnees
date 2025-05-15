@@ -1,0 +1,1019 @@
+---
+title: Les méthodes de protection statistique des données confidentielles
+subtitle: |
+  **[Un tour d'horizon]{.orange}**
+order: 2
+href: theorie/supports/tour-des-methodes.html
+image: ../../images/theorie.png
+# date: 
+slide-number: true
+header: |
+  [Retour à l'accueil](https://github.com/InseeFrLab/formation_protection_donnees)
+footer: |
+  Les méthodes de protection statistique des données confidentielles
+# uncomment for French presentations:
+lang: fr-FR
+# for blind readers:
+slide-tone: false
+# for @olevitt:
+# chalkboard: # press the B key to toggle chalkboard
+#   theme: whiteboard
+# uncomment to use the multiplex mode:
+#multiplex: true
+format:
+  onyxia-revealjs
+  # pick the light mode (onyxia-revealjs) or the dark mode (onyxia-dark-revealjs)
+  #onyxia-dark-revealjs:
+controls: true
+css: custom.css
+# from: markdown+emoji
+# listing:
+#   id: sample-listings
+#   contents: teaching
+#   sort: "date desc"
+#   type: table
+bibliography: ../../references-SDC.bib
+# csl: ../style.csl  # Décommentez besoin d'un style de biblio spécifique
+---
+
+::: frame
+:::
+
+::: frame
+### Sommaire
+:::
+
+# Introduction
+
+## Méthodes classiques de protection des données disponibles
+
+::: frame
+
+::: {#tab:my_label}
+  Type de données    **Méthodes non-perturbatrices**      **Méthodes perturbatrices**
+  ------------------ ------------------------------------ ----------------------------------------------------
+  Microdonnées       Techniques de sous-échantillonnage   Perturbation par un bruit (additif, multiplicatif)
+                     Recodage des variables               Microagrégation
+                     Suppression locale                   Techniques de swapping
+  Données tabulées   Suppression de cellules              Bruitage des sorties
+                     Recodage des variables               Méthodes d'arrondi
+                                                          Ajouter du bruit (CKM)
+
+  : Un tour d'horizon des méthodes de protection des données
+:::
+:::
+
+## Perturbation vs Non-Perturbation
+::: frame
+
+-   Les **méthodes non-perturbatrices** réduisent l'information en supprimant les données de certaines valeurs sans changer leur structure.
+
+-   Les **méthodes perturbatrices** ne suppriment pas les données, mais peuvent conduire à perturber toutes les valeurs
+
+-   Avec des **méthodes perturbatrices**, impossible pour l'utilisateur de savoir si l'information diffusée est la \"vraie\".
+
+-   Problème des **méthodes perturbatrices**: impression pour l'utilisateur que les données n'ont pas été protégées.
+:::
+
+# Protection des données tabulées
+
+## Méthodes non-perturbatrices
+::: frame
+
+- Recodage des variables
+- Suppressions primaire et secondaire
+
+:::
+
+## Recodage des variables
+::: frame
+
+-   Regrouper des catégories d'une variable catégorielle
+
+-   Créer des variables catégorielles à partir d'une variable continue
+
+-   Élargir le champ de diffusion s'il s'avère trop restreint
+:::
+
+## Recodage des variables: Un exemple
+::: frame
+
+              Harpe    Piano    Orgue    Autre    **Total**
+  ----------- -------- -------- -------- -------- -----------
+  Nord        5        17       **2**    12       **36**
+  Centre      4        11       **2**    7        **24**
+  Sud         3        6        **1**    4        **14**
+  **Total**   **12**   **34**   **5**    **23**   **74**
+
+              Harpe    Piano    Autre    **Total**
+  ----------- -------- -------- -------- -----------
+  Nord        5        17       14       **36**
+  Centre      4        11       9        **24**
+  Sud         3        6        5        **14**
+  **Total**   **12**   **34**   **28**   **74**
+:::
+
+## Recodage des variables: Avantages / inconvénients
+::: frame
+
+  **Avantages**                               **Inconvénients**
+  ------------------------------------------- ----------------------------------
+  Facile à appliquer (pas d'algorithme)       Perte de détail et donc
+  Très efficace dans la réduction du risque   d'information parfois importante
+  Facile à comprendre pour l'utilisateur      
+:::
+
+## Suppression de cellules
+::: frame
+
+-   Supprimer certaines cellules pour réduire le risque de ré-identification, tout en minimisant la perte d'information (**Secret primaire**).
+
+-   En général pas suffisant car les marges du tableau font que les cellules sont liées entre elles par des équations (**Secret secondaire**).
+
+-   Outils : $\tau$-Argus et le package R rtauargus
+:::
+
+## Le secret primaire
+::: frame
+
+          Région                                           
+  ----- ----------- -------- -------- -------- ----------- --------
+   3-7     Nord      Ouest     Est      Sud     **Total**  
+            Oui        2        5        7          6       **20**
+   2-7      Non        8        15       17        20       **60**
+   2-7   **Total**   **10**   **20**   **24**    **26**     **80**
+
+  : Nombre d'entreprises polluantes par région - secret primaire
+:::
+
+## Le secret secondaire
+::: frame
+
+          Région                                            
+  ----- ----------- --------- -------- -------- ----------- ---------
+   3-7     Nord       Ouest     Est      Sud     **Total**  
+            Oui         x        5        7          6       **20**
+   2-7      Non         8        15       17        20       **60**
+   2-7   **Total**   **10**    **20**   **24**    **26**     **80**
+
+  : Nombre d'entreprises polluantes par région - marges problématiques
+:::
+
+## Le secret secondaire
+::: frame
+
+          Région                                           
+  ----- ----------- -------- -------- -------- ----------- --------
+   3-7     Nord      Ouest     Est      Sud     **Total**  
+            Oui        x      **x**      7          6       **20**
+   2-7      Non      **x**    **x**      17        20       **60**
+   2-7   **Total**   **10**   **20**   **24**    **26**     **80**
+
+  : Nombre d'entreprises polluantes par région - masque du secret
+:::
+
+## Suppression de cellules: Avantages / inconvénients
+::: frame
+
+  **Avantages**                                                 **Inconvénients**
+  ------------------------------------------------------------- --------------------------------------------------------------------------------------------
+  Méthode très commune à l'Insee et au sein des INS européens   Fonctionne uniquement pour un champ de diffusion défini en amont.
+  Méthode assez bien comprise des utilisateurs                  Peut mener à une grande perte d'information s'il y a beaucoup de liens entre les tableaux.
+                                                                Difficile à implémenter pour des diffusions réalistes
+:::
+
+## Méthodes perturbatrices
+
+::: frame
+
+-   Étendue de la perturbation:
+
+    -   Seulement sur les plus petits comptages (données les plus à risque de divulgation)
+
+    -   Sur toutes les cellules: toutes les cellules du tableau sont perturbées (arrondi, Méthode des clés aléatoires (CKM))
+
+-   Problématiques des méthodes perturbatrices:
+
+    -   Comment assurer la cohérence des tableaux entre eux ?
+
+    -   Comment préserver l'additivité au sein des tableaux ?
+:::
+
+## Méthodes d'arrondi et apparentées
+::: frame
+
+Il existe plusieurs méthodes basées sur des arrondis, dont:
+
+-   Arrondi des petits comptages avec préservation de l'additivité des tableaux (Small Count Rounding) $\Rightarrow$ une protection limitée.
+
+-   Arrondi contrôlé (Controlled Rounding): Arrondi de l'ensemble des cellules du tableau tout en conservant l'additivité.
+
+-   Controlled Tabular adjustment (CTA): Les valeurs des cellules sensibles sont perturbées pour respecter un **intervalle de protection**. Les autres cellules sont ajustées pour restaurer l'additivité dans les tableaux.
+:::
+
+## Méthodes d'arrondi et apparentées: Un exemple
+::: frame
+
+Tableau de comptage original:
+
+         Région                                     
+  ----- -------- -------- -------- -------- ------- ----
+   3-7    Nord    Ouest     Est      Sud     Total  
+          Oui       6        14     **1**      7     28
+   2-7    Non     **3**    **2**    **1**     13     19
+   2-7   Total      9        16     **2**     20     47
+
+Secret primaire = les comptages inférieurs strictement à 5.
+:::
+
+
+## Méthodes d'arrondi et apparentées: Un exemple
+
+::: frame
+Small Count Rounding, base d'arrondi = 5.
+
+         Région                                    
+  ----- -------- -------- -------- ------- ------- --------
+   3-7    Nord    Ouest     Est      Sud    Total  
+          Oui       6        14     **0**     7       27
+   2-7    Non     **5**    **0**    **0**    13     **18**
+   2-7   Total    **11**   **14**   **0**    20     **45**
+
+Moyenne des écarts absolus: $1.067$.
+:::
+
+## Méthodes d'arrondi et apparentées: Un exemple
+::: frame
+Arrondi contrôlé avec b = 5
+
+         Région                                     
+  ----- -------- -------- -------- ------- -------- --------
+   3-7    Nord    Ouest     Est      Sud    Total   
+          Oui     **5**    **15**   **0**   **5**    **25**
+   2-7    Non     **5**    **0**    **0**   **15**   **20**
+   2-7   Total    **10**   **15**   **0**   **20**   **45**
+
+Moyenne des écarts absolus: $1.467$.
+:::
+
+## Méthodes d'arrondi et apparentées: Un exemple
+::: frame
+
+Controlled Tabular Adjustment avec un intervalle de protection = $[0;5]$
+
+         Région                                    
+  ----- -------- -------- -------- ------- ------- ----
+   3-7    Nord    Ouest     Est      Sud    Total  
+          Oui     **5**    **16**   **0**     7     28
+   2-7    Non     **6**    **0**    **0**    13     19
+   2-7   Total    **11**     16     **0**    20     47
+
+Moyenne des écarts absolus: $0.933$.
+:::
+
+## Méthodes d'arrondi et apparentées: Avantages / inconvénients
+::: frame
+
+  **Avantages**                                                      **Inconvénients**
+  ------------------------------------------------------------------ -------------------------------------------------------------------------------------------------------
+  Conservation de l'additivité                                       CR et CTA: Recherche de la solution optimale sur grands tableaux très couteuse en temps (optim. lin.)
+  SCR: Algorithme très efficace sur R                                CR: Une perte d'information parfois excessive
+  Perception de la protection (en particulier des petites valeurs)   Difficile à utiliser dans le cadre d'une diffusion complexe
+:::
+
+## La méthode des clés aléatoires (CKM)
+::: frame
+
+Principales caractéristiques de la méthode: 
+
+-   Toutes les cellules sont perturbées
+
+-   Les cellules sont perturbées indépendamment les unes des autres
+
+-   Une même cellule est toujours perturbée de la même manière
+
+-   Les zéros originaux ne sont pas perturbés (mais un effectif faible peut devenir un zéro)
+:::
+
+## La méthode des clés aléatoires (CKM)
+::: frame
+
+La distribution de probabilité du bruit injecté est tel que :
+
+-   Une déviation maximale D et une variance V sont fixés en amont
+
+-   Le bruit injecté est sans biais
+
+-   La loi de probabilité de la déviation injectée est définie à partir d'une matrice de transition
+:::
+
+## Méthodes d'arrondi et apparentées: Un exemple
+::: frame
+
+CKM avec $D = [0;5]$ et $V = 3$
+
+         Région                                     
+  ----- -------- -------- -------- ------- -------- --------
+   3-7    Nord    Ouest     Est      Sud    Total   
+          Oui     **4**    **15**   **0**   **8**    **28**
+   2-7    Non     **1**    **3**    **2**   **15**   **20**
+   2-7   Total    **10**   **16**   **4**   **21**   **46**
+:::
+
+## La méthode des clés aléatoires (CKM): Les usages
+::: frame
+
+La méthode est utilisée par plusieurs INS:
+
+-   Depuis 2006, ABS met à disposition un outil de requêtage en ligne pour obtenir des données de son recensement quinquennal. Les données sont protégées avec la CKM. (<https://tablebuilder.abs.gov.au>)
+
+-   La CKM est une des méthodes préconisées par Eurostat pour protéger les données du Census européen 2021.
+
+-   Dans ce cadre, Destatis utilise la CKM pour diffuser des données sur des grilles de 500m.
+
+-   2024: diffusion de données sur les Quartiers de la Politique de la Ville (QPV).
+:::
+
+## Un exemple pour illustrer la CKM
+::: frame
+
+**Etape 1 : Construction de la matrice de transition**
+
+Prenons D = 3 et V = 1.5. Avec le package `ptable` de `R` on peut calculer une matrice de transition :
+:::
+
+## Un exemple pour illustrer la CKM
+::: frame
+
+**Etape 2 : Création d'une clé individuelle aléatoire**
+
+Supposons que la base $\mathcal{B}$ soit composé des 6 individus suivant et qu'à chacun on associe une clé :
+
+::: center
+   **id**   **Ville**   **Ecole**    **KEY**
+  -------- ----------- ----------- -----------
+     1       Rennes       Ensai     0.9177275
+     2        Paris       Mines     0.1850062
+     3       Rennes       Ensai     0.6266963
+     4        Lyon      Centrale    0.1117820
+     5      Marseille   Centrale    0.6496634
+     6        Lille     Centrale    0.2813433
+:::
+:::
+
+## Un exemple pour illustrer la CKM
+::: frame
+
+**Etape 3 : Construction de la clé d'une cellule**
+
+Nous souhaitons diffuser le nombre d'individus selon leur école.
+
+On a :
+
+::: center
+   **Ecole**   **i**   **individus**   **Skey**     **CK**
+  ----------- ------- --------------- ----------- -----------
+     Ensai       2         {1,3}       1.544424    0.544425
+     Mines       1          {2}        0.1805062   0.1805062
+   Centrale      3        {4,5,6}      1.0422789    0.42789
+     Total       6     {1,2,3,4,5,6}   2.772219    0.772219
+:::
+:::
+
+## Un exemple pour illustrer la CKM
+::: frame
+
+**Etape 4 : Déterminer la perturbation à injecter**
+
+   i   j       p        v     p_int_lb     p_int_ub
+  --- --- ------------ ---- ------------ ------------
+   0   0   1.00000000   0    0.00000000   1.00000000
+   1   0   0.37967089   -1   0.00000000   0.37967089
+   1   1   0.37967089   0    0.37967089   0.75934178
+   1   2   0.13660124   1    0.75934178   0.89594302
+   1   3   0.06910130   2    0.89594302   0.96504432
+   1   4   0.03495568   3    0.96504432   1.00000000
+   2   0   0.11466600   -2   0.00000000   0.11466600
+   2   1   0.24491770   -1   0.11466600   0.35958370
+   2   2   0.30449462   0    0.35958370   0.66407832
+   2   3   0.22034995   1    0.66407832   0.88442827
+   2   4   0.09281544   2    0.88442827   0.97724371
+   2   5   0.02275629   3    0.97724371   1.00000000
+   3   0   0.01792237   -3   0.00000000   0.01792237
+   3   1   0.08898737   -2   0.01792237   0.10690974
+   3   2   0.23274919   -1   0.10690974   0.33965893
+   3   3   0.32068214   0    0.33965893   0.66034107
+   3   4   0.23274919   1    0.66034107   0.89309026
+   3   5   0.08898737   2    0.89309026   0.98207763
+   3   6   0.01792237   3    0.98207763   1.00000000
+:::
+
+## Un exemple pour illustrer la CKM
+::: frame
+
+**Etape 5 : Conclusion**
+
+::: center
+   **Ecole**   **Valeur originale i**   **Valeur pertubée j**     
+  ----------- ------------------------ ----------------------- -- --
+     Ensai               2                        2               
+     Mines               1                        0               
+   Centrale              3                        3               
+     Total               6                        7               
+:::
+:::
+
+## La méthode des clés aléatoires (CKM): Avantages / inconvénients
+::: frame
+
+  **Avantages**                                                                               **Inconvénients**
+  ------------------------------------------------------------------------------------------- -------------------------------------------------------------------------
+  Facile d'implémentation                                                                     Perte d'additivité
+  Assure la cohérence des tableaux                                                            Perception potentielle d'une non-protection de la part des utilisateurs
+  Réduit drastiquement le risque de différenciation géographique                              
+  Compatible avec le requêtage / la diffusion sur mesure                                      
+  Utilité statistique des données très forte par rapport à des arrondis ou des suppressions   
+:::
+
+# Protection des microdonnées
+
+## Méthodes non-perturbatrices
+
+::: frame
+
+Recodage des variables: Un exemple
+
+  Id   Age   Genre   Maladie(s)
+  ---- ----- ------- -------------------------
+  1    51    M       Diabète
+  2    46    M       Hypertension artérielle
+  3    53    F       Cancer
+  4    50    F       Grippe
+  5    54    M       Diabète
+  6    51    M       Diabète
+
+  : Exemple d'un fichier individuel 1-anonyme, l'âge et le genre étant considérés comme quasi-identifiants
+:::
+
+## Recodage des variables: Un exemple
+::: frame
+
+  Id   Age   Genre   Maladie(s)
+  ---- ----- ------- -------------------------
+  1    51    M       Diabète
+  2    46    M       Hypertension artérielle
+  3    53    F       Cancer
+  4    50    F       Grippe
+  5    54    M       Diabète
+  6    51    M       Diabète
+
+  : Exemple d'un fichier individuel 1-anonyme, l'âge et le genre étant considérés comme quasi-identifiants
+:::
+
+## Recodage des variables: Un exemple
+::: frame
+
+  Id   Age         Genre   Maladie(s)
+  ---- ----------- ------- -------------------------
+  1    \[50;55\[   M       Diabète
+  2    \[50;55\[   M       Hypertension artérielle
+  3    \[50;55\[   F       Cancer
+  4    \[50;55\[   F       Grippe
+  5    \[50;55\[   M       Diabète
+  6    \[50;55\[   M       Diabète
+
+  : Recodage de la variable âge permettant d'obtenir un fichier 2-anonyme, l'âge et le genre étant considérés comme quasi-identifiants
+:::
+
+
+## Suppression locale
+
+::: frame
+
+-   La suppression locale consiste à supprimer certaines valeur pour réduire le risque de ré-identification;
+
+-   Tout en minimisant la perte d'information ;
+
+-   De l'information sera supprimée pour atteindre un seuil de risque préalablement défini ;
+
+-   Méthode généralement associée au k-anonymat ;
+
+-   Implémenté dans le package R sdcMicro et dans le logiciel $\mu$-Argus.
+:::
+
+## Techniques de sous-échantillonnage
+::: frame
+
+-   Diffusion d'un échantillon d'observations par rapport aux données originales
+
+-   Méthode peu adaptée si les variables quasi-identifiantes sont continues ou avec des modalités rares
+
+-   Exemple : Statistics Catalonia a diffusé en 1995 un sous-échantillon du recensement exhaustif de la population effectué en 1991
+
+-   Variante : sous-échnatillonnage déterministe, seuls les enregistrements ne présentant pas de risque de ré-identification sont conservés
+:::
+
+## Méthodes perturbatrices
+
+::: frame
+**La microagrégation**
+
+-   Méthode perturbatrice, plus adaptée aux variables continues, mais peut-être adaptée aux variables catégorielles ordonnées
+
+-   Idée principale :
+
+    -   **Créer des petits groupes homogènes** en prenant en compte les valeurs des variables sélectionnées
+
+    -   **Remplacer les valeurs** de tous les individus appartenant au groupe **par une unique valeur** (peut être la valeur moyenne de valeurs observées dans le groupe)
+:::
+
+## Microagrégation: Un exemple
+::: frame
+
+  -------- ----- -------------------- ------------ --
+   Région   Age   Heures travaillées     Poids     
+                     par semaine       de sondage  
+     92     36            17              1000     
+     75     41            35              2000     
+     75     52            0               1100     
+     94     45            35              2500     
+     75     41            0               1900     
+     92     26            46              1500     
+     92     31            38              800      
+     94     48            30              1200     
+  -------- ----- -------------------- ------------ --
+
+-   Il y a des croisements uniques pour la clef Age $\times$ Région
+:::
+
+## Microagrégation: Un exemple
+::: frame
+
+  -------- ----------- -------------------- ------------
+   Région      Age      Heures travaillées     Poids
+                           par semaine       de sondage
+     92     ~~36~~ 31           17              1000
+     75     ~~41~~ 45           35              2000
+     75     ~~52~~ 45           0               1100
+     94     ~~45~~ 47           35              2500
+     75     ~~41~~ 45           0               1900
+     92     ~~26~~ 31           46              1500
+     92     ~~31~~ 31           38              800
+     94     ~~48~~ 47           30              1200
+  -------- ----------- -------------------- ------------
+
+-   $\mu_{red} = 45$, $\mu_{yellow} = 31$, $\mu_{green} = 47$
+:::
+
+## Microagrégation: Paramètres 
+::: frame
+
+Un grand nombre de sorties possibles pour cette méthode selon :
+
+-   la définition d'homogénéité choisie
+
+-   l'algorithme utilisé pour construire les groupes
+
+-   la détermination de la valeur de remplacement
+
+Les paramètres à définir :
+
+-   Taille $g$ de chaque groupe (plus la taille du groupe est grande, plus grande sera la perte d'information, et plus celle-ci est grande, plus le niveau de protection est élevé ..)
+
+-   Quelles variables sont utilisées pour calculer la distance ?
+
+-   Quelles statistiques choisir une fois que les groupes ont été formés ? (moyenne, médiane ?)
+:::
+
+## Microagrégation: variance intra-groupe 
+::: frame
+
+L'algorithme cherche à minimiser la somme des carrés intra-groupe $$SSE = \sum_{i=1}^g\sum_{j \in i} (x_{ij}-\bar x_{i})^T(x_{ij}-\bar x_{i})$$
+
+<figure id="fig:my_label">
+<p><img src="Images/within.png" style="width:6cm" alt="image" /> <span id="fig:my_label" label="fig:my_label"></span></p>
+</figure>
+:::
+
+## Microagrégation: Avantages / inconvénients
+::: frame
+
+  **Avantages**                         **Inconvénients**
+  ------------------------------------- ---------------------------
+  Adapté au $k$-anonymat                Temps de calcul important
+  Construction de classes pertinentes   
+:::
+
+## Injection de bruit
+::: frame
+
+-   Méthode adaptée pour traiter les variables continues
+
+-   En général, on injecte un bruit additif sans biais et à variance fixe
+:::
+
+## Perturbation par un bruit additif
+::: frame
+
+-   Adaptée pour les variables continues
+
+-   Pas d'hypothèses faites sur les valeurs possiblement prises par les variables à perturber
+
+-   Le bruit ajouté est généralement continu et d'espérance nulle
+:::
+
+## Trois types de perturbation par un bruit additif
+::: frame
+
+-   Bruits indépendants
+
+    -   Les moyennes et covariances sont préservées
+
+    -   Les variances et les coefficients de corrélation ne sont pas conservés
+
+-   Bruits corrélés
+
+    -   Conservation des coefficients de corrélation et de l'espérance
+
+    -   Préférable à l'ajout des bruits indépendants car on peut obtenir des estimations non biaisées pour plusieurs statistiques importantes
+:::
+
+## Trois types de perturbation par un bruit additif
+::: frame
+
+Ces deux méthodes sont rarement utilisées en pratique car apporte une protection relativement faible contre la divulgation d'identité (valeurs extrêmes).
+
+-   Addition de bruit et transformation linéaire
+
+    -   Matrice de variance-covariance des variables perturbées est un estimateur sans biais de la matrice de variance-covariance des variables originelles
+:::
+
+## Perturbation par un bruit additif: Avantages / inconvénients
+::: frame
+
+  **Avantages**                                 **Inconvénients**
+  --------------------------------------------- ------------------------------------------------------------
+  Traitement de variables sensibles continues   Pas adapté aux traitements des outliers de grandes valeurs
+                                                
+:::
+
+## Targeted Record Swapping (TRS)
+::: frame
+
+-   Raffinement de méthodes de swapping
+
+-   Consiste à échanger la localisation de certains individus jugés à risque avec d'autres individus d'une autre entité géographique
+
+-   Réalisé de telle sorte que les individus échangés se ressemblent suffisamment pour limiter l'effet perturbatif de l'échange
+
+-   Ciblage des individus préalablement détectés comme à risque de ré-identification (voire risque de divulgation d'attributs sensibles)
+:::
+
+## Targeted Record Swapping (TRS): Une méthode très utilisée
+::: frame
+
+-   Insee: Données européennes du recensement 2021
+
+-   Eurostat préconise cette méthode (couplée à la CKM) pour la diffusion du Census européen
+
+-   US Census Bureau: Recensement US 2010
+
+-   ONS (UK): Recensement depuis 2010
+:::
+
+## Targeted Record Swapping (TRS): Un exemple
+::: frame
+
+<figure id="fig:my_label">
+
+</figure>
+:::
+
+## Targeted Record Swapping (TRS): Avantages / inconvénients
+::: frame
+
+  **Avantages**                                                                                  **Inconvénients**
+  ---------------------------------------------------------------------------------------------- --------------------------------------------------------------------------------------------------------------
+  Très efficace pour traiter différents types de risque.                                         Nécessite de fixer un grand nombre de paramètres (mesure de risque, variables similarité, taux de swapping).
+  Méthode souple, adaptation à des cas très différents (structures ménages-individus par ex.).   Bruit injecté dans les données n'est pas vraiment contrôlable
+  Préserve les agrégats du niveau géographique au sein duquel le swapping a été opéré.           Génère localement du biais dans les données.
+:::
+
+## Post-Randomisation Method (PRAM)
+::: frame
+
+-   Permet de traiter les variables sensibles en bruitant les données de variables catégorielles.
+
+-   Consiste à modifier aléatoirement l'appartenance des individus à une classe donnée.
+
+-   Méthode particulièrement intéressante pour traiter les divulgations d'attributs sensibles : un attaquant ne peut avoir aucune certitude sur l'attribut d'une observation.
+:::
+
+
+## Post Randomization Method (PRAM)Un exemple
+::: frame
+
+  -------- ----- -----------------
+   Region   Age      Situation
+                  Professionnelle
+     92     14        Inactif
+     75     41        Chômeur
+     75     52         Actif
+     94     45         Actif
+     75     41        Chômeur
+     92     26         Actif
+     92     31         Actif
+     94     14        Inactif
+  -------- ----- -----------------
+
+-   Inactif : 2 ind., Chômeur = 2 ind., Actif = 4 ind.
+:::
+
+## Post Randomization Method (PRAM): Un exemple
+::: frame
+
+  -------- ----- ----------------- --------------------------------
+   Region   Age      Situation                Situation
+                  Professionnelle       Professionnelle (PRAM)
+     92     14        Inactif       [Chômeur]{style="color: red"}
+     75     41        Chômeur        [Actif]{style="color: red"}
+     75     52         Actif         [Actif]{style="color: blue"}
+     94     45         Actif         [Actif]{style="color: blue"}
+     75     41        Chômeur       [Inactif]{style="color: red"}
+     92     26         Actif         [Actif]{style="color: blue"}
+     92     31         Actif        [Chômeur]{style="color: red"}
+     94     48        Inactif       [Inactif]{style="color: blue"}
+  -------- ----- ----------------- --------------------------------
+
+-   Inactif : 2 ind., Chômeur = 2 ind., Actif = 4 ind.
+:::
+
+## Post Randomization Method (PRAM): Un exemple
+::: frame
+
+  -------- -------------------------- ----------------- -----------------------------------
+   Region             Age                 Situation                  Situation
+                                       Professionnelle        Professionnelle (PRAM)
+     92     [14]{style="color: red"}       Inactif       [**Chômeur**]{style="color: red"}
+     75                41                  Chômeur                     Actif
+     75                52                   Actif                      Actif
+     94                45                   Actif                      Actif
+     75                41                  Chômeur                    Inactif
+     92                26                   Actif                      Actif
+     92                31                   Actif                     Chômeur
+     94                48                  Inactif                    Inactif
+  -------- -------------------------- ----------------- -----------------------------------
+
+-   Attention aux incohérences !
+:::
+
+## PRAM : la matrice de transition
+::: frame
+
+On a besoin de définir une [**matrice de transition**]{style="color: red"} pour pouvoir définir les probabilités de transition.
+
+-   Soit $\xi$ la variable catégorielle initiale $K$ categories $1 \dots K$\
+    $\longrightarrow$ dans l'exemple $\xi$ = Situation professionnelle, K = 3
+
+-   Soit $X$ la même variable catégorielle dans le jeu de données perturbé\
+    $\longrightarrow$ dans l'exemple $X$ = Situation professionnelle (PRAM)
+
+On peut définir la matrice de transition $P$, $P =(p_{kl})_{1 \leq k,l \leq K}$, où $p_{kl} = P(X =l|\xi = k)$
+
+             Inactif   Actif   Chômeur
+  --------- --------- ------- ---------
+  Inactif      0,8     0,05     0,15
+  Actif         0       0,8      0,2
+  Chômeur      0,1      0,1      0,8
+:::
+
+
+## PRAM : Comment choisir la matrice de transition ?
+::: frame
+
+-   PRAM change aléatoirement les comptages de la population :
+
+    $$\mathbb{E}\begin{pmatrix} N^{pram}_{I} \\N^{pram}_{E}\\ N^{pram}_{U} \end{pmatrix} = P^{T} \begin{pmatrix}N_{I} \\N_{E}\\ N_{U} \end{pmatrix}$$
+
+-   Selon P **[et les comptages originaux]{style="color: red"}**, les marges peuvent être beaucoup perturbées !
+
+-   Des coefficients diagonaux élevés peuvent être insuffisants
+:::
+
+## PRAM : exemple numérique
+::: frame
+
+-   Marges originales
+
+  2-4                    Inactif   Actif   Chômeur
+  --------------------- --------- ------- ---------
+  Fréquence (million)     16.8      49       4.2
+  Pourcentage             24 %     70 %      6 %
+
+-   Matrice de transition $P$ :
+
+                 Inactif   Actif   Chômeur
+      --------- --------- ------- ---------
+      Inactif      0,8     0,05     0,15
+      Actif         0       0,8      0,2
+      Chômeur      0,1      0,1      0,8
+
+-   On peut maintenant calculer les marges perturbées !
+:::
+
+## PRAM : exemple numérique
+::: frame
+
+-   Marges originales
+
+  2-4                    Inactif   Actif   Chômeur
+  --------------------- --------- ------- ---------
+  Fréquence (million)      17       49        4
+  Pourcentage             24 %     70 %      6 %
+
+-   Nouvelles marges
+
+  2-4                    Inactif   Actif             Chômeur
+  --------------------- --------- ------- ------------------------------
+  Fréquence (million)      14       41     [**16**]{style="color: red"}
+  Pourcentage             20 %     58 %     [22 %]{style="color: red"}
+:::
+
+## PRAM Invariant
+::: frame
+
+-   Possibilité de choisir la matrice $P$ de telle sorte que la perturbation soit sans biais $\longrightarrow$ PRAM invariant
+
+-   Comme : $$\mathbb{E}\begin{pmatrix} N^{pram}_{I} \\N^{pram}_{E}\\ N^{pram}_{U} \end{pmatrix} = P^{T} \begin{pmatrix}N_{I} \\N_{E}\\ N_{U} \end{pmatrix}$$
+
+-   Il faut, pour cela, choisir $P$ telle que les fréquences marginales originales soient un vecteur propre de $P$ associé à la valeur propre $1$.
+:::
+
+## Post-Randomisation Method (PRAM)
+::: frame
+
+Comment mesurer le niveau de protection du fichier obtenu ?
+
+-   Le niveau de protection est mesuré à partir des paramètres de la méthode (matrice de transition)
+
+-   Idée: faire en sorte que la rareté de certaines modalités soient rendues suffisamment incertaines à inférer $\longrightarrow$ utiliser les posterior odds ratio
+
+    $$POST\_ODDS(k) = \frac{P(\xi = k|X=k)}{P(\xi \neq k|X=k)} = \frac{p_{kk}P(\xi = k)}{\sum_{l \neq k}p_{lk}P(\xi=l)}$$
+
+-   $p_{kk}$ sont connus et dépendent du plan de sondage, mais $P(\xi = k)$ peut être difficile à estimer.
+
+-   Interprétation:
+
+    -   Si $POST\_ODDS(k) > 1$, alors la valeur originale est plus probablement $k$ plutôt qu'une autre valeur, si on observe la modalité $k$ dans le jeu perturbé.
+
+    -   Si $POST\_ODDS(k) < 1$, alors la valeur originale est plus probablement une autre valeur que $k$, si on observe la modalité $k$ dans le jeu perturbé.
+:::
+
+## Post-Randomisation Method (PRAM)
+::: frame
+
+Comment mesurer le niveau de protection du fichier obtenu? Interprétation :
+
+-   Si $POST\_ODDS(k) > 1$, alors la valeur originale est plus probablement $k$ plutôt qu'une autre valeur, si on observe la modalité $k$ dans le jeu perturbé.
+
+-   Si $POST\_ODDS(k) < 1$, alors la valeur originale est plus probablement une autre valeur que $k$, si on observe la modalité $k$ dans le jeu perturbé.
+:::
+
+## Post-Randomisation Method (PRAM): Avantages / inconvénients
+::: frame
+
+  **Avantages**                                                                                                              **Inconvénients**
+  -------------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------
+  Permet de fournir le niveau de protection associé au bruit injecté en calculant les probabilités de transition inverses.   Création d'éventuelles combinaisons impossibles (ex : enfant à la retraite).
+  Conserve l'additivité des tableaux générés à partir des micro-données bruitées.                                            Difficile de définir une matrice de protection qui prend en compte les liens avec toutes les variables.
+  .                                                                                                                          .
+:::
+
+## Les données synthétiques
+
+::: frame
+
+-   Idée: Générer tout ou partie des données individuelles.
+
+-   Deux types de synthèse:
+
+    -   Synthèse complète: toutes les variables et tous les individus sont générés.
+
+    -   Synthèse partielle: Seulement certaines variables sont générées (principalement les variables sensibles).
+:::
+
+## Les données synthétiques: Les méthodes de génération (I)
+::: frame
+
+Les principales méthodes de génération sont:
+
+-   Modélisation séquentielle conditionnelle (Fully Conditional Specification, FCS): Chaque variable est modélisée l'une après l'autre, conditionnellement aux variables déjà modélisées.
+
+    -   Méthode très populaire et efficace
+
+    -   Pour générer la $p^e$ variable, on cherche à modéliser sa distribution conditionnelle : $$f_{X_p | X_1 , X_2 , \dots , X_{p-1}}$$
+
+    -   Modélisation paramétrique (régression linéaire ou logistique) ou non paramétrique (en particulier méthodes à base d'arbres: CART, Boosting, random forest, XGBoost).
+:::
+
+## Les données synthétiques: Les méthodes de génération (II)
+::: frame
+
+Les principales méthodes de génération sont (suite):
+
+-   Méthodes de Deep Learning:
+
+    -   **Tabular Variational Auto Encoder** (TVAE): L'auto encodage consiste à combiner une phase d'encodage qui réduit la dimension des données pour apprendre les caractéristiques les plus importantes et une phase de décodage pour reconstituer des données dans leur dimension originale.
+
+    -   **Conditional Tabular Generative Adversarial Network** (CTGAN): Les GAN sont très populaires dans la génération d'images. Les CTGAN sont une adaptation des GAN pour générer des données tabulaires (microdonnées ou données agrégées). Un générateur construit des données synthétiques et les soumet à un discriminateur dont l'objectif est de distinguer ces données générées des données originales.
+:::
+
+# Les outils disponibles
+
+::: frame
+
+-   Sur données tabulées: $\tau$-Argus (GUI), rtauargus, sdctable, ptable et cellKey (R)
+
+-   Sur données individuelles: $\mu$-Argus (GUI), sdcMicro (R)
+
+-   Sur données synthétiques: synthpop et simpop (R), SDV-CTGAN (Python)
+
+-   Confidentialité différentielle: openDP, Lomas (Python)
+:::
+
+# Conclusion
+
+::: frame
+
+-   Pas de méthode magique : une méthode ne l'emporte pas sur toutes les autres sur tous les points de vue.
+
+-   Souvent une combinaison de méthodes est utilisée pour répondre aux différents enjeux de protection (ex Census européen, PUF LFS)
+:::
+
+## Un exemple avec le Labour Force Survey (LFS)
+::: frame
+
+-   Contexte Eurostat
+
+-   Combinaison de méthodes
+
+-   Publication d'un fichier de microdonnées à usage public à partir de l'enquête emploi en continu
+
+-   Approche traditionnelle : recodage global et suppression locale
+:::
+
+## Étapes de l'approche traditionnelle
+::: frame
+
+1.  Supprimer certaines variables (comme la région ou des variables utiles pour reconstruire les ménages)
+
+2.  Repérer les variables identifiantes (ex : sexe, âge, nationalité, profession, niveau d'éducation)
+
+3.  Recodage global (ex : âge en 6 catégories, nationalité en 3, niveau d'éducation en 3)
+
+4.  Déterminer le niveau de risque avec le k-anonymat (ici k = 5)
+
+5.  Choisir les variables clés parmi les variables identifiantes (degré d'urbanisation, sexe, âge, nationalité, profession, années d'expériences et plus haut niveau d'éducation)
+:::
+
+## Étapes de l'approche traditionnelle
+::: frame
+
+1.  Suppression locale et PRAM pour des individus à risque :
+
+    -   Suppression locale sur les variables clés
+
+    -   PRAM sur les autres variables (probabilité de rester identique mise à 0.8)
+
+2.  Suppression locale à partir de toutes les combinaisons m-dimensionnelles sur toutes les variables identifiantes (*m* = 4 et *k* = 10)
+:::
+
+## Pour aller plus loin
+
+::: frame
+
+-   Hundepool and alt., *Handbook on Statistical Disclosure Control*, Wiley, 2012\
+    Une version libre et gratuite est disponible ici: <https://ec.europa.eu/eurostat/cros/system/files/SDC_Handbook.pdf> (2010)
+
+-   Gouweleeuw, J. M., Kooiman, P., & De Wolf, P. P. (1998). Post randomisation for statistical disclosure control: Theory and implementation. *Journal of official Statistics*, 14(4), 463.
+
+-   Drechsler, J. and Reiter, J.P. (2009). *Disclosure Risk and Data Utility for Partially Synthetic Data: An empirical Study Using the German IAB Establishment Survey.*, Journal of Official Statistics, 25, 589--603\
+:::
+
+## Pour aller plus loin
+::: frame
+
+-   Le package R `sdcMicro` : <https://github.com/sdcTools/sdcMicro>
+
+-   Guide théorique : <https://sdctheory.readthedocs.io/en/latest/>
+
+-   Guide pratique: <https://sdcpractice.readthedocs.io/en/latest/>
+:::
+
+## Pour aller plus loin
+::: frame
+
+Deux exemples d'application sur microdonnées réalisés par Eurostat:
+
+<https://ec.europa.eu/eurostat/cros/system/files/d4.1presentationhelsinki.pdf>
+:::

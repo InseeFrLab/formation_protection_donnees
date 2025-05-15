@@ -1,10 +1,26 @@
 ---
 title: "Un peu de théorie"
+description: |
+  Comprendre les principaux enjeux de la protection des données et maîtriser les concepts et les méthodes.
+order: 1
+href: theorie/index.html
+image: ../images/theorie.png
+listing:
+  id: theorie
+  contents:
+    - "supports/*.qmd"
+  sort: "order"
+  type: grid
+  image-height: 300px
+  grid-columns: 4
+page-layout: full
+toc: false
 ---
 
-## Les supports
+<!-- ## Les supports
 
 - [Arbitrer entre risque et utilité](supports/arbitrer-risque-utilite.qmd)
+- [Un rapide tour des méthodes à disposition](supports/tour-des-methodes.qmd)
 - [Traiter des données tabulées](supports/donnees-tabulees.qmd)
 - [Traiter des données individuelles](supports/donnees-individuelles.qmd)
-- [La confidentialité différentielle](supports/confidentialite-differentielle.qmd)
+- [La confidentialité différentielle](supports/confidentialite-differentielle.qmd) -->

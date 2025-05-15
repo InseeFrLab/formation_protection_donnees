@@ -1,9 +1,45 @@
 ---
-title: "Arbitrer entre risque et utilité"
-format: revealjs
+title: L'Arbitrage Risque/Utilité
+subtitle: |
+  **[Arbitrer pour mieux maîtriser]{.orange}**
+order: 1
+href: theorie/supports/arbitrer-risque-utilite.html
+image: ../../images/theorie.png
+slide-number: true
+header: |
+  [Retour à l'accueil](https://github.com/InseeFrLab/formation_protection_donnees)
+footer: |
+  L'arbitrage risque/utilité
+# uncomment for French presentations:
+lang: fr-FR
+# for blind readers:
+slide-tone: false
+# for @olevitt:
+# chalkboard: # press the B key to toggle chalkboard
+#   theme: whiteboard
+# uncomment to use the multiplex mode:
+#multiplex: true
+format:
+  onyxia-revealjs
+  # pick the light mode (onyxia-revealjs) or the dark mode (onyxia-dark-revealjs)
+  #onyxia-dark-revealjs:
+controls: true
+css: custom.css
+# from: markdown+emoji
+# listing:
+#   id: sample-listings
+#   contents: teaching
+#   sort: "date desc"
+#   type: table
+bibliography: ../../references-SDC.bib
+# csl: ../style.csl  # Décommentez besoin d'un style de biblio spécifique
 ---
+
 
 # Arbitrer entre risque et utilité
 
 ## Introduction
 
+::: frame
+
+:::

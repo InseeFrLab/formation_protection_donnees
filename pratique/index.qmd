@@ -1,5 +1,10 @@
 ---
 title: "En pratique"
+description: |
+  Apprendre à manipuler les concepts, mesurer les risques et utiliser les méthodes.
+order: 2
+href: pratique/index.html
+image: ../images/pratique.png
 ---
 
 ## Les fiches pratiques
