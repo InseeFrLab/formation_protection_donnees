@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.31">
 
-  <title>La protection des données statistiques publiques – Les méthodes suppressives</title>
+  <title>La protection des données statistiques publiques – Les méthodes perturbatrices</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -129,78 +129,78 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Les méthodes suppressives</h1>
+  <h1 class="title">Les méthodes perturbatrices</h1>
   <p class="subtitle"></p><p><strong><span class="orange">Pour données tabulées ou individuelles</span></strong></p><p></p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="les-méthodes-à-disposition" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les méthodes à disposition</h2>
+<section class="slide level2">
+
 <div class="frame">
-<p>Deux types de méthodes en fonction du moment où elles sont appliquées:</p>
-<ul>
-<li>Les <strong>méthodes pré-tabulation</strong> sont appliquées sur les données individuelles, <em>ie</em> <strong>avant</strong> toute tabulation</li>
-<li>Les <strong>méthodes post-tabulation</strong> sont appliquées sur les données agrégées, <em>ie</em> <strong>après</strong> tabulation</li>
-</ul>
+
 </div>
+<section id="sommaire" class="frame" data-background-image="background.svg" data-background-size="contain">
+<h3 data-background-image="background.svg" data-background-size="contain">Sommaire</h3>
 </section>
-<section id="les-méthodes-à-disposition-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les méthodes à disposition</h2>
+</section>
+<section>
+<section id="introduction" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Introduction</h1>
+
+</section>
+<section id="méthodes-classiques-de-protection-des-données-disponibles" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Méthodes classiques de protection des données disponibles</h2>
 <div class="frame">
 <div id="tab:my_label">
 <table class="caption-top">
+<caption>Un tour d’horizon des méthodes de protection des données</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Type de méthode</th>
-<th style="text-align: right;">Type de données</th>
-<th style="text-align: center;"><strong>Méthodes</strong></th>
+<th style="text-align: left;">Type de données</th>
+<th style="text-align: left;"><strong>Méthodes non-perturbatrices</strong></th>
+<th style="text-align: left;"><strong>Méthodes perturbatrices</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: right;"></td>
-<td style="text-align: center;"><!-- Techniques de sous-échantillonnage    --></td>
+<td style="text-align: left;">Microdonnées</td>
+<td style="text-align: left;">Techniques de sous-échantillonnage</td>
+<td style="text-align: left;">Perturbation par un bruit (additif, multiplicatif)</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Pré-tabulation</td>
-<td style="text-align: right;">Micro-données</td>
-<td style="text-align: center;">dex{Microdata} Recodage des variables</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Recodage des variables</td>
+<td style="text-align: left;">Microagrégation</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: right;"></td>
-<td style="text-align: center;">Suppression locale</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Suppression locale</td>
+<td style="text-align: left;">Techniques de swapping</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Données tabulées</td>
+<td style="text-align: left;">Suppression de cellules</td>
+<td style="text-align: left;">Bruitage des sorties</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Recodage des variables</td>
+<td style="text-align: left;">Méthodes d’arrondi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Ajouter du bruit (CKM)</td>
 </tr>
 </tbody>
 </table>
-<pre><code>Post-tabulation     Données tabulées        Suppression de cellules              
-                                           Regroupement de catégories               
-                                                      </code></pre>
-<p>: Les méthodes suppressives</p>
 </div>
 </div>
-<!-- 
-# Les méthodes pré-tabulation
-
-## Le recodage des variables
 
 
-## La suppression locale
-
-# Les méthodes post-tabulation
-
-
-## Le regroupement de catégories
-
-
-## La suppression de cellules
- -->
-
-
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
