@@ -1,20 +1,22 @@
 [
   {
-    "listing": "/index.html",
-    "items": [
-      "/theorie/index.html",
-      "/pratique/index.html",
-      "/ressources/index.html"
-    ]
-  },
-  {
     "listing": "/theorie/index.html",
     "items": [
       "/theorie/supports/arbitrer-risque-utilite.html",
       "/theorie/supports/tour-des-methodes.html",
       "/theorie/supports/donnees-tabulees.html",
+      "/theorie/supports/methodes-suppressives.html",
       "/theorie/supports/donnees-individuelles.html",
       "/theorie/supports/confidentialite-differentielle.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/theorie/index.html",
+      "/pratique/index.html",
+      "/ressources/index.html",
+      "/glossaire/index.html"
     ]
   }
 ]

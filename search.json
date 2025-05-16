@@ -1,115 +1,17 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "",
+    "objectID": "glossaire/index.html",
+    "href": "glossaire/index.html",
+    "title": "Glossaire",
     "section": "",
-    "text": "Code\n\n\n\n\n\nCe site vous propose un ensemble de supports théoriques et pratiques pour vous former à la protection des données statistiques.\n\n\n\n\n\n\n\n\n\n\n\nUn peu de théorie\n\n\nComprendre les principaux enjeux de la protection des données et maîtriser les concepts et les méthodes.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEn pratique\n\n\nApprendre à manipuler les concepts, mesurer les risques et utiliser les méthodes.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRessources\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "M\nMicro-données: Un jeu de micro-données est l’équivalent d’un jeu de données individuelles, dans lequel chaque enregistrement (chaque ligne) correspond aux informations d’une unité statistique (individu, ménage, entreprise, etc.), informations issues d’une enquête, d’un répertoire ou d’un fichier administratif."
   },
   {
-    "objectID": "theorie/supports/arbitrer-risque-utilite.html#introduction",
-    "href": "theorie/supports/arbitrer-risque-utilite.html#introduction",
-    "title": "L’Arbitrage Risque/Utilité",
-    "section": "Introduction",
-    "text": "Introduction"
-  },
-  {
-    "objectID": "ressources/index.html",
-    "href": "ressources/index.html",
-    "title": "Ressources",
+    "objectID": "theorie/index.html",
+    "href": "theorie/index.html",
+    "title": "Un peu de théorie",
     "section": "",
-    "text": "Handbook on Statistical Disclosure Control\n\n\n\n\n\nManuel de protection des données tabulées"
-  },
-  {
-    "objectID": "ressources/index.html#bibliographie-indicative",
-    "href": "ressources/index.html#bibliographie-indicative",
-    "title": "Ressources",
-    "section": "",
-    "text": "Handbook on Statistical Disclosure Control\n\n\n\n\n\nManuel de protection des données tabulées"
-  },
-  {
-    "objectID": "ressources/index.html#outils",
-    "href": "ressources/index.html#outils",
-    "title": "Ressources",
-    "section": "Outils",
-    "text": "Outils\n\nDocumentation du package rtauargus"
-  },
-  {
-    "objectID": "pratique/fiches/mesurer-utilite.html",
-    "href": "pratique/fiches/mesurer-utilite.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/fiches/proteger-tableaux-cellkey.html",
-    "href": "pratique/fiches/proteger-tableaux-cellkey.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/fiches/generer-synth.html",
-    "href": "pratique/fiches/generer-synth.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/fiches/proteger-micro-pram.html",
-    "href": "pratique/fiches/proteger-micro-pram.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/index.html",
-    "href": "pratique/index.html",
-    "title": "En pratique",
-    "section": "",
-    "text": "Mesurer le risque\nMesurer la perte d’utilité\n\n\n\n\n\nTraiter des données tabulées avec une méthode suppressive\nTraiter des données tabulées avec la méthode des clés aléatoires\n\n\n\n\n\nTraiter des données individuelles avec un swapping\nTraiter des données individuelles avec PRAM\nGénérer des données synthétiques\n\n\n\n\n\nAppliquer des mécanismes de la confidentialité différentielle"
-  },
-  {
-    "objectID": "pratique/index.html#les-fiches-pratiques",
-    "href": "pratique/index.html#les-fiches-pratiques",
-    "title": "En pratique",
-    "section": "",
-    "text": "Mesurer le risque\nMesurer la perte d’utilité\n\n\n\n\n\nTraiter des données tabulées avec une méthode suppressive\nTraiter des données tabulées avec la méthode des clés aléatoires\n\n\n\n\n\nTraiter des données individuelles avec un swapping\nTraiter des données individuelles avec PRAM\nGénérer des données synthétiques\n\n\n\n\n\nAppliquer des mécanismes de la confidentialité différentielle"
-  },
-  {
-    "objectID": "pratique/fiches/confidentialite-differentielle.html",
-    "href": "pratique/fiches/confidentialite-differentielle.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/fiches/mesurer-risque.html",
-    "href": "pratique/fiches/mesurer-risque.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html",
-    "href": "pratique/fiches/proteger-tableaux-suppressif.html",
-    "title": "Protéger des tableaux avec une méthode suppressive",
-    "section": "",
-    "text": "Code\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n\n\n\n\n\n\n\n\nFigure 1: Temperature and ozone level."
-  },
-  {
-    "objectID": "pratique/fiches/proteger-micro-swapping.html",
-    "href": "pratique/fiches/proteger-micro-swapping.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "À propos",
-    "section": "",
-    "text": "Origine du projet\nCe projet est né de la volonté de partager connaissances et matériaux auprès des statisticiens publics en charge d’assurer la protection des données statistiques avant leur diffusion auprès du public.\n\n\nAuteurs\n\nJulien Jamme, Insee\nClara Baudry, Insee"
+    "text": "L’Arbitrage Risque/Utilité\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLes méthodes de protection statistique des données confidentielles\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLes méthodes suppressives\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLes méthodes suppressives\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLe traitement des données individuelles\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLa confidentialité différentielle\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "theorie/supports/tour-des-methodes.html#méthodes-classiques-de-protection-des-données-disponibles",
@@ -595,10 +497,150 @@
     "text": "Pour aller plus loin\n\nDeux exemples d’application sur microdonnées réalisés par Eurostat:\nhttps://ec.europa.eu/eurostat/cros/system/files/d4.1presentationhelsinki.pdf"
   },
   {
-    "objectID": "theorie/index.html",
-    "href": "theorie/index.html",
-    "title": "Un peu de théorie",
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#introduction",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#introduction",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Introduction",
+    "text": "Introduction"
+  },
+  {
+    "objectID": "ressources/index.html",
+    "href": "ressources/index.html",
+    "title": "Ressources",
     "section": "",
-    "text": "L’Arbitrage Risque/Utilité\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLes méthodes de protection statistique des données confidentielles\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLe traitement des données tabulées\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLe traitement des données individuelles\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLa confidentialité différentielle\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Handbook on Statistical Disclosure Control\n\n\n\n\n\nManuel de protection des données tabulées"
+  },
+  {
+    "objectID": "ressources/index.html#bibliographie-indicative",
+    "href": "ressources/index.html#bibliographie-indicative",
+    "title": "Ressources",
+    "section": "",
+    "text": "Handbook on Statistical Disclosure Control\n\n\n\n\n\nManuel de protection des données tabulées"
+  },
+  {
+    "objectID": "ressources/index.html#outils",
+    "href": "ressources/index.html#outils",
+    "title": "Ressources",
+    "section": "Outils",
+    "text": "Outils\n\nDocumentation du package rtauargus"
+  },
+  {
+    "objectID": "pratique/fiches/mesurer-utilite.html",
+    "href": "pratique/fiches/mesurer-utilite.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-cellkey.html",
+    "href": "pratique/fiches/proteger-tableaux-cellkey.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/fiches/generer-synth.html",
+    "href": "pratique/fiches/generer-synth.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-micro-pram.html",
+    "href": "pratique/fiches/proteger-micro-pram.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/index.html",
+    "href": "pratique/index.html",
+    "title": "En pratique",
+    "section": "",
+    "text": "Mesurer le risque\nMesurer la perte d’utilité\n\n\n\n\n\nTraiter des données tabulées avec une méthode suppressive\nTraiter des données tabulées avec la méthode des clés aléatoires\n\n\n\n\n\nTraiter des données individuelles avec un swapping\nTraiter des données individuelles avec PRAM\nGénérer des données synthétiques\n\n\n\n\n\nAppliquer des mécanismes de la confidentialité différentielle"
+  },
+  {
+    "objectID": "pratique/index.html#les-fiches-pratiques",
+    "href": "pratique/index.html#les-fiches-pratiques",
+    "title": "En pratique",
+    "section": "",
+    "text": "Mesurer le risque\nMesurer la perte d’utilité\n\n\n\n\n\nTraiter des données tabulées avec une méthode suppressive\nTraiter des données tabulées avec la méthode des clés aléatoires\n\n\n\n\n\nTraiter des données individuelles avec un swapping\nTraiter des données individuelles avec PRAM\nGénérer des données synthétiques\n\n\n\n\n\nAppliquer des mécanismes de la confidentialité différentielle"
+  },
+  {
+    "objectID": "pratique/fiches/confidentialite-differentielle.html",
+    "href": "pratique/fiches/confidentialite-differentielle.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/fiches/mesurer-risque.html",
+    "href": "pratique/fiches/mesurer-risque.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "",
+    "text": "Code\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n\n\n\n\n\n\n\n\nFigure 1: Temperature and ozone level."
+  },
+  {
+    "objectID": "pratique/fiches/proteger-micro-swapping.html",
+    "href": "pratique/fiches/proteger-micro-swapping.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "À propos",
+    "section": "",
+    "text": "Origine du projet\nCe projet est né de la volonté de partager connaissances et matériaux auprès des statisticiens publics en charge d’assurer la protection des données statistiques avant leur diffusion auprès du public.\n\n\nAuteurs\n\nJulien Jamme, Insee\nClara Baudry, Insee"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html",
+    "href": "theorie/supports/methodes-suppressives.html",
+    "title": "Les méthodes suppressives",
+    "section": "",
+    "text": "Deux types de méthodes en fonction du moment où elles sont appliquées:\n\nLes méthodes pré-tabulation sont appliquées sur les données individuelles, ie avant toute tabulation\nLes méthodes post-tabulation sont appliquées sur les données agrégées, ie après tabulation\n\n\n\n\n\n\n\nType de méthode\nType de données\nMéthodes\n\n\n\n\n\n\n\n\n\nPré-tabulation\nMicro-données\ndex{Microdata} Recodage des variables\n\n\n\n\nSuppression locale\n\n\n\nPost-tabulation     Données tabulées        Suppression de cellules              \n                                           Regroupement de catégories               \n                                                      \n: Les méthodes suppressives"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#le-recodage-des-variables",
+    "href": "theorie/supports/methodes-suppressives.html#le-recodage-des-variables",
+    "title": "Les méthodes suppressives",
+    "section": "Le recodage des variables",
+    "text": "Le recodage des variables"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#la-suppression-locale",
+    "href": "theorie/supports/methodes-suppressives.html#la-suppression-locale",
+    "title": "Les méthodes suppressives",
+    "section": "La suppression locale",
+    "text": "La suppression locale"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#le-regroupement-de-catégories",
+    "href": "theorie/supports/methodes-suppressives.html#le-regroupement-de-catégories",
+    "title": "Les méthodes suppressives",
+    "section": "Le regroupement de catégories",
+    "text": "Le regroupement de catégories"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#la-suppression-de-cellules",
+    "href": "theorie/supports/methodes-suppressives.html#la-suppression-de-cellules",
+    "title": "Les méthodes suppressives",
+    "section": "La suppression de cellules",
+    "text": "La suppression de cellules"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "",
+    "section": "",
+    "text": "Code\n\n\n\n\n\nCe site vous propose un ensemble de supports théoriques et pratiques pour vous former à la protection des données statistiques.\n\n\n\n\n\n\n\n\n\n\n\nUn peu de théorie\n\n\nComprendre les principaux enjeux de la protection des données et maîtriser les concepts et les méthodes.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEn pratique\n\n\nApprendre à manipuler les concepts, mesurer les risques et utiliser les méthodes.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRessources\n\n\nTrouver des ressources complémentaires (articles, documentation, outils) pour aller plus loin.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGlossaire\n\n\nDéfinition des principaux termes techniques rencontrés sur le site.\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   }
 ]
