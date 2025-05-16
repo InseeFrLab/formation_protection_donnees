@@ -1,8 +1,0 @@
----
-title: Les méthodes suppressives
-subtitle: |
-  **[Pour données tabulées ou individuelles]{.orange}**
-order: 3
-href: theorie/supports/donnees-tabulees.html
-image: ../../images/theorie.png
----

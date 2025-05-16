@@ -1,8 +1,0 @@
----
-title: Le traitement des données individuelles
-subtitle: |
-  **[Données individuelles]{.orange}**
-order: 4
-href: theorie/supports/donnees-individuelles.html
-image: ../../images/theorie.png
----

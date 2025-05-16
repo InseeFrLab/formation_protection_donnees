@@ -36,7 +36,7 @@ bibliography: ../../references-SDC.bib
 # csl: ../style.csl  # Décommentez besoin d'un style de biblio spécifique
 ---
 
-# Les méthodes à disposition
+## Les méthodes à disposition
 
 ::: frame
 
@@ -47,6 +47,7 @@ Deux types de méthodes en fonction du moment où elles sont appliquées:
 
 :::
 
+## Les méthodes à disposition
 ::: frame
 
 ::: {#tab:my_label}
@@ -64,6 +65,7 @@ Deux types de méthodes en fonction du moment où elles sont appliquées:
 :::
 :::
 
+<!-- 
 # Les méthodes pré-tabulation
 
 ## Le recodage des variables
@@ -78,7 +80,7 @@ Deux types de méthodes en fonction du moment où elles sont appliquées:
 
 
 ## La suppression de cellules
-
+ -->
 
 
 

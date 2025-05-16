@@ -1,0 +1,66 @@
+---
+title: Les méthodes perturbatrices
+subtitle: |
+  **[Pour données tabulées ou individuelles]{.orange}**
+order: 4
+href: theorie/supports/methodes-perturbatrices.html
+image: ../../images/theorie.png
+# date: 
+slide-number: true
+header: |
+  [Retour à l'accueil](https://github.com/InseeFrLab/formation_protection_donnees)
+footer: |
+  Les méthodes de protection statistique des données confidentielles
+# uncomment for French presentations:
+lang: fr-FR
+# for blind readers:
+slide-tone: false
+# for @olevitt:
+# chalkboard: # press the B key to toggle chalkboard
+#   theme: whiteboard
+# uncomment to use the multiplex mode:
+#multiplex: true
+format:
+  onyxia-revealjs
+  # pick the light mode (onyxia-revealjs) or the dark mode (onyxia-dark-revealjs)
+  #onyxia-dark-revealjs:
+controls: true
+css: custom.css
+# from: markdown+emoji
+# listing:
+#   id: sample-listings
+#   contents: teaching
+#   sort: "date desc"
+#   type: table
+bibliography: ../../references-SDC.bib
+# csl: ../style.csl  # Décommentez besoin d'un style de biblio spécifique
+---
+
+
+
+::: frame
+:::
+
+::: frame
+### Sommaire
+:::
+
+# Introduction
+
+## Méthodes classiques de protection des données disponibles
+
+::: frame
+
+::: {#tab:my_label}
+  Type de données    **Méthodes non-perturbatrices**      **Méthodes perturbatrices**
+  ------------------ ------------------------------------ ----------------------------------------------------
+  Microdonnées       Techniques de sous-échantillonnage   Perturbation par un bruit (additif, multiplicatif)
+                     Recodage des variables               Microagrégation
+                     Suppression locale                   Techniques de swapping
+  Données tabulées   Suppression de cellules              Bruitage des sorties
+                     Recodage des variables               Méthodes d'arrondi
+                                                          Ajouter du bruit (CKM)
+
+  : Un tour d'horizon des méthodes de protection des données
+:::
+:::
