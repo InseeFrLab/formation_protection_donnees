@@ -1,5 +1,10 @@
 ---
 title: "Ressources"
+description: |
+  Trouver des ressources complémentaires (articles, documentation, outils) pour aller plus loin.
+order: 3
+href: ressources/index.html
+image: ../images/ressources.png
 ---
 
 ## Bibliographie indicative

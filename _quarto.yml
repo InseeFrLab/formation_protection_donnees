@@ -43,3 +43,7 @@ format:
     toc: true
     code-fold: true
     code-tools: true
+    code-link: true
+    reference-location: margin
+    citation-location: margin
+    cap-location: bottom

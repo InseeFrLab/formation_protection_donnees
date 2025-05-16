@@ -1,0 +1,56 @@
+---
+title: Les méthodes suppressives
+subtitle: |
+  **[Pour données tabulées ou individuelles]{.orange}**
+order: 3
+href: theorie/supports/methodes-suppressives.html
+image: ../../images/theorie.png
+---
+
+# Les méthodes à disposition
+
+::: frame
+
+Deux types de méthodes en fonction du moment où elles sont appliquées:
+
+- Les **méthodes pré-tabulation** sont appliquées sur les données individuelles, *ie* **avant** toute tabulation
+- Les **méthodes post-tabulation** sont appliquées sur les données agrégées, *ie* **après** tabulation
+
+:::
+
+::: frame
+
+::: {#tab:my_label}
+    Type de méthode     Type de données               **Méthodes**      
+  ------------------ ------------------ --------------------------------------------
+                                             <!-- Techniques de sous-échantillonnage    -->
+    Pré-tabulation      Micro-données\index{Microdata}             Recodage des variables               
+                                                   Suppression locale           
+
+    Post-tabulation     Données tabulées        Suppression de cellules              
+                                               Regroupement de catégories               
+                                                          
+
+  : Les méthodes suppressives
+:::
+:::
+
+# Les méthodes pré-tabulation
+
+## Le recodage des variables
+
+
+## La suppression locale
+
+# Les méthodes post-tabulation
+
+
+## Le regroupement de catégories
+
+
+## La suppression de cellules
+
+
+
+
+

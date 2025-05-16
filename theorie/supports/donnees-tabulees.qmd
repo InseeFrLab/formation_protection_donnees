@@ -1,7 +1,7 @@
 ---
-title: Le traitement des données tabulées
+title: Les méthodes suppressives
 subtitle: |
-  **[Données tabulées]{.orange}**
+  **[Pour données tabulées ou individuelles]{.orange}**
 order: 3
 href: theorie/supports/donnees-tabulees.html
 image: ../../images/theorie.png

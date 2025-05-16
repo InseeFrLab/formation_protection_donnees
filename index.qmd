@@ -5,6 +5,7 @@ listing:
     - "theorie/*.qmd"
     - "pratique/*.qmd"
     - "ressources/*.qmd"
+    - "glossaire/*.qmd"
     - "!theorie/supports/*.qmd"
     - "!pratique/fiches/*.qmd"
   sort: "order"

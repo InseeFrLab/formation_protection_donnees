@@ -1,0 +1,16 @@
+---
+title: "Glossaire"
+description: |
+  Définition des principaux termes techniques rencontrés sur le site.
+order: 4
+href: glossaire/index.html
+image: ../images/glossaire.png
+page-layout: full
+toc: false
+---
+
+
+# M {.unlisted}
+
+[]{#Microdata .anchor}**Micro-données:** Un jeu de micro-données est l'équivalent d'un jeu de données individuelles, dans lequel chaque enregistrement (chaque ligne) correspond aux informations d'une unité statistique (individu, ménage, entreprise, etc.), informations issues d'une enquête, d'un répertoire ou d'un fichier administratif.
+
