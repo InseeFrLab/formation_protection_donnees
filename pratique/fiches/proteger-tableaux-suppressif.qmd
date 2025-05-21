@@ -2,6 +2,254 @@
 title: Protéger des tableaux avec une méthode suppressive
 ---
 
+Cette fiche pratique présente une façon de protéger des tableaux en utilisant une méthode suppressive grâce au package `rtauargus` qui appelle Tau-Argus depuis R. Les données utilisées peuvent être générées à partir du document [INSERER LIEN]. Le code peut être entièrement caché ou visible grâce au bouton à droite du titre. Vous pouvez aussi le faire apparaître ou disparaître au fur et à mesure de la lecture en appuyant sur les boutons Code.
+
+# Initialisation
+
+Import des packages.
+
+```{r warning=FALSE, message=FALSE}
+library(dplyr)
+library(rtauargus)
+```
+
+Modifier le chemin ci-dessous :
+
+```{r warning=FALSE, message=FALSE}
+loc_tauargus <- "C:/Users/tmm7an/Documents/SDC/TauArgus/TauArgus4.2.5/TauArgus.exe"
+options(rtauargus.tauargus_exe = loc_tauargus)
+```
+
+# Tabuler les données
+
+Pour faciliter le passage des microdonnées aux données tabulées une fonction est incluse dans `rtauargus` : `tabulate_micro_data()`.
+
+Les arguments de la fonction sont les suivants :
+
+- `df`: jeu de données individuelles (data.frame ou data.table)
+- `cat_vars`: variables de croisements (catégorielles) non hiérarchiques (vecteur)
+- `hrc_vars`: variables de croisements hiérarchiques sous la forme d'une liste nommée
+- `pond_var`: variable de pondération
+- `resp_var`: indicateur(s), variable(s) de réponse
+- `marge_label`: label utilisé pour les marges (sous-totaux)
+
+## Présentation des données individuelles
+
+Nous utiliserons un jeu de données entreprises (1 ligne = 1 entreprise) pour lesquelles 
+on dispose d'informations telles que l'activité, la catégorie juridique, 
+la géographie d'implantation (variables NUTS) et la tranche d'effectifs. Pour 
+chaque entreprise on dispose également du chiffre d'affaires (CA) selon le type de produits (salades, 
+pizzas, batavias, légumes rouges, etc.).
+
+On importe les données et on regarde leur format.
+
+```{r}
+table_legume <- readr::read_csv("./data/table_test.csv", show_col_types = FALSE)
+
+str(table_legume)
+```
+
+## Première utilisation : tabuler un indicateur
+
+On veut construire le chiffre d'affaires en salades des entreprises par activité (niveau a88) et par tranche d'effectifs (treff).
+
+```{r}
+salades <- tabulate_micro_data(
+  df = table_legume,
+  cat_var = c("a88", "treff"),
+  pond_var = "poids",
+  resp_var = "salades",
+  marge_label = "Ensemble"
+)
+```
+
+Le résultat est un tableau long avec :
+
+* Les variables de croisement (a88 et treff)
+* Différents indicateurs :
+    + `nb_obs`: comptage du nombre d'entreprises (pour appliquer la règle de fréquence)
+    + `salades_tot`: indicateur / variable de réponse (ici total du chiffre d'affaire de salades)
+    + `salades_max`: contribution maximale au chiffre d'affaires (pour appliquer la règle de dominance)
+Toutes les marges (totaux et sous-totaux) ont été ajoutées à la table.
+
+```{r}
+str(salades)
+```
+
+## Calculer plusieurs indicateurs en même temps
+
+On veut construire deux tableaux :  
+
+* le chiffre d'affaires de la production de pizzas des entreprises par activité (niveau A10), 
+par tranche d'effectifs (treff) et catégorie juridique (cj);
+* le chiffre d'affaires de la production de tomates des entreprises par activité (niveau A10), 
+par tranche d'effectifs (treff) et catégorie juridique (cj).
+
+Ces deux tableaux ont les mêmes variables de croisement et deux indicateurs 
+différents. Ils peuvent être construits en même temps.
+
+```{r}
+res_all_dtp <- tabulate_micro_data(
+  df = table_legume,
+  cat_vars = c("A10", "treff","cj"),
+  pond_var = "poids",
+  resp_var = c("pizzas","tomates"),
+  marge_label = "Total"
+)
+
+str(res_all_dtp)
+```
+
+# Poser le secret primaire
+
+**Objectif** : détecter les cellules ne respectant pas les règles de confidentialité
+dans les tableaux proposés.
+
+**Consignes** : vous utiliserez les règles en vigueur à l'Insee pour la diffusion des
+tableaux issus des enquêtes entreprises.
+
+1.  Pour chacun des tableaux, vous ajouterez une variable booléenne
+    indiquant si la cellule est problématique (`TRUE`) ou non (`FALSE`),
+    au regard de chacune des règles pertinentes à appliquer:
+    
+-   Si vous appliquez la règle de fréquence, la variable créée
+    s'appellera `is_secret_freq`;
+-   Si vous appliquez la règle de dominance, la variable créée
+    s'appellera `is_secret_dom`.
+
+2.  Après avoir posé le secret, vous calculerez le nombre de cellules
+    détectées comme à risque.
+
+Le tableau `salades` est un tableau de volumes (CA), les règles de fréquence
+et de dominance s'appliquent. D'après la jurisprudence Insee sur la
+diffusion des données entreprises, le seuil de fréquence est fixé à 3 et
+le plus gros contributeur ne doit pas contribuer à plus de 85% de la
+cellule.
+
+```{r detect-salades}
+salades_detect <- salades %>%
+    mutate(
+      is_secret_freq = nb_obs > 0 & nb_obs < 3,
+      is_secret_dom = (salades_tot != 0) & (salades_max > 0.85*salades_tot)
+    )
+
+salades_detect %>% count(is_secret_freq, is_secret_dom)
+```
+
+# Protéger un tableau simple
+
+**Objectif** : protéger un tableau simple en appelant Tau-Argus depuis R pour poser le secret secondaire.
+
+**Consignes** : vous utiliserez les règles en vigueur à l'Insee pour la diffusion des
+tableaux issus des enquêtes entreprises.
+
+## Poser le secret secondaire
+
+Poser un masque de secret sur un tableau comprend les étapes suivantes:
+
+1. Tout d'abord on pose le secret primaire. Pour cela, il faut créer créer des variables indicatrices :
+   1. Pour chacun des tableaux, vous ajouterez une variable booléenne indiquant si la cellule est problématique (`TRUE`) ou non (`FALSE`), au regard de chacune des règles pertinentes à appliquer :
+      - Si vous appliquez la règle de fréquence, la variable créée s'appellera `is_secret_freq`;
+      - Si vous appliquez la règle de dominance, la variable créée s'appellera `is_secret_dom`.
+   2. Puis de créer une variable qu'on appellera `is_secret_prim`, définie ainsi :
+      - `is_secret_prim = is_secret_freq` si seule la règle de fréquence doit s'appliquer;
+      - `is_secret_prim = is_secret_freq | is_secret_dom` si les deux règles doivent s'appliquer;
+2. Après avoir posé le secret primaire, vous calculerez le nombre de cellules détectées comme à risque.
+3. Ensuite, il s'agit de poser le secret secondaire en utilisant le package `rtauargus`. Les consignes d'installation de `rtauargus` et du logiciel Tau-Argus sont indiquées dans le fichier [INSERER LIEN]. Vous utiliserez notamment la fonction `tab_rtauargus()` et suivrez les étapes mentionnées pour apprendre à l'utiliser.
+4. Enfin, vous calculerez le nombre de cellules selon leur statut final. Nous utiliserons pour cela la norme européenne en notant:
+  - `A` les cellules en secret primaire à cause de la règle de fréquence
+  - `B` les cellules en secret primaire à cause de la règle de dominance (dans le futur ces cellules pourraient être notées `O`)
+  - `D` les cellules concernées par le secret secondaire
+  - `V` les cellules non touchées par le secret, cad les cellules qui pourront être diffusées.
+
+La fonction `tab_rtauargus()` permet de poser le secret secondaire et requiert les arguments suivants :
+  - `tabular` : la table à protéger
+  - `dir_name` : le nom du répertoire où  les fichiers seront sauvegardés
+  - `files_name` : le nom utilisé pour nommer les fichiers (chaque fichier a une extension différente);
+  - `explanatory_vars` : le nom des variables de croisements présents dans la table;
+  - `secret_var` : le nom de la variable indiquant si une cellule est à risque ou non (secret primaire);
+  - `value` : nom de la variable de réponse;
+  - `freq` : nom de la variable d'effectifs;
+  - `totcode` : le code utilisé pour indiquer le total pour chacune des variables de croisements (`explanatory_vars`).
+
+```{r eval=FALSE}
+salades_masq <- tab_rtauargus(
+  salades_detect,
+  dir_name = "tauargus_files/exo2",
+  files_name = "T0",
+  explanatory_vars = c("a88","treff"),
+  secret_var = "is_secret_prim",
+  value = "salades_tot",
+  freq = "nb_obs",
+  totcode = c(a88="Total",treff="Total"),
+  verbose = FALSE
+)
+```
+
+## Analyser les résultats
+
+### Les fichiers créés lors de l'exécution de Tau-Argus
+
+L'ensemble des fichiers créés pendant le processus se trouvent dans le répertoire
+mentionné dans l'argument `dir_name`. Tous les fichiers ont le même nom,
+mais pas la même extension:
+
+- `T0.tab` : tableau de données
+- `T0.hst` : fichier d'apriori où sont listées les cellules à risque (secret primaire)
+- `T0.rda` : fichier de métadonnées;
+- `T0.arb` : fichier batch, qui sera exécuté par Tau-Argus
+- `T0.txt` : fichier log, retraçant les étapes exécutées par Tau-Argus
+- `T0.csv` : masque au format csv
+
+### Le masque
+
+Le masque est retourné par la fonction. Ce masque est une copie de la table fournie en entrée à laquelle une variable supplémentaire, `Status`, est fournie indiquant 
+le statut final de la cellule: 
+
+- `B` : secret primaire (ou apriori)
+- `D` : secret secondaire
+- `V` : cellule valide, cad qui peut être diffusée
+
+```{r eval=FALSE}
+str(T0_masq)
+```
+
+### Bilan du secret
+
+Pour faire le bilan du secret le mieux est de modifier la variable `Status` 
+fournie par Tau-Argus. En effet, cette variable ne permet pas de faire la 
+distinction entre l'origine du secret primaire (fréquence ou dominance).
+
+```{r eval=FALSE}
+T0_masq <- T0_masq %>% 
+  mutate(
+    statut_final = case_when(
+      is_secret_freq ~ "A",
+      is_secret_dom ~ "B",
+      TRUE ~ Status,
+    )
+  )
+```
+
+
+Afin de bien appréhender l'impact du secret posé, on va non seulement compter
+le nombre de cellules masquées, mais aussi calculer la valeur des cellules masquées.
+
+```{r eval=FALSE}
+T0_masq %>% 
+  group_by(statut_final) %>% 
+  summarise(
+    n_cell = n(),
+    val_cell = sum(VALUE)
+  ) %>%
+  mutate(
+    pc_n_cell = n_cell/sum(n_cell)*100,
+    pc_val_cell = val_cell/sum(val_cell)*100
+  )
+```
+
+On masque 1/3 des cellules mais seulement 12% de l'information totale.
+
 ```{r}
 #| label: fig-airquality
 #| fig-cap: "Temperature and ozone level."
