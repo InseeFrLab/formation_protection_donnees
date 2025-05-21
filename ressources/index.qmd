@@ -5,20 +5,15 @@ description: |
 order: 3
 href: ressources/index.html
 image: ../images/ressources.png
+listing:
+  id: ressources
+  contents:
+    - "fiches/*.qmd"
+  sort: "order"
+  type: grid
+  image-height: 300px
+  grid-columns: 4
+page-layout: full
+toc: false
 ---
 
-## Bibliographie indicative
-
-
-### Ressources généralistes
-
-- [Handbook on Statistical Disclosure Control](https://sdctools.github.io/HandbookSDC/)
-
-### Les méthodes suppressives
-
-- [Manuel de protection des données tabulées](https://inseefrlab.github.io/manuel-protection-tableaux/)
-
-
-## Outils
-
-- [Documentation du package `rtauargus`](https://inseefrlab.github.io/rtauargus/)
