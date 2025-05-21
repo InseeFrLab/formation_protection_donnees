@@ -1,8 +1,10 @@
 ---
 title: Bibliographie indicative
+description: |
+    Des références pour aller plus loin.
 order: 1
 href: ressources/fiches/bibliographie.html
-image: ../../images/glossaire.png
+image: ../../images/ressources.png
 ---
 
 <!--- Ajouter des références dans chaque partie / chaque fiche en reliant avec le fichier .bib dispo--->

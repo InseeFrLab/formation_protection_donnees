@@ -1,19 +1,16 @@
 ---
 title: Installer les packages et les outils sur R
+description: |
+  Où trouver et comment installer les outils et packages recommandés ?
 order: 2
 href: ressources/fiches/outils-install.html
-image: ../../images/glossaire.png
-knitr:
-  opts_chunk: 
-    collapse: false
-format: 
-  html:
-    self-contained: true
+image: ../../images/ressources.png
+code-fold: false
 ---
 
 ## Les packages R
-
-
+  
+  
 ```{r rpackages}
 #| eval: false
 #| echo: true
@@ -21,8 +18,9 @@ format:
 # Construction de l'URL du dépôt
 REPOSITR="https://packagemanager.posit.co/cran/latest"
 
-# Installation des packages R nécessaires
-install.packages('tidyverse', repos=REPOSITR, dependencies=TRUE)
+# Installation des packages R recommandés
+# install.packages('tidyverse', repos=REPOSITR, dependencies=TRUE)
+# install.packages('ggraph', repos=REPOSITR, dependencies=TRUE)
 install.packages('sdcMicro', repos=REPOSITR, dependencies=TRUE)
 install.packages('GaussSuppression', repos=REPOSITR, dependencies=TRUE)
 install.packages('cellKey', repos=REPOSITR, dependencies=TRUE)
@@ -38,7 +36,8 @@ On propose d'installer la version proposant une extension expérimentale:
 #| eval: false
 #| echo: true
 
-# Installation de la dernière version de rtauargus (version avec extension expérimentale)
+# Installation de la dernière version de rtauargus 
+# (version avec extension expérimentale)
 install.packages('remotes', repos=REPOSITR)
 remotes::install_github(
     'InseeFrLab/rtauargus',
@@ -63,7 +62,8 @@ remotes::install_github(
 
 ### `Tau-ARGUS (Windows / 32 bits)`
 
-- La dernière version est disponible sur github à cette adresse: [https://github.com/sdcTools/tauargus/releases/latest]()
+- La dernière version est disponible sur github à cette adresse:  
+[https://github.com/sdcTools/tauargus/releases/latest](https://github.com/sdcTools/tauargus/releases/latest)
 - Téléchargez le fichier `TauArgusXXXX.zip` où `XXXX` correspond au numéro de la dernière version
 - Une fois installé, il suffit de dézipper le fichier à l'endroit souhaité sur votre machine.
 
@@ -72,9 +72,12 @@ Pour lancer `Tau-ARGUS`, il suffit de double-cliquer sur le fichier `TauArgus.ex
 Une documentation - un peu ancienne - est téléchargeable [ici](https://research.cbs.nl/casc/Software/TauManualV4.1.pdf)
 
 ### `Mu-ARGUS (Windows / 64 bits)`
- 
-La dernière version est disponible également disponible sur github à cette adresse: [](https://github.com/sdcTools/tauargus/releases/latest)
+
+La dernière version est disponible également disponible sur github à cette adresse: 
+[https://github.com/sdcTools/tauargus/releases/latest](https://github.com/sdcTools/tauargus/releases/latest)
+
 La procédure d'installation est identique à celle de `Tau-ARGUS`.
 
-Une documentation - un peu ancienne - est téléchargeable [ici](https://research.cbs.nl/casc/Software/MUmanual5.1.3.pdf)
+Une documentation - un peu ancienne - est téléchargeable à cette adresse: 
 
+[https://research.cbs.nl/casc/Software/MUmanual5.1.3.pdf](https://research.cbs.nl/casc/Software/MUmanual5.1.3.pdf)
