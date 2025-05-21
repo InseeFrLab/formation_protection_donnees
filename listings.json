@@ -1,5 +1,12 @@
 [
   {
+    "listing": "/ressources/index.html",
+    "items": [
+      "/ressources/fiches/bibliographie.html",
+      "/ressources/fiches/outils-install.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/theorie/index.html",

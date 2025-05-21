@@ -4,21 +4,35 @@
     "href": "ressources/index.html",
     "title": "Ressources",
     "section": "",
-    "text": "Handbook on Statistical Disclosure Control\n\n\n\n\n\nManuel de protection des données tabulées"
+    "text": "Bibliographie indicative\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInstaller les packages et les outils sur R\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "ressources/index.html#bibliographie-indicative",
-    "href": "ressources/index.html#bibliographie-indicative",
-    "title": "Ressources",
+    "objectID": "ressources/fiches/bibliographie.html",
+    "href": "ressources/fiches/bibliographie.html",
+    "title": "Bibliographie indicative",
     "section": "",
-    "text": "Handbook on Statistical Disclosure Control\n\n\n\n\n\nManuel de protection des données tabulées"
+    "text": "Handbook on Statistical Disclosure Control"
   },
   {
-    "objectID": "ressources/index.html#outils",
-    "href": "ressources/index.html#outils",
-    "title": "Ressources",
-    "section": "Outils",
-    "text": "Outils\n\nDocumentation du package rtauargus"
+    "objectID": "ressources/fiches/bibliographie.html#ressources-généralistes",
+    "href": "ressources/fiches/bibliographie.html#ressources-généralistes",
+    "title": "Bibliographie indicative",
+    "section": "",
+    "text": "Handbook on Statistical Disclosure Control"
+  },
+  {
+    "objectID": "ressources/fiches/bibliographie.html#les-méthodes-suppressives",
+    "href": "ressources/fiches/bibliographie.html#les-méthodes-suppressives",
+    "title": "Bibliographie indicative",
+    "section": "Les méthodes suppressives",
+    "text": "Les méthodes suppressives\n\nManuel de protection des données tabulées"
+  },
+  {
+    "objectID": "ressources/fiches/bibliographie.html#le-traitement-des-données-individuelles",
+    "href": "ressources/fiches/bibliographie.html#le-traitement-des-données-individuelles",
+    "title": "Bibliographie indicative",
+    "section": "Le traitement des données individuelles",
+    "text": "Le traitement des données individuelles\n\nLa gestion de la confidentialité des données individuelles (Insee)\nStatistical Disclosure Control for Microdata: A Practice Guide for sdcMicro\nStatistical Disclosure Control for Microdata: Theory"
   },
   {
     "objectID": "theorie/supports/tour-des-methodes.html#méthodes-classiques-de-protection-des-données-disponibles",
@@ -628,5 +642,26 @@
     "title": "Glossaire",
     "section": "",
     "text": "M\nMicro-données: Un jeu de micro-données est l’équivalent d’un jeu de données individuelles, dans lequel chaque enregistrement (chaque ligne) correspond aux informations d’une unité statistique (individu, ménage, entreprise, etc.), informations issues d’une enquête, d’un répertoire ou d’un fichier administratif."
+  },
+  {
+    "objectID": "ressources/fiches/outils-install.html",
+    "href": "ressources/fiches/outils-install.html",
+    "title": "Installer les packages et les outils sur R",
+    "section": "",
+    "text": "Code\n# Construction de l'URL du dépôt\nREPOSITR=\"https://packagemanager.posit.co/cran/latest\"\n\n# Installation des packages R nécessaires\ninstall.packages('tidyverse', repos=REPOSITR, dependencies=TRUE)\ninstall.packages('sdcMicro', repos=REPOSITR, dependencies=TRUE)\ninstall.packages('GaussSuppression', repos=REPOSITR, dependencies=TRUE)\ninstall.packages('cellKey', repos=REPOSITR, dependencies=TRUE)\ninstall.packages('synthpop', repos=REPOSITR, dependencies=TRUE)\n\n\n\n\nOn propose d’installer la version proposant une extension expérimentale:\n\n\nCode\n# Installation de la dernière version de rtauargus (version avec extension expérimentale)\ninstall.packages('remotes', repos=REPOSITR)\nremotes::install_github(\n    'InseeFrLab/rtauargus',\n    dependencies = TRUE,\n    build_vignettes = FALSE,\n    upgrade = 'never',\n    ref = \"v-1.2.999-dev\"\n)\n\n\n\n\n\n\nsdcMicro\ncellKey\nrtauargus\nsynthpop"
+  },
+  {
+    "objectID": "ressources/fiches/outils-install.html#les-packages-r",
+    "href": "ressources/fiches/outils-install.html#les-packages-r",
+    "title": "Installer les packages et les outils sur R",
+    "section": "",
+    "text": "Code\n# Construction de l'URL du dépôt\nREPOSITR=\"https://packagemanager.posit.co/cran/latest\"\n\n# Installation des packages R nécessaires\ninstall.packages('tidyverse', repos=REPOSITR, dependencies=TRUE)\ninstall.packages('sdcMicro', repos=REPOSITR, dependencies=TRUE)\ninstall.packages('GaussSuppression', repos=REPOSITR, dependencies=TRUE)\ninstall.packages('cellKey', repos=REPOSITR, dependencies=TRUE)\ninstall.packages('synthpop', repos=REPOSITR, dependencies=TRUE)\n\n\n\n\nOn propose d’installer la version proposant une extension expérimentale:\n\n\nCode\n# Installation de la dernière version de rtauargus (version avec extension expérimentale)\ninstall.packages('remotes', repos=REPOSITR)\nremotes::install_github(\n    'InseeFrLab/rtauargus',\n    dependencies = TRUE,\n    build_vignettes = FALSE,\n    upgrade = 'never',\n    ref = \"v-1.2.999-dev\"\n)\n\n\n\n\n\n\nsdcMicro\ncellKey\nrtauargus\nsynthpop"
+  },
+  {
+    "objectID": "ressources/fiches/outils-install.html#les-logiciels",
+    "href": "ressources/fiches/outils-install.html#les-logiciels",
+    "title": "Installer les packages et les outils sur R",
+    "section": "Les logiciels",
+    "text": "Les logiciels\n\nTau-ARGUS (Windows / 32 bits)\n\nLa dernière version est disponible sur github à cette adresse: https://github.com/sdcTools/tauargus/releases/latest\nTéléchargez le fichier TauArgusXXXX.zip où XXXX correspond au numéro de la dernière version\nUne fois installé, il suffit de dézipper le fichier à l’endroit souhaité sur votre machine.\n\nPour lancer Tau-ARGUS, il suffit de double-cliquer sur le fichier TauArgus.exe à la racine du dossier dézippé.\nUne documentation - un peu ancienne - est téléchargeable ici\n\n\nMu-ARGUS (Windows / 64 bits)\nLa dernière version est disponible également disponible sur github à cette adresse:  La procédure d’installation est identique à celle de Tau-ARGUS.\nUne documentation - un peu ancienne - est téléchargeable ici"
   }
 ]
