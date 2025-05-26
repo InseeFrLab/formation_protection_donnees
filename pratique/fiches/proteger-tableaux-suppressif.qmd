@@ -6,16 +6,28 @@ Cette fiche pratique présente une façon de protéger des tableaux en utilisant
 
 # Initialisation
 
+Installation du package rtauargus.
+```{r installation_rtauargus, warning=FALSE, message=FALSE}
+remotes::install_github(
+  'InseeFrLab/rtauargus',
+  dependencies = TRUE,
+  build_vignettes = FALSE,
+  upgrade = 'never',
+  ref = "v-1.2.999-dev"
+)
+```
+
+
 Import des packages.
 
-```{r warning=FALSE, message=FALSE}
-library(dplyr)
+```{r import_packages, warning=FALSE, message=FALSE}
+library(tidyverse)
 library(rtauargus)
 ```
 
 Modifier le chemin ci-dessous :
 
-```{r warning=FALSE, message=FALSE}
+```{r loc_tauargus, warning=FALSE, message=FALSE}
 loc_tauargus <- "C:/Users/tmm7an/Documents/SDC/TauArgus/TauArgus4.2.5/TauArgus.exe"
 options(rtauargus.tauargus_exe = loc_tauargus)
 ```
@@ -35,27 +47,87 @@ Les arguments de la fonction sont les suivants :
 
 ## Présentation des données individuelles
 
-Nous utiliserons un jeu de données entreprises (1 ligne = 1 entreprise) pour lesquelles 
+Nous créons un jeu de données entreprises (1 ligne = 1 entreprise) pour lesquelles 
 on dispose d'informations telles que l'activité, la catégorie juridique, 
 la géographie d'implantation (variables NUTS) et la tranche d'effectifs. Pour 
 chaque entreprise on dispose également du chiffre d'affaires (CA) selon le type de produits (salades, 
 pizzas, batavias, légumes rouges, etc.).
 
-On importe les données et on regarde leur format.
+```{r creation_micro}
+a88 <- c("A01","A02","A03","B05","B06","B07","B08","B09","C10","C11","C12","C13",
+         "C14","C15","C16","C17","C18","C19","C20","C21","C22","C23","C24","C25",
+         "C26","C27","C28","C29","C30","C31","C32","C33","D35","E36","E37","E38",
+         "E39","F41","F42","F43","G45","G46","G47","H49","H50","H51","H52","H53",
+         "I55","I56","J58","J59","J60","J61","J62","J63","K64","K65","K66","L68",
+         "M69","M70","M71","M72","M73","M74","M75","N77","N78","N79","N80","N81",
+         "N82","O84","P85","Q86","Q87","Q88","R90","R91","R92","R93","S94","S95",
+         "S96","T97","T98","U99")
 
-```{r}
-table_legume <- readr::read_csv("./data/table_test.csv", show_col_types = FALSE)
+correspondance_naf <- data.frame(a88) %>% 
+  mutate(a21 = substr(a88,1,1),
+         a10 = case_when(
+           a21 == "A" ~ "AZ",
+           a21 %in% c("B","C","D","E") ~ "BE",
+           a21 == "F" ~ "FZ",
+           a21 %in% c("G","H","I") ~ "GI",
+           a21 == "J" ~ "JZ",
+           a21 == "K" ~ "KZ",
+           a21 == "L" ~ "LZ",
+           a21 %in% c("M","N") ~ "MN",
+           a21 %in% c("O","P","Q") ~ "OQ",
+           a21 %in% c("R","S","T","U") ~ "RU"
+         )) %>% 
+  select(a10,a21,a88)
 
-str(table_legume)
+nuts3 <- c("FR101","FR102","FR103","FR104","FR105","FR106","FR107","FR108","FRB01",
+           "FRB02","FRB03","FRB04","FRB05","FRB06","FRC11","FRC12","FRC13","FRC14",
+           "FRC21","FRC22","FRC23","FRC24","FRD11","FRD12","FRD13","FRD21","FRD22",
+           "FRE11","FRE12","FRE21","FRE22","FRE23","FRF11","FRF12","FRF21","FRF22",
+           "FRF23","FRF24","FRF31","FRF32","FRF33","FRF34","FRG01","FRG02","FRG03",
+           "FRG04","FRG05","FRH01","FRH02","FRH03","FRH04","FRI11","FRI12","FRI13",
+           "FRI14","FRI15","FRI21","FRI22","FRI23","FRI31","FRI32","FRI33","FRI34",
+           "FRJ11","FRJ12","FRJ13","FRJ14","FRJ15","FRJ21","FRJ22","FRJ23","FRJ24",
+           "FRJ25","FRJ26","FRJ27","FRJ28","FRK11","FRK12","FRK13","FRK14","FRK21",
+           "FRK22","FRK23","FRK24","FRK25","FRK26","FRK27","FRK28","FRL01","FRL02",
+           "FRL03","FRL04","FRL05","FRL06","FRM01","FRM02","FRY10","FRY20","FRY30",
+           "FRY40","FRY50")
+
+correspondance_nuts <- data.frame(nuts3) %>% 
+  mutate(nuts1 = substr(nuts3,1,3),
+         nuts2 = substr(nuts3,1,4)) %>% 
+  select(nuts1,nuts2,nuts3)
+
+set.seed(123)
+
+n <- 10000  # nombre d’observations souhaité
+
+micro <- tibble(
+  a88 = sample(a88, n, replace = TRUE),
+  nuts3 = sample(nuts3, n, replace = TRUE),
+  treff = sample(c("tr1", "tr2", "tr3"), n, replace = TRUE),
+  cj = sample(c("LL", "PA", "SP"), n, replace = TRUE),
+  maches = ifelse(runif(n) < 0.1, 0, round(runif(n, 30000, 75000))),
+  batavias = ifelse(runif(n) < 0.1, 0, round(runif(n, 25000, 70000))),
+  salades = maches + batavias,
+  tomates = ifelse(runif(n) < 0.08, 0, round(runif(n, 50000, 500000))),
+  pizzas = ifelse(runif(n) < 0.2, 0, round(runif(n, 60000, 900000))),
+  poids = round(runif(n, 1, 30))
+) %>%
+  left_join(correspondance_naf, by = "a88") %>%
+  left_join(correspondance_nuts, by = "nuts3") %>% 
+  select(a10,a21,a88,nuts1,nuts2,nuts3,treff,cj,maches,batavias,salades,tomates,pizzas,poids)
+
+str(micro)
 ```
+
 
 ## Première utilisation : tabuler un indicateur
 
 On veut construire le chiffre d'affaires en salades des entreprises par activité (niveau a88) et par tranche d'effectifs (treff).
 
-```{r}
+```{r tabuler_1resp}
 salades <- tabulate_micro_data(
-  df = table_legume,
+  df = micro,
   cat_var = c("a88", "treff"),
   pond_var = "poids",
   resp_var = "salades",
@@ -88,10 +160,10 @@ par tranche d'effectifs (treff) et catégorie juridique (cj).
 Ces deux tableaux ont les mêmes variables de croisement et deux indicateurs 
 différents. Ils peuvent être construits en même temps.
 
-```{r}
+```{r tabuler_2resp}
 res_all_dtp <- tabulate_micro_data(
-  df = table_legume,
-  cat_vars = c("A10", "treff","cj"),
+  df = micro,
+  cat_vars = c("a10", "treff","cj"),
   pond_var = "poids",
   resp_var = c("pizzas","tomates"),
   marge_label = "Total"
@@ -250,14 +322,267 @@ T0_masq %>%
 
 On masque 1/3 des cellules mais seulement 12% de l'information totale.
 
+# Protéger un tableau hiérarchique
+
+**Objectifs** : comprendre la notion de variables hiérarchiques et savoir manipuler les objets et 
+fichiers argus qui y sont associés. Pour ensuite, protéger un tableau contenant une ou plusieurs variables hiérarchiques
+en appelant Tau-Argus depuis R pour poser le secret secondaire.
+
+Reprenons l'exemple présenté dans le diaporama:
+
 ```{r}
-#| label: fig-airquality
-#| fig-cap: "Temperature and ozone level."
-#| warning: false
-
-library(ggplot2)
-
-ggplot(airquality, aes(Temp, Ozone)) + 
-  geom_point() + 
-  geom_smooth(method = "loess")
+T0 <- data.frame(
+  geo = c("Pays","Nord","Ouest","Est","Sud",paste0("N",1:3),paste0("O",1:4),paste0("E",1:3), paste0("S",1:2)),
+  freq = c(400, 46, 191, 80, 83, 21, 2, 23, 32, 54, 67, 38, 27, 41, 12, 44, 39)
+)
+str(T0)
 ```
+
+La variable `geo` est une variable hiérarchique puisqu'il existe des emboîtements 
+entre les différents niveaux :  
+
+- Pays = Nord + Ouest + Est + Sud
+- Nord = N1 + N2 + N3
+- Ouest = O1 + O2 + O3 + O4
+- Est = E1 + E2 + E3
+- Sud = S1 + S2
+
+
+Avant de penser à protéger un tel tableau, il faut pouvoir représenter correctement 
+cette hiérarchie, c'est-à-dire de telle sorte que tau-argus sache comprendre les différents
+emboîtements présents.
+
+## Construction du fichier hiérarchique pour Tau-Argus
+### "A la main"
+La première option consiste à créer le fichier nécessaire (extension .hrc) à la main.
+Ceci est tout à fait pertinent si la hiérarchie n'est pas trop étendue.
+
+Tau-Argus attend en effet un type de fichier bien particulier, dont l'extension 
+est `.hrc`. Il s'agit d'un simple fichier texte où les différents emboîtements 
+sont écrits les uns en-dessous des autres. Un symbole (le `@`) est utilisé pour 
+préciser le niveau de chacun des emboîtements au sein de la hiérarchie.
+
+Par exemple, un fichier contenant les lignes suivantes :
+
+ALL  
+@A  
+@@A1  
+@@A2  
+@B  
+@@B1  
+@@B2  
+@@@B21  
+@@@B22  
+@C  
+
+
+décrit une hiérarchie contenant les emboîtements suivants:  
+
+- ALL = A + B + C => ALL est le total et A, B et C sont les emboîtements de niveau 1;
+- A = A1 + A2 => A1 et A2 sont des sous-niveaux de A, donc des emboîtements de niveau 2;
+- B = B1 + B2
+- B2 = B21 + B22
+
+Néanmoins, pour utiliser cette hiérarchie avec Tau-Argus, **le super-total (ici "ALL")
+ne doit pas apparaître dans le fichier .hrc** qui lui est fourni.
+
+Le bon fichier est donc le suivant :
+
+@A  
+@@A1  
+@@A2  
+@B  
+@@B1  
+@@B2  
+@@@B21  
+@@@B22  
+@C  
+
+
+### Automatiquement
+
+Quand la hiérarchie est très étendue, l'écriture manuelle du fichier de hiérarchie 
+est pénible. Or, quand ce genre de cas se présente, il existe souvent une table 
+de correspondance permettant d'associer les différents niveaux entre eux.
+
+Nous appelons table de correspondance une table qui précise l'ensemble des niveaux 
+associés aux emboîtements les plus fins.
+
+La table de correspondance représentant la hiérarchie suivante :
+
+ALL  
+@A  
+@@A1  
+@@A2  
+@B  
+@@B1  
+@@B2  
+@@@B21  
+@@@B22  
+@C  
+
+est la suivante:
+
+
+```{r}
+corr_tab <- tibble(
+  niv0 = "ALL",
+  niv1 = c(rep("A",2),rep("B",3), "C"),
+  niv2 = c("A1","A2","B1",rep("B2",2), "C"),
+  niv3 = c("A1","A2","B1", "B21", "B22", "C")
+)
+corr_tab
+```
+
+Remarque: La fonction `rtauargus::write_hrc2()` qui permet de construire le fichier `.hrc` 
+à partir d'une table de correspondance n'accepte pas de valeurs manquantes dans 
+la table en entrée. C'est pourquoi, à la dernière ligne, par exemple, `C` 
+n'admettant pas de subdivisions est répété sur les niveaux inférieurs.
+
+Avec la fonction `write_hrc2()` du package `rtauargus`, on peut exporter la 
+table de correspondance en un fichier `hrc`.
+Comme noté précédemment, Tau-Argus n'acceptant pas que le super-total d'une variable 
+hiérarchique soit présent dans le fichier `.hrc` on le supprime:
+
+```{r}
+write_hrc2(corr_tab %>% select(-niv0), file_name = "fichiers_tauargus/hrc/exemple_TA.hrc")
+read.table("fichiers_tauargus/hrc/exemple_TA.hrc")
+```
+
+
+## Protection
+A présent nous protégeons le tableau T0 pour lequel on vient de construire la hiérarchie.
+
+La variable `geo` est hiérarchique (Pays = Nord + Ouest + Est + Sud, par exemple), on construit le fichier adéquat.
+
+Table de passage (habituellement elle existe déjà mais pour l'exercice nous la créons) et appel à `rtauargus::write_hrc2()`.
+
+```{r}
+corr_pays <- tibble(
+  niv1 = c(rep("Nord", 3), rep("Ouest", 4), rep("Est", 3), rep("Sud", 2)),
+  niv2 = c("N1", "N2", "N3", "O1", "O2", "O3", "O4", "E1", "E2", "E3", "S1", "S2")
+)
+
+write_hrc2(corr_pays, file_name = "fichiers_tauargus/hrc/pays.hrc")
+read.table("fichiers_tauargus/hrc/pays.hrc")
+```
+
+
+Nous pouvons dès lors poser le masque de secret sur ce tableau. Pour cela, nous faisons toujours appel à la fonction `tab_rtauargus`.
+
+### 1. Poser le secret primaire
+
+```{r}
+T0_detect <- T0 %>% 
+  mutate(
+      is_secret_freq = freq > 0 & freq < 3
+    )
+```
+
+### 2. Lancer Tau-Argus pour poser le secret secondaire
+
+Pour que l'information hiérarchique soit bien prise en compte lors de la pose du
+secret secondaire par Tau-Argus, il suffit de renseigner l'argument `hrc = ` 
+sous la forme d'un vecteur nommé `c(var1 = fichier1, var2 = fichier2,...)`:
+le nom de chaque élément étant le nom de la variable concernée et la valeur étant 
+la localisation du fichier `.hrc` correspondant.
+
+```{r eval=FALSE}
+T0_masq <- tab_rtauargus(
+  T0_detect,
+  dir_name = "fichiers_tauargus/sorties/ex_hrc_pays",
+  files_name = "T0",
+  explanatory_vars = "geo",
+  hrc = c(geo = "fichiers_tauargus/hrc/pays.hrc"),
+  secret_var = "is_secret_freq",
+  value = "freq",
+  totcode = c(geo="Pays"),
+  verbose = FALSE
+)
+
+T0_masq %>% count(Status)
+```
+
+Vérifions que le secret a été posé correctement : 
+
+```{r eval=FALSE}
+T0_masq
+```
+
+La cellule N2 est en secret primaire car elle a une fréquence inférieure à 3. Il faut donc poser un secret secondaire pour protéger cette cellule. On voit que N1 est en secret secondaire ce qui permet de protéger N2 de la différenciation avec le total Nord. Donc, on a bien ici une pose de secret qui respecte la hiérarchie de la variable `geo`.
+
+Regardons à présent le secret posé sans prendre en compte la hiérarchie sur la variable `geo` :
+
+```{r eval=FALSE}
+T0_masq_sans_hrc <- tab_rtauargus(
+  T0_detect,
+  dir_name = "fichiers_tauargus/sorties/ex_hrc_pays",
+  files_name = "T0",
+  explanatory_vars = "geo",
+  # hrc = c(geo = "fichiers_tauargus/hrc/pays.hrc"),
+  secret_var = "is_secret_freq",
+  value = "freq",
+  totcode = c(geo="Pays"),
+  verbose = FALSE
+)
+
+T0_masq_sans_hrc
+```
+
+Cette fois-ci le secret secondaire est posé en E3, pour minimiser les valeurs supprimées.
+Mais ce secret ne tient pas car on peut retrouver la valeur de N2 en faisant N2 = Nord - N1.
+
+# Protéger des tableaux liés
+## Analyse de la demande
+
+A partir des microdonnées présentées dans la partie "Tabuler les données", on souhaite publier les tableaux suivants.
+
+::: {.panel-tabset}
+
+### Tableau complet
+
+:::: {.panel}
+
+```{r}
+library(tibble)
+library(knitr)
+
+t <- tribble(
+  ~Tab, ~Var_reponse, ~expl_var1, ~expl_var2,
+  "T1", "ca_pizzas", "Nuts2", "TREFF",
+  "T2", "ca_pizzas", "Nuts3", "TREFF",
+  "T3", "ca_pizzas", "A10", "Nuts2",
+  "T4", "ca_pizzas", "A10", "Nuts3",
+  "T5", "ca_pizzas", "A21", "Nuts2",
+  "T6", "ca_pizzas", "A21", "Nuts3",
+  "T7", "ca_pizzas", "A88", "Nuts2",
+  "T8", "ca_pizzas", "A88", "Nuts3",
+  "T9", "ca_batavia", "A10", "TREFF",
+  "T10", "ca_batavia", "A10", "CJ",
+  "T11", "ca_batavia", "A21", "TREFF",
+  "T12", "ca_batavia", "A21", "CJ",
+  "T13", "ca_batavia", "A88", "TREFF",
+  "T14", "ca_batavia", "A88", "CJ",
+  "T15", "ca_mache", "A10", "TREFF",
+  "T16", "ca_mache", "A10", "CJ",
+  "T17", "ca_mache", "A21", "TREFF",
+  "T18", "ca_mache", "A21", "CJ",
+  "T19", "ca_mache", "A88", "TREFF",
+  "T20", "ca_mache", "A88", "CJ",
+  "T21", "ca_salades", "A10", "TREFF",
+  "T22", "ca_salades", "A10", "CJ",
+  "T23", "ca_salades", "A21", "TREFF",
+  "T24", "ca_salades", "A21", "CJ",
+  "T25", "ca_salades", "A88", "TREFF",
+  "T26", "ca_salades", "A88", "CJ"
+)
+
+kable(t)
+```
+
+::::
+
+:::
+
+
+
