@@ -111,7 +111,7 @@ micro <- tibble(
   salades = maches + batavias,
   tomates = ifelse(runif(n) < 0.08, 0, round(runif(n, 50000, 500000))),
   pizzas = ifelse(runif(n) < 0.2, 0, round(runif(n, 60000, 900000))),
-  poids = round(runif(n, 1, 30))
+  poids = round(runif(n, 1, 300))
 ) %>%
   left_join(correspondance_naf, by = "a88") %>%
   left_join(correspondance_nuts, by = "nuts3") %>% 
@@ -121,7 +121,7 @@ str(micro)
 ```
 
 
-## Première utilisation : tabuler un indicateur
+## Tabuler un indicateur
 
 On veut construire le chiffre d'affaires en salades des entreprises par activité (niveau a88) et par tranche d'effectifs (treff).
 
@@ -228,13 +228,13 @@ Poser un masque de secret sur un tableau comprend les étapes suivantes:
       - `is_secret_prim = is_secret_freq | is_secret_dom` si les deux règles doivent s'appliquer;
 2. Après avoir posé le secret primaire, vous calculerez le nombre de cellules détectées comme à risque.
 3. Ensuite, il s'agit de poser le secret secondaire en utilisant le package `rtauargus`. Les consignes d'installation de `rtauargus` et du logiciel Tau-Argus sont indiquées dans le fichier [INSERER LIEN]. Vous utiliserez notamment la fonction `tab_rtauargus()` et suivrez les étapes mentionnées pour apprendre à l'utiliser.
-4. Enfin, vous calculerez le nombre de cellules selon leur statut final. Nous utiliserons pour cela la norme européenne en notant:
+4. Enfin, vous calculerez le nombre de cellules selon leur statut final. Nous utiliserons pour cela la norme européenne en notant :
   - `A` les cellules en secret primaire à cause de la règle de fréquence
   - `B` les cellules en secret primaire à cause de la règle de dominance (dans le futur ces cellules pourraient être notées `O`)
   - `D` les cellules concernées par le secret secondaire
   - `V` les cellules non touchées par le secret, cad les cellules qui pourront être diffusées.
 
-La fonction `tab_rtauargus()` permet de poser le secret secondaire et requiert les arguments suivants :
+La fonction `tab_rtauargus()` permet de poser le secret secondaire et requiert les arguments suivants :  
   - `tabular` : la table à protéger
   - `dir_name` : le nom du répertoire où  les fichiers seront sauvegardés
   - `files_name` : le nom utilisé pour nommer les fichiers (chaque fichier a une extension différente);
@@ -473,10 +473,18 @@ Nous pouvons dès lors poser le masque de secret sur ce tableau. Pour cela, nous
 ### 1. Poser le secret primaire
 
 ```{r}
+str(T0)
+```
+
+Il s'agit d'un tableau d'effectifs/de fréquence, on pose donc seulement le secret primaire de fréquence.
+
+```{r}
 T0_detect <- T0 %>% 
   mutate(
       is_secret_freq = freq > 0 & freq < 3
     )
+
+table(T0_detect$is_secret_freq)
 ```
 
 ### 2. Lancer Tau-Argus pour poser le secret secondaire
@@ -533,17 +541,24 @@ Cette fois-ci le secret secondaire est posé en E3, pour minimiser les valeurs s
 Mais ce secret ne tient pas car on peut retrouver la valeur de N2 en faisant N2 = Nord - N1.
 
 # Protéger des tableaux liés
-## Analyse de la demande
+
+Lorsque l'on souhaite publier plusieurs tableaux il faut suivre une démarche permettant de les protéger de manière cohérente. En effet, il faut identifier les cellules communes entre les tableaux afin de préciser leur existence à `rtauargus` qui se chargera de la cohérence du secret.
+
+Voici la démarche à suivre :
+- détecter les cellules communes entre les tableaux à partir des métadonnées
+- tabuler les données et construire les hiérarchies nécessaires
+- poser le secret primaire
+- créer des listes de tableaux indépendantes (une liste = un cluster)
+- poser le secret secondaire avec `rtauargus::tab_multi_manager()`
+
+## Analyser la demande
 
 A partir des microdonnées présentées dans la partie "Tabuler les données", on souhaite publier les tableaux suivants.
 
-::: {.panel-tabset}
+```{r metadonnees}
+#| echo: false
+#| as-is: true
 
-### Tableau complet
-
-:::: {.panel}
-
-```{r}
 library(tibble)
 library(knitr)
 
@@ -578,11 +593,232 @@ t <- tribble(
 )
 
 kable(t)
+cat("Champ de la population : entreprises françaises.\nInformations complémentaires : il n'y a que deux types de salades les batavias et la mâche.")
 ```
 
-::::
+Pour n'oublier aucun lien entre les tableaux, on procède étape par étape.
 
-:::
+### Les tableaux sont-ils sur le même champ ?
+Oui les tableaux portent tous sur le même champ des entreprises françaises.
 
+### Les tableaux ont-ils les mêmes variables réponses ?
+- T1-T8 : variable réponse « ca_pizzas »
+- T9-T14 : variable réponse « ca_batavia »
+- T15-T20 : variable réponse « ca_mache »
+- T21-T26 : variable réponse « ca_salades »
+
+### Les variables réponses ont-elles un lien entre elles ?
+L’information complémentaire nous identique qu’il n’y a que deux types de salades, les batavias et la mâche. On comprend donc que la somme des chiffres d’affaires des batavias et des mâches est égale au chiffre d’affaires des salades : ca_salades = ca_batavia + ca_mache.
+On peut donc regrouper tous les tableaux qui ont les mêmes variables de croisement et l’un de ces trois indicateurs dans un même tableau. Dans ce tableau on crée une nouvelle variable de croisement qu’on peut nommer « crois_salades ». C’est le cas pour les tables de 9 à 26, on peut les regrouper comme suit : 
+- T9_T15_T21 : ca $\otimes$ {A10 x treff x crois_salades}  
+- T10_T16_T22 : ca $\otimes$ {A10 x cj x crois_salades}  
+- T11_T17_T23 : ca $\otimes$ {A21 x treff x crois_salades}  
+- T12_T18_T24 : ca $\otimes$ {A21 x cj x crois_salades}  
+- T13_T19_T25 : ca $\otimes$ {A88 x treff x crois_salades}  
+- T14_T20_T26 : ca $\otimes$ {A88 x cj x crois_salades}  
+
+On en déduit donc qu’il y a deux sous-demandes indépendantes / « clusters » :  
+- T1-T8 (cluster pizza)  
+- T9-T26 (cluster salades) 
+
+### Dans chacun des clusters variables de croisement identiques ?
+Dans chacun des clusters y a-t-il des variables de croisement identiques ? Y a-t-il des variables de croisements liés par un lien hiérarchique ?
+Cluster pizza :  
+- les variables « nuts2 » et « nuts3 » font partie de la même hiérarchie « nuts », autrement dit une hiérarchie sur la zone géographique  
+- les variables A10, A21 et A88 font partie de la hiérarchie « NAF »  
+
+On peut donc regrouper ces variables de croisement en deux variables de croisement « nuts » et « NAF ». On obtient donc 2 tableaux à protéger dans le cluster pizza :  
+- T_A : ca_pizzas $\otimes$ {nuts x treff}  
+- T_B : ca_pizzas $\otimes$ {naf x nuts}
+
+Ces deux tableaux sont liés par leur marge sur nuts. Il faut les traiter ensemble dans le même `tab_multi_manager()`.
+
+Cluster salades :
+- les variables A10, A21 et A88 font partie de la hiérarchie « NAF »
+
+Ainsi, on peut réecrire les 6 tableaux écrits plus haut de cette façon :  
+- T9_T15_T21 : ca $\otimes$ {naf x treff x crois_salades}  
+- T10_T16_T22 : ca $\otimes$ {naf x cj x crois_salades}  
+- T11_T17_T23 : ca $\otimes$ {naf x treff x crois_salades}  
+- T12_T18_T24 : ca $\otimes$ {naf x cj x crois_salades}  
+- T13_T19_T25 : ca $\otimes$ {naf x treff x crois_salades}  
+- T14_T20_T26 : ca $\otimes$ {naf x cj x crois_salades}  
+
+On voit bien que plusieurs de ces tableaux sont en fait exactement les mêmes, donc finalement les tableaux à traiter pour ce cluster sont : 
+- T_C : ca $\otimes$ {naf x treff x crois_salades}  
+- T_D: ca $\otimes$ {naf x cj x crois_salades}  
+
+## Tabuler les données
+
+On commence par tabuler les données pour l'indicateur "chiffre d'affaires vente pizzas".
+```{r}
+pizzas_tabule <- tabulate_micro_data(
+  micro,
+  cat_vars = c("treff"),
+  hrc_vars = list(naf = c("a10","a21","a88"), nuts = c("nuts2","nuts3")),
+  pond_var = "poids",
+  resp_var = c("pizzas"),
+  marge_label = "Total"
+)
+
+str(pizzas_tabule)
+```
+
+On tabule ensuite pour les indicateurs "chiffre d'affaires vente mâches, batavia et salades". N.B. il faut créer une nouvelle variable de croisement.
+```{r}
+salades_tabule <- tabulate_micro_data(
+  micro,
+  cat_vars = c("treff","cj"),
+  hrc_vars = list(naf = c("a10","a21","a88")),
+  pond_var = "poids",
+  resp_var = c("salades","batavias","maches"),
+  marge_label = "Total"
+)
+
+salades_tabule_3var <- salades_tabule %>% 
+  tidyr::pivot_longer(
+    cols = c(salades_tot, maches_tot, batavias_tot, 
+             salades_max, maches_max, batavias_max),
+    names_to = c("crois_salades", ".value"),
+    names_pattern = "(.*)_(tot|max)"
+  )
+
+str(salades_tabule_3var)
+```
+
+## Poser le secret primaire
+
+Secret primaire pour les pizzas.
+```{r}
+pizzas_tabule <- pizzas_tabule %>% mutate(
+  is_secret_freq = nb_obs > 0 & nb_obs < 3,
+  is_secret_dom = (pizzas_tot != 0) & (pizzas_max > 0.85*pizzas_tot),
+  is_secret_prim = is_secret_freq | is_secret_dom
+)
+
+table(pizzas_tabule$is_secret_prim)
+```
+
+Secret primaire pour les salades.
+```{r}
+salades_tabule_3var <- salades_tabule_3var %>% mutate(
+  is_secret_freq = nb_obs > 0 & nb_obs < 3,
+  is_secret_dom = (tot != 0) & (max > 0.85*tot),
+  is_secret_prim = is_secret_freq | is_secret_dom
+)
+
+table(pizzas_tabule$is_secret_prim)
+```
+
+## Création des listes de tableaux
+
+Pour le cluster des pizzas.
+```{r}
+tableaux_pizza <- list(
+  pizza_nuts_treff = pizzas_tabule %>% filter(naf == "Total") %>% select(-naf), # T1.T2
+  pizza_nuts_naf = pizzas_tabule %>% filter(treff == "Total") %>% select(-treff) # T3.T4.T5.T6.T7.T8
+)
+
+str(tableaux_pizza)
+```
+
+
+Pour le cluster des salades.
+```{r}
+tableaux_salades <- list(
+  salades_naf_treff = salades_tabule_3var %>% filter(cj == "Total") %>% select(-cj), # T9.T15.T21.T11.T17.T23.T13.T19.T25
+  salades_naf_cj = salades_tabule_3var %>% filter(treff == "Total") %>% select(-treff) # T10.T16.T22.T12.T18.T24.T14.T20.T26
+)
+
+str(tableaux_salades)
+```
+
+## Poser le secret secondaire
+
+On pose le secret puis on unifie les masques afin de les regrouper dans un seul dataframe.
+
+Pour le cluster pizzas.
+```{r}
+#| eval: false
+loc_tauargus <- "Y:/Logiciels/TauArgus/TauArgus4.2.3/TauArgus.exe"
+options(rtauargus.tauargus_exe = loc_tauargus)
+
+masques_pizza <- tab_multi_manager(
+  list_tables = tableaux_pizza,
+  list_explanatory_vars = list(
+    pizza_nuts_treff = c("nuts","treff"), # T1.T2
+    pizza_nuts_naf_princ = c("nuts","naf"), # T3.T4.T5.T6.T7.T8
+  ),
+  dir_name = "./Exos/tauargus_files/ex_analyse_demande/",
+  hrc = list(naf = hrc_naf_C14_To_C19, nuts = "./Exos/hrc/nuts.hrc"),
+  totcode = "Total",
+  value = "pizzas_tot",
+  freq = "nb_obs",
+  secret_var = "is_secret_prim"
+)
+
+# unification des masques
+masque_pizza <- masques_pizza %>% purrr::map_dfr(
+  function(tab){
+    tab %>% 
+      mutate(
+        treff = if ("treff" %in% names(tab)) treff else "Total",
+        cj = if ("cj" %in% names(tab)) cj else "Total",
+        naf = if ("naf" %in% names(tab)) naf else "Total"
+      ) %>% 
+      select("naf","treff","cj",everything()) %>%
+      rename_with(~"is_secret_final", last_col()) %>% 
+      mutate(
+        statut_final = case_when(
+          is_secret_freq ~ "A",
+          is_secret_dom ~ "B",
+          is_secret_final ~"D",
+          TRUE ~ "V"
+        )) %>% 
+      select(-matches("is_secret_"))
+  }
+) %>% unique()
+
+table(masque_pizza$statut_final)
+```
+
+Pour le cluster salades.
+```{r}
+#| eval: false
+masques_salades <- tab_multi_manager(
+  list_tables = tableaux_salades,
+  list_explanatory_vars = list(
+    salades_naf_treff = c("naf","treff", "crois_salades"),
+    salades_naf_cj = c("naf","cj", "crois_salades")
+  ),
+  dir_name = "./Exos/tauargus_files/ex_analyse_demande/",
+  hrc = list(naf = hrc_naf_C14_To_C19),
+  totcode = c(naf = "Total", treff = "Total", cj = "Total", crois_salades = "salades"),
+  value = "tot",
+  freq = "nb_obs",
+  secret_var = "is_secret_prim"
+)
+
+masque_salades <- masques_salades %>% purrr::map_dfr(
+  function(tab){
+    tab %>% 
+      mutate(
+        treff = if ("treff" %in% names(tab)) treff else "Total",
+        cj = if ("cj" %in% names(tab)) cj else "Total",
+        naf = if ("naf" %in% names(tab)) naf else "Total"
+      ) %>% 
+      select("naf","treff","cj",everything()) %>%
+      rename_with(~"is_secret_final", last_col()) %>% 
+      mutate(
+        statut_final = case_when(
+          is_secret_freq ~ "A",
+          is_secret_dom ~ "B",
+          is_secret_final ~"D",
+          TRUE ~ "V"
+        )) %>% 
+      select(-matches("is_secret_"))
+  }
+) %>% unique()
+```
 
 
