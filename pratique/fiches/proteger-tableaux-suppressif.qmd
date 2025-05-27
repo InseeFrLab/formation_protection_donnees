@@ -19,31 +19,38 @@ remotes::install_github(
 
 
 Import des packages.
-
 ```{r import_packages, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(rtauargus)
 ```
 
 Modifier le chemin ci-dessous :
-
 ```{r loc_tauargus, warning=FALSE, message=FALSE}
-loc_tauargus <- "C:/Users/tmm7an/Documents/SDC/TauArgus/TauArgus4.2.5/TauArgus.exe"
+# préciser le chemin de Tau-Argus avant d'utiliser tab_rtauargus() et 
+# tab_multi_manger() car ces fonctions appelent Tau-Argus
+loc_tauargus <- "chemin_vers/TauArgus.exe"
 options(rtauargus.tauargus_exe = loc_tauargus)
 ```
+
+
+```{r import_sorties_TA, echo=FALSE, message=FALSE, warning=FALSE}
+# import des sorties Tau-Argus faites tournées en local dans un environnement
+# windows afin de pouvoir utiliser Tau-Argus
+load("./fichiers_tauargus/sorties/sorties_TA.RData")
+```
+
 
 # Tabuler les données
 
 Pour faciliter le passage des microdonnées aux données tabulées une fonction est incluse dans `rtauargus` : `tabulate_micro_data()`.
 
-Les arguments de la fonction sont les suivants :
-
-- `df`: jeu de données individuelles (data.frame ou data.table)
-- `cat_vars`: variables de croisements (catégorielles) non hiérarchiques (vecteur)
-- `hrc_vars`: variables de croisements hiérarchiques sous la forme d'une liste nommée
-- `pond_var`: variable de pondération
-- `resp_var`: indicateur(s), variable(s) de réponse
-- `marge_label`: label utilisé pour les marges (sous-totaux)
+Les arguments de la fonction sont les suivants :  
+- `df`: jeu de données individuelles (data.frame ou data.table)  
+- `cat_vars`: variables de croisements (catégorielles) non hiérarchiques (vecteur)  
+- `hrc_vars`: variables de croisements hiérarchiques sous la forme d'une liste nommée  
+- `pond_var`: variable de pondération  
+- `resp_var`: indicateur(s), variable(s) de réponse  
+- `marge_label`: label utilisé pour les marges (sous-totaux)  
 
 ## Présentation des données individuelles
 
@@ -54,6 +61,8 @@ chaque entreprise on dispose également du chiffre d'affaires (CA) selon le type
 pizzas, batavias, légumes rouges, etc.).
 
 ```{r creation_micro}
+set.seed(123)
+
 a88 <- c("A01","A02","A03","B05","B06","B07","B08","B09","C10","C11","C12","C13",
          "C14","C15","C16","C17","C18","C19","C20","C21","C22","C23","C24","C25",
          "C26","C27","C28","C29","C30","C31","C32","C33","D35","E36","E37","E38",
@@ -62,6 +71,16 @@ a88 <- c("A01","A02","A03","B05","B06","B07","B08","B09","C10","C11","C12","C13"
          "M69","M70","M71","M72","M73","M74","M75","N77","N78","N79","N80","N81",
          "N82","O84","P85","Q86","Q87","Q88","R90","R91","R92","R93","S94","S95",
          "S96","T97","T98","U99")
+
+# Modalités rares
+modalites_rares <- c("C29", "J58", "Q88")
+
+# Probabilités : base égale pour toutes, sauf rares
+proba_a88 <- rep(1, length(a88))
+proba_a88[a88 %in% modalites_rares] <- 0.01  # très faible proba
+
+# Normalisation des proba
+proba_a88 <- proba_a88 / sum(proba_a88)
 
 correspondance_naf <- data.frame(a88) %>% 
   mutate(a21 = substr(a88,1,1),
@@ -102,17 +121,21 @@ set.seed(123)
 n <- 10000  # nombre d’observations souhaité
 
 micro <- tibble(
-  a88 = sample(a88, n, replace = TRUE),
+  a88 = sample(a88, n, replace = TRUE, prob = proba_a88),
   nuts3 = sample(nuts3, n, replace = TRUE),
-  treff = sample(c("tr1", "tr2", "tr3"), n, replace = TRUE),
-  cj = sample(c("LL", "PA", "SP"), n, replace = TRUE),
+  treff = sample(c("tr1", "tr2", "tr3"), n, replace = TRUE, prob = c(0.45, 0.05, 0.5)),
+  cj = sample(c("LL", "PA", "SP"), n, replace = TRUE, prob = c(0.45, 0.45, 0.1)),
   maches = ifelse(runif(n) < 0.1, 0, round(runif(n, 30000, 75000))),
   batavias = ifelse(runif(n) < 0.1, 0, round(runif(n, 25000, 70000))),
   salades = maches + batavias,
   tomates = ifelse(runif(n) < 0.08, 0, round(runif(n, 50000, 500000))),
-  pizzas = ifelse(runif(n) < 0.2, 0, round(runif(n, 60000, 900000))),
-  poids = round(runif(n, 1, 300))
-) %>%
+  pizzas = ifelse(runif(n) < 0.2, 0, round(runif(n, 60000, 900000)))) %>% 
+  mutate(
+    # Détecter les lignes "rares"
+    rare = a88 %in% modalites_rares | (a88 == "J58" & treff == "tr1"),
+    # Attribution des poids en fonction de la rareté
+    poids = ifelse(rare, round(runif(n(), 1, 3)), round(runif(n(), 10, 300)))
+  ) %>%
   left_join(correspondance_naf, by = "a88") %>%
   left_join(correspondance_nuts, by = "nuts3") %>% 
   select(a10,a21,a88,nuts1,nuts2,nuts3,treff,cj,maches,batavias,salades,tomates,pizzas,poids)
@@ -131,7 +154,7 @@ salades <- tabulate_micro_data(
   cat_var = c("a88", "treff"),
   pond_var = "poids",
   resp_var = "salades",
-  marge_label = "Ensemble"
+  marge_label = "Total"
 )
 ```
 
@@ -161,15 +184,15 @@ Ces deux tableaux ont les mêmes variables de croisement et deux indicateurs
 différents. Ils peuvent être construits en même temps.
 
 ```{r tabuler_2resp}
-res_all_dtp <- tabulate_micro_data(
+pizzas_tomates <- tabulate_micro_data(
   df = micro,
   cat_vars = c("a10", "treff","cj"),
   pond_var = "poids",
   resp_var = c("pizzas","tomates"),
-  marge_label = "Total"
+  marge_label = "Ensemble"
 )
 
-str(res_all_dtp)
+str(pizzas_tomates)
 ```
 
 # Poser le secret primaire
@@ -202,7 +225,8 @@ cellule.
 salades_detect <- salades %>%
     mutate(
       is_secret_freq = nb_obs > 0 & nb_obs < 3,
-      is_secret_dom = (salades_tot != 0) & (salades_max > 0.85*salades_tot)
+      is_secret_dom = (salades_tot != 0) & (salades_max > 0.85*salades_tot),
+      is_secret_prim = is_secret_freq | is_secret_dom
     )
 
 salades_detect %>% count(is_secret_freq, is_secret_dom)
@@ -258,6 +282,7 @@ salades_masq <- tab_rtauargus(
 )
 ```
 
+
 ## Analyser les résultats
 
 ### Les fichiers créés lors de l'exécution de Tau-Argus
@@ -282,8 +307,8 @@ le statut final de la cellule:
 - `D` : secret secondaire
 - `V` : cellule valide, cad qui peut être diffusée
 
-```{r eval=FALSE}
-str(T0_masq)
+```{r}
+str(salades_masq)
 ```
 
 ### Bilan du secret
@@ -292,8 +317,8 @@ Pour faire le bilan du secret le mieux est de modifier la variable `Status`
 fournie par Tau-Argus. En effet, cette variable ne permet pas de faire la 
 distinction entre l'origine du secret primaire (fréquence ou dominance).
 
-```{r eval=FALSE}
-T0_masq <- T0_masq %>% 
+```{r}
+salades_masq_statut_final <- salades_masq %>% 
   mutate(
     statut_final = case_when(
       is_secret_freq ~ "A",
@@ -307,12 +332,12 @@ T0_masq <- T0_masq %>%
 Afin de bien appréhender l'impact du secret posé, on va non seulement compter
 le nombre de cellules masquées, mais aussi calculer la valeur des cellules masquées.
 
-```{r eval=FALSE}
-T0_masq %>% 
+```{r}
+salades_masq_statut_final %>% 
   group_by(statut_final) %>% 
   summarise(
     n_cell = n(),
-    val_cell = sum(VALUE)
+    val_cell = sum(salades_tot)
   ) %>%
   mutate(
     pc_n_cell = n_cell/sum(n_cell)*100,
@@ -320,7 +345,7 @@ T0_masq %>%
   )
 ```
 
-On masque 1/3 des cellules mais seulement 12% de l'information totale.
+On masque 1.5% des cellules mais moins de 0.01% de l'information totale.
 
 # Protéger un tableau hiérarchique
 
@@ -507,13 +532,11 @@ T0_masq <- tab_rtauargus(
   totcode = c(geo="Pays"),
   verbose = FALSE
 )
-
-T0_masq %>% count(Status)
 ```
 
 Vérifions que le secret a été posé correctement : 
 
-```{r eval=FALSE}
+```{r}
 T0_masq
 ```
 
@@ -533,12 +556,15 @@ T0_masq_sans_hrc <- tab_rtauargus(
   totcode = c(geo="Pays"),
   verbose = FALSE
 )
-
-T0_masq_sans_hrc
 ```
 
 Cette fois-ci le secret secondaire est posé en E3, pour minimiser les valeurs supprimées.
 Mais ce secret ne tient pas car on peut retrouver la valeur de N2 en faisant N2 = Nord - N1.
+
+```{r}
+T0_masq_sans_hrc
+```
+
 
 # Protéger des tableaux liés
 
@@ -733,6 +759,22 @@ tableaux_salades <- list(
 str(tableaux_salades)
 ```
 
+## Créer les hiérarchies
+
+Comme vu dans la partie "Protéger un tableau hiérarchique" [INSERER LIEN], on crée les hiérarchies à l'aide de `rtauargus::write_hrc2()`.
+
+```{r}
+# en deux temps
+corres_naf <- micro %>% select(a10,a21,a88) %>% unique() %>% arrange(a10,a21,a88)
+chemin_hrc_naf <- write_hrc2(corres_naf, file_name = "fichiers_tauargus/hrc/naf.hrc")
+
+# d'un seul coup
+chemin_hrc_nuts <- write_hrc2(micro %>% select(nuts2,nuts3) %>% unique() %>% arrange(nuts2),
+                              "fichiers_tauargus/hrc/nuts.hrc")
+```
+
+N.B. la bonne pratique est de partir d'une table de passage définie à priori. Ici, il est plus simple de partir des microdonnées et on a confiance dans les strcutures des hiérarchies qui en sortiront.
+
 ## Poser le secret secondaire
 
 On pose le secret puis on unifie les masques afin de les regrouper dans un seul dataframe.
@@ -740,23 +782,22 @@ On pose le secret puis on unifie les masques afin de les regrouper dans un seul 
 Pour le cluster pizzas.
 ```{r}
 #| eval: false
-loc_tauargus <- "Y:/Logiciels/TauArgus/TauArgus4.2.3/TauArgus.exe"
-options(rtauargus.tauargus_exe = loc_tauargus)
-
 masques_pizza <- tab_multi_manager(
   list_tables = tableaux_pizza,
   list_explanatory_vars = list(
     pizza_nuts_treff = c("nuts","treff"), # T1.T2
-    pizza_nuts_naf_princ = c("nuts","naf"), # T3.T4.T5.T6.T7.T8
+    pizza_nuts_naf = c("nuts","naf") # T3.T4.T5.T6.T7.T8
   ),
   dir_name = "./Exos/tauargus_files/ex_analyse_demande/",
-  hrc = list(naf = hrc_naf_C14_To_C19, nuts = "./Exos/hrc/nuts.hrc"),
+  hrc = list(naf = chemin_hrc_naf, nuts = chemin_hrc_nuts),
   totcode = "Total",
   value = "pizzas_tot",
   freq = "nb_obs",
   secret_var = "is_secret_prim"
 )
+```
 
+```{r}
 # unification des masques
 masque_pizza <- masques_pizza %>% purrr::map_dfr(
   function(tab){
@@ -779,8 +820,18 @@ masque_pizza <- masques_pizza %>% purrr::map_dfr(
   }
 ) %>% unique()
 
-table(masque_pizza$statut_final)
+masque_pizza %>% 
+  group_by(statut_final) %>% 
+  summarise(
+    n_cell = n(),
+    val_cell = sum(pizzas_tot)
+  ) %>%
+  mutate(
+    pc_n_cell = n_cell/sum(n_cell)*100,
+    pc_val_cell = val_cell/sum(val_cell)*100
+  )
 ```
+
 
 Pour le cluster salades.
 ```{r}
@@ -792,13 +843,15 @@ masques_salades <- tab_multi_manager(
     salades_naf_cj = c("naf","cj", "crois_salades")
   ),
   dir_name = "./Exos/tauargus_files/ex_analyse_demande/",
-  hrc = list(naf = hrc_naf_C14_To_C19),
+  hrc = list(naf = chemin_hrc_naf),
   totcode = c(naf = "Total", treff = "Total", cj = "Total", crois_salades = "salades"),
   value = "tot",
   freq = "nb_obs",
   secret_var = "is_secret_prim"
 )
+```
 
+```{r}
 masque_salades <- masques_salades %>% purrr::map_dfr(
   function(tab){
     tab %>% 
@@ -819,6 +872,16 @@ masque_salades <- masques_salades %>% purrr::map_dfr(
       select(-matches("is_secret_"))
   }
 ) %>% unique()
-```
 
+masque_salades %>% 
+  group_by(statut_final) %>% 
+  summarise(
+    n_cell = n(),
+    val_cell = sum(tot)
+  ) %>%
+  mutate(
+    pc_n_cell = n_cell/sum(n_cell)*100,
+    pc_val_cell = val_cell/sum(val_cell)*100
+  )
+```
 
