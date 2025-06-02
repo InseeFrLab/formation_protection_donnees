@@ -2,14 +2,886 @@
 title: Protéger des tableaux avec une méthode suppressive
 ---
 
-```{r}
-#| label: fig-airquality
-#| fig-cap: "Temperature and ozone level."
-#| warning: false
+Cette fiche pratique présente une façon de protéger des tableaux en utilisant une méthode suppressive grâce au package `rtauargus` qui appelle Tau-Argus depuis R. Les données utilisées peuvent être générées à partir du document [INSERER LIEN]. Le code peut être entièrement caché ou visible grâce au bouton à droite du titre. Vous pouvez aussi le faire apparaître ou disparaître au fur et à mesure de la lecture en appuyant sur les boutons Code.
 
-library(ggplot2)
+# Initialisation
 
-ggplot(airquality, aes(Temp, Ozone)) + 
-  geom_point() + 
-  geom_smooth(method = "loess")
+Installation du package rtauargus.
+```{r installation_rtauargus, warning=FALSE, message=FALSE}
+remotes::install_github(
+  'InseeFrLab/rtauargus',
+  dependencies = TRUE,
+  build_vignettes = FALSE,
+  upgrade = 'never',
+  ref = "v-1.2.999-dev"
+)
 ```
+
+
+Import des packages.
+```{r import_packages, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(rtauargus)
+```
+
+Modifier le chemin ci-dessous :
+```{r loc_tauargus, warning=FALSE, message=FALSE}
+# préciser le chemin de Tau-Argus avant d'utiliser tab_rtauargus() et 
+# tab_multi_manger() car ces fonctions appelent Tau-Argus
+loc_tauargus <- "chemin_vers/TauArgus.exe"
+options(rtauargus.tauargus_exe = loc_tauargus)
+```
+
+
+```{r import_sorties_TA, echo=FALSE, message=FALSE, warning=FALSE}
+# import des sorties Tau-Argus faites tournées en local dans un environnement
+# windows afin de pouvoir utiliser Tau-Argus
+load("./fichiers_tauargus/sorties/sorties_TA.RData")
+```
+
+
+# Tabuler les données
+
+Pour faciliter le passage des microdonnées aux données tabulées une fonction est incluse dans `rtauargus` : `tabulate_micro_data()`.
+
+Les arguments de la fonction sont les suivants :  
+- `df`: jeu de données individuelles (data.frame ou data.table)  
+- `cat_vars`: variables de croisements (catégorielles) non hiérarchiques (vecteur)  
+- `hrc_vars`: variables de croisements hiérarchiques sous la forme d'une liste nommée  
+- `pond_var`: variable de pondération  
+- `resp_var`: indicateur(s), variable(s) de réponse  
+- `marge_label`: label utilisé pour les marges (sous-totaux)  
+
+## Présentation des données individuelles
+
+Nous créons un jeu de données entreprises (1 ligne = 1 entreprise) pour lesquelles 
+on dispose d'informations telles que l'activité, la catégorie juridique, 
+la géographie d'implantation (variables NUTS) et la tranche d'effectifs. Pour 
+chaque entreprise on dispose également du chiffre d'affaires (CA) selon le type de produits (salades, 
+pizzas, batavias, légumes rouges, etc.).
+
+```{r creation_micro}
+set.seed(123)
+
+a88 <- c("A01","A02","A03","B05","B06","B07","B08","B09","C10","C11","C12","C13",
+         "C14","C15","C16","C17","C18","C19","C20","C21","C22","C23","C24","C25",
+         "C26","C27","C28","C29","C30","C31","C32","C33","D35","E36","E37","E38",
+         "E39","F41","F42","F43","G45","G46","G47","H49","H50","H51","H52","H53",
+         "I55","I56","J58","J59","J60","J61","J62","J63","K64","K65","K66","L68",
+         "M69","M70","M71","M72","M73","M74","M75","N77","N78","N79","N80","N81",
+         "N82","O84","P85","Q86","Q87","Q88","R90","R91","R92","R93","S94","S95",
+         "S96","T97","T98","U99")
+
+# Modalités rares
+modalites_rares <- c("C29", "J58", "Q88")
+
+# Probabilités : base égale pour toutes, sauf rares
+proba_a88 <- rep(1, length(a88))
+proba_a88[a88 %in% modalites_rares] <- 0.01  # très faible proba
+
+# Normalisation des proba
+proba_a88 <- proba_a88 / sum(proba_a88)
+
+correspondance_naf <- data.frame(a88) %>% 
+  mutate(a21 = substr(a88,1,1),
+         a10 = case_when(
+           a21 == "A" ~ "AZ",
+           a21 %in% c("B","C","D","E") ~ "BE",
+           a21 == "F" ~ "FZ",
+           a21 %in% c("G","H","I") ~ "GI",
+           a21 == "J" ~ "JZ",
+           a21 == "K" ~ "KZ",
+           a21 == "L" ~ "LZ",
+           a21 %in% c("M","N") ~ "MN",
+           a21 %in% c("O","P","Q") ~ "OQ",
+           a21 %in% c("R","S","T","U") ~ "RU"
+         )) %>% 
+  select(a10,a21,a88)
+
+nuts3 <- c("FR101","FR102","FR103","FR104","FR105","FR106","FR107","FR108","FRB01",
+           "FRB02","FRB03","FRB04","FRB05","FRB06","FRC11","FRC12","FRC13","FRC14",
+           "FRC21","FRC22","FRC23","FRC24","FRD11","FRD12","FRD13","FRD21","FRD22",
+           "FRE11","FRE12","FRE21","FRE22","FRE23","FRF11","FRF12","FRF21","FRF22",
+           "FRF23","FRF24","FRF31","FRF32","FRF33","FRF34","FRG01","FRG02","FRG03",
+           "FRG04","FRG05","FRH01","FRH02","FRH03","FRH04","FRI11","FRI12","FRI13",
+           "FRI14","FRI15","FRI21","FRI22","FRI23","FRI31","FRI32","FRI33","FRI34",
+           "FRJ11","FRJ12","FRJ13","FRJ14","FRJ15","FRJ21","FRJ22","FRJ23","FRJ24",
+           "FRJ25","FRJ26","FRJ27","FRJ28","FRK11","FRK12","FRK13","FRK14","FRK21",
+           "FRK22","FRK23","FRK24","FRK25","FRK26","FRK27","FRK28","FRL01","FRL02",
+           "FRL03","FRL04","FRL05","FRL06","FRM01","FRM02","FRY10","FRY20","FRY30",
+           "FRY40","FRY50")
+
+correspondance_nuts <- data.frame(nuts3) %>% 
+  mutate(nuts1 = substr(nuts3,1,3),
+         nuts2 = substr(nuts3,1,4)) %>% 
+  select(nuts1,nuts2,nuts3)
+
+set.seed(123)
+
+n <- 10000  # nombre d’observations souhaité
+
+micro <- tibble(
+  a88 = sample(a88, n, replace = TRUE, prob = proba_a88),
+  nuts3 = sample(nuts3, n, replace = TRUE),
+  treff = sample(c("tr1", "tr2", "tr3"), n, replace = TRUE, prob = c(0.45, 0.05, 0.5)),
+  cj = sample(c("LL", "PA", "SP"), n, replace = TRUE, prob = c(0.45, 0.45, 0.1)),
+  maches = ifelse(runif(n) < 0.1, 0, round(runif(n, 30000, 75000))),
+  batavias = ifelse(runif(n) < 0.1, 0, round(runif(n, 25000, 70000))),
+  salades = maches + batavias,
+  tomates = ifelse(runif(n) < 0.08, 0, round(runif(n, 50000, 500000))),
+  pizzas = ifelse(runif(n) < 0.2, 0, round(runif(n, 60000, 900000)))) %>% 
+  mutate(
+    # Détecter les lignes "rares"
+    rare = a88 %in% modalites_rares | (a88 == "J58" & treff == "tr1"),
+    # Attribution des poids en fonction de la rareté
+    poids = ifelse(rare, round(runif(n(), 1, 3)), round(runif(n(), 10, 300)))
+  ) %>%
+  left_join(correspondance_naf, by = "a88") %>%
+  left_join(correspondance_nuts, by = "nuts3") %>% 
+  select(a10,a21,a88,nuts1,nuts2,nuts3,treff,cj,maches,batavias,salades,tomates,pizzas,poids)
+
+str(micro)
+```
+
+
+## Tabuler un indicateur
+
+On veut construire le chiffre d'affaires en salades des entreprises par activité (niveau a88) et par tranche d'effectifs (treff).
+
+```{r tabuler_1resp}
+salades <- tabulate_micro_data(
+  df = micro,
+  cat_var = c("a88", "treff"),
+  pond_var = "poids",
+  resp_var = "salades",
+  marge_label = "Total"
+)
+```
+
+Le résultat est un tableau long avec :
+
+* Les variables de croisement (a88 et treff)
+* Différents indicateurs :
+    + `nb_obs`: comptage du nombre d'entreprises (pour appliquer la règle de fréquence)
+    + `salades_tot`: indicateur / variable de réponse (ici total du chiffre d'affaire de salades)
+    + `salades_max`: contribution maximale au chiffre d'affaires (pour appliquer la règle de dominance)
+Toutes les marges (totaux et sous-totaux) ont été ajoutées à la table.
+
+```{r}
+str(salades)
+```
+
+## Calculer plusieurs indicateurs en même temps
+
+On veut construire deux tableaux :  
+
+* le chiffre d'affaires de la production de pizzas des entreprises par activité (niveau A10), 
+par tranche d'effectifs (treff) et catégorie juridique (cj);
+* le chiffre d'affaires de la production de tomates des entreprises par activité (niveau A10), 
+par tranche d'effectifs (treff) et catégorie juridique (cj).
+
+Ces deux tableaux ont les mêmes variables de croisement et deux indicateurs 
+différents. Ils peuvent être construits en même temps.
+
+```{r tabuler_2resp}
+pizzas_tomates <- tabulate_micro_data(
+  df = micro,
+  cat_vars = c("a10", "treff","cj"),
+  pond_var = "poids",
+  resp_var = c("pizzas","tomates"),
+  marge_label = "Ensemble"
+)
+
+str(pizzas_tomates)
+```
+
+# Poser le secret primaire
+
+**Objectif** : détecter les cellules ne respectant pas les règles de confidentialité
+dans les tableaux proposés.
+
+**Consignes** : vous utiliserez les règles en vigueur à l'Insee pour la diffusion des
+tableaux issus des enquêtes entreprises.
+
+1.  Pour chacun des tableaux, vous ajouterez une variable booléenne
+    indiquant si la cellule est problématique (`TRUE`) ou non (`FALSE`),
+    au regard de chacune des règles pertinentes à appliquer:
+    
+-   Si vous appliquez la règle de fréquence, la variable créée
+    s'appellera `is_secret_freq`;
+-   Si vous appliquez la règle de dominance, la variable créée
+    s'appellera `is_secret_dom`.
+
+2.  Après avoir posé le secret, vous calculerez le nombre de cellules
+    détectées comme à risque.
+
+Le tableau `salades` est un tableau de volumes (CA), les règles de fréquence
+et de dominance s'appliquent. D'après la jurisprudence Insee sur la
+diffusion des données entreprises, le seuil de fréquence est fixé à 3 et
+le plus gros contributeur ne doit pas contribuer à plus de 85% de la
+cellule.
+
+```{r detect-salades}
+salades_detect <- salades %>%
+    mutate(
+      is_secret_freq = nb_obs > 0 & nb_obs < 3,
+      is_secret_dom = (salades_tot != 0) & (salades_max > 0.85*salades_tot),
+      is_secret_prim = is_secret_freq | is_secret_dom
+    )
+
+salades_detect %>% count(is_secret_freq, is_secret_dom)
+```
+
+# Protéger un tableau simple
+
+**Objectif** : protéger un tableau simple en appelant Tau-Argus depuis R pour poser le secret secondaire.
+
+**Consignes** : vous utiliserez les règles en vigueur à l'Insee pour la diffusion des
+tableaux issus des enquêtes entreprises.
+
+## Poser le secret secondaire
+
+Poser un masque de secret sur un tableau comprend les étapes suivantes:
+
+1. Tout d'abord on pose le secret primaire. Pour cela, il faut créer créer des variables indicatrices :
+   1. Pour chacun des tableaux, vous ajouterez une variable booléenne indiquant si la cellule est problématique (`TRUE`) ou non (`FALSE`), au regard de chacune des règles pertinentes à appliquer :
+      - Si vous appliquez la règle de fréquence, la variable créée s'appellera `is_secret_freq`;
+      - Si vous appliquez la règle de dominance, la variable créée s'appellera `is_secret_dom`.
+   2. Puis de créer une variable qu'on appellera `is_secret_prim`, définie ainsi :
+      - `is_secret_prim = is_secret_freq` si seule la règle de fréquence doit s'appliquer;
+      - `is_secret_prim = is_secret_freq | is_secret_dom` si les deux règles doivent s'appliquer;
+2. Après avoir posé le secret primaire, vous calculerez le nombre de cellules détectées comme à risque.
+3. Ensuite, il s'agit de poser le secret secondaire en utilisant le package `rtauargus`. Les consignes d'installation de `rtauargus` et du logiciel Tau-Argus sont indiquées dans le fichier [INSERER LIEN]. Vous utiliserez notamment la fonction `tab_rtauargus()` et suivrez les étapes mentionnées pour apprendre à l'utiliser.
+4. Enfin, vous calculerez le nombre de cellules selon leur statut final. Nous utiliserons pour cela la norme européenne en notant :
+  - `A` les cellules en secret primaire à cause de la règle de fréquence
+  - `B` les cellules en secret primaire à cause de la règle de dominance (dans le futur ces cellules pourraient être notées `O`)
+  - `D` les cellules concernées par le secret secondaire
+  - `V` les cellules non touchées par le secret, cad les cellules qui pourront être diffusées.
+
+La fonction `tab_rtauargus()` permet de poser le secret secondaire et requiert les arguments suivants :  
+  - `tabular` : la table à protéger
+  - `dir_name` : le nom du répertoire où  les fichiers seront sauvegardés
+  - `files_name` : le nom utilisé pour nommer les fichiers (chaque fichier a une extension différente);
+  - `explanatory_vars` : le nom des variables de croisements présents dans la table;
+  - `secret_var` : le nom de la variable indiquant si une cellule est à risque ou non (secret primaire);
+  - `value` : nom de la variable de réponse;
+  - `freq` : nom de la variable d'effectifs;
+  - `totcode` : le code utilisé pour indiquer le total pour chacune des variables de croisements (`explanatory_vars`).
+
+```{r eval=FALSE}
+salades_masq <- tab_rtauargus(
+  salades_detect,
+  dir_name = "tauargus_files/exo2",
+  files_name = "T0",
+  explanatory_vars = c("a88","treff"),
+  secret_var = "is_secret_prim",
+  value = "salades_tot",
+  freq = "nb_obs",
+  totcode = c(a88="Total",treff="Total"),
+  verbose = FALSE
+)
+```
+
+
+## Analyser les résultats
+
+### Les fichiers créés lors de l'exécution de Tau-Argus
+
+L'ensemble des fichiers créés pendant le processus se trouvent dans le répertoire
+mentionné dans l'argument `dir_name`. Tous les fichiers ont le même nom,
+mais pas la même extension:
+
+- `T0.tab` : tableau de données
+- `T0.hst` : fichier d'apriori où sont listées les cellules à risque (secret primaire)
+- `T0.rda` : fichier de métadonnées;
+- `T0.arb` : fichier batch, qui sera exécuté par Tau-Argus
+- `T0.txt` : fichier log, retraçant les étapes exécutées par Tau-Argus
+- `T0.csv` : masque au format csv
+
+### Le masque
+
+Le masque est retourné par la fonction. Ce masque est une copie de la table fournie en entrée à laquelle une variable supplémentaire, `Status`, est fournie indiquant 
+le statut final de la cellule: 
+
+- `B` : secret primaire (ou apriori)
+- `D` : secret secondaire
+- `V` : cellule valide, cad qui peut être diffusée
+
+```{r}
+str(salades_masq)
+```
+
+### Bilan du secret
+
+Pour faire le bilan du secret le mieux est de modifier la variable `Status` 
+fournie par Tau-Argus. En effet, cette variable ne permet pas de faire la 
+distinction entre l'origine du secret primaire (fréquence ou dominance).
+
+```{r}
+salades_masq_statut_final <- salades_masq %>% 
+  mutate(
+    statut_final = case_when(
+      is_secret_freq ~ "A",
+      is_secret_dom ~ "B",
+      TRUE ~ Status,
+    )
+  )
+```
+
+
+Afin de bien appréhender l'impact du secret posé, on va non seulement compter
+le nombre de cellules masquées, mais aussi calculer la valeur des cellules masquées.
+
+```{r}
+salades_masq_statut_final %>% 
+  group_by(statut_final) %>% 
+  summarise(
+    n_cell = n(),
+    val_cell = sum(salades_tot)
+  ) %>%
+  mutate(
+    pc_n_cell = n_cell/sum(n_cell)*100,
+    pc_val_cell = val_cell/sum(val_cell)*100
+  )
+```
+
+On masque 1.5% des cellules mais moins de 0.01% de l'information totale.
+
+# Protéger un tableau hiérarchique
+
+**Objectifs** : comprendre la notion de variables hiérarchiques et savoir manipuler les objets et 
+fichiers argus qui y sont associés. Pour ensuite, protéger un tableau contenant une ou plusieurs variables hiérarchiques
+en appelant Tau-Argus depuis R pour poser le secret secondaire.
+
+Reprenons l'exemple présenté dans le diaporama:
+
+```{r}
+T0 <- data.frame(
+  geo = c("Pays","Nord","Ouest","Est","Sud",paste0("N",1:3),paste0("O",1:4),paste0("E",1:3), paste0("S",1:2)),
+  freq = c(400, 46, 191, 80, 83, 21, 2, 23, 32, 54, 67, 38, 27, 41, 12, 44, 39)
+)
+str(T0)
+```
+
+La variable `geo` est une variable hiérarchique puisqu'il existe des emboîtements 
+entre les différents niveaux :  
+
+- Pays = Nord + Ouest + Est + Sud
+- Nord = N1 + N2 + N3
+- Ouest = O1 + O2 + O3 + O4
+- Est = E1 + E2 + E3
+- Sud = S1 + S2
+
+
+Avant de penser à protéger un tel tableau, il faut pouvoir représenter correctement 
+cette hiérarchie, c'est-à-dire de telle sorte que tau-argus sache comprendre les différents
+emboîtements présents.
+
+## Construction du fichier hiérarchique pour Tau-Argus
+### "A la main"
+La première option consiste à créer le fichier nécessaire (extension .hrc) à la main.
+Ceci est tout à fait pertinent si la hiérarchie n'est pas trop étendue.
+
+Tau-Argus attend en effet un type de fichier bien particulier, dont l'extension 
+est `.hrc`. Il s'agit d'un simple fichier texte où les différents emboîtements 
+sont écrits les uns en-dessous des autres. Un symbole (le `@`) est utilisé pour 
+préciser le niveau de chacun des emboîtements au sein de la hiérarchie.
+
+Par exemple, un fichier contenant les lignes suivantes :
+
+ALL  
+@A  
+@@A1  
+@@A2  
+@B  
+@@B1  
+@@B2  
+@@@B21  
+@@@B22  
+@C  
+
+
+décrit une hiérarchie contenant les emboîtements suivants:  
+
+- ALL = A + B + C => ALL est le total et A, B et C sont les emboîtements de niveau 1;
+- A = A1 + A2 => A1 et A2 sont des sous-niveaux de A, donc des emboîtements de niveau 2;
+- B = B1 + B2
+- B2 = B21 + B22
+
+Néanmoins, pour utiliser cette hiérarchie avec Tau-Argus, **le super-total (ici "ALL")
+ne doit pas apparaître dans le fichier .hrc** qui lui est fourni.
+
+Le bon fichier est donc le suivant :
+
+@A  
+@@A1  
+@@A2  
+@B  
+@@B1  
+@@B2  
+@@@B21  
+@@@B22  
+@C  
+
+
+### Automatiquement
+
+Quand la hiérarchie est très étendue, l'écriture manuelle du fichier de hiérarchie 
+est pénible. Or, quand ce genre de cas se présente, il existe souvent une table 
+de correspondance permettant d'associer les différents niveaux entre eux.
+
+Nous appelons table de correspondance une table qui précise l'ensemble des niveaux 
+associés aux emboîtements les plus fins.
+
+La table de correspondance représentant la hiérarchie suivante :
+
+ALL  
+@A  
+@@A1  
+@@A2  
+@B  
+@@B1  
+@@B2  
+@@@B21  
+@@@B22  
+@C  
+
+est la suivante:
+
+
+```{r}
+corr_tab <- tibble(
+  niv0 = "ALL",
+  niv1 = c(rep("A",2),rep("B",3), "C"),
+  niv2 = c("A1","A2","B1",rep("B2",2), "C"),
+  niv3 = c("A1","A2","B1", "B21", "B22", "C")
+)
+corr_tab
+```
+
+Remarque: La fonction `rtauargus::write_hrc2()` qui permet de construire le fichier `.hrc` 
+à partir d'une table de correspondance n'accepte pas de valeurs manquantes dans 
+la table en entrée. C'est pourquoi, à la dernière ligne, par exemple, `C` 
+n'admettant pas de subdivisions est répété sur les niveaux inférieurs.
+
+Avec la fonction `write_hrc2()` du package `rtauargus`, on peut exporter la 
+table de correspondance en un fichier `hrc`.
+Comme noté précédemment, Tau-Argus n'acceptant pas que le super-total d'une variable 
+hiérarchique soit présent dans le fichier `.hrc` on le supprime:
+
+```{r}
+write_hrc2(corr_tab %>% select(-niv0), file_name = "fichiers_tauargus/hrc/exemple_TA.hrc")
+read.table("fichiers_tauargus/hrc/exemple_TA.hrc")
+```
+
+
+## Protection
+A présent nous protégeons le tableau T0 pour lequel on vient de construire la hiérarchie.
+
+La variable `geo` est hiérarchique (Pays = Nord + Ouest + Est + Sud, par exemple), on construit le fichier adéquat.
+
+Table de passage (habituellement elle existe déjà mais pour l'exercice nous la créons) et appel à `rtauargus::write_hrc2()`.
+
+```{r}
+corr_pays <- tibble(
+  niv1 = c(rep("Nord", 3), rep("Ouest", 4), rep("Est", 3), rep("Sud", 2)),
+  niv2 = c("N1", "N2", "N3", "O1", "O2", "O3", "O4", "E1", "E2", "E3", "S1", "S2")
+)
+
+write_hrc2(corr_pays, file_name = "fichiers_tauargus/hrc/pays.hrc")
+read.table("fichiers_tauargus/hrc/pays.hrc")
+```
+
+
+Nous pouvons dès lors poser le masque de secret sur ce tableau. Pour cela, nous faisons toujours appel à la fonction `tab_rtauargus`.
+
+### 1. Poser le secret primaire
+
+```{r}
+str(T0)
+```
+
+Il s'agit d'un tableau d'effectifs/de fréquence, on pose donc seulement le secret primaire de fréquence.
+
+```{r}
+T0_detect <- T0 %>% 
+  mutate(
+      is_secret_freq = freq > 0 & freq < 3
+    )
+
+table(T0_detect$is_secret_freq)
+```
+
+### 2. Lancer Tau-Argus pour poser le secret secondaire
+
+Pour que l'information hiérarchique soit bien prise en compte lors de la pose du
+secret secondaire par Tau-Argus, il suffit de renseigner l'argument `hrc = ` 
+sous la forme d'un vecteur nommé `c(var1 = fichier1, var2 = fichier2,...)`:
+le nom de chaque élément étant le nom de la variable concernée et la valeur étant 
+la localisation du fichier `.hrc` correspondant.
+
+```{r eval=FALSE}
+T0_masq <- tab_rtauargus(
+  T0_detect,
+  dir_name = "fichiers_tauargus/sorties/ex_hrc_pays",
+  files_name = "T0",
+  explanatory_vars = "geo",
+  hrc = c(geo = "fichiers_tauargus/hrc/pays.hrc"),
+  secret_var = "is_secret_freq",
+  value = "freq",
+  totcode = c(geo="Pays"),
+  verbose = FALSE
+)
+```
+
+Vérifions que le secret a été posé correctement : 
+
+```{r}
+T0_masq
+```
+
+La cellule N2 est en secret primaire car elle a une fréquence inférieure à 3. Il faut donc poser un secret secondaire pour protéger cette cellule. On voit que N1 est en secret secondaire ce qui permet de protéger N2 de la différenciation avec le total Nord. Donc, on a bien ici une pose de secret qui respecte la hiérarchie de la variable `geo`.
+
+Regardons à présent le secret posé sans prendre en compte la hiérarchie sur la variable `geo` :
+
+```{r eval=FALSE}
+T0_masq_sans_hrc <- tab_rtauargus(
+  T0_detect,
+  dir_name = "fichiers_tauargus/sorties/ex_hrc_pays",
+  files_name = "T0",
+  explanatory_vars = "geo",
+  # hrc = c(geo = "fichiers_tauargus/hrc/pays.hrc"),
+  secret_var = "is_secret_freq",
+  value = "freq",
+  totcode = c(geo="Pays"),
+  verbose = FALSE
+)
+```
+
+Cette fois-ci le secret secondaire est posé en E3, pour minimiser les valeurs supprimées.
+Mais ce secret ne tient pas car on peut retrouver la valeur de N2 en faisant N2 = Nord - N1.
+
+```{r}
+T0_masq_sans_hrc
+```
+
+
+# Protéger des tableaux liés
+
+Lorsque l'on souhaite publier plusieurs tableaux il faut suivre une démarche permettant de les protéger de manière cohérente. En effet, il faut identifier les cellules communes entre les tableaux afin de préciser leur existence à `rtauargus` qui se chargera de la cohérence du secret.
+
+Voici la démarche à suivre :
+- détecter les cellules communes entre les tableaux à partir des métadonnées
+- tabuler les données et construire les hiérarchies nécessaires
+- poser le secret primaire
+- créer des listes de tableaux indépendantes (une liste = un cluster)
+- poser le secret secondaire avec `rtauargus::tab_multi_manager()`
+
+## Analyser la demande
+
+A partir des microdonnées présentées dans la partie "Tabuler les données", on souhaite publier les tableaux suivants.
+
+```{r metadonnees}
+#| echo: false
+#| as-is: true
+
+library(tibble)
+library(knitr)
+
+t <- tribble(
+  ~Tab, ~Var_reponse, ~expl_var1, ~expl_var2,
+  "T1", "ca_pizzas", "Nuts2", "TREFF",
+  "T2", "ca_pizzas", "Nuts3", "TREFF",
+  "T3", "ca_pizzas", "A10", "Nuts2",
+  "T4", "ca_pizzas", "A10", "Nuts3",
+  "T5", "ca_pizzas", "A21", "Nuts2",
+  "T6", "ca_pizzas", "A21", "Nuts3",
+  "T7", "ca_pizzas", "A88", "Nuts2",
+  "T8", "ca_pizzas", "A88", "Nuts3",
+  "T9", "ca_batavia", "A10", "TREFF",
+  "T10", "ca_batavia", "A10", "CJ",
+  "T11", "ca_batavia", "A21", "TREFF",
+  "T12", "ca_batavia", "A21", "CJ",
+  "T13", "ca_batavia", "A88", "TREFF",
+  "T14", "ca_batavia", "A88", "CJ",
+  "T15", "ca_mache", "A10", "TREFF",
+  "T16", "ca_mache", "A10", "CJ",
+  "T17", "ca_mache", "A21", "TREFF",
+  "T18", "ca_mache", "A21", "CJ",
+  "T19", "ca_mache", "A88", "TREFF",
+  "T20", "ca_mache", "A88", "CJ",
+  "T21", "ca_salades", "A10", "TREFF",
+  "T22", "ca_salades", "A10", "CJ",
+  "T23", "ca_salades", "A21", "TREFF",
+  "T24", "ca_salades", "A21", "CJ",
+  "T25", "ca_salades", "A88", "TREFF",
+  "T26", "ca_salades", "A88", "CJ"
+)
+
+kable(t)
+cat("Champ de la population : entreprises françaises.\nInformations complémentaires : il n'y a que deux types de salades les batavias et la mâche.")
+```
+
+Pour n'oublier aucun lien entre les tableaux, on procède étape par étape.
+
+### Les tableaux sont-ils sur le même champ ?
+Oui les tableaux portent tous sur le même champ des entreprises françaises.
+
+### Les tableaux ont-ils les mêmes variables réponses ?
+- T1-T8 : variable réponse « ca_pizzas »
+- T9-T14 : variable réponse « ca_batavia »
+- T15-T20 : variable réponse « ca_mache »
+- T21-T26 : variable réponse « ca_salades »
+
+### Les variables réponses ont-elles un lien entre elles ?
+L’information complémentaire nous identique qu’il n’y a que deux types de salades, les batavias et la mâche. On comprend donc que la somme des chiffres d’affaires des batavias et des mâches est égale au chiffre d’affaires des salades : ca_salades = ca_batavia + ca_mache.
+On peut donc regrouper tous les tableaux qui ont les mêmes variables de croisement et l’un de ces trois indicateurs dans un même tableau. Dans ce tableau on crée une nouvelle variable de croisement qu’on peut nommer « crois_salades ». C’est le cas pour les tables de 9 à 26, on peut les regrouper comme suit : 
+- T9_T15_T21 : ca $\otimes$ {A10 x treff x crois_salades}  
+- T10_T16_T22 : ca $\otimes$ {A10 x cj x crois_salades}  
+- T11_T17_T23 : ca $\otimes$ {A21 x treff x crois_salades}  
+- T12_T18_T24 : ca $\otimes$ {A21 x cj x crois_salades}  
+- T13_T19_T25 : ca $\otimes$ {A88 x treff x crois_salades}  
+- T14_T20_T26 : ca $\otimes$ {A88 x cj x crois_salades}  
+
+On en déduit donc qu’il y a deux sous-demandes indépendantes / « clusters » :  
+- T1-T8 (cluster pizza)  
+- T9-T26 (cluster salades) 
+
+### Dans chacun des clusters variables de croisement identiques ?
+Dans chacun des clusters y a-t-il des variables de croisement identiques ? Y a-t-il des variables de croisements liés par un lien hiérarchique ?
+Cluster pizza :  
+- les variables « nuts2 » et « nuts3 » font partie de la même hiérarchie « nuts », autrement dit une hiérarchie sur la zone géographique  
+- les variables A10, A21 et A88 font partie de la hiérarchie « NAF »  
+
+On peut donc regrouper ces variables de croisement en deux variables de croisement « nuts » et « NAF ». On obtient donc 2 tableaux à protéger dans le cluster pizza :  
+- T_A : ca_pizzas $\otimes$ {nuts x treff}  
+- T_B : ca_pizzas $\otimes$ {naf x nuts}
+
+Ces deux tableaux sont liés par leur marge sur nuts. Il faut les traiter ensemble dans le même `tab_multi_manager()`.
+
+Cluster salades :
+- les variables A10, A21 et A88 font partie de la hiérarchie « NAF »
+
+Ainsi, on peut réecrire les 6 tableaux écrits plus haut de cette façon :  
+- T9_T15_T21 : ca $\otimes$ {naf x treff x crois_salades}  
+- T10_T16_T22 : ca $\otimes$ {naf x cj x crois_salades}  
+- T11_T17_T23 : ca $\otimes$ {naf x treff x crois_salades}  
+- T12_T18_T24 : ca $\otimes$ {naf x cj x crois_salades}  
+- T13_T19_T25 : ca $\otimes$ {naf x treff x crois_salades}  
+- T14_T20_T26 : ca $\otimes$ {naf x cj x crois_salades}  
+
+On voit bien que plusieurs de ces tableaux sont en fait exactement les mêmes, donc finalement les tableaux à traiter pour ce cluster sont : 
+- T_C : ca $\otimes$ {naf x treff x crois_salades}  
+- T_D: ca $\otimes$ {naf x cj x crois_salades}  
+
+## Tabuler les données
+
+On commence par tabuler les données pour l'indicateur "chiffre d'affaires vente pizzas".
+```{r}
+pizzas_tabule <- tabulate_micro_data(
+  micro,
+  cat_vars = c("treff"),
+  hrc_vars = list(naf = c("a10","a21","a88"), nuts = c("nuts2","nuts3")),
+  pond_var = "poids",
+  resp_var = c("pizzas"),
+  marge_label = "Total"
+)
+
+str(pizzas_tabule)
+```
+
+On tabule ensuite pour les indicateurs "chiffre d'affaires vente mâches, batavia et salades". N.B. il faut créer une nouvelle variable de croisement.
+```{r}
+salades_tabule <- tabulate_micro_data(
+  micro,
+  cat_vars = c("treff","cj"),
+  hrc_vars = list(naf = c("a10","a21","a88")),
+  pond_var = "poids",
+  resp_var = c("salades","batavias","maches"),
+  marge_label = "Total"
+)
+
+salades_tabule_3var <- salades_tabule %>% 
+  tidyr::pivot_longer(
+    cols = c(salades_tot, maches_tot, batavias_tot, 
+             salades_max, maches_max, batavias_max),
+    names_to = c("crois_salades", ".value"),
+    names_pattern = "(.*)_(tot|max)"
+  )
+
+str(salades_tabule_3var)
+```
+
+## Poser le secret primaire
+
+Secret primaire pour les pizzas.
+```{r}
+pizzas_tabule <- pizzas_tabule %>% mutate(
+  is_secret_freq = nb_obs > 0 & nb_obs < 3,
+  is_secret_dom = (pizzas_tot != 0) & (pizzas_max > 0.85*pizzas_tot),
+  is_secret_prim = is_secret_freq | is_secret_dom
+)
+
+table(pizzas_tabule$is_secret_prim)
+```
+
+Secret primaire pour les salades.
+```{r}
+salades_tabule_3var <- salades_tabule_3var %>% mutate(
+  is_secret_freq = nb_obs > 0 & nb_obs < 3,
+  is_secret_dom = (tot != 0) & (max > 0.85*tot),
+  is_secret_prim = is_secret_freq | is_secret_dom
+)
+
+table(pizzas_tabule$is_secret_prim)
+```
+
+## Création des listes de tableaux
+
+Pour le cluster des pizzas.
+```{r}
+tableaux_pizza <- list(
+  pizza_nuts_treff = pizzas_tabule %>% filter(naf == "Total") %>% select(-naf), # T1.T2
+  pizza_nuts_naf = pizzas_tabule %>% filter(treff == "Total") %>% select(-treff) # T3.T4.T5.T6.T7.T8
+)
+
+str(tableaux_pizza)
+```
+
+
+Pour le cluster des salades.
+```{r}
+tableaux_salades <- list(
+  salades_naf_treff = salades_tabule_3var %>% filter(cj == "Total") %>% select(-cj), # T9.T15.T21.T11.T17.T23.T13.T19.T25
+  salades_naf_cj = salades_tabule_3var %>% filter(treff == "Total") %>% select(-treff) # T10.T16.T22.T12.T18.T24.T14.T20.T26
+)
+
+str(tableaux_salades)
+```
+
+## Créer les hiérarchies
+
+Comme vu dans la partie "Protéger un tableau hiérarchique" [INSERER LIEN], on crée les hiérarchies à l'aide de `rtauargus::write_hrc2()`.
+
+```{r}
+# en deux temps
+corres_naf <- micro %>% select(a10,a21,a88) %>% unique() %>% arrange(a10,a21,a88)
+chemin_hrc_naf <- write_hrc2(corres_naf, file_name = "fichiers_tauargus/hrc/naf.hrc")
+
+# d'un seul coup
+chemin_hrc_nuts <- write_hrc2(micro %>% select(nuts2,nuts3) %>% unique() %>% arrange(nuts2),
+                              "fichiers_tauargus/hrc/nuts.hrc")
+```
+
+N.B. la bonne pratique est de partir d'une table de passage définie à priori. Ici, il est plus simple de partir des microdonnées et on a confiance dans les strcutures des hiérarchies qui en sortiront.
+
+## Poser le secret secondaire
+
+On pose le secret puis on unifie les masques afin de les regrouper dans un seul dataframe.
+
+Pour le cluster pizzas.
+```{r}
+#| eval: false
+masques_pizza <- tab_multi_manager(
+  list_tables = tableaux_pizza,
+  list_explanatory_vars = list(
+    pizza_nuts_treff = c("nuts","treff"), # T1.T2
+    pizza_nuts_naf = c("nuts","naf") # T3.T4.T5.T6.T7.T8
+  ),
+  dir_name = "./Exos/tauargus_files/ex_analyse_demande/",
+  hrc = list(naf = chemin_hrc_naf, nuts = chemin_hrc_nuts),
+  totcode = "Total",
+  value = "pizzas_tot",
+  freq = "nb_obs",
+  secret_var = "is_secret_prim"
+)
+```
+
+```{r}
+# unification des masques
+masque_pizza <- masques_pizza %>% purrr::map_dfr(
+  function(tab){
+    tab %>% 
+      mutate(
+        treff = if ("treff" %in% names(tab)) treff else "Total",
+        cj = if ("cj" %in% names(tab)) cj else "Total",
+        naf = if ("naf" %in% names(tab)) naf else "Total"
+      ) %>% 
+      select("naf","treff","cj",everything()) %>%
+      rename_with(~"is_secret_final", last_col()) %>% 
+      mutate(
+        statut_final = case_when(
+          is_secret_freq ~ "A",
+          is_secret_dom ~ "B",
+          is_secret_final ~"D",
+          TRUE ~ "V"
+        )) %>% 
+      select(-matches("is_secret_"))
+  }
+) %>% unique()
+
+masque_pizza %>% 
+  group_by(statut_final) %>% 
+  summarise(
+    n_cell = n(),
+    val_cell = sum(pizzas_tot)
+  ) %>%
+  mutate(
+    pc_n_cell = n_cell/sum(n_cell)*100,
+    pc_val_cell = val_cell/sum(val_cell)*100
+  )
+```
+
+
+Pour le cluster salades.
+```{r}
+#| eval: false
+masques_salades <- tab_multi_manager(
+  list_tables = tableaux_salades,
+  list_explanatory_vars = list(
+    salades_naf_treff = c("naf","treff", "crois_salades"),
+    salades_naf_cj = c("naf","cj", "crois_salades")
+  ),
+  dir_name = "./Exos/tauargus_files/ex_analyse_demande/",
+  hrc = list(naf = chemin_hrc_naf),
+  totcode = c(naf = "Total", treff = "Total", cj = "Total", crois_salades = "salades"),
+  value = "tot",
+  freq = "nb_obs",
+  secret_var = "is_secret_prim"
+)
+```
+
+```{r}
+masque_salades <- masques_salades %>% purrr::map_dfr(
+  function(tab){
+    tab %>% 
+      mutate(
+        treff = if ("treff" %in% names(tab)) treff else "Total",
+        cj = if ("cj" %in% names(tab)) cj else "Total",
+        naf = if ("naf" %in% names(tab)) naf else "Total"
+      ) %>% 
+      select("naf","treff","cj",everything()) %>%
+      rename_with(~"is_secret_final", last_col()) %>% 
+      mutate(
+        statut_final = case_when(
+          is_secret_freq ~ "A",
+          is_secret_dom ~ "B",
+          is_secret_final ~"D",
+          TRUE ~ "V"
+        )) %>% 
+      select(-matches("is_secret_"))
+  }
+) %>% unique()
+
+masque_salades %>% 
+  group_by(statut_final) %>% 
+  summarise(
+    n_cell = n(),
+    val_cell = sum(tot)
+  ) %>%
+  mutate(
+    pc_n_cell = n_cell/sum(n_cell)*100,
+    pc_val_cell = val_cell/sum(val_cell)*100
+  )
+```
+
