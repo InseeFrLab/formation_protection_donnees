@@ -122,6 +122,9 @@
       margin-right: 0; 
     }
   </style>
+  <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 </head>
 <body class="quarto-light">
@@ -139,68 +142,1921 @@
 <section id="les-méthodes-à-disposition" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Les méthodes à disposition</h2>
 <div class="frame">
-<p>Deux types de méthodes en fonction du moment où elles sont appliquées:</p>
+<p>Deux types de méthodes en fonction du moment où elles sont appliquées :</p>
 <ul>
-<li>Les <strong>méthodes pré-tabulation</strong> sont appliquées sur les données individuelles, <em>ie</em> <strong>avant</strong> toute tabulation</li>
-<li>Les <strong>méthodes post-tabulation</strong> sont appliquées sur les données agrégées, <em>ie</em> <strong>après</strong> tabulation</li>
+<li>Les <strong>méthodes pré-tabulation</strong> sont appliquées sur les données individuelles, <em>i.e.</em> <strong>avant</strong> toute tabulation</li>
+<li>Les <strong>méthodes post-tabulation</strong> sont appliquées sur les données agrégées, <em>i.e.</em> <strong>après</strong> tabulation</li>
 </ul>
 </div>
 </section>
 <section id="les-méthodes-à-disposition-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Les méthodes à disposition</h2>
 <div class="frame">
-<div id="tab:my_label">
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Les méthodes</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
 <table class="caption-top">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 37%">
+<col style="width: 40%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Type de méthode</th>
-<th style="text-align: right;">Type de données</th>
-<th style="text-align: center;"><strong>Méthodes</strong></th>
+<th>Type de méthode</th>
+<th>Type de données</th>
+<th><strong>Méthodes</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: right;"></td>
-<td style="text-align: center;"><!-- Techniques de sous-échantillonnage    --></td>
+<td>Pré-tabulation</td>
+<td>Micro-données</td>
+<td>Recodage des variables <br> Suppression locale</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Pré-tabulation</td>
-<td style="text-align: right;">Micro-données</td>
-<td style="text-align: center;">dex{Microdata} Recodage des variables</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: right;"></td>
-<td style="text-align: center;">Suppression locale</td>
+<td>Post-tabulation</td>
+<td>Données tabulées</td>
+<td>Suppression de cellules <br> Regroupement de catégories</td>
 </tr>
 </tbody>
 </table>
-<pre><code>Post-tabulation     Données tabulées        Suppression de cellules              
-                                           Regroupement de catégories               
-                                                      </code></pre>
-<p>: Les méthodes suppressives</p>
 </div>
 </div>
-<!-- 
-# Les méthodes pré-tabulation
-
-## Le recodage des variables
-
-
-## La suppression locale
-
-# Les méthodes post-tabulation
-
-
-## Le regroupement de catégories
-
-
-## La suppression de cellules
- -->
-
+</div>
+</div>
+</section>
+<section>
+<section id="les-méthodes-pré-tabulation" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Les méthodes pré-tabulation</h1>
 
 </section>
+<section id="le-recodage-des-variables" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le recodage des variables</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>âge</th>
+<th>Genre</th>
+<th>Profession</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>23</td>
+<td>H</td>
+<td>statistiques</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>24</td>
+<td>H</td>
+<td>statistiques</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>50</td>
+<td>F</td>
+<td>statistiques</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>53</td>
+<td>H</td>
+<td>statistiques</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>51</td>
+<td>F</td>
+<td>statistiques</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="le-recodage-des-variables-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le recodage des variables</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>âge</th>
+<th>Genre</th>
+<th>Profession</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>20-30</td>
+<td>H</td>
+<td>statistiques</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>20-30</td>
+<td>H</td>
+<td>statistiques</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>50-60</td>
+<td>F</td>
+<td>statistiques</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>50-60</td>
+<td>H</td>
+<td>statistiques</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>50-60</td>
+<td>F</td>
+<td>statistiques</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="la-suppression-locale" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>La suppression locale</h2>
+<p>S’applique aux variables catégorielles.</p>
+<div class="fragment">
+<p>Suppression d’au moins une catégorie présente dans une combinaison à risque, i.e.&nbsp;on la remplace par une <strong>valeur manquante</strong>.</p>
+</div>
+<div class="fragment">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>Lieu de résidence</th>
+<th>Genre</th>
+<th>Profession</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>poitiers</td>
+<td>H</td>
+<td>statistiques</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>poitiers</td>
+<td>H</td>
+<td>statistiques</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>barfleur</td>
+<td>H</td>
+<td>pêche</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>barfleur</td>
+<td>H</td>
+<td>pêche</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>barfleur</td>
+<td>F</td>
+<td>maire</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="la-suppression-locale-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>La suppression locale</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>Lieu de résidence</th>
+<th>Genre</th>
+<th>Profession</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>poitiers</td>
+<td>H</td>
+<td>statistiques</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>poitiers</td>
+<td>H</td>
+<td>statistiques</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>barfleur</td>
+<td>H</td>
+<td>pêche</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>barfleur</td>
+<td>H</td>
+<td>pêche</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>barfleur</td>
+<td>F</td>
+<td><em>NA</em></td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="les-méthodes-post-tabulation" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Les méthodes post-tabulation</h1>
+<p>Regroupement des catégories et suppression de cellules.</p>
+</section>
+<section id="tableaux-deffectifs" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Tableaux d’effectifs</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Nord</th>
+<th style="text-align: right;">Ouest</th>
+<th style="text-align: right;">Est</th>
+<th style="text-align: right;">Sud</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Polluante</strong></td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Non polluante</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">47</td>
+</tr>
+</tbody>
+</table>
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+<p>Tableau 1 – Nombre d’entreprises polluantes par région</p>
+</div>
+<div class="fragment">
+<p>Y a-t-il des cellules à risque ?</p>
+</div>
+</section>
+<section id="tableaux-deffectifs-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Tableaux d’effectifs</h2>
+<p><strong>Règle de fréquence</strong> : une cellule d’un tableau ne doit pas être construite à partir de strictement moins de n unités (n &gt; 0).</p>
+<p><br></p>
+<p>Pour les données entreprises à l’Insee, n = 3.</p>
+</section>
+<section id="tableaux-deffectifs-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Tableaux d’effectifs</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Nord</th>
+<th style="text-align: right;">Ouest</th>
+<th style="text-align: right;">Est</th>
+<th style="text-align: right;">Sud</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Polluante</strong></td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;"><span style="color: red;">1</span></td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Non polluante</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;"><span style="color: red;">2</span></td>
+<td style="text-align: right;"><span style="color: red;">1</span></td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;"><span style="color: red;">2</span></td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">47</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tableaux-de-volume" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Tableaux de volume</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Harpes</th>
+<th style="text-align: right;">Piano</th>
+<th style="text-align: right;">Orgues</th>
+<th style="text-align: right;">Total</th>
+<th style="text-align: right;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Nord</strong></td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">221</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Centre</strong></td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">124</td>
+<td style="text-align: right;">157</td>
+<td style="text-align: right;">292</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Sud</strong></td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">219</td>
+<td style="text-align: right;">309</td>
+<td style="text-align: right;">633</td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+<p>Tableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros</p>
+</div>
+<div class="fragment">
+<p>Y a-t-il des cellules à risque ?</p>
+</div>
+</section>
+<section id="tableaux-de-volume-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Tableaux de volume</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Région</th>
+<th style="text-align: right;">Harpes</th>
+<th style="text-align: right;">Piano</th>
+<th style="text-align: right;">Orgues</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Nord</strong></td>
+<td style="text-align: right;">58 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span></td>
+<td style="text-align: right;">71 <span style="color:blue;" title="Nombre d'entreprises"> (17)</span></td>
+<td style="text-align: right;">92 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span></td>
+<td style="text-align: right;">221 <span style="color:blue;" title="Nombre d'entreprises"> (27)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Centre</strong></td>
+<td style="text-align: right;">11 <span style="color:blue;" title="Nombre d'entreprises"> (4)</span></td>
+<td style="text-align: right;">124 <span style="color:blue;" title="Nombre d'entreprises"> (11)</span></td>
+<td style="text-align: right;">157 <span style="color:blue;" title="Nombre d'entreprises"> (2)</span></td>
+<td style="text-align: right;">292 <span style="color:blue;" title="Nombre d'entreprises"> (17)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Sud</strong></td>
+<td style="text-align: right;">36 <span style="color:blue;" title="Nombre d'entreprises"> (3)</span></td>
+<td style="text-align: right;">24 <span style="color:blue;" title="Nombre d'entreprises"> (6)</span></td>
+<td style="text-align: right;">60 <span style="color:blue;" title="Nombre d'entreprises"> (1)</span></td>
+<td style="text-align: right;">120 <span style="color:blue;" title="Nombre d'entreprises"> (10)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;">105 <span style="color:blue;" title="Nombre d'entreprises"> (12)</span></td>
+<td style="text-align: right;">219 <span style="color:blue;" title="Nombre d'entreprises"> (34)</span></td>
+<td style="text-align: right;">309 <span style="color:blue;" title="Nombre d'entreprises"> (8)</span></td>
+<td style="text-align: right;">633 <span style="color:blue;" title="Nombre d'entreprises"> (54)</span></td>
+</tr>
+</tbody>
+</table>
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+<p>Tableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros</p>
+</div>
+<div style="font-size: 0.9em; margin-top: 0.5em;">
+<p><em>Note :</em> les valeurs entre parenthèses indiquent le <span style="color:blue;">nombre de contributeurs</span>.</p>
+</div>
+</section>
+<section id="tableaux-de-volume-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Tableaux de volume</h2>
+<p>Secret primaire de fréquence.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Région</th>
+<th style="text-align: right;">Harpes</th>
+<th style="text-align: right;">Piano</th>
+<th style="text-align: right;">Orgues</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Nord</strong></td>
+<td style="text-align: right;">58 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span></td>
+<td style="text-align: right;">71 <span style="color:blue;" title="Nombre d'entreprises"> (17)</span></td>
+<td style="text-align: right;">92 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span></td>
+<td style="text-align: right;">221 <span style="color:blue;" title="Nombre d'entreprises"> (27)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Centre</strong></td>
+<td style="text-align: right;">11 <span style="color:blue;" title="Nombre d'entreprises"> (4)</span></td>
+<td style="text-align: right;">124 <span style="color:blue;" title="Nombre d'entreprises"> (11)</span></td>
+<td style="text-align: right;">157 <span style="color:red;" title="n<3"> (2)</span></td>
+<td style="text-align: right;">292 <span style="color:blue;" title="Nombre d'entreprises"> (17)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Sud</strong></td>
+<td style="text-align: right;">36 <span style="color:blue;" title="Nombre d'entreprises"> (3)</span></td>
+<td style="text-align: right;">24 <span style="color:blue;" title="Nombre d'entreprises"> (6)</span></td>
+<td style="text-align: right;">60 <span style="color:red;" title="n<3"> (1)</span></td>
+<td style="text-align: right;">120 <span style="color:blue;" title="Nombre d'entreprises"> (10)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;">105 <span style="color:blue;" title="Nombre d'entreprises"> (12)</span></td>
+<td style="text-align: right;">219 <span style="color:blue;" title="Nombre d'entreprises"> (34)</span></td>
+<td style="text-align: right;">309 <span style="color:blue;" title="Nombre d'entreprises"> (8)</span></td>
+<td style="text-align: right;">633 <span style="color:blue;" title="Nombre d'entreprises"> (54)</span></td>
+</tr>
+</tbody>
+</table>
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+<p>Tableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros</p>
+</div>
+<div style="font-size: 0.9em; margin-top: 0.5em;">
+<p><em>Note :</em> les valeurs entre parenthèses indiquent le <span style="color:blue;">nombre de contributeurs</span>.</p>
+</div>
+</section>
+<section id="tableaux-de-volume-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Tableaux de volume</h2>
+<p><strong>Règle de dominance (n,k)</strong> : une cellule est sensible si les n plus grands contributeurs de cette cellule représentent plus de k% du total de celle-ci.</p>
+<p><br></p>
+<ul>
+<li>Pour les données entreprises à l’Insee, n = 1 et k = 85. Donc, 1 unité contributrice à une cellule ne peut contribuer à plus de 85% de la valeur de celle-ci.</li>
+<li>Pour chaque cellule du tableau, besoin de déterminer le plus gros contributeur.</li>
+</ul>
+</section>
+<section id="tableaux-de-volume-4" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Tableaux de volume</h2>
+<p>Secret primaire de dominance.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Région</th>
+<th style="text-align: right;">Harpes</th>
+<th style="text-align: right;">Piano</th>
+<th style="text-align: right;">Orgues</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Nord</strong></td>
+<td style="text-align: right;">58 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span></td>
+<td style="text-align: right;">71 <span style="color:blue;" title="Nombre d'entreprises"> (17)</span></td>
+<td style="text-align: right;"><span style="color:orange;" title="92 = 86 + 3 + 1 + 1 + 1">92</span> <span style="color:orange;" title="k = 93% > 85%"> (5)</span></td>
+<td style="text-align: right;">221 <span style="color:blue;" title="Nombre d'entreprises"> (27)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Centre</strong></td>
+<td style="text-align: right;">11 <span style="color:blue;" title="Nombre d'entreprises"> (4)</span></td>
+<td style="text-align: right;">124 <span style="color:blue;" title="Nombre d'entreprises"> (11)</span></td>
+<td style="text-align: right;">157 <span style="color:red;" title="SP fréquence"> (2)</span></td>
+<td style="text-align: right;">292 <span style="color:blue;" title="Nombre d'entreprises"> (17)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Sud</strong></td>
+<td style="text-align: right;">36 <span style="color:blue;" title="Nombre d'entreprises"> (3)</span></td>
+<td style="text-align: right;">24 <span style="color:blue;" title="Nombre d'entreprises"> (6)</span></td>
+<td style="text-align: right;">60 <span style="color:red;" title="SP fréquence"> (1)</span></td>
+<td style="text-align: right;">120 <span style="color:blue;" title="Nombre d'entreprises"> (10)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;">105 <span style="color:blue;" title="Nombre d'entreprises"> (12)</span></td>
+<td style="text-align: right;">219 <span style="color:blue;" title="Nombre d'entreprises"> (34)</span></td>
+<td style="text-align: right;">309 <span style="color:blue;" title="Nombre d'entreprises"> (8)</span></td>
+<td style="text-align: right;">633 <span style="color:blue;" title="Nombre d'entreprises"> (54)</span></td>
+</tr>
+</tbody>
+</table>
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+<p>Tableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros</p>
+</div>
+<div style="font-size: 0.9em; margin-top: 0.5em;">
+<p><em>Note :</em> les valeurs entre parenthèses indiquent le <span style="color:blue;">nombre de contributeurs</span>.</p>
+</div>
+</section>
+<section id="tableaux-de-volume-5" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Tableaux de volume</h2>
+<p><strong>Règle du p%</strong> : une cellule est sensible si l’un des contributeurs a une cellule peut estimer la valeur d’un autre contributeur à p% de sa véritable valeur.</p>
+<ul>
+<li>En pratique, le 2eme contributeur de la valeur de la cellule ne doit pas pouvoir estimer en utilisant sa propre valeur, celle du premier contributeur avec une précision supérieure à p%.</li>
+<li>Il est d’usage de choisir p = 10.</li>
+<li>Pas utilisée à l’Insee mais recommandée par les experts européens.</li>
+</ul>
+</section>
+<section id="tableaux-de-volume-6" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Tableaux de volume</h2>
+<p>Secret primaire dû à la règle du p%.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Région</th>
+<th style="text-align: right;">Harpes</th>
+<th style="text-align: right;">Piano</th>
+<th style="text-align: right;">Orgues</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Nord</strong></td>
+<td style="text-align: right;">58 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span></td>
+<td style="text-align: right;">71 <span style="color:blue;" title="Nombre d'entreprises"> (17)</span></td>
+<td style="text-align: right;"><span style="color:orange;" title="92 = 86 + 3 + 1 + 1 + 1">92</span> <span style="color:orange;" title="k = 93% > 85%"> (5)</span></td>
+<td style="text-align: right;">221 <span style="color:blue;" title="Nombre d'entreprises"> (27)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Centre</strong></td>
+<td style="text-align: right;">11 <span style="color:blue;" title="Nombre d'entreprises"> (4)</span></td>
+<td style="text-align: right;">124 <span style="color:blue;" title="Nombre d'entreprises"> (11)</span></td>
+<td style="text-align: right;">157 <span style="color:red;" title="SP fréquence"> (2)</span></td>
+<td style="text-align: right;">292 <span style="color:blue;" title="Nombre d'entreprises"> (17)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Sud</strong></td>
+<td style="text-align: right;"><span style="color:purple;" title="36 = 19 + 16 + 1">36</span> <span style="color:purple;" title="p = 5,3% < 10%"> (3)</span></td>
+<td style="text-align: right;">24 <span style="color:blue;" title="Nombre d'entreprises"> (6)</span></td>
+<td style="text-align: right;">60 <span style="color:red;" title="SP fréquence"> (1)</span></td>
+<td style="text-align: right;">120 <span style="color:blue;" title="Nombre d'entreprises"> (10)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;">105 <span style="color:blue;" title="Nombre d'entreprises"> (12)</span></td>
+<td style="text-align: right;">219 <span style="color:blue;" title="Nombre d'entreprises"> (34)</span></td>
+<td style="text-align: right;">309 <span style="color:blue;" title="Nombre d'entreprises"> (8)</span></td>
+<td style="text-align: right;">633 <span style="color:blue;" title="Nombre d'entreprises"> (54)</span></td>
+</tr>
+</tbody>
+</table>
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+<p>Tableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros</p>
+</div>
+<div style="font-size: 0.9em; margin-top: 0.5em;">
+<p><em>Note :</em> les valeurs entre parenthèses indiquent le <span style="color:blue;">nombre de contributeurs</span>.</p>
+</div>
+</section>
+<section id="le-secret-primaire" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le secret primaire</h2>
+<p>Les cellules catégorisées à risque pour la règle de fréquence, la règle de dominance et la règle du p% constituent le secret primaire. On ne peut pas diffuser ces cellules.</p>
+<p><br></p>
+<p>Comment faire ?</p>
+</section>
+<section id="le-regroupement-de-catégories" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le regroupement de catégories</h2>
+<p>Redéfinir le contenu des variables de croisement en <strong>diminuant le nombre de</strong> leur <strong>modalités</strong>.</p>
+<p><br></p>
+<p>Permet de réduire fortement, voir d’enlever complètement le secret primaire.</p>
+<p><br></p>
+<p>Envisager cette option avant les autres méthodes.</p>
+</section>
+<section id="le-recodage-un-exemple" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le recodage : un exemple</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 37%">
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 11%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">&lt;25</th>
+<th style="text-align: right;">25-30</th>
+<th style="text-align: right;">30-50</th>
+<th style="text-align: right;">&gt; 50</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Polluante</strong></td>
+<td style="text-align: right;"><span style="color: red;">2</span></td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Non polluante</strong></td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">80</td>
+</tr>
+</tbody>
+</table>
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+<p>Tableau 3 – Nombre d’entreprises polluantes selon l’âge du dirigeant</p>
+</div>
+<div class="fragment">
+<p>Définir de nouvelles modalités pour augmenter le nombre de répondants par cellule.</p>
+</div>
+</section>
+<section id="le-recodage-un-exemple-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le recodage : un exemple</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">&lt;28</th>
+<th style="text-align: right;">28-35</th>
+<th style="text-align: right;">35-55</th>
+<th style="text-align: right;">&gt; 55</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Polluante</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Non polluante</strong></td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">80</td>
+</tr>
+</tbody>
+</table>
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+<p>Tableau 3bis – Nombre d’entreprises polluantes selon l’âge du dirigeant</p>
+</div>
+</section>
+<section id="le-recodage-à-vous-de-jouer" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le recodage : à vous de jouer !</h2>
+<p>On cherche à publier le tableau suivant :</p>
+<ul>
+<li>Population d’une région par leur zone d’emploi de résidence, leur zone d’emploi de travail, leur profession et leur âge.</li>
+<li>Beaucoup de secret primaire dans ce tableau puisque la plupart des gens résident et travaillent dans la même zone d’emploi.</li>
+<li>Comment recoder ce tableau ?</li>
+</ul>
+<div class="fragment">
+<p>Un premier recodage consiste à regrouper toutes les zones d’emploi de travail hors région dans une seule catégorie.</p>
+</div>
+</section>
+<section id="le-recodage" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le recodage</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">👍</th>
+<th style="text-align: center;">👎</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Réduit le SP.</td>
+<td style="text-align: center;">Ne supprime pas totalement le SP.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Pas de perte info.</td>
+<td style="text-align: center;">Impossible dans certains cas (structure imposée, suivi dans le temps).</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>Comment protéger le secret primaire restant ?</p>
+</div>
+</section>
+<section id="la-suppression-de-cellules" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>La suppression de cellules</h2>
+</section>
+<section id="le-secret-primaire-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le secret primaire</h2>
+<p>Première étape : supprimer les cellules ne respectant pas les règles du secret primaire.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Nord</th>
+<th style="text-align: right;">Ouest</th>
+<th style="text-align: right;">Est</th>
+<th style="text-align: right;">Sud</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Polluante</strong></td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;"><span style="color: red;">X</span></td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Non polluante</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;"><span style="color: red;">X</span></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">49</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>Ce n’est pas suffisant, les cellules sont liées entre elles par des équations (marges).</p>
+</div>
+</section>
+<section id="le-secret-secondaire" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le secret secondaire</h2>
+<p>Deuxième étape : supprimer des cellules pour protéger le secret primaire.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Nord</th>
+<th style="text-align: right;">Ouest</th>
+<th style="text-align: right;">Est</th>
+<th style="text-align: right;">Sud</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Polluante</strong></td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;"><span style="color: red;">X</span></td>
+<td style="text-align: right;"><span style="color: red;">X</span></td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Non polluante</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;"><span style="color: red;">X</span></td>
+<td style="text-align: right;"><span style="color: red;">X</span></td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">49</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="le-secret-secondaire-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le secret secondaire</h2>
+<p>Plusieurs structures de suppressions (masques de secret) sont possibles.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Nord</th>
+<th style="text-align: right;">Ouest</th>
+<th style="text-align: right;">Est</th>
+<th style="text-align: right;">Sud</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Polluante</strong></td>
+<td style="text-align: right;"><span style="color: red;">X</span></td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;"><span style="color: red;">X</span></td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Non polluante</strong></td>
+<td style="text-align: right;"><span style="color: red;">X</span></td>
+<td style="text-align: right;"><span style="color: red;">X</span></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;"><span style="color: red;">X</span></td>
+<td style="text-align: right;"><span style="color: red;">X</span></td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">49</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="les-intervalles-de-protection" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les intervalles de protection</h2>
+<p>Cacher des cellules revient à diffuser des intervalles.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 10%">
+<col style="width: 17%">
+<col style="width: 16%">
+<col style="width: 8%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Nord</th>
+<th style="text-align: right;">Ouest</th>
+<th style="text-align: right;">Est</th>
+<th style="text-align: right;">Sud</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Polluante</strong></td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;"><span style="color: red;">[11 ; 15]</span></td>
+<td style="text-align: right;"><span style="color: red;">[0 ; 4]</span></td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Non polluante</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;"><span style="color: red;">[1 ; 5]</span></td>
+<td style="text-align: right;"><span style="color: red;">[0 ; 4]</span></td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">49</td>
+</tr>
+</tbody>
+</table>
+<p><strong>L’intervalle des possibles</strong> : l’ensemble des valeurs possibles prises par la cellule supprimée après avoir posé le masque de secret.</p>
+</section>
+<section id="les-intervalles-de-protection-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les intervalles de protection</h2>
+<p><strong>L’intervalle de protection</strong> : soit <span class="math inline">\(V_C\)</span> la valeur d’une cellule C sensible à la règle de fréquence et <span class="math inline">\(m\%\)</span> la marge protection choisie.</p>
+<p><span class="math inline">\([(1 - m\%). V_C ; (1 + m\%). V_C]\)</span></p>
+<p><br></p>
+<p>En pratique on choisit souvent une marge de 10% =&gt; <span class="math inline">\([90\%.V_C ; 110\%.V_C]\)</span></p>
+</section>
+<section id="les-intervalles-de-protection-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les intervalles de protection</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Région</th>
+<th style="text-align: right;">Harpes</th>
+<th style="text-align: right;">Piano</th>
+<th style="text-align: right;">Orgues</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Nord</strong></td>
+<td style="text-align: right;">58 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span></td>
+<td style="text-align: right;">71 <span style="color:blue;" title="Nombre d'entreprises"> (17)</span></td>
+<td style="text-align: right;">92 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span></td>
+<td style="text-align: right;">221 <span style="color:blue;" title="Nombre d'entreprises"> (27)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Centre</strong></td>
+<td style="text-align: right;">11 <span style="color:blue;" title="Nombre d'entreprises"> (4)</span></td>
+<td style="text-align: right;">124 <span style="color:blue;" title="Nombre d'entreprises"> (11)</span></td>
+<td style="text-align: right;"><span style="color:red;" title="[141.3 ; 172.7]">157</span> <span style="color:red;" title="n < 3"> (2)</span></td>
+<td style="text-align: right;">292 <span style="color:blue;" title="Nombre d'entreprises"> (17)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Sud</strong></td>
+<td style="text-align: right;">36 <span style="color:blue;" title="Nombre d'entreprises"> (3)</span></td>
+<td style="text-align: right;">24 <span style="color:blue;" title="Nombre d'entreprises"> (6)</span></td>
+<td style="text-align: right;"><span style="color:red;" title="[54 ; 66]">60</span> <span style="color:red;" title="n < 3"> (1)</span></td>
+<td style="text-align: right;">120 <span style="color:blue;" title="Nombre d'entreprises"> (10)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;">105 <span style="color:blue;" title="Nombre d'entreprises"> (12)</span></td>
+<td style="text-align: right;">219 <span style="color:blue;" title="Nombre d'entreprises"> (34)</span></td>
+<td style="text-align: right;">309 <span style="color:blue;" title="Nombre d'entreprises"> (8)</span></td>
+<td style="text-align: right;">633 <span style="color:blue;" title="Nombre d'entreprises"> (54)</span></td>
+</tr>
+</tbody>
+</table>
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+<p>Tableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros</p>
+</div>
+<div style="font-size: 0.9em; margin-top: 0.5em;">
+<p><em>Note :</em> glisser la souris sur les valeurs en secret primaire de fréquence pour voir les intervalles de protection.</p>
+</div>
+</section>
+<section id="les-intervalles-de-protection-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les intervalles de protection</h2>
+<p><strong>Règle des intervalles</strong> : l’intervalle de protection de chaque cellule sensible doit être inclus dans son intervalle des possibles.</p>
+<p><br></p>
+<p>Cette règle permet de se prémunir d’une divulgation par inférence.</p>
+</section>
+<section id="les-intervalles-de-protection-4" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les intervalles de protection</h2>
+<p>Exemple avec une marge de protection de 10%.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Région</th>
+<th style="text-align: right;">Harpe</th>
+<th style="text-align: right;">Piano</th>
+<th style="text-align: right;">Orgue</th>
+<th style="text-align: right;">Autre</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Nord</strong></td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;"><strong>1021</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Centre</strong></td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">124</td>
+<td style="text-align: right;"><span style="color:red; font-weight: bold;" title="[141 ; 173]">157 (2)</span></td>
+<td style="text-align: right;">934</td>
+<td style="text-align: right;"><strong>1226</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Sud</strong></td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;"><span style="color:red; font-weight: bold;" title="[54 ; 66]">60 (1)</span></td>
+<td style="text-align: right;">651</td>
+<td style="text-align: right;"><strong>771</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;"><strong>105</strong></td>
+<td style="text-align: right;"><strong>219</strong></td>
+<td style="text-align: right;"><strong>309</strong></td>
+<td style="text-align: right;"><strong>2385</strong></td>
+<td style="text-align: right;"><strong>3018</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="les-intervalles-de-protection-5" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les intervalles de protection</h2>
+<p>Exemple avec une marge de protection de 10%.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Région</th>
+<th style="text-align: right;">Harpe</th>
+<th style="text-align: right;">Piano</th>
+<th style="text-align: right;">Orgue</th>
+<th style="text-align: right;">Autre</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Nord</strong></td>
+<td style="text-align: right;">X</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">X</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;"><strong>1021</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Centre</strong></td>
+<td style="text-align: right;">X</td>
+<td style="text-align: right;">124</td>
+<td style="text-align: right;"><span style="color:red; font-weight: bold;" title="[141 ; 173]">X</span></td>
+<td style="text-align: right;">934</td>
+<td style="text-align: right;"><strong>1226</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Sud</strong></td>
+<td style="text-align: right;">X</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;"><span style="color:red; font-weight: bold;" title="[54 ; 66]">X</span></td>
+<td style="text-align: right;">651</td>
+<td style="text-align: right;"><strong>771</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;"><strong>105</strong></td>
+<td style="text-align: right;"><strong>219</strong></td>
+<td style="text-align: right;"><strong>309</strong></td>
+<td style="text-align: right;"><strong>2385</strong></td>
+<td style="text-align: right;"><strong>3018</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="les-intervalles-de-protection-6" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les intervalles de protection</h2>
+<p>Exemple avec une marge de protection de 10%.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Région</th>
+<th style="text-align: right;">Harpe</th>
+<th style="text-align: right;">Piano</th>
+<th style="text-align: right;">Orgue</th>
+<th style="text-align: right;">Autre</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Nord</strong></td>
+<td style="text-align: right;">[0;105]</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">[45;150]</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;"><strong>1021</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Centre</strong></td>
+<td style="text-align: right;">[0;105]</td>
+<td style="text-align: right;">124</td>
+<td style="text-align: right;"><span style="color:red; font-weight: bold;" title="[141 ; 173]">[63;168]</span></td>
+<td style="text-align: right;">934</td>
+<td style="text-align: right;"><strong>1226</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Sud</strong></td>
+<td style="text-align: right;">[0;96]</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;"><span style="color:red; font-weight: bold;" title="[54 ; 66]">[0;96]</span></td>
+<td style="text-align: right;">651</td>
+<td style="text-align: right;"><strong>771</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;"><strong>105</strong></td>
+<td style="text-align: right;"><strong>219</strong></td>
+<td style="text-align: right;"><strong>309</strong></td>
+<td style="text-align: right;"><strong>2385</strong></td>
+<td style="text-align: right;"><strong>3018</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="les-intervalles-de-protection-7" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les intervalles de protection</h2>
+<p>La borne supérieure de l’intervalle des possibles (168) est inférieure à la borne supérieure de l’intervalle de protection (173).</p>
+
+<img data-src="methodes-suppressives_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"></section>
+<section id="les-intervalles-de-protection-8" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les intervalles de protection</h2>
+
+<img data-src="methodes-suppressives_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"><p>On peut inférer la valeur de la cellule à <span title="157 + (7/100)*157 = 168">7%</span> et non 10%.</p>
+<p>La cellule n’est pas suffisamment protégée.</p>
+</section>
+<section id="les-intervalles-de-protection-9" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les intervalles de protection</h2>
+<p>On utilise un autre masque de secret …</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Région</th>
+<th style="text-align: right;">Harpe</th>
+<th style="text-align: right;">Piano</th>
+<th style="text-align: right;">Orgue</th>
+<th style="text-align: right;">Autre</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Nord</strong></td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">X</td>
+<td style="text-align: right;">X</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;"><strong>1021</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Centre</strong></td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">X</td>
+<td style="text-align: right;"><span style="color:red;" title="[141 ; 173]">X</span></td>
+<td style="text-align: right;">934</td>
+<td style="text-align: right;"><strong>1226</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Sud</strong></td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">X</td>
+<td style="text-align: right;"><span style="color:red;" title="[54 ; 66]">X</span></td>
+<td style="text-align: right;">651</td>
+<td style="text-align: right;"><strong>771</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;"><strong>105</strong></td>
+<td style="text-align: right;"><strong>219</strong></td>
+<td style="text-align: right;"><strong>309</strong></td>
+<td style="text-align: right;"><strong>2385</strong></td>
+<td style="text-align: right;"><strong>3018</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="les-intervalles-de-protection-10" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les intervalles de protection</h2>
+<p>… avec d’autres intervalles des possibles.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Région</th>
+<th style="text-align: right;">Harpe</th>
+<th style="text-align: right;">Piano</th>
+<th style="text-align: right;">Orgue</th>
+<th style="text-align: right;">Autre</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Nord</strong></td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">[0;163]</td>
+<td style="text-align: right;">[0;163]</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;"><strong>1021</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Centre</strong></td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">[0;219]</td>
+<td style="text-align: right;"><span style="color:red; font-weight: bold;" title="[141 ; 173]">[62;281]</span></td>
+<td style="text-align: right;">934</td>
+<td style="text-align: right;"><strong>1226</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Sud</strong></td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">[0;84]</td>
+<td style="text-align: right;"><span style="color:red; font-weight: bold;" title="[54 ; 66]">[0;84]</span></td>
+<td style="text-align: right;">651</td>
+<td style="text-align: right;"><strong>771</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;"><strong>105</strong></td>
+<td style="text-align: right;"><strong>219</strong></td>
+<td style="text-align: right;"><strong>309</strong></td>
+<td style="text-align: right;"><strong>2385</strong></td>
+<td style="text-align: right;"><strong>3018</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="les-intervalles-de-protection-11" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les intervalles de protection</h2>
+
+<img data-src="methodes-suppressives_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"><p>Avec cet autre masque de secret la cellule est suffisamment protégée.</p>
+</section>
+<section id="minimiser-la-perte-dinformation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Minimiser la perte d’information</h2>
+<p>Pour minimiser la perte d’information, il faut définir pour chaque cellule un <strong>coût</strong> associé à sa suppression.</p>
+<p><br></p>
+<p>Plusieurs possibilités :</p>
+<ul>
+<li>Le nombre de cellules supprimées</li>
+<li>Le nombre de contributeurs concernés par les cases supprimées</li>
+<li>La valeur de la cellule (défaut Tau-Argus)</li>
+<li>Un autre variable / coût ajusté</li>
+</ul>
+</section></section>
+<section>
+<section id="les-outils" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Les outils</h1>
+
+</section>
+<section id="tau-argus" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2><span class="math inline">\(\tau\)</span>-Argus</h2>
+<div style="display: flex; align-items: center; justify-content: space-between;">
+<ul>
+<li>
+Permet de calculer le secret primaire et secondaire ou faire des arrondis contrôlés
+</li>
+<li>
+Développement maintenance et support : groupé d’expert européens coordonné par CBS
+</li>
+<li>
+Logiciel de référence en Europe pour gérer la confidentialité des tableaux
+</li>
+<li>
+Logiciel libre et open source
+</li>
+<li>
+Dernière version stable 4.2.4 (26 avril 2023)
+</li>
+</ul>
+<p><img src="./img/tau_argus_logo.png" alt="Tau-Argus Logo" style="height: 200px; margin-left: 20px; object-fit: contain;"></p>
+</div>
+</section>
+<section id="tau-argus-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2><span class="math inline">\(\tau\)</span>-Argus</h2>
+<p>Avantages :</p>
+<ul>
+<li>Outil qui fait référence</li>
+<li>Performant sur la partie pose de secret grâce à une optimisation globale</li>
+<li>Outil maintenu régulièrement</li>
+</ul>
+<p>Inconvénients :</p>
+<ul>
+<li>Interface fouillis</li>
+<li>Bugs et erreurs pas faciles à comprendre et corriger</li>
+<li>Reproductibilité des opérations limitées</li>
+</ul>
+</section>
+<section id="rtauargus" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>rtauargus</h2>
+<p>Un package R pour bénéficier des avantages de <span class="math inline">\(\tau\)</span>-Argus tout en limitant les inconvénients.</p>
+<div style="display: flex; align-items: flex-start; justify-content: space-between;">
+<ul>
+<li>
+Développé à l’Insee
+</li>
+<li>
+<a href="https://github.com/InseeFrLab/rtauargus">Code open-source</a>
+</li>
+<li>
+Version la plus récente 02/25 : v-1.2.999-dev
+</li>
+<li>
+<a href="https://inseefrlab.github.io/rtauargus/">Une documentation en ligne</a>
+</li>
+<li>
+Utiliser les fonctions tab_XXX()
+</li>
+</ul>
+<p><img src="./img/rtauargus_logo_sans_fond.png" alt="rtauargus Logo" style="height: 200px; margin-left: 20px;"></p>
+</div>
+</section>
+<section id="rtauargus-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>rtauargus</h2>
+<p>Fonctionnement du package :</p>
+<ul>
+<li>crée l’ensemble des fichiers dans les formats attendus par <span class="math inline">\(\tau\)</span>-Argus</li>
+<li>Lance <span class="math inline">\(\tau\)</span>-Argus</li>
+<li>Récupère les résultats dans R</li>
+</ul>
+</section>
+<section id="rtauargus-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>rtauargus</h2>
+<ol type="1">
+<li>Poser le secret primaire “manuellement”</li>
+<li>Poser le secret secondaire avec :</li>
+</ol>
+<ul>
+<li>tab_rtauargus() : pour protéger un seul tableau</li>
+<li>tab_multi_manager() : pour protéger plusieurs tableaux</li>
+</ul>
+</section>
+<section id="rtauargus-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>rtauargus</h2>
+<p>Besoin de retours utilisateurs : créer une <a href="https://github.com/InseeFrLab/rtauargus/issues">issue sur github</a>.</p>
+<p>Ou nous contacter par <script type="text/javascript">
+<!--
+h='&#x69;&#110;&#x73;&#x65;&#x65;&#46;&#102;&#114;';a='&#64;';n='&#100;&#x67;&#x37;&#x35;&#x5f;&#100;&#x6d;&#x63;&#x73;&#x69;&#x2d;&#x63;&#x6f;&#110;&#102;&#x69;&#100;&#x65;&#110;&#116;&#x69;&#x61;&#108;&#x69;&#116;&#x65;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x6d;&#x61;&#x69;&#108;'+'<\/'+'a'+'>');
+// -->
+</script><noscript>mail (dg75_dmcsi-confidentialite at insee dot fr)</noscript>.</p>
+</section></section>
+<section>
+<section id="les-hiérarchies" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Les hiérarchies</h1>
+
+</section>
+<section id="tableaux-hiérarchisés" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Tableaux hiérarchisés</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+  A[**Pays**&lt;br&gt;400] --&gt; B[**Nord**&lt;br&gt;46]
+  A --&gt; C[**Ouest**&lt;br&gt;191]
+  A --&gt; D[**Est**&lt;br&gt;80]
+  A --&gt; E[**Sud**&lt;br&gt;83]
+  B --&gt; F[**N1**&lt;br&gt;21]
+  B --&gt; G["**N2**&lt;br&gt;&lt;font color='red'&gt;2&lt;/font&gt;"]
+  B --&gt; H[**N3**&lt;br&gt;23]
+  C --&gt; I[**O1**&lt;br&gt;32]
+  C --&gt; J[**O2**&lt;br&gt;54]
+  C --&gt; K[**O3**&lt;br&gt;67]
+  C --&gt; L[**O4**&lt;br&gt;38]
+  D --&gt; M[**E1**&lt;br&gt;27]
+  D --&gt; N[**E2**&lt;br&gt;41]
+  D --&gt; O[**E3**&lt;br&gt;12]
+  E --&gt; P[**S1**&lt;br&gt;44]
+  E --&gt; Q[**S2**&lt;br&gt;39]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="tableaux-hiérarchisés-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Tableaux hiérarchisés</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+  A[**Pays**&lt;br&gt;400] --&gt; B[**Nord**&lt;br&gt;46]
+  A --&gt; C[**Ouest**&lt;br&gt;191]
+  A --&gt; D[**Est**&lt;br&gt;80]
+  A --&gt; E[**Sud**&lt;br&gt;83]
+  B --&gt; F[**N1**&lt;br&gt;21]
+  B --&gt; G["**N2**&lt;br&gt;&lt;font color='red'&gt;2&lt;/font&gt;"]
+  B --&gt; H[**N3**&lt;br&gt;23]
+  C --&gt; I[**O1**&lt;br&gt;32]
+  C --&gt; J[**O2**&lt;br&gt;54]
+  C --&gt; K[**O3**&lt;br&gt;67]
+  C --&gt; L[**O4**&lt;br&gt;38]
+  D --&gt; M[**E1**&lt;br&gt;27]
+  D --&gt; N[**E2**&lt;br&gt;41]
+  D --&gt; O["**E3**&lt;br&gt;&lt;font color='red'&gt;X&lt;/font&gt;"]
+  E --&gt; P[**S1**&lt;br&gt;44]
+  E --&gt; Q[**S2**&lt;br&gt;39]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Si on ne renseigne pas la hiérarchie, on peut retrouver la valeur cachée.</p>
+</div>
+</section>
+<section id="tableaux-hiérarchisés-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Tableaux hiérarchisés</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+  A[**Pays**&lt;br&gt;400] --&gt; B[**Nord**&lt;br&gt;46]
+  A --&gt; C[**Ouest**&lt;br&gt;191]
+  A --&gt; D[**Est**&lt;br&gt;80]
+  A --&gt; E[**Sud**&lt;br&gt;83]
+  B --&gt; F["**N1**&lt;br&gt;&lt;font color='red'&gt;X&lt;/font&gt;"]
+  B --&gt; G["**N2**&lt;br&gt;&lt;font color='red'&gt;2&lt;/font&gt;"]
+  B --&gt; H[**N3**&lt;br&gt;23]
+  C --&gt; I[**O1**&lt;br&gt;32]
+  C --&gt; J[**O2**&lt;br&gt;54]
+  C --&gt; K[**O3**&lt;br&gt;67]
+  C --&gt; L[**O4**&lt;br&gt;38]
+  D --&gt; M[**E1**&lt;br&gt;27]
+  D --&gt; N[**E2**&lt;br&gt;41]
+  D --&gt; O[**E3**&lt;br&gt;12]
+  E --&gt; P[**S1**&lt;br&gt;44]
+  E --&gt; Q[**S2**&lt;br&gt;39]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Lorsque la hiérarchie est renseignée, on protège bien les données.</p>
+</div>
+</section>
+<section id="le-format-argus-des-hiérarchies" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le format Argus des hiérarchies</h2>
+<p>Dans <span class="math inline">\(\tau\)</span>-Argus les hiérarchies sont présentées dans un format particulier : fichier texte <strong>.hrc</strong>.</p>
+<ul>
+<li>Doit décrire parfaitement l’emboîtement</li>
+<li>Le nombre de @ désigne le niveau d’emboîtement de chaque catégorie</li>
+<li>Ne fait pas apparaître le total</li>
+<li>La fonction <code>write_hrc2()</code> permet de créer un fichier .hrc à partir d’une table de passage</li>
+</ul>
+</section></section>
+<section>
+<section id="protéger-des-tableaux-liés" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Protéger des tableaux liés</h1>
+
+</section>
+<section id="protéger-des-tableaux-liés-avec-rtauargus" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Protéger des tableaux liés avec rtauargus</h2>
+<p>Utiliser la fonction tab_multi_manager() : 1) L’utilisateur décrit les tableaux 2) Fusion automatique de tous les tableaux entre eux 3) Algorithme gère la protection itérative des tableaux</p>
+<p>N.B. La pose du secret à chaque itération est effectuée avec <span class="math inline">\(\tau\)</span>-Argus.</p>
+<div class="fragment">
+<p>La fonction tab_multi_manager() fournit un journal sous forme de reporting (étapes pose secret).</p>
+</div>
+</section></section>
+<section>
+<section id="analyser-une-demande" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Analyser une demande</h1>
+
+</section>
+<section id="lanalyse-dune-demande" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>L’analyse d’une demande</h2>
+<p>Il faut repérer les liens entre les tableaux pour poser un secret qui les protège vraiment.</p>
+<p>Les tableaux diffusés ne sont pas les mêmes que les tableaux à protéger.</p>
+</section>
+<section id="etapes-de-lanalyse" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Etapes de l’analyse</h2>
+<ol type="1">
+<li>Réunir les informations nécessaires à la description des tableaux</li>
+</ol>
+<ul>
+<li>champ</li>
+<li>variables de croisements</li>
+<li>variable de réponses (i.e.&nbsp;indicateur)</li>
+<li>tableaux de fréquence ou de volumes ?</li>
+<li>description des emboîtements pour les hiérarchies</li>
+<li>équations ou corrélations entre les variables de réponses</li>
+</ul>
+</section>
+<section id="etapes-de-lanalyse-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Etapes de l’analyse</h2>
+<ol start="2" type="1">
+<li>La demande peut-elle être découpée en sous-demandes indépendantes ?</li>
+</ol>
+<ul>
+<li>champs différents et non complémentaires =&gt; indépendance</li>
+<li>variable de réponses différentes (et non liées par une équation / corrélation) =&gt; indépendance</li>
+<li>variables de croisement toutes différentes =&gt; indépendance</li>
+</ul>
+<p>Dans les cas d’indépendance il faut <em>gérer séparément les différentes sous-demandes</em>.</p>
+</section>
+<section id="etapes-de-lanalyse-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Etapes de l’analyse</h2>
+<ol start="3" type="1">
+<li>Lister les tableaux nécessaires pour la pose du secret</li>
+</ol>
+<ul>
+<li>Certaines hiérarchies peuvent conduire à unifier des tableaux</li>
+<li>Si tableaux additifs, construire un unique tableau en créant une variable supplémentaire</li>
+<li>Si hiérarchie non-emboîtée, extraire les niveaux concernés pour construire un tableau supplémentaire</li>
+</ul>
+</section>
+<section id="etapes-de-lanalyse-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Etapes de l’analyse</h2>
+<ol start="4" type="1">
+<li>Préparer les hiérarchies</li>
+</ol>
+<ul>
+<li>Détecter les variables hiérarchiques</li>
+<li>Construire les fichiers .hrc nécessaires (manuellement ou avec write_hrc2())</li>
+</ul>
+</section></section>
+<section>
+<section id="liens-spécifiques" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Liens spécifiques</h1>
+
+</section>
+<section id="traiter-un-lien-additif-entre-des-variables-réponses" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Traiter un lien additif entre des variables réponses</h2>
+<div style="display: flex; gap: 20px;">
+<div style="flex: 1;">
+<p>
+<strong>CA couteaux</strong>
+</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Reg1</th>
+<th>Reg2</th>
+<th><strong>T</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>tr1</td>
+<td>5</td>
+<td>10</td>
+<td><strong>15</strong></td>
+</tr>
+<tr class="even">
+<td>tr2</td>
+<td>12</td>
+<td>18</td>
+<td><strong>30</strong></td>
+</tr>
+<tr class="odd">
+<td>tr3</td>
+<td>5</td>
+<td>5</td>
+<td><strong>10</strong></td>
+</tr>
+<tr class="even">
+<td><strong>T</strong></td>
+<td><strong>22</strong></td>
+<td><strong>33</strong></td>
+<td><strong>55</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="flex: 1;">
+<p>
+<strong>CA fourchettes</strong>
+</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Reg1</th>
+<th>Reg2</th>
+<th><strong>T</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>tr1</td>
+<td>3</td>
+<td>8</td>
+<td><strong>11</strong></td>
+</tr>
+<tr class="even">
+<td>tr2</td>
+<td>6</td>
+<td>20</td>
+<td><strong>26</strong></td>
+</tr>
+<tr class="odd">
+<td>tr3</td>
+<td>2</td>
+<td>6</td>
+<td><strong>8</strong></td>
+</tr>
+<tr class="even">
+<td><strong>T</strong></td>
+<td><strong>11</strong></td>
+<td><strong>34</strong></td>
+<td><strong>45</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="flex: 1;">
+<p>
+<strong>CA couverts</strong>
+</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Reg1</th>
+<th>Reg2</th>
+<th><strong>T</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>tr1</td>
+<td>8</td>
+<td>18</td>
+<td><strong>26</strong></td>
+</tr>
+<tr class="even">
+<td>tr2</td>
+<td>18</td>
+<td>38</td>
+<td><strong>56</strong></td>
+</tr>
+<tr class="odd">
+<td>tr3</td>
+<td>7</td>
+<td>11</td>
+<td><strong>18</strong></td>
+</tr>
+<tr class="even">
+<td><strong>T</strong></td>
+<td><strong>33</strong></td>
+<td><strong>67</strong></td>
+<td><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Lien entre les CA : “couverts = couteaux + fourchettes”</p>
+<p>On crée une nouvelle variable de croisement “type_couverts”.</p>
+</section>
+<section id="traiter-une-hiérarchie-non-emboîtée" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Traiter une hiérarchie non-emboîtée</h2>
+<div class="column centered">
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+  A[Total] --&gt; B[&lt;25]
+  A --&gt; C[25-29]
+  A --&gt; D[30-69]
+  A --&gt; E[70+]
+  D --&gt; F[30-49]
+  D --&gt; G[50-69]
+  H[+50] --&gt; G
+  H --&gt; E
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div><div class="fragment">
+<p>Ici, l’agrégat +50 ne peut pas être bien emboîté dans la hiérarchie.</p>
+</div>
+</section>
+<section id="traiter-une-hiérarchie-non-emboîtée-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Traiter une hiérarchie non-emboîtée</h2>
+<p>Il faut traiter deux tableaux avec deux hiérarchies différentes.</p>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+  subgraph GROUPE_1["GROUPE 1"]
+    A[Total] --&gt; B[&lt;25]
+    A --&gt; C[25-29]
+    D --&gt; F[30-49]
+    A --&gt; D[30-69]
+    D --&gt; G[50-69]
+    A --&gt; E[70+]
+  end
+
+  subgraph GROUPE_2["+50"]
+    H[+50] --&gt; G
+    H --&gt; E
+  end
+
+  %% on donne une classe au subgraph via son nom
+  classDef groupe1Style fill:#e0f7fa,stroke:#00796b,stroke-width:2px,color:#004d40;
+  class GROUPE_1 groupe1Style;
+
+  classDef groupe2Style fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#bf360c;
+  class GROUPE_2 groupe2Style;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="essai" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>essai</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+  subgraph grp1["hiérarchie principale"]
+    A[Total] --&gt; B[&lt;25]
+    A --&gt; C[25-29]
+    A --&gt; D[30-69]
+    A --&gt; E[70+]
+    D --&gt; F[30-49]
+    D --&gt; G[50-69]
+    E ~~~ X
+  end
+
+  subgraph grp2["+50"]
+    H[+50] --&gt; G
+    H --&gt; E
+  end
+
+  %% cacher le nœud X
+  style X fill=transparent,stroke=transparent
+  
+  %% on donne une classe au subgraph via son nom
+  classDef groupe1Style fill:#e0f7fa,stroke:#00796b,stroke-width:2px,color:#004d40;
+  class grp1 groupe1Style;
+
+  classDef groupe2Style fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#bf360c;
+  class grp2 groupe2Style;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -416,6 +2272,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

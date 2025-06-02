@@ -585,7 +585,98 @@
     "href": "pratique/fiches/proteger-tableaux-suppressif.html",
     "title": "Protéger des tableaux avec une méthode suppressive",
     "section": "",
-    "text": "Code\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n\n\n\n\n\n\n\n\nFigure 1: Temperature and ozone level."
+    "text": "Cette fiche pratique présente une façon de protéger des tableaux en utilisant une méthode suppressive grâce au package rtauargus qui appelle Tau-Argus depuis R. Les données utilisées peuvent être générées à partir du document [INSERER LIEN]. Le code peut être entièrement caché ou visible grâce au bouton à droite du titre. Vous pouvez aussi le faire apparaître ou disparaître au fur et à mesure de la lecture en appuyant sur les boutons Code."
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#présentation-des-données-individuelles",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html#présentation-des-données-individuelles",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "Présentation des données individuelles",
+    "text": "Présentation des données individuelles\nNous créons un jeu de données entreprises (1 ligne = 1 entreprise) pour lesquelles on dispose d’informations telles que l’activité, la catégorie juridique, la géographie d’implantation (variables NUTS) et la tranche d’effectifs. Pour chaque entreprise on dispose également du chiffre d’affaires (CA) selon le type de produits (salades, pizzas, batavias, légumes rouges, etc.).\n\n\nCode\nset.seed(123)\n\na88 &lt;- c(\"A01\",\"A02\",\"A03\",\"B05\",\"B06\",\"B07\",\"B08\",\"B09\",\"C10\",\"C11\",\"C12\",\"C13\",\n         \"C14\",\"C15\",\"C16\",\"C17\",\"C18\",\"C19\",\"C20\",\"C21\",\"C22\",\"C23\",\"C24\",\"C25\",\n         \"C26\",\"C27\",\"C28\",\"C29\",\"C30\",\"C31\",\"C32\",\"C33\",\"D35\",\"E36\",\"E37\",\"E38\",\n         \"E39\",\"F41\",\"F42\",\"F43\",\"G45\",\"G46\",\"G47\",\"H49\",\"H50\",\"H51\",\"H52\",\"H53\",\n         \"I55\",\"I56\",\"J58\",\"J59\",\"J60\",\"J61\",\"J62\",\"J63\",\"K64\",\"K65\",\"K66\",\"L68\",\n         \"M69\",\"M70\",\"M71\",\"M72\",\"M73\",\"M74\",\"M75\",\"N77\",\"N78\",\"N79\",\"N80\",\"N81\",\n         \"N82\",\"O84\",\"P85\",\"Q86\",\"Q87\",\"Q88\",\"R90\",\"R91\",\"R92\",\"R93\",\"S94\",\"S95\",\n         \"S96\",\"T97\",\"T98\",\"U99\")\n\n# Modalités rares\nmodalites_rares &lt;- c(\"C29\", \"J58\", \"Q88\")\n\n# Probabilités : base égale pour toutes, sauf rares\nproba_a88 &lt;- rep(1, length(a88))\nproba_a88[a88 %in% modalites_rares] &lt;- 0.01  # très faible proba\n\n# Normalisation des proba\nproba_a88 &lt;- proba_a88 / sum(proba_a88)\n\ncorrespondance_naf &lt;- data.frame(a88) %&gt;% \n  mutate(a21 = substr(a88,1,1),\n         a10 = case_when(\n           a21 == \"A\" ~ \"AZ\",\n           a21 %in% c(\"B\",\"C\",\"D\",\"E\") ~ \"BE\",\n           a21 == \"F\" ~ \"FZ\",\n           a21 %in% c(\"G\",\"H\",\"I\") ~ \"GI\",\n           a21 == \"J\" ~ \"JZ\",\n           a21 == \"K\" ~ \"KZ\",\n           a21 == \"L\" ~ \"LZ\",\n           a21 %in% c(\"M\",\"N\") ~ \"MN\",\n           a21 %in% c(\"O\",\"P\",\"Q\") ~ \"OQ\",\n           a21 %in% c(\"R\",\"S\",\"T\",\"U\") ~ \"RU\"\n         )) %&gt;% \n  select(a10,a21,a88)\n\nnuts3 &lt;- c(\"FR101\",\"FR102\",\"FR103\",\"FR104\",\"FR105\",\"FR106\",\"FR107\",\"FR108\",\"FRB01\",\n           \"FRB02\",\"FRB03\",\"FRB04\",\"FRB05\",\"FRB06\",\"FRC11\",\"FRC12\",\"FRC13\",\"FRC14\",\n           \"FRC21\",\"FRC22\",\"FRC23\",\"FRC24\",\"FRD11\",\"FRD12\",\"FRD13\",\"FRD21\",\"FRD22\",\n           \"FRE11\",\"FRE12\",\"FRE21\",\"FRE22\",\"FRE23\",\"FRF11\",\"FRF12\",\"FRF21\",\"FRF22\",\n           \"FRF23\",\"FRF24\",\"FRF31\",\"FRF32\",\"FRF33\",\"FRF34\",\"FRG01\",\"FRG02\",\"FRG03\",\n           \"FRG04\",\"FRG05\",\"FRH01\",\"FRH02\",\"FRH03\",\"FRH04\",\"FRI11\",\"FRI12\",\"FRI13\",\n           \"FRI14\",\"FRI15\",\"FRI21\",\"FRI22\",\"FRI23\",\"FRI31\",\"FRI32\",\"FRI33\",\"FRI34\",\n           \"FRJ11\",\"FRJ12\",\"FRJ13\",\"FRJ14\",\"FRJ15\",\"FRJ21\",\"FRJ22\",\"FRJ23\",\"FRJ24\",\n           \"FRJ25\",\"FRJ26\",\"FRJ27\",\"FRJ28\",\"FRK11\",\"FRK12\",\"FRK13\",\"FRK14\",\"FRK21\",\n           \"FRK22\",\"FRK23\",\"FRK24\",\"FRK25\",\"FRK26\",\"FRK27\",\"FRK28\",\"FRL01\",\"FRL02\",\n           \"FRL03\",\"FRL04\",\"FRL05\",\"FRL06\",\"FRM01\",\"FRM02\",\"FRY10\",\"FRY20\",\"FRY30\",\n           \"FRY40\",\"FRY50\")\n\ncorrespondance_nuts &lt;- data.frame(nuts3) %&gt;% \n  mutate(nuts1 = substr(nuts3,1,3),\n         nuts2 = substr(nuts3,1,4)) %&gt;% \n  select(nuts1,nuts2,nuts3)\n\nset.seed(123)\n\nn &lt;- 10000  # nombre d’observations souhaité\n\nmicro &lt;- tibble(\n  a88 = sample(a88, n, replace = TRUE, prob = proba_a88),\n  nuts3 = sample(nuts3, n, replace = TRUE),\n  treff = sample(c(\"tr1\", \"tr2\", \"tr3\"), n, replace = TRUE, prob = c(0.45, 0.05, 0.5)),\n  cj = sample(c(\"LL\", \"PA\", \"SP\"), n, replace = TRUE, prob = c(0.45, 0.45, 0.1)),\n  maches = ifelse(runif(n) &lt; 0.1, 0, round(runif(n, 30000, 75000))),\n  batavias = ifelse(runif(n) &lt; 0.1, 0, round(runif(n, 25000, 70000))),\n  salades = maches + batavias,\n  tomates = ifelse(runif(n) &lt; 0.08, 0, round(runif(n, 50000, 500000))),\n  pizzas = ifelse(runif(n) &lt; 0.2, 0, round(runif(n, 60000, 900000)))) %&gt;% \n  mutate(\n    # Détecter les lignes \"rares\"\n    rare = a88 %in% modalites_rares | (a88 == \"J58\" & treff == \"tr1\"),\n    # Attribution des poids en fonction de la rareté\n    poids = ifelse(rare, round(runif(n(), 1, 3)), round(runif(n(), 10, 300)))\n  ) %&gt;%\n  left_join(correspondance_naf, by = \"a88\") %&gt;%\n  left_join(correspondance_nuts, by = \"nuts3\") %&gt;% \n  select(a10,a21,a88,nuts1,nuts2,nuts3,treff,cj,maches,batavias,salades,tomates,pizzas,poids)\n\nstr(micro)\n\n\ntibble [10,000 × 14] (S3: tbl_df/tbl/data.frame)\n $ a10     : chr [1:10000] \"BE\" \"MN\" \"BE\" \"OQ\" ...\n $ a21     : chr [1:10000] \"C\" \"N\" \"E\" \"Q\" ...\n $ a88     : chr [1:10000] \"C27\" \"N78\" \"E38\" \"Q87\" ...\n $ nuts1   : chr [1:10000] \"FR1\" \"FRC\" \"FRJ\" \"FRF\" ...\n $ nuts2   : chr [1:10000] \"FR10\" \"FRC2\" \"FRJ2\" \"FRF2\" ...\n $ nuts3   : chr [1:10000] \"FR103\" \"FRC22\" \"FRJ25\" \"FRF22\" ...\n $ treff   : chr [1:10000] \"tr3\" \"tr1\" \"tr1\" \"tr3\" ...\n $ cj      : chr [1:10000] \"LL\" \"LL\" \"LL\" \"PA\" ...\n $ maches  : num [1:10000] 73625 72960 49101 61880 61224 ...\n $ batavias: num [1:10000] 55324 52754 31679 33658 38232 ...\n $ salades : num [1:10000] 128949 125714 80780 95538 99456 ...\n $ tomates : num [1:10000] 130212 344992 164522 176079 145249 ...\n $ pizzas  : num [1:10000] 116520 0 0 267409 0 ...\n $ poids   : num [1:10000] 242 179 184 50 164 103 53 234 239 243 ..."
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#tabuler-un-indicateur",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html#tabuler-un-indicateur",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "Tabuler un indicateur",
+    "text": "Tabuler un indicateur\nOn veut construire le chiffre d’affaires en salades des entreprises par activité (niveau a88) et par tranche d’effectifs (treff).\n\n\nCode\nsalades &lt;- tabulate_micro_data(\n  df = micro,\n  cat_var = c(\"a88\", \"treff\"),\n  pond_var = \"poids\",\n  resp_var = \"salades\",\n  marge_label = \"Total\"\n)\n\n\nLe résultat est un tableau long avec :\n\nLes variables de croisement (a88 et treff)\nDifférents indicateurs :\n\nnb_obs: comptage du nombre d’entreprises (pour appliquer la règle de fréquence)\nsalades_tot: indicateur / variable de réponse (ici total du chiffre d’affaire de salades)\nsalades_max: contribution maximale au chiffre d’affaires (pour appliquer la règle de dominance) Toutes les marges (totaux et sous-totaux) ont été ajoutées à la table.\n\n\n\n\nCode\nstr(salades)\n\n\nClasses 'data.table' and 'data.frame':  351 obs. of  5 variables:\n $ a88        : chr  \"C27\" \"N78\" \"E38\" \"Q87\" ...\n $ treff      : chr  \"Total\" \"Total\" \"Total\" \"Total\" ...\n $ nb_obs     : num  19554 17371 20839 20224 17122 ...\n $ salades_tot: num  1.74e+09 1.54e+09 1.82e+09 1.86e+09 1.57e+09 ...\n $ salades_max: num  137073 137203 140522 144429 140834 ...\n - attr(*, \".internal.selfref\")=&lt;externalptr&gt;"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#calculer-plusieurs-indicateurs-en-même-temps",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html#calculer-plusieurs-indicateurs-en-même-temps",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "Calculer plusieurs indicateurs en même temps",
+    "text": "Calculer plusieurs indicateurs en même temps\nOn veut construire deux tableaux :\n\nle chiffre d’affaires de la production de pizzas des entreprises par activité (niveau A10), par tranche d’effectifs (treff) et catégorie juridique (cj);\nle chiffre d’affaires de la production de tomates des entreprises par activité (niveau A10), par tranche d’effectifs (treff) et catégorie juridique (cj).\n\nCes deux tableaux ont les mêmes variables de croisement et deux indicateurs différents. Ils peuvent être construits en même temps.\n\n\nCode\npizzas_tomates &lt;- tabulate_micro_data(\n  df = micro,\n  cat_vars = c(\"a10\", \"treff\",\"cj\"),\n  pond_var = \"poids\",\n  resp_var = c(\"pizzas\",\"tomates\"),\n  marge_label = \"Ensemble\"\n)\n\nstr(pizzas_tomates)\n\n\nClasses 'data.table' and 'data.frame':  174 obs. of  8 variables:\n $ a10        : chr  \"BE\" \"MN\" \"OQ\" \"RU\" ...\n $ treff      : chr  \"Ensemble\" \"Ensemble\" \"Ensemble\" \"Ensemble\" ...\n $ cj         : chr  \"Ensemble\" \"Ensemble\" \"Ensemble\" \"Ensemble\" ...\n $ nb_obs     : num  608493 239202 75471 171537 184607 ...\n $ pizzas_tot : num  2.34e+11 9.00e+10 3.14e+10 6.65e+10 7.09e+10 ...\n $ tomates_tot: num  1.54e+11 6.20e+10 1.83e+10 4.44e+10 4.62e+10 ...\n $ pizzas_max : num  899871 898861 899157 898798 899906 ...\n $ tomates_max: num  499928 499883 494816 499526 499837 ...\n - attr(*, \".internal.selfref\")=&lt;externalptr&gt;"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#poser-le-secret-secondaire",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html#poser-le-secret-secondaire",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "Poser le secret secondaire",
+    "text": "Poser le secret secondaire\nPoser un masque de secret sur un tableau comprend les étapes suivantes:\n\nTout d’abord on pose le secret primaire. Pour cela, il faut créer créer des variables indicatrices :\n\nPour chacun des tableaux, vous ajouterez une variable booléenne indiquant si la cellule est problématique (TRUE) ou non (FALSE), au regard de chacune des règles pertinentes à appliquer :\n\nSi vous appliquez la règle de fréquence, la variable créée s’appellera is_secret_freq;\nSi vous appliquez la règle de dominance, la variable créée s’appellera is_secret_dom.\n\nPuis de créer une variable qu’on appellera is_secret_prim, définie ainsi :\n\nis_secret_prim = is_secret_freq si seule la règle de fréquence doit s’appliquer;\nis_secret_prim = is_secret_freq | is_secret_dom si les deux règles doivent s’appliquer;\n\n\nAprès avoir posé le secret primaire, vous calculerez le nombre de cellules détectées comme à risque.\nEnsuite, il s’agit de poser le secret secondaire en utilisant le package rtauargus. Les consignes d’installation de rtauargus et du logiciel Tau-Argus sont indiquées dans le fichier [INSERER LIEN]. Vous utiliserez notamment la fonction tab_rtauargus() et suivrez les étapes mentionnées pour apprendre à l’utiliser.\nEnfin, vous calculerez le nombre de cellules selon leur statut final. Nous utiliserons pour cela la norme européenne en notant :\n\n\nA les cellules en secret primaire à cause de la règle de fréquence\nB les cellules en secret primaire à cause de la règle de dominance (dans le futur ces cellules pourraient être notées O)\nD les cellules concernées par le secret secondaire\nV les cellules non touchées par le secret, cad les cellules qui pourront être diffusées.\n\nLa fonction tab_rtauargus() permet de poser le secret secondaire et requiert les arguments suivants :\n- tabular : la table à protéger - dir_name : le nom du répertoire où les fichiers seront sauvegardés - files_name : le nom utilisé pour nommer les fichiers (chaque fichier a une extension différente); - explanatory_vars : le nom des variables de croisements présents dans la table; - secret_var : le nom de la variable indiquant si une cellule est à risque ou non (secret primaire); - value : nom de la variable de réponse; - freq : nom de la variable d’effectifs; - totcode : le code utilisé pour indiquer le total pour chacune des variables de croisements (explanatory_vars).\n\n\nCode\nsalades_masq &lt;- tab_rtauargus(\n  salades_detect,\n  dir_name = \"tauargus_files/exo2\",\n  files_name = \"T0\",\n  explanatory_vars = c(\"a88\",\"treff\"),\n  secret_var = \"is_secret_prim\",\n  value = \"salades_tot\",\n  freq = \"nb_obs\",\n  totcode = c(a88=\"Total\",treff=\"Total\"),\n  verbose = FALSE\n)"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#analyser-les-résultats",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html#analyser-les-résultats",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "Analyser les résultats",
+    "text": "Analyser les résultats\n\nLes fichiers créés lors de l’exécution de Tau-Argus\nL’ensemble des fichiers créés pendant le processus se trouvent dans le répertoire mentionné dans l’argument dir_name. Tous les fichiers ont le même nom, mais pas la même extension:\n\nT0.tab : tableau de données\nT0.hst : fichier d’apriori où sont listées les cellules à risque (secret primaire)\nT0.rda : fichier de métadonnées;\nT0.arb : fichier batch, qui sera exécuté par Tau-Argus\nT0.txt : fichier log, retraçant les étapes exécutées par Tau-Argus\nT0.csv : masque au format csv\n\n\n\nLe masque\nLe masque est retourné par la fonction. Ce masque est une copie de la table fournie en entrée à laquelle une variable supplémentaire, Status, est fournie indiquant le statut final de la cellule:\n\nB : secret primaire (ou apriori)\nD : secret secondaire\nV : cellule valide, cad qui peut être diffusée\n\n\n\nCode\nstr(salades_masq)\n\n\nClasses 'data.table' and 'data.frame':  351 obs. of  9 variables:\n $ a88           : chr  \"A01\" \"A01\" \"A01\" \"A01\" ...\n $ treff         : chr  \"Total\" \"tr1\" \"tr2\" \"tr3\" ...\n $ nb_obs        : num  16978 7660 856 8462 19026 ...\n $ salades_tot   : num  1.53e+09 6.99e+08 7.44e+07 7.61e+08 1.67e+09 ...\n $ salades_max   : num  136845 130891 106591 136845 142618 ...\n $ is_secret_freq: logi  FALSE FALSE FALSE FALSE FALSE FALSE ...\n $ is_secret_dom : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...\n $ is_secret_prim: logi  FALSE FALSE FALSE FALSE FALSE FALSE ...\n $ Status        : chr  \"V\" \"V\" \"V\" \"V\" ...\n - attr(*, \".internal.selfref\")=&lt;externalptr&gt; \n - attr(*, \"sorted\")= chr [1:2] \"a88\" \"treff\"\n\n\n\n\nBilan du secret\nPour faire le bilan du secret le mieux est de modifier la variable Status fournie par Tau-Argus. En effet, cette variable ne permet pas de faire la distinction entre l’origine du secret primaire (fréquence ou dominance).\n\n\nCode\nsalades_masq_statut_final &lt;- salades_masq %&gt;% \n  mutate(\n    statut_final = case_when(\n      is_secret_freq ~ \"A\",\n      is_secret_dom ~ \"B\",\n      TRUE ~ Status,\n    )\n  )\n\n\nAfin de bien appréhender l’impact du secret posé, on va non seulement compter le nombre de cellules masquées, mais aussi calculer la valeur des cellules masquées.\n\n\nCode\nsalades_masq_statut_final %&gt;% \n  group_by(statut_final) %&gt;% \n  summarise(\n    n_cell = n(),\n    val_cell = sum(salades_tot)\n  ) %&gt;%\n  mutate(\n    pc_n_cell = n_cell/sum(n_cell)*100,\n    pc_val_cell = val_cell/sum(val_cell)*100\n  )\n\n\n# A tibble: 3 × 5\n  statut_final n_cell     val_cell pc_n_cell pc_val_cell\n  &lt;chr&gt;         &lt;int&gt;        &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;\n1 A                 4       402294     1.14    0.0000714\n2 D                 2       625022     0.570   0.000111 \n3 V               345 563464335844    98.3   100.       \n\n\nOn masque 1.5% des cellules mais moins de 0.01% de l’information totale."
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#construction-du-fichier-hiérarchique-pour-tau-argus",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html#construction-du-fichier-hiérarchique-pour-tau-argus",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "Construction du fichier hiérarchique pour Tau-Argus",
+    "text": "Construction du fichier hiérarchique pour Tau-Argus\n\n“A la main”\nLa première option consiste à créer le fichier nécessaire (extension .hrc) à la main. Ceci est tout à fait pertinent si la hiérarchie n’est pas trop étendue.\nTau-Argus attend en effet un type de fichier bien particulier, dont l’extension est .hrc. Il s’agit d’un simple fichier texte où les différents emboîtements sont écrits les uns en-dessous des autres. Un symbole (le @) est utilisé pour préciser le niveau de chacun des emboîtements au sein de la hiérarchie.\nPar exemple, un fichier contenant les lignes suivantes :\nALL\n@A\n@@A1\n@@A2\n@B\n@@B1\n@@B2\n@@@B21\n@@@B22\n@C\ndécrit une hiérarchie contenant les emboîtements suivants:\n\nALL = A + B + C =&gt; ALL est le total et A, B et C sont les emboîtements de niveau 1;\nA = A1 + A2 =&gt; A1 et A2 sont des sous-niveaux de A, donc des emboîtements de niveau 2;\nB = B1 + B2\nB2 = B21 + B22\n\nNéanmoins, pour utiliser cette hiérarchie avec Tau-Argus, le super-total (ici “ALL”) ne doit pas apparaître dans le fichier .hrc qui lui est fourni.\nLe bon fichier est donc le suivant :\n@A\n@@A1\n@@A2\n@B\n@@B1\n@@B2\n@@@B21\n@@@B22\n@C\n\n\nAutomatiquement\nQuand la hiérarchie est très étendue, l’écriture manuelle du fichier de hiérarchie est pénible. Or, quand ce genre de cas se présente, il existe souvent une table de correspondance permettant d’associer les différents niveaux entre eux.\nNous appelons table de correspondance une table qui précise l’ensemble des niveaux associés aux emboîtements les plus fins.\nLa table de correspondance représentant la hiérarchie suivante :\nALL\n@A\n@@A1\n@@A2\n@B\n@@B1\n@@B2\n@@@B21\n@@@B22\n@C\nest la suivante:\n\n\nCode\ncorr_tab &lt;- tibble(\n  niv0 = \"ALL\",\n  niv1 = c(rep(\"A\",2),rep(\"B\",3), \"C\"),\n  niv2 = c(\"A1\",\"A2\",\"B1\",rep(\"B2\",2), \"C\"),\n  niv3 = c(\"A1\",\"A2\",\"B1\", \"B21\", \"B22\", \"C\")\n)\ncorr_tab\n\n\n# A tibble: 6 × 4\n  niv0  niv1  niv2  niv3 \n  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;\n1 ALL   A     A1    A1   \n2 ALL   A     A2    A2   \n3 ALL   B     B1    B1   \n4 ALL   B     B2    B21  \n5 ALL   B     B2    B22  \n6 ALL   C     C     C    \n\n\nRemarque: La fonction rtauargus::write_hrc2() qui permet de construire le fichier .hrc à partir d’une table de correspondance n’accepte pas de valeurs manquantes dans la table en entrée. C’est pourquoi, à la dernière ligne, par exemple, C n’admettant pas de subdivisions est répété sur les niveaux inférieurs.\nAvec la fonction write_hrc2() du package rtauargus, on peut exporter la table de correspondance en un fichier hrc. Comme noté précédemment, Tau-Argus n’acceptant pas que le super-total d’une variable hiérarchique soit présent dans le fichier .hrc on le supprime:\n\n\nCode\nwrite_hrc2(corr_tab %&gt;% select(-niv0), file_name = \"fichiers_tauargus/hrc/exemple_TA.hrc\")\nread.table(\"fichiers_tauargus/hrc/exemple_TA.hrc\")\n\n\n     V1\n1     A\n2   @A1\n3   @A2\n4     B\n5   @B1\n6   @B2\n7 @@B21\n8 @@B22\n9     C"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#protection",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html#protection",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "Protection",
+    "text": "Protection\nA présent nous protégeons le tableau T0 pour lequel on vient de construire la hiérarchie.\nLa variable geo est hiérarchique (Pays = Nord + Ouest + Est + Sud, par exemple), on construit le fichier adéquat.\nTable de passage (habituellement elle existe déjà mais pour l’exercice nous la créons) et appel à rtauargus::write_hrc2().\n\n\nCode\ncorr_pays &lt;- tibble(\n  niv1 = c(rep(\"Nord\", 3), rep(\"Ouest\", 4), rep(\"Est\", 3), rep(\"Sud\", 2)),\n  niv2 = c(\"N1\", \"N2\", \"N3\", \"O1\", \"O2\", \"O3\", \"O4\", \"E1\", \"E2\", \"E3\", \"S1\", \"S2\")\n)\n\nwrite_hrc2(corr_pays, file_name = \"fichiers_tauargus/hrc/pays.hrc\")\nread.table(\"fichiers_tauargus/hrc/pays.hrc\")\n\n\n      V1\n1   Nord\n2    @N1\n3    @N2\n4    @N3\n5  Ouest\n6    @O1\n7    @O2\n8    @O3\n9    @O4\n10   Est\n11   @E1\n12   @E2\n13   @E3\n14   Sud\n15   @S1\n16   @S2\n\n\nNous pouvons dès lors poser le masque de secret sur ce tableau. Pour cela, nous faisons toujours appel à la fonction tab_rtauargus.\n\n1. Poser le secret primaire\n\n\nCode\nstr(T0)\n\n\n'data.frame':   17 obs. of  2 variables:\n $ geo : chr  \"Pays\" \"Nord\" \"Ouest\" \"Est\" ...\n $ freq: num  400 46 191 80 83 21 2 23 32 54 ...\n\n\nIl s’agit d’un tableau d’effectifs/de fréquence, on pose donc seulement le secret primaire de fréquence.\n\n\nCode\nT0_detect &lt;- T0 %&gt;% \n  mutate(\n      is_secret_freq = freq &gt; 0 & freq &lt; 3\n    )\n\ntable(T0_detect$is_secret_freq)\n\n\n\nFALSE  TRUE \n   16     1 \n\n\n\n\n2. Lancer Tau-Argus pour poser le secret secondaire\nPour que l’information hiérarchique soit bien prise en compte lors de la pose du secret secondaire par Tau-Argus, il suffit de renseigner l’argument hrc = sous la forme d’un vecteur nommé c(var1 = fichier1, var2 = fichier2,...): le nom de chaque élément étant le nom de la variable concernée et la valeur étant la localisation du fichier .hrc correspondant.\n\n\nCode\nT0_masq &lt;- tab_rtauargus(\n  T0_detect,\n  dir_name = \"fichiers_tauargus/sorties/ex_hrc_pays\",\n  files_name = \"T0\",\n  explanatory_vars = \"geo\",\n  hrc = c(geo = \"fichiers_tauargus/hrc/pays.hrc\"),\n  secret_var = \"is_secret_freq\",\n  value = \"freq\",\n  totcode = c(geo=\"Pays\"),\n  verbose = FALSE\n)\n\n\nVérifions que le secret a été posé correctement :\n\n\nCode\nT0_masq\n\n\n     geo freq is_secret_freq Status\n1     E1   27          FALSE      V\n2     E2   41          FALSE      V\n3     E3   12          FALSE      V\n4    Est   80          FALSE      V\n5     N1   21          FALSE      D\n6     N2    2           TRUE      B\n7     N3   23          FALSE      V\n8   Nord   46          FALSE      V\n9     O1   32          FALSE      V\n10    O2   54          FALSE      V\n11    O3   67          FALSE      V\n12    O4   38          FALSE      V\n13 Ouest  191          FALSE      V\n14  Pays  400          FALSE      V\n15    S1   44          FALSE      V\n16    S2   39          FALSE      V\n17   Sud   83          FALSE      V\n\n\nLa cellule N2 est en secret primaire car elle a une fréquence inférieure à 3. Il faut donc poser un secret secondaire pour protéger cette cellule. On voit que N1 est en secret secondaire ce qui permet de protéger N2 de la différenciation avec le total Nord. Donc, on a bien ici une pose de secret qui respecte la hiérarchie de la variable geo.\nRegardons à présent le secret posé sans prendre en compte la hiérarchie sur la variable geo :\n\n\nCode\nT0_masq_sans_hrc &lt;- tab_rtauargus(\n  T0_detect,\n  dir_name = \"fichiers_tauargus/sorties/ex_hrc_pays\",\n  files_name = \"T0\",\n  explanatory_vars = \"geo\",\n  # hrc = c(geo = \"fichiers_tauargus/hrc/pays.hrc\"),\n  secret_var = \"is_secret_freq\",\n  value = \"freq\",\n  totcode = c(geo=\"Pays\"),\n  verbose = FALSE\n)\n\n\nCette fois-ci le secret secondaire est posé en E3, pour minimiser les valeurs supprimées. Mais ce secret ne tient pas car on peut retrouver la valeur de N2 en faisant N2 = Nord - N1.\n\n\nCode\nT0_masq_sans_hrc\n\n\n     geo freq is_secret_freq Status\n1     E1   27          FALSE      V\n2     E2   41          FALSE      V\n3     E3   12          FALSE      D\n4    Est   80          FALSE      V\n5     N1   21          FALSE      V\n6     N2    2           TRUE      B\n7     N3   23          FALSE      V\n8   Nord   46          FALSE      V\n9     O1   32          FALSE      V\n10    O2   54          FALSE      V\n11    O3   67          FALSE      V\n12    O4   38          FALSE      V\n13 Ouest  191          FALSE      V\n14  Pays  400          FALSE      V\n15    S1   44          FALSE      V\n16    S2   39          FALSE      V\n17   Sud   83          FALSE      V"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#analyser-la-demande",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html#analyser-la-demande",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "Analyser la demande",
+    "text": "Analyser la demande\nA partir des microdonnées présentées dans la partie “Tabuler les données”, on souhaite publier les tableaux suivants.\n\n\n\n\n\nTab\nVar_reponse\nexpl_var1\nexpl_var2\n\n\n\n\nT1\nca_pizzas\nNuts2\nTREFF\n\n\nT2\nca_pizzas\nNuts3\nTREFF\n\n\nT3\nca_pizzas\nA10\nNuts2\n\n\nT4\nca_pizzas\nA10\nNuts3\n\n\nT5\nca_pizzas\nA21\nNuts2\n\n\nT6\nca_pizzas\nA21\nNuts3\n\n\nT7\nca_pizzas\nA88\nNuts2\n\n\nT8\nca_pizzas\nA88\nNuts3\n\n\nT9\nca_batavia\nA10\nTREFF\n\n\nT10\nca_batavia\nA10\nCJ\n\n\nT11\nca_batavia\nA21\nTREFF\n\n\nT12\nca_batavia\nA21\nCJ\n\n\nT13\nca_batavia\nA88\nTREFF\n\n\nT14\nca_batavia\nA88\nCJ\n\n\nT15\nca_mache\nA10\nTREFF\n\n\nT16\nca_mache\nA10\nCJ\n\n\nT17\nca_mache\nA21\nTREFF\n\n\nT18\nca_mache\nA21\nCJ\n\n\nT19\nca_mache\nA88\nTREFF\n\n\nT20\nca_mache\nA88\nCJ\n\n\nT21\nca_salades\nA10\nTREFF\n\n\nT22\nca_salades\nA10\nCJ\n\n\nT23\nca_salades\nA21\nTREFF\n\n\nT24\nca_salades\nA21\nCJ\n\n\nT25\nca_salades\nA88\nTREFF\n\n\nT26\nca_salades\nA88\nCJ\n\n\n\n\n\nChamp de la population : entreprises françaises.\nInformations complémentaires : il n'y a que deux types de salades les batavias et la mâche.\n\n\nPour n’oublier aucun lien entre les tableaux, on procède étape par étape.\n\nLes tableaux sont-ils sur le même champ ?\nOui les tableaux portent tous sur le même champ des entreprises françaises.\n\n\nLes tableaux ont-ils les mêmes variables réponses ?\n\nT1-T8 : variable réponse « ca_pizzas »\nT9-T14 : variable réponse « ca_batavia »\nT15-T20 : variable réponse « ca_mache »\nT21-T26 : variable réponse « ca_salades »\n\n\n\nLes variables réponses ont-elles un lien entre elles ?\nL’information complémentaire nous identique qu’il n’y a que deux types de salades, les batavias et la mâche. On comprend donc que la somme des chiffres d’affaires des batavias et des mâches est égale au chiffre d’affaires des salades : ca_salades = ca_batavia + ca_mache. On peut donc regrouper tous les tableaux qui ont les mêmes variables de croisement et l’un de ces trois indicateurs dans un même tableau. Dans ce tableau on crée une nouvelle variable de croisement qu’on peut nommer « crois_salades ». C’est le cas pour les tables de 9 à 26, on peut les regrouper comme suit : - T9_T15_T21 : ca \\(\\otimes\\) {A10 x treff x crois_salades}\n- T10_T16_T22 : ca \\(\\otimes\\) {A10 x cj x crois_salades}\n- T11_T17_T23 : ca \\(\\otimes\\) {A21 x treff x crois_salades}\n- T12_T18_T24 : ca \\(\\otimes\\) {A21 x cj x crois_salades}\n- T13_T19_T25 : ca \\(\\otimes\\) {A88 x treff x crois_salades}\n- T14_T20_T26 : ca \\(\\otimes\\) {A88 x cj x crois_salades}\nOn en déduit donc qu’il y a deux sous-demandes indépendantes / « clusters » :\n- T1-T8 (cluster pizza)\n- T9-T26 (cluster salades)\n\n\nDans chacun des clusters variables de croisement identiques ?\nDans chacun des clusters y a-t-il des variables de croisement identiques ? Y a-t-il des variables de croisements liés par un lien hiérarchique ? Cluster pizza :\n- les variables « nuts2 » et « nuts3 » font partie de la même hiérarchie « nuts », autrement dit une hiérarchie sur la zone géographique\n- les variables A10, A21 et A88 font partie de la hiérarchie « NAF »\nOn peut donc regrouper ces variables de croisement en deux variables de croisement « nuts » et « NAF ». On obtient donc 2 tableaux à protéger dans le cluster pizza :\n- T_A : ca_pizzas \\(\\otimes\\) {nuts x treff}\n- T_B : ca_pizzas \\(\\otimes\\) {naf x nuts}\nCes deux tableaux sont liés par leur marge sur nuts. Il faut les traiter ensemble dans le même tab_multi_manager().\nCluster salades : - les variables A10, A21 et A88 font partie de la hiérarchie « NAF »\nAinsi, on peut réecrire les 6 tableaux écrits plus haut de cette façon :\n- T9_T15_T21 : ca \\(\\otimes\\) {naf x treff x crois_salades}\n- T10_T16_T22 : ca \\(\\otimes\\) {naf x cj x crois_salades}\n- T11_T17_T23 : ca \\(\\otimes\\) {naf x treff x crois_salades}\n- T12_T18_T24 : ca \\(\\otimes\\) {naf x cj x crois_salades}\n- T13_T19_T25 : ca \\(\\otimes\\) {naf x treff x crois_salades}\n- T14_T20_T26 : ca \\(\\otimes\\) {naf x cj x crois_salades}\nOn voit bien que plusieurs de ces tableaux sont en fait exactement les mêmes, donc finalement les tableaux à traiter pour ce cluster sont : - T_C : ca \\(\\otimes\\) {naf x treff x crois_salades}\n- T_D: ca \\(\\otimes\\) {naf x cj x crois_salades}"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#tabuler-les-données-1",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html#tabuler-les-données-1",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "Tabuler les données",
+    "text": "Tabuler les données\nOn commence par tabuler les données pour l’indicateur “chiffre d’affaires vente pizzas”.\n\n\nCode\npizzas_tabule &lt;- tabulate_micro_data(\n  micro,\n  cat_vars = c(\"treff\"),\n  hrc_vars = list(naf = c(\"a10\",\"a21\",\"a88\"), nuts = c(\"nuts2\",\"nuts3\")),\n  pond_var = \"poids\",\n  resp_var = c(\"pizzas\"),\n  marge_label = \"Total\"\n)\n\nstr(pizzas_tabule)\n\n\nClasses 'data.table' and 'data.frame':  32222 obs. of  6 variables:\n $ naf       : chr  \"BE\" \"MN\" \"OQ\" \"RU\" ...\n $ nuts      : chr  \"Total\" \"Total\" \"Total\" \"Total\" ...\n $ treff     : chr  \"Total\" \"Total\" \"Total\" \"Total\" ...\n $ nb_obs    : num  608493 239202 75471 171537 184607 ...\n $ pizzas_tot: num  2.34e+11 9.00e+10 3.14e+10 6.65e+10 7.09e+10 ...\n $ pizzas_max: num  899871 898861 899157 898798 899906 ...\n - attr(*, \".internal.selfref\")=&lt;externalptr&gt; \n\n\nOn tabule ensuite pour les indicateurs “chiffre d’affaires vente mâches, batavia et salades”. N.B. il faut créer une nouvelle variable de croisement.\n\n\nCode\nsalades_tabule &lt;- tabulate_micro_data(\n  micro,\n  cat_vars = c(\"treff\",\"cj\"),\n  hrc_vars = list(naf = c(\"a10\",\"a21\",\"a88\")),\n  pond_var = \"poids\",\n  resp_var = c(\"salades\",\"batavias\",\"maches\"),\n  marge_label = \"Total\"\n)\n\nsalades_tabule_3var &lt;- salades_tabule %&gt;% \n  tidyr::pivot_longer(\n    cols = c(salades_tot, maches_tot, batavias_tot, \n             salades_max, maches_max, batavias_max),\n    names_to = c(\"crois_salades\", \".value\"),\n    names_pattern = \"(.*)_(tot|max)\"\n  )\n\nstr(salades_tabule_3var)\n\n\ntibble [5,484 × 7] (S3: tbl_df/tbl/data.frame)\n $ naf          : chr [1:5484] \"BE\" \"BE\" \"BE\" \"MN\" ...\n $ treff        : chr [1:5484] \"Total\" \"Total\" \"Total\" \"Total\" ...\n $ cj           : chr [1:5484] \"Total\" \"Total\" \"Total\" \"Total\" ...\n $ nb_obs       : num [1:5484] 608493 608493 608493 239202 239202 ...\n $ crois_salades: chr [1:5484] \"salades\" \"maches\" \"batavias\" \"salades\" ...\n $ tot          : num [1:5484] 5.48e+10 2.89e+10 2.58e+10 2.15e+10 1.13e+10 ...\n $ max          : num [1:5484] 144352 74992 69992 143830 74974 ..."
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#poser-le-secret-primaire-2",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html#poser-le-secret-primaire-2",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "Poser le secret primaire",
+    "text": "Poser le secret primaire\nSecret primaire pour les pizzas.\n\n\nCode\npizzas_tabule &lt;- pizzas_tabule %&gt;% mutate(\n  is_secret_freq = nb_obs &gt; 0 & nb_obs &lt; 3,\n  is_secret_dom = (pizzas_tot != 0) & (pizzas_max &gt; 0.85*pizzas_tot),\n  is_secret_prim = is_secret_freq | is_secret_dom\n)\n\ntable(pizzas_tabule$is_secret_prim)\n\n\n\nFALSE  TRUE \n32198    24 \n\n\nSecret primaire pour les salades.\n\n\nCode\nsalades_tabule_3var &lt;- salades_tabule_3var %&gt;% mutate(\n  is_secret_freq = nb_obs &gt; 0 & nb_obs &lt; 3,\n  is_secret_dom = (tot != 0) & (max &gt; 0.85*tot),\n  is_secret_prim = is_secret_freq | is_secret_dom\n)\n\ntable(pizzas_tabule$is_secret_prim)\n\n\n\nFALSE  TRUE \n32198    24"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#création-des-listes-de-tableaux",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html#création-des-listes-de-tableaux",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "Création des listes de tableaux",
+    "text": "Création des listes de tableaux\nPour le cluster des pizzas.\n\n\nCode\ntableaux_pizza &lt;- list(\n  pizza_nuts_treff = pizzas_tabule %&gt;% filter(naf == \"Total\") %&gt;% select(-naf), # T1.T2\n  pizza_nuts_naf = pizzas_tabule %&gt;% filter(treff == \"Total\") %&gt;% select(-treff) # T3.T4.T5.T6.T7.T8\n)\n\nstr(tableaux_pizza)\n\n\nList of 2\n $ pizza_nuts_treff:Classes 'data.table' and 'data.frame':  516 obs. of  8 variables:\n  ..$ nuts          : chr [1:516] \"FR10\" \"FRC2\" \"FRJ2\" \"FRF2\" ...\n  ..$ treff         : chr [1:516] \"Total\" \"Total\" \"Total\" \"Total\" ...\n  ..$ nb_obs        : num [1:516] 127326 67459 117119 60272 72450 ...\n  ..$ pizzas_tot    : num [1:516] 4.90e+10 2.63e+10 4.40e+10 2.25e+10 2.60e+10 ...\n  ..$ pizzas_max    : num [1:516] 897221 897459 898798 899167 898691 ...\n  ..$ is_secret_freq: logi [1:516] FALSE FALSE FALSE FALSE FALSE FALSE ...\n  ..$ is_secret_dom : logi [1:516] FALSE FALSE FALSE FALSE FALSE FALSE ...\n  ..$ is_secret_prim: logi [1:516] FALSE FALSE FALSE FALSE FALSE FALSE ...\n  ..- attr(*, \".internal.selfref\")=&lt;externalptr&gt; \n $ pizza_nuts_naf  :Classes 'data.table' and 'data.frame':  11943 obs. of  8 variables:\n  ..$ naf           : chr [1:11943] \"BE\" \"MN\" \"OQ\" \"RU\" ...\n  ..$ nuts          : chr [1:11943] \"Total\" \"Total\" \"Total\" \"Total\" ...\n  ..$ nb_obs        : num [1:11943] 608493 239202 75471 171537 184607 ...\n  ..$ pizzas_tot    : num [1:11943] 2.34e+11 9.00e+10 3.14e+10 6.65e+10 7.09e+10 ...\n  ..$ pizzas_max    : num [1:11943] 899871 898861 899157 898798 899906 ...\n  ..$ is_secret_freq: logi [1:11943] FALSE FALSE FALSE FALSE FALSE FALSE ...\n  ..$ is_secret_dom : logi [1:11943] FALSE FALSE FALSE FALSE FALSE FALSE ...\n  ..$ is_secret_prim: logi [1:11943] FALSE FALSE FALSE FALSE FALSE FALSE ...\n  ..- attr(*, \".internal.selfref\")=&lt;externalptr&gt; \n\n\nPour le cluster des salades.\n\n\nCode\ntableaux_salades &lt;- list(\n  salades_naf_treff = salades_tabule_3var %&gt;% filter(cj == \"Total\") %&gt;% select(-cj), # T9.T15.T21.T11.T17.T23.T13.T19.T25\n  salades_naf_cj = salades_tabule_3var %&gt;% filter(treff == \"Total\") %&gt;% select(-treff) # T10.T16.T22.T12.T18.T24.T14.T20.T26\n)\n\nstr(tableaux_salades)\n\n\nList of 2\n $ salades_naf_treff: tibble [1,425 × 9] (S3: tbl_df/tbl/data.frame)\n  ..$ naf           : chr [1:1425] \"BE\" \"BE\" \"BE\" \"MN\" ...\n  ..$ treff         : chr [1:1425] \"Total\" \"Total\" \"Total\" \"Total\" ...\n  ..$ nb_obs        : num [1:1425] 608493 608493 608493 239202 239202 ...\n  ..$ crois_salades : chr [1:1425] \"salades\" \"maches\" \"batavias\" \"salades\" ...\n  ..$ tot           : num [1:1425] 5.48e+10 2.89e+10 2.58e+10 2.15e+10 1.13e+10 ...\n  ..$ max           : num [1:1425] 144352 74992 69992 143830 74974 ...\n  ..$ is_secret_freq: logi [1:1425] FALSE FALSE FALSE FALSE FALSE FALSE ...\n  ..$ is_secret_dom : logi [1:1425] FALSE FALSE FALSE FALSE FALSE FALSE ...\n  ..$ is_secret_prim: logi [1:1425] FALSE FALSE FALSE FALSE FALSE FALSE ...\n $ salades_naf_cj   : tibble [1,428 × 9] (S3: tbl_df/tbl/data.frame)\n  ..$ naf           : chr [1:1428] \"BE\" \"BE\" \"BE\" \"MN\" ...\n  ..$ cj            : chr [1:1428] \"Total\" \"Total\" \"Total\" \"Total\" ...\n  ..$ nb_obs        : num [1:1428] 608493 608493 608493 239202 239202 ...\n  ..$ crois_salades : chr [1:1428] \"salades\" \"maches\" \"batavias\" \"salades\" ...\n  ..$ tot           : num [1:1428] 5.48e+10 2.89e+10 2.58e+10 2.15e+10 1.13e+10 ...\n  ..$ max           : num [1:1428] 144352 74992 69992 143830 74974 ...\n  ..$ is_secret_freq: logi [1:1428] FALSE FALSE FALSE FALSE FALSE FALSE ...\n  ..$ is_secret_dom : logi [1:1428] FALSE FALSE FALSE FALSE FALSE FALSE ...\n  ..$ is_secret_prim: logi [1:1428] FALSE FALSE FALSE FALSE FALSE FALSE ..."
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#créer-les-hiérarchies",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html#créer-les-hiérarchies",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "Créer les hiérarchies",
+    "text": "Créer les hiérarchies\nComme vu dans la partie “Protéger un tableau hiérarchique” [INSERER LIEN], on crée les hiérarchies à l’aide de rtauargus::write_hrc2().\n\n\nCode\n# en deux temps\ncorres_naf &lt;- micro %&gt;% select(a10,a21,a88) %&gt;% unique() %&gt;% arrange(a10,a21,a88)\nchemin_hrc_naf &lt;- write_hrc2(corres_naf, file_name = \"fichiers_tauargus/hrc/naf.hrc\")\n\n# d'un seul coup\nchemin_hrc_nuts &lt;- write_hrc2(micro %&gt;% select(nuts2,nuts3) %&gt;% unique() %&gt;% arrange(nuts2),\n                              \"fichiers_tauargus/hrc/nuts.hrc\")\n\n\nN.B. la bonne pratique est de partir d’une table de passage définie à priori. Ici, il est plus simple de partir des microdonnées et on a confiance dans les strcutures des hiérarchies qui en sortiront."
+  },
+  {
+    "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#poser-le-secret-secondaire-1",
+    "href": "pratique/fiches/proteger-tableaux-suppressif.html#poser-le-secret-secondaire-1",
+    "title": "Protéger des tableaux avec une méthode suppressive",
+    "section": "Poser le secret secondaire",
+    "text": "Poser le secret secondaire\nOn pose le secret puis on unifie les masques afin de les regrouper dans un seul dataframe.\nPour le cluster pizzas.\n\n\nCode\nmasques_pizza &lt;- tab_multi_manager(\n  list_tables = tableaux_pizza,\n  list_explanatory_vars = list(\n    pizza_nuts_treff = c(\"nuts\",\"treff\"), # T1.T2\n    pizza_nuts_naf = c(\"nuts\",\"naf\") # T3.T4.T5.T6.T7.T8\n  ),\n  dir_name = \"./Exos/tauargus_files/ex_analyse_demande/\",\n  hrc = list(naf = chemin_hrc_naf, nuts = chemin_hrc_nuts),\n  totcode = \"Total\",\n  value = \"pizzas_tot\",\n  freq = \"nb_obs\",\n  secret_var = \"is_secret_prim\"\n)\n\n\n\n\nCode\n# unification des masques\nmasque_pizza &lt;- masques_pizza %&gt;% purrr::map_dfr(\n  function(tab){\n    tab %&gt;% \n      mutate(\n        treff = if (\"treff\" %in% names(tab)) treff else \"Total\",\n        cj = if (\"cj\" %in% names(tab)) cj else \"Total\",\n        naf = if (\"naf\" %in% names(tab)) naf else \"Total\"\n      ) %&gt;% \n      select(\"naf\",\"treff\",\"cj\",everything()) %&gt;%\n      rename_with(~\"is_secret_final\", last_col()) %&gt;% \n      mutate(\n        statut_final = case_when(\n          is_secret_freq ~ \"A\",\n          is_secret_dom ~ \"B\",\n          is_secret_final ~\"D\",\n          TRUE ~ \"V\"\n        )) %&gt;% \n      select(-matches(\"is_secret_\"))\n  }\n) %&gt;% unique()\n\nmasque_pizza %&gt;% \n  group_by(statut_final) %&gt;% \n  summarise(\n    n_cell = n(),\n    val_cell = sum(pizzas_tot)\n  ) %&gt;%\n  mutate(\n    pc_n_cell = n_cell/sum(n_cell)*100,\n    pc_val_cell = val_cell/sum(val_cell)*100\n  )\n\n\n# A tibble: 3 × 5\n  statut_final n_cell      val_cell pc_n_cell pc_val_cell\n  &lt;chr&gt;         &lt;int&gt;         &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;\n1 A                11       9160149    0.0892    0.000102\n2 D                33   14236278602    0.268     0.158   \n3 V             12286 8993596429774   99.6      99.8     \n\n\nPour le cluster salades.\n\n\nCode\nmasques_salades &lt;- tab_multi_manager(\n  list_tables = tableaux_salades,\n  list_explanatory_vars = list(\n    salades_naf_treff = c(\"naf\",\"treff\", \"crois_salades\"),\n    salades_naf_cj = c(\"naf\",\"cj\", \"crois_salades\")\n  ),\n  dir_name = \"./Exos/tauargus_files/ex_analyse_demande/\",\n  hrc = list(naf = chemin_hrc_naf),\n  totcode = c(naf = \"Total\", treff = \"Total\", cj = \"Total\", crois_salades = \"salades\"),\n  value = \"tot\",\n  freq = \"nb_obs\",\n  secret_var = \"is_secret_prim\"\n)\n\n\n\n\nCode\nmasque_salades &lt;- masques_salades %&gt;% purrr::map_dfr(\n  function(tab){\n    tab %&gt;% \n      mutate(\n        treff = if (\"treff\" %in% names(tab)) treff else \"Total\",\n        cj = if (\"cj\" %in% names(tab)) cj else \"Total\",\n        naf = if (\"naf\" %in% names(tab)) naf else \"Total\"\n      ) %&gt;% \n      select(\"naf\",\"treff\",\"cj\",everything()) %&gt;%\n      rename_with(~\"is_secret_final\", last_col()) %&gt;% \n      mutate(\n        statut_final = case_when(\n          is_secret_freq ~ \"A\",\n          is_secret_dom ~ \"B\",\n          is_secret_final ~\"D\",\n          TRUE ~ \"V\"\n        )) %&gt;% \n      select(-matches(\"is_secret_\"))\n  }\n) %&gt;% unique()\n\nmasque_salades %&gt;% \n  group_by(statut_final) %&gt;% \n  summarise(\n    n_cell = n(),\n    val_cell = sum(tot)\n  ) %&gt;%\n  mutate(\n    pc_n_cell = n_cell/sum(n_cell)*100,\n    pc_val_cell = val_cell/sum(val_cell)*100\n  )\n\n\n# A tibble: 4 × 5\n  statut_final n_cell      val_cell pc_n_cell pc_val_cell\n  &lt;chr&gt;         &lt;int&gt;         &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;\n1 A                21       1380020    0.842   0.0000408 \n2 B                 1         47973    0.0401  0.00000142\n3 D                43   14228897507    1.72    0.421     \n4 V              2428 3366561853460   97.4    99.6"
   },
   {
     "objectID": "pratique/fiches/proteger-tableaux-cellkey.html",
@@ -627,14 +718,413 @@
     "href": "theorie/supports/methodes-suppressives.html#les-méthodes-à-disposition",
     "title": "Les méthodes suppressives",
     "section": "Les méthodes à disposition",
-    "text": "Les méthodes à disposition\n\nDeux types de méthodes en fonction du moment où elles sont appliquées:\n\nLes méthodes pré-tabulation sont appliquées sur les données individuelles, ie avant toute tabulation\nLes méthodes post-tabulation sont appliquées sur les données agrégées, ie après tabulation"
+    "text": "Les méthodes à disposition\n\nDeux types de méthodes en fonction du moment où elles sont appliquées :\n\nLes méthodes pré-tabulation sont appliquées sur les données individuelles, i.e. avant toute tabulation\nLes méthodes post-tabulation sont appliquées sur les données agrégées, i.e. après tabulation"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#les-méthodes-à-disposition-1",
     "href": "theorie/supports/methodes-suppressives.html#les-méthodes-à-disposition-1",
     "title": "Les méthodes suppressives",
     "section": "Les méthodes à disposition",
-    "text": "Les méthodes à disposition\n\n\n\n\n\nType de méthode\nType de données\nMéthodes\n\n\n\n\n\n\n\n\n\nPré-tabulation\nMicro-données\ndex{Microdata} Recodage des variables\n\n\n\n\nSuppression locale\n\n\n\nPost-tabulation     Données tabulées        Suppression de cellules              \n                                           Regroupement de catégories               \n                                                      \n: Les méthodes suppressives"
+    "text": "Les méthodes à disposition\n\n\nLes méthodes\n\n\n\n\n\n\n\n\n\n\nType de méthode\nType de données\nMéthodes\n\n\n\n\nPré-tabulation\nMicro-données\nRecodage des variables  Suppression locale\n\n\nPost-tabulation\nDonnées tabulées\nSuppression de cellules  Regroupement de catégories"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#le-recodage-des-variables",
+    "href": "theorie/supports/methodes-suppressives.html#le-recodage-des-variables",
+    "title": "Les méthodes suppressives",
+    "section": "Le recodage des variables",
+    "text": "Le recodage des variables\n\n\n\nid\nâge\nGenre\nProfession\n\n\n\n\n1\n23\nH\nstatistiques\n\n\n2\n24\nH\nstatistiques\n\n\n3\n50\nF\nstatistiques\n\n\n4\n53\nH\nstatistiques\n\n\n5\n51\nF\nstatistiques"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#le-recodage-des-variables-1",
+    "href": "theorie/supports/methodes-suppressives.html#le-recodage-des-variables-1",
+    "title": "Les méthodes suppressives",
+    "section": "Le recodage des variables",
+    "text": "Le recodage des variables\n\n\n\nid\nâge\nGenre\nProfession\n\n\n\n\n1\n20-30\nH\nstatistiques\n\n\n2\n20-30\nH\nstatistiques\n\n\n3\n50-60\nF\nstatistiques\n\n\n4\n50-60\nH\nstatistiques\n\n\n5\n50-60\nF\nstatistiques"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#la-suppression-locale",
+    "href": "theorie/supports/methodes-suppressives.html#la-suppression-locale",
+    "title": "Les méthodes suppressives",
+    "section": "La suppression locale",
+    "text": "La suppression locale\nS’applique aux variables catégorielles.\n\nSuppression d’au moins une catégorie présente dans une combinaison à risque, i.e. on la remplace par une valeur manquante.\n\n\n\n\n\nid\nLieu de résidence\nGenre\nProfession\n\n\n\n\n1\npoitiers\nH\nstatistiques\n\n\n2\npoitiers\nH\nstatistiques\n\n\n3\nbarfleur\nH\npêche\n\n\n4\nbarfleur\nH\npêche\n\n\n5\nbarfleur\nF\nmaire"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#la-suppression-locale-1",
+    "href": "theorie/supports/methodes-suppressives.html#la-suppression-locale-1",
+    "title": "Les méthodes suppressives",
+    "section": "La suppression locale",
+    "text": "La suppression locale\n\n\n\nid\nLieu de résidence\nGenre\nProfession\n\n\n\n\n1\npoitiers\nH\nstatistiques\n\n\n2\npoitiers\nH\nstatistiques\n\n\n3\nbarfleur\nH\npêche\n\n\n4\nbarfleur\nH\npêche\n\n\n5\nbarfleur\nF\nNA"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#tableaux-deffectifs",
+    "href": "theorie/supports/methodes-suppressives.html#tableaux-deffectifs",
+    "title": "Les méthodes suppressives",
+    "section": "Tableaux d’effectifs",
+    "text": "Tableaux d’effectifs\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\n14\n1\n7\n28\n\n\nNon polluante\n3\n2\n1\n13\n19\n\n\nTotal\n9\n16\n2\n20\n47\n\n\n\n\nTableau 1 – Nombre d’entreprises polluantes par région\n\n\nY a-t-il des cellules à risque ?"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#tableaux-deffectifs-1",
+    "href": "theorie/supports/methodes-suppressives.html#tableaux-deffectifs-1",
+    "title": "Les méthodes suppressives",
+    "section": "Tableaux d’effectifs",
+    "text": "Tableaux d’effectifs\nRègle de fréquence : une cellule d’un tableau ne doit pas être construite à partir de strictement moins de n unités (n &gt; 0).\n\nPour les données entreprises à l’Insee, n = 3."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#tableaux-deffectifs-2",
+    "href": "theorie/supports/methodes-suppressives.html#tableaux-deffectifs-2",
+    "title": "Les méthodes suppressives",
+    "section": "Tableaux d’effectifs",
+    "text": "Tableaux d’effectifs\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\n14\n1\n7\n28\n\n\nNon polluante\n3\n2\n1\n13\n19\n\n\nTotal\n9\n16\n2\n20\n47"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#tableaux-de-volume",
+    "href": "theorie/supports/methodes-suppressives.html#tableaux-de-volume",
+    "title": "Les méthodes suppressives",
+    "section": "Tableaux de volume",
+    "text": "Tableaux de volume\n\n\n\n\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\n\nNord\n58\n71\n92\n221\n\n\n\nCentre\n11\n124\n157\n292\n\n\n\nSud\n36\n24\n60\n120\n\n\n\nTotal\n105\n219\n309\n633\n\n\n\n\n\nTableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\nY a-t-il des cellules à risque ?"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-1",
+    "href": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-1",
+    "title": "Les méthodes suppressives",
+    "section": "Tableaux de volume",
+    "text": "Tableaux de volume\n\n\n\n\n\n\n\n\n\n\nRégion\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\nNord\n58  (5)\n71  (17)\n92  (5)\n221  (27)\n\n\nCentre\n11  (4)\n124  (11)\n157  (2)\n292  (17)\n\n\nSud\n36  (3)\n24  (6)\n60  (1)\n120  (10)\n\n\nTotal\n105  (12)\n219  (34)\n309  (8)\n633  (54)\n\n\n\n\nTableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\nNote : les valeurs entre parenthèses indiquent le nombre de contributeurs."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-2",
+    "href": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-2",
+    "title": "Les méthodes suppressives",
+    "section": "Tableaux de volume",
+    "text": "Tableaux de volume\nSecret primaire de fréquence.\n\n\n\n\n\n\n\n\n\n\nRégion\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\nNord\n58  (5)\n71  (17)\n92  (5)\n221  (27)\n\n\nCentre\n11  (4)\n124  (11)\n157  (2)\n292  (17)\n\n\nSud\n36  (3)\n24  (6)\n60  (1)\n120  (10)\n\n\nTotal\n105  (12)\n219  (34)\n309  (8)\n633  (54)\n\n\n\n\nTableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\nNote : les valeurs entre parenthèses indiquent le nombre de contributeurs."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-3",
+    "href": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-3",
+    "title": "Les méthodes suppressives",
+    "section": "Tableaux de volume",
+    "text": "Tableaux de volume\nRègle de dominance (n,k) : une cellule est sensible si les n plus grands contributeurs de cette cellule représentent plus de k% du total de celle-ci.\n\n\nPour les données entreprises à l’Insee, n = 1 et k = 85. Donc, 1 unité contributrice à une cellule ne peut contribuer à plus de 85% de la valeur de celle-ci.\nPour chaque cellule du tableau, besoin de déterminer le plus gros contributeur."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-4",
+    "href": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-4",
+    "title": "Les méthodes suppressives",
+    "section": "Tableaux de volume",
+    "text": "Tableaux de volume\nSecret primaire de dominance.\n\n\n\n\n\n\n\n\n\n\nRégion\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\nNord\n58  (5)\n71  (17)\n92  (5)\n221  (27)\n\n\nCentre\n11  (4)\n124  (11)\n157  (2)\n292  (17)\n\n\nSud\n36  (3)\n24  (6)\n60  (1)\n120  (10)\n\n\nTotal\n105  (12)\n219  (34)\n309  (8)\n633  (54)\n\n\n\n\nTableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\nNote : les valeurs entre parenthèses indiquent le nombre de contributeurs."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-5",
+    "href": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-5",
+    "title": "Les méthodes suppressives",
+    "section": "Tableaux de volume",
+    "text": "Tableaux de volume\nRègle du p% : une cellule est sensible si l’un des contributeurs a une cellule peut estimer la valeur d’un autre contributeur à p% de sa véritable valeur.\n\nEn pratique, le 2eme contributeur de la valeur de la cellule ne doit pas pouvoir estimer en utilisant sa propre valeur, celle du premier contributeur avec une précision supérieure à p%.\nIl est d’usage de choisir p = 10.\nPas utilisée à l’Insee mais recommandée par les experts européens."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-6",
+    "href": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-6",
+    "title": "Les méthodes suppressives",
+    "section": "Tableaux de volume",
+    "text": "Tableaux de volume\nSecret primaire dû à la règle du p%.\n\n\n\n\n\n\n\n\n\n\nRégion\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\nNord\n58  (5)\n71  (17)\n92  (5)\n221  (27)\n\n\nCentre\n11  (4)\n124  (11)\n157  (2)\n292  (17)\n\n\nSud\n36  (3)\n24  (6)\n60  (1)\n120  (10)\n\n\nTotal\n105  (12)\n219  (34)\n309  (8)\n633  (54)\n\n\n\n\nTableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\nNote : les valeurs entre parenthèses indiquent le nombre de contributeurs."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#le-secret-primaire",
+    "href": "theorie/supports/methodes-suppressives.html#le-secret-primaire",
+    "title": "Les méthodes suppressives",
+    "section": "Le secret primaire",
+    "text": "Le secret primaire\nLes cellules catégorisées à risque pour la règle de fréquence, la règle de dominance et la règle du p% constituent le secret primaire. On ne peut pas diffuser ces cellules.\n\nComment faire ?"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#le-regroupement-de-catégories",
+    "href": "theorie/supports/methodes-suppressives.html#le-regroupement-de-catégories",
+    "title": "Les méthodes suppressives",
+    "section": "Le regroupement de catégories",
+    "text": "Le regroupement de catégories\nRedéfinir le contenu des variables de croisement en diminuant le nombre de leur modalités.\n\nPermet de réduire fortement, voir d’enlever complètement le secret primaire.\n\nEnvisager cette option avant les autres méthodes."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#le-recodage-un-exemple",
+    "href": "theorie/supports/methodes-suppressives.html#le-recodage-un-exemple",
+    "title": "Les méthodes suppressives",
+    "section": "Le recodage : un exemple",
+    "text": "Le recodage : un exemple\n\n\n\n\n\n\n\n\n\n\n\n\n&lt;25\n25-30\n30-50\n&gt; 50\nTotal\n\n\n\n\nPolluante\n2\n5\n7\n6\n20\n\n\nNon polluante\n8\n15\n17\n20\n60\n\n\nTotal\n10\n20\n24\n26\n80\n\n\n\n\nTableau 3 – Nombre d’entreprises polluantes selon l’âge du dirigeant\n\n\nDéfinir de nouvelles modalités pour augmenter le nombre de répondants par cellule."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#le-recodage-un-exemple-1",
+    "href": "theorie/supports/methodes-suppressives.html#le-recodage-un-exemple-1",
+    "title": "Les méthodes suppressives",
+    "section": "Le recodage : un exemple",
+    "text": "Le recodage : un exemple\n\n\n\n\n&lt;28\n28-35\n35-55\n&gt; 55\nTotal\n\n\n\n\nPolluante\n3\n6\n6\n5\n20\n\n\nNon polluante\n9\n17\n19\n15\n60\n\n\nTotal\n12\n23\n25\n20\n80\n\n\n\n\nTableau 3bis – Nombre d’entreprises polluantes selon l’âge du dirigeant"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#le-recodage-à-vous-de-jouer",
+    "href": "theorie/supports/methodes-suppressives.html#le-recodage-à-vous-de-jouer",
+    "title": "Les méthodes suppressives",
+    "section": "Le recodage : à vous de jouer !",
+    "text": "Le recodage : à vous de jouer !\nOn cherche à publier le tableau suivant :\n\nPopulation d’une région par leur zone d’emploi de résidence, leur zone d’emploi de travail, leur profession et leur âge.\nBeaucoup de secret primaire dans ce tableau puisque la plupart des gens résident et travaillent dans la même zone d’emploi.\nComment recoder ce tableau ?\n\n\nUn premier recodage consiste à regrouper toutes les zones d’emploi de travail hors région dans une seule catégorie."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#le-recodage",
+    "href": "theorie/supports/methodes-suppressives.html#le-recodage",
+    "title": "Les méthodes suppressives",
+    "section": "Le recodage",
+    "text": "Le recodage\n\n\n\n\n\n\n\n👍\n👎\n\n\n\n\nRéduit le SP.\nNe supprime pas totalement le SP.\n\n\nPas de perte info.\nImpossible dans certains cas (structure imposée, suivi dans le temps).\n\n\n\n\nComment protéger le secret primaire restant ?"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#la-suppression-de-cellules",
+    "href": "theorie/supports/methodes-suppressives.html#la-suppression-de-cellules",
+    "title": "Les méthodes suppressives",
+    "section": "La suppression de cellules",
+    "text": "La suppression de cellules"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#le-secret-primaire-1",
+    "href": "theorie/supports/methodes-suppressives.html#le-secret-primaire-1",
+    "title": "Les méthodes suppressives",
+    "section": "Le secret primaire",
+    "text": "Le secret primaire\nPremière étape : supprimer les cellules ne respectant pas les règles du secret primaire.\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\n14\nX\n7\n28\n\n\nNon polluante\n3\nX\n3\n13\n21\n\n\nTotal\n9\n16\n4\n20\n49\n\n\n\n\nCe n’est pas suffisant, les cellules sont liées entre elles par des équations (marges)."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#le-secret-secondaire",
+    "href": "theorie/supports/methodes-suppressives.html#le-secret-secondaire",
+    "title": "Les méthodes suppressives",
+    "section": "Le secret secondaire",
+    "text": "Le secret secondaire\nDeuxième étape : supprimer des cellules pour protéger le secret primaire.\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\nX\nX\n7\n28\n\n\nNon polluante\n3\nX\nX\n13\n21\n\n\nTotal\n9\n16\n4\n20\n49"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#le-secret-secondaire-1",
+    "href": "theorie/supports/methodes-suppressives.html#le-secret-secondaire-1",
+    "title": "Les méthodes suppressives",
+    "section": "Le secret secondaire",
+    "text": "Le secret secondaire\nPlusieurs structures de suppressions (masques de secret) sont possibles.\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\nX\n14\nX\n7\n28\n\n\nNon polluante\nX\nX\n3\n13\n21\n\n\nTotal\n9\nX\nX\n20\n49"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection",
+    "href": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection",
+    "title": "Les méthodes suppressives",
+    "section": "Les intervalles de protection",
+    "text": "Les intervalles de protection\nCacher des cellules revient à diffuser des intervalles.\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\n[11 ; 15]\n[0 ; 4]\n7\n28\n\n\nNon polluante\n3\n[1 ; 5]\n[0 ; 4]\n13\n21\n\n\nTotal\n9\n16\n4\n20\n49\n\n\n\nL’intervalle des possibles : l’ensemble des valeurs possibles prises par la cellule supprimée après avoir posé le masque de secret."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-1",
+    "href": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-1",
+    "title": "Les méthodes suppressives",
+    "section": "Les intervalles de protection",
+    "text": "Les intervalles de protection\nL’intervalle de protection : soit \\(V_C\\) la valeur d’une cellule C sensible à la règle de fréquence et \\(m\\%\\) la marge protection choisie.\n\\([(1 - m\\%). V_C ; (1 + m\\%). V_C]\\)\n\nEn pratique on choisit souvent une marge de 10% =&gt; \\([90\\%.V_C ; 110\\%.V_C]\\)"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-2",
+    "href": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-2",
+    "title": "Les méthodes suppressives",
+    "section": "Les intervalles de protection",
+    "text": "Les intervalles de protection\n\n\n\n\n\n\n\n\n\n\nRégion\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\nNord\n58  (5)\n71  (17)\n92  (5)\n221  (27)\n\n\nCentre\n11  (4)\n124  (11)\n157  (2)\n292  (17)\n\n\nSud\n36  (3)\n24  (6)\n60  (1)\n120  (10)\n\n\nTotal\n105  (12)\n219  (34)\n309  (8)\n633  (54)\n\n\n\n\nTableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\nNote : glisser la souris sur les valeurs en secret primaire de fréquence pour voir les intervalles de protection."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-3",
+    "href": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-3",
+    "title": "Les méthodes suppressives",
+    "section": "Les intervalles de protection",
+    "text": "Les intervalles de protection\nRègle des intervalles : l’intervalle de protection de chaque cellule sensible doit être inclus dans son intervalle des possibles.\n\nCette règle permet de se prémunir d’une divulgation par inférence."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-4",
+    "href": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-4",
+    "title": "Les méthodes suppressives",
+    "section": "Les intervalles de protection",
+    "text": "Les intervalles de protection\nExemple avec une marge de protection de 10%.\n\n\n\n\n\n\n\n\n\n\n\nRégion\nHarpe\nPiano\nOrgue\nAutre\nTotal\n\n\n\n\nNord\n58\n71\n92\n800\n1021\n\n\nCentre\n11\n124\n157 (2)\n934\n1226\n\n\nSud\n36\n24\n60 (1)\n651\n771\n\n\nTotal\n105\n219\n309\n2385\n3018"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-5",
+    "href": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-5",
+    "title": "Les méthodes suppressives",
+    "section": "Les intervalles de protection",
+    "text": "Les intervalles de protection\nExemple avec une marge de protection de 10%.\n\n\n\n\n\n\n\n\n\n\n\nRégion\nHarpe\nPiano\nOrgue\nAutre\nTotal\n\n\n\n\nNord\nX\n71\nX\n800\n1021\n\n\nCentre\nX\n124\nX\n934\n1226\n\n\nSud\nX\n24\nX\n651\n771\n\n\nTotal\n105\n219\n309\n2385\n3018"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-6",
+    "href": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-6",
+    "title": "Les méthodes suppressives",
+    "section": "Les intervalles de protection",
+    "text": "Les intervalles de protection\nExemple avec une marge de protection de 10%.\n\n\n\n\n\n\n\n\n\n\n\nRégion\nHarpe\nPiano\nOrgue\nAutre\nTotal\n\n\n\n\nNord\n[0;105]\n71\n[45;150]\n800\n1021\n\n\nCentre\n[0;105]\n124\n[63;168]\n934\n1226\n\n\nSud\n[0;96]\n24\n[0;96]\n651\n771\n\n\nTotal\n105\n219\n309\n2385\n3018"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-7",
+    "href": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-7",
+    "title": "Les méthodes suppressives",
+    "section": "Les intervalles de protection",
+    "text": "Les intervalles de protection\nLa borne supérieure de l’intervalle des possibles (168) est inférieure à la borne supérieure de l’intervalle de protection (173)."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-8",
+    "href": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-8",
+    "title": "Les méthodes suppressives",
+    "section": "Les intervalles de protection",
+    "text": "Les intervalles de protection\n\nOn peut inférer la valeur de la cellule à 7% et non 10%.\nLa cellule n’est pas suffisamment protégée."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-9",
+    "href": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-9",
+    "title": "Les méthodes suppressives",
+    "section": "Les intervalles de protection",
+    "text": "Les intervalles de protection\nOn utilise un autre masque de secret …\n\n\n\n\n\n\n\n\n\n\n\nRégion\nHarpe\nPiano\nOrgue\nAutre\nTotal\n\n\n\n\nNord\n58\nX\nX\n800\n1021\n\n\nCentre\n11\nX\nX\n934\n1226\n\n\nSud\n36\nX\nX\n651\n771\n\n\nTotal\n105\n219\n309\n2385\n3018"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-10",
+    "href": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-10",
+    "title": "Les méthodes suppressives",
+    "section": "Les intervalles de protection",
+    "text": "Les intervalles de protection\n… avec d’autres intervalles des possibles.\n\n\n\n\n\n\n\n\n\n\n\nRégion\nHarpe\nPiano\nOrgue\nAutre\nTotal\n\n\n\n\nNord\n58\n[0;163]\n[0;163]\n800\n1021\n\n\nCentre\n11\n[0;219]\n[62;281]\n934\n1226\n\n\nSud\n36\n[0;84]\n[0;84]\n651\n771\n\n\nTotal\n105\n219\n309\n2385\n3018"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-11",
+    "href": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-11",
+    "title": "Les méthodes suppressives",
+    "section": "Les intervalles de protection",
+    "text": "Les intervalles de protection\n\nAvec cet autre masque de secret la cellule est suffisamment protégée."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#minimiser-la-perte-dinformation",
+    "href": "theorie/supports/methodes-suppressives.html#minimiser-la-perte-dinformation",
+    "title": "Les méthodes suppressives",
+    "section": "Minimiser la perte d’information",
+    "text": "Minimiser la perte d’information\nPour minimiser la perte d’information, il faut définir pour chaque cellule un coût associé à sa suppression.\n\nPlusieurs possibilités :\n\nLe nombre de cellules supprimées\nLe nombre de contributeurs concernés par les cases supprimées\nLa valeur de la cellule (défaut Tau-Argus)\nUn autre variable / coût ajusté"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#tau-argus",
+    "href": "theorie/supports/methodes-suppressives.html#tau-argus",
+    "title": "Les méthodes suppressives",
+    "section": "\\(\\tau\\)-Argus",
+    "text": "\\(\\tau\\)-Argus\n\n\n\nPermet de calculer le secret primaire et secondaire ou faire des arrondis contrôlés\n\n\nDéveloppement maintenance et support : groupé d’expert européens coordonné par CBS\n\n\nLogiciel de référence en Europe pour gérer la confidentialité des tableaux\n\n\nLogiciel libre et open source\n\n\nDernière version stable 4.2.4 (26 avril 2023)"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#tau-argus-1",
+    "href": "theorie/supports/methodes-suppressives.html#tau-argus-1",
+    "title": "Les méthodes suppressives",
+    "section": "\\(\\tau\\)-Argus",
+    "text": "\\(\\tau\\)-Argus\nAvantages :\n\nOutil qui fait référence\nPerformant sur la partie pose de secret grâce à une optimisation globale\nOutil maintenu régulièrement\n\nInconvénients :\n\nInterface fouillis\nBugs et erreurs pas faciles à comprendre et corriger\nReproductibilité des opérations limitées"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#rtauargus",
+    "href": "theorie/supports/methodes-suppressives.html#rtauargus",
+    "title": "Les méthodes suppressives",
+    "section": "rtauargus",
+    "text": "rtauargus\nUn package R pour bénéficier des avantages de \\(\\tau\\)-Argus tout en limitant les inconvénients.\n\n\n\nDéveloppé à l’Insee\n\n\nCode open-source\n\n\nVersion la plus récente 02/25 : v-1.2.999-dev\n\n\nUne documentation en ligne\n\n\nUtiliser les fonctions tab_XXX()"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#rtauargus-1",
+    "href": "theorie/supports/methodes-suppressives.html#rtauargus-1",
+    "title": "Les méthodes suppressives",
+    "section": "rtauargus",
+    "text": "rtauargus\nFonctionnement du package :\n\ncrée l’ensemble des fichiers dans les formats attendus par \\(\\tau\\)-Argus\nLance \\(\\tau\\)-Argus\nRécupère les résultats dans R"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#rtauargus-2",
+    "href": "theorie/supports/methodes-suppressives.html#rtauargus-2",
+    "title": "Les méthodes suppressives",
+    "section": "rtauargus",
+    "text": "rtauargus\n\nPoser le secret primaire “manuellement”\nPoser le secret secondaire avec :\n\n\ntab_rtauargus() : pour protéger un seul tableau\ntab_multi_manager() : pour protéger plusieurs tableaux"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#rtauargus-3",
+    "href": "theorie/supports/methodes-suppressives.html#rtauargus-3",
+    "title": "Les méthodes suppressives",
+    "section": "rtauargus",
+    "text": "rtauargus\nBesoin de retours utilisateurs : créer une issue sur github.\nOu nous contacter par mail (dg75_dmcsi-confidentialite at insee dot fr)."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#tableaux-hiérarchisés",
+    "href": "theorie/supports/methodes-suppressives.html#tableaux-hiérarchisés",
+    "title": "Les méthodes suppressives",
+    "section": "Tableaux hiérarchisés",
+    "text": "Tableaux hiérarchisés\n\n\n\n\n\ngraph TD\n  A[**Pays**&lt;br&gt;400] --&gt; B[**Nord**&lt;br&gt;46]\n  A --&gt; C[**Ouest**&lt;br&gt;191]\n  A --&gt; D[**Est**&lt;br&gt;80]\n  A --&gt; E[**Sud**&lt;br&gt;83]\n  B --&gt; F[**N1**&lt;br&gt;21]\n  B --&gt; G[\"**N2**&lt;br&gt;&lt;font color='red'&gt;2&lt;/font&gt;\"]\n  B --&gt; H[**N3**&lt;br&gt;23]\n  C --&gt; I[**O1**&lt;br&gt;32]\n  C --&gt; J[**O2**&lt;br&gt;54]\n  C --&gt; K[**O3**&lt;br&gt;67]\n  C --&gt; L[**O4**&lt;br&gt;38]\n  D --&gt; M[**E1**&lt;br&gt;27]\n  D --&gt; N[**E2**&lt;br&gt;41]\n  D --&gt; O[**E3**&lt;br&gt;12]\n  E --&gt; P[**S1**&lt;br&gt;44]\n  E --&gt; Q[**S2**&lt;br&gt;39]"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#tableaux-hiérarchisés-1",
+    "href": "theorie/supports/methodes-suppressives.html#tableaux-hiérarchisés-1",
+    "title": "Les méthodes suppressives",
+    "section": "Tableaux hiérarchisés",
+    "text": "Tableaux hiérarchisés\n\n\n\n\n\ngraph TD\n  A[**Pays**&lt;br&gt;400] --&gt; B[**Nord**&lt;br&gt;46]\n  A --&gt; C[**Ouest**&lt;br&gt;191]\n  A --&gt; D[**Est**&lt;br&gt;80]\n  A --&gt; E[**Sud**&lt;br&gt;83]\n  B --&gt; F[**N1**&lt;br&gt;21]\n  B --&gt; G[\"**N2**&lt;br&gt;&lt;font color='red'&gt;2&lt;/font&gt;\"]\n  B --&gt; H[**N3**&lt;br&gt;23]\n  C --&gt; I[**O1**&lt;br&gt;32]\n  C --&gt; J[**O2**&lt;br&gt;54]\n  C --&gt; K[**O3**&lt;br&gt;67]\n  C --&gt; L[**O4**&lt;br&gt;38]\n  D --&gt; M[**E1**&lt;br&gt;27]\n  D --&gt; N[**E2**&lt;br&gt;41]\n  D --&gt; O[\"**E3**&lt;br&gt;&lt;font color='red'&gt;X&lt;/font&gt;\"]\n  E --&gt; P[**S1**&lt;br&gt;44]\n  E --&gt; Q[**S2**&lt;br&gt;39]\n\n\n\n\n\n\n\nSi on ne renseigne pas la hiérarchie, on peut retrouver la valeur cachée."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#tableaux-hiérarchisés-2",
+    "href": "theorie/supports/methodes-suppressives.html#tableaux-hiérarchisés-2",
+    "title": "Les méthodes suppressives",
+    "section": "Tableaux hiérarchisés",
+    "text": "Tableaux hiérarchisés\n\n\n\n\n\ngraph TD\n  A[**Pays**&lt;br&gt;400] --&gt; B[**Nord**&lt;br&gt;46]\n  A --&gt; C[**Ouest**&lt;br&gt;191]\n  A --&gt; D[**Est**&lt;br&gt;80]\n  A --&gt; E[**Sud**&lt;br&gt;83]\n  B --&gt; F[\"**N1**&lt;br&gt;&lt;font color='red'&gt;X&lt;/font&gt;\"]\n  B --&gt; G[\"**N2**&lt;br&gt;&lt;font color='red'&gt;2&lt;/font&gt;\"]\n  B --&gt; H[**N3**&lt;br&gt;23]\n  C --&gt; I[**O1**&lt;br&gt;32]\n  C --&gt; J[**O2**&lt;br&gt;54]\n  C --&gt; K[**O3**&lt;br&gt;67]\n  C --&gt; L[**O4**&lt;br&gt;38]\n  D --&gt; M[**E1**&lt;br&gt;27]\n  D --&gt; N[**E2**&lt;br&gt;41]\n  D --&gt; O[**E3**&lt;br&gt;12]\n  E --&gt; P[**S1**&lt;br&gt;44]\n  E --&gt; Q[**S2**&lt;br&gt;39]\n\n\n\n\n\n\n\nLorsque la hiérarchie est renseignée, on protège bien les données."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#le-format-argus-des-hiérarchies",
+    "href": "theorie/supports/methodes-suppressives.html#le-format-argus-des-hiérarchies",
+    "title": "Les méthodes suppressives",
+    "section": "Le format Argus des hiérarchies",
+    "text": "Le format Argus des hiérarchies\nDans \\(\\tau\\)-Argus les hiérarchies sont présentées dans un format particulier : fichier texte .hrc.\n\nDoit décrire parfaitement l’emboîtement\nLe nombre de @ désigne le niveau d’emboîtement de chaque catégorie\nNe fait pas apparaître le total\nLa fonction write_hrc2() permet de créer un fichier .hrc à partir d’une table de passage"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#protéger-des-tableaux-liés-avec-rtauargus",
+    "href": "theorie/supports/methodes-suppressives.html#protéger-des-tableaux-liés-avec-rtauargus",
+    "title": "Les méthodes suppressives",
+    "section": "Protéger des tableaux liés avec rtauargus",
+    "text": "Protéger des tableaux liés avec rtauargus\nUtiliser la fonction tab_multi_manager() : 1) L’utilisateur décrit les tableaux 2) Fusion automatique de tous les tableaux entre eux 3) Algorithme gère la protection itérative des tableaux\nN.B. La pose du secret à chaque itération est effectuée avec \\(\\tau\\)-Argus.\n\nLa fonction tab_multi_manager() fournit un journal sous forme de reporting (étapes pose secret)."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#lanalyse-dune-demande",
+    "href": "theorie/supports/methodes-suppressives.html#lanalyse-dune-demande",
+    "title": "Les méthodes suppressives",
+    "section": "L’analyse d’une demande",
+    "text": "L’analyse d’une demande\nIl faut repérer les liens entre les tableaux pour poser un secret qui les protège vraiment.\nLes tableaux diffusés ne sont pas les mêmes que les tableaux à protéger."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#etapes-de-lanalyse",
+    "href": "theorie/supports/methodes-suppressives.html#etapes-de-lanalyse",
+    "title": "Les méthodes suppressives",
+    "section": "Etapes de l’analyse",
+    "text": "Etapes de l’analyse\n\nRéunir les informations nécessaires à la description des tableaux\n\n\nchamp\nvariables de croisements\nvariable de réponses (i.e. indicateur)\ntableaux de fréquence ou de volumes ?\ndescription des emboîtements pour les hiérarchies\néquations ou corrélations entre les variables de réponses"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#etapes-de-lanalyse-1",
+    "href": "theorie/supports/methodes-suppressives.html#etapes-de-lanalyse-1",
+    "title": "Les méthodes suppressives",
+    "section": "Etapes de l’analyse",
+    "text": "Etapes de l’analyse\n\nLa demande peut-elle être découpée en sous-demandes indépendantes ?\n\n\nchamps différents et non complémentaires =&gt; indépendance\nvariable de réponses différentes (et non liées par une équation / corrélation) =&gt; indépendance\nvariables de croisement toutes différentes =&gt; indépendance\n\nDans les cas d’indépendance il faut gérer séparément les différentes sous-demandes."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#etapes-de-lanalyse-2",
+    "href": "theorie/supports/methodes-suppressives.html#etapes-de-lanalyse-2",
+    "title": "Les méthodes suppressives",
+    "section": "Etapes de l’analyse",
+    "text": "Etapes de l’analyse\n\nLister les tableaux nécessaires pour la pose du secret\n\n\nCertaines hiérarchies peuvent conduire à unifier des tableaux\nSi tableaux additifs, construire un unique tableau en créant une variable supplémentaire\nSi hiérarchie non-emboîtée, extraire les niveaux concernés pour construire un tableau supplémentaire"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#etapes-de-lanalyse-3",
+    "href": "theorie/supports/methodes-suppressives.html#etapes-de-lanalyse-3",
+    "title": "Les méthodes suppressives",
+    "section": "Etapes de l’analyse",
+    "text": "Etapes de l’analyse\n\nPréparer les hiérarchies\n\n\nDétecter les variables hiérarchiques\nConstruire les fichiers .hrc nécessaires (manuellement ou avec write_hrc2())"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#traiter-un-lien-additif-entre-des-variables-réponses",
+    "href": "theorie/supports/methodes-suppressives.html#traiter-un-lien-additif-entre-des-variables-réponses",
+    "title": "Les méthodes suppressives",
+    "section": "Traiter un lien additif entre des variables réponses",
+    "text": "Traiter un lien additif entre des variables réponses\n\n\n\nCA couteaux\n\n\n\n\n\nReg1\nReg2\nT\n\n\n\n\ntr1\n5\n10\n15\n\n\ntr2\n12\n18\n30\n\n\ntr3\n5\n5\n10\n\n\nT\n22\n33\n55\n\n\n\n\n\n\nCA fourchettes\n\n\n\n\n\nReg1\nReg2\nT\n\n\n\n\ntr1\n3\n8\n11\n\n\ntr2\n6\n20\n26\n\n\ntr3\n2\n6\n8\n\n\nT\n11\n34\n45\n\n\n\n\n\n\nCA couverts\n\n\n\n\n\nReg1\nReg2\nT\n\n\n\n\ntr1\n8\n18\n26\n\n\ntr2\n18\n38\n56\n\n\ntr3\n7\n11\n18\n\n\nT\n33\n67\n100\n\n\n\n\n\nLien entre les CA : “couverts = couteaux + fourchettes”\nOn crée une nouvelle variable de croisement “type_couverts”."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#traiter-une-hiérarchie-non-emboîtée",
+    "href": "theorie/supports/methodes-suppressives.html#traiter-une-hiérarchie-non-emboîtée",
+    "title": "Les méthodes suppressives",
+    "section": "Traiter une hiérarchie non-emboîtée",
+    "text": "Traiter une hiérarchie non-emboîtée\n\n\n\n\n\n\ngraph TD\n  A[Total] --&gt; B[&lt;25]\n  A --&gt; C[25-29]\n  A --&gt; D[30-69]\n  A --&gt; E[70+]\n  D --&gt; F[30-49]\n  D --&gt; G[50-69]\n  H[+50] --&gt; G\n  H --&gt; E\n\n\n\n\n\n\n\nIci, l’agrégat +50 ne peut pas être bien emboîté dans la hiérarchie."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#traiter-une-hiérarchie-non-emboîtée-1",
+    "href": "theorie/supports/methodes-suppressives.html#traiter-une-hiérarchie-non-emboîtée-1",
+    "title": "Les méthodes suppressives",
+    "section": "Traiter une hiérarchie non-emboîtée",
+    "text": "Traiter une hiérarchie non-emboîtée\nIl faut traiter deux tableaux avec deux hiérarchies différentes.\n\n\n\n\n\ngraph TD\n  subgraph GROUPE_1[\"GROUPE 1\"]\n    A[Total] --&gt; B[&lt;25]\n    A --&gt; C[25-29]\n    D --&gt; F[30-49]\n    A --&gt; D[30-69]\n    D --&gt; G[50-69]\n    A --&gt; E[70+]\n  end\n\n  subgraph GROUPE_2[\"+50\"]\n    H[+50] --&gt; G\n    H --&gt; E\n  end\n\n  %% on donne une classe au subgraph via son nom\n  classDef groupe1Style fill:#e0f7fa,stroke:#00796b,stroke-width:2px,color:#004d40;\n  class GROUPE_1 groupe1Style;\n\n  classDef groupe2Style fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#bf360c;\n  class GROUPE_2 groupe2Style;"
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#essai",
+    "href": "theorie/supports/methodes-suppressives.html#essai",
+    "title": "Les méthodes suppressives",
+    "section": "essai",
+    "text": "essai\n\n\n\n\n\ngraph TD\n  subgraph grp1[\"hiérarchie principale\"]\n    A[Total] --&gt; B[&lt;25]\n    A --&gt; C[25-29]\n    A --&gt; D[30-69]\n    A --&gt; E[70+]\n    D --&gt; F[30-49]\n    D --&gt; G[50-69]\n    E ~~~ X\n  end\n\n  subgraph grp2[\"+50\"]\n    H[+50] --&gt; G\n    H --&gt; E\n  end\n\n  %% cacher le nœud X\n  style X fill=transparent,stroke=transparent\n  \n  %% on donne une classe au subgraph via son nom\n  classDef groupe1Style fill:#e0f7fa,stroke:#00796b,stroke-width:2px,color:#004d40;\n  class grp1 groupe1Style;\n\n  classDef groupe2Style fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#bf360c;\n  class grp2 groupe2Style;"
   },
   {
     "objectID": "glossaire/index.html",

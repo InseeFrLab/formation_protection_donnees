@@ -42,3 +42,28 @@
   grid-column: span 2; /* Span two columns */
   /* Add your styles for mapBertin here */
 }
+
+
+/* ajouts clara */
+/* Style pour les tooltips */
+span[title] {
+  border-bottom: 1px dotted #000; /* Soulignement en pointillés */
+  cursor: pointer; /* Curseur en forme de main */
+}
+
+span[title]:hover {
+  color: #007bff; /* Changer la couleur du texte au survol */
+  text-decoration: underline; /* Ajouter un soulignement au survol */
+}
+
+/* Style pour le tooltip (info-bulle) */
+.tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7); /* Fond sombre pour la tooltip */
+  color: white;
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 12px;
+  display: none; /* Masquer par défaut */
+  pointer-events: none; /* Ne pas interférer avec les autres éléments */
+}
