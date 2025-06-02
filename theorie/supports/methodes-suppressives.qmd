@@ -67,7 +67,51 @@ Deux types de méthodes en fonction du moment où elles sont appliquées :
 
 ## Le recodage des variables
 
+| id | âge | Genre | Profession   |
+|----|-----|-------|--------------|
+| 1  | 23  | H     | statistiques |
+| 2  | 24  | H     | statistiques |
+| 3  | 50  | F     | statistiques |
+| 4  | 53  | H     | statistiques |
+| 5  | 51  | F     | statistiques |
+
+## Le recodage des variables
+
+| id | âge   | Genre | Profession   |
+|----|-------|-------|--------------|
+| 1  | 20-30 | H     | statistiques |
+| 2  | 20-30 | H     | statistiques |
+| 3  | 50-60 | F     | statistiques |
+| 4  | 50-60 | H     | statistiques |
+| 5  | 50-60 | F     | statistiques |
+
 ## La suppression locale
+
+S'applique aux variables catégorielles.
+
+. . .
+
+Suppression d'au moins une catégorie présente dans une combinaison à risque, i.e. on la remplace par une **valeur manquante**.
+
+. . . 
+
+| id | Lieu de résidence | Genre | Profession   |
+|----|-------------------|-------|--------------|
+| 1  | poitiers          | H     | statistiques |
+| 2  | poitiers          | H     | statistiques |
+| 3  | barfleur          | H     | pêche        |
+| 4  | barfleur          | H     | pêche        |
+| 5  | barfleur          | F     | maire        |
+
+## La suppression locale
+
+| id | Lieu de résidence | Genre | Profession   |
+|----|-------------------|-------|--------------|
+| 1  | poitiers          | H     | statistiques |
+| 2  | poitiers          | H     | statistiques |
+| 3  | barfleur          | H     | pêche        |
+| 4  | barfleur          | H     | pêche        |
+| 5  | barfleur          | F     | *NA*         |
 
 # Les méthodes post-tabulation
 
@@ -335,13 +379,13 @@ Cacher des cellules revient à diffuser des intervalles.
 
 ## Les intervalles de protection
 
-**L'intervalle de protection** : soit V_C la valeur d'une cellule C sensible à la règle de fréquence et m% la marge protection choisie
+**L'intervalle de protection** : soit $V_C$ la valeur d'une cellule C sensible à la règle de fréquence et $m\%$ la marge protection choisie.
 
-[(1 - m%). V_C ; (1 + m%). V_C]
+$[(1 - m\%). V_C ; (1 + m\%). V_C]$
 
 <br>
 
-En pratique on choisit souvent une marge de 10% => [90%.V_C ; 110%.V_C]
+En pratique on choisit souvent une marge de 10% => $[90\%.V_C ; 110\%.V_C]$
 
 ## Les intervalles de protection
 
@@ -406,7 +450,106 @@ Exemple avec une marge de protection de 10%.
 
 La borne supérieure de l'intervalle des possibles (168) est inférieure à la borne supérieure de l'intervalle de protection (173).
 
+```{r}
+#| echo: false
+#| warning: false
+#| fig.margin: false
+#| fig.align: center
+#| fig.width: 6
+#| fig.height: 2
+
+library(dplyr)
+library(ggplot2)
+
+df <- data.frame(
+  y = c(0,0,-0.02),
+  ye = c(0,0,0.02),
+  x = c(63,141,157),
+  xe = c(168,173,157),
+  lw = c(20,20,1),
+  alph = c(1,1,3),
+  typint = c("Intervalle des possibles", "Intervalle de protection", "Valeur de la cellule")
+)
+
+ticks <- data.frame(
+  x = seq(60,180,10), y = -0.005, ye = 0
+)
+cellule <- data.frame(x=157, y=-0.02, ye = 0.02, col = "Valeur de la cellule")
+
+ggplot(df) +
+  geom_segment(aes(y = y, yend = ye, x = x, xend = xe, colour = typint, linewidth = lw, alpha = alph)) +
+  geom_hline(yintercept = 0, linewidth = 0.5) +
+  geom_segment(data = ticks, aes(x=x, y=y, yend=ye)) +
+  geom_text(data = ticks, aes(x=x, y=y, label = x), vjust = 1.1) +
+  geom_text(data = cellule, aes(x = x, y = y, label = x), color = "steelblue", vjust = 1.2) +
+  scale_x_continuous("", limits = c(58,182), expand = c(0,0)) +
+  scale_y_continuous("", limits = c(-0.1,0.1)) +
+  scale_colour_discrete("") + #, type = "qual", palette = 1) +
+  scale_alpha_continuous("", range = c(0.3, 0.9)) +
+  scale_linewidth_continuous("", range = c(1, 30)) +
+  guides(linewidth = "none", alpha = "none") +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "transparent", color = NA),
+    plot.background = element_rect(fill = "transparent", color = NA),
+    legend.background = element_rect(fill = "transparent", color = NA),
+    legend.box.background = element_rect(fill = "transparent", color = NA),
+    panel.grid = element_blank(),
+    axis.text = element_blank()
+  )
+```
+
+
 ## Les intervalles de protection
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig.margin: false
+#| fig.align: center
+#| fig.width: 6
+#| fig.height: 2
+
+library(dplyr)
+library(ggplot2)
+
+df <- data.frame(
+  y = c(0,0,-0.02),
+  ye = c(0,0,0.02),
+  x = c(63,141,157),
+  xe = c(168,173,157),
+  lw = c(20,20,1),
+  alph = c(1,1,3),
+  typint = c("Intervalle des possibles", "Intervalle de protection", "Valeur de la cellule")
+)
+
+ticks <- data.frame(
+  x = seq(60,180,10), y = -0.005, ye = 0
+)
+cellule <- data.frame(x=157, y=-0.02, ye = 0.02, col = "Valeur de la cellule")
+
+ggplot(df) +
+  geom_segment(aes(y = y, yend = ye, x = x, xend = xe, colour = typint, linewidth = lw, alpha = alph)) +
+  geom_hline(yintercept = 0, linewidth = 0.5) +
+  geom_segment(data = ticks, aes(x=x, y=y, yend=ye)) +
+  geom_text(data = ticks, aes(x=x, y=y, label = x), vjust = 1.1) +
+  geom_text(data = cellule, aes(x = x, y = y, label = x), color = "steelblue", vjust = 1.2) +
+  scale_x_continuous("", limits = c(58,182), expand = c(0,0)) +
+  scale_y_continuous("", limits = c(-0.1,0.1)) +
+  scale_colour_discrete("") + #, type = "qual", palette = 1) +
+  scale_alpha_continuous("", range = c(0.3, 0.9)) +
+  scale_linewidth_continuous("", range = c(1, 30)) +
+  guides(linewidth = "none", alpha = "none") +
+  theme_minimal() +
+  theme(
+    legend.position = "inside",
+    legend.position.inside = c(0.5,0.3),
+    legend.direction = "horizontal",
+    legend.box = "horizontal",
+    panel.grid = element_blank(),
+    axis.text = element_blank()
+  )
+```
 
 On peut inférer la valeur de la cellule à <span title="157 + (7/100)*157 = 168">7%</span> et non 10%.
 
@@ -437,6 +580,55 @@ On utilise un autre masque de secret ...
 
 ## Les intervalles de protection
 
+```{r}
+#| echo: false
+#| warning: false
+#| fig.margin: false
+#| fig.align: center
+#| fig.width: 6
+#| fig.height: 2
+
+library(dplyr)
+library(ggplot2)
+
+df <- data.frame(
+  y = c(0,0,-0.02),
+  ye = c(0,0,0.02),
+  x = c(62,141,157),
+  xe = c(281,173,157),
+  lw = c(20,20,1),
+  alph = c(1,1,3),
+  typint = c("Intervalle des possibles", "Intervalle de protection", "Valeur de la cellule")
+)
+
+ticks <- data.frame(
+  x = seq(60,285,20), y = -0.005, ye = 0
+)
+cellule <- data.frame(x=157, y=-0.02, ye = 0.02, col = "Valeur de la cellule")
+
+ggplot(df) +
+  geom_segment(aes(y = y, yend = ye, x = x, xend = xe, colour = typint, linewidth = lw, alpha = alph)) +
+  geom_hline(yintercept = 0, linewidth = 0.5) +
+  geom_segment(data = ticks, aes(x=x, y=y, yend=ye)) +
+  geom_text(data = ticks, aes(x=x, y=y, label = x), vjust = 1.1) +
+  geom_text(data = cellule, aes(x = x, y = y, label = x), color = "steelblue", vjust = 1.2) +
+  scale_x_continuous("", limits = c(58,285), expand = c(0,0)) +
+  scale_y_continuous("", limits = c(-0.1,0.1)) +
+  scale_colour_discrete("") + #, type = "qual", palette = 1) +
+  scale_alpha_continuous("", range = c(0.3, 0.9)) +
+  scale_linewidth_continuous("", range = c(1, 30)) +
+  guides(linewidth = "none", alpha = "none") +
+  theme_minimal() +
+  theme(
+    legend.position = "inside",
+    legend.position.inside = c(0.5,0.3),
+    legend.direction = "horizontal",
+    legend.box = "horizontal",
+    panel.grid = element_blank(),
+    axis.text = element_blank()
+  )
+```
+
 Avec cet autre masque de secret la cellule est suffisamment protégée.
 
 ## Minimiser la perte d'information
@@ -464,7 +656,7 @@ Plusieurs possibilités :
     <li>Logiciel libre et open source</li>
     <li>Dernière version stable 4.2.4 (26 avril 2023)</li>
   </ul>
-  <img src="img/tau_argus_logo.png" alt="Tau-Argus Logo" style="height: 200px; margin-left: 20px; object-fit: contain;">
+  <img src="./img/tau_argus_logo.png" alt="Tau-Argus Logo" style="height: 200px; margin-left: 20px; object-fit: contain;">
 </div>
 
 
@@ -495,7 +687,7 @@ Un package R pour bénéficier des avantages de $\tau$-Argus tout en limitant le
     <li>[Une documentation en ligne](https://inseefrlab.github.io/rtauargus/)</li>
     <li>Utiliser les fonctions tab_XXX()</li>
   </ul>
-  <img src="img/rtauargus_logo.png" alt="rtauargus Logo" style="height: 100px; margin-left: 20px;">
+  <img src="./img/rtauargus_logo_sans_fond.png" alt="rtauargus Logo" style="height: 200px; margin-left: 20px;">
 </div>
 
 ## rtauargus
@@ -526,24 +718,261 @@ Ou nous contacter par [mail](mailto:dg75_dmcsi-confidentialite@insee.fr).
 
 ```{mermaid}
 graph TD
-  A[Pays] --> B[Nord]
-  A --> C[Ouest]
-  A --> D[Est]
-  A --> E[Sud]
-  B --> F[N1]
-  B --> G[N2]
-  B --> H[N3]
-  C --> I[O1]
-  C --> J[O2]
-  C --> K[O3]
-  C --> L[O4]
-  D --> M[E1]
-  D --> N[E2]
-  D --> O[E3]
-  E --> P[S1]
-  E --> Q[S2]
+  A[**Pays**<br>400] --> B[**Nord**<br>46]
+  A --> C[**Ouest**<br>191]
+  A --> D[**Est**<br>80]
+  A --> E[**Sud**<br>83]
+  B --> F[**N1**<br>21]
+  B --> G["**N2**<br><font color='red'>2</font>"]
+  B --> H[**N3**<br>23]
+  C --> I[**O1**<br>32]
+  C --> J[**O2**<br>54]
+  C --> K[**O3**<br>67]
+  C --> L[**O4**<br>38]
+  D --> M[**E1**<br>27]
+  D --> N[**E2**<br>41]
+  D --> O[**E3**<br>12]
+  E --> P[**S1**<br>44]
+  E --> Q[**S2**<br>39]
 ```
 
+## Tableaux hiérarchisés
+
+```{mermaid}
+graph TD
+  A[**Pays**<br>400] --> B[**Nord**<br>46]
+  A --> C[**Ouest**<br>191]
+  A --> D[**Est**<br>80]
+  A --> E[**Sud**<br>83]
+  B --> F[**N1**<br>21]
+  B --> G["**N2**<br><font color='red'>2</font>"]
+  B --> H[**N3**<br>23]
+  C --> I[**O1**<br>32]
+  C --> J[**O2**<br>54]
+  C --> K[**O3**<br>67]
+  C --> L[**O4**<br>38]
+  D --> M[**E1**<br>27]
+  D --> N[**E2**<br>41]
+  D --> O["**E3**<br><font color='red'>X</font>"]
+  E --> P[**S1**<br>44]
+  E --> Q[**S2**<br>39]
+```
+
+. . . 
+
+Si on ne renseigne pas la hiérarchie, on peut retrouver la valeur cachée.
+
+## Tableaux hiérarchisés
+
+```{mermaid}
+graph TD
+  A[**Pays**<br>400] --> B[**Nord**<br>46]
+  A --> C[**Ouest**<br>191]
+  A --> D[**Est**<br>80]
+  A --> E[**Sud**<br>83]
+  B --> F["**N1**<br><font color='red'>X</font>"]
+  B --> G["**N2**<br><font color='red'>2</font>"]
+  B --> H[**N3**<br>23]
+  C --> I[**O1**<br>32]
+  C --> J[**O2**<br>54]
+  C --> K[**O3**<br>67]
+  C --> L[**O4**<br>38]
+  D --> M[**E1**<br>27]
+  D --> N[**E2**<br>41]
+  D --> O[**E3**<br>12]
+  E --> P[**S1**<br>44]
+  E --> Q[**S2**<br>39]
+```
+
+. . .
+
+Lorsque la hiérarchie est renseignée, on protège bien les données.
+
+## Le format Argus des hiérarchies
+
+Dans $\tau$-Argus les hiérarchies sont présentées dans un format particulier : fichier texte **.hrc**.
+
+- Doit décrire parfaitement l'emboîtement
+- Le nombre de @ désigne le niveau d'emboîtement de chaque catégorie
+- Ne fait pas apparaître le total
+- La fonction `write_hrc2()` permet de créer un fichier .hrc à partir d'une table de passage
+
+# Protéger des tableaux liés
 
 
+## Protéger des tableaux liés avec rtauargus
 
+Utiliser la fonction tab_multi_manager() :
+1) L'utilisateur décrit les tableaux
+2) Fusion automatique de tous les tableaux entre eux
+3) Algorithme gère la protection itérative des tableaux
+
+N.B. La pose du secret à chaque itération est effectuée avec $\tau$-Argus.
+
+. . .
+
+La fonction tab_multi_manager() fournit un journal sous forme de reporting (étapes pose secret).
+
+# Analyser une demande
+
+## L'analyse d'une demande
+Il faut repérer les liens entre les tableaux pour poser un secret qui les protège vraiment.
+
+Les tableaux diffusés ne sont pas les mêmes que les tableaux à protéger.
+
+## Etapes de l'analyse
+1) Réunir les informations nécessaires à la description des tableaux
+
+- champ
+- variables de croisements
+- variable de réponses (i.e. indicateur)
+- tableaux de fréquence ou de volumes ?
+- description des emboîtements pour les hiérarchies
+- équations ou corrélations entre les variables de réponses
+
+## Etapes de l'analyse
+2) La demande peut-elle être découpée en sous-demandes indépendantes ?
+
+- champs différents et non complémentaires => indépendance
+- variable de réponses différentes (et non liées par une équation / corrélation) => indépendance
+- variables de croisement toutes différentes => indépendance
+
+Dans les cas d'indépendance il faut *gérer séparément les différentes sous-demandes*.
+
+## Etapes de l'analyse
+3) Lister les tableaux nécessaires pour la pose du secret
+
+- Certaines hiérarchies peuvent conduire à unifier des tableaux
+- Si tableaux additifs, construire un unique tableau en créant une variable supplémentaire
+- Si hiérarchie non-emboîtée, extraire les niveaux concernés pour construire un tableau supplémentaire
+
+## Etapes de l'analyse
+4) Préparer les hiérarchies
+
+- Détecter les variables hiérarchiques
+- Construire les fichiers .hrc nécessaires (manuellement ou avec write_hrc2())
+
+# Liens spécifiques
+## Traiter un lien additif entre des variables réponses
+
+<div style="display: flex; gap: 20px;">
+
+<div style="flex: 1;">
+<p><strong>CA couteaux</strong></p>
+
+|       | Reg1   | Reg2   | **T**  |
+|-------|--------|--------|--------|
+| tr1   | 5      | 10     | **15** |
+| tr2   | 12     | 18     | **30** |
+| tr3   | 5      | 5      | **10** |
+| **T** | **22** | **33** | **55** |
+</div>
+
+<div style="flex: 1;">
+<p><strong>CA fourchettes</strong></p>
+
+|       | Reg1   | Reg2   | **T**  |
+|-------|--------|--------|--------|
+| tr1   | 3      | 8      | **11** |
+| tr2   | 6      | 20     | **26** |
+| tr3   | 2      | 6      | **8**  |
+| **T** | **11** | **34** | **45** |
+</div>
+
+<div style="flex: 1;">
+<p><strong>CA couverts</strong></p>
+
+|       | Reg1   | Reg2   | **T**  |
+|-------|--------|--------|--------|
+| tr1   | 8      | 18     | **26** |
+| tr2   | 18     | 38     | **56** |
+| tr3   | 7      | 11     | **18** |
+| **T** | **33** | **67** | **100**|
+</div>
+
+</div>
+
+Lien entre les CA : "couverts = couteaux + fourchettes"
+
+On crée une nouvelle variable de croisement "type_couverts".
+
+## Traiter une hiérarchie non-emboîtée
+
+:::{.column .centered}
+
+```{mermaid}
+graph TD
+  A[Total] --> B[<25]
+  A --> C[25-29]
+  A --> D[30-69]
+  A --> E[70+]
+  D --> F[30-49]
+  D --> G[50-69]
+  H[+50] --> G
+  H --> E
+```
+
+:::
+
+. . .
+
+Ici, l'agrégat +50 ne peut pas être bien emboîté dans la hiérarchie.
+
+
+## Traiter une hiérarchie non-emboîtée
+
+Il faut traiter deux tableaux avec deux hiérarchies différentes.
+
+```{mermaid}
+graph TD
+  subgraph GROUPE_1["GROUPE 1"]
+    A[Total] --> B[<25]
+    A --> C[25-29]
+    D --> F[30-49]
+    A --> D[30-69]
+    D --> G[50-69]
+    A --> E[70+]
+  end
+
+  subgraph GROUPE_2["+50"]
+    H[+50] --> G
+    H --> E
+  end
+
+  %% on donne une classe au subgraph via son nom
+  classDef groupe1Style fill:#e0f7fa,stroke:#00796b,stroke-width:2px,color:#004d40;
+  class GROUPE_1 groupe1Style;
+
+  classDef groupe2Style fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#bf360c;
+  class GROUPE_2 groupe2Style;
+```
+
+## essai
+
+```{mermaid}
+graph TD
+  subgraph grp1["hiérarchie principale"]
+    A[Total] --> B[<25]
+    A --> C[25-29]
+    A --> D[30-69]
+    A --> E[70+]
+    D --> F[30-49]
+    D --> G[50-69]
+    E ~~~ X
+  end
+
+  subgraph grp2["+50"]
+    H[+50] --> G
+    H --> E
+  end
+
+  %% cacher le nœud X
+  style X fill=transparent,stroke=transparent
+  
+  %% on donne une classe au subgraph via son nom
+  classDef groupe1Style fill:#e0f7fa,stroke:#00796b,stroke-width:2px,color:#004d40;
+  class grp1 groupe1Style;
+
+  classDef groupe2Style fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#bf360c;
+  class grp2 groupe2Style;
+```
