@@ -12,8 +12,7 @@ remotes::install_github(
   'InseeFrLab/rtauargus',
   dependencies = TRUE,
   build_vignettes = FALSE,
-  upgrade = 'never',
-  ref = "v-1.2.999-dev"
+  upgrade = 'never'
 )
 ```
 
@@ -61,9 +60,13 @@ chaque entreprise on dispose également du chiffre d'affaires (CA) selon le type
 pizzas, batavias, légumes rouges, etc.).
 
 ```{r creation_micro}
+#| echo: false
+#| warning: false
+
 set.seed(123)
 
-a88 <- c("A01","A02","A03","B05","B06","B07","B08","B09","C10","C11","C12","C13",
+generer_micro <- function(n){
+  a88 <- c("A01","A02","A03","B05","B06","B07","B08","B09","C10","C11","C12","C13",
          "C14","C15","C16","C17","C18","C19","C20","C21","C22","C23","C24","C25",
          "C26","C27","C28","C29","C30","C31","C32","C33","D35","E36","E37","E38",
          "E39","F41","F42","F43","G45","G46","G47","H49","H50","H51","H52","H53",
@@ -71,75 +74,77 @@ a88 <- c("A01","A02","A03","B05","B06","B07","B08","B09","C10","C11","C12","C13"
          "M69","M70","M71","M72","M73","M74","M75","N77","N78","N79","N80","N81",
          "N82","O84","P85","Q86","Q87","Q88","R90","R91","R92","R93","S94","S95",
          "S96","T97","T98","U99")
+  
+  # Modalités rares
+  modalites_rares <- c("C29", "J58", "Q88")
+  
+  # Probabilités : base égale pour toutes, sauf rares
+  proba_a88 <- rep(1, length(a88))
+  proba_a88[a88 %in% modalites_rares] <- 0.01  # très faible proba
+  
+  # Normalisation des proba
+  proba_a88 <- proba_a88 / sum(proba_a88)
+  
+  correspondance_naf <- data.frame(a88) %>% 
+    mutate(a21 = substr(a88,1,1),
+           a10 = case_when(
+             a21 == "A" ~ "AZ",
+             a21 %in% c("B","C","D","E") ~ "BE",
+             a21 == "F" ~ "FZ",
+             a21 %in% c("G","H","I") ~ "GI",
+             a21 == "J" ~ "JZ",
+             a21 == "K" ~ "KZ",
+             a21 == "L" ~ "LZ",
+             a21 %in% c("M","N") ~ "MN",
+             a21 %in% c("O","P","Q") ~ "OQ",
+             a21 %in% c("R","S","T","U") ~ "RU"
+           )) %>% 
+    select(a10,a21,a88)
+  
+  nuts3 <- c("FR101","FR102","FR103","FR104","FR105","FR106","FR107","FR108","FRB01",
+             "FRB02","FRB03","FRB04","FRB05","FRB06","FRC11","FRC12","FRC13","FRC14",
+             "FRC21","FRC22","FRC23","FRC24","FRD11","FRD12","FRD13","FRD21","FRD22",
+             "FRE11","FRE12","FRE21","FRE22","FRE23","FRF11","FRF12","FRF21","FRF22",
+             "FRF23","FRF24","FRF31","FRF32","FRF33","FRF34","FRG01","FRG02","FRG03",
+             "FRG04","FRG05","FRH01","FRH02","FRH03","FRH04","FRI11","FRI12","FRI13",
+             "FRI14","FRI15","FRI21","FRI22","FRI23","FRI31","FRI32","FRI33","FRI34",
+             "FRJ11","FRJ12","FRJ13","FRJ14","FRJ15","FRJ21","FRJ22","FRJ23","FRJ24",
+             "FRJ25","FRJ26","FRJ27","FRJ28","FRK11","FRK12","FRK13","FRK14","FRK21",
+             "FRK22","FRK23","FRK24","FRK25","FRK26","FRK27","FRK28","FRL01","FRL02",
+             "FRL03","FRL04","FRL05","FRL06","FRM01","FRM02","FRY10","FRY20","FRY30",
+             "FRY40","FRY50")
+  
+  correspondance_nuts <- data.frame(nuts3) %>% 
+    mutate(nuts1 = substr(nuts3,1,3),
+           nuts2 = substr(nuts3,1,4)) %>% 
+    select(nuts1,nuts2,nuts3)
+  
+  micro <- tibble(
+    a88 = sample(a88, n, replace = TRUE, prob = proba_a88),
+    nuts3 = sample(nuts3, n, replace = TRUE),
+    treff = sample(c("tr1", "tr2", "tr3"), n, replace = TRUE, prob = c(0.45, 0.05, 0.5)),
+    cj = sample(c("LL", "PA", "SP"), n, replace = TRUE, prob = c(0.45, 0.45, 0.1)),
+    maches = ifelse(runif(n) < 0.1, 0, round(runif(n, 30000, 75000))),
+    batavias = ifelse(runif(n) < 0.1, 0, round(runif(n, 25000, 70000))),
+    salades = maches + batavias,
+    tomates = ifelse(runif(n) < 0.08, 0, round(runif(n, 50000, 500000))),
+    pizzas = ifelse(runif(n) < 0.2, 0, round(runif(n, 60000, 900000)))) %>% 
+    mutate(
+      # Détecter les lignes "rares"
+      rare = a88 %in% modalites_rares | (a88 == "J58" & treff == "tr1"),
+      # Attribution des poids en fonction de la rareté
+      poids = ifelse(rare, round(runif(n(), 1, 3)), round(runif(n(), 10, 300)))
+    ) %>%
+    left_join(correspondance_naf, by = "a88") %>%
+    left_join(correspondance_nuts, by = "nuts3") %>% 
+    select(a10,a21,a88,nuts1,nuts2,nuts3,treff,cj,maches,batavias,salades,tomates,pizzas,poids)
+  return(micro)
+}
 
-# Modalités rares
-modalites_rares <- c("C29", "J58", "Q88")
+micro <- generer_micro(10000)
+```
 
-# Probabilités : base égale pour toutes, sauf rares
-proba_a88 <- rep(1, length(a88))
-proba_a88[a88 %in% modalites_rares] <- 0.01  # très faible proba
-
-# Normalisation des proba
-proba_a88 <- proba_a88 / sum(proba_a88)
-
-correspondance_naf <- data.frame(a88) %>% 
-  mutate(a21 = substr(a88,1,1),
-         a10 = case_when(
-           a21 == "A" ~ "AZ",
-           a21 %in% c("B","C","D","E") ~ "BE",
-           a21 == "F" ~ "FZ",
-           a21 %in% c("G","H","I") ~ "GI",
-           a21 == "J" ~ "JZ",
-           a21 == "K" ~ "KZ",
-           a21 == "L" ~ "LZ",
-           a21 %in% c("M","N") ~ "MN",
-           a21 %in% c("O","P","Q") ~ "OQ",
-           a21 %in% c("R","S","T","U") ~ "RU"
-         )) %>% 
-  select(a10,a21,a88)
-
-nuts3 <- c("FR101","FR102","FR103","FR104","FR105","FR106","FR107","FR108","FRB01",
-           "FRB02","FRB03","FRB04","FRB05","FRB06","FRC11","FRC12","FRC13","FRC14",
-           "FRC21","FRC22","FRC23","FRC24","FRD11","FRD12","FRD13","FRD21","FRD22",
-           "FRE11","FRE12","FRE21","FRE22","FRE23","FRF11","FRF12","FRF21","FRF22",
-           "FRF23","FRF24","FRF31","FRF32","FRF33","FRF34","FRG01","FRG02","FRG03",
-           "FRG04","FRG05","FRH01","FRH02","FRH03","FRH04","FRI11","FRI12","FRI13",
-           "FRI14","FRI15","FRI21","FRI22","FRI23","FRI31","FRI32","FRI33","FRI34",
-           "FRJ11","FRJ12","FRJ13","FRJ14","FRJ15","FRJ21","FRJ22","FRJ23","FRJ24",
-           "FRJ25","FRJ26","FRJ27","FRJ28","FRK11","FRK12","FRK13","FRK14","FRK21",
-           "FRK22","FRK23","FRK24","FRK25","FRK26","FRK27","FRK28","FRL01","FRL02",
-           "FRL03","FRL04","FRL05","FRL06","FRM01","FRM02","FRY10","FRY20","FRY30",
-           "FRY40","FRY50")
-
-correspondance_nuts <- data.frame(nuts3) %>% 
-  mutate(nuts1 = substr(nuts3,1,3),
-         nuts2 = substr(nuts3,1,4)) %>% 
-  select(nuts1,nuts2,nuts3)
-
-set.seed(123)
-
-n <- 10000  # nombre d’observations souhaité
-
-micro <- tibble(
-  a88 = sample(a88, n, replace = TRUE, prob = proba_a88),
-  nuts3 = sample(nuts3, n, replace = TRUE),
-  treff = sample(c("tr1", "tr2", "tr3"), n, replace = TRUE, prob = c(0.45, 0.05, 0.5)),
-  cj = sample(c("LL", "PA", "SP"), n, replace = TRUE, prob = c(0.45, 0.45, 0.1)),
-  maches = ifelse(runif(n) < 0.1, 0, round(runif(n, 30000, 75000))),
-  batavias = ifelse(runif(n) < 0.1, 0, round(runif(n, 25000, 70000))),
-  salades = maches + batavias,
-  tomates = ifelse(runif(n) < 0.08, 0, round(runif(n, 50000, 500000))),
-  pizzas = ifelse(runif(n) < 0.2, 0, round(runif(n, 60000, 900000)))) %>% 
-  mutate(
-    # Détecter les lignes "rares"
-    rare = a88 %in% modalites_rares | (a88 == "J58" & treff == "tr1"),
-    # Attribution des poids en fonction de la rareté
-    poids = ifelse(rare, round(runif(n(), 1, 3)), round(runif(n(), 10, 300)))
-  ) %>%
-  left_join(correspondance_naf, by = "a88") %>%
-  left_join(correspondance_nuts, by = "nuts3") %>% 
-  select(a10,a21,a88,nuts1,nuts2,nuts3,treff,cj,maches,batavias,salades,tomates,pizzas,poids)
-
+```{r presentation micro}
 str(micro)
 ```
 

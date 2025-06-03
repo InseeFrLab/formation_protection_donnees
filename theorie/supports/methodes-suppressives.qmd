@@ -316,8 +316,8 @@ Un premier recodage consiste à regrouper toutes les zones d'emploi de travail h
 
 | 👍 | 👎 |
 |:--:|:--:|
-| Réduit le SP. | Ne supprime pas totalement le SP. |
-| Pas de perte info. | Impossible dans certains cas (structure imposée, suivi dans le temps). |
+| Réduit le SP. | Ne supprime pas toujours totalement le SP. |
+| Très simple à mettre en place. | Impossible dans certains cas (structure imposée, suivi dans le temps). |
 
 . . .
 
@@ -427,9 +427,13 @@ Exemple avec une marge de protection de 10%.
 | Région     | Harpe | Piano  | Orgue   | Autre   | Total     |
 |:-----------|------:|-------:|--------:|--------:|----------:|
 | **Nord**   | 58   | 71   | 92    | 800   | **1021**  |
-| **Centre** | 11    | 124  | <span style="color:red; font-weight: bold;" title="[141 ; 173]">157 (2)</span>   | 934    | **1226** |
-| **Sud**    | 36    | 24  | <span style="color:red; font-weight: bold;" title="[54 ; 66]">60 (1)</span>   | 651   | **771** |
+| **Centre** | 11    | 124  | <span style="color:red;" title="[141 ; 173]">157 (2)</span>   | 934    | **1226** |
+| **Sud**    | 36    | 24  | <span style="color:red;" title="[54 ; 66]">60 (1)</span>   | 651   | **771** |
 | **Total**  | **105** | **219** | **309**  | **2385** | **3018** |
+
+<div style="font-size: 0.9em; margin-top: 0.5em;">
+  <em>Note :</em> glisser la souris sur les valeurs en secret primaire de fréquence pour voir les intervalles de protection.
+</div>
 
 ## Les intervalles de protection
 
@@ -438,9 +442,13 @@ Exemple avec une marge de protection de 10%.
 | Région     | Harpe | Piano  | Orgue   | Autre   | Total     |
 |:-----------|------:|-------:|--------:|--------:|----------:|
 | **Nord**   | X   | 71   | X    | 800   | **1021**  |
-| **Centre** | X    | 124  | <span style="color:red; font-weight: bold;" title="[141 ; 173]">X</span>   | 934    | **1226** |
-| **Sud**    | X    | 24  | <span style="color:red; font-weight: bold;" title="[54 ; 66]">X</span>   | 651   | **771** |
+| **Centre** | X    | 124  | <span style="color:red;" title="[141 ; 173]">X</span>   | 934    | **1226** |
+| **Sud**    | X    | 24  | <span style="color:red;" title="[54 ; 66]">X</span>   | 651   | **771** |
 | **Total**  | **105** | **219** | **309**  | **2385** | **3018** |
+
+<div style="font-size: 0.9em; margin-top: 0.5em;">
+  <em>Note :</em> glisser la souris sur les valeurs en secret primaire de fréquence pour voir les intervalles de protection.
+</div>
 
 ## Les intervalles de protection
 
@@ -449,115 +457,24 @@ Exemple avec une marge de protection de 10%.
 | Région     | Harpe | Piano  | Orgue   | Autre   | Total     |
 |:-----------|------:|-------:|--------:|--------:|----------:|
 | **Nord**   | [0;105]   | 71   | [45;150]    | 800   | **1021**  |
-| **Centre** | [0;105]    | 124  | <span style="color:red; font-weight: bold;" title="[141 ; 173]">[63;168]</span>   | 934    | **1226** |
-| **Sud**    | [0;96]    | 24  | <span style="color:red; font-weight: bold;" title="[54 ; 66]">[0;96]</span>   | 651   | **771** |
+| **Centre** | [0;105]    | 124  | <span style="color:red;" title="[141 ; 173]">[63;168]</span>   | 934    | **1226** |
+| **Sud**    | [0;96]    | 24  | <span style="color:red;" title="[54 ; 66]">[0;96]</span>   | 651   | **771** |
 | **Total**  | **105** | **219** | **309**  | **2385** | **3018** |
 
+<div style="font-size: 0.9em; margin-top: 0.5em;">
+  <em>Note :</em> glisser la souris sur les valeurs en secret primaire de fréquence pour voir les intervalles de protection.
+</div>
 
 ## Les intervalles de protection
 
 La borne supérieure de l'intervalle des possibles (168) est inférieure à la borne supérieure de l'intervalle de protection (173).
 
-```{r}
-#| echo: false
-#| warning: false
-#| fig.margin: false
-#| fig.align: center
-#| fig.width: 6
-#| fig.height: 2
-
-library(dplyr)
-library(ggplot2)
-
-df <- data.frame(
-  y = c(0,0,-0.02),
-  ye = c(0,0,0.02),
-  x = c(63,141,157),
-  xe = c(168,173,157),
-  lw = c(20,20,1),
-  alph = c(1,1,3),
-  typint = c("Intervalle des possibles", "Intervalle de protection", "Valeur de la cellule")
-)
-
-ticks <- data.frame(
-  x = seq(60,180,10), y = -0.005, ye = 0
-)
-cellule <- data.frame(x=157, y=-0.02, ye = 0.02, col = "Valeur de la cellule")
-
-ggplot(df) +
-  geom_segment(aes(y = y, yend = ye, x = x, xend = xe, colour = typint, linewidth = lw, alpha = alph)) +
-  geom_hline(yintercept = 0, linewidth = 0.5) +
-  geom_segment(data = ticks, aes(x=x, y=y, yend=ye)) +
-  geom_text(data = ticks, aes(x=x, y=y, label = x), vjust = 1.1) +
-  geom_text(data = cellule, aes(x = x, y = y, label = x), color = "steelblue", vjust = 1.2) +
-  scale_x_continuous("", limits = c(58,182), expand = c(0,0)) +
-  scale_y_continuous("", limits = c(-0.1,0.1)) +
-  scale_colour_discrete("") + #, type = "qual", palette = 1) +
-  scale_alpha_continuous("", range = c(0.3, 0.9)) +
-  scale_linewidth_continuous("", range = c(1, 30)) +
-  guides(linewidth = "none", alpha = "none") +
-  theme_minimal() +
-  theme(
-    panel.background = element_rect(fill = "transparent", color = NA),
-    plot.background = element_rect(fill = "transparent", color = NA),
-    legend.background = element_rect(fill = "transparent", color = NA),
-    legend.box.background = element_rect(fill = "transparent", color = NA),
-    panel.grid = element_blank(),
-    axis.text = element_blank()
-  )
-```
+![](./img/ex_intervalle_protection_formation.png)
 
 
 ## Les intervalles de protection
 
-```{r}
-#| echo: false
-#| warning: false
-#| fig.margin: false
-#| fig.align: center
-#| fig.width: 6
-#| fig.height: 2
-
-library(dplyr)
-library(ggplot2)
-
-df <- data.frame(
-  y = c(0,0,-0.02),
-  ye = c(0,0,0.02),
-  x = c(63,141,157),
-  xe = c(168,173,157),
-  lw = c(20,20,1),
-  alph = c(1,1,3),
-  typint = c("Intervalle des possibles", "Intervalle de protection", "Valeur de la cellule")
-)
-
-ticks <- data.frame(
-  x = seq(60,180,10), y = -0.005, ye = 0
-)
-cellule <- data.frame(x=157, y=-0.02, ye = 0.02, col = "Valeur de la cellule")
-
-ggplot(df) +
-  geom_segment(aes(y = y, yend = ye, x = x, xend = xe, colour = typint, linewidth = lw, alpha = alph)) +
-  geom_hline(yintercept = 0, linewidth = 0.5) +
-  geom_segment(data = ticks, aes(x=x, y=y, yend=ye)) +
-  geom_text(data = ticks, aes(x=x, y=y, label = x), vjust = 1.1) +
-  geom_text(data = cellule, aes(x = x, y = y, label = x), color = "steelblue", vjust = 1.2) +
-  scale_x_continuous("", limits = c(58,182), expand = c(0,0)) +
-  scale_y_continuous("", limits = c(-0.1,0.1)) +
-  scale_colour_discrete("") + #, type = "qual", palette = 1) +
-  scale_alpha_continuous("", range = c(0.3, 0.9)) +
-  scale_linewidth_continuous("", range = c(1, 30)) +
-  guides(linewidth = "none", alpha = "none") +
-  theme_minimal() +
-  theme(
-    legend.position = "inside",
-    legend.position.inside = c(0.5,0.3),
-    legend.direction = "horizontal",
-    legend.box = "horizontal",
-    panel.grid = element_blank(),
-    axis.text = element_blank()
-  )
-```
+![](./img/ex_intervalle_protection_formation.png)
 
 On peut inférer la valeur de la cellule à <span title="157 + (7/100)*157 = 168">7%</span> et non 10%.
 
@@ -582,60 +499,13 @@ On utilise un autre masque de secret ...
 | Région     | Harpe | Piano  | Orgue   | Autre   | Total     |
 |:-----------|------:|-------:|--------:|--------:|----------:|
 | **Nord**   | 58   | [0;163]   | [0;163]    | 800   | **1021**  |
-| **Centre** | 11    | [0;219]  | <span style="color:red; font-weight: bold;" title="[141 ; 173]">[62;281]</span>   | 934    | **1226** |
-| **Sud**    | 36   | [0;84]  | <span style="color:red; font-weight: bold;" title="[54 ; 66]">[0;84]</span>   | 651   | **771** |
+| **Centre** | 11    | [0;219]  | <span style="color:red;" title="[141 ; 173]">[62;281]</span>   | 934    | **1226** |
+| **Sud**    | 36   | [0;84]  | <span style="color:red;" title="[54 ; 66]">[0;84]</span>   | 651   | **771** |
 | **Total**  | **105** | **219** | **309**  | **2385** | **3018** 
 
 ## Les intervalles de protection
 
-```{r}
-#| echo: false
-#| warning: false
-#| fig.margin: false
-#| fig.align: center
-#| fig.width: 6
-#| fig.height: 2
-
-library(dplyr)
-library(ggplot2)
-
-df <- data.frame(
-  y = c(0,0,-0.02),
-  ye = c(0,0,0.02),
-  x = c(62,141,157),
-  xe = c(281,173,157),
-  lw = c(20,20,1),
-  alph = c(1,1,3),
-  typint = c("Intervalle des possibles", "Intervalle de protection", "Valeur de la cellule")
-)
-
-ticks <- data.frame(
-  x = seq(60,285,20), y = -0.005, ye = 0
-)
-cellule <- data.frame(x=157, y=-0.02, ye = 0.02, col = "Valeur de la cellule")
-
-ggplot(df) +
-  geom_segment(aes(y = y, yend = ye, x = x, xend = xe, colour = typint, linewidth = lw, alpha = alph)) +
-  geom_hline(yintercept = 0, linewidth = 0.5) +
-  geom_segment(data = ticks, aes(x=x, y=y, yend=ye)) +
-  geom_text(data = ticks, aes(x=x, y=y, label = x), vjust = 1.1) +
-  geom_text(data = cellule, aes(x = x, y = y, label = x), color = "steelblue", vjust = 1.2) +
-  scale_x_continuous("", limits = c(58,285), expand = c(0,0)) +
-  scale_y_continuous("", limits = c(-0.1,0.1)) +
-  scale_colour_discrete("") + #, type = "qual", palette = 1) +
-  scale_alpha_continuous("", range = c(0.3, 0.9)) +
-  scale_linewidth_continuous("", range = c(1, 30)) +
-  guides(linewidth = "none", alpha = "none") +
-  theme_minimal() +
-  theme(
-    legend.position = "inside",
-    legend.position.inside = c(0.5,0.3),
-    legend.direction = "horizontal",
-    legend.box = "horizontal",
-    panel.grid = element_blank(),
-    axis.text = element_blank()
-  )
-```
+![](./img/ex_intervalle_protection_formation2.png)
 
 Avec cet autre masque de secret la cellule est suffisamment protégée.
 
@@ -782,9 +652,9 @@ Les tableaux diffusés ne sont pas les mêmes que les tableaux à protéger.
 ## Etapes de l'analyse
 2) La demande peut-elle être découpée en sous-demandes indépendantes ?
 
-- champs différents et non complémentaires => indépendance
-- variable de réponses différentes (et non liées par une équation / corrélation) => indépendance
-- variables de croisement toutes différentes => indépendance
+- champs différents et non complémentaires $\perp\!\!\!\perp$
+- variable de réponses différentes (et non liées par une équation / corrélation) $\perp\!\!\!\perp$
+- variables de croisement toutes différentes $\perp\!\!\!\perp$
 
 Dans les cas d'indépendance il faut *gérer séparément les différentes sous-demandes*.
 
