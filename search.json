@@ -725,7 +725,7 @@
     "href": "theorie/supports/methodes-suppressives.html#les-méthodes-à-disposition-1",
     "title": "Les méthodes suppressives",
     "section": "Les méthodes à disposition",
-    "text": "Les méthodes à disposition\n\n\nLes méthodes\n\n\n\n\n\n\n\n\n\n\nType de méthode\nType de données\nMéthodes\n\n\n\n\nPré-tabulation\nMicro-données\nRecodage des variables  Suppression locale\n\n\nPost-tabulation\nDonnées tabulées\nSuppression de cellules  Regroupement de catégories"
+    "text": "Les méthodes à disposition\n\n\n\n\n\n\n\n\nType de méthode\nType de données\nMéthodes\n\n\n\n\nPré-tabulation\nMicro-données\nRecodage des variables  Suppression locale\n\n\nPost-tabulation\nDonnées tabulées\nSuppression de cellules  Regroupement de catégories"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#le-recodage-des-variables",
@@ -774,7 +774,7 @@
     "href": "theorie/supports/methodes-suppressives.html#tableaux-deffectifs-2",
     "title": "Les méthodes suppressives",
     "section": "Tableaux d’effectifs",
-    "text": "Tableaux d’effectifs\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\n14\n1\n7\n28\n\n\nNon polluante\n3\n2\n1\n13\n19\n\n\nTotal\n9\n16\n2\n20\n47"
+    "text": "Tableaux d’effectifs\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\n14\n1\n7\n28\n\n\nNon polluante\n3\n2\n1\n13\n19\n\n\nTotal\n9\n16\n2\n20\n47\n\n\n\n\nTableau 1 – Nombre d’entreprises polluantes par région"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#tableaux-de-volume",
@@ -868,32 +868,25 @@
     "text": "Le recodage\n\n\n\n\n\n\n\n👍\n👎\n\n\n\n\nRéduit le SP.\nNe supprime pas totalement le SP.\n\n\nPas de perte info.\nImpossible dans certains cas (structure imposée, suivi dans le temps).\n\n\n\n\nComment protéger le secret primaire restant ?"
   },
   {
-    "objectID": "theorie/supports/methodes-suppressives.html#la-suppression-de-cellules",
-    "href": "theorie/supports/methodes-suppressives.html#la-suppression-de-cellules",
-    "title": "Les méthodes suppressives",
-    "section": "La suppression de cellules",
-    "text": "La suppression de cellules"
-  },
-  {
     "objectID": "theorie/supports/methodes-suppressives.html#le-secret-primaire-1",
     "href": "theorie/supports/methodes-suppressives.html#le-secret-primaire-1",
     "title": "Les méthodes suppressives",
     "section": "Le secret primaire",
-    "text": "Le secret primaire\nPremière étape : supprimer les cellules ne respectant pas les règles du secret primaire.\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\n14\nX\n7\n28\n\n\nNon polluante\n3\nX\n3\n13\n21\n\n\nTotal\n9\n16\n4\n20\n49\n\n\n\n\nCe n’est pas suffisant, les cellules sont liées entre elles par des équations (marges)."
+    "text": "Le secret primaire\nPremière étape : supprimer les cellules ne respectant pas les règles du secret primaire.\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\n14\nX\n7\n28\n\n\nNon polluante\n3\nX\n3\n13\n21\n\n\nTotal\n9\n16\n4\n20\n49\n\n\n\n\nTableau 1 – Nombre d’entreprises polluantes par région\n\n\nCe n’est pas suffisant, les cellules sont liées entre elles par des équations (marges)."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#le-secret-secondaire",
     "href": "theorie/supports/methodes-suppressives.html#le-secret-secondaire",
     "title": "Les méthodes suppressives",
     "section": "Le secret secondaire",
-    "text": "Le secret secondaire\nDeuxième étape : supprimer des cellules pour protéger le secret primaire.\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\nX\nX\n7\n28\n\n\nNon polluante\n3\nX\nX\n13\n21\n\n\nTotal\n9\n16\n4\n20\n49"
+    "text": "Le secret secondaire\nDeuxième étape : supprimer des cellules pour protéger le secret primaire.\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\nX\nX\n7\n28\n\n\nNon polluante\n3\nX\nX\n13\n21\n\n\nTotal\n9\n16\n4\n20\n49\n\n\n\n\nTableau 1 – Nombre d’entreprises polluantes par région"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#le-secret-secondaire-1",
     "href": "theorie/supports/methodes-suppressives.html#le-secret-secondaire-1",
     "title": "Les méthodes suppressives",
     "section": "Le secret secondaire",
-    "text": "Le secret secondaire\nPlusieurs structures de suppressions (masques de secret) sont possibles.\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\nX\n14\nX\n7\n28\n\n\nNon polluante\nX\nX\n3\n13\n21\n\n\nTotal\n9\nX\nX\n20\n49"
+    "text": "Le secret secondaire\nPlusieurs structures de suppressions (masques de secret) sont possibles.\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\nX\n14\nX\n7\n28\n\n\nNon polluante\nX\nX\n3\n13\n21\n\n\nTotal\n9\nX\nX\n20\n49\n\n\n\n\nTableau 1 – Nombre d’entreprises polluantes par région"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection",
@@ -907,7 +900,7 @@
     "href": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-1",
     "title": "Les méthodes suppressives",
     "section": "Les intervalles de protection",
-    "text": "Les intervalles de protection\nL’intervalle de protection : soit \\(V_C\\) la valeur d’une cellule C sensible à la règle de fréquence et \\(m\\%\\) la marge protection choisie.\n\\([(1 - m\\%). V_C ; (1 + m\\%). V_C]\\)\n\nEn pratique on choisit souvent une marge de 10% =&gt; \\([90\\%.V_C ; 110\\%.V_C]\\)"
+    "text": "Les intervalles de protection\nL’intervalle de protection : soit \\(V_C\\) la valeur d’une cellule C sensible à la règle de fréquence et \\(m\\%\\) la marge protection choisie.\n\n\\([(1 - m\\%). V_C ; (1 + m\\%). V_C]\\)\n\nEn pratique on choisit souvent une marge de 10%, \\([90\\%.V_C ; 110\\%.V_C]\\)"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-2",
@@ -998,7 +991,7 @@
     "href": "theorie/supports/methodes-suppressives.html#tau-argus-1",
     "title": "Les méthodes suppressives",
     "section": "\\(\\tau\\)-Argus",
-    "text": "\\(\\tau\\)-Argus\nAvantages :\n\nOutil qui fait référence\nPerformant sur la partie pose de secret grâce à une optimisation globale\nOutil maintenu régulièrement\n\nInconvénients :\n\nInterface fouillis\nBugs et erreurs pas faciles à comprendre et corriger\nReproductibilité des opérations limitées"
+    "text": "\\(\\tau\\)-Argus\n\n\n\n\n\n\n\n👍\n👎\n\n\n\n\nOutil qui fait référence.\nInterface fouillis.\n\n\nPerformant sur la partie pose de secret grâce à une optimisation globale.\nBugs et erreurs pas faciles à comprendre et corriger.\n\n\nOutil maintenu régulièrement.\nReproductibilité des opérations limitées."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#rtauargus",
@@ -1033,21 +1026,21 @@
     "href": "theorie/supports/methodes-suppressives.html#tableaux-hiérarchisés",
     "title": "Les méthodes suppressives",
     "section": "Tableaux hiérarchisés",
-    "text": "Tableaux hiérarchisés\n\n\n\n\n\ngraph TD\n  A[**Pays**&lt;br&gt;400] --&gt; B[**Nord**&lt;br&gt;46]\n  A --&gt; C[**Ouest**&lt;br&gt;191]\n  A --&gt; D[**Est**&lt;br&gt;80]\n  A --&gt; E[**Sud**&lt;br&gt;83]\n  B --&gt; F[**N1**&lt;br&gt;21]\n  B --&gt; G[\"**N2**&lt;br&gt;&lt;font color='red'&gt;2&lt;/font&gt;\"]\n  B --&gt; H[**N3**&lt;br&gt;23]\n  C --&gt; I[**O1**&lt;br&gt;32]\n  C --&gt; J[**O2**&lt;br&gt;54]\n  C --&gt; K[**O3**&lt;br&gt;67]\n  C --&gt; L[**O4**&lt;br&gt;38]\n  D --&gt; M[**E1**&lt;br&gt;27]\n  D --&gt; N[**E2**&lt;br&gt;41]\n  D --&gt; O[**E3**&lt;br&gt;12]\n  E --&gt; P[**S1**&lt;br&gt;44]\n  E --&gt; Q[**S2**&lt;br&gt;39]"
+    "text": "Tableaux hiérarchisés"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#tableaux-hiérarchisés-1",
     "href": "theorie/supports/methodes-suppressives.html#tableaux-hiérarchisés-1",
     "title": "Les méthodes suppressives",
     "section": "Tableaux hiérarchisés",
-    "text": "Tableaux hiérarchisés\n\n\n\n\n\ngraph TD\n  A[**Pays**&lt;br&gt;400] --&gt; B[**Nord**&lt;br&gt;46]\n  A --&gt; C[**Ouest**&lt;br&gt;191]\n  A --&gt; D[**Est**&lt;br&gt;80]\n  A --&gt; E[**Sud**&lt;br&gt;83]\n  B --&gt; F[**N1**&lt;br&gt;21]\n  B --&gt; G[\"**N2**&lt;br&gt;&lt;font color='red'&gt;2&lt;/font&gt;\"]\n  B --&gt; H[**N3**&lt;br&gt;23]\n  C --&gt; I[**O1**&lt;br&gt;32]\n  C --&gt; J[**O2**&lt;br&gt;54]\n  C --&gt; K[**O3**&lt;br&gt;67]\n  C --&gt; L[**O4**&lt;br&gt;38]\n  D --&gt; M[**E1**&lt;br&gt;27]\n  D --&gt; N[**E2**&lt;br&gt;41]\n  D --&gt; O[\"**E3**&lt;br&gt;&lt;font color='red'&gt;X&lt;/font&gt;\"]\n  E --&gt; P[**S1**&lt;br&gt;44]\n  E --&gt; Q[**S2**&lt;br&gt;39]\n\n\n\n\n\n\n\nSi on ne renseigne pas la hiérarchie, on peut retrouver la valeur cachée."
+    "text": "Tableaux hiérarchisés\n\n\nSi on ne renseigne pas la hiérarchie, on peut retrouver la valeur cachée."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#tableaux-hiérarchisés-2",
     "href": "theorie/supports/methodes-suppressives.html#tableaux-hiérarchisés-2",
     "title": "Les méthodes suppressives",
     "section": "Tableaux hiérarchisés",
-    "text": "Tableaux hiérarchisés\n\n\n\n\n\ngraph TD\n  A[**Pays**&lt;br&gt;400] --&gt; B[**Nord**&lt;br&gt;46]\n  A --&gt; C[**Ouest**&lt;br&gt;191]\n  A --&gt; D[**Est**&lt;br&gt;80]\n  A --&gt; E[**Sud**&lt;br&gt;83]\n  B --&gt; F[\"**N1**&lt;br&gt;&lt;font color='red'&gt;X&lt;/font&gt;\"]\n  B --&gt; G[\"**N2**&lt;br&gt;&lt;font color='red'&gt;2&lt;/font&gt;\"]\n  B --&gt; H[**N3**&lt;br&gt;23]\n  C --&gt; I[**O1**&lt;br&gt;32]\n  C --&gt; J[**O2**&lt;br&gt;54]\n  C --&gt; K[**O3**&lt;br&gt;67]\n  C --&gt; L[**O4**&lt;br&gt;38]\n  D --&gt; M[**E1**&lt;br&gt;27]\n  D --&gt; N[**E2**&lt;br&gt;41]\n  D --&gt; O[**E3**&lt;br&gt;12]\n  E --&gt; P[**S1**&lt;br&gt;44]\n  E --&gt; Q[**S2**&lt;br&gt;39]\n\n\n\n\n\n\n\nLorsque la hiérarchie est renseignée, on protège bien les données."
+    "text": "Tableaux hiérarchisés\n\n\nLorsque la hiérarchie est renseignée, on protège bien les données."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#le-format-argus-des-hiérarchies",
@@ -1061,7 +1054,7 @@
     "href": "theorie/supports/methodes-suppressives.html#protéger-des-tableaux-liés-avec-rtauargus",
     "title": "Les méthodes suppressives",
     "section": "Protéger des tableaux liés avec rtauargus",
-    "text": "Protéger des tableaux liés avec rtauargus\nUtiliser la fonction tab_multi_manager() : 1) L’utilisateur décrit les tableaux 2) Fusion automatique de tous les tableaux entre eux 3) Algorithme gère la protection itérative des tableaux\nN.B. La pose du secret à chaque itération est effectuée avec \\(\\tau\\)-Argus.\n\nLa fonction tab_multi_manager() fournit un journal sous forme de reporting (étapes pose secret)."
+    "text": "Protéger des tableaux liés avec rtauargus\nUtiliser la fonction tab_multi_manager() :\n\nL’utilisateur décrit les tableaux\nFusion automatique de tous les tableaux entre eux\nAlgorithme gère la protection itérative des tableaux\n\nN.B. La pose du secret à chaque itération est effectuée avec \\(\\tau\\)-Argus.\n\nLa fonction tab_multi_manager() fournit un journal sous forme de reporting (étapes pose secret)."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#lanalyse-dune-demande",
@@ -1103,28 +1096,35 @@
     "href": "theorie/supports/methodes-suppressives.html#traiter-un-lien-additif-entre-des-variables-réponses",
     "title": "Les méthodes suppressives",
     "section": "Traiter un lien additif entre des variables réponses",
-    "text": "Traiter un lien additif entre des variables réponses\n\n\n\nCA couteaux\n\n\n\n\n\nReg1\nReg2\nT\n\n\n\n\ntr1\n5\n10\n15\n\n\ntr2\n12\n18\n30\n\n\ntr3\n5\n5\n10\n\n\nT\n22\n33\n55\n\n\n\n\n\n\nCA fourchettes\n\n\n\n\n\nReg1\nReg2\nT\n\n\n\n\ntr1\n3\n8\n11\n\n\ntr2\n6\n20\n26\n\n\ntr3\n2\n6\n8\n\n\nT\n11\n34\n45\n\n\n\n\n\n\nCA couverts\n\n\n\n\n\nReg1\nReg2\nT\n\n\n\n\ntr1\n8\n18\n26\n\n\ntr2\n18\n38\n56\n\n\ntr3\n7\n11\n18\n\n\nT\n33\n67\n100\n\n\n\n\n\nLien entre les CA : “couverts = couteaux + fourchettes”\nOn crée une nouvelle variable de croisement “type_couverts”."
+    "text": "Traiter un lien additif entre des variables réponses\n\n\n\n\n\n\nreg1\nreg2\nT\n\n\n\n\ntr1\n5\n10\n15\n\n\ntr2\n12\n18\n30\n\n\ntr3\n5\n5\n10\n\n\nT\n22\n33\n55\n\n\n\n\nCA couteaux\n\n\n\n\n\n\n\nreg1\nreg2\nT\n\n\n\n\ntr1\n3\n8\n11\n\n\ntr2\n6\n20\n26\n\n\ntr3\n2\n6\n8\n\n\nT\n11\n34\n45\n\n\n\n\nCA fourchettes\n\n\n\n\n\n\n\nreg1\nreg2\nT\n\n\n\n\ntr1\n8\n18\n26\n\n\ntr2\n18\n38\n56\n\n\ntr3\n7\n11\n18\n\n\nT\n33\n67\n100\n\n\n\n\nCA couverts\n\n\n\n\nLien entre les CA : “couverts = couteaux + fourchettes”."
+  },
+  {
+    "objectID": "theorie/supports/methodes-suppressives.html#traiter-un-lien-additif-entre-des-variables-réponses-1",
+    "href": "theorie/supports/methodes-suppressives.html#traiter-un-lien-additif-entre-des-variables-réponses-1",
+    "title": "Les méthodes suppressives",
+    "section": "Traiter un lien additif entre des variables réponses",
+    "text": "Traiter un lien additif entre des variables réponses\nNouvelle variable de croisement : “type_couverts”.\n\n\n\n\n\n\n\n\n\nRégion\nTr\ntype_couverts\nchiffre_affaires\n\n\n\n\nreg1\ntr1\ncouteaux\n5\n\n\nreg1\ntr1\nfourchettes\n3\n\n\nreg1\ntr1\ncouverts\n8\n\n\n…\n…\n…\n…\n\n\nTotal\nTotal\ncouverts\n100"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#traiter-une-hiérarchie-non-emboîtée",
     "href": "theorie/supports/methodes-suppressives.html#traiter-une-hiérarchie-non-emboîtée",
     "title": "Les méthodes suppressives",
     "section": "Traiter une hiérarchie non-emboîtée",
-    "text": "Traiter une hiérarchie non-emboîtée\n\n\n\n\n\n\ngraph TD\n  A[Total] --&gt; B[&lt;25]\n  A --&gt; C[25-29]\n  A --&gt; D[30-69]\n  A --&gt; E[70+]\n  D --&gt; F[30-49]\n  D --&gt; G[50-69]\n  H[+50] --&gt; G\n  H --&gt; E\n\n\n\n\n\n\n\nIci, l’agrégat +50 ne peut pas être bien emboîté dans la hiérarchie."
+    "text": "Traiter une hiérarchie non-emboîtée\n\nIci, l’agrégat 50+ ne peut pas être bien emboîté dans la hiérarchie."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#traiter-une-hiérarchie-non-emboîtée-1",
     "href": "theorie/supports/methodes-suppressives.html#traiter-une-hiérarchie-non-emboîtée-1",
     "title": "Les méthodes suppressives",
     "section": "Traiter une hiérarchie non-emboîtée",
-    "text": "Traiter une hiérarchie non-emboîtée\nIl faut traiter deux tableaux avec deux hiérarchies différentes.\n\n\n\n\n\ngraph TD\n  subgraph GROUPE_1[\"GROUPE 1\"]\n    A[Total] --&gt; B[&lt;25]\n    A --&gt; C[25-29]\n    D --&gt; F[30-49]\n    A --&gt; D[30-69]\n    D --&gt; G[50-69]\n    A --&gt; E[70+]\n  end\n\n  subgraph GROUPE_2[\"+50\"]\n    H[+50] --&gt; G\n    H --&gt; E\n  end\n\n  %% on donne une classe au subgraph via son nom\n  classDef groupe1Style fill:#e0f7fa,stroke:#00796b,stroke-width:2px,color:#004d40;\n  class GROUPE_1 groupe1Style;\n\n  classDef groupe2Style fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#bf360c;\n  class GROUPE_2 groupe2Style;"
+    "text": "Traiter une hiérarchie non-emboîtée\n\nCréer un second tableau contenant uniquement la ventilation de 50+."
   },
   {
-    "objectID": "theorie/supports/methodes-suppressives.html#essai",
-    "href": "theorie/supports/methodes-suppressives.html#essai",
+    "objectID": "theorie/supports/methodes-suppressives.html#traiter-une-hiérarchie-non-emboîtée-2",
+    "href": "theorie/supports/methodes-suppressives.html#traiter-une-hiérarchie-non-emboîtée-2",
     "title": "Les méthodes suppressives",
-    "section": "essai",
-    "text": "essai\n\n\n\n\n\ngraph TD\n  subgraph grp1[\"hiérarchie principale\"]\n    A[Total] --&gt; B[&lt;25]\n    A --&gt; C[25-29]\n    A --&gt; D[30-69]\n    A --&gt; E[70+]\n    D --&gt; F[30-49]\n    D --&gt; G[50-69]\n    E ~~~ X\n  end\n\n  subgraph grp2[\"+50\"]\n    H[+50] --&gt; G\n    H --&gt; E\n  end\n\n  %% cacher le nœud X\n  style X fill=transparent,stroke=transparent\n  \n  %% on donne une classe au subgraph via son nom\n  classDef groupe1Style fill:#e0f7fa,stroke:#00796b,stroke-width:2px,color:#004d40;\n  class grp1 groupe1Style;\n\n  classDef groupe2Style fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#bf360c;\n  class grp2 groupe2Style;"
+    "section": "Traiter une hiérarchie non-emboîtée",
+    "text": "Traiter une hiérarchie non-emboîtée\n\n\nprinc.hrc\n&lt;25\n25-29\n30-69\n@30-49\n@50-69\n70+\n\nalt.hrc\n50-69\n70+"
   },
   {
     "objectID": "glossaire/index.html",

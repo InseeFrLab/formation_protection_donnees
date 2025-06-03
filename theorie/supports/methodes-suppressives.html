@@ -122,9 +122,6 @@
       margin-right: 0; 
     }
   </style>
-  <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 </head>
 <body class="quarto-light">
@@ -151,11 +148,6 @@
 </section>
 <section id="les-méthodes-à-disposition-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Les méthodes à disposition</h2>
-<div class="frame">
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Les méthodes</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
 <table class="caption-top">
 <colgroup>
 <col style="width: 21%">
@@ -182,10 +174,6 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-</div>
 </section>
 <section>
 <section id="les-méthodes-pré-tabulation" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
@@ -484,6 +472,9 @@
 </tr>
 </tbody>
 </table>
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+<p>Tableau 1 – Nombre d’entreprises polluantes par région</p>
+</div>
 </section>
 <section id="tableaux-de-volume" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Tableaux de volume</h2>
@@ -941,9 +932,11 @@
 <div class="fragment">
 <p>Comment protéger le secret primaire restant ?</p>
 </div>
-</section>
-<section id="la-suppression-de-cellules" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>La suppression de cellules</h2>
+</section></section>
+<section>
+<section id="la-suppression-de-cellules" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>La suppression de cellules</h1>
+
 </section>
 <section id="le-secret-primaire-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Le secret primaire</h2>
@@ -994,6 +987,9 @@
 </tr>
 </tbody>
 </table>
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+<p>Tableau 1 – Nombre d’entreprises polluantes par région</p>
+</div>
 <div class="fragment">
 <p>Ce n’est pas suffisant, les cellules sont liées entre elles par des équations (marges).</p>
 </div>
@@ -1047,6 +1043,9 @@
 </tr>
 </tbody>
 </table>
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+<p>Tableau 1 – Nombre d’entreprises polluantes par région</p>
+</div>
 </section>
 <section id="le-secret-secondaire-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Le secret secondaire</h2>
@@ -1097,6 +1096,9 @@
 </tr>
 </tbody>
 </table>
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+<p>Tableau 1 – Nombre d’entreprises polluantes par région</p>
+</div>
 </section>
 <section id="les-intervalles-de-protection" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Les intervalles de protection</h2>
@@ -1152,9 +1154,10 @@
 <section id="les-intervalles-de-protection-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Les intervalles de protection</h2>
 <p><strong>L’intervalle de protection</strong> : soit <span class="math inline">\(V_C\)</span> la valeur d’une cellule C sensible à la règle de fréquence et <span class="math inline">\(m\%\)</span> la marge protection choisie.</p>
+<p><br></p>
 <p><span class="math inline">\([(1 - m\%). V_C ; (1 + m\%). V_C]\)</span></p>
 <p><br></p>
-<p>En pratique on choisit souvent une marge de 10% =&gt; <span class="math inline">\([90\%.V_C ; 110\%.V_C]\)</span></p>
+<p>En pratique on choisit souvent une marge de 10%, <span class="math inline">\([90\%.V_C ; 110\%.V_C]\)</span></p>
 </section>
 <section id="les-intervalles-de-protection-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Les intervalles de protection</h2>
@@ -1397,11 +1400,11 @@
 <h2>Les intervalles de protection</h2>
 <p>La borne supérieure de l’intervalle des possibles (168) est inférieure à la borne supérieure de l’intervalle de protection (173).</p>
 
-<img data-src="methodes-suppressives_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"></section>
+<img data-src="methodes-suppressives_files/figure-html/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"></section>
 <section id="les-intervalles-de-protection-8" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Les intervalles de protection</h2>
 
-<img data-src="methodes-suppressives_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"><p>On peut inférer la valeur de la cellule à <span title="157 + (7/100)*157 = 168">7%</span> et non 10%.</p>
+<img data-src="methodes-suppressives_files/figure-html/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"><p>On peut inférer la valeur de la cellule à <span title="157 + (7/100)*157 = 168">7%</span> et non 10%.</p>
 <p>La cellule n’est pas suffisamment protégée.</p>
 </section>
 <section id="les-intervalles-de-protection-9" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -1523,7 +1526,7 @@
 <section id="les-intervalles-de-protection-11" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Les intervalles de protection</h2>
 
-<img data-src="methodes-suppressives_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"><p>Avec cet autre masque de secret la cellule est suffisamment protégée.</p>
+<img data-src="methodes-suppressives_files/figure-html/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"><p>Avec cet autre masque de secret la cellule est suffisamment protégée.</p>
 </section>
 <section id="minimiser-la-perte-dinformation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Minimiser la perte d’information</h2>
@@ -1567,18 +1570,32 @@ Dernière version stable 4.2.4 (26 avril 2023)
 </section>
 <section id="tau-argus-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2><span class="math inline">\(\tau\)</span>-Argus</h2>
-<p>Avantages :</p>
-<ul>
-<li>Outil qui fait référence</li>
-<li>Performant sur la partie pose de secret grâce à une optimisation globale</li>
-<li>Outil maintenu régulièrement</li>
-</ul>
-<p>Inconvénients :</p>
-<ul>
-<li>Interface fouillis</li>
-<li>Bugs et erreurs pas faciles à comprendre et corriger</li>
-<li>Reproductibilité des opérations limitées</li>
-</ul>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">👍</th>
+<th style="text-align: center;">👎</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Outil qui fait référence.</td>
+<td style="text-align: center;">Interface fouillis.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Performant sur la partie pose de secret grâce à une optimisation globale.</td>
+<td style="text-align: center;">Bugs et erreurs pas faciles à comprendre et corriger.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Outil maintenu régulièrement.</td>
+<td style="text-align: center;">Reproductibilité des opérations limitées.</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="rtauargus" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>rtauargus</h2>
@@ -1620,8 +1637,8 @@ Utiliser les fonctions tab_XXX()
 <li>Poser le secret secondaire avec :</li>
 </ol>
 <ul>
-<li>tab_rtauargus() : pour protéger un seul tableau</li>
-<li>tab_multi_manager() : pour protéger plusieurs tableaux</li>
+<li><code>tab_rtauargus()</code> : pour protéger un seul tableau</li>
+<li><code>tab_multi_manager()</code> : pour protéger plusieurs tableaux</li>
 </ul>
 </section>
 <section id="rtauargus-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -1641,100 +1658,19 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x6
 </section>
 <section id="tableaux-hiérarchisés" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Tableaux hiérarchisés</h2>
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">graph TD
-  A[**Pays**&lt;br&gt;400] --&gt; B[**Nord**&lt;br&gt;46]
-  A --&gt; C[**Ouest**&lt;br&gt;191]
-  A --&gt; D[**Est**&lt;br&gt;80]
-  A --&gt; E[**Sud**&lt;br&gt;83]
-  B --&gt; F[**N1**&lt;br&gt;21]
-  B --&gt; G["**N2**&lt;br&gt;&lt;font color='red'&gt;2&lt;/font&gt;"]
-  B --&gt; H[**N3**&lt;br&gt;23]
-  C --&gt; I[**O1**&lt;br&gt;32]
-  C --&gt; J[**O2**&lt;br&gt;54]
-  C --&gt; K[**O3**&lt;br&gt;67]
-  C --&gt; L[**O4**&lt;br&gt;38]
-  D --&gt; M[**E1**&lt;br&gt;27]
-  D --&gt; N[**E2**&lt;br&gt;41]
-  D --&gt; O[**E3**&lt;br&gt;12]
-  E --&gt; P[**S1**&lt;br&gt;44]
-  E --&gt; Q[**S2**&lt;br&gt;39]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</section>
+
+<img data-src="./img/pres_hrc-clear.png" class="r-stretch"></section>
 <section id="tableaux-hiérarchisés-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Tableaux hiérarchisés</h2>
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">graph TD
-  A[**Pays**&lt;br&gt;400] --&gt; B[**Nord**&lt;br&gt;46]
-  A --&gt; C[**Ouest**&lt;br&gt;191]
-  A --&gt; D[**Est**&lt;br&gt;80]
-  A --&gt; E[**Sud**&lt;br&gt;83]
-  B --&gt; F[**N1**&lt;br&gt;21]
-  B --&gt; G["**N2**&lt;br&gt;&lt;font color='red'&gt;2&lt;/font&gt;"]
-  B --&gt; H[**N3**&lt;br&gt;23]
-  C --&gt; I[**O1**&lt;br&gt;32]
-  C --&gt; J[**O2**&lt;br&gt;54]
-  C --&gt; K[**O3**&lt;br&gt;67]
-  C --&gt; L[**O4**&lt;br&gt;38]
-  D --&gt; M[**E1**&lt;br&gt;27]
-  D --&gt; N[**E2**&lt;br&gt;41]
-  D --&gt; O["**E3**&lt;br&gt;&lt;font color='red'&gt;X&lt;/font&gt;"]
-  E --&gt; P[**S1**&lt;br&gt;44]
-  E --&gt; Q[**S2**&lt;br&gt;39]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<div class="fragment">
+
+<img data-src="./img/pres_hrc_2-clear.png" class="r-stretch"><div class="fragment">
 <p>Si on ne renseigne pas la hiérarchie, on peut retrouver la valeur cachée.</p>
 </div>
 </section>
 <section id="tableaux-hiérarchisés-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Tableaux hiérarchisés</h2>
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">graph TD
-  A[**Pays**&lt;br&gt;400] --&gt; B[**Nord**&lt;br&gt;46]
-  A --&gt; C[**Ouest**&lt;br&gt;191]
-  A --&gt; D[**Est**&lt;br&gt;80]
-  A --&gt; E[**Sud**&lt;br&gt;83]
-  B --&gt; F["**N1**&lt;br&gt;&lt;font color='red'&gt;X&lt;/font&gt;"]
-  B --&gt; G["**N2**&lt;br&gt;&lt;font color='red'&gt;2&lt;/font&gt;"]
-  B --&gt; H[**N3**&lt;br&gt;23]
-  C --&gt; I[**O1**&lt;br&gt;32]
-  C --&gt; J[**O2**&lt;br&gt;54]
-  C --&gt; K[**O3**&lt;br&gt;67]
-  C --&gt; L[**O4**&lt;br&gt;38]
-  D --&gt; M[**E1**&lt;br&gt;27]
-  D --&gt; N[**E2**&lt;br&gt;41]
-  D --&gt; O[**E3**&lt;br&gt;12]
-  E --&gt; P[**S1**&lt;br&gt;44]
-  E --&gt; Q[**S2**&lt;br&gt;39]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<div class="fragment">
+
+<img data-src="./img/pres_hrc_3-clear.png" class="r-stretch"><div class="fragment">
 <p>Lorsque la hiérarchie est renseignée, on protège bien les données.</p>
 </div>
 </section>
@@ -1745,7 +1681,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x6
 <li>Doit décrire parfaitement l’emboîtement</li>
 <li>Le nombre de @ désigne le niveau d’emboîtement de chaque catégorie</li>
 <li>Ne fait pas apparaître le total</li>
-<li>La fonction <code>write_hrc2()</code> permet de créer un fichier .hrc à partir d’une table de passage</li>
+<li>La fonction <code>write_hrc2()</code> permet de créer un fichier <strong>.hrc</strong> à partir d’une table de passage</li>
 </ul>
 </section></section>
 <section>
@@ -1755,10 +1691,15 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x6
 </section>
 <section id="protéger-des-tableaux-liés-avec-rtauargus" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Protéger des tableaux liés avec rtauargus</h2>
-<p>Utiliser la fonction tab_multi_manager() : 1) L’utilisateur décrit les tableaux 2) Fusion automatique de tous les tableaux entre eux 3) Algorithme gère la protection itérative des tableaux</p>
+<p>Utiliser la fonction <code>tab_multi_manager()</code> :</p>
+<ol type="1">
+<li>L’utilisateur décrit les tableaux</li>
+<li>Fusion automatique de tous les tableaux entre eux</li>
+<li>Algorithme gère la protection itérative des tableaux</li>
+</ol>
 <p>N.B. La pose du secret à chaque itération est effectuée avec <span class="math inline">\(\tau\)</span>-Argus.</p>
 <div class="fragment">
-<p>La fonction tab_multi_manager() fournit un journal sous forme de reporting (étapes pose secret).</p>
+<p>La fonction <code>tab_multi_manager()</code> fournit un journal sous forme de reporting (étapes pose secret).</p>
 </div>
 </section></section>
 <section>
@@ -1815,7 +1756,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x6
 </ol>
 <ul>
 <li>Détecter les variables hiérarchiques</li>
-<li>Construire les fichiers .hrc nécessaires (manuellement ou avec write_hrc2())</li>
+<li>Construire les fichiers .hrc nécessaires (manuellement ou avec <code>write_hrc2()</code>)</li>
 </ul>
 </section></section>
 <section>
@@ -1827,33 +1768,30 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x6
 <h2>Traiter un lien additif entre des variables réponses</h2>
 <div style="display: flex; gap: 20px;">
 <div style="flex: 1;">
-<p>
-<strong>CA couteaux</strong>
-</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th></th>
-<th>Reg1</th>
-<th>Reg2</th>
+<th>reg1</th>
+<th>reg2</th>
 <th><strong>T</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>tr1</td>
+<td><strong>tr1</strong></td>
 <td>5</td>
 <td>10</td>
 <td><strong>15</strong></td>
 </tr>
 <tr class="even">
-<td>tr2</td>
+<td><strong>tr2</strong></td>
 <td>12</td>
 <td>18</td>
 <td><strong>30</strong></td>
 </tr>
 <tr class="odd">
-<td>tr3</td>
+<td><strong>tr3</strong></td>
 <td>5</td>
 <td>5</td>
 <td><strong>10</strong></td>
@@ -1866,35 +1804,35 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x6
 </tr>
 </tbody>
 </table>
+<p style="text-align: center;">
+<strong>CA couteaux</strong>
+</p>
 </div>
 <div style="flex: 1;">
-<p>
-<strong>CA fourchettes</strong>
-</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th></th>
-<th>Reg1</th>
-<th>Reg2</th>
+<th>reg1</th>
+<th>reg2</th>
 <th><strong>T</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>tr1</td>
+<td><strong>tr1</strong></td>
 <td>3</td>
 <td>8</td>
 <td><strong>11</strong></td>
 </tr>
 <tr class="even">
-<td>tr2</td>
+<td><strong>tr2</strong></td>
 <td>6</td>
 <td>20</td>
 <td><strong>26</strong></td>
 </tr>
 <tr class="odd">
-<td>tr3</td>
+<td><strong>tr3</strong></td>
 <td>2</td>
 <td>6</td>
 <td><strong>8</strong></td>
@@ -1907,35 +1845,35 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x6
 </tr>
 </tbody>
 </table>
+<p style="text-align: center;">
+<strong>CA fourchettes</strong>
+</p>
 </div>
 <div style="flex: 1;">
-<p>
-<strong>CA couverts</strong>
-</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th></th>
-<th>Reg1</th>
-<th>Reg2</th>
+<th>reg1</th>
+<th>reg2</th>
 <th><strong>T</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>tr1</td>
+<td><strong>tr1</strong></td>
 <td>8</td>
 <td>18</td>
 <td><strong>26</strong></td>
 </tr>
 <tr class="even">
-<td>tr2</td>
+<td><strong>tr2</strong></td>
 <td>18</td>
 <td>38</td>
 <td><strong>56</strong></td>
 </tr>
 <tr class="odd">
-<td>tr3</td>
+<td><strong>tr3</strong></td>
 <td>7</td>
 <td>11</td>
 <td><strong>18</strong></td>
@@ -1948,112 +1886,92 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x6
 </tr>
 </tbody>
 </table>
+<p style="text-align: center;">
+<strong>CA couverts</strong>
+</p>
 </div>
 </div>
-<p>Lien entre les CA : “couverts = couteaux + fourchettes”</p>
-<p>On crée une nouvelle variable de croisement “type_couverts”.</p>
+<p><br></p>
+<p>Lien entre les CA : “couverts = couteaux + fourchettes”.</p>
+</section>
+<section id="traiter-un-lien-additif-entre-des-variables-réponses-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Traiter un lien additif entre des variables réponses</h2>
+<p>Nouvelle variable de croisement : “type_couverts”.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 32%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Région</strong></th>
+<th><strong>Tr</strong></th>
+<th><strong>type_couverts</strong></th>
+<th><strong>chiffre_affaires</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>reg1</td>
+<td>tr1</td>
+<td>couteaux</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>reg1</td>
+<td>tr1</td>
+<td>fourchettes</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>reg1</td>
+<td>tr1</td>
+<td>couverts</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><strong>Total</strong></td>
+<td><strong>couverts</strong></td>
+<td><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="traiter-une-hiérarchie-non-emboîtée" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Traiter une hiérarchie non-emboîtée</h2>
-<div class="column centered">
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">graph TD
-  A[Total] --&gt; B[&lt;25]
-  A --&gt; C[25-29]
-  A --&gt; D[30-69]
-  A --&gt; E[70+]
-  D --&gt; F[30-49]
-  D --&gt; G[50-69]
-  H[+50] --&gt; G
-  H --&gt; E
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</div><div class="fragment">
-<p>Ici, l’agrégat +50 ne peut pas être bien emboîté dans la hiérarchie.</p>
-</div>
+
+<img data-src="./img/hrc_non_emb-clear.png" class="quarto-figure quarto-figure-center r-stretch"><p>Ici, l’agrégat <code>50+</code> ne peut pas être bien emboîté dans la hiérarchie.</p>
 </section>
 <section id="traiter-une-hiérarchie-non-emboîtée-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Traiter une hiérarchie non-emboîtée</h2>
-<p>Il faut traiter deux tableaux avec deux hiérarchies différentes.</p>
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">graph TD
-  subgraph GROUPE_1["GROUPE 1"]
-    A[Total] --&gt; B[&lt;25]
-    A --&gt; C[25-29]
-    D --&gt; F[30-49]
-    A --&gt; D[30-69]
-    D --&gt; G[50-69]
-    A --&gt; E[70+]
-  end
 
-  subgraph GROUPE_2["+50"]
-    H[+50] --&gt; G
-    H --&gt; E
-  end
-
-  %% on donne une classe au subgraph via son nom
-  classDef groupe1Style fill:#e0f7fa,stroke:#00796b,stroke-width:2px,color:#004d40;
-  class GROUPE_1 groupe1Style;
-
-  classDef groupe2Style fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#bf360c;
-  class GROUPE_2 groupe2Style;
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
+<img data-src="./img/hrc_non_emb_grp-clear.png" class="quarto-figure quarto-figure-center r-stretch"><p>Créer un second tableau contenant uniquement la ventilation de 50+.</p>
 </section>
-<section id="essai" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>essai</h2>
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">graph TD
-  subgraph grp1["hiérarchie principale"]
-    A[Total] --&gt; B[&lt;25]
-    A --&gt; C[25-29]
-    A --&gt; D[30-69]
-    A --&gt; E[70+]
-    D --&gt; F[30-49]
-    D --&gt; G[50-69]
-    E ~~~ X
-  end
-
-  subgraph grp2["+50"]
-    H[+50] --&gt; G
-    H --&gt; E
-  end
-
-  %% cacher le nœud X
-  style X fill=transparent,stroke=transparent
-  
-  %% on donne une classe au subgraph via son nom
-  classDef groupe1Style fill:#e0f7fa,stroke:#00796b,stroke-width:2px,color:#004d40;
-  class grp1 groupe1Style;
-
-  classDef groupe2Style fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#bf360c;
-  class grp2 groupe2Style;
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
+<section id="traiter-une-hiérarchie-non-emboîtée-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Traiter une hiérarchie non-emboîtée</h2>
+<div class="columns">
+<div class="column">
+<p><code>princ.hrc</code></p>
+<p>&lt;25<br>
+25-29<br>
+30-69<br>
+@30-49<br>
+@50-69<br>
+70+</p>
+</div><div class="column">
+<p><code>alt.hrc</code></p>
+<p>50-69<br>
+70+</p>
+</div></div>
 
 
 </section></section>
@@ -2272,44 +2190,6 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x6
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
