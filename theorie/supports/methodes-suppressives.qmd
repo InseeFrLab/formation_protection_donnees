@@ -48,20 +48,12 @@ Deux types de méthodes en fonction du moment où elles sont appliquées :
 :::
 
 ## Les méthodes à disposition
-::: frame
-
-::: {.panel-tabset}
-
-### Les méthodes {#tab:my_label}
 
 | Type de méthode     | Type de données                     | **Méthodes**                          |
 |---------------------|-------------------------------------|----------------------------------------|
 | Pré-tabulation      | Micro-données\index{Microdata}      | Recodage des variables  <br> Suppression locale |
 | Post-tabulation     | Données tabulées                    | Suppression de cellules <br> Regroupement de catégories |
 
-:::
-
-:::
 
 # Les méthodes pré-tabulation
 
@@ -149,6 +141,9 @@ Pour les données entreprises à l'Insee, n = 3.
 | **Non polluante** |    3 | <span style="color: red;">2</span> | <span style="color: red;">1</span> |  13 |    19 |
 | **Total**         |    9 |    16 | <span style="color: red;">2</span> |  20 |    47 |
 
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+  Tableau 1 – Nombre d'entreprises polluantes par région
+</div>
 
 ## Tableaux de volume
 
@@ -328,7 +323,7 @@ Un premier recodage consiste à regrouper toutes les zones d'emploi de travail h
 
 Comment protéger le secret primaire restant ?
 
-## La suppression de cellules
+# La suppression de cellules
 
 ## Le secret primaire
 
@@ -340,6 +335,9 @@ Première étape : supprimer les cellules ne respectant pas les règles du secre
 | **Non polluante** |    3 | <span style="color: red;">X</span> | 3 |  13 |    21 |
 | **Total**         |    9 |    16 | 4 |  20 |    49 |
 
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+  Tableau 1 – Nombre d'entreprises polluantes par région
+</div>
 . . .
 
 Ce n'est pas suffisant, les cellules sont liées entre elles par des équations (marges).
@@ -354,6 +352,10 @@ Deuxième étape : supprimer des cellules pour protéger le secret primaire.
 | **Non polluante** |    3 | <span style="color: red;">X</span> | <span style="color: red;">X</span> |  13 |    21 |
 | **Total**         |    9 |    16                              | 4                                  |  20 |    49 |
 
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+  Tableau 1 – Nombre d'entreprises polluantes par région
+</div>
+
 ## Le secret secondaire
 
 Plusieurs structures de suppressions (masques de secret) sont possibles.
@@ -363,6 +365,10 @@ Plusieurs structures de suppressions (masques de secret) sont possibles.
 | **Polluante**     | <span style="color: red;">X</span> |     14                             | <span style="color: red;">X</span> |   7 |    28 |
 | **Non polluante** | <span style="color: red;">X</span> | <span style="color: red;">X</span> |   3                                |  13 |    21 |
 | **Total**         |    9 | <span style="color: red;">X</span> | <span style="color: red;">X</span> |  20 |    49 |
+
+<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
+  Tableau 1 – Nombre d'entreprises polluantes par région
+</div>
 
 ## Les intervalles de protection
 
@@ -381,11 +387,13 @@ Cacher des cellules revient à diffuser des intervalles.
 
 **L'intervalle de protection** : soit $V_C$ la valeur d'une cellule C sensible à la règle de fréquence et $m\%$ la marge protection choisie.
 
+<br>
+
 $[(1 - m\%). V_C ; (1 + m\%). V_C]$
 
 <br>
 
-En pratique on choisit souvent une marge de 10% => $[90\%.V_C ; 110\%.V_C]$
+En pratique on choisit souvent une marge de 10%, $[90\%.V_C ; 110\%.V_C]$
 
 ## Les intervalles de protection
 
@@ -662,17 +670,11 @@ Plusieurs possibilités :
 
 ## $\tau$-Argus
 
-Avantages :
-
-- Outil qui fait référence
-- Performant sur la partie pose de secret grâce à une optimisation globale
-- Outil maintenu régulièrement
-
-Inconvénients :
-
-- Interface fouillis
-- Bugs et erreurs pas faciles à comprendre et corriger
-- Reproductibilité des opérations limitées
+| 👍 | 👎 |
+|:--:|:--:|
+| Outil qui fait référence. | Interface fouillis. |
+| Performant sur la partie pose de secret grâce à une optimisation globale. | Bugs et erreurs pas faciles à comprendre et corriger. |
+|Outil maintenu régulièrement. | Reproductibilité des opérations limitées. |
 
 ## rtauargus
 
@@ -702,8 +704,8 @@ Fonctionnement du package :
 
 1) Poser le secret primaire "manuellement"
 2) Poser le secret secondaire avec :
-  - tab_rtauargus() : pour protéger un seul tableau
-  - tab_multi_manager() : pour protéger plusieurs tableaux
+  - `tab_rtauargus()` : pour protéger un seul tableau
+  - `tab_multi_manager()` : pour protéger plusieurs tableaux
   
 ## rtauargus
 
@@ -716,47 +718,11 @@ Ou nous contacter par [mail](mailto:dg75_dmcsi-confidentialite@insee.fr).
 
 ## Tableaux hiérarchisés
 
-```{mermaid}
-graph TD
-  A[**Pays**<br>400] --> B[**Nord**<br>46]
-  A --> C[**Ouest**<br>191]
-  A --> D[**Est**<br>80]
-  A --> E[**Sud**<br>83]
-  B --> F[**N1**<br>21]
-  B --> G["**N2**<br><font color='red'>2</font>"]
-  B --> H[**N3**<br>23]
-  C --> I[**O1**<br>32]
-  C --> J[**O2**<br>54]
-  C --> K[**O3**<br>67]
-  C --> L[**O4**<br>38]
-  D --> M[**E1**<br>27]
-  D --> N[**E2**<br>41]
-  D --> O[**E3**<br>12]
-  E --> P[**S1**<br>44]
-  E --> Q[**S2**<br>39]
-```
+![](./img/pres_hrc-clear.png)
 
 ## Tableaux hiérarchisés
 
-```{mermaid}
-graph TD
-  A[**Pays**<br>400] --> B[**Nord**<br>46]
-  A --> C[**Ouest**<br>191]
-  A --> D[**Est**<br>80]
-  A --> E[**Sud**<br>83]
-  B --> F[**N1**<br>21]
-  B --> G["**N2**<br><font color='red'>2</font>"]
-  B --> H[**N3**<br>23]
-  C --> I[**O1**<br>32]
-  C --> J[**O2**<br>54]
-  C --> K[**O3**<br>67]
-  C --> L[**O4**<br>38]
-  D --> M[**E1**<br>27]
-  D --> N[**E2**<br>41]
-  D --> O["**E3**<br><font color='red'>X</font>"]
-  E --> P[**S1**<br>44]
-  E --> Q[**S2**<br>39]
-```
+![](./img/pres_hrc_2-clear.png)
 
 . . . 
 
@@ -764,25 +730,7 @@ Si on ne renseigne pas la hiérarchie, on peut retrouver la valeur cachée.
 
 ## Tableaux hiérarchisés
 
-```{mermaid}
-graph TD
-  A[**Pays**<br>400] --> B[**Nord**<br>46]
-  A --> C[**Ouest**<br>191]
-  A --> D[**Est**<br>80]
-  A --> E[**Sud**<br>83]
-  B --> F["**N1**<br><font color='red'>X</font>"]
-  B --> G["**N2**<br><font color='red'>2</font>"]
-  B --> H[**N3**<br>23]
-  C --> I[**O1**<br>32]
-  C --> J[**O2**<br>54]
-  C --> K[**O3**<br>67]
-  C --> L[**O4**<br>38]
-  D --> M[**E1**<br>27]
-  D --> N[**E2**<br>41]
-  D --> O[**E3**<br>12]
-  E --> P[**S1**<br>44]
-  E --> Q[**S2**<br>39]
-```
+![](./img/pres_hrc_3-clear.png)
 
 . . .
 
@@ -795,14 +743,15 @@ Dans $\tau$-Argus les hiérarchies sont présentées dans un format particulier 
 - Doit décrire parfaitement l'emboîtement
 - Le nombre de @ désigne le niveau d'emboîtement de chaque catégorie
 - Ne fait pas apparaître le total
-- La fonction `write_hrc2()` permet de créer un fichier .hrc à partir d'une table de passage
+- La fonction `write_hrc2()` permet de créer un fichier **.hrc** à partir d'une table de passage
 
 # Protéger des tableaux liés
 
 
 ## Protéger des tableaux liés avec rtauargus
 
-Utiliser la fonction tab_multi_manager() :
+Utiliser la fonction `tab_multi_manager()` :  
+
 1) L'utilisateur décrit les tableaux
 2) Fusion automatique de tous les tableaux entre eux
 3) Algorithme gère la protection itérative des tableaux
@@ -811,7 +760,7 @@ N.B. La pose du secret à chaque itération est effectuée avec $\tau$-Argus.
 
 . . .
 
-La fonction tab_multi_manager() fournit un journal sous forme de reporting (étapes pose secret).
+La fonction `tab_multi_manager()` fournit un journal sous forme de reporting (étapes pose secret).
 
 # Analyser une demande
 
@@ -850,7 +799,7 @@ Dans les cas d'indépendance il faut *gérer séparément les différentes sous-
 4) Préparer les hiérarchies
 
 - Détecter les variables hiérarchiques
-- Construire les fichiers .hrc nécessaires (manuellement ou avec write_hrc2())
+- Construire les fichiers .hrc nécessaires (manuellement ou avec `write_hrc2()`)
 
 # Liens spécifiques
 ## Traiter un lien additif entre des variables réponses
@@ -858,121 +807,94 @@ Dans les cas d'indépendance il faut *gérer séparément les différentes sous-
 <div style="display: flex; gap: 20px;">
 
 <div style="flex: 1;">
-<p><strong>CA couteaux</strong></p>
 
-|       | Reg1   | Reg2   | **T**  |
+|       | reg1   | reg2   | **T**  |
 |-------|--------|--------|--------|
-| tr1   | 5      | 10     | **15** |
-| tr2   | 12     | 18     | **30** |
-| tr3   | 5      | 5      | **10** |
-| **T** | **22** | **33** | **55** |
+| **tr1** | 5      | 10     | **15** |
+| **tr2** | 12     | 18     | **30** |
+| **tr3** | 5      | 5      | **10** |
+|  **T**  | **22** | **33** | **55** |
+<p style="text-align: center;"><strong>CA couteaux</strong></p>
 </div>
 
 <div style="flex: 1;">
-<p><strong>CA fourchettes</strong></p>
 
-|       | Reg1   | Reg2   | **T**  |
+|       | reg1   | reg2   | **T**  |
 |-------|--------|--------|--------|
-| tr1   | 3      | 8      | **11** |
-| tr2   | 6      | 20     | **26** |
-| tr3   | 2      | 6      | **8**  |
+| **tr1** | 3      | 8      | **11** |
+| **tr2** | 6      | 20     | **26** |
+| **tr3** | 2      | 6      | **8**  |
 | **T** | **11** | **34** | **45** |
+<p style="text-align: center;"><strong>CA fourchettes</strong></p>
 </div>
 
 <div style="flex: 1;">
-<p><strong>CA couverts</strong></p>
 
-|       | Reg1   | Reg2   | **T**  |
+|       | reg1   | reg2   | **T**  |
 |-------|--------|--------|--------|
-| tr1   | 8      | 18     | **26** |
-| tr2   | 18     | 38     | **56** |
-| tr3   | 7      | 11     | **18** |
+| **tr1** | 8      | 18     | **26** |
+| **tr2** | 18     | 38     | **56** |
+| **tr3** | 7      | 11     | **18** |
 | **T** | **33** | **67** | **100**|
+<p style="text-align: center;"><strong>CA couverts</strong></p>
 </div>
 
 </div>
 
-Lien entre les CA : "couverts = couteaux + fourchettes"
+<br>
 
-On crée une nouvelle variable de croisement "type_couverts".
+Lien entre les CA : "couverts = couteaux + fourchettes".
+
+## Traiter un lien additif entre des variables réponses
+
+Nouvelle variable de croisement : "type_couverts".
+
+| **Région** |   **Tr**   |   **type_couverts**  |  **chiffre_affaires**  |
+| ---------- | ---------- | -------------------- | ---------------------- |
+| reg1       |     tr1    | couteaux             | 5                      |
+| reg1       |     tr1    | fourchettes          | 3                      |
+| reg1       |     tr1    | couverts             | 8                      |
+| ...        |     ...    | ...                  | ...                    |
+| **Total**  | **Total**  | **couverts**         | **100**                |
+
+
 
 ## Traiter une hiérarchie non-emboîtée
 
-:::{.column .centered}
+![](./img/hrc_non_emb-clear.png){fig-align="center"}
 
-```{mermaid}
-graph TD
-  A[Total] --> B[<25]
-  A --> C[25-29]
-  A --> D[30-69]
-  A --> E[70+]
-  D --> F[30-49]
-  D --> G[50-69]
-  H[+50] --> G
-  H --> E
-```
 
+
+Ici, l'agrégat `50+` ne peut pas être bien emboîté dans la hiérarchie.
+
+## Traiter une hiérarchie non-emboîtée
+
+![](./img/hrc_non_emb_grp-clear.png){fig-align="center"}
+
+Créer un second tableau contenant uniquement la ventilation de 50+.
+
+## Traiter une hiérarchie non-emboîtée
+
+::: columns
+::: column
+`princ.hrc`
+
+<25  
+25-29  
+30-69  
+\@30-49  
+\@50-69  
+70+  
 :::
 
-. . .
+::: column
+`alt.hrc`
 
-Ici, l'agrégat +50 ne peut pas être bien emboîté dans la hiérarchie.
+50-69  
+70+  
+:::
+:::
 
 
-## Traiter une hiérarchie non-emboîtée
 
-Il faut traiter deux tableaux avec deux hiérarchies différentes.
 
-```{mermaid}
-graph TD
-  subgraph GROUPE_1["GROUPE 1"]
-    A[Total] --> B[<25]
-    A --> C[25-29]
-    D --> F[30-49]
-    A --> D[30-69]
-    D --> G[50-69]
-    A --> E[70+]
-  end
-
-  subgraph GROUPE_2["+50"]
-    H[+50] --> G
-    H --> E
-  end
-
-  %% on donne une classe au subgraph via son nom
-  classDef groupe1Style fill:#e0f7fa,stroke:#00796b,stroke-width:2px,color:#004d40;
-  class GROUPE_1 groupe1Style;
-
-  classDef groupe2Style fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#bf360c;
-  class GROUPE_2 groupe2Style;
-```
-
-## essai
-
-```{mermaid}
-graph TD
-  subgraph grp1["hiérarchie principale"]
-    A[Total] --> B[<25]
-    A --> C[25-29]
-    A --> D[30-69]
-    A --> E[70+]
-    D --> F[30-49]
-    D --> G[50-69]
-    E ~~~ X
-  end
-
-  subgraph grp2["+50"]
-    H[+50] --> G
-    H --> E
-  end
-
-  %% cacher le nœud X
-  style X fill=transparent,stroke=transparent
-  
-  %% on donne une classe au subgraph via son nom
-  classDef groupe1Style fill:#e0f7fa,stroke:#00796b,stroke-width:2px,color:#004d40;
-  class grp1 groupe1Style;
-
-  classDef groupe2Style fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#bf360c;
-  class grp2 groupe2Style;
-```
