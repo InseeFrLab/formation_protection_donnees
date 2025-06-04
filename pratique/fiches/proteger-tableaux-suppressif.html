@@ -369,7 +369,7 @@ window.Quarto = {
   <li><a href="#bilan-du-secret" id="toc-bilan-du-secret" class="nav-link" data-scroll-target="#bilan-du-secret">Bilan du secret</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#protéger-un-tableau-hiérarchique" id="toc-protéger-un-tableau-hiérarchique" class="nav-link" data-scroll-target="#protéger-un-tableau-hiérarchique">Protéger un tableau hiérarchique</a>
+  <li><a href="#proteger-un-tableau-hierarchique" id="toc-proteger-un-tableau-hierarchique" class="nav-link" data-scroll-target="#proteger-un-tableau-hierarchique">Protéger un tableau hiérarchique</a>
   <ul class="collapse">
   <li><a href="#construction-du-fichier-hiérarchique-pour-tau-argus" id="toc-construction-du-fichier-hiérarchique-pour-tau-argus" class="nav-link" data-scroll-target="#construction-du-fichier-hiérarchique-pour-tau-argus">Construction du fichier hiérarchique pour Tau-Argus</a>
   <ul class="collapse">
@@ -423,7 +423,7 @@ window.Quarto = {
 </header>
 
 
-<p>Cette fiche pratique présente une façon de protéger des tableaux en utilisant une méthode suppressive grâce au package <code>rtauargus</code> qui appelle Tau-Argus depuis R. Les données utilisées peuvent être générées à partir du document [INSERER LIEN]. Le code peut être entièrement caché ou visible grâce au bouton à droite du titre. Vous pouvez aussi le faire apparaître ou disparaître au fur et à mesure de la lecture en appuyant sur les boutons Code.</p>
+<p>Cette fiche pratique présente une façon de protéger des tableaux en utilisant une méthode suppressive grâce au package <code>rtauargus</code> qui appelle Tau-Argus depuis R. Le code peut être entièrement caché ou visible grâce au bouton à droite du titre. Vous pouvez aussi le faire apparaître ou disparaître au fur et à mesure de la lecture en appuyant sur les boutons &lt;/&gt; Code.</p>
 <section id="initialisation" class="level1">
 <h1>Initialisation</h1>
 <p>Installation du package rtauargus.</p>
@@ -629,7 +629,7 @@ window.Quarto = {
 </ul></li>
 </ol></li>
 <li>Après avoir posé le secret primaire, vous calculerez le nombre de cellules détectées comme à risque.</li>
-<li>Ensuite, il s’agit de poser le secret secondaire en utilisant le package <code>rtauargus</code>. Les consignes d’installation de <code>rtauargus</code> et du logiciel Tau-Argus sont indiquées dans le fichier [INSERER LIEN]. Vous utiliserez notamment la fonction <code>tab_rtauargus()</code> et suivrez les étapes mentionnées pour apprendre à l’utiliser.</li>
+<li>Ensuite, il s’agit de poser le secret secondaire en utilisant le package <code>rtauargus</code>. Les consignes d’installation de <code>rtauargus</code> et du logiciel Tau-Argus sont indiquées dans la partie <a href="#initialisation">Initialisation</a>. Vous utiliserez la fonction <code>tab_rtauargus()</code>.</li>
 <li>Enfin, vous calculerez le nombre de cellules selon leur statut final. Nous utiliserons pour cela la norme européenne en notant :</li>
 </ol>
 <ul>
@@ -744,7 +744,7 @@ window.Quarto = {
 </section>
 </section>
 </section>
-<section id="protéger-un-tableau-hiérarchique" class="level1">
+<section id="proteger-un-tableau-hierarchique" class="level1">
 <h1>Protéger un tableau hiérarchique</h1>
 <p><strong>Objectifs</strong> : comprendre la notion de variables hiérarchiques et savoir manipuler les objets et fichiers argus qui y sont associés. Pour ensuite, protéger un tableau contenant une ou plusieurs variables hiérarchiques en appelant Tau-Argus depuis R pour poser le secret secondaire.</p>
 <p>Reprenons l’exemple présenté dans le diaporama:</p>
@@ -1439,7 +1439,7 @@ FALSE  TRUE
 </section>
 <section id="créer-les-hiérarchies" class="level2">
 <h2 class="anchored" data-anchor-id="créer-les-hiérarchies">Créer les hiérarchies</h2>
-<p>Comme vu dans la partie “Protéger un tableau hiérarchique” [INSERER LIEN], on crée les hiérarchies à l’aide de <code>rtauargus::write_hrc2()</code>.</p>
+<p>Comme vu dans la partie <a href="#proteger-un-tableau-hierarchique">Protéger un tableau hiérarchique</a>, on crée les hiérarchies à l’aide de <code>rtauargus::write_hrc2()</code>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -2060,7 +2060,7 @@ FALSE  TRUE
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Protéger des tableaux avec une méthode suppressive</span></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>Cette fiche pratique présente une façon de protéger des tableaux en utilisant une méthode suppressive grâce au package <span class="in">`rtauargus`</span> qui appelle Tau-Argus depuis R. Les données utilisées peuvent être générées à partir du document <span class="co">[</span><span class="ot">INSERER LIEN</span><span class="co">]</span>. Le code peut être entièrement caché ou visible grâce au bouton à droite du titre. Vous pouvez aussi le faire apparaître ou disparaître au fur et à mesure de la lecture en appuyant sur les boutons Code.</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>Cette fiche pratique présente une façon de protéger des tableaux en utilisant une méthode suppressive grâce au package <span class="in">`rtauargus`</span> qui appelle Tau-Argus depuis R. Le code peut être entièrement caché ou visible grâce au bouton à droite du titre. Vous pouvez aussi le faire apparaître ou disparaître au fur et à mesure de la lecture en appuyant sur les boutons &lt;/&gt; Code.</span>
 <span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="fu"># Initialisation</span></span>
 <span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a></span>
@@ -2314,7 +2314,7 @@ FALSE  TRUE
 <span id="cb57-258"><a href="#cb57-258" aria-hidden="true" tabindex="-1"></a><span class="ss">      - </span><span class="in">`is_secret_prim = is_secret_freq`</span> si seule la règle de fréquence doit s'appliquer;</span>
 <span id="cb57-259"><a href="#cb57-259" aria-hidden="true" tabindex="-1"></a><span class="ss">      - </span><span class="in">`is_secret_prim = is_secret_freq | is_secret_dom`</span> si les deux règles doivent s'appliquer;</span>
 <span id="cb57-260"><a href="#cb57-260" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Après avoir posé le secret primaire, vous calculerez le nombre de cellules détectées comme à risque.</span>
-<span id="cb57-261"><a href="#cb57-261" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Ensuite, il s'agit de poser le secret secondaire en utilisant le package <span class="in">`rtauargus`</span>. Les consignes d'installation de <span class="in">`rtauargus`</span> et du logiciel Tau-Argus sont indiquées dans le fichier <span class="co">[</span><span class="ot">INSERER LIEN</span><span class="co">]</span>. Vous utiliserez notamment la fonction <span class="in">`tab_rtauargus()`</span> et suivrez les étapes mentionnées pour apprendre à l'utiliser.</span>
+<span id="cb57-261"><a href="#cb57-261" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Ensuite, il s'agit de poser le secret secondaire en utilisant le package <span class="in">`rtauargus`</span>. Les consignes d'installation de <span class="in">`rtauargus`</span> et du logiciel Tau-Argus sont indiquées dans la partie <span class="co">[</span><span class="ot">Initialisation</span><span class="co">](#initialisation)</span>. Vous utiliserez la fonction <span class="in">`tab_rtauargus()`</span>.</span>
 <span id="cb57-262"><a href="#cb57-262" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Enfin, vous calculerez le nombre de cellules selon leur statut final. Nous utiliserons pour cela la norme européenne en notant :</span>
 <span id="cb57-263"><a href="#cb57-263" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`A`</span> les cellules en secret primaire à cause de la règle de fréquence</span>
 <span id="cb57-264"><a href="#cb57-264" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`B`</span> les cellules en secret primaire à cause de la règle de dominance (dans le futur ces cellules pourraient être notées <span class="in">`O`</span>)</span>
@@ -2410,7 +2410,7 @@ FALSE  TRUE
 <span id="cb57-360"><a href="#cb57-360" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-361"><a href="#cb57-361" aria-hidden="true" tabindex="-1"></a>On masque 1.5% des cellules mais moins de 0.01% de l'information totale.</span>
 <span id="cb57-362"><a href="#cb57-362" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-363"><a href="#cb57-363" aria-hidden="true" tabindex="-1"></a><span class="fu"># Protéger un tableau hiérarchique</span></span>
+<span id="cb57-363"><a href="#cb57-363" aria-hidden="true" tabindex="-1"></a><span class="fu"># Protéger un tableau hiérarchique {#proteger-un-tableau-hierarchique}</span></span>
 <span id="cb57-364"><a href="#cb57-364" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-365"><a href="#cb57-365" aria-hidden="true" tabindex="-1"></a>**Objectifs** : comprendre la notion de variables hiérarchiques et savoir manipuler les objets et </span>
 <span id="cb57-366"><a href="#cb57-366" aria-hidden="true" tabindex="-1"></a>fichiers argus qui y sont associés. Pour ensuite, protéger un tableau contenant une ou plusieurs variables hiérarchiques</span>
@@ -2824,7 +2824,7 @@ FALSE  TRUE
 <span id="cb57-802"><a href="#cb57-802" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-803"><a href="#cb57-803" aria-hidden="true" tabindex="-1"></a><span class="fu">## Créer les hiérarchies</span></span>
 <span id="cb57-804"><a href="#cb57-804" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-805"><a href="#cb57-805" aria-hidden="true" tabindex="-1"></a>Comme vu dans la partie "Protéger un tableau hiérarchique" <span class="co">[</span><span class="ot">INSERER LIEN</span><span class="co">]</span>, on crée les hiérarchies à l'aide de <span class="in">`rtauargus::write_hrc2()`</span>.</span>
+<span id="cb57-805"><a href="#cb57-805" aria-hidden="true" tabindex="-1"></a>Comme vu dans la partie <span class="co">[</span><span class="ot">Protéger un tableau hiérarchique</span><span class="co">](#proteger-un-tableau-hierarchique)</span>, on crée les hiérarchies à l'aide de <span class="in">`rtauargus::write_hrc2()`</span>.</span>
 <span id="cb57-806"><a href="#cb57-806" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-809"><a href="#cb57-809" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb57-810"><a href="#cb57-810" aria-hidden="true" tabindex="-1"></a><span class="co"># en deux temps</span></span>

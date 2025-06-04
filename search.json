@@ -539,53 +539,39 @@
     "text": "Mesurer le risque\nMesurer la perte d’utilité\n\n\n\n\n\nTraiter des données tabulées avec une méthode suppressive\nTraiter des données tabulées avec la méthode des clés aléatoires\n\n\n\n\n\nTraiter des données individuelles avec un swapping\nTraiter des données individuelles avec PRAM\nGénérer des données synthétiques\n\n\n\n\n\nAppliquer des mécanismes de la confidentialité différentielle"
   },
   {
-    "objectID": "pratique/fiches/mesurer-risque.html",
-    "href": "pratique/fiches/mesurer-risque.html",
+    "objectID": "pratique/fiches/analyse-automatique.html",
+    "href": "pratique/fiches/analyse-automatique.html",
+    "title": "Analyse automatique des métadonnées pour la protection des données tabulées",
+    "section": "",
+    "text": "L’analyse de la demande peut être faite “à la main”, c’est-à-dire en suivant toutes les étapes présentées dans la partie “Analyser la demande” du cours. Cette fiche présente plusieurs exemples de demandes et leur analyse.\nOn peut aussi utiliser la fonction analyse_metadata() qui permet une analyse automatique de la demande à partir de métadonnées bien formatées."
+  },
+  {
+    "objectID": "pratique/fiches/analyse-automatique.html#avec-des-hiérarchies-non-emboîtées",
+    "href": "pratique/fiches/analyse-automatique.html#avec-des-hiérarchies-non-emboîtées",
+    "title": "Analyse automatique des métadonnées pour la protection des données tabulées",
+    "section": "Avec des hiérarchies non-emboîtées",
+    "text": "Avec des hiérarchies non-emboîtées\nA présent on ajoute d’autres sous-totaux à la demande. Pour chaque tableau concernant l’activité, on souhaite disposer des deux sous-totaux supplémentaires:\n\nD_To_H : D+E+F+G+H (code NAF: A21)\nC14_To_C19: 14+15+16+18+19 (code NAF: A88)\n\nPour prendre en compte les hiérarchies non-emboîtées, on duplique les tableaux concernés et on suffixe par ‘alt’ ces variables. On rajoute ensuite les tableaux dupliqués à ‘cluster_demande1’ pour obtenir la liste des tableaux à protéger.\n\n\nCode\n# Dupliquer les tableaux concernés\ntab_dupliquer &lt;- cluster_demande1[c(1, 2, 4), , drop = FALSE]\n\n# Renommer les tableaux (_bis) et les hiérarchies correspondantes (_alt)\ntab_dupliquer[1:3, c(\"table_name\", \"hrc_spanning_1\")] &lt;- data.frame(\n  table_name = c(\"T10.T12.T14.T16.T18.T20.T22.T24.T26_bis\",\n                 \"T11.T13.T15.T17.T19.T21.T23.T25.T9_bis\",\n                 \"T3.T4.T5.T6.T7.T8_bis\"),\n  hrc_spanning_1 = c(\"hrc_naf_alt\", \"hrc_naf_alt\", \"hrc_naf_alt\")\n)\n\n# Liste des tableaux à protéger\ncluster_demande1bis &lt;- rbind(cluster_demande1, tab_dupliquer)\n\n# Visualisation\nDT::datatable(cluster_demande1bis)"
+  },
+  {
+    "objectID": "pratique/fiches/proteger-micro-swapping.html",
+    "href": "pratique/fiches/proteger-micro-swapping.html",
     "title": "",
     "section": "",
     "text": "Code"
   },
   {
-    "objectID": "pratique/fiches/mesurer-utilite.html",
-    "href": "pratique/fiches/mesurer-utilite.html",
+    "objectID": "pratique/fiches/proteger-tableaux-cellkey.html",
+    "href": "pratique/fiches/proteger-tableaux-cellkey.html",
     "title": "",
     "section": "",
     "text": "Code"
-  },
-  {
-    "objectID": "pratique/fiches/confidentialite-differentielle.html",
-    "href": "pratique/fiches/confidentialite-differentielle.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "pratique/fiches/proteger-micro-pram.html",
-    "href": "pratique/fiches/proteger-micro-pram.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "À propos",
-    "section": "",
-    "text": "Origine du projet\nCe projet est né de la volonté de partager connaissances et matériaux auprès des statisticiens publics en charge d’assurer la protection des données statistiques avant leur diffusion auprès du public.\n\n\nAuteurs\n\nJulien Jamme, Insee\nClara Baudry, Insee"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "",
-    "section": "",
-    "text": "Code\n\n\n\n\n\nCe site vous propose un ensemble de supports théoriques et pratiques pour vous former à la protection des données statistiques.\n\n\n\n\n\n\n\n\n\n\n\nUn peu de théorie\n\n\nComprendre les principaux enjeux de la protection des données et maîtriser les concepts et les méthodes.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEn pratique\n\n\nApprendre à manipuler les concepts, mesurer les risques et utiliser les méthodes.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRessources\n\n\nTrouver des ressources complémentaires (articles, documentation, outils) pour aller plus loin.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGlossaire\n\n\nDéfinition des principaux termes techniques rencontrés sur le site.\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "pratique/fiches/proteger-tableaux-suppressif.html",
     "href": "pratique/fiches/proteger-tableaux-suppressif.html",
     "title": "Protéger des tableaux avec une méthode suppressive",
     "section": "",
-    "text": "Cette fiche pratique présente une façon de protéger des tableaux en utilisant une méthode suppressive grâce au package rtauargus qui appelle Tau-Argus depuis R. Les données utilisées peuvent être générées à partir du document [INSERER LIEN]. Le code peut être entièrement caché ou visible grâce au bouton à droite du titre. Vous pouvez aussi le faire apparaître ou disparaître au fur et à mesure de la lecture en appuyant sur les boutons Code."
+    "text": "Cette fiche pratique présente une façon de protéger des tableaux en utilisant une méthode suppressive grâce au package rtauargus qui appelle Tau-Argus depuis R. Le code peut être entièrement caché ou visible grâce au bouton à droite du titre. Vous pouvez aussi le faire apparaître ou disparaître au fur et à mesure de la lecture en appuyant sur les boutons &lt;/&gt; Code."
   },
   {
     "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#présentation-des-données-individuelles",
@@ -613,7 +599,7 @@
     "href": "pratique/fiches/proteger-tableaux-suppressif.html#poser-le-secret-secondaire",
     "title": "Protéger des tableaux avec une méthode suppressive",
     "section": "Poser le secret secondaire",
-    "text": "Poser le secret secondaire\nPoser un masque de secret sur un tableau comprend les étapes suivantes:\n\nTout d’abord on pose le secret primaire. Pour cela, il faut créer créer des variables indicatrices :\n\nPour chacun des tableaux, vous ajouterez une variable booléenne indiquant si la cellule est problématique (TRUE) ou non (FALSE), au regard de chacune des règles pertinentes à appliquer :\n\nSi vous appliquez la règle de fréquence, la variable créée s’appellera is_secret_freq;\nSi vous appliquez la règle de dominance, la variable créée s’appellera is_secret_dom.\n\nPuis de créer une variable qu’on appellera is_secret_prim, définie ainsi :\n\nis_secret_prim = is_secret_freq si seule la règle de fréquence doit s’appliquer;\nis_secret_prim = is_secret_freq | is_secret_dom si les deux règles doivent s’appliquer;\n\n\nAprès avoir posé le secret primaire, vous calculerez le nombre de cellules détectées comme à risque.\nEnsuite, il s’agit de poser le secret secondaire en utilisant le package rtauargus. Les consignes d’installation de rtauargus et du logiciel Tau-Argus sont indiquées dans le fichier [INSERER LIEN]. Vous utiliserez notamment la fonction tab_rtauargus() et suivrez les étapes mentionnées pour apprendre à l’utiliser.\nEnfin, vous calculerez le nombre de cellules selon leur statut final. Nous utiliserons pour cela la norme européenne en notant :\n\n\nA les cellules en secret primaire à cause de la règle de fréquence\nB les cellules en secret primaire à cause de la règle de dominance (dans le futur ces cellules pourraient être notées O)\nD les cellules concernées par le secret secondaire\nV les cellules non touchées par le secret, cad les cellules qui pourront être diffusées.\n\nLa fonction tab_rtauargus() permet de poser le secret secondaire et requiert les arguments suivants :\n- tabular : la table à protéger - dir_name : le nom du répertoire où les fichiers seront sauvegardés - files_name : le nom utilisé pour nommer les fichiers (chaque fichier a une extension différente); - explanatory_vars : le nom des variables de croisements présents dans la table; - secret_var : le nom de la variable indiquant si une cellule est à risque ou non (secret primaire); - value : nom de la variable de réponse; - freq : nom de la variable d’effectifs; - totcode : le code utilisé pour indiquer le total pour chacune des variables de croisements (explanatory_vars).\n\n\nCode\nsalades_masq &lt;- tab_rtauargus(\n  salades_detect,\n  dir_name = \"tauargus_files/exo2\",\n  files_name = \"T0\",\n  explanatory_vars = c(\"a88\",\"treff\"),\n  secret_var = \"is_secret_prim\",\n  value = \"salades_tot\",\n  freq = \"nb_obs\",\n  totcode = c(a88=\"Total\",treff=\"Total\"),\n  verbose = FALSE\n)"
+    "text": "Poser le secret secondaire\nPoser un masque de secret sur un tableau comprend les étapes suivantes:\n\nTout d’abord on pose le secret primaire. Pour cela, il faut créer créer des variables indicatrices :\n\nPour chacun des tableaux, vous ajouterez une variable booléenne indiquant si la cellule est problématique (TRUE) ou non (FALSE), au regard de chacune des règles pertinentes à appliquer :\n\nSi vous appliquez la règle de fréquence, la variable créée s’appellera is_secret_freq;\nSi vous appliquez la règle de dominance, la variable créée s’appellera is_secret_dom.\n\nPuis de créer une variable qu’on appellera is_secret_prim, définie ainsi :\n\nis_secret_prim = is_secret_freq si seule la règle de fréquence doit s’appliquer;\nis_secret_prim = is_secret_freq | is_secret_dom si les deux règles doivent s’appliquer;\n\n\nAprès avoir posé le secret primaire, vous calculerez le nombre de cellules détectées comme à risque.\nEnsuite, il s’agit de poser le secret secondaire en utilisant le package rtauargus. Les consignes d’installation de rtauargus et du logiciel Tau-Argus sont indiquées dans la partie Initialisation. Vous utiliserez la fonction tab_rtauargus().\nEnfin, vous calculerez le nombre de cellules selon leur statut final. Nous utiliserons pour cela la norme européenne en notant :\n\n\nA les cellules en secret primaire à cause de la règle de fréquence\nB les cellules en secret primaire à cause de la règle de dominance (dans le futur ces cellules pourraient être notées O)\nD les cellules concernées par le secret secondaire\nV les cellules non touchées par le secret, cad les cellules qui pourront être diffusées.\n\nLa fonction tab_rtauargus() permet de poser le secret secondaire et requiert les arguments suivants :\n- tabular : la table à protéger - dir_name : le nom du répertoire où les fichiers seront sauvegardés - files_name : le nom utilisé pour nommer les fichiers (chaque fichier a une extension différente); - explanatory_vars : le nom des variables de croisements présents dans la table; - secret_var : le nom de la variable indiquant si une cellule est à risque ou non (secret primaire); - value : nom de la variable de réponse; - freq : nom de la variable d’effectifs; - totcode : le code utilisé pour indiquer le total pour chacune des variables de croisements (explanatory_vars).\n\n\nCode\nsalades_masq &lt;- tab_rtauargus(\n  salades_detect,\n  dir_name = \"tauargus_files/exo2\",\n  files_name = \"T0\",\n  explanatory_vars = c(\"a88\",\"treff\"),\n  secret_var = \"is_secret_prim\",\n  value = \"salades_tot\",\n  freq = \"nb_obs\",\n  totcode = c(a88=\"Total\",treff=\"Total\"),\n  verbose = FALSE\n)"
   },
   {
     "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#analyser-les-résultats",
@@ -669,7 +655,7 @@
     "href": "pratique/fiches/proteger-tableaux-suppressif.html#créer-les-hiérarchies",
     "title": "Protéger des tableaux avec une méthode suppressive",
     "section": "Créer les hiérarchies",
-    "text": "Créer les hiérarchies\nComme vu dans la partie “Protéger un tableau hiérarchique” [INSERER LIEN], on crée les hiérarchies à l’aide de rtauargus::write_hrc2().\n\n\nCode\n# en deux temps\ncorres_naf &lt;- micro %&gt;% select(a10,a21,a88) %&gt;% unique() %&gt;% arrange(a10,a21,a88)\nchemin_hrc_naf &lt;- write_hrc2(corres_naf, file_name = \"fichiers_tauargus/hrc/naf.hrc\")\n\n# d'un seul coup\nchemin_hrc_nuts &lt;- write_hrc2(micro %&gt;% select(nuts2,nuts3) %&gt;% unique() %&gt;% arrange(nuts2),\n                              \"fichiers_tauargus/hrc/nuts.hrc\")\n\n\nN.B. la bonne pratique est de partir d’une table de passage définie à priori. Ici, il est plus simple de partir des microdonnées et on a confiance dans les strcutures des hiérarchies qui en sortiront."
+    "text": "Créer les hiérarchies\nComme vu dans la partie Protéger un tableau hiérarchique, on crée les hiérarchies à l’aide de rtauargus::write_hrc2().\n\n\nCode\n# en deux temps\ncorres_naf &lt;- micro %&gt;% select(a10,a21,a88) %&gt;% unique() %&gt;% arrange(a10,a21,a88)\nchemin_hrc_naf &lt;- write_hrc2(corres_naf, file_name = \"fichiers_tauargus/hrc/naf.hrc\")\n\n# d'un seul coup\nchemin_hrc_nuts &lt;- write_hrc2(micro %&gt;% select(nuts2,nuts3) %&gt;% unique() %&gt;% arrange(nuts2),\n                              \"fichiers_tauargus/hrc/nuts.hrc\")\n\n\nN.B. la bonne pratique est de partir d’une table de passage définie à priori. Ici, il est plus simple de partir des microdonnées et on a confiance dans les strcutures des hiérarchies qui en sortiront."
   },
   {
     "objectID": "pratique/fiches/proteger-tableaux-suppressif.html#poser-le-secret-secondaire-1",
@@ -679,15 +665,50 @@
     "text": "Poser le secret secondaire\nOn pose le secret puis on unifie les masques afin de les regrouper dans un seul dataframe.\nPour le cluster pizzas.\n\n\nCode\nmasques_pizza &lt;- tab_multi_manager(\n  list_tables = tableaux_pizza,\n  list_explanatory_vars = list(\n    pizza_nuts_treff = c(\"nuts\",\"treff\"), # T1.T2\n    pizza_nuts_naf = c(\"nuts\",\"naf\") # T3.T4.T5.T6.T7.T8\n  ),\n  dir_name = \"./Exos/tauargus_files/ex_analyse_demande/\",\n  hrc = list(naf = chemin_hrc_naf, nuts = chemin_hrc_nuts),\n  totcode = \"Total\",\n  value = \"pizzas_tot\",\n  freq = \"nb_obs\",\n  secret_var = \"is_secret_prim\"\n)\n\n\n\n\nCode\n# unification des masques\nmasque_pizza &lt;- masques_pizza %&gt;% purrr::map_dfr(\n  function(tab){\n    tab %&gt;% \n      mutate(\n        treff = if (\"treff\" %in% names(tab)) treff else \"Total\",\n        cj = if (\"cj\" %in% names(tab)) cj else \"Total\",\n        naf = if (\"naf\" %in% names(tab)) naf else \"Total\"\n      ) %&gt;% \n      select(\"naf\",\"treff\",\"cj\",everything()) %&gt;%\n      rename_with(~\"is_secret_final\", last_col()) %&gt;% \n      mutate(\n        statut_final = case_when(\n          is_secret_freq ~ \"A\",\n          is_secret_dom ~ \"B\",\n          is_secret_final ~\"D\",\n          TRUE ~ \"V\"\n        )) %&gt;% \n      select(-matches(\"is_secret_\"))\n  }\n) %&gt;% unique()\n\nmasque_pizza %&gt;% \n  group_by(statut_final) %&gt;% \n  summarise(\n    n_cell = n(),\n    val_cell = sum(pizzas_tot)\n  ) %&gt;%\n  mutate(\n    pc_n_cell = n_cell/sum(n_cell)*100,\n    pc_val_cell = val_cell/sum(val_cell)*100\n  )\n\n\n# A tibble: 3 × 5\n  statut_final n_cell      val_cell pc_n_cell pc_val_cell\n  &lt;chr&gt;         &lt;int&gt;         &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;\n1 A                11       9160149    0.0892    0.000102\n2 D                33   14236278602    0.268     0.158   \n3 V             12286 8993596429774   99.6      99.8     \n\n\nPour le cluster salades.\n\n\nCode\nmasques_salades &lt;- tab_multi_manager(\n  list_tables = tableaux_salades,\n  list_explanatory_vars = list(\n    salades_naf_treff = c(\"naf\",\"treff\", \"crois_salades\"),\n    salades_naf_cj = c(\"naf\",\"cj\", \"crois_salades\")\n  ),\n  dir_name = \"./Exos/tauargus_files/ex_analyse_demande/\",\n  hrc = list(naf = chemin_hrc_naf),\n  totcode = c(naf = \"Total\", treff = \"Total\", cj = \"Total\", crois_salades = \"salades\"),\n  value = \"tot\",\n  freq = \"nb_obs\",\n  secret_var = \"is_secret_prim\"\n)\n\n\n\n\nCode\nmasque_salades &lt;- masques_salades %&gt;% purrr::map_dfr(\n  function(tab){\n    tab %&gt;% \n      mutate(\n        treff = if (\"treff\" %in% names(tab)) treff else \"Total\",\n        cj = if (\"cj\" %in% names(tab)) cj else \"Total\",\n        naf = if (\"naf\" %in% names(tab)) naf else \"Total\"\n      ) %&gt;% \n      select(\"naf\",\"treff\",\"cj\",everything()) %&gt;%\n      rename_with(~\"is_secret_final\", last_col()) %&gt;% \n      mutate(\n        statut_final = case_when(\n          is_secret_freq ~ \"A\",\n          is_secret_dom ~ \"B\",\n          is_secret_final ~\"D\",\n          TRUE ~ \"V\"\n        )) %&gt;% \n      select(-matches(\"is_secret_\"))\n  }\n) %&gt;% unique()\n\nmasque_salades %&gt;% \n  group_by(statut_final) %&gt;% \n  summarise(\n    n_cell = n(),\n    val_cell = sum(tot)\n  ) %&gt;%\n  mutate(\n    pc_n_cell = n_cell/sum(n_cell)*100,\n    pc_val_cell = val_cell/sum(val_cell)*100\n  )\n\n\n# A tibble: 4 × 5\n  statut_final n_cell      val_cell pc_n_cell pc_val_cell\n  &lt;chr&gt;         &lt;int&gt;         &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;\n1 A                21       1380020    0.842   0.0000408 \n2 B                 1         47973    0.0401  0.00000142\n3 D                43   14228897507    1.72    0.421     \n4 V              2428 3366561853460   97.4    99.6"
   },
   {
-    "objectID": "pratique/fiches/proteger-tableaux-cellkey.html",
-    "href": "pratique/fiches/proteger-tableaux-cellkey.html",
+    "objectID": "pratique/fiches/proteger-micro-pram.html",
+    "href": "pratique/fiches/proteger-micro-pram.html",
     "title": "",
     "section": "",
     "text": "Code"
   },
   {
-    "objectID": "pratique/fiches/proteger-micro-swapping.html",
-    "href": "pratique/fiches/proteger-micro-swapping.html",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "À propos",
+    "section": "",
+    "text": "Origine du projet\nCe projet est né de la volonté de partager connaissances et matériaux auprès des statisticiens publics en charge d’assurer la protection des données statistiques avant leur diffusion auprès du public.\n\n\nAuteurs\n\nJulien Jamme, Insee\nClara Baudry, Insee"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "",
+    "section": "",
+    "text": "Code\n\n\n\n\n\nCe site vous propose un ensemble de supports théoriques et pratiques pour vous former à la protection des données statistiques.\n\n\n\n\n\n\n\n\n\n\n\nUn peu de théorie\n\n\nComprendre les principaux enjeux de la protection des données et maîtriser les concepts et les méthodes.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEn pratique\n\n\nApprendre à manipuler les concepts, mesurer les risques et utiliser les méthodes.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRessources\n\n\nTrouver des ressources complémentaires (articles, documentation, outils) pour aller plus loin.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGlossaire\n\n\nDéfinition des principaux termes techniques rencontrés sur le site.\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "pratique/fiches/analyse-demande.html",
+    "href": "pratique/fiches/analyse-demande.html",
+    "title": "Analyser une demande",
+    "section": "",
+    "text": "Exercice 1\nOn souhaite diffuser 4 tableaux :\n- T1 : population par âge (5 classes), par sexe et par département\n- T2 : population par sexe, par diplôme et par département\n- T3 : population par catégorie socioprofessionnelle, statut d’activité et par département\n- T4 : population par âge, par sexe et par statut d’activité\nQuel est le résultat de l’analyse ?\n\n\n\n\n\n\nRéponse\n\n\n\n\n\nIci, il est sous-entendu que les tableaux partagent le même champ.\nDe plus, ils partagent le même indicateur : « population ». Ils sont donc liés à minima par le total. Ainsi, il n’y a pas de sous-demande indépendante (i.e. il faudra traiter tous les tableaux dans un même appel à rtauargus::tab_multi_manager()).\nCertains tableaux ont des variables de croisements communes, il y a donc aussi des liens sur les marges. Les variables entre elles n’ont pas de liens hiérarchiques (variable géographique uniquement départementale). Les tableaux ne peuvent pas être fusionnés.\nDans cet exemple, la liste des tableaux à protéger est identique à la liste des tableaux à diffuser.\n\n\n\n\n\nExercice 2\nOn souhaite diffuser 7 tableaux :\n- T1 : population par âge (5 classes), par sexe et par département\n- T2 : population par sexe, par diplôme et par département\n- T3 : population par catégorie socioprofessionnelle, statut d’activité et par département\n- T4 : population par âge, par sexe et par statut d’activité\n- T5 : population par âge (5 classes), par sexe et par région\n- T6 : population par sexe, par diplôme et par région\n- T7 : population par catégorie socioprofessionnelle, statut d’activité et par région\nQuel est le résultat de l’analyse ?\n\n\n\n\n\n\nRéponse\n\n\n\n\n\nIci, il est sous-entendu que les tableaux partagent le même champ.\nDe plus, ils partagent le même indicateur : « population ». Ils sont donc liés à minima par le total. Ainsi, il n’y a pas de sous-demande indépendante (i.e. il faudra traiter tous les tableaux dans un même appel à rtauargus ::tab_multi_manager()).\nCertains tableaux ont des variables de croisements communes, il y a donc aussi des liens sur les marges. Deux variables ont un lien hiérarchique : région &gt; département. Les tableaux partageant les mêmes variables de croisement peuvent être fusionnées. Lors du traitement il faudra spécifier ce lien hiérarchique dans un fichier .hrc.\nLa liste des tableaux à protéger est donc la suivante :\n- T1 : population par âge (5 classes), par sexe et par GEO\n- T2 : population par sexe, par diplôme et par GEO\n- T3 : population par catégorie socioprofessionnelle, statut d’activité et par GEO\n- T4 : population par âge, par sexe et par statut d’activité Où GEO est une variable hiérarchique emboîtant régions et départements.\n\n\n\n\n\nExercice 3\nOn souhaite diffuser 4 tableaux :\n- T1 : population par âge (3 classes : &lt;25, 25-55 , +55) et par département\n- T2 : population par âge (5 classes : &lt;15, 15-25, 25-45, 45-65, +65), par sexe et par département\n- T3 : population par âge (3 classes : &lt;25, 25-55 , +55) et par région\n- T4 : population par âge (5 classes : &lt;15, 15-25, 25-45, 45-65, +65), par sexe et par région\nQuel est le résultat de l’analyse ?\n\n\n\n\n\n\nRéponse\n\n\n\n\n\nIci, il est sous-entendu que les tableaux partagent le même champ.\nDe plus, ils partagent le même indicateur : « population ». Ils sont donc liés à minima par le total. Ainsi, il n’y a pas de sous-demande indépendante (i.e. il faudra traiter tous les tableaux dans un même appel à rtauargus::tab_multi_manager()).\nCertains tableaux ont des variables de croisements communes, il y a donc aussi des liens sur les marges. Deux variables ont un lien hiérarchique : région &gt; département. Les tableaux partageant les mêmes variables de croisement peuvent être fusionnées. Lors du traitement il faudra spécifier ce lien hiérarchique dans un fichier .hrc.\nEn formalisant, dans un premier temps on peut donc passer de cette liste de tableaux :\n- T1 : pop \\(\\otimes\\) {age_3 x dep}\n- T2 : pop \\(\\otimes\\) {age_5 x sexe x dep}\n- T3 : pop \\(\\otimes\\) {age_3 x reg}\n- T4 : pop \\(\\otimes\\) {age_5 x sexe x reg}\nA cette liste de tableaux :\n- T1 : pop \\(\\otimes\\) {age_3 x GEO}\n- T2 : pop \\(\\otimes\\) {age_5 x sexe x GEO}\nDe plus, on voit que la variable âge est ventilée différemment entre T1 et T2. On vérifie d’abord si les modalités des variables sont emboîtées (si c’est le cas on peut les regrouper dans une seule et même variable). Cependant, dans ce cas-ci les modalités ne sont pas emboîtées. Donc, on essaye de regrouper le maximum de modalités dans une seule variable hiérarchique dont les niveaux sont emboîtés. On obtient la hiérarchie AGE_hrc_princ présentée plus bas.\nEt avec le reste des modalités non incluses dans cette hiérarchie on en crée une deuxième AGE_hrc_spe.\nN.B. cette hiérarchie est « à plat » puisqu’il y a un seul niveau hiérarchique\nDe plus, les super-totaux ne sont pas précisés ici (comme dans les fichiers .hrc) mais pour la première hiérarchie le super-total est simplement le total de toutes les classes d’âge et pour la seconde hiérarchie le total est « 45-65 » (la classe d’âge présente dans la hiérarchie âge en 5 classes).\nDonc dans une deuxième étape on se retrouve avec ces tableaux :\n- T1 : pop \\(\\otimes\\) {AGE_hrc_princ x GEO}\n- T1bis : pop \\(\\otimes\\) {AGE_hrc_spe x GEO}\n- T2 : pop \\(\\otimes\\) {AGE_hrc_princ x sexe x GEO}\n- T2bis : pop \\(\\otimes\\) {AGE_hrc_spe x sexe x GEO}\nOù GEO est une variable hiérarchique emboîtant régions et départements.\nOù AGE_hrc_princ (hiérarchie principale) est une variable hiérarchique emboîtant l’ensemble des catégories d’âge sauf 45-65.\nOù AGE_hrc_spe (agrégat spécial) inclus les modalités 45-55 + 55-65 avec 45-65 en super-total.\nFinalement, on se rend compte que T1 est inclus dans T2 et T1bis est inclus dans T2bis. Donc, on se retrouve avec les deux tableaux suivants :\n- T1 : pop \\(\\otimes\\) {AGE_hrc_princ x sexe x GEO}\n- T2 : pop \\(\\otimes\\) {AGE_hrc_spe x sexe x GEO}\nC’est cette liste de tableaux qu’il faut protéger.\n\n\n\nHiérarchies proposées dans la correction :\n\n\n\n\n\ngraph TD\n    A[&lt;25] --&gt; A1[&lt;15]\n    A --&gt; A2[15-25]\n    B[25-55] --&gt; B1[25-45]\n    B --&gt; B2[45-55]\n    C[+55] --&gt; C1[55-65]\n    C --&gt; C2[+65]\n    D[Total] --&gt; A\n    D[Total] --&gt; B\n    D[Total] --&gt; C\n\n\n\n\n\n\n\nHiérarchie AGE_hrc_princ\n\n\n\n\n\n\ngraph TD\n    A[45-65] --&gt; A1[45-55]\n    A --&gt; A2[55-65]\n\n\n\n\n\n\n\nHiérarchie AGE_hrc_spe"
+  },
+  {
+    "objectID": "pratique/fiches/confidentialite-differentielle.html",
+    "href": "pratique/fiches/confidentialite-differentielle.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/fiches/mesurer-utilite.html",
+    "href": "pratique/fiches/mesurer-utilite.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "pratique/fiches/mesurer-risque.html",
+    "href": "pratique/fiches/mesurer-risque.html",
     "title": "",
     "section": "",
     "text": "Code"
