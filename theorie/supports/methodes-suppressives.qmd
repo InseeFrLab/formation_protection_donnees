@@ -765,6 +765,7 @@ Créer un second tableau contenant uniquement la ventilation de 50+.
 :::
 :::
 
-
+# Faire la fiche pratique
+[Protéger des tableaux avec une méthode suppressive](../../pratique/fiches/proteger-tableaux-suppressif.qmd)
 
 

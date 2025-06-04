@@ -1,0 +1,142 @@
+---
+title: "Analyser une demande"
+---
+
+# Exercice 1
+
+On souhaite diffuser 4 tableaux :  
+  - T1 : population par âge (5 classes), par sexe et par département  
+  - T2 : population par sexe, par diplôme et par département  
+  - T3 : population par catégorie socioprofessionnelle, statut d’activité et par département  
+  - T4 : population par âge, par sexe et par statut d’activité  
+
+Quel est le résultat de l’analyse ?
+
+:::: {.callout-note collapse=true title = "Réponse"}
+Ici, il est sous-entendu que les tableaux partagent le même champ.
+
+De plus, ils partagent le même indicateur : « population ». Ils sont donc liés à minima par le total. Ainsi, il n’y a pas de sous-demande indépendante (i.e. il faudra traiter tous les tableaux dans un même appel à `rtauargus::tab_multi_manager()`).
+
+Certains tableaux ont des variables de croisements communes, il y a donc aussi des liens sur les marges.
+Les variables entre elles n’ont pas de liens hiérarchiques (variable géographique uniquement départementale). Les tableaux ne peuvent pas être fusionnés.
+
+Dans cet exemple, la liste des tableaux à protéger est identique à la liste des tableaux à diffuser.
+
+::::
+
+# Exercice 2
+
+On souhaite diffuser 7 tableaux :  
+  - T1 : population par âge (5 classes), par sexe et par département  
+  - T2 : population par sexe, par diplôme et par département  
+  - T3 : population par catégorie socioprofessionnelle, statut d’activité et par département  
+  - T4 : population par âge, par sexe et par statut d’activité  
+  - T5 : population par âge (5 classes), par sexe et par région  
+  - T6 : population par sexe, par diplôme et par région  
+  - T7 : population par catégorie socioprofessionnelle, statut d’activité et par région  
+
+Quel est le résultat de l’analyse ?
+
+:::: {.callout-note collapse=true title = "Réponse"}
+
+Ici, il est sous-entendu que les tableaux partagent le même champ.
+
+De plus, ils partagent le même indicateur : « population ». Ils sont donc liés à minima par le total. Ainsi, il n’y a pas de sous-demande indépendante (i.e. il faudra traiter tous les tableaux dans un même appel à `rtauargus ::tab_multi_manager()`).
+
+Certains tableaux ont des variables de croisements communes, il y a donc aussi des liens sur les marges.
+Deux variables ont un lien hiérarchique : région > département. Les tableaux partageant les mêmes variables de croisement peuvent être fusionnées. Lors du traitement il faudra spécifier ce lien hiérarchique dans un fichier **.hrc**.
+
+La liste des tableaux à protéger est donc la suivante :  
+- T1 : population par âge (5 classes), par sexe et par GEO  
+- T2 : population par sexe, par diplôme et par GEO  
+- T3 : population par catégorie socioprofessionnelle, statut d’activité et par GEO   
+- T4 : population par âge, par sexe et par statut d’activité
+Où GEO est une variable hiérarchique emboîtant régions et départements.
+
+::::
+
+# Exercice 3
+On souhaite diffuser 4 tableaux :  
+- T1 : population par âge (3 classes : <25, 25-55 , +55) et par département  
+- T2 : population par âge (5 classes : <15, 15-25, 25-45, 45-65, +65), par sexe et par département  
+- T3 : population par âge (3 classes : <25, 25-55 , +55) et par région  
+- T4 : population par âge (5 classes : <15, 15-25, 25-45, 45-65, +65), par sexe et par région  
+
+Quel est le résultat de l’analyse ?
+
+::: {.callout-note collapse=true title = "Réponse"}
+Ici, il est sous-entendu que les tableaux partagent le même champ.
+
+De plus, ils partagent le même indicateur : « population ». Ils sont donc liés à minima par le total. Ainsi, il n’y a pas de sous-demande indépendante (i.e. il faudra traiter tous les tableaux dans un même appel à `rtauargus::tab_multi_manager()`).
+
+Certains tableaux ont des variables de croisements communes, il y a donc aussi des liens sur les marges.
+Deux variables ont un lien hiérarchique : région > département. Les tableaux partageant les mêmes variables de croisement peuvent être fusionnées. Lors du traitement il faudra spécifier ce lien hiérarchique dans un fichier .hrc.
+
+En formalisant, dans un premier temps on peut donc passer de cette liste de tableaux :   
+- T1 : pop $\otimes$ {age_3 x dep}  
+- T2 : pop $\otimes$ {age_5 x sexe x dep}  
+- T3 : pop $\otimes$ {age_3 x reg}  
+- T4 : pop $\otimes$ {age_5 x sexe x reg}  
+
+A cette liste de tableaux :  
+- T1 : pop $\otimes$ {age_3 x GEO}  
+- T2 : pop $\otimes$ {age_5 x sexe x GEO}  
+
+De plus, on voit que la variable âge est ventilée différemment entre T1 et T2. On vérifie d’abord si les modalités des variables sont emboîtées (si c’est le cas on peut les regrouper dans une seule et même variable). Cependant, dans ce cas-ci les modalités ne sont pas emboîtées. Donc, on essaye de regrouper le maximum de modalités dans une seule variable hiérarchique dont les niveaux sont emboîtés.
+On obtient la hiérarchie **AGE_hrc_princ** présentée plus bas.
+
+Et avec le reste des modalités non incluses dans cette hiérarchie on en crée une deuxième **AGE_hrc_spe**.
+
+N.B. cette hiérarchie est « à plat » puisqu’il y a un seul niveau hiérarchique
+
+De plus, les super-totaux ne sont pas précisés ici (comme dans les fichiers .hrc) mais pour la première hiérarchie le super-total est simplement le total de toutes les classes d’âge et pour la seconde hiérarchie le total est « 45-65 » (la classe d’âge présente dans la hiérarchie âge en 5 classes).
+
+Donc dans une deuxième étape on se retrouve avec ces tableaux :  
+- T1 : pop $\otimes$ {AGE_hrc_princ x GEO}  
+- T1bis : pop $\otimes$ {AGE_hrc_spe x GEO}  
+- T2 : pop $\otimes$ {AGE_hrc_princ x sexe x GEO}  
+- T2bis : pop $\otimes$ {AGE_hrc_spe x sexe x GEO}  
+Où GEO est une variable hiérarchique emboîtant régions et départements.  
+Où AGE_hrc_princ (hiérarchie principale) est une variable hiérarchique emboîtant l’ensemble des catégories d’âge sauf 45-65.  
+Où AGE_hrc_spe (agrégat spécial) inclus les modalités 45-55 + 55-65 avec 45-65 en super-total.
+
+Finalement, on se rend compte que T1 est inclus dans T2 et T1bis est inclus dans T2bis. Donc, on se retrouve avec les deux tableaux suivants :  
+- T1 : pop $\otimes$ {AGE_hrc_princ x sexe x GEO}  
+- T2 : pop $\otimes$ {AGE_hrc_spe x sexe x GEO}  
+
+C’est cette liste de tableaux qu’il faut protéger.
+
+:::
+
+
+Hiérarchies proposées dans la correction :
+
+```{mermaid}
+graph TD
+    A[<25] --> A1[<15]
+    A --> A2[15-25]
+    B[25-55] --> B1[25-45]
+    B --> B2[45-55]
+    C[+55] --> C1[55-65]
+    C --> C2[+65]
+    D[Total] --> A
+    D[Total] --> B
+    D[Total] --> C
+```
+
+<div style="text-align: center; font-weight: bold; font-size: 1.2em; margin-bottom: 0.5em;">
+Hiérarchie AGE_hrc_princ
+</div>
+
+```{mermaid}
+graph TD
+    A[45-65] --> A1[45-55]
+    A --> A2[55-65]
+```
+
+<div style="font-weight: bold; font-size: 1.2em; margin-bottom: 0.5em;">
+Hiérarchie AGE_hrc_spe
+</div>
+
+
+

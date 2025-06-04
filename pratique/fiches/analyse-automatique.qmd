@@ -1,0 +1,149 @@
+---
+title: Analyse automatique des métadonnées pour la protection des données tabulées
+---
+
+L'analyse de la demande peut être faite "à la main", c'est-à-dire en suivant toutes les étapes présentées dans la partie "Analyser la demande" du [cours](../../theorie/supports/methodes-suppressives.qmd). Cette [fiche](analyse-demande.qmd) présente plusieurs exemples de demandes et leur analyse.
+
+On peut aussi utiliser la fonction `analyse_metadata()` qui permet une analyse automatique de la demande à partir de métadonnées bien formatées.
+
+# Initialisation
+
+Installation du package rtauargus.
+```{r installation_rtauargus, warning=FALSE, message=FALSE}
+remotes::install_github(
+  'InseeFrLab/rtauargus',
+  dependencies = TRUE,
+  build_vignettes = FALSE,
+  upgrade = 'never',
+  ref = "v-1.2.999-dev" # version dev avec la fonction d'analyse automatique
+)
+```
+
+Import des packages.
+```{r import_packages, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(rtauargus)
+```
+
+# Métadonnées
+
+```{r metadonnees}
+#| echo: false
+#| as-is: true
+
+library(tibble)
+library(knitr)
+
+t <- tribble(
+  ~Tab, ~Var_reponse, ~expl_var1, ~expl_var2,
+  "T1", "ca_pizzas", "Nuts2", "TREFF",
+  "T2", "ca_pizzas", "Nuts3", "TREFF",
+  "T3", "ca_pizzas", "A10", "Nuts2",
+  "T4", "ca_pizzas", "A10", "Nuts3",
+  "T5", "ca_pizzas", "A21", "Nuts2",
+  "T6", "ca_pizzas", "A21", "Nuts3",
+  "T7", "ca_pizzas", "A88", "Nuts2",
+  "T8", "ca_pizzas", "A88", "Nuts3",
+  "T9", "ca_batavia", "A10", "TREFF",
+  "T10", "ca_batavia", "A10", "CJ",
+  "T11", "ca_batavia", "A21", "TREFF",
+  "T12", "ca_batavia", "A21", "CJ",
+  "T13", "ca_batavia", "A88", "TREFF",
+  "T14", "ca_batavia", "A88", "CJ",
+  "T15", "ca_mache", "A10", "TREFF",
+  "T16", "ca_mache", "A10", "CJ",
+  "T17", "ca_mache", "A21", "TREFF",
+  "T18", "ca_mache", "A21", "CJ",
+  "T19", "ca_mache", "A88", "TREFF",
+  "T20", "ca_mache", "A88", "CJ",
+  "T21", "ca_salades", "A10", "TREFF",
+  "T22", "ca_salades", "A10", "CJ",
+  "T23", "ca_salades", "A21", "TREFF",
+  "T24", "ca_salades", "A21", "CJ",
+  "T25", "ca_salades", "A88", "TREFF",
+  "T26", "ca_salades", "A88", "CJ"
+)
+
+kable(t)
+cat("Champ de la population : entreprises françaises.\nInformations complémentaires : il n'y a que deux types de salades les batavias et la mâche.")
+```
+
+# Utilisation de la fonction `analyse_metadata()`
+
+Les métadonnées doivent respecter un format spécifique. Une ligne représente un tableau et pour chaque tableau il faut préciser :
+
+- `table_name` : le nom du tableau ;
+- `field` : le champ (souvent, zone géographique, population étudiée, millésime) ;
+- `hrc_field` : s'il existe ou non un lien hiérarchique entre ce champ et un autre champ. S'il n'y a pas de lien hiérarchique cette case vaut `NA`. Si au contraire, un lien hiérarchique existe, il faut donner un nom à ce lien et réécrire ce même nom dans les autres tableaux ;
+- `indicator` : le nom de l'indicateur du tableau. Il s'agit du nom de la variable de ce qui est compté dans chaque cellule du tableau. Par exemple, si mon tableau présente le chiffre d'affaire des entreprises ma variable sera sans doute "CA". Le mieux est de bien utiliser le nom de la variable tel que décrit dans les données ;
+- `hrc_indicator` : s'il existe ou non un lien hiérarchique entre cet indicateur et un autre indicateur. S'il n'y a pas de lien hiérarchique cette case vaut `NA`. Si au contraire, un lien hiérarchique existe, il faut donner un nom à ce lien et réécrire ce même nom dans les autres tableaux ;
+- `spanning_1` : le nom de la première variable de croisement. On ajoute une colonne par variable de croisement en suivant le nommage : `spanning_1`, `spanning_2`, `spanning_3`, etc ;
+- `hrc_spanning_1` : s'il existe ou non un lien hiérarchique entre cette variable de croisement et une autre variable de croisement. S'il n'y a pas de lien hiérarchique cette case vaut `NA`. Si au contraire, un lien hiérarchique existe, il faut donner un nom à ce lien et réécrire ce même nom dans les autres tableaux. On ajoute une colonne par variable de croisement en suivant le nommage : `hrc_spanning_1`, `hrc_spanning_2`, `hrc_spanning_3`, etc. N.B. il faut autant de colonnes `spanning_X` que de colonnes `hrc_spanning_X`.
+
+```{r construction input}
+#| echo: false
+
+demande1 <- tibble::tibble(
+  table_name = paste0("T", 1:26),
+  field = "ent_france",
+  hrc_field = NA,
+  indicator = c(rep("ca_pizzas", 8),
+                rep("ca_batavia", 6),
+                rep("ca_mache", 6),
+                rep("ca_salades", 6)),
+  hrc_indicator = c(rep(NA, 8), rep("hrc_salades", 18)),
+  spanning_1 = c("Nuts2", "Nuts3",
+                 rep(c("A10", "A10", "A21", "A21", "A88", "A88"), 4)),
+  hrc_spanning_1 = c("hrc_nuts", "hrc_nuts",
+                     rep("hrc_naf", 24)),
+  spanning_2 = c("TREFF", "TREFF", "Nuts2", "Nuts3", "Nuts2", "Nuts3", "Nuts2", "Nuts3",
+                 rep(c("TREFF", "CJ"), 9)),
+  hrc_spanning_2 = c(NA, NA, rep("hrc_nuts", 6), rep(NA, 18))
+)
+
+DT::datatable(demande1)
+```
+
+On peut ensuite faire appel à la fonction `analyse_metadata()`.
+
+```{r analyse demande}
+cluster_demande1 <- analyse_metadata(demande1, verbose = FALSE)
+```
+
+N.B. si l'on souhaite avoir plus de détails sur les étapes de l'analyse on indique `verbose = TRUE`.
+
+```{r}
+DT::datatable(cluster_demande1)
+```
+
+Finalement, pour protéger les 26 tableaux qui seront publiés il suffit de protéger 4 tableaux. Les tableaux sont liés deux à deux, autrement dit il y a deux clusters (*ent_france.hrc_salades* et *ent_france.ca_pizzas*). Il faudra donc faire appel deux fois à `rtauargus::tab_multi_manager()`.
+
+## Avec des hiérarchies non-emboîtées
+
+A présent on ajoute d'autres sous-totaux à la demande. Pour chaque tableau concernant l'activité, on souhaite disposer des deux sous-totaux supplémentaires:
+
+- D_To_H : D+E+F+G+H (code NAF: A21)
+- C14_To_C19: 14+15+16+18+19 (code NAF: A88)
+
+Pour prendre en compte les hiérarchies non-emboîtées, on duplique les tableaux concernés et on suffixe par 'alt' ces variables.
+On rajoute ensuite les tableaux dupliqués à 'cluster_demande1' pour obtenir la liste des tableaux à protéger.
+
+```{r}
+# Dupliquer les tableaux concernés
+tab_dupliquer <- cluster_demande1[c(1, 2, 4), , drop = FALSE]
+
+# Renommer les tableaux (_bis) et les hiérarchies correspondantes (_alt)
+tab_dupliquer[1:3, c("table_name", "hrc_spanning_1")] <- data.frame(
+  table_name = c("T10.T12.T14.T16.T18.T20.T22.T24.T26_bis",
+                 "T11.T13.T15.T17.T19.T21.T23.T25.T9_bis",
+                 "T3.T4.T5.T6.T7.T8_bis"),
+  hrc_spanning_1 = c("hrc_naf_alt", "hrc_naf_alt", "hrc_naf_alt")
+)
+
+# Liste des tableaux à protéger
+cluster_demande1bis <- rbind(cluster_demande1, tab_dupliquer)
+
+# Visualisation
+DT::datatable(cluster_demande1bis)
+```
+
