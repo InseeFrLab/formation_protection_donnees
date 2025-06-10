@@ -35,11 +35,868 @@ bibliography: ../../references-SDC.bib
 # csl: ../style.csl  # Décommentez besoin d'un style de biblio spécifique
 ---
 
+::: frame
+:::
 
-# Arbitrer entre risque et utilité
+::: frame
+### Sommaire
+:::
 
-## Introduction
+# Un arbitrage nécessaire
+
+::: frame
+Introduction
+
+La définition maximaliste de la protection des données:
+
+::: displayquote
+If the release of the statistics $T(D)$ makes it possible to determine the value \[of confidential statistical data\] more accurately than is possible without access to $T(D)$, a disclosure has taken place. (T. Dalenius, [Privacy transformations for statistical information systems](https://doi.org/10.1016/0378-3758(77)90007-6), 1977)
+:::
+:::
+
+# Introduction
+::: frame
+
+-   Une ambition originelle impossible à atteindre.
+
+-   Exemple: Lien fort entre Fumeur et Cancer des poumons $\Rightarrow$ si, on (une compagnie d'assurance) sait qu'un individu est fumeur, alors elle peut lui imputer un risque important d'avoir un cancer.
+
+-   Il faudrait
+
+    -   supposer que l'utilisateur ne dispose d'aucune information auxiliaire (irréaliste)
+
+    -   empêcher toute inférence statistique (non souhaitable)
+:::
+
+# Introduction
 
 ::: frame
 
+::: displayquote
+Les missions du SSP ne dépendent pas seulement de sa capacité à maîtriser les outils ou les méthodes nécessaires à la production d'une information de qualité, mais aussi de **sa capacité à protéger et à garantir la confidentialité des données qui lui sont confiées**. Cette protection est la condition pour continuer à disposer de ces données.
+:::
+
+::: displayquote
+**La maîtrise des risques** de perte ou de violation de confidentialité des données dont il est dépositaire représente un enjeu crucial pour le SSP. (P. Redor, Courrier des Statistiques, juin 2023)
+:::
+:::
+
+# Quel arbitrage ?
+::: frame
+
+Protéger des données confidentielles, c'est arbitrer entre:
+
+-   leur utilité pour la connaissance et le débat public;
+
+-   leur risque intrinsèque: toute donnée diffusée divulgue une information sur un individu ou un groupe d'individus.
+
+![image](Images/trade_off_balance.png){width="0.5\\linewidth"}
+:::
+
+# Un arbitrage nécessaire
+::: frame
+
+-   Ne pas diffuser rendrait la statistique publique inutile;
+
+-   Tout diffuser rendrait la statistique publique dangereuse;
+
+![image](Images/trade_off_graph.png){width="0.75\\linewidth"}
+:::
+
+# Un arbitrage nécessaire
+::: frame
+
+::: block
+Arbitrer Arbitrer c'est faire un compromis entre minimiser le risque de divulgation d'information confidentielle et minimiser la perte d'information due aux traitements de protection des données.
+:::
+
+::: alertblock
+Attention Il n'existe pas de méthode minimisant le risque et la perte d'information en même temps!
+:::
+:::
+
+# Un exemple d'arbitrage
+::: frame
+
+Le recensement de la population en France:
+
+-   Décret de publication spécifique;
+
+-   Utilité des données du RP très forte (un certain nombre de lois en dépendent - dotation des communes par exemple)
+
+-   Risque d'utilisation des données diffusées contre les personnes est jugé faible.
+
+    $\Rightarrow$ L'Insee diffuse des données communales même si elles permettent parfois d'identifier et caractériser des individus.
+:::
+
+# Un arbitrage inhérent à la gestion de la confidentialité
+::: frame
+
+-   Il n'existe pas de risque zéro
+
+-   Aucune méthode ne supprime totalement le risque $\Rightarrow$
+
+    -   Arbitrer est donc inhérent à la discipline.
+
+    -   Cet arbitrage considéré comme **le paradigme** de la discipline.
+
+-   Un paradigme parfois critiqué (Cox et al. 2011):
+
+    -   S'il aide à savoir comment penser\...
+
+    -   \...il aide moins à savoir comment agir.
+:::
+
+# Un arbitrage nécessaire
+::: frame
+
+Pour arbitrer, il faut pouvoir
+
+-   Définir les termes de l'arbitrage
+
+-   Mesurer les phénomènes.
+
+$\Rightarrow$ Objectiver les notions de risque et d'utilité afin de pouvoir mener un arbitrage honnête.
+:::
+
+# En pratique, un autre arbitrage a lieu
+::: frame
+
+Un arbitrage Coûts/Bénéfices est réalisé:
+
+-   Par l'INS: Quels moyens (en termes de temps, de complexité et de coûts financiers) déployer pour quel niveau de protection ?
+
+-   Par l'attaquant: Vaut-il le coût de déployer des moyens importants à tenter de retrouver de l'information confidentielle contenue dans les données diffusées ?
+
+$\Longrightarrow$ Mettre en place des méthodes qui ont un coût adapté au risque objectivé et à la sensibilité des données.
+:::
+
+# Une démarche en plusieurs étapes
+::: frame
+Étapes clés du processus de protection des données
+
+Une démarche reprise de (Hundepool et al. 2010):
+
+1.  Est-il nécessaire de protéger les données ?
+
+2.  Quelles sont les caractéristiques et utilisations principales des données ?
+
+3.  Définition et mesure des risques de divulgation
+
+4.  Choix des méthodes de protection des données
+
+5.  Mise en oeuvre des méthodes
+:::
+
+# Étape 1
+::: frame
+Est-il nécessaire de protéger les données ?
+
+-   Analyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d'effectuer de traitement pour la protection des données
+
+-   Quel type de diffusion ? (tableaux de données, cartes, microdonnées \...)
+:::
+
+# Étape 2
+::: frame
+Quelles sont les caractéristiques et utilisations principales des données ? (I)
+
+-   Analyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection
+
+-   Analyse de la méthodologie de l'enquête
+
+-   Définition des objectifs de l'institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié
+:::
+
+# Étape 2
+::: frame
+Quelles sont les caractéristiques et utilisations principales des données ? (II)
+
+-   Analyse des besoins des utilisateurs (variables prioritaires, types d'analyses qui seront réalisées)
+
+-   Analyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)
+:::
+
+# Étape 3
+::: frame
+Définition et mesure des risques de divulgation
+
+-   Recenser les différents scénarios possibles conduisant à la divulgation des données
+
+-   Ces scénarios dépendent du type de données considérées (données exhaustives, enquêtes) et de la diffusion choisie (pour les chercheurs ou le grand public)
+
+-   Choisir la ou les méthodes pour mesurer le risque de divulgation (développé dans la partie \"Les différents types de risques\")
+
+-   Si on considère que le risque de divulgation est trop élevé alors il faut mettre en place des méthodes de protection des données
+:::
+
+# Étape 4
+::: frame
+Choix des méthodes de protection des données
+
+-   Choisir une / plusieurs méthode(s) de protection pour réduire les risques de divulgation au seuil de tolérance qu'on s'est fixé
+
+-   Le choix de la méthode dépend de l'impact sur l'utilité des données de ladite méthode
+
+-   Analyse de perte d'utilité due à la protection
+:::
+
+# Étape 5
+::: frame
+Mise en oeuvre des méthodes
+
+1.  Choisir un logiciel
+
+2.  Réaliser la mesure des risques de divulgation
+
+3.  Protéger les données
+
+4.  Quantification de l'information perdue
+
+5.  Contrôle du processus de protection
+
+    -   vérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable
+
+6.  Réalisation d'un document synthétisant les méthodes de protection utilisées et faisant le bilan de l'information perdue
+
+    -   si possible le transmettre aux utilisateurs des données publiées
+
+    -   peut contenir des avertissements sur les précautions à prendre lors de l'utilisation d'un fichier anonymisé
+:::
+
+# Objectiver le risque
+
+## Les différents types de risque
+::: frame
+
+::: block
+Risque de divulgation Risque de divulguer une information confidentielle en publiant des données.
+:::
+
+Quatre types de risque de divulgation :
+
+-   Risque de divulgation d'identité
+
+-   Risque de divulgation d'attribut
+
+-   Risque de divulgation par inférence
+
+-   Risque de divulgation par différenciation
+
+    -   par \"emboîtement\"
+
+    -   par \"recoupement\"
+:::
+
+## Risque de divulgation d'identité
+::: frame
+
+::: block
+Risque de divulgation d'identité Risque de reconnaître un individu spécifique dans les données publiées : un attaquant peut identifier une unité à partir de la publication.
+:::
+
+Exemples :
+
+-   Certaines variables comme le nom, l'adresse qui identifient directement des individus ou des foyers.
+
+-   Toutes les personnes avec de caractéristiques très rares (ex : personnes très âgées).
+
+-   Il a été montré que 87% de la population américaine est unique uniquement à partir du ZIP code, du genre et de la date de naissance (Sweeney, 2000).
+:::
+
+## Risque de divulgation d'identité
+::: frame
+
+-   L'âge, le genre, la profession et le niveau d'éducation sont généralement considérés comme des **quasi-identifiants**
+
+-   La divulgation d'identité ne permet pas toujours d'apprendre de nouvelles information sur l'individu (si l'attaquant parvient juste à matcher mais qu'il n'y a pas de variable en plus dans les données alors il n'a rien appris).
+:::
+
+## Risque de divulgation d'attribut
+::: frame
+
+::: block
+Risque de divulgation d'attribut Risque de divulguer de l'information sensible sur certains individus dans les données diffusées.
+:::
+
+Exemples :
+
+-   Si un individu est identifié à partir de certaines variables alors l'attaquant connaît toutes ses autres caractéristiques pour les autres variables publiées
+
+-   Divulgation d'un attribut de groupe : on parle de divulgation d'attribut même si l'attribut ne concerne pas un unique individu mais tout un groupe. A partir de la table ci-dessous on sait que tous les hommes sont diabétiques.
+
+                    Femme   Homme
+  ---------------- ------- -------
+     Diabétique      30      40
+   Pas diabétique    12       0
+:::
+
+## Risque de divulgation par inférence
+::: frame
+
+::: block
+Risque de divulgation par inférence Risque de pouvoir déduire avec une certitude élevée des informations sensibles sur des individus à partir des données publiées.
+:::
+
+Exemples :
+
+-   Lorsque la proportion de certaines caractéristiques est très élevée au sein d'un groupe
+
+                        Femme   Homme
+      ---------------- ------- -------
+         Diabétique      30      38
+       Pas diabétique    12       2
+
+-   Lorsque deux variables sont fortement corrélées, on peut déduire l'une à partir de l'autre
+:::
+
+## Risque de divulgation par différenciation 
+::: frame
+Deux types de différenciation :
+
+-   Différenciation par \"emboîtement\" : différenciation possible engendrée par l'existence de deux zonages parfaitement emboîtés l'un dans l'autre (cas le plus classique)
+
+-   Différenciation par \"recoupement\" : différenciation entre des zonages recouvrant un même territoire mais sans s'emboîter l'un dans l'autre - les zones de l'un recoupant celles de l'autre
+:::
+
+## Différenciation par recoupement
+::: frame
+
+![Exemple de différenciation par recoupement en France entre un département (zonage administratif) et un EPCI (zonage d'étude)](Images/diff_geo_recoupment1.png){#fig:enter-label width="0.8\\linewidth"}
+:::
+
+## Différenciation par recoupement
+::: frame
+
+![Zoom sur l'EPCI qui chevauche les départments du Rhône (69) et de l'Ain (01)](Images/diff_geo_recoupement2.png){#fig:enter-label width="1\\linewidth"}
+:::
+
+# Le paradigme classique: le k-anonymat
+
+## Distinguer les variables
+::: frame
+
+-   **Identifiants**: Variables permettant d'identifier directement un individu.
+
+-   **Quasi-identifiants**: Variables pouvant conduire à réidentifier un individu à partir d'une information auxiliaire.
+
+-   **Variables sensibles**: Variables pour lesquelles des mesures de protection spécifiques peuvent s'avérer nécessaires.
+
+-   Autres variables
+:::
+
+## Distinguer les variables
+::: frame
+
+Remarques:
+
+-   Les identifiants sont retirés très tôt au cours du processus de production $\Rightarrow$ ils ne posent pas de problème en termes de gestion de la confidentialité.
+
+-   Les quasi-identifiants:
+
+    -   Pour des données individus: sexe, âge, lieu d'habitation, diplôme, statut marital, etc.
+
+    -   Pour des données entreprises: Secteur d'activité, lieu du siège, etc.
+
+    -   Liste à déterminer à chaque fois
+
+    -   De quelles variables un attaquant dispose-t-il déjà ?
+:::
+
+## Distinguer les variables
+::: frame
+::: {#tab:types_variables}
+  Var. Identifiantes                     Var Quasi-Identifiantes                           Autre Variable            Var. Sensible
+  -------------------- ----------------- ------------------------- --------- ------------- ------------------------- ----------------
+  **Nom**              **Adresse**       **Commune**               **Âge**   **Diplôme**   **Statut d'occupation**   **Revenus**
+  Johan                3, rue \...       Paris                     36        Bac           Actif occupé              *150 000,00 €*
+  Jeanne               115, bd \...      Malakoff                  41        Bac +3        Actif occupé              *60 000,00 €*
+  Jehanne              68, rue \...      Lyon                      52        Bac +5        Chômeur                   *75 000,00 €*
+  Joann                7, chemin \...    Villeurbanne              45        Bac           Actif occupé              *32 000,00 €*
+  Yoann                53, avenue \...   Cerisy-La-Salle           41        BEP           Actif occupé              *19 000,00 €*
+  Jenny                26bis, rue \...   Cherbourg                 26        CAP           Chômeur                   *5 000,00 €*
+  Johnny               12, place \...    Pithiviers                31        Bac Pro       Actif occupé              *25 000,00 €*
+  Jean                 3, impasse \...   Orléans                   48        Bac           Actif occupé              *32 000,00 €*
+  Jeannette            8, chemin ...     Paris                     85        Aucun         Retraité                  *10 000,00 €*
+
+  : Les différents types de variables dans un jeu de données
+:::
+:::
+
+## Quantifier le risque : le k-anonymat
+::: frame
+
+::: block
+Le k-anonymat (Samarati et Sweeney, 1998) Un jeu de données est considéré comme k-anonyme si la combinaison la moins fréquente des modalités des variables quasi-identifiantes compte au moins *k* unités.
+:::
+
+-   Cette mesure assure que tous les individus sont similaires à au moins k-1 autres.
+
+-   **Mesure de risque globale** qui se focalise sur les individus les plus à risque de ré-identification.
+
+-   La probabilité associée au risque pour un individu du fichier d'être ré-identifié est au minimum 1/*k*
+:::
+
+## Quantifier le risque : le k-anonymat
+::: frame
+::: {#tab:1-anonyme}
+  Id   Age         Genre   Maladie(s)
+  ---- ----------- ------- -------------------------
+  1    \[45;55\[   M       Diabète
+  2    \[45;55\[   M       Hypertension artérielle
+  3    \[45;55\[   F       Cancer
+  4    \[45;55\[   F       Grippe
+  5    \[70;75\[   M       Diabète
+  6    \[45;55\[   M       Diabète
+
+  : Exemple d'un fichier individuel 1-anonyme, l'âge et le genre étant considérés comme quasi-identifiants
+:::
+:::
+
+## Quantifier le risque : la l-diversité
+::: frame
+
+::: block
+La l-diversité Assure une diversité suffisante des modalités d'une variable sensible prises par les individus au sein d'une même combinaison de quasi-identifiants.
+:::
+
+-   Raffinement du $\mathbf{k}$-anonymat.
+
+-   Protection contre la divulgation d'attributs sensibles.
+:::
+
+## Quantifier le risque : la l-diversité
+::: frame
+
+     *Age*     *Sexe*   *Maladie(s)*
+  ----------- -------- --------------
+   \[50;55\[     H        Diabète
+   \[50;55\[     H        Diabète
+   \[50;55\[     F         Cancer
+   \[50;55\[     F         Grippe
+   \[50;55\[     H        Diabète
+
+  : Un fichier 2-anonyme mais pas assez diversifié
+:::
+
+## Limites du k-anonymat
+::: frame
+
+Ces mesures sont très répandues, faciles à comprendre et à mettre en place, mais elles ont aussi quelques limites:
+
+-   L'efficacité dépend du **scénario de divulgation** :
+
+    -   Si l'intrus sait qu'un individu spécifique est dans l'ensemble de données, le $\mathbf{k}$-anonymat est une **manière équitable d'évaluer le risque de ré-identification**.
+
+    -   Si l'intrus essaie de faire correspondre les données publiées avec une base de données d'identification, l'évaluation des risques basée sur le $\mathbf{k}$-anonymat est conservatrice.
+
+-   Le $\mathbf{k}$-anonymat **ne prend pas en compte les poids d'échantillonnage**.\
+    $\Rightarrow$ le k-anonymat appliqué à un échantillon sur-évaluera le risque de ré-identification.
+:::
+
+# Mesures probabilistes du risque
+
+## Mesures (naïves) du risque individuel
+::: frame
+
+-   **Probabilité de ré-identifier un individu** d'une *population*: $r_k = \frac{1}{N_k}$\
+    ($N_k$ = nb d'individus partageant la même combinaison de clés $k$).
+
+-   **Probabilité de ré-identifier un individu d'un *échantillon***:
+
+    -   Soit on raisonne *au niveau de l'échantillon*: $r_k = \frac{1}{n_k}$\
+        ($n_k$ = nb d'individus de l'échantillon partageant la même combinaison de clés $k$).
+
+    -   Soit on raisonne *au niveau de la population*: $r_k$ peut être estimé par $\hat{r_k} = \frac{1}{\sum\limits_{i \in k}{w_i}}$,\
+        où $w_i$ est le poids de l'individu $i$.
+:::
+
+## Mesures probabilistes du risque
+::: frame
+
+
+-   Les individus les plus à risque:
+
+    -   Les uniques de population, quand $N_k = 1$
+
+    -   Les uniques dans l'échantillon, quand $n_k = 1$
+
+    -   Les uniques dans l'échantillon qui sont également uniques dans la population, quand $\sum\limits_{i \in k}{w_i} = 1$
+
+-   Les mesures individuelles permettent de cibler les individus les plus à risque.
+
+-   Les mesures globales sont utiles pour réaliser l'arbitrage.
+
+    -   Par exemple, le risque individuel moyen $\tau = \frac{\sum\limits_{k}{n_k \times r_k}}{n}$.
+:::
+
+## Mesures probabilistes du risque 
+::: frame
+Des mesures plus raffinées sont implémentées dans des outils classiques tels que $\mu$-Argus ou le package R sdcmicro.
+
+-   Quand on dispose d'un échantillon (donc des $n_k$), on ne connaît en général pas les $N_k$.
+
+-   Mesure du risque individuel conditionnellement à l'échantillon: $r_k = \mathbb{E}(\frac{1}{N_k}|n_k)$.
+
+-   Mesure dépendant d'une modélisation de la loi (posterior) de $N_k | n_k$
+
+    -   Modélisation des fréquences des clés dans la population conditionnellement à leur fréquence dans l'échantillon.
+
+    -   Par une binomiale négative par exemple dans Benedetti et Franconi, 1998.
+:::
+
+## Autres mesures
+::: frame
+
+-   Le **Record Linkage**:
+
+    -   Mesure *a posteriori* de la distance entre les individus du jeu protégé et ceux du jeu original.
+
+    -   Permet d'évaluer le nombre de correspondances exactes entre données perturbées et originales.
+
+-   Les **Outliers**:
+
+    -   Fort risque de réidentification des individus ayant des valeurs en queue de distribution (par ex. les très hauts revenus des footballeurs)
+
+    -   Une perturbation n'est pas toujours suffisante (Un outlier perturbé reste souvent un outlier).
+
+    -   Détection des outliers à partir des quantiles de la distribution.
+:::
+
+## Définir un scénario d'attaque
+::: frame
+
+::: block
+Scénario d'attaque Définir des scénarios d'attaque c'est envisager les moyens utilisés par l'attaquant et objectiver les utilisations frauduleuses que nous chercherons à empêcher.
+:::
+
+-   Arbitrage Coûts/Risques (INS)
+
+-   Arbitrage Coûts/Bénéfices (Attaquant)
+:::
+
+# Objectiver la perte d'information (utilité)
+
+## Comment la définir ?
+
+::: frame
+Comment la définir ?
+
+-   Le processus de protection des données entraîne nécessairement une perte d'information
+
+::: columns
+::: column
+0.49
+
+  -------- ----- ------------
+   Région   Âge   Profession
+                    Statut
+     92     14     Inactif
+     75     41     Chômeur
+     75     52     Employé
+     94     45     Employé
+     75     41     Chômeur
+     92     26     Employé
+     92     31     Employé
+     94     14     Inactif
+  -------- ----- ------------
+:::
+
+::: column
+0.49
+
+  -------- ----- ------------
+   Région   Âge   Profession
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+  -------- ----- ------------
+:::
+:::
+
+risque = 100 % , Perte d'info = 0 risque = 0 % , Perte d'info = 100 %
+:::
+
+## Perte d'information
+::: frame
+Comment la définir ? Les utilisateurs
+
+-   Pas de définition de la perte d'information sans connaître la **gamme envisagée des utilisateurs des données**
+
+-   En **fonction des utilisateurs finaux**, le concept de perte d'information peut changer
+
+-   Il n'est pas recommandé de publier plusieurs versions protégées du même jeu de données pour chaque type d'utilisateur $\longrightarrow$ risques de divulgation importants par différenciation.
+:::
+
+## Perte d'information
+::: frame
+Comment la définir ? Idée principale
+
+Deux moyens pour mesurer la perte d'information :
+
+1.  **Comparer les enregistrements bruts** entre le jeu de données original et le jeu de données protégé
+
+2.  **Comparer certaines statistiques** calculées sur les jeux de données originaux et protégés
+:::
+
+## Perte d'information
+::: frame
+Données continues Pour les **données continues**, formellement :
+
+-   $I_1,\dots, I_n$, $n$ enregistrements individuels
+
+-   $Z_1,..,Z_p$, $p$ données continues
+
+-   $X$ la matrice de données originale, $X^{'}$ la matrice de données protégée
+:::
+
+## Perte d'information
+::: frame
+Données continues, distance entre matrices
+
+-   **Erreur quadratique moyenne** : somme des différences au carré, composante par composante entre 2 matrices, divisée par le nombre de coefficients de chaque matrice : $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n(x_{ij}-x^{'}_{ij})^2$$
+:::
+
+::: frame
+Perte d'informationDonnées continues, distance entre matrices
+
+-   **Erreur absolue moyenne** : somme des différences absolues, composante par composante entre 2 matrices, divisée par le nombre de coefficients de chaque matrice $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n|x_{ij}-x^{'}_{ij}|$$
+:::
+
+::: frame
+Perte d'informationDonnées continues, distance entre matrices
+
+-   **Variation moyenne** : somme des variations absolues en pourcentage des composantes de la matrice protégée par rapport à la matrice de données originale $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{|x_{ij}|}$$
+:::
+
+## Perte d'information 
+::: frame
+Un exemple
+
+-   [$X$]{style="color: blue"} en haut, [$X^{'}$]{style="color: blue"} en bas, les données perturbées
+
+  ------ -------- --------------------------- ---------------------------
+   Sexe   Région              Âge                 heures travaillées
+                                                      par semaine
+    F       92     [36]{style="color: blue"}   [17]{style="color: blue"}
+    M       75     [41]{style="color: blue"}   [35]{style="color: blue"}
+    F       75     [52]{style="color: blue"}   [5]{style="color: blue"}
+  ------ -------- --------------------------- ---------------------------
+
+  ------ -------- --------------------------- ---------------------------
+   Sexe   Région              Âge                 heures travaillées
+                                                      par semaine
+    F       92     [34]{style="color: blue"}   [23]{style="color: blue"}
+    F       75     [48]{style="color: blue"}   [35]{style="color: blue"}
+    M       75     [58]{style="color: blue"}   [2]{style="color: blue"}
+  ------ -------- --------------------------- ---------------------------
+:::
+
+## Perte d'information
+::: frame
+Un exemple
+
+-   **Erreur quadratique moyenne** = $\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n(x_{ij}-x^{'}_{ij})^2=\frac{(36-34)^2+(41-48)^2+(52-58)^2+(17-23)^2+(35-35)^2+(5-2)^2}{6}=\frac{4+49+36+36+9}{6}=22$
+
+-   **Erreur absolue moyenne** = $\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n|x_{ij}-x^{'}_{ij}|=\frac{|36-34|+|41-48|+|52-58|+|17-23|+|35-35|+|5-2|}{6}=\frac{2+7+6+6+0+3}{6}=\frac{24}{6}=4$
+
+-   **Variation moyenne** = $\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{|x_{ij}|}=\frac{\frac{|36-34|}{36}+\frac{|41-48|}{41}+\frac{|52-58|}{52}+\frac{|17-23|}{17}+\frac{|35-35|}{35}+\frac{|5-2|}{5}}{6}=\frac{\frac{2}{36}+\frac{7}{41}+\frac{6}{52}+\frac{6}{17}+\frac{0}{35}+\frac{3}{5}}{6}=0.15$
+:::
+
+## Perte d'information
+::: frame
+
+-   Les petites valeurs de $x_{ij}$ peuvent entraîner une instabilité lors du calcul de la variation moyenne $\longrightarrow$ pour éviter cela, la solution est la formulation : $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{\sqrt{2}S_j}$$ avec $S_j$ l'écart type de la $j$-ème variable
+:::
+
+## Perte d'information
+::: frame
+Données continues
+
+Mesures spécifiques:
+
+-   Comparaisons univariées (comparaison de la distribution d'une variable avant et après perturbation).
+
+-   Comparaisons bivariées: Corrélations linéaires par exemple.
+
+-   Comparaison multivariées: Comparaison des plans d'une analyse en composante principale.
+
+-   Comparaison des paramètres d'une régression, etc.
+:::
+
+## Données catégorielles
+::: frame
+
+Pour les **variables catégorielles**, 3 idées principales pour évaluer la perte d'information avec des données catégorielles :
+
+-   **Comparaison directe** des valeurs des variables
+
+    -   Écarts absolus moyens
+
+    -   
+
+-   Comparaison des **tables de contingence**
+
+-   Mesures basées sur **l'entropie**
+:::
+
+## Mesure basée sur l'entropie
+::: frame
+
+-   L'entropie mesure l'incertitude induite par une distribution de probabilité donnée : $$H(V/V^{'}=j) = - \sum_{i=1}^K P(V=i|V^{'} = j) \log(P(V=i|V^{'} = j))$$
+
+-   Selon la méthode, il peut être difficile d'évaluer la quantité $P(V=i|V^{'} = j)$
+
+-   Risque global $$R = \sum_{r \in enregistrements} H(V/V^{'}=\underset{valeur protégée}{\underbrace{j_{r}}})$$
+:::
+
+## Perte d'information
+::: frame
+
+-   $K = 5$ catégories, soit $j = 4$, et examinons $P(V=i|V^{'} = 4)_{1\leq i\leq 5}$
+
+::: columns
+::: column
+0.30
+
+![image](Images/Dirac.png){width="4cm"}
+:::
+
+::: column
+0.30
+
+![image](Images/Compromise.png){width="4cm"}
+:::
+
+::: column
+0.30
+
+![image](Images/uniform.png){width="4cm"}
+:::
+:::
+
+-   $\longrightarrow$ Compromis entre risque et perte d'information !
+:::
+
+## Visualisation
+::: frame
+
+-   De nombreux moyens de visualisation de la perte d'information:
+
+    -   Univarié: histogrammes, boîtes à moustaches, diagrammes en barres
+
+    -   Bivarié: Matrices de corrélations, Diagrammes en mosaïques, Plan d'une analyse factorielle des correspondances, etc.
+
+    -   Multivarié: 1er plan d'une analyse factorielle (ACP, ACM, AFDM)
+:::
+
+## Visualisation
+::: frame
+
+Matrice de corrélations dans les données originales et différences observées après perturbation selon deux méthodes différentes:
+
+::: columns
+::: column
+0.30
+
+![Original](Images/cor_original.png){width="4cm"}
+:::
+
+::: column
+0.30
+
+![Méthode 1](Images/cor_cart.png){width="4cm"}
+:::
+
+::: column
+0.30
+
+![Méthode 2](Images/cor_ctgan.png){width="4cm"}
+:::
+:::
+:::
+
+## Visualisation
+::: frame
+
+
+Matrice de corrélations dans les données originales et différences observées après perturbation selon deux méthodes différentes:
+
+::: columns
+::: column
+0.48
+
+![Original](Images/acp_original.png){width="4cm"}
+:::
+
+::: column
+0.48
+
+![Perturbé](Images/acp_ctgan.png){width="4cm"}
+:::
+:::
+:::
+
+## Données tabulées
+::: frame
+
+Pour les **variables catégorielles**, 3 idées principales pour évaluer la perte d'information avec des données catégorielles :
+
+-   Mesures globales
+
+    -   Écarts absolus moyens
+
+    -   Distance de Hellinger\
+        $$HD(\mathbf{X}, \mathbf{X}') = \frac{1}{\sqrt{2}} \sqrt{\sum_{j = 1}^M \left(\sqrt{\frac{x'_j}{\sum_{j=1}^M x'_j}} - \sqrt{\frac{x_j}{\sum_{j=1}^M x_j}}\right)^2}$$
+
+-   Pour Tableau de contingence:
+
+    -   Comparaison des V de Cramer (basée sur la statistique du $\chi^2$
+
+    -   Comparaison du 1er plan factoriel d'une analyse factorielle des correspondances.
+:::
+
+## EN guise de conclusion
+::: frame
+
+-   Il existe de nombreuses façons d'évaluer la perte d'information.
+
+-   Fortement liée au niveau de protection.
+
+-   De nombreuses méthodes pour évaluer la perte d'information, le choix de la mesure dépend entièrement des utilisateurs finaux des données publiées.
+
+-   Difficile d'anticiper toutes les utilisations d'un ensemble de données et donc toutes les mesures associées de perte d'information.
+
+-   Nécessité de faire des concessions sur certaines caractéristiques d'un tableau pour libérer des contraintes ailleurs.
+
+-   On ne peut pas préserver toutes les caractéristiques d'un ensemble de données.
+:::
+
+# Pour aller plus loin
+
+## Source généraliste
+::: frame
+
+Hundepool and alt., *Handbook on Statistical Disclosure Control*, Wiley, 2012\
+Une version libre et gratuite est disponible ici: <https://ec.europa.eu/eurostat/cros/system/files/SDC_Handbook.pdf> (2010)
+:::
+
+## Risques de divulgation
+::: frame
+
+-   Sweeney, L. (2000). Simple demographics often identify people uniquely. *Health* (San Francisco), 671(2000), 1-34.
+
+-   El Emam, K., & Dankar, F. K. (2008). Protecting privacy using k-anonymity. *Journal of the American Medical Informatics Association*, 15(5), 627-637.
+:::
+
+## Compromis entre Risque et Utilité:
+::: frame
+
+-   Domingo-Ferrer, J., Mateo-Sanz, J. M., & Torra, V. (2001, May). Comparing SDC methods for microdata on the basis of information loss and disclosure risk. In *Pre-proceedings of ETK-NTTS* (Vol. 2, pp. 807-826).
 :::
