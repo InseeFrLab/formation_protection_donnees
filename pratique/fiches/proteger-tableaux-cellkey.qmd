@@ -1,0 +1,4 @@
+---
+title: Protéger des tableaux avec la méthode des clés aléatoires
+image: ../../images/pratique.png
+---

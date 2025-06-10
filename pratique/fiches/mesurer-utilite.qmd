@@ -1,0 +1,4 @@
+---
+title: Mesurer la perte d'information
+order: 6
+---

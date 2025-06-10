@@ -1,0 +1,4 @@
+---
+title: Générer des données synthétiques
+order: 5
+---

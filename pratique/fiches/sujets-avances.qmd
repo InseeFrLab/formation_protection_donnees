@@ -1,0 +1,19 @@
+---
+title: "Des sujets pour aller plus loin"
+description: |
+  Découvrir en particulier la génération de données synthétiques et l'application de la confidentialité différentielle
+order: 4
+href: pratique/fiches/sujets-avances.html
+image: ../../images/pratique.png
+listing:
+  id: avances
+  contents:
+    - "generer-synth.qmd"
+    - "confidentialite-differentielle.qmd"
+  sort: false
+  type: grid
+  image-height: 300px
+  grid-columns: 3
+page-layout: full
+toc: false
+---

@@ -5,8 +5,22 @@ description: |
 order: 2
 href: pratique/index.html
 image: ../images/pratique.png
+listing:
+  id: pratique
+  contents:
+    - "fiches/suppressif.qmd"
+    - "fiches/perturbatif.qmd"
+    - "fiches/arbitrage.qmd"
+    - "fiches/sujets-avances.qmd"
+  sort: false
+  type: grid
+  image-height: 300px
+  grid-columns: 3
+page-layout: full
+toc: false
 ---
 
+<!-- 
 ## Les fiches pratiques
 
 ### Réaliser un arbitrage
@@ -28,4 +42,4 @@ image: ../images/pratique.png
 ### Introduction à la confidentialité différentielle
 
 - [Appliquer des mécanismes de la confidentialité différentielle](fiches/confidentialite-differentielle.qmd)
-
+ -->

@@ -1,0 +1,19 @@
+---
+title: "Arbitrer entre risque et utilité"
+description: |
+  Outils à disposition pour réaliser l'arbitrage
+order: 3
+href: pratique/fiches/arbitrage.html
+image: ../../images/pratique.png
+listing:
+  id: arbitrage
+  contents:
+    - "mesurer-risque.qmd"
+    - "mesurer-utilite.qmd"
+  sort: false
+  type: grid
+  image-height: 300px
+  grid-columns: 3
+page-layout: full
+toc: false
+---

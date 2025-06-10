@@ -1,0 +1,20 @@
+---
+title: "Pratiquer les méthodes suppressives"
+description: |
+  Découvrir l'application des méthodes suppressives avec R.
+order: 2
+href: pratique/fiches/suppressif.html
+image: ../../images/pratique.png
+listing:
+  id: suppressif
+  contents:
+    - "proteger-tableaux-suppressif.qmd"
+    - "analyse-demande.qmd"
+    - "analyse-automatique.qmd"
+  sort: false
+  type: grid
+  image-height: 300px
+  grid-columns: 3
+page-layout: full
+toc: false
+---
