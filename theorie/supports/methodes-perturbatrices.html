@@ -198,6 +198,1601 @@
 </table>
 </div>
 </div>
+</section>
+<section id="méthodes-perturbatrices" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Méthodes perturbatrices</h2>
+<div class="frame">
+<ul>
+<li><p>Étendue de la perturbation:</p>
+<ul>
+<li><p>Seulement sur les plus petits comptages (données les plus à risque de divulgation)</p></li>
+<li><p>Sur toutes les cellules: toutes les cellules du tableau sont perturbées (arrondi, Méthode des clés aléatoires (CKM))</p></li>
+</ul></li>
+<li><p>Problématiques des méthodes perturbatrices:</p>
+<ul>
+<li><p>Comment assurer la cohérence des tableaux entre eux ?</p></li>
+<li><p>Comment préserver l’additivité au sein des tableaux ?</p></li>
+</ul></li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="méthodes-darrondi-et-apparentées" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Méthodes d’arrondi et apparentées</h1>
+<div class="frame">
+<p>Il existe plusieurs méthodes basées sur des arrondis, dont:</p>
+<ul>
+<li><p>Arrondi des petits comptages avec préservation de l’additivité des tableaux (Small Count Rounding) <span class="math inline">\(\Rightarrow\)</span> une protection limitée.</p></li>
+<li><p>Arrondi contrôlé (Controlled Rounding): Arrondi de l’ensemble des cellules du tableau tout en conservant l’additivité.</p></li>
+<li><p>Controlled Tabular adjustment (CTA): Les valeurs des cellules sensibles sont perturbées pour respecter un <strong>intervalle de protection</strong>. Les autres cellules sont ajustées pour restaurer l’additivité dans les tableaux.</p></li>
+</ul>
+</div>
+</section>
+<section id="un-exemple" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple</h2>
+<div class="frame">
+<p>Tableau de comptage original:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Région</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3-7</td>
+<td style="text-align: center;">Nord</td>
+<td>Ouest</td>
+<td>Est</td>
+<td>Sud</td>
+<td>Total</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;">Oui</td>
+<td>6</td>
+<td>14</td>
+<td><strong>1</strong></td>
+<td>7</td>
+<td>28</td>
+</tr>
+<tr class="odd">
+<td>2-7</td>
+<td style="text-align: center;">Non</td>
+<td><strong>3</strong></td>
+<td><strong>2</strong></td>
+<td><strong>1</strong></td>
+<td>13</td>
+<td>19</td>
+</tr>
+<tr class="even">
+<td>2-7</td>
+<td style="text-align: center;">Total</td>
+<td>9</td>
+<td>16</td>
+<td><strong>2</strong></td>
+<td>20</td>
+<td>47</td>
+</tr>
+</tbody>
+</table>
+<p>Secret primaire = les comptages inférieurs strictement à 5.</p>
+</div>
+</section>
+<section id="small-count-rounding" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Small Count Rounding</h2>
+<div class="frame">
+<p>base d’arrondi = 5.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Région</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3-7</td>
+<td style="text-align: center;">Nord</td>
+<td>Ouest</td>
+<td>Est</td>
+<td>Sud</td>
+<td>Total</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;">Oui</td>
+<td>6</td>
+<td>14</td>
+<td><strong>0</strong></td>
+<td>7</td>
+<td>27</td>
+</tr>
+<tr class="odd">
+<td>2-7</td>
+<td style="text-align: center;">Non</td>
+<td><strong>5</strong></td>
+<td><strong>0</strong></td>
+<td><strong>0</strong></td>
+<td>13</td>
+<td><strong>18</strong></td>
+</tr>
+<tr class="even">
+<td>2-7</td>
+<td style="text-align: center;">Total</td>
+<td><strong>11</strong></td>
+<td><strong>14</strong></td>
+<td><strong>0</strong></td>
+<td>20</td>
+<td><strong>45</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Moyenne des écarts absolus: <span class="math inline">\(1.067\)</span>.</p>
+</div>
+</section>
+<section id="arrondi-contrôlé" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Arrondi contrôlé</h2>
+<div class="frame">
+<p>avec b = 5</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Région</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3-7</td>
+<td style="text-align: center;">Nord</td>
+<td>Ouest</td>
+<td>Est</td>
+<td>Sud</td>
+<td>Total</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;">Oui</td>
+<td><strong>5</strong></td>
+<td><strong>15</strong></td>
+<td><strong>0</strong></td>
+<td><strong>5</strong></td>
+<td><strong>25</strong></td>
+</tr>
+<tr class="odd">
+<td>2-7</td>
+<td style="text-align: center;">Non</td>
+<td><strong>5</strong></td>
+<td><strong>0</strong></td>
+<td><strong>0</strong></td>
+<td><strong>15</strong></td>
+<td><strong>20</strong></td>
+</tr>
+<tr class="even">
+<td>2-7</td>
+<td style="text-align: center;">Total</td>
+<td><strong>10</strong></td>
+<td><strong>15</strong></td>
+<td><strong>0</strong></td>
+<td><strong>20</strong></td>
+<td><strong>45</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Moyenne des écarts absolus: <span class="math inline">\(1.467\)</span>.</p>
+</div>
+</section>
+<section id="controlled-tabular-adjustment" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Controlled Tabular Adjustment</h2>
+<div class="frame">
+<p>avec un intervalle de protection = <span class="math inline">\([0;5]\)</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Région</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3-7</td>
+<td style="text-align: center;">Nord</td>
+<td>Ouest</td>
+<td>Est</td>
+<td>Sud</td>
+<td>Total</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;">Oui</td>
+<td><strong>5</strong></td>
+<td><strong>16</strong></td>
+<td><strong>0</strong></td>
+<td>7</td>
+<td>28</td>
+</tr>
+<tr class="odd">
+<td>2-7</td>
+<td style="text-align: center;">Non</td>
+<td><strong>6</strong></td>
+<td><strong>0</strong></td>
+<td><strong>0</strong></td>
+<td>13</td>
+<td>19</td>
+</tr>
+<tr class="even">
+<td>2-7</td>
+<td style="text-align: center;">Total</td>
+<td><strong>11</strong></td>
+<td>16</td>
+<td><strong>0</strong></td>
+<td>20</td>
+<td>47</td>
+</tr>
+</tbody>
+</table>
+<p>Moyenne des écarts absolus: <span class="math inline">\(0.933\)</span>.</p>
+</div>
+</section>
+<section id="avantages-inconvénients" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Avantages / inconvénients</h2>
+<div class="frame">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Avantages</strong></th>
+<th style="text-align: left;"><strong>Inconvénients</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Conservation de l’additivité</td>
+<td style="text-align: left;">CR et CTA: Recherche de la solution optimale sur grands tableaux très couteuse en temps (optim. lin.)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SCR: Algorithme très efficace sur R</td>
+<td style="text-align: left;">CR: Une perte d’information parfois excessive</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Perception de la protection (en particulier des petites valeurs)</td>
+<td style="text-align: left;">Difficile à utiliser dans le cadre d’une diffusion complexe</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section></section>
+<section>
+<section id="la-méthode-des-clés-aléatoires-ckm" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>La méthode des clés aléatoires (CKM)</h1>
+<div class="frame">
+<p>Principales caractéristiques de la méthode:</p>
+<ul>
+<li><p>Toutes les cellules sont perturbées</p></li>
+<li><p>Les cellules sont perturbées indépendamment les unes des autres</p></li>
+<li><p>Une même cellule est toujours perturbée de la même manière</p></li>
+<li><p>Les zéros originaux ne sont pas perturbés (mais un effectif faible peut devenir un zéro)</p></li>
+</ul>
+</div>
+</section>
+<section id="la-distribution-de-probabilités" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>La distribution de probabilités</h2>
+<div class="frame">
+<p>Propriétés :</p>
+<ul>
+<li><p>Une déviation maximale D et une variance V sont fixés en amont</p></li>
+<li><p>Le bruit injecté est sans biais</p></li>
+<li><p>La loi de probabilité de la déviation injectée est définie à partir d’une matrice de transition</p></li>
+</ul>
+</div>
+</section>
+<section id="un-exemple-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple</h2>
+<div class="frame">
+<p>CKM avec <span class="math inline">\(D = [0;5]\)</span> et <span class="math inline">\(V = 3\)</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Région</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3-7</td>
+<td style="text-align: center;">Nord</td>
+<td>Ouest</td>
+<td>Est</td>
+<td>Sud</td>
+<td>Total</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;">Oui</td>
+<td><strong>4</strong></td>
+<td><strong>15</strong></td>
+<td><strong>0</strong></td>
+<td><strong>8</strong></td>
+<td><strong>28</strong></td>
+</tr>
+<tr class="odd">
+<td>2-7</td>
+<td style="text-align: center;">Non</td>
+<td><strong>1</strong></td>
+<td><strong>3</strong></td>
+<td><strong>2</strong></td>
+<td><strong>15</strong></td>
+<td><strong>20</strong></td>
+</tr>
+<tr class="even">
+<td>2-7</td>
+<td style="text-align: center;">Total</td>
+<td><strong>10</strong></td>
+<td><strong>16</strong></td>
+<td><strong>4</strong></td>
+<td><strong>21</strong></td>
+<td><strong>46</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="les-usages" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les usages</h2>
+<div class="frame">
+<p>La méthode est utilisée par plusieurs INS:</p>
+<ul>
+<li><p>Depuis 2006, ABS met à disposition un outil de requêtage en ligne pour obtenir des données de son recensement quinquennal. Les données sont protégées avec la CKM. (<a href="https://tablebuilder.abs.gov.au" class="uri">https://tablebuilder.abs.gov.au</a>)</p></li>
+<li><p>La CKM est une des méthodes préconisées par Eurostat pour protéger les données du Census européen 2021.</p></li>
+<li><p>Dans ce cadre, Destatis utilise la CKM pour diffuser des données sur des grilles de 500m.</p></li>
+<li><p>2024/2025: l’Insee diffuse les données sur les Quartiers de la Politique de la Ville (QPV).</p></li>
+</ul>
+</div>
+</section>
+<section id="un-exemple-pour-illustrer-la-ckm" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple pour illustrer la CKM</h2>
+<div class="frame">
+<p><strong>Etape 1 : Construction de la matrice de transition</strong></p>
+<p>Prenons D = 3 et V = 1.5. Avec le package <code>ptable</code> de <code>R</code> on peut calculer une matrice de transition :</p>
+</div>
+</section>
+<section id="un-exemple-pour-illustrer-la-ckm-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple pour illustrer la CKM</h2>
+<div class="frame">
+<p><strong>Etape 2 : Création d’une clé individuelle aléatoire</strong></p>
+<p>Supposons que la base <span class="math inline">\(\mathcal{B}\)</span> soit composé des 6 individus suivant et qu’à chacun on associe une clé :</p>
+<div class="center">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>id</strong></th>
+<th style="text-align: center;"><strong>Ville</strong></th>
+<th style="text-align: center;"><strong>Ecole</strong></th>
+<th style="text-align: center;"><strong>KEY</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">Rennes</td>
+<td style="text-align: center;">Ensai</td>
+<td style="text-align: center;">0.9177275</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Paris</td>
+<td style="text-align: center;">Mines</td>
+<td style="text-align: center;">0.1850062</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">Rennes</td>
+<td style="text-align: center;">Ensai</td>
+<td style="text-align: center;">0.6266963</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">Lyon</td>
+<td style="text-align: center;">Centrale</td>
+<td style="text-align: center;">0.1117820</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">Marseille</td>
+<td style="text-align: center;">Centrale</td>
+<td style="text-align: center;">0.6496634</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">Lille</td>
+<td style="text-align: center;">Centrale</td>
+<td style="text-align: center;">0.2813433</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="un-exemple-pour-illustrer-la-ckm-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple pour illustrer la CKM</h2>
+<div class="frame">
+<p><strong>Etape 3 : Construction de la clé d’une cellule</strong></p>
+<p>Nous souhaitons diffuser le nombre d’individus selon leur école.</p>
+<p>On a :</p>
+<div class="center">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Ecole</strong></th>
+<th style="text-align: center;"><strong>i</strong></th>
+<th style="text-align: center;"><strong>individus</strong></th>
+<th style="text-align: center;"><strong>Skey</strong></th>
+<th style="text-align: center;"><strong>CK</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Ensai</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">{1,3}</td>
+<td style="text-align: center;">1.544424</td>
+<td style="text-align: center;">0.544425</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Mines</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">{2}</td>
+<td style="text-align: center;">0.1805062</td>
+<td style="text-align: center;">0.1805062</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Centrale</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">{4,5,6}</td>
+<td style="text-align: center;">1.0422789</td>
+<td style="text-align: center;">0.42789</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">{1,2,3,4,5,6}</td>
+<td style="text-align: center;">2.772219</td>
+<td style="text-align: center;">0.772219</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="un-exemple-pour-illustrer-la-ckm-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple pour illustrer la CKM</h2>
+<div class="frame">
+<p><strong>Etape 4 : Déterminer la perturbation à injecter</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">i</th>
+<th style="text-align: center;">j</th>
+<th style="text-align: center;">p</th>
+<th style="text-align: center;">v</th>
+<th style="text-align: center;">p_int_lb</th>
+<th style="text-align: center;">p_int_ub</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1.00000000</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.00000000</td>
+<td style="text-align: center;">1.00000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.37967089</td>
+<td style="text-align: center;">-1</td>
+<td style="text-align: center;">0.00000000</td>
+<td style="text-align: center;">0.37967089</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.37967089</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.37967089</td>
+<td style="text-align: center;">0.75934178</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.13660124</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.75934178</td>
+<td style="text-align: center;">0.89594302</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.06910130</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.89594302</td>
+<td style="text-align: center;">0.96504432</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.03495568</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.96504432</td>
+<td style="text-align: center;">1.00000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.11466600</td>
+<td style="text-align: center;">-2</td>
+<td style="text-align: center;">0.00000000</td>
+<td style="text-align: center;">0.11466600</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.24491770</td>
+<td style="text-align: center;">-1</td>
+<td style="text-align: center;">0.11466600</td>
+<td style="text-align: center;">0.35958370</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.30449462</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.35958370</td>
+<td style="text-align: center;">0.66407832</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.22034995</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.66407832</td>
+<td style="text-align: center;">0.88442827</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.09281544</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.88442827</td>
+<td style="text-align: center;">0.97724371</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.02275629</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.97724371</td>
+<td style="text-align: center;">1.00000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.01792237</td>
+<td style="text-align: center;">-3</td>
+<td style="text-align: center;">0.00000000</td>
+<td style="text-align: center;">0.01792237</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.08898737</td>
+<td style="text-align: center;">-2</td>
+<td style="text-align: center;">0.01792237</td>
+<td style="text-align: center;">0.10690974</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.23274919</td>
+<td style="text-align: center;">-1</td>
+<td style="text-align: center;">0.10690974</td>
+<td style="text-align: center;">0.33965893</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.32068214</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.33965893</td>
+<td style="text-align: center;">0.66034107</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0.23274919</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.66034107</td>
+<td style="text-align: center;">0.89309026</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0.08898737</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.89309026</td>
+<td style="text-align: center;">0.98207763</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0.01792237</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.98207763</td>
+<td style="text-align: center;">1.00000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="un-exemple-pour-illustrer-la-ckm-4" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple pour illustrer la CKM</h2>
+<div class="frame">
+<p><strong>Etape 5 : Conclusion</strong></p>
+<div class="center">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Ecole</strong></th>
+<th style="text-align: center;"><strong>Valeur originale i</strong></th>
+<th style="text-align: center;"><strong>Valeur pertubée j</strong></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Ensai</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Mines</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Centrale</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">7</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="avantages-inconvénients-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Avantages / inconvénients</h2>
+<div class="frame">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Avantages</strong></th>
+<th style="text-align: left;"><strong>Inconvénients</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Facile d’implémentation</td>
+<td style="text-align: left;">Perte d’additivité</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Assure la cohérence des tableaux</td>
+<td style="text-align: left;">Perception potentielle d’une non-protection de la part des utilisateurs</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Réduit drastiquement le risque de différenciation géographique</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Compatible avec le requêtage / la diffusion sur mesure</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Utilité statistique des données très forte par rapport à des arrondis ou des suppressions</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section></section>
+<section>
+<section id="la-microagrégation" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>La microagrégation*</h1>
+<div class="frame">
+<ul>
+<li><p>Méthode perturbatrice, plus adaptée aux variables continues, mais peut-être adaptée aux variables catégorielles ordonnées</p></li>
+<li><p>Idée principale :</p>
+<ul>
+<li><p><strong>Créer des petits groupes homogènes</strong> en prenant en compte les valeurs des variables sélectionnées</p></li>
+<li><p><strong>Remplacer les valeurs</strong> de tous les individus appartenant au groupe <strong>par une unique valeur</strong> (peut être la valeur moyenne de valeurs observées dans le groupe)</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="un-exemple-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple</h2>
+<div class="frame">
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Région</td>
+<td style="text-align: center;">Age</td>
+<td style="text-align: center;">Heures travaillées</td>
+<td style="text-align: center;">Poids</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">par semaine</td>
+<td style="text-align: center;">de sondage</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">1000</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">2000</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">52</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1100</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">2500</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1900</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">46</td>
+<td style="text-align: center;">1500</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">38</td>
+<td style="text-align: center;">800</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">1200</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Il y a des croisements uniques pour la clef Age <span class="math inline">\(\times\)</span> Région</li>
+</ul>
+</div>
+</section>
+<section id="un-exemple-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple</h2>
+<div class="frame">
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Région</td>
+<td style="text-align: center;">Age</td>
+<td style="text-align: center;">Heures travaillées</td>
+<td style="text-align: center;">Poids</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">par semaine</td>
+<td style="text-align: center;">de sondage</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;"><del>36</del> 31</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">1000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;"><del>41</del> 45</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">2000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;"><del>52</del> 45</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1100</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;"><del>45</del> 47</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">2500</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;"><del>41</del> 45</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1900</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;"><del>26</del> 31</td>
+<td style="text-align: center;">46</td>
+<td style="text-align: center;">1500</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;"><del>31</del> 31</td>
+<td style="text-align: center;">38</td>
+<td style="text-align: center;">800</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;"><del>48</del> 47</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">1200</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="math inline">\(\mu_{red} = 45\)</span>, <span class="math inline">\(\mu_{yellow} = 31\)</span>, <span class="math inline">\(\mu_{green} = 47\)</span></li>
+</ul>
+</div>
+</section>
+<section id="paramètres" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Paramètres</h2>
+<div class="frame">
+<p>Un grand nombre de sorties possibles pour cette méthode selon :</p>
+<ul>
+<li><p>la définition d’homogénéité choisie</p></li>
+<li><p>l’algorithme utilisé pour construire les groupes</p></li>
+<li><p>la détermination de la valeur de remplacement</p></li>
+</ul>
+<p>Les paramètres à définir :</p>
+<ul>
+<li><p>Taille <span class="math inline">\(g\)</span> de chaque groupe (plus la taille du groupe est grande, plus grande sera la perte d’information, et plus celle-ci est grande, plus le niveau de protection est élevé ..)</p></li>
+<li><p>Quelles variables sont utilisées pour calculer la distance ?</p></li>
+<li><p>Quelles statistiques choisir une fois que les groupes ont été formés ? (moyenne, médiane ?)</p></li>
+</ul>
+</div>
+</section>
+<section id="minimiser-la-variance-intra-groupe" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Minimiser la variance intra-groupe</h2>
+<div class="frame">
+<p>L’algorithme cherche à minimiser la somme des carrés intra-groupe <span class="math display">\[SSE = \sum_{i=1}^g\sum_{j \in i} (x_{ij}-\bar x_{i})^T(x_{ij}-\bar x_{i})\]</span></p>
+<figure id="fig:my_label">
+<p>
+<img src="Images/within.png" style="width:6cm" alt="image"> <span id="fig:my_label" data-label="fig:my_label"></span>
+</p>
+</figure>
+</div>
+</section>
+<section id="avantages-inconvénients-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Avantages / inconvénients</h2>
+<div class="frame">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Avantages</strong></th>
+<th style="text-align: left;"><strong>Inconvénients</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Adapté au <span class="math inline">\(k\)</span>-anonymat</td>
+<td style="text-align: left;">Temps de calcul important</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Construction de classes pertinentes</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section></section>
+<section>
+<section id="injection-de-bruit" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Injection de bruit</h1>
+<div class="frame">
+<ul>
+<li><p>Méthode adaptée pour traiter les variables continues</p></li>
+<li><p>En général, on injecte un bruit additif sans biais et à variance fixe</p></li>
+</ul>
+</div>
+</section>
+<section id="perturbation-par-un-bruit-additif" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Perturbation par un bruit additif</h2>
+<div class="frame">
+<ul>
+<li><p>Adaptée pour les variables continues</p></li>
+<li><p>Pas d’hypothèses faites sur les valeurs possiblement prises par les variables à perturber</p></li>
+<li><p>Le bruit ajouté est généralement continu et d’espérance nulle</p></li>
+</ul>
+</div>
+</section>
+<section id="trois-types-de-perturbation-par-un-bruit-additif" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Trois types de perturbation par un bruit additif</h2>
+<div class="frame">
+<ul>
+<li><p>Bruits indépendants</p>
+<ul>
+<li><p>Les moyennes et covariances sont préservées</p></li>
+<li><p>Les variances et les coefficients de corrélation ne sont pas conservés</p></li>
+</ul></li>
+<li><p>Bruits corrélés</p>
+<ul>
+<li><p>Conservation des coefficients de corrélation et de l’espérance</p></li>
+<li><p>Préférable à l’ajout des bruits indépendants car on peut obtenir des estimations non biaisées pour plusieurs statistiques importantes</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="trois-types-de-perturbation-par-un-bruit-additif-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Trois types de perturbation par un bruit additif</h2>
+<div class="frame">
+<p>Ces deux méthodes sont rarement utilisées en pratique car apporte une protection relativement faible contre la divulgation d’identité (valeurs extrêmes).</p>
+<ul>
+<li><p>Addition de bruit et transformation linéaire</p>
+<ul>
+<li>Matrice de variance-covariance des variables perturbées est un estimateur sans biais de la matrice de variance-covariance des variables originelles</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="avantages-inconvénients-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Avantages / inconvénients</h2>
+<div class="frame">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Avantages</strong></th>
+<th style="text-align: left;"><strong>Inconvénients</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Traitement de variables sensibles continues</td>
+<td style="text-align: left;">Pas adapté aux traitements des outliers de grandes valeurs</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section></section>
+<section>
+<section id="targeted-record-swapping-trs" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Targeted Record Swapping (TRS)</h1>
+<div class="frame">
+<ul>
+<li><p>Raffinement de méthodes de swapping</p></li>
+<li><p>Consiste à échanger la localisation de certains individus jugés à risque avec d’autres individus d’une autre entité géographique</p></li>
+<li><p>Réalisé de telle sorte que les individus échangés se ressemblent suffisamment pour limiter l’effet perturbatif de l’échange</p></li>
+<li><p>Ciblage des individus préalablement détectés comme à risque de ré-identification (voire risque de divulgation d’attributs sensibles)</p></li>
+</ul>
+</div>
+</section>
+<section id="une-méthode-très-utilisée" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Une méthode très utilisée</h2>
+<div class="frame">
+<ul>
+<li><p>Insee: Données européennes du recensement 2021</p></li>
+<li><p>Eurostat préconise cette méthode (couplée à la CKM) pour la diffusion du Census européen</p></li>
+<li><p>US Census Bureau: Recensement US 2010</p></li>
+<li><p>ONS (UK): Recensement depuis 2010</p></li>
+</ul>
+</div>
+</section>
+<section id="un-exemple-4" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple</h2>
+<div class="frame">
+<figure id="fig:my_label">
+</figure>
+</div>
+</section>
+<section id="avantages-inconvénients-4" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Avantages / inconvénients</h2>
+<div class="frame">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Avantages</strong></th>
+<th style="text-align: left;"><strong>Inconvénients</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Très efficace pour traiter différents types de risque.</td>
+<td style="text-align: left;">Nécessite de fixer un grand nombre de paramètres (mesure de risque, variables similarité, taux de swapping).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Méthode souple, adaptation à des cas très différents (structures ménages-individus par ex.).</td>
+<td style="text-align: left;">Bruit injecté dans les données n’est pas vraiment contrôlable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Préserve les agrégats du niveau géographique au sein duquel le swapping a été opéré.</td>
+<td style="text-align: left;">Génère localement du biais dans les données.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section></section>
+<section>
+<section id="post-randomisation-method-pram" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Post-Randomisation Method (PRAM)</h1>
+<div class="frame">
+<ul>
+<li><p>Permet de traiter les variables sensibles en bruitant les données de variables catégorielles.</p></li>
+<li><p>Consiste à modifier aléatoirement l’appartenance des individus à une classe donnée.</p></li>
+<li><p>Méthode particulièrement intéressante pour traiter les divulgations d’attributs sensibles : un attaquant ne peut avoir aucune certitude sur l’attribut d’une observation.</p></li>
+</ul>
+</div>
+</section>
+<section id="un-exemple-5" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple</h2>
+<div class="frame">
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Region</td>
+<td style="text-align: center;">Age</td>
+<td style="text-align: center;">Situation</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Professionnelle</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">Inactif</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">Chômeur</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">52</td>
+<td style="text-align: center;">Actif</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">Actif</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">Chômeur</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">Actif</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">Actif</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">Inactif</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Inactif : 2 ind., Chômeur = 2 ind., Actif = 4 ind.</li>
+</ul>
+</div>
+</section>
+<section id="un-exemple-6" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple</h2>
+<div class="frame">
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Region</td>
+<td style="text-align: center;">Age</td>
+<td style="text-align: center;">Situation</td>
+<td style="text-align: center;">Situation</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Professionnelle</td>
+<td style="text-align: center;">Professionnelle (PRAM)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">Inactif</td>
+<td style="text-align: center;"><span style="color: red">Chômeur</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">Chômeur</td>
+<td style="text-align: center;"><span style="color: red">Actif</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">52</td>
+<td style="text-align: center;">Actif</td>
+<td style="text-align: center;"><span style="color: blue">Actif</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">Actif</td>
+<td style="text-align: center;"><span style="color: blue">Actif</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">Chômeur</td>
+<td style="text-align: center;"><span style="color: red">Inactif</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">Actif</td>
+<td style="text-align: center;"><span style="color: blue">Actif</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">Actif</td>
+<td style="text-align: center;"><span style="color: red">Chômeur</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">Inactif</td>
+<td style="text-align: center;"><span style="color: blue">Inactif</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Inactif : 2 ind., Chômeur = 2 ind., Actif = 4 ind.</li>
+</ul>
+</div>
+</section>
+<section id="un-exemple-7" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple</h2>
+<div class="frame">
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Region</td>
+<td style="text-align: center;">Age</td>
+<td style="text-align: center;">Situation</td>
+<td style="text-align: center;">Situation</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Professionnelle</td>
+<td style="text-align: center;">Professionnelle (PRAM)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;"><span style="color: red">14</span></td>
+<td style="text-align: center;">Inactif</td>
+<td style="text-align: center;"><span style="color: red"><strong>Chômeur</strong></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">Chômeur</td>
+<td style="text-align: center;">Actif</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">52</td>
+<td style="text-align: center;">Actif</td>
+<td style="text-align: center;">Actif</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">Actif</td>
+<td style="text-align: center;">Actif</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">Chômeur</td>
+<td style="text-align: center;">Inactif</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">Actif</td>
+<td style="text-align: center;">Actif</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">Actif</td>
+<td style="text-align: center;">Chômeur</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">Inactif</td>
+<td style="text-align: center;">Inactif</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Attention aux incohérences !</li>
+</ul>
+</div>
+</section>
+<section id="la-matrice-de-transition" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>La matrice de transition</h2>
+<div class="frame">
+<p>On a besoin de définir une <span style="color: red"><strong>matrice de transition</strong></span> pour pouvoir définir les probabilités de transition.</p>
+<ul>
+<li><p>Soit <span class="math inline">\(\xi\)</span> la variable catégorielle initiale <span class="math inline">\(K\)</span> categories <span class="math inline">\(1 \dots K\)</span><br>
+<span class="math inline">\(\longrightarrow\)</span> dans l’exemple <span class="math inline">\(\xi\)</span> = Situation professionnelle, K = 3</p></li>
+<li><p>Soit <span class="math inline">\(X\)</span> la même variable catégorielle dans le jeu de données perturbé<br>
+<span class="math inline">\(\longrightarrow\)</span> dans l’exemple <span class="math inline">\(X\)</span> = Situation professionnelle (PRAM)</p></li>
+</ul>
+<p>On peut définir la matrice de transition <span class="math inline">\(P\)</span>, <span class="math inline">\(P =(p_{kl})_{1 \leq k,l \leq K}\)</span>, où <span class="math inline">\(p_{kl} = P(X =l|\xi = k)\)</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Inactif</th>
+<th style="text-align: center;">Actif</th>
+<th style="text-align: center;">Chômeur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Inactif</td>
+<td style="text-align: center;">0,8</td>
+<td style="text-align: center;">0,05</td>
+<td style="text-align: center;">0,15</td>
+</tr>
+<tr class="even">
+<td>Actif</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0,8</td>
+<td style="text-align: center;">0,2</td>
+</tr>
+<tr class="odd">
+<td>Chômeur</td>
+<td style="text-align: center;">0,1</td>
+<td style="text-align: center;">0,1</td>
+<td style="text-align: center;">0,8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="comment-choisir-la-matrice-de-transition" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Comment choisir la matrice de transition ?</h2>
+<div class="frame">
+<ul>
+<li><p>PRAM change aléatoirement les comptages de la population :</p>
+<p><span class="math display">\[\mathbb{E}\begin{pmatrix} N^{pram}_{I} \\N^{pram}_{E}\\ N^{pram}_{U} \end{pmatrix} = P^{T} \begin{pmatrix}N_{I} \\N_{E}\\ N_{U} \end{pmatrix}\]</span></p></li>
+<li><p>Selon P <strong><span style="color: red">et les comptages originaux</span></strong>, les marges peuvent être beaucoup perturbées !</p></li>
+<li><p>Des coefficients diagonaux élevés peuvent être insuffisants</p></li>
+</ul>
+</div>
+</section>
+<section id="un-exemple-numérique" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple numérique</h2>
+<div class="frame">
+<ul>
+<li>Marges originales</li>
+</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">2-4</th>
+<th style="text-align: center;">Inactif</th>
+<th style="text-align: center;">Actif</th>
+<th style="text-align: center;">Chômeur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Fréquence (million)</td>
+<td style="text-align: center;">16.8</td>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">4.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pourcentage</td>
+<td style="text-align: center;">24 %</td>
+<td style="text-align: center;">70 %</td>
+<td style="text-align: center;">6 %</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Matrice de transition <span class="math inline">\(P\)</span> :</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Inactif</th>
+<th style="text-align: center;">Actif</th>
+<th style="text-align: center;">Chômeur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Inactif</td>
+<td style="text-align: center;">0,8</td>
+<td style="text-align: center;">0,05</td>
+<td style="text-align: center;">0,15</td>
+</tr>
+<tr class="even">
+<td>Actif</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0,8</td>
+<td style="text-align: center;">0,2</td>
+</tr>
+<tr class="odd">
+<td>Chômeur</td>
+<td style="text-align: center;">0,1</td>
+<td style="text-align: center;">0,1</td>
+<td style="text-align: center;">0,8</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>On peut maintenant calculer les marges perturbées !</p></li>
+</ul>
+</div>
+</section>
+<section id="un-exemple-numérique-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple numérique</h2>
+<div class="frame">
+<ul>
+<li>Marges originales</li>
+</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">2-4</th>
+<th style="text-align: center;">Inactif</th>
+<th style="text-align: center;">Actif</th>
+<th style="text-align: center;">Chômeur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Fréquence (million)</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pourcentage</td>
+<td style="text-align: center;">24 %</td>
+<td style="text-align: center;">70 %</td>
+<td style="text-align: center;">6 %</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Nouvelles marges</li>
+</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">2-4</th>
+<th style="text-align: center;">Inactif</th>
+<th style="text-align: center;">Actif</th>
+<th style="text-align: center;">Chômeur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Fréquence (million)</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;"><span style="color: red"><strong>16</strong></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pourcentage</td>
+<td style="text-align: center;">20 %</td>
+<td style="text-align: center;">58 %</td>
+<td style="text-align: center;"><span style="color: red">22 %</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="pram-invariant" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>PRAM Invariant</h2>
+<div class="frame">
+<ul>
+<li><p>Possibilité de choisir la matrice <span class="math inline">\(P\)</span> de telle sorte que la perturbation soit sans biais <span class="math inline">\(\longrightarrow\)</span> PRAM invariant</p></li>
+<li><p>Comme : <span class="math display">\[\mathbb{E}\begin{pmatrix} N^{pram}_{I} \\N^{pram}_{E}\\ N^{pram}_{U} \end{pmatrix} = P^{T} \begin{pmatrix}N_{I} \\N_{E}\\ N_{U} \end{pmatrix}\]</span></p></li>
+<li><p>Il faut, pour cela, choisir <span class="math inline">\(P\)</span> telle que les fréquences marginales originales soient un vecteur propre de <span class="math inline">\(P\)</span> associé à la valeur propre <span class="math inline">\(1\)</span>.</p></li>
+</ul>
+</div>
+</section>
+<section id="mesurer-le-niveau-de-protection" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Mesurer le niveau de protection</h2>
+<div class="frame">
+<ul>
+<li><p>Le niveau de protection est mesuré à partir des paramètres de la méthode (matrice de transition)</p></li>
+<li><p>Idée: faire en sorte que la rareté de certaines modalités soient rendues suffisamment incertaines à inférer <span class="math inline">\(\longrightarrow\)</span> utiliser les posterior odds ratio</p>
+<p><span class="math display">\[POST\_ODDS(k) = \frac{P(\xi = k|X=k)}{P(\xi \neq k|X=k)} = \frac{p_{kk}P(\xi = k)}{\sum_{l \neq k}p_{lk}P(\xi=l)}\]</span></p></li>
+<li><p><span class="math inline">\(p_{kk}\)</span> sont connus et dépendent du plan de sondage, mais <span class="math inline">\(P(\xi = k)\)</span> peut être difficile à estimer.</p></li>
+<li><p>Interprétation:</p>
+<ul>
+<li><p>Si <span class="math inline">\(POST\_ODDS(k) &gt; 1\)</span>, alors la valeur originale est plus probablement <span class="math inline">\(k\)</span> plutôt qu’une autre valeur, si on observe la modalité <span class="math inline">\(k\)</span> dans le jeu perturbé.</p></li>
+<li><p>Si <span class="math inline">\(POST\_ODDS(k) &lt; 1\)</span>, alors la valeur originale est plus probablement une autre valeur que <span class="math inline">\(k\)</span>, si on observe la modalité <span class="math inline">\(k\)</span> dans le jeu perturbé.</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="interprétation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Interprétation</h2>
+<div class="frame">
+<ul>
+<li><p>Si <span class="math inline">\(POST\_ODDS(k) &gt; 1\)</span>, alors la valeur originale est plus probablement <span class="math inline">\(k\)</span> plutôt qu’une autre valeur, si on observe la modalité <span class="math inline">\(k\)</span> dans le jeu perturbé.</p></li>
+<li><p>Si <span class="math inline">\(POST\_ODDS(k) &lt; 1\)</span>, alors la valeur originale est plus probablement une autre valeur que <span class="math inline">\(k\)</span>, si on observe la modalité <span class="math inline">\(k\)</span> dans le jeu perturbé.</p></li>
+</ul>
+</div>
+</section>
+<section id="avantages-inconvénients-5" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Avantages / inconvénients</h2>
+<div class="frame">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Avantages</strong></th>
+<th style="text-align: left;"><strong>Inconvénients</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Permet de fournir le niveau de protection associé au bruit injecté en calculant les probabilités de transition inverses.</td>
+<td style="text-align: left;">Création d’éventuelles combinaisons impossibles (ex : enfant à la retraite).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Conserve l’additivité des tableaux générés à partir des micro-données bruitées.</td>
+<td style="text-align: left;">Difficile de définir une matrice de protection qui prend en compte les liens avec toutes les variables.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">.</td>
+<td style="text-align: left;">.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section></section>
+<section>
+<section id="les-données-synthétiques" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Les données synthétiques</h1>
+<div class="frame">
+<ul>
+<li><p>Idée: Générer tout ou partie des données individuelles.</p></li>
+<li><p>Deux types de synthèse:</p>
+<ul>
+<li><p>Synthèse complète: toutes les variables et tous les individus sont générés.</p></li>
+<li><p>Synthèse partielle: Seulement certaines variables sont générées (principalement les variables sensibles).</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="les-méthodes-de-génération-i" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les méthodes de génération (I)</h2>
+<div class="frame">
+<p>Les principales méthodes de génération sont:</p>
+<ul>
+<li><p>Modélisation séquentielle conditionnelle (Fully Conditional Specification, FCS): Chaque variable est modélisée l’une après l’autre, conditionnellement aux variables déjà modélisées.</p>
+<ul>
+<li><p>Méthode très populaire et efficace</p></li>
+<li><p>Pour générer la <span class="math inline">\(p^e\)</span> variable, on cherche à modéliser sa distribution conditionnelle : <span class="math display">\[f_{X_p | X_1 , X_2 , \dots , X_{p-1}}\]</span></p></li>
+<li><p>Modélisation paramétrique (régression linéaire ou logistique) ou non paramétrique (en particulier méthodes à base d’arbres: CART, Boosting, random forest, XGBoost).</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="les-méthodes-de-génération-ii" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les méthodes de génération (II)</h2>
+<div class="frame">
+<p>Les principales méthodes de génération sont (suite):</p>
+<ul>
+<li><p>Méthodes de Deep Learning:</p>
+<ul>
+<li><p><strong>Tabular Variational Auto Encoder</strong> (TVAE): L’auto encodage consiste à combiner une phase d’encodage qui réduit la dimension des données pour apprendre les caractéristiques les plus importantes et une phase de décodage pour reconstituer des données dans leur dimension originale.</p></li>
+<li><p><strong>Conditional Tabular Generative Adversarial Network</strong> (CTGAN): Les GAN sont très populaires dans la génération d’images. Les CTGAN sont une adaptation des GAN pour générer des données tabulaires (microdonnées ou données agrégées). Un générateur construit des données synthétiques et les soumet à un discriminateur dont l’objectif est de distinguer ces données générées des données originales.</p></li>
+</ul></li>
+</ul>
+</div>
 
 
 </section></section>

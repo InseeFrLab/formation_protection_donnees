@@ -7,12 +7,25 @@
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/pratique/fiches/sujets-avances.html",
     "items": [
-      "/theorie/index.html",
-      "/pratique/index.html",
-      "/ressources/index.html",
-      "/glossaire/index.html"
+      "/pratique/fiches/generer-synth.html",
+      "/pratique/fiches/confidentialite-differentielle.html"
+    ]
+  },
+  {
+    "listing": "/pratique/fiches/arbitrage.html",
+    "items": [
+      "/pratique/fiches/mesurer-risque.html",
+      "/pratique/fiches/mesurer-utilite.html"
+    ]
+  },
+  {
+    "listing": "/pratique/fiches/suppressif.html",
+    "items": [
+      "/pratique/fiches/proteger-tableaux-suppressif.html",
+      "/pratique/fiches/analyse-demande.html",
+      "/pratique/fiches/analyse-automatique.html"
     ]
   },
   {
@@ -23,6 +36,32 @@
       "/theorie/supports/methodes-suppressives.html",
       "/theorie/supports/methodes-perturbatrices.html",
       "/theorie/supports/confidentialite-differentielle.html"
+    ]
+  },
+  {
+    "listing": "/pratique/fiches/perturbatif.html",
+    "items": [
+      "/pratique/fiches/proteger-tableaux-cellkey.html",
+      "/pratique/fiches/proteger-micro-swapping.html",
+      "/pratique/fiches/proteger-micro-pram.html"
+    ]
+  },
+  {
+    "listing": "/pratique/index.html",
+    "items": [
+      "/pratique/fiches/suppressif.html",
+      "/pratique/fiches/perturbatif.html",
+      "/pratique/fiches/arbitrage.html",
+      "/pratique/fiches/sujets-avances.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/theorie/index.html",
+      "/pratique/index.html",
+      "/ressources/index.html",
+      "/glossaire/index.html"
     ]
   }
 ]
