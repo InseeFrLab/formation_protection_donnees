@@ -14,6 +14,21 @@ library(sdcMicro)
 source("../R/prepa_data.R")
 ```
 
+## Définir son objet sdc
+
+```{r}
+key_vars1 <- c("DEP", "SEXE", "AGE6", "DIP7")
+
+sdc_object1 <- createSdcObj(
+  dat=lfs_2023,
+  keyVars=key_vars1,
+  hhId = "HHID",
+  weightVar = "POIDS",
+  sensibleVar = "ANCCHOM",
+  pramVars = "ACTEU",
+  seed = 20061789
+)
+```
 
 ## Appliquer PRAM - Première tentative
 
