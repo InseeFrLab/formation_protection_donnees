@@ -95,7 +95,7 @@ data_pram_2 <- do.call(cbind, pram_2) %>% data.frame()
 data_pram_2 %>% 
   summarise(mean(ACTEU == ACTEU_pram))
 
-# Comparaison marice de transition et observations
+# Comparaison matrice de transition et observations
 attributes(pram_2)$pram_params$ACTEU$Rs
 
 data_pram_2 %>% 
