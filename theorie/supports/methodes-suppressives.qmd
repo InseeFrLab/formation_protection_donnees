@@ -255,7 +255,7 @@ Secret primaire dû à la règle du p%.
 
 ## Le secret primaire
 
-Les cellules catégorisées à risque pour la règle de fréquence, la règle de dominance et la règle du p% constituent le secret primaire. On ne peut pas diffuser ces cellules.
+Les cellules catégorisées à risque pour la règle de fréquence, la règle de dominance et la règle du p% constituent le **secret primaire**. On ne peut pas diffuser ces cellules.
 
 <br>
 
@@ -381,19 +381,21 @@ Cacher des cellules revient à diffuser des intervalles.
 | **Total**         |    9 |    16                              | 4                                  |  20 |    49 |
 
 
-**L'intervalle des possibles** : l'ensemble des valeurs possibles prises par la cellule supprimée après avoir posé le masque de secret.
+**Intervalle des possibles** : l'ensemble des valeurs possibles prises par la cellule supprimée après avoir posé le masque de secret.
 
 ## Les intervalles de protection
 
-**L'intervalle de protection** : soit $V_C$ la valeur d'une cellule C sensible à la règle de fréquence et $m\%$ la marge protection choisie.
+**Intervalle de protection** : soit $V_C$ la valeur d'une cellule C sensible à la règle de fréquence et $m\%$ la marge protection choisie.
 
-<br>
+$$
+[(1 - m\%) \cdot V_C ;\ (1 + m\%) \cdot V_C]
+$$
 
-$[(1 - m\%). V_C ; (1 + m\%). V_C]$
 
-<br>
-
-En pratique on choisit souvent une marge de 10%, $[90\%.V_C ; 110\%.V_C]$
+En pratique on choisit souvent une marge de 10%, 
+$$
+[90\% \cdot V_C ; 110\% \cdot V_C]
+$$
 
 ## Les intervalles de protection
 

@@ -16,8 +16,40 @@ source("../R/prepa_data.R")
 
 ## Définir son objet sdc
 
+Le package `sdcMicro` a un fonctionnement spécial pusiqu'il utilise des **classes** (objets de type S4). En effet, il faut créer un objet qui regroupe toutes les informations concernant les données sur lequelles on veut appliquer une méthode de protection. Cet objet relève de la classe `sdcMicroObj`, on le crée en appelant la fonction `createSdcObj()` voici certains de ces arguments :
+
+- `dat` : un jeu de micrdonnées ;
+- `keyVars` : vecteur de noms (ou indices) de variables quasi-identifiantes catégorielles ;
+- `numVars` : vecteur de noms (ou indices) de variables quasi-identifiantes continues ;
+- `pramVars` : vecteur de noms (ou indices) de variables catégorielles à protéger via PRAM ;
+- `weightVar` : nom (ou indice) du vecteur des poids de sondage ;
+- `hhID` : nom (ou indice) de l'identifiant du cluster (s'il existe) ;
+- `sensibleVar` : vecteur de noms (ou indices) des variables sensbiles (pour la l-diversité) ;
+- `seed` : graine utilisée pour la reproductibilité des résultats
+
+Nous allons étudier un extrait des données de l'Enquête emploi en continu de l'Insee.
+
 ```{r}
-key_vars1 <- c("DEP", "SEXE", "AGE6", "DIP7")
+str(lfs_2023)
+```
+
+On y trouve les variables suivantes :
+
+- **DEP** : département de résidence
+- **SEXE** : sexe (1 = homme, 2 = femme)
+- **AGE** : âge de l'individu
+- **AGE6** : âge en 5 tranches (15 = 15-25, 25 = 25-49, 50 = 50-64, 65 = 65-89, 90 = 90 ans ou plus)
+- **ACTEU** : statut d'activité (1 = emploi, 2 = chômage, 3 = inactivité)
+- **DIP7** : diplôme le plus élevé obtenu (1 = bac+5 ou plus, 2 = bac +3/4, 3 = bac+2, 4 = bac, 5 = CAP, 6 = brevet, 7 = aucun diplôme, 9 = non réponse)
+- **PCS1Q** : emploi principal (10 = agriculteurs, 20 = artisans, 30 = cadres, 40 = professions intermédiaires, 51 = employés qualifiés, 52 = employés peu qualifiés, 61 = ouvriers qualifiés, 62 = ouvriers peu qualifiés, 00 = non codé, 99 = non réponse)
+- **ANCCHOM** : ancienneté au chômage
+- **HHID** : identifiant du cluster
+- **POIDS** : poids de sondage
+
+On peut créer un objet `sdcMicroObj` à partir de ces données.
+
+```{r}
+key_vars1 <- c("DEP", "SEXE", "AGE6", "DIP7") # quasi-identifiants
 
 sdc_object1 <- createSdcObj(
   dat=lfs_2023,
@@ -29,6 +61,82 @@ sdc_object1 <- createSdcObj(
   seed = 20061789
 )
 ```
+
+L'objet contient **22 composants** ou **slots**, dont :
+- `origData` : contient les données initiales, le vecteur de quasi-identifiants catégoriels (`keyVars`) et le vecteur des variables à protéger via PRAM (`pramVars`)
+- `originalRisk` : les mesures de risques pour les données initiales (non modifiées) ;
+- `risk` : les mesures de risques pour les données sur lesquelles on a appliquer une méthode de protection (modifiées) ;
+- `utility` : les informations sur l'utilité des données ;
+- `pram` : informations sur les variables pour lesquelles on a utilisé la méthode PRAM.
+
+## Mesurer le risque
+
+### k-anonymat
+
+Par défaut les mesures de k-anonymat pour k = 2, k = 3 et k = 5 sont fournies.
+
+```{r}
+# k-anonymat (par défaut k=2, 3 et 5)
+print(sdc_object1)
+```
+
+```{r}
+sdc_object1@originalRisk$global$risk
+```
+
+
+```{r}
+sdc_object1@originalRisk$global$risk_ER
+```
+
+
+```{r}
+sdc_object1@originalRisk$global$risk_pct
+```
+
+```{r}
+sdc_object1@originalRisk$global$max_risk
+```
+
+```{r}
+sdc_object1@originalRisk$global$hier_risk_ER
+```
+
+```{r}
+sdc_object1@originalRisk$global$hier_risk
+```
+
+```{r}
+sdc_object1@originalRisk$global$hier_risk_pct
+```
+
+```{r}
+risque_ind_original <- sdc_object1@originalRisk$individual
+
+head(risque_ind_original)
+```
+
+La colonne `fk` donne le nombre d'individus dans l'échantillon qui suivent une combinaison unique de DEP, SEXE, AGE6 et DIP7.
+
+### Risque global
+
+!!!! je ne suis pas sûre de lu'tilisation de `risk` car dans la doc plutôt le risque après protection.
+
+```{r}
+print(sdc_object1, 'risk')
+```
+
+```{r}
+lfs_indiv_at_risk <- sdc_object1@risk$individual %>%
+  as_tibble() # plutôt sdc_object1@originalRisk$individual ?
+
+lfs_indiv_at_risk %>%
+  count(fk) %>% 
+  mutate(part = n/sum(n)*100) %>%
+  mutate(n_cum = cumsum(n), part_cum = cumsum(part))
+```
+
+L'échantillon est 1-anonyme ??????
 
 ## Appliquer PRAM - Première tentative
 
@@ -72,8 +180,6 @@ data_pram_1 %>%
     tc_pram = sum(ACTEU_pram == 2)/sum(ACTEU_pram %in% 1:2) *100
   )
 ```
-
-
 
 ## Seconde tentative tentative --------
 
