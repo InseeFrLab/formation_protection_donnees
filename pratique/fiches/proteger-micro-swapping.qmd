@@ -1,5 +1,223 @@
 ---
 title: Appliquer le Target Record Swapping
-order: 3
 ---
+
+
+Pour installer les packages nécessaires, vous trouverez les instructions à suivre 
+dans le document @sec-install-packages. 
+
+```{r}
+#| echo: false
+library(readr)
+library(purrr)
+library(dplyr)
+library(sdcMicro)
+```
+
+## Importons les données
+
+```{r}
+source("../R/prepa_data.R")
+```
+
+
+```{r}
+str(lfs_2023)
+```
+Les variables du jeu de données sont les suivantes:
+
+- DEP    : Département de résidence
+- SEXE   : Sexe de l'individu
+- AGE    : Âge détaillé de l'individu
+- AGE6   : Âge en 6 classes ("15": signifie les 'les 15-24 ans', "90": désigne les '90 ans ou plus')
+- ACTEU  : Statut d'activité en 3 catgéories: 1=Actifs en emploi; 2=Actifs au chômage; 3=Inactifs (retraités, étudiants, etc.)
+- DIP7   : Niveau du diplôme le plus élevé en 9 catégories (1: niveau le plus bas, 9: niveau le plus élevé, 99: données manquantes (uniquement pour les 90 ans ou plus)).
+- PCS1Q  : Profession ou Catégorie Sociale 
+- ANCCHOM: Factor w/ 10 levels "1","2","3","4",..: 10 10 10 6 10 10 10 10 10 10 ...
+- HHID   : int  721 3867 3867 1634 1634 4720 6312 6312 5667 5667 ...
+- POIDS 
+
+
+```{r}
+Varmod_lfs_2023 <- read_delim("./data/Varmod_EEC_2023.csv", 
+    delim = ";", escape_double = FALSE, trim_ws = TRUE,
+)
+```
+
+```{r}
+get_documentation_variable <- function(variable){
+  if(!variable %in% unique(Varmod_lfs_2023$COD_VAR)){
+    return(NULL)
+  }
+  
+  doc <- Varmod_lfs_2023 |> 
+    filter(COD_VAR==variable) |> 
+    select(LIB_VAR, COD_MOD, LIB_MOD)
+  
+  cat("libellé de la variable ", variable, " : ", doc$LIB_VAR[1], " \n")
+  
+  return(
+    doc |> 
+      select(-LIB_VAR) |> 
+      knitr::kable(
+        caption = paste0("Modalités de la variable ", variable),
+        booktabs=TRUE
+      )
+  )
+}
+
+vars_a_documenter <- c("ACTEU", "DIP7", "PCS1Q", "ANCCHOM")
+map(vars_a_documenter, get_documentation_variable)
+```
+
+
+
+## Mesurons les risques du fichier
+
+### Les types de variables
+
+On définit les variables selon les différentes catégories suivantes:
+
+- les variables quasi-identifiantes (`key_vars`)
+- les variables sensibles (`sens_vars`)
+- les variables identifiant la composition des ménages (`hhid_vars`)
+
+Pour cet exercice, nous ferons les choix suivants:
+
+```{r}
+key_vars <- c("AGE","SEXE","DEP","DIP7")
+sens_vars <- c("ACTEU","ANCCHOM")
+hhid_vars <- c("HHID")
+```
+
+
+## Préparartion pour le swapping
+
+```{r}
+lfs_2023_pr_swap <- lfs_2023 %>% 
+  mutate(across(-POIDS, as.integer)) %>% 
+  mutate(
+    REG = floor(DEP / 10),
+    ID = 1:n()
+  ) %>% 
+  group_by(HHID) %>% 
+  mutate(TAILLE = n()) %>% 
+  ungroup() %>% 
+  data.table::as.data.table()
+```
+
+
+```{r}
+risk_variables <- c("AGE6","SEXE","ACTEU")
+hierarchy <- c("REG", "DEP")
+similar <- c("DIP7")
+carry_along <- NULL
+k_anonymity <- 1
+swaprate <- .05
+
+
+hid <- "ID" # swapping d'individus
+```
+
+
+### Swapper les individus
+
+
+```{r}
+lfs_swapped <- recordSwap(
+  data = lfs_2023_pr_swap,
+  hid = hid,
+  hierarchy = hierarchy,
+  similar = similar,
+  risk_variables = risk_variables,
+  carry_along = carry_along,
+  k_anonymity = k_anonymity,
+  swaprate = swaprate,
+  return_swapped_id = TRUE,
+  seed = 123456
+)
+
+lfs_swapped %>% summarise(mean(ID != ID_swapped)) #5%
+lfs_swapped %>% group_by(REG) %>%
+  summarise(mean(ID != ID_swapped)) #5%
+```
+
+
+#### Vérifier que les individus à risque ont bien été swappés
+
+
+#### Intégrité de la composition des ménages
+
+
+
+### Swapper les ménages
+
+
+```{r}
+hid <- "HHID" # swapping de ménages
+similar <- "TAILLE"
+
+lfs_swapped_hh <- recordSwap(
+  data = lfs_2023_pr_swap,
+  hid = hid,
+  hierarchy = hierarchy,
+  similar = similar,
+  risk_variables = risk_variables,
+  carry_along = carry_along,
+  k_anonymity = k_anonymity,
+  swaprate = swaprate,
+  return_swapped_id = TRUE,
+  seed = 123456
+)
+```
+
+
+#### Taux de swapping des ménages vs taux de swapping des individus
+
+```{r}
+lfs_swapped_hh %>% summarise(mean(HHID != HHID_swapped)) #6.2 des ménages
+lfs_swapped_hh %>% filter(HHID != HHID_swapped) %>%
+  summarise(n()/nrow(lfs_swapped_hh)*100) #6.2% des individus (les ménages swappés sont de même taille)
+lfs_swapped_hh %>% filter(HHID != HHID_swapped) %>%
+  summarise(mean(TAILLE))
+
+```
+
+## Mesurer la perte d'utilité 
+
+
+Comparer différents taux de swapping.
+
+### Comparer les intervalles de confiance d'un modèle logistique
+
+```{r}
+source("../R/fun_cio.R")
+```
+
+
+Étudions la stabilité d'un modèle relativement simple, cherchant à expliquer 
+le fait d'être au chômage par différentes variables à notre disposition:
+l'âge, le diplôme et le sexe.
+
+On entraînera ce modèle uniquement sur la population active. On retire donc notamment 
+la population étudiante et retraitée.
+
+
+```{r}
+m_original <- glm(IS_CHOM ~ SEXE + AGE6 + DIP7, data = lfs_2023 |> filter(ACTEU != 3))
+m_swapped <- glm(IS_CHOM ~ SEXE + AGE6 + DIP7, data = lfs_2023 |> filter(ACTEU != 3))
+
+mes_modeles <- list(
+  "original" = m_original,
+  "swapped" = m_swapped
+)
+
+all_cios <- get_all_confints(mes_modeles)
+```
+
+
+```{r}
+graph_cios(all_cios, titre = "Superposition des intervalles de confiance\ndes Odds Ratio du modèle selon le jeu de données") +
+  theme(axis.text.y =  element_text(size = 8))
+```
 
