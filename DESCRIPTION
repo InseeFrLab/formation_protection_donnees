@@ -1,0 +1,29 @@
+Package: Atelier
+Type: Website
+Title: Atelier de formation à la protection des données
+Version: 0.0.1
+Encoding: UTF-8
+Authors@R:
+    c(
+        person(given = "Julien",
+             family = "Jamme",
+             role = c("aut", "cre"),
+             email = "julien.jamme@insee.fr"),
+        person(given = "Clara",
+             family = "Baudry",
+             role = c("aut", "cre"),
+             email = "clara.baudry@insee.fr"))
+Description: Atelier de formation à la protection des données
+    (https://atelier-protection-donnees.github.io/atelier-protection-donnees/)
+    est un site web de formation à la protection des données.
+    Il est destiné aux agents de l'Insee et à toute personne intéressée par la
+    protection des données. Il propose des ressources pédagogiques, des exercices
+    et des exemples pratiques pour aider à comprendre les enjeux de la protection
+    des données et à mettre en œuvre les bonnes pratiques.
+URL: https://atelier-protection-donnees.github.io/atelier-protection-donnees
+BugReports: https://github.com/atelier-protection-donnees/atelier-protection-donnees/issues
+Depends: R (>= 4.2.0), dplyr, purrr, readr, ggplot2, knitr, rmarkdown, quarto, cellKey,
+    sdcMicro, gaussSuppression, synthpop, rtauargus (>= 1.2.999-dev)
+Remotes: InseeFrLab/rtauargus
+License: GPL (>= 2)
+VignetteBuilder: knitr, rmarkdown, quarto
