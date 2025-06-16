@@ -8,7 +8,7 @@ image: ../../images/ressources.png
 code-fold: false
 ---
 
-## Les packages R
+## Les packages R {#sec-install-packages}
   
   
 ```{r rpackages}

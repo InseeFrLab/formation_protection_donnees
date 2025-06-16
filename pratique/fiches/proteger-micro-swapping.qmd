@@ -4,7 +4,7 @@ title: Appliquer le Target Record Swapping
 
 
 Pour installer les packages nécessaires, vous trouverez les instructions à suivre 
-dans le document @sec-install-packages. 
+dans la fiche [Ressources / Installer les packages et les outils sur R](../../ressources/fiches/outils-install.html). 
 
 ```{r}
 #| echo: false
