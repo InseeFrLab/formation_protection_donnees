@@ -1,4 +1,49 @@
 ---
 title: Les mesures du risque de divulgation
-order: 7
 ---
+
+
+```{r}
+#| echo: false
+library(readr)
+library(purrr)
+library(dplyr)
+library(sdcMicro)
+```
+
+## Importons les données
+
+```{r}
+source("../R/prepa_data.R")
+```
+
+
+## Les différents types de variables
+
+
+## Le k-anonymat
+
+
+## La l-diversité
+
+
+## SUDA
+
+
+## Le risque individuel 
+
+
+### Mesures naïves
+
+
+### Mesures probabilistes
+
+
+### Les outliers
+
+
+
+
+
+
+
