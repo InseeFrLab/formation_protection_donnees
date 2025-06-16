@@ -2,6 +2,8 @@
 
 filename <- "data/lfs_2023.csv"
 
+taux_echantillon <- 0.1
+
 if(!dir.exists("data/")) dir.create("data/")
 
 if(file.exists(filename)){
@@ -9,7 +11,7 @@ if(file.exists(filename)){
   lfs_2023 <- data.table::fread(filename) %>%
     mutate(
       across(
-        c(-POIDS, -HHID),
+        c(-POIDS, -HHID, -AGE),
         as.factor
       )
     )
@@ -34,7 +36,7 @@ if(file.exists(filename)){
     fill = TRUE, 
     comment.char = ""
   )
-  str(lfs_micro_fr_2023)
+  # str(lfs_micro_fr_2023)
   # Documentation du fichier
   # https://www.insee.fr/fr/statistiques/8241122#dictionnaire
 
@@ -52,6 +54,8 @@ if(file.exists(filename)){
     left_join(
       ages, by = "AGE6" 
     ) %>% 
+    # On conserve uniquement les ménages dont la personne est âgée entre 15 et 89 ans
+    filter(CHAMP_M_15_89 == 1) %>%
     mutate(
       AGE = round(runif(n(), min = AGE6, max = ages_ub))
     ) %>% 
@@ -65,13 +69,14 @@ if(file.exists(filename)){
     as.data.frame() %>% 
     select(
       DEP, SEXE, AGE, AGE6, ACTEU, DIP7, 
-      IDENT, PCS1Q, ANCCHOM, EXTRIAN) 
+      IDENT, PCS1Q, ANCCHOM, EXTRIAN
+    ) 
 
   select_hh <- lfs_micro_fr_2023 %>% 
     select(DEP, IDENT) %>% 
     unique() %>% 
     group_by(DEP) %>% 
-    slice_sample(prop = 0.1) %>% 
+    slice_sample(prop = taux_echantillon) %>% 
     ungroup() %>% 
     select(IDENT) %>% 
     mutate(HHID = 1:n())
@@ -80,8 +85,9 @@ if(file.exists(filename)){
     filter(IDENT %in% select_hh$IDENT) %>%
     left_join(select_hh) %>% 
     select( -IDENT) %>% 
-    mutate(POIDS = EXTRIAN * 10) %>% 
+    mutate(POIDS = EXTRIAN / taux_echantillon) %>% 
     select(-EXTRIAN) %>% 
+    # Valeurs manquantes => codée en 99
     mutate(
       across(
         -POIDS,
@@ -90,13 +96,20 @@ if(file.exists(filename)){
     ) %>% 
     mutate(
       across(
-        c(-POIDS, -HHID),
+        c(-POIDS, -HHID, -AGE),
         as.factor
       )
-    )
-    
-  # sum(lfs_2023$POIDS)
-  # sum(lfs_micro_fr_2023$EXTRIAN)
+    ) %>%
+    mutate(IS_CHOM = as.numeric(ACTEU == 2)) %>%
+    # Variables au niveau ménages (choix arbitraires)
+    group_by(HHID) %>% 
+    mutate(
+      HH_TAILLE = n(),
+      HH_AGE = max(AGE), # Age de la personne la plus âgée du ménage
+      HH_DIP = DIP7[AGE == max(AGE)][1], #Diplôme de la personne la plus âgée
+      HH_PCS = PCS1Q[AGE == max(AGE)][1] #Diplôme de la personne la plus âgée
+      ) %>%
+    ungroup()
 
   data.table::fwrite(lfs_2023, file = filename)
   rm(select_hh, lfs_micro_fr_2023, ages)
