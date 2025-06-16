@@ -11,7 +11,7 @@ if(file.exists(filename)){
   lfs_2023 <- data.table::fread(filename) %>%
     mutate(
       across(
-        c(-POIDS, -HHID, -AGE),
+        c(-POIDS, -HHID, -AGE, -IS_CHOM),
         as.factor
       )
     )
