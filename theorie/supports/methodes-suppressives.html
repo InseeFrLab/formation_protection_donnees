@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
 
   <title>La protection des données statistiques publiques – Les méthodes suppressives</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -782,7 +782,7 @@
 </section>
 <section id="le-secret-primaire" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Le secret primaire</h2>
-<p>Les cellules catégorisées à risque pour la règle de fréquence, la règle de dominance et la règle du p% constituent le secret primaire. On ne peut pas diffuser ces cellules.</p>
+<p>Les cellules catégorisées à risque pour la règle de fréquence, la règle de dominance et la règle du p% constituent le <strong>secret primaire</strong>. On ne peut pas diffuser ces cellules.</p>
 <p><br></p>
 <p>Comment faire ?</p>
 </section>
@@ -1149,15 +1149,17 @@
 </tr>
 </tbody>
 </table>
-<p><strong>L’intervalle des possibles</strong> : l’ensemble des valeurs possibles prises par la cellule supprimée après avoir posé le masque de secret.</p>
+<p><strong>Intervalle des possibles</strong> : l’ensemble des valeurs possibles prises par la cellule supprimée après avoir posé le masque de secret.</p>
 </section>
 <section id="les-intervalles-de-protection-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Les intervalles de protection</h2>
-<p><strong>L’intervalle de protection</strong> : soit <span class="math inline">\(V_C\)</span> la valeur d’une cellule C sensible à la règle de fréquence et <span class="math inline">\(m\%\)</span> la marge protection choisie.</p>
-<p><br></p>
-<p><span class="math inline">\([(1 - m\%). V_C ; (1 + m\%). V_C]\)</span></p>
-<p><br></p>
-<p>En pratique on choisit souvent une marge de 10%, <span class="math inline">\([90\%.V_C ; 110\%.V_C]\)</span></p>
+<p><strong>Intervalle de protection</strong> : soit <span class="math inline">\(V_C\)</span> la valeur d’une cellule C sensible à la règle de fréquence et <span class="math inline">\(m\%\)</span> la marge protection choisie.</p>
+<p><span class="math display">\[
+[(1 - m\%) \cdot V_C ;\ (1 + m\%) \cdot V_C]
+\]</span></p>
+<p>En pratique on choisit souvent une marge de 10%, <span class="math display">\[
+[90\% \cdot V_C ; 110\% \cdot V_C]
+\]</span></p>
 </section>
 <section id="les-intervalles-de-protection-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Les intervalles de protection</h2>
