@@ -4,7 +4,7 @@ title: Appliquer le Target Record Swapping
 
 
 Pour installer les packages nécessaires, vous trouverez les instructions à suivre 
-dans la fiche [Ressources / Installer les packages et les outils sur R](../../ressources/fiches/outils-install.html). 
+dans la fiche [Ressources / Installer les packages et les outils sur R](../../ressources/fiches/outils-install.html).  
 
 ```{r}
 #| echo: false
@@ -22,54 +22,11 @@ source("../R/prepa_data.R")
 
 
 ```{r}
-str(lfs_2023)
-```
-Les variables du jeu de données sont les suivantes:
-
-- DEP    : Département de résidence
-- SEXE   : Sexe de l'individu
-- AGE    : Âge détaillé de l'individu
-- AGE6   : Âge en 6 classes ("15": signifie les 'les 15-24 ans', "90": désigne les '90 ans ou plus')
-- ACTEU  : Statut d'activité en 3 catgéories: 1=Actifs en emploi; 2=Actifs au chômage; 3=Inactifs (retraités, étudiants, etc.)
-- DIP7   : Niveau du diplôme le plus élevé en 9 catégories (1: niveau le plus bas, 9: niveau le plus élevé, 99: données manquantes (uniquement pour les 90 ans ou plus)).
-- PCS1Q  : Profession ou Catégorie Sociale 
-- ANCCHOM: Factor w/ 10 levels "1","2","3","4",..: 10 10 10 6 10 10 10 10 10 10 ...
-- HHID   : int  721 3867 3867 1634 1634 4720 6312 6312 5667 5667 ...
-- POIDS 
-
-
-```{r}
-Varmod_lfs_2023 <- read_delim("./data/Varmod_EEC_2023.csv", 
-    delim = ";", escape_double = FALSE, trim_ws = TRUE,
-)
+head(lfs_2023)
 ```
 
-```{r}
-get_documentation_variable <- function(variable){
-  if(!variable %in% unique(Varmod_lfs_2023$COD_VAR)){
-    return(NULL)
-  }
-  
-  doc <- Varmod_lfs_2023 |> 
-    filter(COD_VAR==variable) |> 
-    select(LIB_VAR, COD_MOD, LIB_MOD)
-  
-  cat("libellé de la variable ", variable, " : ", doc$LIB_VAR[1], " \n")
-  
-  return(
-    doc |> 
-      select(-LIB_VAR) |> 
-      knitr::kable(
-        caption = paste0("Modalités de la variable ", variable),
-        booktabs=TRUE
-      )
-  )
-}
-
-vars_a_documenter <- c("ACTEU", "DIP7", "PCS1Q", "ANCCHOM")
-map(vars_a_documenter, get_documentation_variable)
-```
-
+Pour plus d'informations sur les données, on pourra se reporter à la fiche 
+["Présentation des données"](description-data.html).  
 
 
 ## Mesurons les risques du fichier
@@ -95,7 +52,7 @@ hhid_vars <- c("HHID")
 
 ```{r}
 lfs_2023_pr_swap <- lfs_2023 %>% 
-  mutate(across(-POIDS, as.integer)) %>% 
+  mutate(across(everything(), as.integer)) %>% 
   mutate(
     REG = floor(DEP / 10),
     ID = 1:n()
