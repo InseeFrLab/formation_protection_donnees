@@ -12,7 +12,15 @@ Authors@R:
         person(given = "Clara",
              family = "Baudry",
              role = c("aut", "cre"),
-             email = "clara.baudry@insee.fr"))
+             email = "clara.baudry@insee.fr"),
+        person(given = "Clément",
+             family = "Guillo",
+             role = c("aut"),
+             email = "clement.guillo@insee.fr"),
+        person(given = "Nathanaël",
+             family = "Rastout",
+             role = c("aut"),
+             email = "nathanael.rastout@insee.fr"))
 Description: Atelier de formation à la protection des données
     (https://atelier-protection-donnees.github.io/atelier-protection-donnees/)
     est un site web de formation à la protection des données.
