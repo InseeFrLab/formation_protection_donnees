@@ -780,15 +780,15 @@ window.Quarto = {
 <p>Tau-Argus attend en effet un type de fichier bien particulier, dont l’extension est <code>.hrc</code>. Il s’agit d’un simple fichier texte où les différents emboîtements sont écrits les uns en-dessous des autres. Un symbole (le <code>@</code>) est utilisé pour préciser le niveau de chacun des emboîtements au sein de la hiérarchie.</p>
 <p>Par exemple, un fichier contenant les lignes suivantes :</p>
 <p>ALL<br>
-<span class="citation" data-cites="A">@A</span><br>
-@<span class="citation" data-cites="A1">@A1</span><br>
-@<span class="citation" data-cites="A2">@A2</span><br>
-<span class="citation" data-cites="B">@B</span><br>
-@<span class="citation" data-cites="B1">@B1</span><br>
-@<span class="citation" data-cites="B2">@B2</span><br>
-@@<span class="citation" data-cites="B21">@B21</span><br>
-@@<span class="citation" data-cites="B22">@B22</span><br>
-<span class="citation" data-cites="C">@C</span></p>
+<span class="citation" data-cites="A">(<a href="#ref-A" role="doc-biblioref"><strong>A?</strong></a>)</span><br>
+@<span class="citation" data-cites="A1">(<a href="#ref-A1" role="doc-biblioref"><strong>A1?</strong></a>)</span><br>
+@<span class="citation" data-cites="A2">(<a href="#ref-A2" role="doc-biblioref"><strong>A2?</strong></a>)</span><br>
+<span class="citation" data-cites="B">(<a href="#ref-B" role="doc-biblioref"><strong>B?</strong></a>)</span><br>
+@<span class="citation" data-cites="B1">(<a href="#ref-B1" role="doc-biblioref"><strong>B1?</strong></a>)</span><br>
+@<span class="citation" data-cites="B2">(<a href="#ref-B2" role="doc-biblioref"><strong>B2?</strong></a>)</span><br>
+@@<span class="citation" data-cites="B21">(<a href="#ref-B21" role="doc-biblioref"><strong>B21?</strong></a>)</span><br>
+@@<span class="citation" data-cites="B22">(<a href="#ref-B22" role="doc-biblioref"><strong>B22?</strong></a>)</span><br>
+<span class="citation" data-cites="C">(<a href="#ref-C" role="doc-biblioref"><strong>C?</strong></a>)</span></p>
 <p>décrit une hiérarchie contenant les emboîtements suivants:</p>
 <ul>
 <li>ALL = A + B + C =&gt; ALL est le total et A, B et C sont les emboîtements de niveau 1;</li>
@@ -798,15 +798,15 @@ window.Quarto = {
 </ul>
 <p>Néanmoins, pour utiliser cette hiérarchie avec Tau-Argus, <strong>le super-total (ici “ALL”) ne doit pas apparaître dans le fichier .hrc</strong> qui lui est fourni.</p>
 <p>Le bon fichier est donc le suivant :</p>
-<p><span class="citation" data-cites="A">@A</span><br>
-@<span class="citation" data-cites="A1">@A1</span><br>
-@<span class="citation" data-cites="A2">@A2</span><br>
-<span class="citation" data-cites="B">@B</span><br>
-@<span class="citation" data-cites="B1">@B1</span><br>
-@<span class="citation" data-cites="B2">@B2</span><br>
-@@<span class="citation" data-cites="B21">@B21</span><br>
-@@<span class="citation" data-cites="B22">@B22</span><br>
-<span class="citation" data-cites="C">@C</span></p>
+<p><span class="citation" data-cites="A">(<a href="#ref-A" role="doc-biblioref"><strong>A?</strong></a>)</span><br>
+@<span class="citation" data-cites="A1">(<a href="#ref-A1" role="doc-biblioref"><strong>A1?</strong></a>)</span><br>
+@<span class="citation" data-cites="A2">(<a href="#ref-A2" role="doc-biblioref"><strong>A2?</strong></a>)</span><br>
+<span class="citation" data-cites="B">(<a href="#ref-B" role="doc-biblioref"><strong>B?</strong></a>)</span><br>
+@<span class="citation" data-cites="B1">(<a href="#ref-B1" role="doc-biblioref"><strong>B1?</strong></a>)</span><br>
+@<span class="citation" data-cites="B2">(<a href="#ref-B2" role="doc-biblioref"><strong>B2?</strong></a>)</span><br>
+@@<span class="citation" data-cites="B21">(<a href="#ref-B21" role="doc-biblioref"><strong>B21?</strong></a>)</span><br>
+@@<span class="citation" data-cites="B22">(<a href="#ref-B22" role="doc-biblioref"><strong>B22?</strong></a>)</span><br>
+<span class="citation" data-cites="C">(<a href="#ref-C" role="doc-biblioref"><strong>C?</strong></a>)</span></p>
 </section>
 <section id="automatiquement" class="level3">
 <h3 class="anchored" data-anchor-id="automatiquement">Automatiquement</h3>
@@ -814,15 +814,15 @@ window.Quarto = {
 <p>Nous appelons table de correspondance une table qui précise l’ensemble des niveaux associés aux emboîtements les plus fins.</p>
 <p>La table de correspondance représentant la hiérarchie suivante :</p>
 <p>ALL<br>
-<span class="citation" data-cites="A">@A</span><br>
-@<span class="citation" data-cites="A1">@A1</span><br>
-@<span class="citation" data-cites="A2">@A2</span><br>
-<span class="citation" data-cites="B">@B</span><br>
-@<span class="citation" data-cites="B1">@B1</span><br>
-@<span class="citation" data-cites="B2">@B2</span><br>
-@@<span class="citation" data-cites="B21">@B21</span><br>
-@@<span class="citation" data-cites="B22">@B22</span><br>
-<span class="citation" data-cites="C">@C</span></p>
+<span class="citation" data-cites="A">(<a href="#ref-A" role="doc-biblioref"><strong>A?</strong></a>)</span><br>
+@<span class="citation" data-cites="A1">(<a href="#ref-A1" role="doc-biblioref"><strong>A1?</strong></a>)</span><br>
+@<span class="citation" data-cites="A2">(<a href="#ref-A2" role="doc-biblioref"><strong>A2?</strong></a>)</span><br>
+<span class="citation" data-cites="B">(<a href="#ref-B" role="doc-biblioref"><strong>B?</strong></a>)</span><br>
+@<span class="citation" data-cites="B1">(<a href="#ref-B1" role="doc-biblioref"><strong>B1?</strong></a>)</span><br>
+@<span class="citation" data-cites="B2">(<a href="#ref-B2" role="doc-biblioref"><strong>B2?</strong></a>)</span><br>
+@@<span class="citation" data-cites="B21">(<a href="#ref-B21" role="doc-biblioref"><strong>B21?</strong></a>)</span><br>
+@@<span class="citation" data-cites="B22">(<a href="#ref-B22" role="doc-biblioref"><strong>B22?</strong></a>)</span><br>
+<span class="citation" data-cites="C">(<a href="#ref-C" role="doc-biblioref"><strong>C?</strong></a>)</span></p>
 <p>est la suivante:</p>
 <div class="cell">
 <details class="code-fold">
