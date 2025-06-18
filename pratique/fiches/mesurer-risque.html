@@ -322,9 +322,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#importons-les-données" id="toc-importons-les-données" class="nav-link active" data-scroll-target="#importons-les-données">Importons les données</a></li>
+  <li><a href="#les-données" id="toc-les-données" class="nav-link active" data-scroll-target="#les-données">Les données</a></li>
   <li><a href="#les-différents-types-de-variables" id="toc-les-différents-types-de-variables" class="nav-link" data-scroll-target="#les-différents-types-de-variables">Les différents types de variables</a></li>
-  <li><a href="#le-k-anonymat" id="toc-le-k-anonymat" class="nav-link" data-scroll-target="#le-k-anonymat">Le k-anonymat</a></li>
+  <li><a href="#le-risque-de-ré-identification-et-le-rôle-des-quasi-identifiants" id="toc-le-risque-de-ré-identification-et-le-rôle-des-quasi-identifiants" class="nav-link" data-scroll-target="#le-risque-de-ré-identification-et-le-rôle-des-quasi-identifiants">Le risque de ré-identification et le rôle des quasi-identifiants</a>
+  <ul class="collapse">
+  <li><a href="#un-premier-exemple" id="toc-un-premier-exemple" class="nav-link" data-scroll-target="#un-premier-exemple">Un premier exemple</a></li>
+  <li><a href="#le-choix-des-variables-quasi-identifiantes" id="toc-le-choix-des-variables-quasi-identifiantes" class="nav-link" data-scroll-target="#le-choix-des-variables-quasi-identifiantes">Le choix des variables quasi-identifiantes</a></li>
+  </ul></li>
   <li><a href="#la-l-diversité" id="toc-la-l-diversité" class="nav-link" data-scroll-target="#la-l-diversité">La l-diversité</a></li>
   <li><a href="#suda" id="toc-suda" class="nav-link" data-scroll-target="#suda">SUDA</a></li>
   <li><a href="#le-risque-individuel" id="toc-le-risque-individuel" class="nav-link" data-scroll-target="#le-risque-individuel">Le risque individuel</a>
@@ -360,35 +364,154 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdcMicro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-</div>
-<section id="importons-les-données" class="level2">
-<h2 class="anchored" data-anchor-id="importons-les-données">Importons les données</h2>
+<section id="les-données" class="level2">
+<h2 class="anchored" data-anchor-id="les-données">Les données</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/prepa_data.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/prepa_data.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_2023)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      REG    DEP    ARR   SEXE   AGE   AGE6  ACTEU   DIP7  PCS1Q ANCCHOM  HHID
+   &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;int&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt;  &lt;fctr&gt; &lt;int&gt;
+1:     28     76    761      1    53     50      1      4     30      99  3558
+2:     28     76    761      2    43     25      1      7     52      99  3558
+3:     28     76    761      2    17     15      3      5     99      99  3558
+4:     28     76    761      1    17     15      3      4     99      99  3558
+5:     11     92    922      1    42     25      1      7     62      99  5973
+6:     11     92    922      2    54     50      1      7     62      99  5973
+   HH_TAILLE HH_AGE HH_DIP HH_PCS IS_CHOM
+      &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt;   &lt;int&gt;
+1:         4     53      4     30       0
+2:         4     53      4     30       0
+3:         4     53      4     30       0
+4:         4     53      4     30       0
+5:         2     54      7     62       0
+6:         2     54      7     62       0</code></pre>
+</div>
 </div>
 </section>
 <section id="les-différents-types-de-variables" class="level2">
 <h2 class="anchored" data-anchor-id="les-différents-types-de-variables">Les différents types de variables</h2>
+<p>Dans un jeu de données, on distingue trois grands types de variables:</p>
+<ul>
+<li>les <em>quasi-identifiants</em>: un ensemble de variables dont on suppose qu’un attaquant est susceptible de les avoir déjà à sa disposition.</li>
+<li>les <em>variables sensibles</em>: les variables portant sur des thématiques sensibles au sens de la Loi Informatique et Libertés (religion, opinion, orientation sexuelle, etc.), mais on peut aussi y inclure des variables dont la connaissance est susceptible de porter préjudice à la personne (par exemple le salaire, le fait d’avoir une maladie, le fait d’être au chômage, etc.).</li>
+<li>les <em>variables ni identifiantes ni sensibles</em>: celles qui a priori ne posent pas de problème spécifique en terme de confidentialité.</li>
+</ul>
 </section>
-<section id="le-k-anonymat" class="level2">
-<h2 class="anchored" data-anchor-id="le-k-anonymat">Le k-anonymat</h2>
+<section id="le-risque-de-ré-identification-et-le-rôle-des-quasi-identifiants" class="level2">
+<h2 class="anchored" data-anchor-id="le-risque-de-ré-identification-et-le-rôle-des-quasi-identifiants">Le risque de ré-identification et le rôle des quasi-identifiants</h2>
+<p>Ainsi, le premier type de variables engendre un risque de divulgation d’information confidentielle par la possibilité pour l’attaquant de ré-identifier des individus. En effet, si un ataquant dispose d’un fichier nomminatif - un fichier client par exemple - contenant des variables communes avec le jeu de données qu’on s’apprête à publier, il est alors en mesure d’apparier les deux et être en capacité de ré-identifier des individus si ceux-ci se trouvent avoir des caractéristiques peu fréquentes.</p>
+<section id="un-premier-exemple" class="level3">
+<h3 class="anchored" data-anchor-id="un-premier-exemple">Un premier exemple</h3>
+<p>Prenons une liste très restreinte de quasi-identifiants: la géographie de résidence, le sexe et l’âge de l’individu. Ces informations sont disponibles par de nombreuses entreprises auprès desquelles nous souscrivons des services (banque, assurance, téléphonie, etc.).</p>
+<p>En dénombrant les individus de chaque croisement entre les variables quasi-identifiantes, on peut détecter :</p>
+<ul>
+<li>le <strong>niveau d’anonymité du fichier</strong> au sens du <strong>k-anonymat</strong>: ici notre fichier est 1-anonyme puisqu’il contient de nombreux individus uniques dans leur catégorie.</li>
+<li>la détection des croisements et des <strong>individus les plus à risque</strong>: &gt; Moins il y a d’individus dans un groupe, plus la probabilité de ré-identification par l’attaquant est forte. Dans le cas d’un groupe unique, la ré-identification est même certaine.</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>qi_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>,<span class="st">"DEP"</span>,<span class="st">"ARR"</span>, <span class="st">"SEXE"</span>, <span class="st">"AGE"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>freq_qi_vars <span class="ot">&lt;-</span> lfs_2023 <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(qi_vars))) </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>freq_qi_vars <span class="sc">|&gt;</span> <span class="fu">arrange</span>(n) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      REG    DEP    ARR   SEXE   AGE     n
+   &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;int&gt; &lt;int&gt;
+1:     11     75    751      2    97     1
+2:     11     75    751      2   102     1
+3:     11     75    751      2   103     1
+4:     11     75    751      2   116     1
+5:     11     77    771      1    15     1
+6:     11     77    771      1    18     1</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>freq_qi_vars <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="sc">-</span>n) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      REG    DEP    ARR   SEXE   AGE     n
+   &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;int&gt; &lt;int&gt;
+1:     11     75    751      2    52    43
+2:     11     75    751      1    51    39
+3:     11     75    751      1    21    36
+4:     11     75    751      2    60    36
+5:     11     75    751      2    61    36
+6:     11     75    751      1    55    35</code></pre>
+</div>
+</div>
+<p>Ainsi, si une entreprise de notre contrée imaginaire dispose d’un fichier sur tout ou partie de la population en âge de travailler (par exemple un opérateur téléphonique), il pourra ré-identifier sans peine les individus uniques du jeu de données qui seraient présents dans son fchier.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Des variables très efficaces pour la ré-identification
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Certaines variables ont un pouvoir de ré-identification très fort, en particulier :</p>
+<ul>
+<li><p>la <strong>géographie</strong> (de résidence, de travail, d’implantation): plus elle est précise plus la ré-identification est aisée, d’autant plus que l’adresse est souvent par ailleurs une donnée très largement partagée par les individus et les entreprises.</p></li>
+<li><p>l’<strong>âge</strong> est également très ré-identifiant puisqu’il est à la fois public avec la disponibilité de l’état-civil et concerne, pour certains âges avancés, peu d’individus. Ainsi, si la personne la plus âgée résidant en France est dans notre fichier, nous avons toutes les chances de la ré-identifier de façon certaine en ne connaissant que son âge.</p></li>
+</ul>
+</div>
+</div>
+<p>La <strong>capacité d’un attaquant à pouvoir ré-identifier un individu</strong> dépend du nombre d’individus du jeu de données qui partagent les mêmes caractéristiques sur les variables quasi-identifiantes.</p>
+<p>Par exemple, si Thérèse est une femme de 97 ans résidant dans l’arrondissement <code>751</code>, alors le jeu de données permet de la ré-identifier de façon certaine, puisqu’elle serait la seule dans ce cas.</p>
+<p>Au contraire, si Thérèse est une femme de 52 ans résidant dans le même arrondissement, alors la probabilité de la ré-identifier dans le jeu de données avec ces seules informations serait de 1 chance sur 43.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>freq_qi_vars <span class="ot">&lt;-</span> freq_qi_vars <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> <span class="dv">1</span><span class="sc">/</span>n) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_cl =</span> <span class="fu">cut</span>(p, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="dv">1</span>)))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(freq_qi_vars) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span>p_cl), <span class="at">fill =</span> <span class="st">"forestgreen"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">color =</span> <span class="st">"snow"</span>) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Probabilité de ré-identification des individus"</span>) <span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mesurer-risque_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="le-choix-des-variables-quasi-identifiantes" class="level3">
+<h3 class="anchored" data-anchor-id="le-choix-des-variables-quasi-identifiantes">Le choix des variables quasi-identifiantes</h3>
+<p>Choisir les variables quasi-identifiantes est un exercice difficile puisqu’en général, nous n’avons pas une idée exacte des données à la disposition des attaquants potentiels. Il faut donc définir un scénario théorique suffisamment réaliste pour s’assurer de <strong>protéger</strong> les données individuelles des risques de ré-identification les plus importants.</p>
+<p>En choisissant le premier jeu de variables quasi-identifiantes (géographie, sexe et âge), on considère le jeu minimal de quasi-idenfiants. L’extrême inverse consisterait à considérer toutes les variable comme des quasi-identifiants. Dans le premier cas, on définit un scénario minimaliste, dans le second le scénario est maximaliste.</p>
+<p>Dans notre jeu de données fictif sur l’emploi et le chômage, on pourrait définir</p>
+<ul>
+<li>un scénario minimaliste: l’attaquant ne dispose que de la géographie, du sexe et de l’âge de ses clients</li>
+<li>un scénario intermédiaire: l’attaquant dispose en plus d’informations sur sa catégorie sociale et son niveau de diplôme</li>
+<li>un scénario maximaliste: l’attaquant dispose en réalité de toutes les informations sur les individus sauf de son ancienneté au chômage.</li>
+</ul>
+<p>Selon ces trois scénarios, le niveau de risque de ré-identifcation des individus ne sera pas le même</p>
+</section>
 </section>
 <section id="la-l-diversité" class="level2">
 <h2 class="anchored" data-anchor-id="la-l-diversité">La l-diversité</h2>
@@ -877,54 +1000,191 @@ Attaching package: 'dplyr'</code></pre>
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Les mesures du risque de divulgation</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdcMicro)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Importons les données</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/prepa_data.R"</span>)</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les différents types de variables</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Le k-anonymat</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## La l-diversité</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## SUDA</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Le risque individuel </span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mesures naïves</span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mesures probabilistes</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="fu">### Les outliers</span></span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Les mesures du risque de divulgation</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdcMicro)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les données</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/prepa_data.R"</span>)</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_2023)</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les différents types de variables</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>Dans un jeu de données, on distingue trois grands types de variables:</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>les *quasi-identifiants*: un ensemble de variables dont on suppose qu'un </span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>attaquant est susceptible de les avoir déjà à sa disposition.</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>les *variables sensibles*: les variables portant sur des thématiques </span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>sensibles au sens de la Loi Informatique et Libertés </span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>(religion, opinion, orientation sexuelle, etc.), mais on peut aussi y inclure </span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>des variables dont la connaissance est susceptible de porter préjudice </span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>à la personne (par exemple le salaire, le fait d'avoir une maladie, le fait </span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>d'être au chômage, etc.).</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>les *variables ni identifiantes ni sensibles*: celles qui a priori ne </span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>posent pas de problème spécifique en terme de confidentialité.</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## Le risque de ré-identification et le rôle des quasi-identifiants</span></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>Ainsi, le premier type de variables engendre un risque de divulgation d'information</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>confidentielle par la possibilité pour l'attaquant de ré-identifier des individus. </span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>En effet, si un ataquant dispose d'un fichier nomminatif - un fichier client par </span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>exemple - contenant des variables communes avec le jeu de données qu'on s'apprête </span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>à publier, il est alors en mesure d'apparier les deux et être en capacité de </span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>ré-identifier des individus si ceux-ci se trouvent avoir des caractéristiques </span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>peu fréquentes.</span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a><span class="fu">### Un premier exemple</span></span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>Prenons une liste très restreinte de quasi-identifiants: la géographie de résidence,</span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>le sexe et l'âge de l'individu. Ces informations sont disponibles par de </span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>nombreuses entreprises auprès desquelles nous souscrivons des services </span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>(banque, assurance, téléphonie, etc.). </span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>En dénombrant les individus de chaque croisement entre les variables quasi-identifiantes,</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>on peut détecter :</span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>le **niveau d'anonymité du fichier** au sens du **k-anonymat**: ici notre fichier est </span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a>1-anonyme puisqu'il contient de nombreux individus uniques dans leur catégorie.</span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>la détection des croisements et des **individus les plus à risque**:</span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Moins il y a d'individus dans un groupe, plus la probabilité de ré-identification </span></span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a><span class="at">par l'attaquant est forte. Dans le cas d'un groupe unique, la ré-identification </span></span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a><span class="at">est même certaine.</span></span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a>qi_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>,<span class="st">"DEP"</span>,<span class="st">"ARR"</span>, <span class="st">"SEXE"</span>, <span class="st">"AGE"</span>)</span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>freq_qi_vars <span class="ot">&lt;-</span> lfs_2023 <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(qi_vars))) </span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a>freq_qi_vars <span class="sc">|&gt;</span> <span class="fu">arrange</span>(n) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>freq_qi_vars <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="sc">-</span>n) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a>Ainsi, si une entreprise de notre contrée imaginaire dispose d'un fichier sur </span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a>tout ou partie de la population en âge de travailler (par exemple un opérateur </span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a>téléphonique), il pourra ré-identifier sans peine les individus uniques du jeu </span>
+<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a>de données qui seraient présents dans son fchier.</span>
+<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning}</span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a><span class="fu">## Des variables très efficaces pour la ré-identification</span></span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a>Certaines variables ont un pouvoir de ré-identification très fort, en particulier :</span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>la **géographie** (de résidence, de travail, d'implantation): plus elle est précise </span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a>plus la ré-identification est aisée, d'autant plus que l'adresse est souvent par </span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a>ailleurs une donnée très largement partagée par les individus et les entreprises.</span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>l'**âge** est également très ré-identifiant puisqu'il est à la fois public avec </span>
+<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a>la disponibilité de l'état-civil et concerne, pour certains âges avancés, peu </span>
+<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a>d'individus. Ainsi, si la personne la plus âgée résidant en France est dans notre</span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a>fichier, nous avons toutes les chances de la ré-identifier de façon certaine </span>
+<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a>en ne connaissant que son âge.</span>
+<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a>La **capacité d'un attaquant à pouvoir ré-identifier un individu** dépend du </span>
+<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a>nombre d'individus du jeu de données qui partagent les mêmes caractéristiques</span>
+<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a>sur les variables quasi-identifiantes.</span>
+<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a>Par exemple, si Thérèse est une femme de 97 ans résidant dans l'arrondissement <span class="in">`751`</span>,</span>
+<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a>alors le jeu de données permet de la ré-identifier de façon certaine, puisqu'elle </span>
+<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a>serait la seule dans ce cas.</span>
+<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a>Au contraire, si Thérèse est une femme de 52 ans résidant dans le même arrondissement, </span>
+<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a>alors la probabilité de la ré-identifier dans le jeu de données </span>
+<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a>avec ces seules informations serait de 1 chance sur </span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a><span class="in">`r freq_qi_vars |&gt; filter(ARR == "751", SEXE == 2, AGE == 52) |&gt; pull(n)`</span>.</span>
+<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a>freq_qi_vars <span class="ot">&lt;-</span> freq_qi_vars <span class="sc">|&gt;</span></span>
+<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> <span class="dv">1</span><span class="sc">/</span>n) <span class="sc">|&gt;</span></span>
+<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_cl =</span> <span class="fu">cut</span>(p, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="dv">1</span>)))</span>
+<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(freq_qi_vars) <span class="sc">+</span></span>
+<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span>p_cl), <span class="at">fill =</span> <span class="st">"forestgreen"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">color =</span> <span class="st">"snow"</span>) <span class="sc">+</span></span>
+<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Probabilité de ré-identification des individus"</span>) <span class="sc">+</span></span>
+<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a><span class="fu">### Le choix des variables quasi-identifiantes</span></span>
+<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a>Choisir les variables quasi-identifiantes est un exercice difficile puisqu'en </span>
+<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a>général, nous n'avons pas une idée exacte des données à la disposition </span>
+<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a>des attaquants potentiels. Il faut donc définir un scénario théorique suffisamment </span>
+<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a>réaliste pour s'assurer de **protéger** les données individuelles </span>
+<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a>des risques de ré-identification les plus importants.  </span>
+<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a>En choisissant le premier jeu de variables quasi-identifiantes (géographie, sexe et âge),</span>
+<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a>on considère le jeu minimal de quasi-idenfiants. L'extrême inverse consisterait </span>
+<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a>à considérer toutes les variable comme des quasi-identifiants. Dans le premier </span>
+<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a>cas, on définit un scénario minimaliste, dans le second le scénario est maximaliste.</span>
+<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a>Dans notre jeu de données fictif sur l'emploi et le chômage, on pourrait définir </span>
+<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>un scénario minimaliste: l'attaquant ne dispose que de la géographie, du sexe et de l'âge de ses clients</span>
+<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>un scénario intermédiaire: l'attaquant dispose en plus d'informations sur sa catégorie sociale et son niveau de diplôme</span>
+<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>un scénario maximaliste: l'attaquant dispose en réalité de toutes les informations sur les individus sauf de son ancienneté au chômage.</span>
+<span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a>Selon ces trois scénarios, le niveau de risque de ré-identifcation des individus ne sera pas le même</span>
+<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a><span class="fu">## La l-diversité</span></span>
+<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a><span class="fu">## SUDA</span></span>
+<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a><span class="fu">## Le risque individuel </span></span>
+<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mesures naïves</span></span>
+<span id="cb10-184"><a href="#cb10-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-185"><a href="#cb10-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-186"><a href="#cb10-186" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mesures probabilistes</span></span>
+<span id="cb10-187"><a href="#cb10-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-188"><a href="#cb10-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-189"><a href="#cb10-189" aria-hidden="true" tabindex="-1"></a><span class="fu">### Les outliers</span></span>
+<span id="cb10-190"><a href="#cb10-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-191"><a href="#cb10-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-192"><a href="#cb10-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-193"><a href="#cb10-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-194"><a href="#cb10-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-195"><a href="#cb10-195" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
