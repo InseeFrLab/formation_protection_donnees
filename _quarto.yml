@@ -47,3 +47,4 @@ format:
     reference-location: margin
     citation-location: margin
     cap-location: bottom
+    bibliography: references-SDC.bib
