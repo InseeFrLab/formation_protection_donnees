@@ -138,5 +138,5 @@ if(file.exists(filename)){
   cat("taux de chômage national estimé à partir des données: ", tx_chom_s, " \n")
   
   data.table::fwrite(lfs_2023, file = filename)
-  rm(select_hh, lfs_micro_fr_2023, ages, lfs_hh_arr)
+  rm(select_hh, lfs_micro_fr_2023, ages, lfs_hh_arr, taux_echantillon, filename)
 }
