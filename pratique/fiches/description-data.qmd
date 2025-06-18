@@ -1,0 +1,104 @@
+---
+title: Présentation des données
+href: pratique/fiches/description-data.html
+image: ../../images/description-data.png
+---
+
+
+Pour installer les packages nécessaires, vous trouverez les instructions à suivre 
+dans la fiche [Ressources / Installer les packages et les outils sur R](../../ressources/fiches/outils-install.html). 
+
+
+```{r}
+#| echo: false
+#| message: false
+#| output: false
+
+library(readr)
+library(purrr)
+library(dplyr)
+```
+
+
+## Présentation
+
+Les données utilisées dans la plupart des fiches pratiques sont sont un jeu fictif inspiré du fichier public de l'échantillon annuel de l'Enquête Emploi en Continu 
+(mis à disposition par l'Insee sur son site internet](https://www.insee.fr/fr/statistiques/6654604).
+
+Le code de construction des données est consultable sur 
+[le dépôt github du projet](https://github.com/InseeFrLab/formation_protection_donnees/blob/main/pratique/R/prepa_data.R). Ce code intervient de plusieurs façons sur les données publiques:
+
+- Création de variables pour les besoins des exercices, par exemple:
+  - localisation fictive des individus sur trois niveaux géographiques emboîtés (variables ARR, DEP et REG),
+  - âge détaillé des individus, construit à partir de la catégorie d'âge connue,
+  - recodage des valeurs manquantes (le plus souvent `NA` devenant `99`),
+  - sélection d'un sous-échantillon du fichier public,
+  - recalage des poids pour permettre l'estimation des taux de chômage etc.
+
+
+> Il est donc important de prendre en considération que le jeu de données 
+utilisé est fictif et les résultats obtenus ne doivent pas être pris autrement 
+que comme les résultats de données quasi-fictives.
+
+
+Dans ce petit document, sont présentées les variables utilisées dans les différents exercices afin 
+de faciliter la prise en main et la compréhension des choix réalisés.
+
+## Import
+
+
+```{r}
+#| echo: true
+#| output: false
+source("../R/prepa_data.R")
+```
+
+
+## Description
+
+```{r}
+str(lfs_2023)
+```
+
+Les variables du jeu de données sont les suivantes:
+
+- REG      : Région de résidence (variable fictive)
+- DEP      : Département de résidence (variable fictive)
+- ARR      : Arrondissement de résidence (variable fictive)
+- SEXE     : Sexe de l'individu
+- AGE      : Âge détaillé de l'individu (variable reconstruite)
+- AGE6     : Âge en 6 classes ("15": signifie les 'les 15-24 ans', "90": désigne les '90 ans ou plus')
+- ACTEU    : Statut d'activité en 3 catgéories: 1=Actifs en emploi; 2=Actifs au chômage; 3=Inactifs (retraités, étudiants, etc.)
+- DIP7     : Niveau du diplôme le plus élevé en 9 catégories (1: niveau le plus bas, 9: niveau le plus élevé, 99: données manquantes (uniquement pour les 90 ans ou plus)).
+- PCS1Q    : Profession ou Catégorie Sociale 
+- ANCCHOM  : Ancienneté au chômage
+- HHID     : Identifiant du ménage
+- HH_TAILLE: Nombre d'individus du ménage
+- HH_AGE   : Âge de la personne la plus âgée du ménage
+- HH_DIP   : Diplôme de la personne la plus âgée du ménage
+- HH_PCS   : Profession ou catégorie sociale de la personne la plus âgée du ménage
+- IS_CHOM. : La personne est au chômage (`TRUE`/`FALSE`)
+
+
+```{r}
+#| echo: false
+#| output: false
+#| message: false
+Varmod_lfs_2023 <- read_delim("./data/Varmod_EEC_2023.csv", 
+    delim = ";", escape_double = FALSE, trim_ws = TRUE,
+)
+```
+
+
+```{r}
+#| echo: false
+#| message: false
+Varmod_lfs_2023 |> 
+  filter(COD_VAR %in% names(lfs_2023)) |>
+  select(Variable=COD_VAR, Libellé_Var=LIB_VAR, Modalité=COD_MOD, Libellé_Mod=LIB_MOD) |> 
+  DT::datatable(
+    caption = "Variables et leurs modalités",
+    rownames = FALSE
+  )
+```
+

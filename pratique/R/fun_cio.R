@@ -1,6 +1,6 @@
 get_confint_OR <- function(model, nom){
   
-  ci <- exp(confint(model, level = 0.95))
+  ci <- exp(confint.default(model, level = 0.95))
   
   ci <- ci %>% 
     as_tibble() %>%

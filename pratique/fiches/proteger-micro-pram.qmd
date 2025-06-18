@@ -55,7 +55,7 @@ sdc_object1 <- createSdcObj(
   dat=lfs_2023,
   keyVars=key_vars1,
   hhId = "HHID",
-  weightVar = "POIDS",
+  # weightVar = "POIDS",
   sensibleVar = "ANCCHOM",
   pramVars = "ACTEU",
   seed = 20061789

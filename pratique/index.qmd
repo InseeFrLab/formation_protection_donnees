@@ -12,6 +12,7 @@ listing:
     - "fiches/perturbatif.qmd"
     - "fiches/arbitrage.qmd"
     - "fiches/sujets-avances.qmd"
+    - "fiches/description-data.qmd"
   sort: false
   type: grid
   image-height: 300px
