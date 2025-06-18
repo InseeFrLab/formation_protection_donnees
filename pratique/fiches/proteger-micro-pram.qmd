@@ -8,24 +8,11 @@ library(sdcMicro)
 ```
 
 
-## Les données
+# Les données
 
 ```{r}
 source("../R/prepa_data.R")
 ```
-
-## Définir son objet sdc
-
-Le package `sdcMicro` a un fonctionnement spécial pusiqu'il utilise des **classes** (objets de type S4). En effet, il faut créer un objet qui regroupe toutes les informations concernant les données sur lequelles on veut appliquer une méthode de protection. Cet objet relève de la classe `sdcMicroObj`, on le crée en appelant la fonction `createSdcObj()` voici certains de ces arguments :
-
-- `dat` : un jeu de micrdonnées ;
-- `keyVars` : vecteur de noms (ou indices) de variables quasi-identifiantes catégorielles ;
-- `numVars` : vecteur de noms (ou indices) de variables quasi-identifiantes continues ;
-- `pramVars` : vecteur de noms (ou indices) de variables catégorielles à protéger via PRAM ;
-- `weightVar` : nom (ou indice) du vecteur des poids de sondage ;
-- `hhID` : nom (ou indice) de l'identifiant du cluster (s'il existe) ;
-- `sensibleVar` : vecteur de noms (ou indices) des variables sensbiles (pour la l-diversité) ;
-- `seed` : graine utilisée pour la reproductibilité des résultats
 
 Nous allons étudier un extrait des données de l'Enquête emploi en continu de l'Insee.
 
@@ -46,7 +33,20 @@ On y trouve les variables suivantes :
 - **HHID** : identifiant du cluster
 - **POIDS** : poids de sondage
 
-On peut créer un objet `sdcMicroObj` à partir de ces données.
+# Définir son objet sdc
+
+Le package `sdcMicro` a un fonctionnement spécial pusiqu'il utilise des **classes** (objets de type S4). En effet, il faut créer un objet qui regroupe toutes les informations concernant les données sur lequelles on veut appliquer une méthode de protection. Cet objet relève de la classe `sdcMicroObj`, on le crée en appelant la fonction `createSdcObj()` voici certains de ces arguments :
+
+- `dat` : un jeu de micrdonnées ;
+- `keyVars` : vecteur de noms (ou indices) de variables quasi-identifiantes catégorielles ;
+- `numVars` : vecteur de noms (ou indices) de variables quasi-identifiantes continues ;
+- `pramVars` : vecteur de noms (ou indices) de variables catégorielles à protéger via PRAM ;
+- `weightVar` : nom (ou indice) du vecteur des poids de sondage ;
+- `hhID` : nom (ou indice) de l'identifiant du cluster (s'il existe) ;
+- `sensibleVar` : vecteur de noms (ou indices) des variables sensbiles (pour la l-diversité) ;
+- `seed` : graine utilisée pour la reproductibilité des résultats
+
+On peut créer un objet `sdcMicroObj` à partir des données de l'enquête emploi.
 
 ```{r}
 key_vars1 <- c("DEP", "SEXE", "AGE6", "DIP7") # quasi-identifiants
@@ -69,14 +69,13 @@ L'objet contient **22 composants** ou **slots**, dont :
 - `utility` : les informations sur l'utilité des données ;
 - `pram` : informations sur les variables pour lesquelles on a utilisé la méthode PRAM.
 
-## Mesurer le risque
+# Mesurer le risque
 
-### k-anonymat
+## k-anonymat
 
 Par défaut les mesures de k-anonymat pour k = 2, k = 3 et k = 5 sont fournies.
 
 ```{r}
-# k-anonymat (par défaut k=2, 3 et 5)
 print(sdc_object1)
 ```
 
@@ -116,11 +115,11 @@ risque_ind_original <- sdc_object1@originalRisk$individual
 head(risque_ind_original)
 ```
 
-La colonne `fk` donne le nombre d'individus dans l'échantillon qui suivent une combinaison unique de DEP, SEXE, AGE6 et DIP7.
+La colonne `fk` donne, pour chaque combinaison unique de DEP, SEXE, AGE6 et DIP7, le nombre d'individus dans l'échantillon. Et `Fk` 
 
-### Risque global
+## Risque global
 
-!!!! je ne suis pas sûre de lu'tilisation de `risk` car dans la doc plutôt le risque après protection.
+!!!! je ne suis pas sûre de l'utilisation de `risk` car dans la doc plutôt le risque après protection.
 
 ```{r}
 print(sdc_object1, 'risk')
@@ -138,31 +137,138 @@ lfs_indiv_at_risk %>%
 
 L'échantillon est 1-anonyme ??????
 
-## Appliquer PRAM - Première tentative
+# Appliquer PRAM
+
+La méthode de protection des données PRAM est une **méthode perturbatrice** appliquée sur les microdonnées. Elle permet d'**intervertir les modalités d'une variable catégorielle sensible** pour certains individus afin qu'un attaquant ne puisse pas savoir s'il s'agit du veritable effectif ou non.
+
+## PRAM général
+
+### 1. Définir la matrice de transition
+
+La matrice de transition présente la **probabilité qu'une modalité soit changée en une autre** pour tous les changements possibles.
 
 ```{r}
-# Appliquer PRAM
-# Le programme fait suite aux travaux réalisés dans 01_mesurer_risque.R
+mat <- matrix(
+  c(0.7,0.2,0.1,
+    0.3, 0.6, 0.1,
+    0.1, 0.1, 0.8
+  ),
+  nrow = 3,
+  byrow = TRUE
+)
+row.names(mat) <- colnames(mat) <- levels(lfs_2023$ACTEU)
 
-## Première tentative --------
-set.seed(12345)
+print(mat)
+```
+
+Dans cet exemple, la probabilité qu'un 1 reste un 1 est de 70%, alors que la probabilité qu'un 1 devienne un 2 est de 20%.
+
+### 2. Appliquer un pram général
+
+On appelle la fonction `pram()` et on précise la matrice de transition avec le paramètre `pd`.
+
+```{r}
+set.seed(12345) # graine pour la reproductibilité des résultats
 
 pram_1 <- pram(
-  lfs_2023,
-  variables = "ACTEU",
-  pd = 0.8
+  lfs_2023, # données
+  variables = "ACTEU", # variable sensible
+  pd = mat, # matrice de transition
+  alpha = NA
 )
-str(pram_1) #liste
 
-attributes(pram_1) #résumé 
+summary(pram_1)
+```
 
+Le `summary()` renvoit les informations principales sur les modifications des microdonnées. On voit la réalisation des échanges de modalités en comprant les fréquences avant et après perturbation.
+
+### 3. Analyser les changements
+
+Une fois qu'on a le jeu de données perturbé, il est nécessaire de comparer les résultats avant et après la perturbation. Cet aspect d'analyse de la perte d'utilité sera développé dans le paragraphe [dédié](#utilite).
+
+```{r}
+data_pram_1 <- do.call(cbind, pram_1) %>% data.frame()
+
+data_pram_1 %>% 
+  count(ACTEU, ACTEU_pram) %>% 
+  group_by(ACTEU) %>% 
+  mutate(part = n/sum(n)*100) %>% 
+  select(-n) %>% 
+  tidyr::pivot_wider(
+    names_from = ACTEU_pram, values_from = part, names_prefix = "PRAM_"
+  )
+```
+
+```{r}
+# ATTENTION ce type de PRAM n'est pas invariant: les estimatons sont biaisées
+# Calcul du taux de chômage
+data_pram_1 %>% 
+  summarise(
+    taux_chomage = sum(ACTEU == 2)/sum(ACTEU %in% 1:2) *100,
+    taux_chomage_pram = sum(ACTEU_pram == 2)/sum(ACTEU_pram %in% 1:2) *100
+  )
+```
+
+La perturbation injectée par l'utilisation de pram modifie grandement le taux de chômage: 7 dans les données originales, et 30 dans les données protégées. Les estimations sont biaisées. Une variante de pram permet d'obtenir des estimateurs non-biaisés : le **pram invariant**.
+
+
+```{r}
 # Récupérer les données
 data_pram_1 <- do.call(cbind, pram_1) %>% data.frame()
 
 # invariance globale
 data_pram_1 %>% 
   summarise(mean(ACTEU == ACTEU_pram))
+```
 
+Dans 75% des cas (i.e. des lignes du fichier), le statut d'activité dans le fichier original est le même que celui dans le fichier modifié avec pram.
+
+## PRAM invariant
+
+```{r}
+set.seed(12345)
+
+pram_2 <- pram(
+  lfs_2023,
+  variables = "ACTEU",
+  pd = 0.8 # valeur minimale des probabilités sur la diagonale, valeur par défaut
+)
+str(pram_2) #liste
+```
+
+On peut voir la matrice de transition qui a été générée à partir de `pd = 0.8`.
+
+```{r}
+attributes(pram_2)$pram_params$ACTEU$Rs
+```
+
+Chaque élément de la diagonale vaut au moins 0.8, les autres probabilités sont distribuées de manière uniforme. Toutes les lignes somment à 1.
+
+
+```{r}
+# Récupérer les données
+data_pram_2 <- do.call(cbind, pram_2) %>% data.frame()
+
+# invariance globale
+data_pram_2 %>% 
+  summarise(mean(ACTEU == ACTEU_pram))
+```
+
+Dans 96% des cas, le statut d'activité dans le fichier original est le même que celui dans le fichier modifié avec pram.
+
+Le taux de chômage dans l'échantillon est-il biaisé ?
+
+```{r}
+data_pram_2 %>% 
+  summarise(
+    taux_chomage = sum(ACTEU == 2)/sum(ACTEU %in% 1:2) *100,
+    taux_chomage_pram = sum(ACTEU_pram == 2)/sum(ACTEU_pram %in% 1:2) *100
+  )
+```
+
+Le taux de chômage dans les données originales est de 7.4%¨et il est de 7.5% dans les données modifiées par pram. L'utilisation d'un **pram invariant** permet de conserver des marges proches de celles originales sur la variable modifiée.
+
+```{r}
 # Comparaison
 data_pram_1 %>% 
   count(ACTEU, ACTEU_pram) %>% 
@@ -174,14 +280,15 @@ data_pram_1 %>%
   )
 
 # Le taux de chômage dans l'échantillon est-il biaisé ?
-data_pram_1 %>% 
-  summarise(
-    tc = sum(ACTEU == 2)/sum(ACTEU %in% 1:2) *100,
-    tc_pram = sum(ACTEU_pram == 2)/sum(ACTEU_pram %in% 1:2) *100
-  )
 ```
 
-## Seconde tentative tentative --------
+
+```{r}
+attributes(pram_2) #résumé
+```
+
+
+## Seconde tentative --------
 
 ```{r}
 
@@ -213,51 +320,7 @@ data_pram_2 %>%
     names_from = ACTEU_pram, values_from = part, names_prefix = "PRAM_"
   )
 
-
 data_pram_2 %>% 
-  summarise(
-    tc = sum(ACTEU == 2)/sum(ACTEU %in% 1:2) *100,
-    tc_pram = sum(ACTEU_pram == 2)/sum(ACTEU_pram %in% 1:2) *100
-  )
-
-```
-
-## Et si on choisissait notre propre  matrice de transition ? -----
-
-```{r}
-mat <- matrix(
-  c(0.7,0.2,0.1,
-    0.3, 0.6, 0.1,
-    0.1, 0.1, 0.8
-  ),
-  nrow = 3,
-  byrow = TRUE
-)
-row.names(mat) <- colnames(mat) <- levels(lfs_2023$ACTEU)
-
-pram_3 <- pram(
-  lfs_2023,
-  variables = "ACTEU",
-  pd = mat,
-  alpha = NA
-)
-
-attributes(pram_3)$pram_params$ACTEU$Rs
-
-data_pram_3 <- do.call(cbind, pram_3) %>% data.frame()
-
-data_pram_3 %>% 
-  count(ACTEU, ACTEU_pram) %>% 
-  group_by(ACTEU) %>% 
-  mutate(part = n/sum(n)*100) %>% 
-  select(-n) %>% 
-  tidyr::pivot_wider(
-    names_from = ACTEU_pram, values_from = part, names_prefix = "PRAM_"
-  )
-
-# ATTENTION ce type de PRAM n'est pas invariant: les estimatons sont biaisées
-# Calcul du taux de chômage
-data_pram_3 %>% 
   summarise(
     tc = sum(ACTEU == 2)/sum(ACTEU %in% 1:2) *100,
     tc_pram = sum(ACTEU_pram == 2)/sum(ACTEU_pram %in% 1:2) *100
@@ -268,6 +331,8 @@ data_pram_3 %>%
 
 ## PRAM Invariant  -----
 
+Pour le PRAM invariant on 
+
 ```{r}
 
 # Par défaut, la fonction pram() calcule un pram dit invariant 
@@ -276,7 +341,7 @@ data_pram_3 %>%
 pram_4 <- pram(
   lfs_2023,
   variables = "ACTEU",
-  pd = 0.5,
+  #pd = 0.5,
   alpha = 0.8
 )
 
@@ -333,3 +398,7 @@ pram_sdc@pram$params$ACTEU$Rs
 pram_sdc@pram$transitions$ACTEU
 
 ```
+
+
+# Utilité {#utilite}
+
