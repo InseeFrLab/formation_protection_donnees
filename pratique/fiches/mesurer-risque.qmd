@@ -180,7 +180,7 @@ risques_reident$r_stats |>
 
 
 ::: {.callout-warning}
-## Des variables très efficaces pour la ré-identification
+### Des variables très efficaces pour la ré-identification
 
 Certaines variables ont un pouvoir de ré-identification très fort, en particulier :
 
@@ -252,9 +252,83 @@ cela ne les annihile pas tous.
 :::
 
 
+### Avec le package `sdcMicro`
+
+Le package `sdcMicro` permet de mesurer les risques de ré-identification et le
+niveau d'anonymité d'un jeu de données individuelles assez simplement.
+
+Dans un premier temps, on initialise un objet de la classe `sdcMicroObj` en 
+mentionnant uniquement le jeu de données et les variables considérées
+comme quasi-identfiantes.
+
+```{r}
+lfs_sdc <- sdcMicro::createSdcObj(
+  lfs_2023,
+  keyVars = qi_vars_I
+)
+```
 
 
-## La l-diversité
+La fonction crée un objet dans une classe `S4`. Les différents attributs de l'objet (on dit des `slots`) sont donc accessibles avec le symbole `@`.
+
+Les attributs disponibles pour un tel objet sont les suivants:
+
+```{r}
+slotNames(lfs_sdc)
+```
+
+
+Lors de la création de l'objet, un certain nombre de métriques de risque ont été 
+calculées:
+
+- des mesures globales: 
+
+```{r}
+lfs_sdc@risk$global
+```
+
+
+- des mesures individuelles :
+  - `risk` : risque individuel défini par $\frac{1}{fk}$ si le fichier est une population
+  - `fk` : nombre d'individus du fichier partageant les mêmes clés (croisements de quasi-identifiants)
+  - `Fk` : nombre d'individus dans la population partageant les mêmes clés (croisements de quasi-identifiants)
+  
+::: {.callout-note}
+### Echantillon et Population
+
+#### Population
+
+Si le jeu de données étudié correspond à une population (fichier exhaustif du champ),
+alors $fk = Fk = \sum_i{ 1(i \in k)}$, nombre d'individus $i$ partageant la clé $k$.
+
+
+#### Echantillon
+
+Si, au contraire, il s'agit d'un échantillon, on distinguera:
+
+- $fk = \sum_{i \in S}{ 1(i \in k)}$
+- $Fk = \sum_{i \in S}{  w_i \times 1(i \in k)}$
+
+où $S$ désigne l'échantillon (le fichier) et $w_i$ le poids de l'individu 
+$i \in S$.
+
+[@templ_statistical_2015; et @Rinott_Shlomo_2006].
+
+:::
+
+Certaines variables ont un pouvoir de ré-identification très fort, en particulier :
+
+
+
+```{r}
+head(lfs_sdc@risk$individual)
+```
+
+
+
+## Le risque de divulgation d'attributs sensibles
+
+
 
 
 ## SUDA
@@ -273,7 +347,10 @@ cela ne les annihile pas tous.
 
 
 
+### References
 
+::: {#refs}
+:::
 
 
 
