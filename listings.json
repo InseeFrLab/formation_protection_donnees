@@ -21,14 +21,6 @@
     ]
   },
   {
-    "listing": "/pratique/fiches/suppressif.html",
-    "items": [
-      "/pratique/fiches/proteger-tableaux-suppressif.html",
-      "/pratique/fiches/analyse-demande.html",
-      "/pratique/fiches/analyse-automatique.html"
-    ]
-  },
-  {
     "listing": "/theorie/index.html",
     "items": [
       "/theorie/supports/arbitrer-risque-utilite.html",
@@ -36,6 +28,14 @@
       "/theorie/supports/methodes-suppressives.html",
       "/theorie/supports/methodes-perturbatrices.html",
       "/theorie/supports/confidentialite-differentielle.html"
+    ]
+  },
+  {
+    "listing": "/pratique/fiches/suppressif.html",
+    "items": [
+      "/pratique/fiches/proteger-tableaux-suppressif.html",
+      "/pratique/fiches/analyse-demande.html",
+      "/pratique/fiches/analyse-automatique.html"
     ]
   },
   {
@@ -52,7 +52,8 @@
       "/pratique/fiches/suppressif.html",
       "/pratique/fiches/perturbatif.html",
       "/pratique/fiches/arbitrage.html",
-      "/pratique/fiches/sujets-avances.html"
+      "/pratique/fiches/sujets-avances.html",
+      "/pratique/fiches/description-data.html"
     ]
   },
   {
