@@ -4,24 +4,161 @@ title: Les mesures du risque de divulgation
 
 
 ```{r}
-#| echo: false
+#| echo: true
+#| message: false
+#| output: false
 library(readr)
 library(purrr)
+library(ggplot2)
 library(dplyr)
 library(sdcMicro)
 ```
 
-## Importons les données
+## Les données
 
 ```{r}
+#| echo: true
+#| message: false
 source("../R/prepa_data.R")
+```
+
+
+```{r}
+head(lfs_2023)
 ```
 
 
 ## Les différents types de variables
 
+Dans un jeu de données, on distingue trois grands types de variables:
 
-## Le k-anonymat
+- les *quasi-identifiants*: un ensemble de variables dont on suppose qu'un 
+attaquant est susceptible de les avoir déjà à sa disposition.
+- les *variables sensibles*: les variables portant sur des thématiques 
+sensibles au sens de la Loi Informatique et Libertés 
+(religion, opinion, orientation sexuelle, etc.), mais on peut aussi y inclure 
+des variables dont la connaissance est susceptible de porter préjudice 
+à la personne (par exemple le salaire, le fait d'avoir une maladie, le fait 
+d'être au chômage, etc.).
+- les *variables ni identifiantes ni sensibles*: celles qui a priori ne 
+posent pas de problème spécifique en terme de confidentialité.
+
+
+## Le risque de ré-identification et le rôle des quasi-identifiants
+
+Ainsi, le premier type de variables engendre un risque de divulgation d'information
+confidentielle par la possibilité pour l'attaquant de ré-identifier des individus. 
+En effet, si un ataquant dispose d'un fichier nomminatif - un fichier client par 
+exemple - contenant des variables communes avec le jeu de données qu'on s'apprête 
+à publier, il est alors en mesure d'apparier les deux et être en capacité de 
+ré-identifier des individus si ceux-ci se trouvent avoir des caractéristiques 
+peu fréquentes.
+
+
+### Un premier exemple
+
+Prenons une liste très restreinte de quasi-identifiants: la géographie de résidence,
+le sexe et l'âge de l'individu. Ces informations sont disponibles par de 
+nombreuses entreprises auprès desquelles nous souscrivons des services 
+(banque, assurance, téléphonie, etc.). 
+
+En dénombrant les individus de chaque croisement entre les variables quasi-identifiantes,
+on peut détecter :
+
+- le **niveau d'anonymité du fichier** au sens du **k-anonymat**: ici notre fichier est 
+1-anonyme puisqu'il contient de nombreux individus uniques dans leur catégorie.
+- la détection des croisements et des **individus les plus à risque**:
+> Moins il y a d'individus dans un groupe, plus la probabilité de ré-identification 
+par l'attaquant est forte. Dans le cas d'un groupe unique, la ré-identification 
+est même certaine.
+
+```{r}
+qi_vars <- c("REG","DEP","ARR", "SEXE", "AGE")
+freq_qi_vars <- lfs_2023 |> count(across(all_of(qi_vars))) 
+freq_qi_vars |> arrange(n) |> head()
+freq_qi_vars |> arrange(-n) |> head()
+```
+
+Ainsi, si une entreprise de notre contrée imaginaire dispose d'un fichier sur 
+tout ou partie de la population en âge de travailler (par exemple un opérateur 
+téléphonique), il pourra ré-identifier sans peine les individus uniques du jeu 
+de données qui seraient présents dans son fchier.
+
+::: {.callout-warning}
+## Des variables très efficaces pour la ré-identification
+
+Certaines variables ont un pouvoir de ré-identification très fort, en particulier :
+
+- la **géographie** (de résidence, de travail, d'implantation): plus elle est précise 
+plus la ré-identification est aisée, d'autant plus que l'adresse est souvent par 
+ailleurs une donnée très largement partagée par les individus et les entreprises.
+
+- l'**âge** est également très ré-identifiant puisqu'il est à la fois public avec 
+la disponibilité de l'état-civil et concerne, pour certains âges avancés, peu 
+d'individus. Ainsi, si la personne la plus âgée résidant en France est dans notre
+fichier, nous avons toutes les chances de la ré-identifier de façon certaine 
+en ne connaissant que son âge.
+
+:::
+
+
+La **capacité d'un attaquant à pouvoir ré-identifier un individu** dépend du 
+nombre d'individus du jeu de données qui partagent les mêmes caractéristiques
+sur les variables quasi-identifiantes.
+
+
+Par exemple, si Thérèse est une femme de 97 ans résidant dans l'arrondissement `751`,
+alors le jeu de données permet de la ré-identifier de façon certaine, puisqu'elle 
+serait la seule dans ce cas.
+
+Au contraire, si Thérèse est une femme de 52 ans résidant dans le même arrondissement, 
+alors la probabilité de la ré-identifier dans le jeu de données 
+avec ces seules informations serait de 1 chance sur 
+`r freq_qi_vars |> filter(ARR == "751", SEXE == 2, AGE == 52) |> pull(n)`.
+
+
+```{r}
+freq_qi_vars <- freq_qi_vars |>
+  mutate(p = 1/n) |>
+  mutate(p_cl = cut(p, breaks = c(0,0.1,0.25,0.5,1)))
+
+ggplot(freq_qi_vars) +
+  geom_bar(aes(x=p_cl), fill = "forestgreen", alpha = 0.6, color = "snow") +
+  ggtitle("Probabilité de ré-identification des individus") +
+  theme_minimal()
+```
+
+
+### Le choix des variables quasi-identifiantes
+
+Choisir les variables quasi-identifiantes est un exercice difficile puisqu'en 
+général, nous n'avons pas une idée exacte des données à la disposition 
+des attaquants potentiels. Il faut donc définir un scénario théorique suffisamment 
+réaliste pour s'assurer de **protéger** les données individuelles 
+des risques de ré-identification les plus importants.  
+
+En choisissant le premier jeu de variables quasi-identifiantes (géographie, sexe et âge),
+on considère le jeu minimal de quasi-idenfiants. L'extrême inverse consisterait 
+à considérer toutes les variable comme des quasi-identifiants. Dans le premier 
+cas, on définit un scénario minimaliste, dans le second le scénario est maximaliste.
+
+
+Dans notre jeu de données fictif sur l'emploi et le chômage, on pourrait définir 
+
+- un scénario minimaliste: l'attaquant ne dispose que de la géographie, du sexe et de l'âge de ses clients
+- un scénario intermédiaire: l'attaquant dispose en plus d'informations sur sa catégorie sociale et son niveau de diplôme
+- un scénario maximaliste: l'attaquant dispose en réalité de toutes les informations sur les individus sauf de son ancienneté au chômage.
+
+
+Selon ces trois scénarios, le niveau de risque de ré-identifcation des individus ne sera pas le même
+
+
+
+
+
+
+
+
 
 
 ## La l-diversité
