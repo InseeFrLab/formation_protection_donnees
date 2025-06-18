@@ -1,5 +1,8 @@
 ---
 title: Les mesures du risque de divulgation
+code-block-bg: true
+code-block-border-left: "#bf9aff"
+code-fold: show
 ---
 
 
@@ -20,6 +23,7 @@ library(sdcMicro)
 #| echo: true
 #| message: false
 source("../R/prepa_data.R")
+source("../R/fun_risque.R")
 ```
 
 
@@ -73,8 +77,8 @@ par l'attaquant est forte. Dans le cas d'un groupe unique, la ré-identification
 est même certaine.
 
 ```{r}
-qi_vars <- c("REG","DEP","ARR", "SEXE", "AGE")
-freq_qi_vars <- lfs_2023 |> count(across(all_of(qi_vars))) 
+qi_vars_I <- c("REG","DEP","ARR", "SEXE", "AGE")
+freq_qi_vars <- lfs_2023 |> count(across(all_of(qi_vars_I))) 
 freq_qi_vars |> arrange(n) |> head()
 freq_qi_vars |> arrange(-n) |> head()
 ```
@@ -83,24 +87,6 @@ Ainsi, si une entreprise de notre contrée imaginaire dispose d'un fichier sur
 tout ou partie de la population en âge de travailler (par exemple un opérateur 
 téléphonique), il pourra ré-identifier sans peine les individus uniques du jeu 
 de données qui seraient présents dans son fchier.
-
-::: {.callout-warning}
-## Des variables très efficaces pour la ré-identification
-
-Certaines variables ont un pouvoir de ré-identification très fort, en particulier :
-
-- la **géographie** (de résidence, de travail, d'implantation): plus elle est précise 
-plus la ré-identification est aisée, d'autant plus que l'adresse est souvent par 
-ailleurs une donnée très largement partagée par les individus et les entreprises.
-
-- l'**âge** est également très ré-identifiant puisqu'il est à la fois public avec 
-la disponibilité de l'état-civil et concerne, pour certains âges avancés, peu 
-d'individus. Ainsi, si la personne la plus âgée résidant en France est dans notre
-fichier, nous avons toutes les chances de la ré-identifier de façon certaine 
-en ne connaissant que son âge.
-
-:::
-
 
 La **capacité d'un attaquant à pouvoir ré-identifier un individu** dépend du 
 nombre d'individus du jeu de données qui partagent les mêmes caractéristiques
@@ -117,16 +103,21 @@ avec ces seules informations serait de 1 chance sur
 `r freq_qi_vars |> filter(ARR == "751", SEXE == 2, AGE == 52) |> pull(n)`.
 
 
-```{r}
-freq_qi_vars <- freq_qi_vars |>
-  mutate(p = 1/n) |>
-  mutate(p_cl = cut(p, breaks = c(0,0.1,0.25,0.5,1)))
+<!-- ```{r} -->
+<!-- freq_qi_vars <- freq_qi_vars |> -->
+<!--   mutate(p = 1/n) |> -->
+<!--   mutate(p_cl = cut(p, breaks = c(0,0.1,0.25,0.34,0.5,1))) -->
+<!-- ``` -->
 
-ggplot(freq_qi_vars) +
-  geom_bar(aes(x=p_cl), fill = "forestgreen", alpha = 0.6, color = "snow") +
-  ggtitle("Probabilité de ré-identification des individus") +
-  theme_minimal()
-```
+
+<!-- ```{r} -->
+<!-- #| code-fold: true -->
+<!-- ggplot(freq_qi_vars) + -->
+<!--   geom_bar(aes(x=p_cl), fill = "forestgreen", alpha = 0.6, color = "snow") + -->
+<!--   labs(x="Probabilité d'être ré-identifié", y="Nb d'individus") + -->
+<!--   ggtitle("Probabilité de ré-identification des individus") + -->
+<!--   theme_minimal() -->
+<!-- ``` -->
 
 
 ### Le choix des variables quasi-identifiantes
@@ -153,10 +144,112 @@ Dans notre jeu de données fictif sur l'emploi et le chômage, on pourrait défi
 Selon ces trois scénarios, le niveau de risque de ré-identifcation des individus ne sera pas le même
 
 
+```{r}
+qi_vars_II <- c(qi_vars_I, "PCS1Q", "DIP7")
+qi_vars_III <- c(names(lfs_2023)[!names(lfs_2023) %in% c("ANCCHOM")])
+
+risques_reident <- 
+  list("I" = qi_vars_I, 
+       "II" = qi_vars_II,
+       "III" = qi_vars_III) |>
+  comparer_risque_reidentification(data = lfs_2023)
+```
+
+
+```{r}
+#| cold-fold: true
+ggplot(risques_reident$r_graph |> ungroup()) +
+  geom_bar(aes(fill=p_cl, x = scenario, y = n), 
+           stat = "identity", alpha = 0.6, color = "grey25", position = "dodge") +
+  scale_fill_brewer("Probabilité", type = "seq", palette = 7) +
+  labs(x="Scénario", y="Nb d'individus") +
+  ggtitle("Probabilité de ré-identification des individus selon le scénario") +
+  theme_minimal()
+```
+
+```{r}
+#| code-fold: true
+risques_reident$r_stats |>
+  knitr::kable(
+    caption = "Risque de ré-identification des individus en fonction du scénario",
+    digits = 3
+  )
+```
 
 
 
 
+::: {.callout-warning}
+## Des variables très efficaces pour la ré-identification
+
+Certaines variables ont un pouvoir de ré-identification très fort, en particulier :
+
+- la **géographie** (de résidence, de travail, d'implantation): plus elle est précise 
+plus la ré-identification est aisée, d'autant plus que l'adresse est souvent par 
+ailleurs une donnée très largement partagée par les individus et les entreprises.
+
+- l'**âge** est également très ré-identifiant puisqu'il est à la fois public avec 
+la disponibilité de l'état-civil et concerne, pour certains âges avancés, peu 
+d'individus. Ainsi, si la personne la plus âgée résidant en France est dans notre
+fichier, nous avons toutes les chances de la ré-identifier de façon certaine 
+en ne connaissant que son âge.
+
+
+Pour réduire le risque de ré-identification, il est souvent très efficace de 
+choisir de diffuser des variables d'âge et de géographie agrégées.
+
+
+Comparons, par exemple, trois scénarios alternatifs au `scénario II` présenté 
+ci-dessus:
+
+- **scénario II-a**: le lieu de résidence n'est plus diffusé à l'arrondisement mais au département.
+- **scénario II-b**: l'âge détaillé est remplacé par 5 tranches d'âges.
+- **scénario II-c**: combinaison des deux scénarios ci-dessus.
+
+```{r}
+qi_vars_IIa <- c("REG", "DEP", "AGE", "PCS1Q", "DIP7")
+qi_vars_IIb <-  c("REG", "DEP", "ARR", "AGE6", "PCS1Q", "DIP7")
+qi_vars_IIc <- c("REG", "DEP", "AGE6", "PCS1Q", "DIP7")
+
+risques_reident2 <- list(
+  "II" = qi_vars_II, 
+  "IIa" = qi_vars_IIa, 
+  "IIb" = qi_vars_IIb, 
+  "IIc" = qi_vars_IIc) |>
+  comparer_risque_reidentification(data = lfs_2023)
+    
+```
+
+
+```{r}
+#| code-fold: true
+risques_reident2$r_stats |>
+  knitr::kable(
+    caption = "Risque de ré-identification des individus en fonction du scénario",
+    digits = 3
+  )
+```
+
+
+```{r}
+#| cold-fold: true
+ggplot(risques_reident2$r_graph |> ungroup()) +
+  geom_bar(aes(fill=p_cl, x = scenario, y = n), 
+           stat = "identity", alpha = 0.6, color = "grey25", position = "dodge") +
+  scale_fill_brewer("Probabilité", type = "seq", palette = 7) +
+  labs(x="Scénario", y="Nb d'individus") +
+  ggtitle("Probabilité de ré-identification des individus selon le scénario") +
+  theme_minimal()
+```
+
+En réduisant le détail géographique, on a ici divisé par deux la part des uniques. 
+Mais en passant à 6 tranches d'âges, celle-ci est divisée par 20!
+
+Ainsi, les traitements les plus simples (recoder une variable) sont parfois 
+les plus efficaces pour réduire massivement les risques individuels, même si 
+cela ne les annihile pas tous.
+
+:::
 
 
 
