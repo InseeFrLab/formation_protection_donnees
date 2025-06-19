@@ -1,6 +1,153 @@
 ---
 title: Appliquer le Target Record Swapping
+href: pratique/fiches/proteger-micro-swapping.html
+code-block-bg: true
+code-block-border-left: "#bf9aff"
+code-fold: show
 ---
+
+
+# Objectif:
+
+La fiche pratique présente comment appliquer le `Target Record Swapping` à
+un jeu de données individuelles afin d'assurer une protection optimale 
+des informations confidentielles des individus (ou ménages ou entreprises) qui 
+le composent.
+
+La première partie s'attache à présenter les différentes étapes à suivre pour 
+que cette application soit pertinente au regard des données utilisées.
+
+La seconde partie montre comment utiliser la fonction `sdcMicro::recordSwap()` 
+pour appliquer la méthode à un jeu de données dont on aura repérer les 
+individus à risque préalablement.
+
+
+# Rappels sur la méthode:
+
+Le `Target Record Swapping (TRS)` est une méthode s'appliquant directement sur un jeu 
+de données individuelles pour réduire principalement les risques de ré-identification.
+Il ciblera donc les ndividus pour lesquels ce risque est jugé trop élevé, c'est-à-dire  
+ceux partageant des caractéristiques trop rares sur un ensemble 
+de variables dites quasi-identifiantes. Les variables quasi-identifiantes sont celles 
+qui sont susceptibles d'être déjà publiques ou du moins à la disposition d'un attaquant.
+
+C'est pour cette raison que cette méthode s'appelle ainsi: le *swapping*, c'est-à-dire 
+l'échange, va concerner des unités de la base (les *records*) détectés à l'avance, 
+devenant ainsi les cibles (*target*) sur lesquelles on va se concentrer.
+
+Bien qu'elle soit appliquée sur des microdonnées, elle peut être utilisée pour 
+la diffusion de données tabulées. Dans ce cas, en tant que méthode pré-tabulée, 
+elle permet de produire des tableaux parfaitement additifs.
+
+
+En quoi consiste la méthode ?
+
+Après avoir détecté un individu dont le risque de ré-identification est jugé trop 
+élevé, un autre individu - dont les risque de ré-identification est faible de préférence - 
+est tiré aléatoirement et certaines des caractéristiques de ces deux individus sont échangées (*swapped*).
+
+Après l'échange, la ré-identification de l'individu est rendue beaucoup plus difficile et 
+ne permet plus d'obtenir d'informations pertinentes à son sujet.
+
+Imaginons un exemple très simple. Sur un territoire donné découpé en six zones 
+où résident un certain nombre d'individus. Avec les informations disponibles à leur
+sujet, on considère qu'un seul individu a un risque de ré-identification trop élevé 
+(croix rouge sur la @fig-swap-avant).
+
+
+::: {#fig-swap-avant}
+
+![Avant swapping](images/swapping-exemple-avant.png)
+
+:::
+
+
+On tire alors au hasard un autre individu présent sur le territoire pour échanger 
+certaines de leurs caractéristiques. Ce tirage pourrait être purement aléatoire. Mais, cela 
+conduirait à détruire certaines statistiques bien utiles. Par exemple, en trouvant 
+un individu d'aune autre zone partageant certaines caractéristiques (par exemple 
+le sexe, l'âge et la catégorie sociale, @fig-swap-apres), on s'assure de conserver les marges 
+sur ces variables au niveau géographique le plus fin. 
+
+En revanche, les autres caractéristiques sont bruitées de façon non contrôlée.
+
+::: {#fig-swap-apres}
+
+![Après swapping](images/swapping-exemple-après.png)
+:::
+
+Ainsi, l'éventuelle ré-identification de l'individu à risque ne pourrait conduire 
+l'attaquant qu'à obtenir des informations très probablement fausses à son sujet.
+
+
+La méthode est donc très souple puisqu'elle permet de s'adapter aux données dont on dispose et 
+aux besoins en termes de diffusion. Les **variables de similarité** entre individus échangés 
+peuvent ainsi être choisies parmi les variables dont on veut conserver 
+le mieux possible l'information marginale. 
+
+Les données contiennent généralement des informations géographiques. Or, la géographie, 
+en particulier à des niveaux fins, est très identifiante. On choisira en général 
+d'échanger des individus résidant à des endroits différents, en tenant compte 
+du niveau géographique auquel un individu est facilement ré-identifiable.
+
+Par exemple, si un individu est facilement ré-identifiable dans sa commune mais 
+pas dans son département de résidence, alors on privilégiera l'échange avec 
+un autre individu du département en dehors de la commune de notre individu à risque.
+Si le niveau départemental posait lui aussi problème on remonterait au niveau régional, etc.
+
+
+Si nous disposons d'un échantillon, chaque individu dispose d'un poids de sondage. 
+Dans ce cas, on prend le risque d'échanger deux individus avec des poids très différents et 
+de déséquilibrer des agrégats importants. Pour éviter ce genre de désagrément, on peut par exemple,
+ajouter le poids parmi les variables de similarité (poids arrondi à l'unité par exemple).
+
+
+La **similarité** entre deux individus peut être envisagée de deux manières:
+
+- en cherchant la correspondance exacte sur les variables de similarité, quitte à relâcher 
+des contraintes quand il n'y pas de donneur: un donneur est tiré aléatoirement parmi la liste 
+des prétendants.
+- en calculant une distance entre le receveur et l'ensemble des donneurs: un donneur est 
+tiré parmi les individus avec lesquels la distance est la plus faible.
+
+Dans la pratique, la première option est la moins gourmande en ressources de calcul et 
+probablement la seule envisageable si le jeu de données contient plusieurs millions de lignes.
+
+
+Une autre souplesse de la méthode est de pouvoir prendre en compte des 
+structures hiérarchiques entre les individus. Par exemple, si le fichier 
+d'individus contient également des informations sur la composition des ménages. 
+
+Dans ce cas, l'échange d'individus risque de déstabiliser la composition des 
+ménages concernés, en termes d'âge en particulier: on pourrait voir se créer des 
+ménages où il n'y a aucun individu majeur par exemple. 
+
+Une solution consisterait à échanger des ménages entiers plutôt que des individus. 
+Mais cette solution n'est à retenir que si on dispose de suffisamment d'informations 
+sur les ménages pour détecter des ménages similaires de bonne qualité. 
+Si ce n'est pas le cas, il peut être préférable d'échanger des individus. En effet, 
+si l'âge fait partie des variables de similarité, des ménages 
+composés uniquement de mineurs ne pourront pas apparaître.
+
+
+
+
+
+
+L'avantage de la méthode  est sa grande capacité d'adaptation aux données dont on dispose. 
+Même si cette fiche va présenter comment l'appliquer avec le package `sdcMicro`, il est en 
+réalité tout à fait possible de développer sa propre solution 
+
+
+On pourra se reporter à la [fiche sur les mesures de risque](pratique/fiches/mesurer-risque.html) 
+pour en savoir plus sur les risques et la façon de les mesurer.
+
+
+
+
+
+
+
 
 
 Pour installer les packages nécessaires, vous trouverez les instructions à suivre 
@@ -17,7 +164,8 @@ library(sdcMicro)
 ## Importons les données
 
 ```{r}
-source("../R/prepa_data.R")
+source("../R/fun_import_data.R")
+lfs_2023 <- import_lfs()
 ```
 
 
