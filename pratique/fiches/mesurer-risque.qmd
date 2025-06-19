@@ -1,5 +1,6 @@
 ---
 title: Les mesures du risque de divulgation
+href: pratique/fiches/mesurer-risque.html
 code-block-bg: true
 code-block-border-left: "#bf9aff"
 code-fold: show
