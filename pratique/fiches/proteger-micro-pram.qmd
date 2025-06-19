@@ -11,7 +11,8 @@ library(sdcMicro)
 # Les données
 
 ```{r}
-source("../R/prepa_data.R")
+source("../R/fun_import_data.R")
+lfs_2023 <- import_lfs()
 ```
 
 Nous allons étudier un extrait des données de l'Enquête emploi en continu de l'Insee.
