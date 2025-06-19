@@ -2,14 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
-$body-bg: #d8e4f0;
-$navbar-bg: #9fcdfa;
-$body-color: #324b64;
-$accent: #005fa3;
-$card-bg: #d8e4f0;
-$border-radius: 8px;
+$body-bg:  #faf0ff; 
+$navbar-bg: #260a47;
+$body-color:  #260a47;
+$accent: #ff2e57;
+$card-bg: #d6d2ff;
+$border-radius: 4px;
 $headings-font-family: 'Bebas Neue', Arial, sans-serif;
 $font-family-base: 'Montserrat', Arial, sans-serif !default;
+$code-bg:  #fcf7ff;
+$code-color: #b52aff ;
 
 /*-- scss:rules --*/
 h1, h2, h3, h4, h5, h6 {
