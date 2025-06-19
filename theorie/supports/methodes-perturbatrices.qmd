@@ -503,22 +503,19 @@ Ces deux méthodes sont rarement utilisées en pratique car apporte une protecti
 :::
 
 # Post-Randomisation Method (PRAM)
-::: frame
 
--   Permet de traiter les variables sensibles en bruitant les données de variables catégorielles.
+## Méthode PRAM
+-   Permet de traiter les **variables** sensibles **catégorielles** en bruitant les données. 
 
 -   Consiste à modifier aléatoirement l'appartenance des individus à une classe donnée.
 
--   Méthode particulièrement intéressante pour traiter les divulgations d'attributs sensibles : un attaquant ne peut avoir aucune certitude sur l'attribut d'une observation.
-:::
+-   Méthode particulièrement intéressante pour traiter les **divulgations d'attributs sensibles** : un attaquant ne peut avoir aucune certitude sur l'attribut d'une observation.
 
 
 ## Un exemple
-::: frame
 
-  -------- ----- -----------------
-   Region   Age      Situation
-                  Professionnelle
+  -------- ----- ------------------
+   Region   Age  Situation pro.
      92     14        Inactif
      75     41        Chômeur
      75     52         Actif
@@ -527,17 +524,14 @@ Ces deux méthodes sont rarement utilisées en pratique car apporte une protecti
      92     26         Actif
      92     31         Actif
      94     14        Inactif
-  -------- ----- -----------------
+  -------- ----- -------------------
 
 -   Inactif : 2 ind., Chômeur = 2 ind., Actif = 4 ind.
-:::
 
 ## Un exemple
-::: frame
 
   -------- ----- ----------------- --------------------------------
-   Region   Age      Situation                Situation
-                  Professionnelle       Professionnelle (PRAM)
+   Region   Age   Situation pro.      Situation pro. (PRAM)
      92     14        Inactif       [Chômeur]{style="color: red"}
      75     41        Chômeur        [Actif]{style="color: red"}
      75     52         Actif         [Actif]{style="color: blue"}
@@ -549,50 +543,44 @@ Ces deux méthodes sont rarement utilisées en pratique car apporte une protecti
   -------- ----- ----------------- --------------------------------
 
 -   Inactif : 2 ind., Chômeur = 2 ind., Actif = 4 ind.
-:::
 
 ## Un exemple
-::: frame
 
-  -------- -------------------------- ----------------- -----------------------------------
-   Region             Age                 Situation                  Situation
-                                       Professionnelle        Professionnelle (PRAM)
-     92     [14]{style="color: red"}       Inactif       [**Chômeur**]{style="color: red"}
-     75                41                  Chômeur                     Actif
-     75                52                   Actif                      Actif
-     94                45                   Actif                      Actif
-     75                41                  Chômeur                    Inactif
-     92                26                   Actif                      Actif
-     92                31                   Actif                     Chômeur
-     94                48                  Inactif                    Inactif
-  -------- -------------------------- ----------------- -----------------------------------
+  -------- ----------------------------- ----------------- -----------------------------------
+   Region             Age                   Situation pro.      Situation pro. (PRAM) 
+     92     [**14**]{style="color: red"}       Inactif       [**Chômeur**]{style="color: red"}
+     75                41                      Chômeur                     Actif
+     75                52                      Actif                      Actif
+     94                45                      Actif                      Actif
+     75                41                      Chômeur                    Inactif
+     92                26                      Actif                      Actif
+     92                31                      Actif                     Chômeur
+     94                48                     Inactif                    Inactif
+  -------- ----------------------------- ----------------- -----------------------------------
 
 -   Attention aux incohérences !
-:::
 
 ## La matrice de transition
-::: frame
 
 On a besoin de définir une [**matrice de transition**]{style="color: red"} pour pouvoir définir les probabilités de transition.
 
--   Soit $\xi$ la variable catégorielle initiale $K$ categories $1 \dots K$\
-    $\longrightarrow$ dans l'exemple $\xi$ = Situation professionnelle, K = 3
+-   Soit $\xi$ la variable catégorielle initiale avec $K$ catégories $1 \dots K$\
+    $\rightarrow$ dans l'exemple, $\xi$ = Situation professionnelle, K = 3
 
 -   Soit $X$ la même variable catégorielle dans le jeu de données perturbé\
-    $\longrightarrow$ dans l'exemple $X$ = Situation professionnelle (PRAM)
+    $\rightarrow$ dans l'exemple, $X$ = Situation professionnelle (PRAM)
 
-On peut définir la matrice de transition $P$, $P =(p_{kl})_{1 \leq k,l \leq K}$, où $p_{kl} = P(X =l|\xi = k)$
+## La matrice de transition
+On peut définir la matrice de transition $P$, 
 
-             Inactif   Actif   Chômeur
-  --------- --------- ------- ---------
-  Inactif      0,8     0,05     0,15
-  Actif         0       0,8      0,2
-  Chômeur      0,1      0,1      0,8
-:::
+$$P =(p_{kl})_{1 \leq k,l \leq K}$$ 
 
+où $p_{kl} = P(X =l|\xi = k)$
+
+
+![](./img/matrice_transition_PRAM.png){width=5% fig-align="center"}  
 
 ## Comment choisir la matrice de transition ?
-::: frame
 
 -   PRAM change aléatoirement les comptages de la population :
 
@@ -601,92 +589,80 @@ On peut définir la matrice de transition $P$, $P =(p_{kl})_{1 \leq k,l \leq K}$
 -   Selon P **[et les comptages originaux]{style="color: red"}**, les marges peuvent être beaucoup perturbées !
 
 -   Des coefficients diagonaux élevés peuvent être insuffisants
-:::
 
 ## Un exemple numérique
-::: frame
 
 -   Marges originales
 
-  2-4                    Inactif   Actif   Chômeur
+                         Inactif   Actif   Chômeur
   --------------------- --------- ------- ---------
   Fréquence (million)     16.8      49       4.2
   Pourcentage             24 %     70 %      6 %
 
 -   Matrice de transition $P$ :
 
-                 Inactif   Actif   Chômeur
-      --------- --------- ------- ---------
-      Inactif      0,8     0,05     0,15
-      Actif         0       0,8      0,2
-      Chômeur      0,1      0,1      0,8
+   ![](./img/matrice_transition_PRAM.png){fig-align="center"} 
 
--   On peut maintenant calculer les marges perturbées !
-:::
 
 ## Un exemple numérique
-::: frame
 
--   Marges originales
+On peut maintenant calculer les marges perturbées !
 
-  2-4                    Inactif   Actif   Chômeur
-  --------------------- --------- ------- ---------
-  Fréquence (million)      17       49        4
-  Pourcentage             24 %     70 %      6 %
+-   Marges originales 
+
+    | Statut               | Inactif | Actif | Chômeur |
+    |----------------------|---------|-------|---------|
+    | Fréquence (million)  | 17      | 49    | 4       |
+    | Pourcentage          | 24%     | 70%   | 6%      |
+
 
 -   Nouvelles marges
 
-  2-4                    Inactif   Actif             Chômeur
-  --------------------- --------- ------- ------------------------------
-  Fréquence (million)      14       41     [**16**]{style="color: red"}
-  Pourcentage             20 %     58 %     [22 %]{style="color: red"}
-:::
+    | Statut               | Inactif | Actif | Chômeur                |
+    |----------------------|---------|-------|------------------------|
+    | Fréquence            | 14      | 41    | **<span style="color:red">16</span>** |
+    | Pourcentage          | 20%     | 58%   | <span style="color:red">22 %</span>   |
+
 
 ## PRAM Invariant
-::: frame
 
--   Possibilité de choisir la matrice $P$ de telle sorte que la perturbation soit sans biais $\longrightarrow$ PRAM invariant
+-   Possibilité de choisir la matrice $P$ de telle sorte que la perturbation soit sans biais $\rightarrow$ PRAM invariant
 
--   Comme : $$\mathbb{E}\begin{pmatrix} N^{pram}_{I} \\N^{pram}_{E}\\ N^{pram}_{U} \end{pmatrix} = P^{T} \begin{pmatrix}N_{I} \\N_{E}\\ N_{U} \end{pmatrix}$$
+-   Etant donné que : $$\mathbb{E}\begin{pmatrix} N^{pram}_{I} \\N^{pram}_{E}\\ N^{pram}_{U} \end{pmatrix} = P^{T} \begin{pmatrix}N_{I} \\N_{E}\\ N_{U} \end{pmatrix}$$
 
 -   Il faut, pour cela, choisir $P$ telle que les fréquences marginales originales soient un vecteur propre de $P$ associé à la valeur propre $1$.
-:::
 
 ## Mesurer le niveau de protection
-::: frame
 
--   Le niveau de protection est mesuré à partir des paramètres de la méthode (matrice de transition)
+-   PRAM introduit délibérement une erreur de mesure $\rightarrow$ on ne peut pas utilisé le k-anonymat ou la l-diversité
 
--   Idée: faire en sorte que la rareté de certaines modalités soient rendues suffisamment incertaines à inférer $\longrightarrow$ utiliser les posterior odds ratio
+-   Niveau de protection mesuré à partir des paramètres de la méthode (matrice de transition).
 
-    $$POST\_ODDS(k) = \frac{P(\xi = k|X=k)}{P(\xi \neq k|X=k)} = \frac{p_{kk}P(\xi = k)}{\sum_{l \neq k}p_{lk}P(\xi=l)}$$
+-   Idée: faire en sorte que la rareté de certaines modalités soit rendue suffisamment incertaine à inférer $\rightarrow$ posterior odds ratio
 
--   $p_{kk}$ sont connus et dépendent du plan de sondage, mais $P(\xi = k)$ peut être difficile à estimer.
+## Mesurer le niveau de protection
 
--   Interprétation:
+$$POST\_ODDS(k) = \frac{P(\xi = k|X=k)}{P(\xi \neq k|X=k)} = \frac{p_{kk}P(\xi = k)}{\sum_{l \neq k}p_{lk}P(\xi=l)}$$
 
-    -   Si $POST\_ODDS(k) > 1$, alors la valeur originale est plus probablement $k$ plutôt qu'une autre valeur, si on observe la modalité $k$ dans le jeu perturbé.
-
-    -   Si $POST\_ODDS(k) < 1$, alors la valeur originale est plus probablement une autre valeur que $k$, si on observe la modalité $k$ dans le jeu perturbé.
-:::
+-   $p_{kk}$ sont connus et dépendent du plan de sondage
+-   $P(\xi = k)$ peut être difficile à estimer
+-   on peut estimer grossièrement $P(\xi = k)$ par $\frac{T_\xi(k)}{n}$
 
 ## Interprétation
-::: frame
 
--   Si $POST\_ODDS(k) > 1$, alors la valeur originale est plus probablement $k$ plutôt qu'une autre valeur, si on observe la modalité $k$ dans le jeu perturbé.
+On observe k dans le jeu pertubé :
 
--   Si $POST\_ODDS(k) < 1$, alors la valeur originale est plus probablement une autre valeur que $k$, si on observe la modalité $k$ dans le jeu perturbé.
-:::
+-   Si $POST\_ODDS(k) > 1$, alors la valeur originale est plus probablement **$k$** plutôt qu'une autre valeur.
+
+-   Si $POST\_ODDS(k) < 1$, alors la valeur originale est plus probablement une **autre valeur** que $k$.
 
 ## Avantages / inconvénients
-::: frame
 
   **Avantages**                                                                                                              **Inconvénients**
   -------------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------
   Permet de fournir le niveau de protection associé au bruit injecté en calculant les probabilités de transition inverses.   Création d'éventuelles combinaisons impossibles (ex : enfant à la retraite).
   Conserve l'additivité des tableaux générés à partir des micro-données bruitées.                                            Difficile de définir une matrice de protection qui prend en compte les liens avec toutes les variables.
   .                                                                                                                          .
-:::
 
 # Les données synthétiques
 
