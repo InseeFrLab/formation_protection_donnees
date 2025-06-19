@@ -23,7 +23,7 @@ library(dplyr)
 ## Présentation
 
 Les données utilisées dans la plupart des fiches pratiques sont sont un jeu fictif inspiré du fichier public de l'échantillon annuel de l'Enquête Emploi en Continu 
-(mis à disposition par l'Insee sur son site internet](https://www.insee.fr/fr/statistiques/6654604).
+[mis à disposition par l'Insee sur son site internet](https://www.insee.fr/fr/statistiques/6654604).
 
 Le code de construction des données est consultable sur 
 [le dépôt github du projet](https://github.com/InseeFrLab/formation_protection_donnees/blob/main/pratique/R/prepa_data.R). Ce code intervient de plusieurs façons sur les données publiques:
@@ -48,9 +48,8 @@ de faciliter la prise en main et la compréhension des choix réalisés.
 
 
 ```{r}
-#| echo: true
-#| output: false
-source("../R/prepa_data.R")
+source("../R/fun_import_data.R")
+lfs_2023 <- import_lfs()
 ```
 
 
