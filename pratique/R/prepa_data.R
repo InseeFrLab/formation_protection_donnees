@@ -2,7 +2,11 @@
 
 library(dplyr)
 
-filename <- "data/lfs_2023.csv"
+dirdata <- "data"
+filename <- "lfs_2023.csv"
+
+filepath <- file.path(dirdata, filename)
+meta_filepath <- file.path(dirdata, paste0("meta_", filename))
 
 taux_echantillon <- 0.1
 
@@ -137,6 +141,13 @@ tx_chom_s <- sum(lfs_2023$ACTEU == 2)/sum(lfs_2023$ACTEU != 3)
 
 cat("taux de chômage national estimé à partir des données: ", tx_chom_s*100, " \n")
 
-data.table::fwrite(lfs_2023, file = filename)
-rm(select_hh, lfs_micro_fr_2023, ages, lfs_hh_arr, taux_echantillon, filename, pop_arrondissements, prob_tirage_arrdts, tx_chom_s)
+data.table::fwrite(lfs_2023, file = filepath)
+
+data.table::fread("data/Varmod_EEC_2023.csv") %>% 
+  filter(COD_VAR %in% names(lfs_2023)) %>% 
+  data.table::fwrite(file = meta_filepath)
+
+rm(select_hh, lfs_micro_fr_2023, ages, lfs_hh_arr, taux_echantillon, filename,
+   filepath, meta_filepath, dirdata, pop_arrondissements, prob_tirage_arrdts, 
+   tx_chom_s)
 # }

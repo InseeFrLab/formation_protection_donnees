@@ -83,16 +83,14 @@ Les variables du jeu de données sont les suivantes:
 #| echo: false
 #| output: false
 #| message: false
-Varmod_lfs_2023 <- read_delim("./data/Varmod_EEC_2023.csv", 
-    delim = ";", escape_double = FALSE, trim_ws = TRUE,
-)
+meta_lfs_2023 <- import_meta_lfs()
 ```
 
 
 ```{r}
 #| echo: false
 #| message: false
-Varmod_lfs_2023 |> 
+meta_lfs_2023 |> 
   filter(COD_VAR %in% names(lfs_2023)) |>
   select(Variable=COD_VAR, Libellé_Var=LIB_VAR, Modalité=COD_MOD, Libellé_Mod=LIB_MOD) |> 
   DT::datatable(

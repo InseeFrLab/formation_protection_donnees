@@ -1,0 +1,41 @@
+COD_VAR,LIB_VAR,COD_MOD,LIB_MOD,TYPE_VAR,LONG_VAR
+ACTEU,Statut d'activité au sens du Bureau International du Travail (BIT),1,Emploi,CHAR,1
+ACTEU,Statut d'activité au sens du Bureau International du Travail (BIT),2,Chômage,CHAR,1
+ACTEU,Statut d'activité au sens du Bureau International du Travail (BIT),3,Non Inactivité,CHAR,1
+AGE6,"",00,14 ans ou moins,CHAR,2
+AGE6,"",15,15-24 ans,CHAR,2
+AGE6,"",25,25-49 ans,CHAR,2
+AGE6,"",50,50-64 ans,CHAR,2
+AGE6,"",65,65-89 ans,CHAR,2
+AGE6,"",90,90 ans ou plus,CHAR,2
+ANCCHOM,Ancienneté au chômage,1,Moins d'un mois,CHAR,2
+ANCCHOM,Ancienneté au chômage,2,De 1 mois à moins de 3 mois,CHAR,2
+ANCCHOM,Ancienneté au chômage,3,De 3 mois à moins de 6 mois,CHAR,2
+ANCCHOM,Ancienneté au chômage,4,De 6 mois à moins de 12 mois,CHAR,2
+ANCCHOM,Ancienneté au chômage,5,De 12 mois à moins de 18 mois,CHAR,2
+ANCCHOM,Ancienneté au chômage,6,De 18 mois à moins de 24 mois,CHAR,2
+ANCCHOM,Ancienneté au chômage,7,De 2 ans à moins de 4 ans,CHAR,2
+ANCCHOM,Ancienneté au chômage,8,4 ans ou plus,CHAR,2
+ANCCHOM,Ancienneté au chômage,9,Non réponse,CHAR,2
+ANCCHOM,Ancienneté au chômage,"",Hors champ,CHAR,2
+DIP7,Diplôme le plus élevé obtenu (7 postes),1,"Diplôme de nvieau bac+5 ou plus (doctorat, master ou équivalent)",CHAR,1
+DIP7,Diplôme le plus élevé obtenu (7 postes),2,"Diplôme de nvieau bac+3/4 (licence, maîtrise ou équivalent)",CHAR,1
+DIP7,Diplôme le plus élevé obtenu (7 postes),3,"Diplôme de nvieau bac+2 (DUT, BTS, Deug ou équivalent)",CHAR,1
+DIP7,Diplôme le plus élevé obtenu (7 postes),4,"Bac général, technologique, professionnel ou équivalent",CHAR,1
+DIP7,Diplôme le plus élevé obtenu (7 postes),5,"CAP, BEP ou équivalent",CHAR,1
+DIP7,Diplôme le plus élevé obtenu (7 postes),6,"BEPC, DNB, brevet des collèges",CHAR,1
+DIP7,Diplôme le plus élevé obtenu (7 postes),7,"Aucun diplôme, certificat d'études primaires",CHAR,1
+DIP7,Diplôme le plus élevé obtenu (7 postes),9,Non réponse,CHAR,1
+DIP7,Diplôme le plus élevé obtenu (7 postes),"",Hors champ,CHAR,1
+PCS1Q,Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié,00,Non codé,CHAR,2
+PCS1Q,Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié,10,Agriculteurs exploitants,CHAR,2
+PCS1Q,Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié,20,"Artisans, commerçants et chefs d'entreprise",CHAR,2
+PCS1Q,Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié,30,Cadres et professions intellectuelles supérieures,CHAR,2
+PCS1Q,Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié,40,Professions intermédiaires,CHAR,2
+PCS1Q,Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié,51,Employés qualifiés,CHAR,2
+PCS1Q,Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié,52,Employés peu qualifiés,CHAR,2
+PCS1Q,Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié,61,Ouvriers qualifiés,CHAR,2
+PCS1Q,Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié,62,Ouvriers peu qualifiés,CHAR,2
+PCS1Q,Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié,"",Hors champ,CHAR,2
+SEXE,Sexe,1,Homme,CHAR,1
+SEXE,Sexe,2,Femme,CHAR,1

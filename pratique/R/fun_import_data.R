@@ -6,5 +6,7 @@ import_lfs <- function(){
     mutate( across( c(-HHID, -AGE, -IS_CHOM), as.factor))
 }
 
-
+import_meta_lfs <- function(){
+  data.table::fread("../../data/meta_lfs_2023.csv")
+}
 
