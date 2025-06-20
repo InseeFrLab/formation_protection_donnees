@@ -34,6 +34,17 @@ On y trouve les variables suivantes :
 - **HHID** : identifiant du cluster
 - **POIDS** : poids de sondage
 
+Dans cette fiche on s'intéressera à la variable **ACTEU**. Pour une meilleure compréhension on recode ses modalités.
+
+```{r}
+lfs_2023$ACTEU <- forcats::fct_recode(lfs_2023$ACTEU,
+  emploi = "1",
+  chomage = "2",
+  inactif = "3"
+)
+```
+
+
 # Définir son objet sdc
 
 Le package `sdcMicro` a un fonctionnement spécial pusiqu'il utilise des **classes** (objets de type S4). En effet, il faut créer un objet qui regroupe toutes les informations concernant les données sur lequelles on veut appliquer une méthode de protection. Cet objet relève de la classe `sdcMicroObj`, on le crée en appelant la fonction `createSdcObj()` voici certains de ces arguments :
@@ -80,35 +91,14 @@ Par défaut les mesures de k-anonymat pour k = 2, k = 3 et k = 5 sont fournies.
 print(sdc_object1)
 ```
 
-```{r}
-sdc_object1@originalRisk$global$risk
-```
-
+Une classe d’équivalence (ensemble de lignes ayant les mêmes quasi-identifiants) est l-diverse si elle contient au moins l valeurs bien distinctes de la variable confidentielle.
 
 ```{r}
-sdc_object1@originalRisk$global$risk_ER
+sdc_object_ldiv <- ldiversity(sdc_object1,ldiv_index = "ACTEU")
+sdc_object_ldiv@risk$ldiversity
 ```
 
-
-```{r}
-sdc_object1@originalRisk$global$risk_pct
-```
-
-```{r}
-sdc_object1@originalRisk$global$max_risk
-```
-
-```{r}
-sdc_object1@originalRisk$global$hier_risk_ER
-```
-
-```{r}
-sdc_object1@originalRisk$global$hier_risk
-```
-
-```{r}
-sdc_object1@originalRisk$global$hier_risk_pct
-```
+On voit que pour chacune des combinaisons il y a entre 1 et 3 valeurs de `ACTEU` différentes. La moitié des observations ont un l-diversité de 1 ou 2 (médiane = 2). Le fichier n'est pas assez protégé.
 
 ```{r}
 risque_ind_original <- sdc_object1@originalRisk$individual
@@ -119,12 +109,6 @@ head(risque_ind_original)
 La colonne `fk` donne, pour chaque combinaison unique de DEP, SEXE, AGE6 et DIP7, le nombre d'individus dans l'échantillon. Et `Fk` 
 
 ## Risque global
-
-!!!! je ne suis pas sûre de l'utilisation de `risk` car dans la doc plutôt le risque après protection.
-
-```{r}
-print(sdc_object1, 'risk')
-```
 
 ```{r}
 lfs_indiv_at_risk <- sdc_object1@risk$individual %>%
@@ -181,14 +165,21 @@ pram_1 <- pram(
 summary(pram_1)
 ```
 
-Le `summary()` renvoit les informations principales sur les modifications des microdonnées. On voit la réalisation des échanges de modalités en comprant les fréquences avant et après perturbation.
+Le `summary()` renvoit les informations principales sur les modifications des microdonnées. On voit la réalisation des échanges de modalités en comparant les fréquences avant et après perturbation.
 
-### 3. Analyser les changements
-
-Une fois qu'on a le jeu de données perturbé, il est nécessaire de comparer les résultats avant et après la perturbation. Cet aspect d'analyse de la perte d'utilité sera développé dans le paragraphe [dédié](#utilite).
+On peut calculer la **matrice de transition empirique** de l'application de PRAM.
 
 ```{r}
 data_pram_1 <- do.call(cbind, pram_1) %>% data.frame()
+
+data_pram_1$ACTEU <- factor(data_pram_1$ACTEU,
+                            levels = c(1, 2, 3),
+                            labels = c("emploi", "chomage", "inactif"))
+
+data_pram_1$ACTEU_pram <- factor(data_pram_1$ACTEU_pram,
+                                 levels = c(1, 2, 3),
+                                 labels = c("emploi", "chomage", "inactif"))
+
 
 data_pram_1 %>% 
   count(ACTEU, ACTEU_pram) %>% 
@@ -200,13 +191,17 @@ data_pram_1 %>%
   )
 ```
 
+### 3. Analyser les changements
+
+Une fois qu'on a le jeu de données perturbé, il est nécessaire de **comparer des indicateurs avant et après la perturbation**. Cet aspect d'analyse de la perte d'utilité sera développé dans le paragraphe [dédié](#utilite).
+
 ```{r}
 # ATTENTION ce type de PRAM n'est pas invariant: les estimatons sont biaisées
 # Calcul du taux de chômage
 data_pram_1 %>% 
   summarise(
-    taux_chomage = sum(ACTEU == 2)/sum(ACTEU %in% 1:2) *100,
-    taux_chomage_pram = sum(ACTEU_pram == 2)/sum(ACTEU_pram %in% 1:2) *100
+    taux_chomage = sum(ACTEU == "chomage")/sum(ACTEU %in% c("emploi","chomage")) *100,
+    taux_chomage_pram = sum(ACTEU_pram == "chomage")/sum(ACTEU_pram %in% c("emploi","chomage")) *100
   )
 ```
 
@@ -214,15 +209,72 @@ La perturbation injectée par l'utilisation de pram modifie grandement le taux d
 
 
 ```{r}
-# Récupérer les données
-data_pram_1 <- do.call(cbind, pram_1) %>% data.frame()
-
 # invariance globale
 data_pram_1 %>% 
   summarise(mean(ACTEU == ACTEU_pram))
 ```
 
 Dans 75% des cas (i.e. des lignes du fichier), le statut d'activité dans le fichier original est le même que celui dans le fichier modifié avec pram.
+
+
+$p_{kk}$ la probabilité que la modalité de ACTEU d'une observation dans le fichier perturbé soit la même que dans le fichier original.
+
+$\sum_{l \neq k}p_{lk}$ la probabilité que la modalité de ACTEU d'une observation dans le fichier perturbé soit différente que celle du fichier original.
+
+$T_{\xi}(k)$ la fréquence de cette modalité dans les données originales.
+
+```{r}
+post_odds <- function(donnees_perturbees){
+  # 1. Estimer la matrice de transition
+  # Fréquences conditionnelles P(ACTEU_pram = k | ACTEU = l)
+  mat_transition <- donnees_perturbees %>%
+    count(ACTEU, ACTEU_pram, name = "n") %>%
+    group_by(ACTEU) %>%
+    mutate(p_lk = n / sum(n)) %>%
+    ungroup()
+  
+  # Estimer les marges
+  marges <- donnees_perturbees %>%
+    count(ACTEU, name = "n_l") %>% # n_l, le nombre d’occurrences de chaque valeur
+    # originale l
+    mutate(T_l = n_l / sum(n_l)) # T_l fréquence de la modalité l dans les données
+  # originales
+  
+  # 3. Calculer les post-odds pour chaque modalité de k
+  # Fusionner les infos de transition et de marges
+  base_postodds <- mat_transition %>%
+    left_join(marges, by = c("ACTEU" = "ACTEU"))  # ajoute P_l à chaque ligne
+  
+  # Liste des valeurs PRAM possibles (= valeurs de k)
+  valeurs_k <- unique(donnees_perturbees$ACTEU_pram)
+  
+  # Calcul des post-odds pour chaque k
+  post_odds_result <- purrr::map_dfr(valeurs_k, function(k) {
+    df_k <- base_postodds %>%
+      filter(ACTEU_pram == k)
+    
+    numerateur <- df_k %>%
+      filter(ACTEU == k) %>%
+      summarise(num = p_lk * T_l) %>%
+      pull(num)
+    
+    denominateur <- df_k %>%
+      filter(ACTEU != k) %>%
+      summarise(den = sum(p_lk * T_l)) %>%
+      pull(den)
+    
+    tibble(
+      valeur_pram = k,
+      post_odds = ifelse(denominateur == 0, NA, numerateur / denominateur)
+    )
+  })
+  return(post_odds_result)
+}
+
+post_odds(data_pram_1)
+```
+
+La modalité "chomage" est inférieur à 1, donc quand une observation a la modalité "chomage" dans le fichier perturbé elle ne l'est sans doute pas dans le fichier original. Ce n'est pas le cas pour "inactif" et "emploi".
 
 ## PRAM invariant
 
@@ -249,6 +301,14 @@ Chaque élément de la diagonale vaut au moins 0.8, les autres probabilités son
 ```{r}
 # Récupérer les données
 data_pram_2 <- do.call(cbind, pram_2) %>% data.frame()
+
+data_pram_2$ACTEU <- factor(data_pram_2$ACTEU,
+                            levels = c(1, 2, 3),
+                            labels = c("emploi", "chomage", "inactif"))
+
+data_pram_2$ACTEU_pram <- factor(data_pram_2$ACTEU_pram,
+                                 levels = c(1, 2, 3),
+                                 labels = c("emploi", "chomage", "inactif"))
 
 # invariance globale
 data_pram_2 %>% 
@@ -286,6 +346,11 @@ data_pram_1 %>%
 
 ```{r}
 attributes(pram_2) #résumé
+```
+
+
+```{r}
+post_odds(data_pram_2)
 ```
 
 
