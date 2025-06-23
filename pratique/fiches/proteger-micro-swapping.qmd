@@ -26,16 +26,16 @@ individus à risque préalablement.
 
 Le `Target Record Swapping (TRS)` est une méthode s'appliquant directement sur un jeu 
 de données individuelles pour réduire principalement les risques de ré-identification.
-Il ciblera donc les ndividus pour lesquels ce risque est jugé trop élevé, c'est-à-dire  
+Il ciblera donc les individus pour lesquels ce risque est jugé trop élevé, c'est-à-dire  
 ceux partageant des caractéristiques trop rares sur un ensemble 
 de variables dites quasi-identifiantes. Les variables quasi-identifiantes sont celles 
 qui sont susceptibles d'être déjà publiques ou du moins à la disposition d'un attaquant.
 
-C'est pour cette raison que cette méthode s'appelle ainsi: le *swapping*, c'est-à-dire 
+D'où son nom: le *swapping*, c'est-à-dire 
 l'échange, va concerner des unités de la base (les *records*) détectés à l'avance, 
 devenant ainsi les cibles (*target*) sur lesquelles on va se concentrer.
 
-Bien qu'elle soit appliquée sur des microdonnées, elle peut être utilisée pour 
+Bien qu'elle soit appliquée sur des microdonnées, la méthode peut être utilisée pour 
 la diffusion de données tabulées. Dans ce cas, en tant que méthode pré-tabulée, 
 elle permet de produire des tableaux parfaitement additifs.
 
@@ -43,8 +43,8 @@ elle permet de produire des tableaux parfaitement additifs.
 En quoi consiste la méthode ?
 
 Après avoir détecté un individu dont le risque de ré-identification est jugé trop 
-élevé, un autre individu - dont les risque de ré-identification est faible de préférence - 
-est tiré aléatoirement et certaines des caractéristiques de ces deux individus sont échangées (*swapped*).
+élevé, un autre individu est tiré aléatoirement parmi les individus au risque de ré-identification 
+les plus faibles et certaines des caractéristiques de ces deux individus sont échangées (*swapped*).
 
 Après l'échange, la ré-identification de l'individu est rendue beaucoup plus difficile et 
 ne permet plus d'obtenir d'informations pertinentes à son sujet.
@@ -65,7 +65,7 @@ sujet, on considère qu'un seul individu a un risque de ré-identification trop 
 On tire alors au hasard un autre individu présent sur le territoire pour échanger 
 certaines de leurs caractéristiques. Ce tirage pourrait être purement aléatoire. Mais, cela 
 conduirait à détruire certaines statistiques bien utiles. Par exemple, en trouvant 
-un individu d'aune autre zone partageant certaines caractéristiques (par exemple 
+un individu d'une autre zone partageant certaines caractéristiques (par exemple 
 le sexe, l'âge et la catégorie sociale, @fig-swap-apres), on s'assure de conserver les marges 
 sur ces variables au niveau géographique le plus fin. 
 
@@ -79,11 +79,27 @@ En revanche, les autres caractéristiques sont bruitées de façon non contrôl�
 Ainsi, l'éventuelle ré-identification de l'individu à risque ne pourrait conduire 
 l'attaquant qu'à obtenir des informations très probablement fausses à son sujet.
 
+## Les variables de similarité
 
-La méthode est donc très souple puisqu'elle permet de s'adapter aux données dont on dispose et 
+La méthode est très souple puisqu'elle permet de s'adapter aux données dont on dispose et 
 aux besoins en termes de diffusion. Les **variables de similarité** entre individus échangés 
 peuvent ainsi être choisies parmi les variables dont on veut conserver 
-le mieux possible l'information marginale. 
+le mieux possible l'information marginale. En effet, en échangeant des individus 
+parfaitement similaires sur certaines caractéristiques (**les variables de similarité**), 
+l'échange ne produira aucune perte d'information sur celles-ci. 
+
+::: {.callout-warning}
+### Similaraité et ré-identification
+
+Si l'objectif est de réduire le risque de ré-identification, il n'est pas conseillé 
+de considérer toutes les variables quasi-identifiantes comme variables de similarité.
+
+:::
+
+
+
+::: {.callout-tip}
+### Utiliser la hiérarchie des emboîtements géographiques
 
 Les données contiennent généralement des informations géographiques. Or, la géographie, 
 en particulier à des niveaux fins, est très identifiante. On choisira en général 
@@ -96,26 +112,47 @@ un autre individu du département en dehors de la commune de notre individu à r
 Si le niveau départemental posait lui aussi problème on remonterait au niveau régional, etc.
 
 
-Si nous disposons d'un échantillon, chaque individu dispose d'un poids de sondage. 
-Dans ce cas, on prend le risque d'échanger deux individus avec des poids très différents et 
-de déséquilibrer des agrégats importants. Pour éviter ce genre de désagrément, on peut par exemple,
-ajouter le poids parmi les variables de similarité (poids arrondi à l'unité par exemple).
+:::
 
+
+
+::: {.callout-tip}
+### Une astuce pour gérer la présence de poids de sondage
+
+Si nous disposons d'un échantillon, chaque individu dispose d'un poids de sondage. 
+Avec le `Target Record Swapping`, on prend le risque d'échanger deux individus avec des poids très différents et 
+de déséquilibrer des agrégats importants. Pour éviter ce genre de désagrément, il est possible
+d'ajouter le poids parmi les variables de similarité, sous la forme d'un arrondi à l'unité 
+ou bien de tranches de valeurs. On pourra également exclure des donneurs potentiels, 
+les individus ayant des poids très élevés comparés aux autres. Ceci permettra de limiter 
+les déformations des distributions.
+
+:::
+
+
+### Comment définir des individus similaires ?
 
 La **similarité** entre deux individus peut être envisagée de deux manières:
 
-- en cherchant la correspondance exacte sur les variables de similarité, quitte à relâcher 
+- en cherchant la **correspondance exacte** sur les variables de similarité, quitte à relâcher 
 des contraintes quand il n'y pas de donneur: un donneur est tiré aléatoirement parmi la liste 
 des prétendants.
-- en calculant une distance entre le receveur et l'ensemble des donneurs: un donneur est 
+- en calculant une **distance** entre le receveur et l'ensemble des donneurs: un donneur est 
 tiré parmi les individus avec lesquels la distance est la plus faible.
 
-Dans la pratique, la première option est la moins gourmande en ressources de calcul et 
-probablement la seule envisageable si le jeu de données contient plusieurs millions de lignes.
+La première option nécessite d'utiliser uniquement des variables catégorielles, 
+quitte à créer des classes pour les variables continues qu'on souhaiterait inclure 
+dans la liste. 
 
+Dans la pratique, cette première option est la moins gourmande en ressources de calcul, 
+car elle ne nécessite pas de calculer une distance entre chaque receveur et chaque donneur potentiel. 
+Elle est probablement la seule envisageable si le jeu de données contient plusieurs millions de lignes.
+
+
+### Individus ou ménages ?
 
 Une autre souplesse de la méthode est de pouvoir prendre en compte des 
-structures hiérarchiques entre les individus. Par exemple, si le fichier 
+structures hiérarchiques entre les individus. Par exemple, lorsque le fichier 
 d'individus contient également des informations sur la composition des ménages. 
 
 Dans ce cas, l'échange d'individus risque de déstabiliser la composition des 
@@ -125,13 +162,56 @@ ménages où il n'y a aucun individu majeur par exemple.
 Une solution consisterait à échanger des ménages entiers plutôt que des individus. 
 Mais cette solution n'est à retenir que si on dispose de suffisamment d'informations 
 sur les ménages pour détecter des ménages similaires de bonne qualité. 
-Si ce n'est pas le cas, il peut être préférable d'échanger des individus. En effet, 
-si l'âge fait partie des variables de similarité, des ménages 
-composés uniquement de mineurs ne pourront pas apparaître.
+Si ce n'est pas le cas, il peut être préférable d'échanger des individus et de contrôler 
+d'une autre manière, car un choix judicieux de variables de similarité peut limiter ces 
+désagréments.
+
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+| Résidence | Sexe | Age | Statut    | Diplome | Catégorie<br>Sociale | Risque |
+|-----------|------|-----|-----------|---------|----------------------|-------:|
+| C1        | H    | 35  | Chômage   | Bac+2   | Employé              |      1 |
+| C1        | F    | 40  | En emploi | Bac+5   | Cadre                |   0,05 |
+| C1        | F    | 12  | Inactif   |         | Elève                |   0,05 |
+
+: Composition du ménage 1 {.striped .hover}
+:::
+
+::: {.column width="5%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="45%"}
+| Résidence | Sexe | Age | Statut    | Diplome | Catégorie<br>Sociale | Risque |
+|-----------|------|-----|-----------|---------|----------------------|-------:|
+| C2        | H    | 55  | En emploi | Bac+5   | Cadre                |   0,05 |
+| C2        | F    | 53  | En emploi | Bac+5   | Cadre                |   0,05 |
+| C2        | H    | 17  | Inactif   | BEP     | Ouvrier              |   0,05 |
+
+: Composition du ménage 2 {.striped .hover}
+:::
+
+::::
 
 
 
+## Les grandes étapes à suivre pour appliquer le `TRS`
 
+1. De quels risques cherche-t-on à se protéger ?
+   1. Si c'est du risque de ré-identification, le `TRS` est une méthode adaptée
+   2. Sinon, il faut peut-être aller voir ailleurs.
+2. Quelles sont les variables quasi-identifiantes dans mes données ?
+3. Mesurer le risque de ré-identification basé sur ces variables ? 
+4. Choisir un seuil de risque de ré-identification maximal acceptable, au-delà duquel les individus devront être traités.
+5. Quelles sont les marges que la méthode devrait conserver intactes en priorité ?
+6. Un *swapping* des ménages est-il préférable à un swapping d'individus ? 
+7. Sélectionner les variables de similarités, en tenant compte des risques et des objectifs de diffusion.
+8. Procéder au swapping
+9. Mesurer la perte d'information 
+10. Reprendre les étapes 4. à 9. si la perte d'information s'avère trop grande ou la protection trop faible
 
 
 L'avantage de la méthode  est sa grande capacité d'adaptation aux données dont on dispose. 
