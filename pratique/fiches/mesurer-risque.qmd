@@ -23,8 +23,12 @@ library(sdcMicro)
 ```{r}
 #| echo: true
 #| message: false
-source("../R/prepa_data.R")
 source("../R/fun_risque.R")
+```
+
+```{r}
+source("../R/fun_import_data.R")
+lfs_2023 <- import_lfs()
 ```
 
 
