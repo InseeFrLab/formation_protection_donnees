@@ -76,9 +76,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-2381ef16587ee3545dadc46b3ee177f2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-df5982a80590f0a5a600c2d93a21e71b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-6ffa9f061b0aa16b3c8ef6825797175e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-2381ef16587ee3545dadc46b3ee177f2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-df5982a80590f0a5a600c2d93a21e71b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -364,7 +364,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Pour installer les packages nécessaires, vous trouverez les instructions à suivre dans la fiche <a href="../../ressources/fiches/outils-install.html">Ressources / Installer les packages et les outils sur R</a>.</p>
 <section id="présentation" class="level2">
 <h2 class="anchored" data-anchor-id="présentation">Présentation</h2>
-<p>Les données utilisées dans la plupart des fiches pratiques sont sont un jeu fictif inspiré du fichier public de l’échantillon annuel de l’Enquête Emploi en Continu (mis à disposition par l’Insee sur son site internet](https://www.insee.fr/fr/statistiques/6654604).</p>
+<p>Les données utilisées dans la plupart des fiches pratiques sont sont un jeu fictif inspiré du fichier public de l’échantillon annuel de l’Enquête Emploi en Continu <a href="https://www.insee.fr/fr/statistiques/6654604">mis à disposition par l’Insee sur son site internet</a>.</p>
 <p>Le code de construction des données est consultable sur <a href="https://github.com/InseeFrLab/formation_protection_donnees/blob/main/pratique/R/prepa_data.R">le dépôt github du projet</a>. Ce code intervient de plusieurs façons sur les données publiques:</p>
 <ul>
 <li>Création de variables pour les besoins des exercices, par exemple:
@@ -386,7 +386,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/prepa_data.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_import_data.R"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> <span class="fu">import_lfs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -439,8 +440,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-b3283ea94d351983835c" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-b3283ea94d351983835c">{"x":{"filter":"none","vertical":false,"caption":"<caption>Variables et leurs modalités<\/caption>","data":[["ACTEU","ACTEU","ACTEU","AGE6","AGE6","AGE6","AGE6","AGE6","AGE6","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","SEXE","SEXE"],["Statut d'activité au sens du Bureau International du Travail (BIT)","Statut d'activité au sens du Bureau International du Travail (BIT)","Statut d'activité au sens du Bureau International du Travail (BIT)",null,null,null,null,null,null,"Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Sexe","Sexe"],["1","2","3","00","15","25","50","65","90","1","2","3","4","5","6","7","8","9",null,"1","2","3","4","5","6","7","9",null,"00","10","20","30","40","51","52","61","62",null,"1","2"],["Emploi","Chômage","Non Inactivité","14 ans ou moins","15-24 ans","25-49 ans","50-64 ans","65-89 ans","90 ans ou plus","Moins d'un mois","De 1 mois à moins de 3 mois","De 3 mois à moins de 6 mois","De 6 mois à moins de 12 mois","De 12 mois à moins de 18 mois","De 18 mois à moins de 24 mois","De 2 ans à moins de 4 ans","4 ans ou plus","Non réponse","Hors champ","Diplôme de nvieau bac+5 ou plus (doctorat, master ou équivalent)","Diplôme de nvieau bac+3/4 (licence, maîtrise ou équivalent)","Diplôme de nvieau bac+2 (DUT, BTS, Deug ou équivalent)","Bac général, technologique, professionnel ou équivalent","CAP, BEP ou équivalent","BEPC, DNB, brevet des collèges","Aucun diplôme, certificat d'études primaires","Non réponse","Hors champ","Non codé","Agriculteurs exploitants","Artisans, commerçants et chefs d'entreprise","Cadres et professions intellectuelles supérieures","Professions intermédiaires","Employés qualifiés","Employés peu qualifiés","Ouvriers qualifiés","Ouvriers peu qualifiés","Hors champ","Homme","Femme"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Variable<\/th>\n      <th>Libellé_Var<\/th>\n      <th>Modalité<\/th>\n      <th>Libellé_Mod<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"name":"Variable","targets":0},{"name":"Libellé_Var","targets":1},{"name":"Modalité","targets":2},{"name":"Libellé_Mod","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-eec619b7494529f28c94" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-eec619b7494529f28c94">{"x":{"filter":"none","vertical":false,"caption":"<caption>Variables et leurs modalités<\/caption>","data":[["ACTEU","ACTEU","ACTEU","AGE6","AGE6","AGE6","AGE6","AGE6","AGE6","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","SEXE","SEXE"],["Statut d'activité au sens du Bureau International du Travail (BIT)","Statut d'activité au sens du Bureau International du Travail (BIT)","Statut d'activité au sens du Bureau International du Travail (BIT)","","","","","","","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Sexe","Sexe"],[1,2,3,0,15,25,50,65,90,1,2,3,4,5,6,7,8,9,null,1,2,3,4,5,6,7,9,null,0,10,20,30,40,51,52,61,62,null,1,2],["Emploi","Chômage","Non Inactivité","14 ans ou moins","15-24 ans","25-49 ans","50-64 ans","65-89 ans","90 ans ou plus","Moins d'un mois","De 1 mois à moins de 3 mois","De 3 mois à moins de 6 mois","De 6 mois à moins de 12 mois","De 12 mois à moins de 18 mois","De 18 mois à moins de 24 mois","De 2 ans à moins de 4 ans","4 ans ou plus","Non réponse","Hors champ","Diplôme de nvieau bac+5 ou plus (doctorat, master ou équivalent)","Diplôme de nvieau bac+3/4 (licence, maîtrise ou équivalent)","Diplôme de nvieau bac+2 (DUT, BTS, Deug ou équivalent)","Bac général, technologique, professionnel ou équivalent","CAP, BEP ou équivalent","BEPC, DNB, brevet des collèges","Aucun diplôme, certificat d'études primaires","Non réponse","Hors champ","Non codé","Agriculteurs exploitants","Artisans, commerçants et chefs d'entreprise","Cadres et professions intellectuelles supérieures","Professions intermédiaires","Employés qualifiés","Employés peu qualifiés","Ouvriers qualifiés","Ouvriers peu qualifiés","Hors champ","Homme","Femme"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Variable<\/th>\n      <th>Libellé_Var<\/th>\n      <th>Modalité<\/th>\n      <th>Libellé_Mod<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"name":"Variable","targets":0},{"name":"Libellé_Var","targets":1},{"name":"Modalité","targets":2},{"name":"Libellé_Mod","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
@@ -938,7 +939,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Présentation</span></span>
 <span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>Les données utilisées dans la plupart des fiches pratiques sont sont un jeu fictif inspiré du fichier public de l'échantillon annuel de l'Enquête Emploi en Continu </span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>(mis à disposition par l'Insee sur son site internet](https://www.insee.fr/fr/statistiques/6654604).</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">mis à disposition par l'Insee sur son site internet</span><span class="co">](https://www.insee.fr/fr/statistiques/6654604)</span>.</span>
 <span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>Le code de construction des données est consultable sur </span>
 <span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">le dépôt github du projet</span><span class="co">](https://github.com/InseeFrLab/formation_protection_donnees/blob/main/pratique/R/prepa_data.R)</span>. Ce code intervient de plusieurs façons sur les données publiques:</span>
@@ -963,59 +964,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/prepa_data.R"</span>)</span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_import_data.R"</span>)</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> <span class="fu">import_lfs</span>()</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## Description</span></span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(lfs_2023)</span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>Les variables du jeu de données sont les suivantes:</span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>REG      : Région de résidence (variable fictive)</span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>DEP      : Département de résidence (variable fictive)</span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ARR      : Arrondissement de résidence (variable fictive)</span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>SEXE     : Sexe de l'individu</span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>AGE      : Âge détaillé de l'individu (variable reconstruite)</span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>AGE6     : Âge en 6 classes ("15": signifie les 'les 15-24 ans', "90": désigne les '90 ans ou plus')</span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ACTEU    : Statut d'activité en 3 catgéories: 1=Actifs en emploi; 2=Actifs au chômage; 3=Inactifs (retraités, étudiants, etc.)</span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>DIP7     : Niveau du diplôme le plus élevé en 9 catégories (1: niveau le plus bas, 9: niveau le plus élevé, 99: données manquantes (uniquement pour les 90 ans ou plus)).</span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>PCS1Q    : Profession ou Catégorie Sociale </span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ANCCHOM  : Ancienneté au chômage</span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>HHID     : Identifiant du ménage</span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>HH_TAILLE: Nombre d'individus du ménage</span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>HH_AGE   : Âge de la personne la plus âgée du ménage</span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>HH_DIP   : Diplôme de la personne la plus âgée du ménage</span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>HH_PCS   : Profession ou catégorie sociale de la personne la plus âgée du ménage</span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>IS_CHOM. : La personne est au chômage (<span class="in">`TRUE`</span>/<span class="in">`FALSE`</span>)</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="fu">## Description</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(lfs_2023)</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>Les variables du jeu de données sont les suivantes:</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>REG      : Région de résidence (variable fictive)</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>DEP      : Département de résidence (variable fictive)</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ARR      : Arrondissement de résidence (variable fictive)</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>SEXE     : Sexe de l'individu</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>AGE      : Âge détaillé de l'individu (variable reconstruite)</span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>AGE6     : Âge en 6 classes ("15": signifie les 'les 15-24 ans', "90": désigne les '90 ans ou plus')</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ACTEU    : Statut d'activité en 3 catgéories: 1=Actifs en emploi; 2=Actifs au chômage; 3=Inactifs (retraités, étudiants, etc.)</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>DIP7     : Niveau du diplôme le plus élevé en 9 catégories (1: niveau le plus bas, 9: niveau le plus élevé, 99: données manquantes (uniquement pour les 90 ans ou plus)).</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>PCS1Q    : Profession ou Catégorie Sociale </span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ANCCHOM  : Ancienneté au chômage</span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>HHID     : Identifiant du ménage</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>HH_TAILLE: Nombre d'individus du ménage</span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>HH_AGE   : Âge de la personne la plus âgée du ménage</span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>HH_DIP   : Diplôme de la personne la plus âgée du ménage</span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>HH_PCS   : Profession ou catégorie sociale de la personne la plus âgée du ménage</span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>IS_CHOM. : La personne est au chômage (<span class="in">`TRUE`</span>/<span class="in">`FALSE`</span>)</span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>Varmod_lfs_2023 <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"./data/Varmod_EEC_2023.csv"</span>, </span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>    <span class="at">delim =</span> <span class="st">";"</span>, <span class="at">escape_double =</span> <span class="cn">FALSE</span>, <span class="at">trim_ws =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>Varmod_lfs_2023 <span class="sc">|&gt;</span> </span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(COD_VAR <span class="sc">%in%</span> <span class="fu">names</span>(lfs_2023)) <span class="sc">|&gt;</span></span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">Variable=</span>COD_VAR, Libellé<span class="at">_Var=</span>LIB_VAR, Modalité<span class="ot">=</span>COD_MOD, Libellé<span class="at">_Mod=</span>LIB_MOD) <span class="sc">|&gt;</span> </span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>(</span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Variables et leurs modalités"</span>,</span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>    <span class="at">rownames =</span> <span class="cn">FALSE</span></span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>meta_lfs_2023 <span class="ot">&lt;-</span> <span class="fu">import_meta_lfs</span>()</span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>meta_lfs_2023 <span class="sc">|&gt;</span> </span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(COD_VAR <span class="sc">%in%</span> <span class="fu">names</span>(lfs_2023)) <span class="sc">|&gt;</span></span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">Variable=</span>COD_VAR, Libellé<span class="at">_Var=</span>LIB_VAR, Modalité<span class="ot">=</span>COD_MOD, Libellé<span class="at">_Mod=</span>LIB_MOD) <span class="sc">|&gt;</span> </span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>(</span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Variables et leurs modalités"</span>,</span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>    <span class="at">rownames =</span> <span class="cn">FALSE</span></span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

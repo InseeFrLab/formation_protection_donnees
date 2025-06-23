@@ -1298,136 +1298,124 @@
 <section>
 <section id="post-randomisation-method-pram" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
 <h1>Post-Randomisation Method (PRAM)</h1>
-<div class="frame">
+
+</section>
+<section id="méthode-pram" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Méthode PRAM</h2>
 <ul>
-<li><p>Permet de traiter les variables sensibles en bruitant les données de variables catégorielles.</p></li>
+<li><p>Permet de traiter les <strong>variables</strong> sensibles <strong>catégorielles</strong> en bruitant les données.</p></li>
 <li><p>Consiste à modifier aléatoirement l’appartenance des individus à une classe donnée.</p></li>
-<li><p>Méthode particulièrement intéressante pour traiter les divulgations d’attributs sensibles : un attaquant ne peut avoir aucune certitude sur l’attribut d’une observation.</p></li>
+<li><p>Méthode particulièrement intéressante pour traiter les <strong>divulgations d’attributs sensibles</strong> : un attaquant ne peut avoir aucune certitude sur l’attribut d’une observation.</p></li>
 </ul>
-</div>
 </section>
 <section id="un-exemple-5" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Un exemple</h2>
-<div class="frame">
 <table class="caption-top">
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Region</td>
 <td style="text-align: center;">Age</td>
-<td style="text-align: center;">Situation</td>
+<td style="text-align: left;">Situation pro.</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">Professionnelle</td>
-</tr>
-<tr class="odd">
 <td style="text-align: center;">92</td>
 <td style="text-align: center;">14</td>
-<td style="text-align: center;">Inactif</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">75</td>
-<td style="text-align: center;">41</td>
-<td style="text-align: center;">Chômeur</td>
+<td style="text-align: left;">Inactif</td>
 </tr>
 <tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: left;">Chômeur</td>
+</tr>
+<tr class="even">
 <td style="text-align: center;">75</td>
 <td style="text-align: center;">52</td>
-<td style="text-align: center;">Actif</td>
+<td style="text-align: left;">Actif</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;">94</td>
 <td style="text-align: center;">45</td>
-<td style="text-align: center;">Actif</td>
+<td style="text-align: left;">Actif</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;">75</td>
 <td style="text-align: center;">41</td>
-<td style="text-align: center;">Chômeur</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">92</td>
-<td style="text-align: center;">26</td>
-<td style="text-align: center;">Actif</td>
+<td style="text-align: left;">Chômeur</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">92</td>
-<td style="text-align: center;">31</td>
-<td style="text-align: center;">Actif</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: left;">Actif</td>
 </tr>
 <tr class="even">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: left;">Actif</td>
+</tr>
+<tr class="odd">
 <td style="text-align: center;">94</td>
 <td style="text-align: center;">14</td>
-<td style="text-align: center;">Inactif</td>
+<td style="text-align: left;">Inactif</td>
 </tr>
 </tbody>
 </table>
 <ul>
 <li>Inactif : 2 ind., Chômeur = 2 ind., Actif = 4 ind.</li>
 </ul>
-</div>
 </section>
 <section id="un-exemple-6" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Un exemple</h2>
-<div class="frame">
 <table class="caption-top">
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Region</td>
 <td style="text-align: center;">Age</td>
-<td style="text-align: center;">Situation</td>
-<td style="text-align: center;">Situation</td>
+<td style="text-align: center;">Situation pro.</td>
+<td style="text-align: center;">Situation pro. (PRAM)</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">Professionnelle</td>
-<td style="text-align: center;">Professionnelle (PRAM)</td>
-</tr>
-<tr class="odd">
 <td style="text-align: center;">92</td>
 <td style="text-align: center;">14</td>
 <td style="text-align: center;">Inactif</td>
 <td style="text-align: center;"><span style="color: red">Chômeur</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;">75</td>
 <td style="text-align: center;">41</td>
 <td style="text-align: center;">Chômeur</td>
 <td style="text-align: center;"><span style="color: red">Actif</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;">75</td>
 <td style="text-align: center;">52</td>
 <td style="text-align: center;">Actif</td>
 <td style="text-align: center;"><span style="color: blue">Actif</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;">94</td>
 <td style="text-align: center;">45</td>
 <td style="text-align: center;">Actif</td>
 <td style="text-align: center;"><span style="color: blue">Actif</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;">75</td>
 <td style="text-align: center;">41</td>
 <td style="text-align: center;">Chômeur</td>
 <td style="text-align: center;"><span style="color: red">Inactif</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;">92</td>
 <td style="text-align: center;">26</td>
 <td style="text-align: center;">Actif</td>
 <td style="text-align: center;"><span style="color: blue">Actif</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;">92</td>
 <td style="text-align: center;">31</td>
 <td style="text-align: center;">Actif</td>
 <td style="text-align: center;"><span style="color: red">Chômeur</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;">94</td>
 <td style="text-align: center;">48</td>
 <td style="text-align: center;">Inactif</td>
@@ -1438,71 +1426,63 @@
 <ul>
 <li>Inactif : 2 ind., Chômeur = 2 ind., Actif = 4 ind.</li>
 </ul>
-</div>
 </section>
 <section id="un-exemple-7" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Un exemple</h2>
-<div class="frame">
 <table class="caption-top">
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Region</td>
 <td style="text-align: center;">Age</td>
-<td style="text-align: center;">Situation</td>
-<td style="text-align: center;">Situation</td>
+<td style="text-align: right;">Situation pro.</td>
+<td style="text-align: center;">Situation pro. (PRAM)</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">Professionnelle</td>
-<td style="text-align: center;">Professionnelle (PRAM)</td>
-</tr>
-<tr class="odd">
 <td style="text-align: center;">92</td>
-<td style="text-align: center;"><span style="color: red">14</span></td>
-<td style="text-align: center;">Inactif</td>
+<td style="text-align: center;"><span style="color: red"><strong>14</strong></span></td>
+<td style="text-align: right;">Inactif</td>
 <td style="text-align: center;"><span style="color: red"><strong>Chômeur</strong></span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;">75</td>
 <td style="text-align: center;">41</td>
-<td style="text-align: center;">Chômeur</td>
+<td style="text-align: right;">Chômeur</td>
 <td style="text-align: center;">Actif</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;">75</td>
 <td style="text-align: center;">52</td>
-<td style="text-align: center;">Actif</td>
+<td style="text-align: right;">Actif</td>
 <td style="text-align: center;">Actif</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;">94</td>
 <td style="text-align: center;">45</td>
-<td style="text-align: center;">Actif</td>
+<td style="text-align: right;">Actif</td>
 <td style="text-align: center;">Actif</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;">75</td>
 <td style="text-align: center;">41</td>
-<td style="text-align: center;">Chômeur</td>
+<td style="text-align: right;">Chômeur</td>
 <td style="text-align: center;">Inactif</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">92</td>
-<td style="text-align: center;">26</td>
-<td style="text-align: center;">Actif</td>
-<td style="text-align: center;">Actif</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">92</td>
-<td style="text-align: center;">31</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: right;">Actif</td>
 <td style="text-align: center;">Actif</td>
-<td style="text-align: center;">Chômeur</td>
 </tr>
 <tr class="even">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: right;">Actif</td>
+<td style="text-align: center;">Chômeur</td>
+</tr>
+<tr class="odd">
 <td style="text-align: center;">94</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">Inactif</td>
+<td style="text-align: right;">Inactif</td>
 <td style="text-align: center;">Inactif</td>
 </tr>
 </tbody>
@@ -1510,225 +1490,162 @@
 <ul>
 <li>Attention aux incohérences !</li>
 </ul>
-</div>
 </section>
 <section id="la-matrice-de-transition" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>La matrice de transition</h2>
-<div class="frame">
 <p>On a besoin de définir une <span style="color: red"><strong>matrice de transition</strong></span> pour pouvoir définir les probabilités de transition.</p>
 <ul>
-<li><p>Soit <span class="math inline">\(\xi\)</span> la variable catégorielle initiale <span class="math inline">\(K\)</span> categories <span class="math inline">\(1 \dots K\)</span><br>
-<span class="math inline">\(\longrightarrow\)</span> dans l’exemple <span class="math inline">\(\xi\)</span> = Situation professionnelle, K = 3</p></li>
+<li><p>Soit <span class="math inline">\(\xi\)</span> la variable catégorielle initiale avec <span class="math inline">\(K\)</span> catégories <span class="math inline">\(1 \dots K\)</span><br>
+<span class="math inline">\(\rightarrow\)</span> dans l’exemple, <span class="math inline">\(\xi\)</span> = Situation professionnelle, K = 3</p></li>
 <li><p>Soit <span class="math inline">\(X\)</span> la même variable catégorielle dans le jeu de données perturbé<br>
-<span class="math inline">\(\longrightarrow\)</span> dans l’exemple <span class="math inline">\(X\)</span> = Situation professionnelle (PRAM)</p></li>
+<span class="math inline">\(\rightarrow\)</span> dans l’exemple, <span class="math inline">\(X\)</span> = Situation professionnelle (PRAM)</p></li>
 </ul>
-<p>On peut définir la matrice de transition <span class="math inline">\(P\)</span>, <span class="math inline">\(P =(p_{kl})_{1 \leq k,l \leq K}\)</span>, où <span class="math inline">\(p_{kl} = P(X =l|\xi = k)\)</span></p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: center;">Inactif</th>
-<th style="text-align: center;">Actif</th>
-<th style="text-align: center;">Chômeur</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Inactif</td>
-<td style="text-align: center;">0,8</td>
-<td style="text-align: center;">0,05</td>
-<td style="text-align: center;">0,15</td>
-</tr>
-<tr class="even">
-<td>Actif</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0,8</td>
-<td style="text-align: center;">0,2</td>
-</tr>
-<tr class="odd">
-<td>Chômeur</td>
-<td style="text-align: center;">0,1</td>
-<td style="text-align: center;">0,1</td>
-<td style="text-align: center;">0,8</td>
-</tr>
-</tbody>
-</table>
-</div>
 </section>
+<section id="la-matrice-de-transition-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>La matrice de transition</h2>
+<p>On peut définir la matrice de transition <span class="math inline">\(P\)</span>,</p>
+<p><span class="math display">\[P =(p_{kl})_{1 \leq k,l \leq K}\]</span></p>
+<p>où <span class="math inline">\(p_{kl} = P(X =l|\xi = k)\)</span></p>
+
+<img data-src="./img/matrice_transition_PRAM.png" class="quarto-figure quarto-figure-center r-stretch" style="width:5.0%"></section>
 <section id="comment-choisir-la-matrice-de-transition" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Comment choisir la matrice de transition ?</h2>
-<div class="frame">
 <ul>
 <li><p>PRAM change aléatoirement les comptages de la population :</p>
 <p><span class="math display">\[\mathbb{E}\begin{pmatrix} N^{pram}_{I} \\N^{pram}_{E}\\ N^{pram}_{U} \end{pmatrix} = P^{T} \begin{pmatrix}N_{I} \\N_{E}\\ N_{U} \end{pmatrix}\]</span></p></li>
 <li><p>Selon P <strong><span style="color: red">et les comptages originaux</span></strong>, les marges peuvent être beaucoup perturbées !</p></li>
 <li><p>Des coefficients diagonaux élevés peuvent être insuffisants</p></li>
 </ul>
-</div>
 </section>
 <section id="un-exemple-numérique" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Un exemple numérique</h2>
-<div class="frame">
 <ul>
-<li>Marges originales</li>
-</ul>
+<li><p>Marges originales</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th style="text-align: left;">2-4</th>
-<th style="text-align: center;">Inactif</th>
-<th style="text-align: center;">Actif</th>
-<th style="text-align: center;">Chômeur</th>
+<th style="text-align: right;">Ina</th>
+<th>ctif Act</th>
+<th>if Chô</th>
+<th style="text-align: left;">meur</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Fréquence (million)</td>
-<td style="text-align: center;">16.8</td>
-<td style="text-align: center;">49</td>
-<td style="text-align: center;">4.2</td>
+<td style="text-align: right;">Fréquence (million)</td>
+<td>16.8</td>
+<td>49</td>
+<td style="text-align: left;">4.2</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Pourcentage</td>
-<td style="text-align: center;">24 %</td>
-<td style="text-align: center;">70 %</td>
-<td style="text-align: center;">6 %</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><p>Matrice de transition <span class="math inline">\(P\)</span> :</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: center;">Inactif</th>
-<th style="text-align: center;">Actif</th>
-<th style="text-align: center;">Chômeur</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Inactif</td>
-<td style="text-align: center;">0,8</td>
-<td style="text-align: center;">0,05</td>
-<td style="text-align: center;">0,15</td>
-</tr>
-<tr class="even">
-<td>Actif</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0,8</td>
-<td style="text-align: center;">0,2</td>
-</tr>
-<tr class="odd">
-<td>Chômeur</td>
-<td style="text-align: center;">0,1</td>
-<td style="text-align: center;">0,1</td>
-<td style="text-align: center;">0,8</td>
+<td style="text-align: right;">Pourcentage</td>
+<td>24 %</td>
+<td>70 %</td>
+<td style="text-align: left;">6 %</td>
 </tr>
 </tbody>
 </table></li>
-<li><p>On peut maintenant calculer les marges perturbées !</p></li>
+<li><p>Matrice de transition <span class="math inline">\(P\)</span> :</p></li>
 </ul>
-</div>
-</section>
+
+<img data-src="./img/matrice_transition_PRAM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="un-exemple-numérique-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Un exemple numérique</h2>
-<div class="frame">
+<p>On peut maintenant calculer les marges perturbées !</p>
 <ul>
-<li>Marges originales</li>
-</ul>
+<li><p>Marges originales</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th style="text-align: left;">2-4</th>
-<th style="text-align: center;">Inactif</th>
-<th style="text-align: center;">Actif</th>
-<th style="text-align: center;">Chômeur</th>
+<th>Statut</th>
+<th>Inactif</th>
+<th>Actif</th>
+<th>Chômeur</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Fréquence (million)</td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;">49</td>
-<td style="text-align: center;">4</td>
+<td>Fréquence (million)</td>
+<td>17</td>
+<td>49</td>
+<td>4</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Pourcentage</td>
-<td style="text-align: center;">24 %</td>
-<td style="text-align: center;">70 %</td>
-<td style="text-align: center;">6 %</td>
+<td>Pourcentage</td>
+<td>24%</td>
+<td>70%</td>
+<td>6%</td>
 </tr>
 </tbody>
-</table>
-<ul>
-<li>Nouvelles marges</li>
-</ul>
+</table></li>
+<li><p>Nouvelles marges</p>
 <table class="caption-top">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 14%">
+<col style="width: 11%">
+<col style="width: 38%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">2-4</th>
-<th style="text-align: center;">Inactif</th>
-<th style="text-align: center;">Actif</th>
-<th style="text-align: center;">Chômeur</th>
+<th>Statut</th>
+<th>Inactif</th>
+<th>Actif</th>
+<th>Chômeur</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Fréquence (million)</td>
-<td style="text-align: center;">14</td>
-<td style="text-align: center;">41</td>
-<td style="text-align: center;"><span style="color: red"><strong>16</strong></span></td>
+<td>Fréquence</td>
+<td>14</td>
+<td>41</td>
+<td><strong><span style="color:red">16</span></strong></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Pourcentage</td>
-<td style="text-align: center;">20 %</td>
-<td style="text-align: center;">58 %</td>
-<td style="text-align: center;"><span style="color: red">22 %</span></td>
+<td>Pourcentage</td>
+<td>20%</td>
+<td>58%</td>
+<td><span style="color:red">22 %</span></td>
 </tr>
 </tbody>
-</table>
-</div>
+</table></li>
+</ul>
 </section>
 <section id="pram-invariant" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>PRAM Invariant</h2>
-<div class="frame">
 <ul>
-<li><p>Possibilité de choisir la matrice <span class="math inline">\(P\)</span> de telle sorte que la perturbation soit sans biais <span class="math inline">\(\longrightarrow\)</span> PRAM invariant</p></li>
-<li><p>Comme : <span class="math display">\[\mathbb{E}\begin{pmatrix} N^{pram}_{I} \\N^{pram}_{E}\\ N^{pram}_{U} \end{pmatrix} = P^{T} \begin{pmatrix}N_{I} \\N_{E}\\ N_{U} \end{pmatrix}\]</span></p></li>
+<li><p>Possibilité de choisir la matrice <span class="math inline">\(P\)</span> de telle sorte que la perturbation soit sans biais <span class="math inline">\(\rightarrow\)</span> PRAM invariant</p></li>
+<li><p>Etant donné que : <span class="math display">\[\mathbb{E}\begin{pmatrix} N^{pram}_{I} \\N^{pram}_{E}\\ N^{pram}_{U} \end{pmatrix} = P^{T} \begin{pmatrix}N_{I} \\N_{E}\\ N_{U} \end{pmatrix}\]</span></p></li>
 <li><p>Il faut, pour cela, choisir <span class="math inline">\(P\)</span> telle que les fréquences marginales originales soient un vecteur propre de <span class="math inline">\(P\)</span> associé à la valeur propre <span class="math inline">\(1\)</span>.</p></li>
 </ul>
-</div>
 </section>
 <section id="mesurer-le-niveau-de-protection" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Mesurer le niveau de protection</h2>
-<div class="frame">
 <ul>
-<li><p>Le niveau de protection est mesuré à partir des paramètres de la méthode (matrice de transition)</p></li>
-<li><p>Idée: faire en sorte que la rareté de certaines modalités soient rendues suffisamment incertaines à inférer <span class="math inline">\(\longrightarrow\)</span> utiliser les posterior odds ratio</p>
-<p><span class="math display">\[POST\_ODDS(k) = \frac{P(\xi = k|X=k)}{P(\xi \neq k|X=k)} = \frac{p_{kk}P(\xi = k)}{\sum_{l \neq k}p_{lk}P(\xi=l)}\]</span></p></li>
-<li><p><span class="math inline">\(p_{kk}\)</span> sont connus et dépendent du plan de sondage, mais <span class="math inline">\(P(\xi = k)\)</span> peut être difficile à estimer.</p></li>
-<li><p>Interprétation:</p>
-<ul>
-<li><p>Si <span class="math inline">\(POST\_ODDS(k) &gt; 1\)</span>, alors la valeur originale est plus probablement <span class="math inline">\(k\)</span> plutôt qu’une autre valeur, si on observe la modalité <span class="math inline">\(k\)</span> dans le jeu perturbé.</p></li>
-<li><p>Si <span class="math inline">\(POST\_ODDS(k) &lt; 1\)</span>, alors la valeur originale est plus probablement une autre valeur que <span class="math inline">\(k\)</span>, si on observe la modalité <span class="math inline">\(k\)</span> dans le jeu perturbé.</p></li>
-</ul></li>
+<li><p>PRAM introduit délibérement une erreur de mesure <span class="math inline">\(\rightarrow\)</span> on ne peut pas utilisé le k-anonymat ou la l-diversité</p></li>
+<li><p>Niveau de protection mesuré à partir des paramètres de la méthode (matrice de transition).</p></li>
+<li><p>Idée: faire en sorte que la rareté de certaines modalités soit rendue suffisamment incertaine à inférer <span class="math inline">\(\rightarrow\)</span> posterior odds ratio</p></li>
 </ul>
-</div>
+</section>
+<section id="mesurer-le-niveau-de-protection-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Mesurer le niveau de protection</h2>
+<p><span class="math display">\[POST\_ODDS(k) = \frac{P(\xi = k|X=k)}{P(\xi \neq k|X=k)} = \frac{p_{kk}P(\xi = k)}{\sum_{l \neq k}p_{lk}P(\xi=l)}\]</span></p>
+<ul>
+<li><span class="math inline">\(p_{kk}\)</span> sont connus et dépendent du plan de sondage</li>
+<li><span class="math inline">\(P(\xi = k)\)</span> peut être difficile à estimer</li>
+<li>on peut estimer grossièrement <span class="math inline">\(P(\xi = k)\)</span> par <span class="math inline">\(\frac{T_\xi(k)}{n}\)</span></li>
+</ul>
 </section>
 <section id="interprétation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Interprétation</h2>
-<div class="frame">
+<p>On observe k dans le jeu pertubé :</p>
 <ul>
-<li><p>Si <span class="math inline">\(POST\_ODDS(k) &gt; 1\)</span>, alors la valeur originale est plus probablement <span class="math inline">\(k\)</span> plutôt qu’une autre valeur, si on observe la modalité <span class="math inline">\(k\)</span> dans le jeu perturbé.</p></li>
-<li><p>Si <span class="math inline">\(POST\_ODDS(k) &lt; 1\)</span>, alors la valeur originale est plus probablement une autre valeur que <span class="math inline">\(k\)</span>, si on observe la modalité <span class="math inline">\(k\)</span> dans le jeu perturbé.</p></li>
+<li><p>Si <span class="math inline">\(POST\_ODDS(k) &gt; 1\)</span>, alors la valeur originale est plus probablement <strong><span class="math inline">\(k\)</span></strong> plutôt qu’une autre valeur.</p></li>
+<li><p>Si <span class="math inline">\(POST\_ODDS(k) &lt; 1\)</span>, alors la valeur originale est plus probablement une <strong>autre valeur</strong> que <span class="math inline">\(k\)</span>.</p></li>
 </ul>
-</div>
 </section>
 <section id="avantages-inconvénients-5" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Avantages / inconvénients</h2>
-<div class="frame">
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -1751,7 +1668,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 </section></section>
 <section>
 <section id="les-données-synthétiques" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
