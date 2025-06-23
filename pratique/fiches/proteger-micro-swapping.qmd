@@ -166,36 +166,41 @@ Si ce n'est pas le cas, il peut être préférable d'échanger des individus et 
 d'une autre manière, car un choix judicieux de variables de similarité peut limiter ces 
 désagréments.
 
+<!-- La @tbl-exemple-ind-men présente un exemple de données individuelles contenant une information 
+sur la composition des ménages. Ici, les individus sont répartis en deux ménages de trois individus, dont deux adultes.
+Pour chaque individu, une mesure de risque de ré-identification est fournie. Le premier individu 
+est le seul dont le risque de ré-identification est très élevé. 
+
+
+| ID  | Géo. | Sexe | Age | Statut    | Diplome | Catégorie<br>Sociale | Risque | Ménage |
+|-----|------|------|-----|-----------|---------|----------------------|-------:|--------|
+| ID1 | C1   | H    | 35  | Chômage   | Bac+2   | Employé              |      1 | MEN1   |
+| ID2 | C1   | F    | 40  | En emploi | Bac+5   | Cadre                |   0,05 | MEN1   |
+| ID3 | C1   | F    | 12  | Inactif   |         | Elève                |   0,05 | MEN1   |
+| ID4 | C2   | H    | 55  | En emploi | Bac+5   | Cadre                |   0,05 | MEN2   |
+| ID5 | C2   | F    | 53  | En emploi | Bac+5   | Cadre                |   0,05 | MEN2   |
+| ID6 | C2   | H    | 17  | Inactif   | BEP     | Ouvrier              |   0,05 | MEN2   |
+
+
+: Table indiviudelle et composition des ménages {.striped #tbl-exemple-ind-men}
+
 
 :::: {.columns}
 
 ::: {.column width="45%"}
 
-| Résidence | Sexe | Age | Statut    | Diplome | Catégorie<br>Sociale | Risque |
-|-----------|------|-----|-----------|---------|----------------------|-------:|
-| C1        | H    | 35  | Chômage   | Bac+2   | Employé              |      1 |
-| C1        | F    | 40  | En emploi | Bac+5   | Cadre                |   0,05 |
-| C1        | F    | 12  | Inactif   |         | Elève                |   0,05 |
-
-: Composition du ménage 1 {.striped .hover}
 :::
 
 ::: {.column width="5%"}
-<!-- empty column to create gap -->
+
 :::
 
 ::: {.column width="45%"}
-| Résidence | Sexe | Age | Statut    | Diplome | Catégorie<br>Sociale | Risque |
-|-----------|------|-----|-----------|---------|----------------------|-------:|
-| C2        | H    | 55  | En emploi | Bac+5   | Cadre                |   0,05 |
-| C2        | F    | 53  | En emploi | Bac+5   | Cadre                |   0,05 |
-| C2        | H    | 17  | Inactif   | BEP     | Ouvrier              |   0,05 |
 
-: Composition du ménage 2 {.striped .hover}
 :::
 
 ::::
-
+ -->
 
 
 ## Les grandes étapes à suivre pour appliquer le `TRS`
