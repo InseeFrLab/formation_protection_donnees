@@ -22,6 +22,17 @@ pour appliquer la méthode à un jeu de données dont on aura repérer les
 individus à risque préalablement.
 
 
+
+::: {.callout-tip}
+# Pour s'exercer
+
+Pour reproduire les résultats et réaliser les exercices, il est possible de travailler 
+directement sur le [`datalab` de l'Insee](datalab.sspcloud.fr). Si vous disposez d'un compte, vous pouvez ouvrir [Ouvrir un service RStudio](https://datalab.sspcloud.fr/launcher/ide/rstudio?name=rstudio-formation-protection&version=2.3.1&s3=region-ec97c721&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Frstudio.sh») ou [Ouvrir un service vscode R-Python](https://datalab.sspcloud.fr/launcher/ide/vscode-r-python-julia?name=vscode-formation-protection&version=2.3.5&s3=region-ec97c721&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Fvscode-r-python.sh»), à votre convenance. Ces services installeront automatiquement les packages 
+nécessaires pour réaliser les exercices de l'ensemble des fiches pratiques.
+
+:::
+
+
 # Rappels sur la méthode:
 
 Le `Target Record Swapping (TRS)` est une méthode s'appliquant directement sur un jeu 
@@ -35,12 +46,12 @@ D'où son nom: le *swapping*, c'est-à-dire
 l'échange, va concerner des unités de la base (les *records*) détectés à l'avance, 
 devenant ainsi les cibles (*target*) sur lesquelles on va se concentrer.
 
-Bien qu'elle soit appliquée sur des microdonnées, la méthode peut être utilisée pour 
-la diffusion de données tabulées. Dans ce cas, en tant que méthode pré-tabulée, 
+Bien qu'elle soit appliquée sur des microdonnées, la méthode a principalement vocation à 
+protéger la diffusion de données tabulées [@hundepool_handbook_2024, [section 5.6](https://sdctools.github.io/HandbookSDC/05-frequency-tables.html#sec-TRS)]. Dans ce type d'utilisation, en tant que méthode pré-tabulée, 
 elle permet de produire des tableaux parfaitement additifs.
 
 
-En quoi consiste la méthode ?
+## En quoi consiste la méthode ?
 
 Après avoir détecté un individu dont le risque de ré-identification est jugé trop 
 élevé, un autre individu est tiré aléatoirement parmi les individus au risque de ré-identification 
@@ -49,10 +60,13 @@ les plus faibles et certaines des caractéristiques de ces deux individus sont �
 Après l'échange, la ré-identification de l'individu est rendue beaucoup plus difficile et 
 ne permet plus d'obtenir d'informations pertinentes à son sujet.
 
-Imaginons un exemple très simple. Sur un territoire donné découpé en six zones 
-où résident un certain nombre d'individus. Avec les informations disponibles à leur
-sujet, on considère qu'un seul individu a un risque de ré-identification trop élevé 
-(croix rouge sur la @fig-swap-avant).
+
+::: {.callout-note}
+### Un exemple très simple. 
+
+Soit un territoire donné découpé en six zones où résident un certain nombre d'individus. 
+Avec les informations disponibles à leur sujet, on considère qu'un seul individu a un risque 
+de ré-identification trop élevé (croix rouge sur la @fig-swap-avant).
 
 
 ::: {#fig-swap-avant}
@@ -79,6 +93,8 @@ En revanche, les autres caractéristiques sont bruitées de façon non contrôl�
 Ainsi, l'éventuelle ré-identification de l'individu à risque ne pourrait conduire 
 l'attaquant qu'à obtenir des informations très probablement fausses à son sujet.
 
+:::
+
 ## Les variables de similarité
 
 La méthode est très souple puisqu'elle permet de s'adapter aux données dont on dispose et 
@@ -89,14 +105,15 @@ parfaitement similaires sur certaines caractéristiques (**les variables de simi
 l'échange ne produira aucune perte d'information sur celles-ci. 
 
 ::: {.callout-warning}
-### Similaraité et ré-identification
+### Similarité et ré-identification
 
-Si l'objectif est de réduire le risque de ré-identification, il n'est pas conseillé 
-de considérer toutes les variables quasi-identifiantes comme variables de similarité.
+Si l'objectif est de réduire le risque de ré-identification, sélectionner toutes les variables 
+quasi-identifiantes comme variables de similarité ne perturberait aucunement 
+la capacité de l'attaquant à ré-identifier les individus. Ce choix produirait 
+en revanche du bruit sur les autres variables: donc en ré-identifiant, l'attaquant 
+ne serait pas en mesure d'obtenir des informations supplémentaires fiables.
 
 :::
-
-
 
 ::: {.callout-tip}
 ### Utiliser la hiérarchie des emboîtements géographiques
@@ -111,6 +128,7 @@ pas dans son département de résidence, alors on privilégiera l'échange avec
 un autre individu du département en dehors de la commune de notre individu à risque.
 Si le niveau départemental posait lui aussi problème on remonterait au niveau régional, etc.
 
+Ainsi, en général, la méthode consistera à échanger la localisation d'individus ou de ménages [@longhurst_statistical_nodate].
 
 :::
 
@@ -202,6 +220,17 @@ est le seul dont le risque de ré-identification est très élevé.
 ::::
  -->
 
+### Le taux de *swapping*
+
+Le __taux d'échange__ ou __taux de *swapping*__ est la part d'individus du jeu de données 
+qui a pris part aux échanges, soit $s=\frac{E+D}{N}$, où $E$ est le nombre d'individus à échanger,
+$D$ le nombre de donneurs ($D=E$) et $N$ le nombre d'individus dans la base. 
+
+En pratique, on fixe un taux de swapping $s$ de telle sorte que l'algorithme procède à un minimum 
+d'échanges. Si le nombre d'individus à risque ne permet pas d'atteindre ce seuil, des individus 
+supplémentaires seront également échangés pour atteindre $s$. Sinon, le taux de swapping étant atteint ou dépassé,
+aucun individu additionnel n'est ajouté.
+
 
 ## Les grandes étapes à suivre pour appliquer le `TRS`
 
@@ -213,27 +242,27 @@ est le seul dont le risque de ré-identification est très élevé.
 4. Choisir un seuil de risque de ré-identification maximal acceptable, au-delà duquel les individus devront être traités.
 5. Quelles sont les marges que la méthode devrait conserver intactes en priorité ?
 6. Un *swapping* des ménages est-il préférable à un swapping d'individus ? 
-7. Sélectionner les variables de similarités, en tenant compte des risques et des objectifs de diffusion.
+7. Sélection des paramètres de la méthode:
+   1. Les variables de similarités, en tenant compte des risques et des objectifs de diffusion.
+   2. Le taux de swapping.
 8. Procéder au swapping
 9. Mesurer la perte d'information 
 10. Reprendre les étapes 4. à 9. si la perte d'information s'avère trop grande ou la protection trop faible
 
 
 L'avantage de la méthode  est sa grande capacité d'adaptation aux données dont on dispose. 
-Même si cette fiche va présenter comment l'appliquer avec le package `sdcMicro`, il est en 
-réalité tout à fait possible de développer sa propre solution 
+Même si cette fiche va présenter comment l'appliquer avec le package `sdcMicro`, 
+il est en réalité tout à fait possible de développer son propre algorithme pour 
+affiner la façon de tirer les individus ou les ménages à échanger.
 
 
-On pourra se reporter à la [fiche sur les mesures de risque](pratique/fiches/mesurer-risque.html) 
+On pourra se reporter à la 
+[fiche sur les mesures de risque](pratique/fiches/mesurer-risque.html) 
 pour en savoir plus sur les risques et la façon de les mesurer.
 
 
 
-
-
-
-
-
+# En pratique
 
 Pour installer les packages nécessaires, vous trouverez les instructions à suivre 
 dans la fiche [Ressources / Installer les packages et les outils sur R](../../ressources/fiches/outils-install.html).  
