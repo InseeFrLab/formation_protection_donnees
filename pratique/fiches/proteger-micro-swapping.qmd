@@ -27,7 +27,7 @@ individus à risque préalablement.
 # Pour s'exercer
 
 Pour reproduire les résultats et réaliser les exercices, il est possible de travailler 
-directement sur le [`datalab` de l'Insee](datalab.sspcloud.fr). Si vous disposez d'un compte, vous pouvez ouvrir [Ouvrir un service RStudio](https://datalab.sspcloud.fr/launcher/ide/rstudio?name=rstudio-formation-protection&version=2.3.1&s3=region-ec97c721&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Frstudio.sh») ou [Ouvrir un service vscode R-Python](https://datalab.sspcloud.fr/launcher/ide/vscode-r-python-julia?name=vscode-formation-protection&version=2.3.5&s3=region-ec97c721&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Fvscode-r-python.sh»), à votre convenance. Ces services installeront automatiquement les packages 
+directement sur le [`datalab` de l'Insee](datalab.sspcloud.fr). Si vous disposez d'un compte, vous pouvez [Ouvrir un service RStudio](https://datalab.sspcloud.fr/launcher/ide/rstudio?name=rstudio-formation-protection&version=2.3.1&s3=region-ec97c721&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Frstudio.sh») ou [Ouvrir un service vscode R-Python](https://datalab.sspcloud.fr/launcher/ide/vscode-r-python-julia?name=vscode-formation-protection&version=2.3.5&s3=region-ec97c721&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Fvscode-r-python.sh»), à votre convenance. Ces services installeront automatiquement les packages 
 nécessaires pour réaliser les exercices de l'ensemble des fiches pratiques.
 
 :::
@@ -133,21 +133,6 @@ Ainsi, en général, la méthode consistera à échanger la localisation d'indiv
 :::
 
 
-
-::: {.callout-tip}
-### Une astuce pour gérer la présence de poids de sondage
-
-Si nous disposons d'un échantillon, chaque individu dispose d'un poids de sondage. 
-Avec le `Target Record Swapping`, on prend le risque d'échanger deux individus avec des poids très différents et 
-de déséquilibrer des agrégats importants. Pour éviter ce genre de désagrément, il est possible
-d'ajouter le poids parmi les variables de similarité, sous la forme d'un arrondi à l'unité 
-ou bien de tranches de valeurs. On pourra également exclure des donneurs potentiels, 
-les individus ayant des poids très élevés comparés aux autres. Ceci permettra de limiter 
-les déformations des distributions.
-
-:::
-
-
 ### Comment définir des individus similaires ?
 
 La **similarité** entre deux individus peut être envisagée de deux manières:
@@ -165,6 +150,21 @@ dans la liste.
 Dans la pratique, cette première option est la moins gourmande en ressources de calcul, 
 car elle ne nécessite pas de calculer une distance entre chaque receveur et chaque donneur potentiel. 
 Elle est probablement la seule envisageable si le jeu de données contient plusieurs millions de lignes.
+
+
+
+::: {.callout-tip}
+### Une astuce pour gérer la présence de poids de sondage
+
+Si nous disposons d'un échantillon, chaque individu dispose d'un poids de sondage. 
+Avec le `Target Record Swapping`, on prend le risque d'échanger deux individus avec des poids très différents et 
+de déséquilibrer des agrégats importants. Pour éviter ce genre de désagrément, il est possible
+d'ajouter le poids parmi les variables de similarité, sous la forme d'un arrondi à l'unité 
+ou bien de tranches de valeurs. On pourra également exclure des donneurs potentiels, 
+les individus ayant des poids très élevés comparés aux autres. Ceci permettra de limiter 
+les déformations des distributions.
+
+:::
 
 
 ### Individus ou ménages ?
@@ -440,3 +440,9 @@ graph_cios(all_cios, titre = "Superposition des intervalles de confiance\ndes Od
   theme(axis.text.y =  element_text(size = 8))
 ```
 
+
+## Exercices
+
+### Choisir le taux de swapping 
+
+### Appliquer le swapping au niveau ménages
