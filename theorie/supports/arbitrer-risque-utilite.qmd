@@ -20,7 +20,12 @@ slide-tone: false
 # uncomment to use the multiplex mode:
 #multiplex: true
 format:
-  onyxia-revealjs
+  onyxia-revealjs:
+    number-sections: true
+    number-depth: 1
+    toc: true
+    toc-depth: 1
+    toc-title: Sommaire
   # pick the light mode (onyxia-revealjs) or the dark mode (onyxia-dark-revealjs)
   #onyxia-dark-revealjs:
 controls: true
@@ -39,241 +44,204 @@ bibliography: ../../references-SDC.bib
 :::
 
 ::: frame
-### Sommaire
+## Sommaire
 :::
+
+# Introduction {.unnumbered}
+
+## Contexte
+
+On se placera dans le contexte suivant:
+
+- Un institut statistique collecte des données individuelles.
+- On suppose qu'il respecte les réglements en vigueur en termes de protection des données individuelles (par exemple le RGPD en Europe).
+- L'institut cherche à diffuser des statistiques agrégées ou des fichiers de données individuelles à visée statistique.
+
+## Problématique
+
+::: {.callout-tip icon=true}
+### Problématique de l'ensemble de l'atelier
+
+Comment diffuser de l'information statistique sans porter atteinte aux personnes (physiques ou morales) auprès desquelles l'information a été collectée ?
+:::
+
+## Protéger: un enjeu pour la statistique publique
+
+_Les missions [de la statistique publique] ne dépendent pas seulement de sa capacité à maîtriser les outils ou les méthodes nécessaires à la production d'une information de qualité, mais aussi de [__sa capacité à protéger et à garantir la confidentialité des données qui lui sont confiées__]{style="color:green;"}. Cette protection est la condition pour continuer à disposer de ces données._ [@redor_confidentialite_2023]
+
+
+
+## A la recherche d'une définition
+
+::: {.callout-note icon=false}
+## Une définition maximaliste de la divulgation...
+
+T. Dalenius propose en 1977 la définition suivante:
+
+_"Si la publication des statistiques $T(D)$ permet de déterminer la valeur de données statistiques confidentielles de façon plus précise qu’il ne serait possible sans accès à $T(D)$, alors une divulgation a eu lieu."_ [@dalenius_privacy_1977].
+:::
+
+::: {.callout-important icon=false}
+## ... impossible à tenir
+
+Cette définition ne prend pas en compte l'information auxiliaire déjà disponible
+:::
+
+::: {.callout-tip icon=false}
+## Un exemple de divulgation impossible à protéger
+
+Des études montrent un lien de corrélation entre le fait de fumer et la survenue d'un cancer des poumons $\Rightarrow$ si, on (une compagnie d'assurance) sait qu'un individu est fumeur, alors on peut lui imputer un risque important d'avoir un cancer, information qui va très probablement générer un préjudice à cette personne.
+
+:::
+
+## A la recherche d'une définition
+
+Il faut tenir compte de deux réalités:
+
+- l'utilisateur dispose d'une **information auxiliaire**.
+- l'**inférence statistique** est l'un des moyens de connaissances offertes par la publication de statistiques.
+
+$\Rightarrow$ **une protection inconditionnelle et totale n'est pas possible.**
+
+
+
+## Besoin de maîtriser les risques
+
+La protection de données se définit à travers:  
+
+- la maîtrise des risques de divulgation
+- et le besoin de continuer à diffuser de l'information statistique.
+
+$\Rightarrow$ **Besoin d'arbitrer entre les deux composantes.**
 
 # Un arbitrage nécessaire
 
-::: frame
-Introduction
+## Arbitrer
 
-La définition maximaliste de la protection des données:
+Protéger des données confidentielles, c'est **arbitrer** entre:
 
-::: displayquote
-If the release of the statistics $T(D)$ makes it possible to determine the value \[of confidential statistical data\] more accurately than is possible without access to $T(D)$, a disclosure has taken place. (T. Dalenius, [Privacy transformations for statistical information systems](https://doi.org/10.1016/0378-3758(77)90007-6), 1977)
-:::
-:::
+-   leur **utilité** pour la connaissance et le débat public;
 
-# Introduction
-::: frame
+-   leur **risque intrinsèque**: toute donnée diffusée peut divulguer une information sur un individu ou un groupe d'individus.
 
--   Une ambition originelle impossible à atteindre.
-
--   Exemple: Lien fort entre Fumeur et Cancer des poumons $\Rightarrow$ si, on (une compagnie d'assurance) sait qu'un individu est fumeur, alors elle peut lui imputer un risque important d'avoir un cancer.
-
--   Il faudrait
-
-    -   supposer que l'utilisateur ne dispose d'aucune information auxiliaire (irréaliste)
-
-    -   empêcher toute inférence statistique (non souhaitable)
+::: {style="text-align:center;"}
+![Arbitrer](img/trade_off_balance.png){width=40% fig-alt="Arbitrage Risque-Utilité" fig-align="center"}
 :::
 
-# Introduction
+## Deux écueils
 
-::: frame
+-   Ne pas diffuser rendrait la statistique publique inutile.
 
-::: displayquote
-Les missions du SSP ne dépendent pas seulement de sa capacité à maîtriser les outils ou les méthodes nécessaires à la production d'une information de qualité, mais aussi de **sa capacité à protéger et à garantir la confidentialité des données qui lui sont confiées**. Cette protection est la condition pour continuer à disposer de ces données.
+-   Tout diffuser rendrait la statistique publique dangereuse.
+
+
+::: {style="text-align:center;"}
+![Arbitrer](img/trade_off_graph.png){width=80% fig-alt="Arbitrage Risque-Utilité" fig-align="center"}
 :::
 
-::: displayquote
-**La maîtrise des risques** de perte ou de violation de confidentialité des données dont il est dépositaire représente un enjeu crucial pour le SSP. (P. Redor, Courrier des Statistiques, juin 2023)
-:::
-:::
 
-# Quel arbitrage ?
-::: frame
+## Problèmes
 
-Protéger des données confidentielles, c'est arbitrer entre:
+- Quels sont les risques de divulgation ?
+- Comment mesurer ces risques ?
+- Comment les traiter ?
 
--   leur utilité pour la connaissance et le débat public;
+$\Rightarrow$ Comment les traiter sans *trop* détériorer l'information statistique ?
 
--   leur risque intrinsèque: toute donnée diffusée divulgue une information sur un individu ou un groupe d'individus.
+## Enjeu principal de l'arbitrage:
 
-![image](Images/trade_off_balance.png){width="0.5\\linewidth"}
-:::
+::: {.callout-note icon=true}
+### Trouver un équilibre entre protection et information
 
-# Un arbitrage nécessaire
-::: frame
-
--   Ne pas diffuser rendrait la statistique publique inutile;
-
--   Tout diffuser rendrait la statistique publique dangereuse;
-
-![image](Images/trade_off_graph.png){width="0.75\\linewidth"}
+Il s'agit de réaliser un **compromis** entre le fait de minimiser les risques de divulgation des informations confidentielles et minimiser la perte d'information due aux traitements de protection des données.
 :::
 
-# Un arbitrage nécessaire
-::: frame
-
-::: block
-Arbitrer Arbitrer c'est faire un compromis entre minimiser le risque de divulgation d'information confidentielle et minimiser la perte d'information due aux traitements de protection des données.
+::: {.callout-warning icon=true}
+### Pas de méthode magique 
+Il n'existe pas de méthode minimisant le risque et la perte d'information en même temps!
 :::
 
-::: alertblock
-Attention Il n'existe pas de méthode minimisant le risque et la perte d'information en même temps!
-:::
-:::
 
-# Un exemple d'arbitrage
-::: frame
+## Un exemple d'arbitrage
 
-Le recensement de la population en France:
+Le recensement de la population (RP) en France:
 
 -   Décret de publication spécifique;
 
--   Utilité des données du RP très forte (un certain nombre de lois en dépendent - dotation des communes par exemple)
+-   Utilité des données du RP très forte:
+    -   un certain nombre de lois en dépendent
+    -   dotation financière des communes
 
--   Risque d'utilisation des données diffusées contre les personnes est jugé faible.
+-   Risque d'utilisation des données diffusées contre les personnes est jugé faible:
+    -   information peu préjudiciable
+    -   à l'exception de variables sensibles
 
-    $\Rightarrow$ L'Insee diffuse des données communales même si elles permettent parfois d'identifier et caractériser des individus.
-:::
+## Un exemple de divulgation assumée
 
-# Un arbitrage inhérent à la gestion de la confidentialité
-::: frame
+L'Insee diffuse des données communales même pour les très petites communes: 
+
+[Voir l'exemple de la commune de Rochefourchat](https://www.insee.fr/fr/statistiques/2011101?geo=COM-26274):
+
+- Une commune de $2$ habitants
+- On connaît leur sexe, leur situation conjugale, leur âge, une description grossière de leurs logements, le statut d'occupation de leur logement, leur niveau de diplôme, leur statut d'activité, etc.
+
+
+## L'arbitrage Risque/Utilité: un paradigme
 
 -   Il n'existe pas de risque zéro
 
 -   Aucune méthode ne supprime totalement le risque $\Rightarrow$
 
-    -   Arbitrer est donc inhérent à la discipline.
+    -   Arbitrer est donc inhérent à la protection des données.
 
     -   Cet arbitrage considéré comme **le paradigme** de la discipline.
 
--   Un paradigme parfois critiqué (Cox et al. 2011):
 
-    -   S'il aide à savoir comment penser\...
+## Un paradigme criticable
 
-    -   \...il aide moins à savoir comment agir.
-:::
+[Voir @cox_risk-utility_2011]
 
-# Un arbitrage nécessaire
-::: frame
+-   S'il aide à savoir **comment penser**...
 
-Pour arbitrer, il faut pouvoir
+-   ...il aide moins à savoir **comment agir**.
 
--   Définir les termes de l'arbitrage
 
--   Mesurer les phénomènes.
 
-$\Rightarrow$ Objectiver les notions de risque et d'utilité afin de pouvoir mener un arbitrage honnête.
-:::
-
-# En pratique, un autre arbitrage a lieu
-::: frame
+## En pratique, un autre arbitrage a lieu
 
 Un arbitrage Coûts/Bénéfices est réalisé:
 
--   Par l'INS: Quels moyens (en termes de temps, de complexité et de coûts financiers) déployer pour quel niveau de protection ?
+-   Par le producteur de données: 
+    -   Quels moyens déployer pour quel niveau de protection (temps, moyens financiers)?
 
--   Par l'attaquant: Vaut-il le coût de déployer des moyens importants à tenter de retrouver de l'information confidentielle contenue dans les données diffusées ?
+-   Par l'attaquant: 
+    -   L'information confidentielle espérée est-elle à la hauteur des moyens nécessaires à sa divulgation ? 
 
 $\Longrightarrow$ Mettre en place des méthodes qui ont un coût adapté au risque objectivé et à la sensibilité des données.
-:::
 
-# Une démarche en plusieurs étapes
-::: frame
-Étapes clés du processus de protection des données
 
-Une démarche reprise de (Hundepool et al. 2010):
 
-1.  Est-il nécessaire de protéger les données ?
+## Objectiver: définir et mesurer
 
-2.  Quelles sont les caractéristiques et utilisations principales des données ?
+Pour arbitrer, il faut pouvoir
 
-3.  Définition et mesure des risques de divulgation
+-   Définir les termes de l'arbitrage 
 
-4.  Choix des méthodes de protection des données
+-   Mesurer les phénomènes.
 
-5.  Mise en oeuvre des méthodes
-:::
 
-# Étape 1
-::: frame
-Est-il nécessaire de protéger les données ?
-
--   Analyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d'effectuer de traitement pour la protection des données
-
--   Quel type de diffusion ? (tableaux de données, cartes, microdonnées \...)
-:::
-
-# Étape 2
-::: frame
-Quelles sont les caractéristiques et utilisations principales des données ? (I)
-
--   Analyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection
-
--   Analyse de la méthodologie de l'enquête
-
--   Définition des objectifs de l'institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié
-:::
-
-# Étape 2
-::: frame
-Quelles sont les caractéristiques et utilisations principales des données ? (II)
-
--   Analyse des besoins des utilisateurs (variables prioritaires, types d'analyses qui seront réalisées)
-
--   Analyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)
-:::
-
-# Étape 3
-::: frame
-Définition et mesure des risques de divulgation
-
--   Recenser les différents scénarios possibles conduisant à la divulgation des données
-
--   Ces scénarios dépendent du type de données considérées (données exhaustives, enquêtes) et de la diffusion choisie (pour les chercheurs ou le grand public)
-
--   Choisir la ou les méthodes pour mesurer le risque de divulgation (développé dans la partie \"Les différents types de risques\")
-
--   Si on considère que le risque de divulgation est trop élevé alors il faut mettre en place des méthodes de protection des données
-:::
-
-# Étape 4
-::: frame
-Choix des méthodes de protection des données
-
--   Choisir une / plusieurs méthode(s) de protection pour réduire les risques de divulgation au seuil de tolérance qu'on s'est fixé
-
--   Le choix de la méthode dépend de l'impact sur l'utilité des données de ladite méthode
-
--   Analyse de perte d'utilité due à la protection
-:::
-
-# Étape 5
-::: frame
-Mise en oeuvre des méthodes
-
-1.  Choisir un logiciel
-
-2.  Réaliser la mesure des risques de divulgation
-
-3.  Protéger les données
-
-4.  Quantification de l'information perdue
-
-5.  Contrôle du processus de protection
-
-    -   vérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable
-
-6.  Réalisation d'un document synthétisant les méthodes de protection utilisées et faisant le bilan de l'information perdue
-
-    -   si possible le transmettre aux utilisateurs des données publiées
-
-    -   peut contenir des avertissements sur les précautions à prendre lors de l'utilisation d'un fichier anonymisé
-:::
 
 # Objectiver le risque
 
-## Les différents types de risque
-::: frame
+## Le risque de divulgation
 
-::: block
-Risque de divulgation Risque de divulguer une information confidentielle en publiant des données.
+::: {.callout-note icon=true}
+## Définition générale
+
+Risque de divulguer une information confidentielle en publiant des données agrégées ou individuelles.
 :::
 
-Quatre types de risque de divulgation :
+## Quatre types de risque de divulgation
 
 -   Risque de divulgation d'identité
 
@@ -286,50 +254,123 @@ Quatre types de risque de divulgation :
     -   par \"emboîtement\"
 
     -   par \"recoupement\"
-:::
+
 
 ## Risque de divulgation d'identité
-::: frame
 
-::: block
-Risque de divulgation d'identité Risque de reconnaître un individu spécifique dans les données publiées : un attaquant peut identifier une unité à partir de la publication.
+::: {.callout-tip}
+## Définition
+
+Risque de reconnaître un individu spécifique dans les données publiées : un attaquant peut identifier une unité à partir de la publication.
+
 :::
 
-Exemples :
+Exemples : 
 
--   Certaines variables comme le nom, l'adresse qui identifient directement des individus ou des foyers.
+-   Certaines variables comme le nom, l'adresse qui identifient *directement* des individus ou des foyers.
 
--   Toutes les personnes avec de caractéristiques très rares (ex : personnes très âgées).
+-   Toutes les personnes ayant des caractéristiques très rares (ex : personnes très âgées).
 
--   Il a été montré que 87% de la population américaine est unique uniquement à partir du ZIP code, du genre et de la date de naissance (Sweeney, 2000).
-:::
+-   87% de la population américaine est unique uniquement à partir du ZIP code, du genre et de la date de naissance [@sweeney_simple_2000].
 
-## Risque de divulgation d'identité
-::: frame
 
--   L'âge, le genre, la profession et le niveau d'éducation sont généralement considérés comme des **quasi-identifiants**
+## Remarques
 
--   La divulgation d'identité ne permet pas toujours d'apprendre de nouvelles information sur l'individu (si l'attaquant parvient juste à matcher mais qu'il n'y a pas de variable en plus dans les données alors il n'a rien appris).
-:::
+- Les identifiants directs (nom, prénom, adresse) sont utiles pour la collecte mais supprimés des bases à vocation statistique.
+
+- D'autres variables ont un fort pouvoir ré-identifiant (le lieu de résidence,  l'âge, le genre, la profession, le niveau d'éducation, etc.).
+
+- Ré-identifier ne permet as toujours d'obtenir plus d'informations sur les personnes.
+
 
 ## Risque de divulgation d'attribut
-::: frame
 
-::: block
-Risque de divulgation d'attribut Risque de divulguer de l'information sensible sur certains individus dans les données diffusées.
+::: {.callout-tip}
+## Définition
+
+Risque de divulguer de l'information sensible sur des individus à partir des données diffusées.
+
 :::
 
 Exemples :
 
--   Si un individu est identifié à partir de certaines variables alors l'attaquant connaît toutes ses autres caractéristiques pour les autres variables publiées
+-   Une ré-identification conduit souvent à une divulgation d'attribut.
+-   Il est possible de divulguer un attribut sur des groupes entiers.
 
--   Divulgation d'un attribut de groupe : on parle de divulgation d'attribut même si l'attribut ne concerne pas un unique individu mais tout un groupe. A partir de la table ci-dessous on sait que tous les hommes sont diabétiques.
 
-                    Femme   Homme
-  ---------------- ------- -------
-     Diabétique      30      40
-   Pas diabétique    12       0
-:::
+## Divulgation d'un attribut de groupe
+
+ - Divulgation d'une information sensible pour un groupe entier de personnes.
+ - Sans nécessairement avoir besoin de ré-identifier préalablement.
+
+<!-- 
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:2px;font-family:Arial, sans-serif;font-size:30px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:2px;font-family:Arial, sans-serif;font-size:28px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-p8l5{border-color:#9b9b9b;color:#656565;text-align:right;vertical-align:top}
+.tg .tg-o57y{border-color:#9b9b9b;color:#656565;text-align:center;vertical-align:top}
+.tg .tg-8trw{border-color:#9b9b9b;color:#656565;text-align:left;vertical-align:top}
+.tg .tg-ho01{border-color:#9b9b9b;color:#9a0000;font-weight:bold;text-align:right;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-8trw"></th>
+    <th class="tg-o57y">Hommes</th>
+    <th class="tg-o57y">Femmes</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-8trw">Diabétiques</td>
+    <td class="tg-p8l5">30</td>
+    <td class="tg-p8l5">40</td>
+  </tr>
+  <tr>
+    <td class="tg-8trw">Non Diabétiques</td>
+    <td class="tg-p8l5">12</td>
+    <td class="tg-ho01">0</td>
+  </tr>
+</tbody>
+</table> 
+-->
+
+```{r}
+#| label: tbl-planets
+#| tbl-cap: Un exemple de divulgation d'attributs de groupe
+#| tbl-cap-location: bottom
+#| echo: false
+library(kableExtra)
+
+df <- data.frame(
+  Hommes = c(30, 12),
+  Femmes = c(40, 0)
+) 
+row.names(df) <- c("Diabétiques", "Non diabétiques")
+
+df |> 
+  kableExtra::kbl(
+    booktabs = T,
+    col.names = c("Hommes", "Femmes"),
+    row.names = TRUE
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = c("hover")
+  )
+  # kableExtra::kable_classic_2() 
+```
+
+<!-- 
+
+|                 | Hommes | Femmes |
+|-----------------|:------:|:------:|
+| Diabétiques     |     30 |     40 |
+| Non Diabétiques |     12 |  **0** | 
+
+: Un exemple de divulgation d'attributs de groupe -->
+
+
 
 ## Risque de divulgation par inférence
 ::: frame
@@ -861,6 +902,102 @@ Pour les **variables catégorielles**, 3 idées principales pour évaluer la per
 
     -   Comparaison du 1er plan factoriel d'une analyse factorielle des correspondances.
 :::
+
+
+
+# Une démarche en plusieurs étapes
+::: frame
+Étapes clés du processus de protection des données
+
+Une démarche reprise de (Hundepool et al. 2010):
+
+1.  Est-il nécessaire de protéger les données ?
+
+2.  Quelles sont les caractéristiques et utilisations principales des données ?
+
+3.  Définition et mesure des risques de divulgation
+
+4.  Choix des méthodes de protection des données
+
+5.  Mise en oeuvre des méthodes
+:::
+
+# Étape 1
+::: frame
+Est-il nécessaire de protéger les données ?
+
+-   Analyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d'effectuer de traitement pour la protection des données
+
+-   Quel type de diffusion ? (tableaux de données, cartes, microdonnées \...)
+:::
+
+# Étape 2
+::: frame
+Quelles sont les caractéristiques et utilisations principales des données ? (I)
+
+-   Analyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection
+
+-   Analyse de la méthodologie de l'enquête
+
+-   Définition des objectifs de l'institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié
+:::
+
+# Étape 2
+::: frame
+Quelles sont les caractéristiques et utilisations principales des données ? (II)
+
+-   Analyse des besoins des utilisateurs (variables prioritaires, types d'analyses qui seront réalisées)
+
+-   Analyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)
+:::
+
+# Étape 3
+::: frame
+Définition et mesure des risques de divulgation
+
+-   Recenser les différents scénarios possibles conduisant à la divulgation des données
+
+-   Ces scénarios dépendent du type de données considérées (données exhaustives, enquêtes) et de la diffusion choisie (pour les chercheurs ou le grand public)
+
+-   Choisir la ou les méthodes pour mesurer le risque de divulgation (développé dans la partie \"Les différents types de risques\")
+
+-   Si on considère que le risque de divulgation est trop élevé alors il faut mettre en place des méthodes de protection des données
+:::
+
+# Étape 4
+::: frame
+Choix des méthodes de protection des données
+
+-   Choisir une / plusieurs méthode(s) de protection pour réduire les risques de divulgation au seuil de tolérance qu'on s'est fixé
+
+-   Le choix de la méthode dépend de l'impact sur l'utilité des données de ladite méthode
+
+-   Analyse de perte d'utilité due à la protection
+:::
+
+# Étape 5
+::: frame
+Mise en oeuvre des méthodes
+
+1.  Choisir un logiciel
+
+2.  Réaliser la mesure des risques de divulgation
+
+3.  Protéger les données
+
+4.  Quantification de l'information perdue
+
+5.  Contrôle du processus de protection
+
+    -   vérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable
+
+6.  Réalisation d'un document synthétisant les méthodes de protection utilisées et faisant le bilan de l'information perdue
+
+    -   si possible le transmettre aux utilisateurs des données publiées
+
+    -   peut contenir des avertissements sur les précautions à prendre lors de l'utilisation d'un fichier anonymisé
+:::
+
 
 ## EN guise de conclusion
 ::: frame
