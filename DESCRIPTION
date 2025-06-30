@@ -31,7 +31,7 @@ Description: Atelier de formation à la protection des données
 URL: https://atelier-protection-donnees.github.io/atelier-protection-donnees
 BugReports: https://github.com/atelier-protection-donnees/atelier-protection-donnees/issues
 Depends: R (>= 4.2.0), dplyr, purrr, readr, ggplot2, knitr, rmarkdown, quarto, cellKey,
-    sdcMicro, GaussSuppression, synthpop, rtauargus (>= 1.3.0), DT
+    sdcMicro, GaussSuppression, synthpop, rtauargus (>= 1.3.0), DT, kableExtra
 Remotes: InseeFrLab/rtauargus
 License: GPL (>= 2)
 VignetteBuilder: knitr, rmarkdown, quarto
