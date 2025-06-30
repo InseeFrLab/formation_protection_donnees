@@ -549,21 +549,23 @@ Dans un jeu de données individuelles, on distinguera:
 -   Autres variables
 
 
-## Distinguer les variables
+## Les identifiants
 
-Remarques:
+-   Les identifiants sont retirés très tôt au cours du processus de production pour respecter les réglements sur la protection des données.
+  
+- On supposera par la suite que tous les identifiants directs ont été retirées.
 
--   Les identifiants sont retirés très tôt au cours du processus de production $\Rightarrow$ ils ne posent pas de problème en termes de gestion de la confidentialité.
 
--   Les quasi-identifiants:
+## Les quasi-identifiants
 
-    -   Pour des données individus: sexe, âge, lieu d'habitation, diplôme, statut marital, etc.
 
-    -   Pour des données entreprises: Secteur d'activité, lieu du siège, etc.
+-   Pour des données individus/ménages: sexe, âge, lieu d'habitation, diplôme, statut marital, etc.
 
-    -   Liste à déterminer à chaque fois
+-   Pour des données entreprises: Secteur d'activité, lieu du siège, etc.
 
-    -   De quelles variables un attaquant dispose-t-il déjà ?
+-   Liste à déterminer à chaque fois
+
+-   De quelles variables un attaquant dispose-t-il déjà ?
 
 
 ## Un exemple
@@ -623,52 +625,97 @@ df |>
 ::: -->
 
 
-## Quantifier le risque : le k-anonymat
-::: frame
+## Quantifier le risque (1): le $k$-anonymat
 
-::: block
-Le k-anonymat (Samarati et Sweeney, 1998) Un jeu de données est considéré comme k-anonyme si la combinaison la moins fréquente des modalités des variables quasi-identifiantes compte au moins *k* unités.
+::: {.callout-note}
+### Le $k$-anonymat [@sweeney_k-anonymity_2002]
+
+ Un jeu de données est considéré comme *k-anonyme* si la combinaison la moins fréquente des modalités des variables quasi-identifiantes compte au moins *k* unités.
 :::
 
--   Cette mesure assure que tous les individus sont similaires à au moins k-1 autres.
+::: {style="font-size: 80%;"}
+
+-   Cette mesure assure que tous les individus sont similaires à au moins $k-1$ autres.
 
 -   **Mesure de risque globale** qui se focalise sur les individus les plus à risque de ré-identification.
 
--   La probabilité associée au risque pour un individu du fichier d'être ré-identifié est au minimum 1/*k*
+-   La probabilité associée au risque pour un individu du fichier d'être ré-identifié est au minimum $1/k$
+  
 :::
 
-## Quantifier le risque : le k-anonymat
-::: frame
-::: {#tab:1-anonyme}
-  Id   Age         Genre   Maladie(s)
+
+## Le scénario d'attaque envisagé 
+
+::: {.callout-important}
+### Caractéristiques du scénario d'attaque
+
+Le **$k$-anonymat** protège les données d'une attaque de ré-identification lorsque l'attaquant dispose d'une information auxiliaire sur les mêmes individus:
+
+- l'attaquant procède à un **appariement** entre les deux jeux de données
+- les **quasi-identifiants (QI)** servent de clés d'appariement
+- plus un individu a des caractéristiques rares sur les QI, meilleure sera la ré-identification.
+  - **Les uniques** sur les QI: la ré-identification sera certaine
+  - Plus un individu est commun, moins la probabilité de ré-identification sera élevée.
+
+:::
+
+## L'importance du scénario
+
+::: {.callout-warning}
+### Une efficacité qui dépend du réalisme du scénario
+
+Assurer un certain niveau d'anonymité permet de réduire le risque de ré-identification, mais :  
+
+- Si l'attaquant dispose de plus d'information auxiliaire $\Rightarrow$ [**sous-estimation**]{style="color:red;"} du risque avec le *$k$-anonymat*.
+- Avec le temps, l'attaquant peut disposer de plus d'informations. Or, le scénario est posé une fois $\Rightarrow$ [**sous-estimation**]{style="color:red;"} du risque avec le *$k$-anonymat*.
+- Si l'attaquant dispose de moins d'information auxiliaire $\Rightarrow$ [**sur-estimation**]{style="color:green;"} du risque avec le *$k$-anonymat*.
+- La qualité des appariements dépend de beaucoup d'autres facteurs (millésimes, qualité des variables, cohérence des champs, etc.) $\Rightarrow$ [**sur-estimation**]{style="color:green;"} du risque avec le *$k$-anonymat*.
+
+:::
+
+## Un exemple
+
+::: {#tbl-1-anonyme .table .table-striped .table-hover .table-bordered .table-sm}
+
+   Id       Age     Genre     Maladie
   ---- ----------- ------- -------------------------
-  1    \[45;55\[   M       Diabète
-  2    \[45;55\[   M       Hypertension artérielle
-  3    \[45;55\[   F       Cancer
-  4    \[45;55\[   F       Grippe
-  5    \[70;75\[   M       Diabète
-  6    \[45;55\[   M       Diabète
+  1    \[45;55\[   M          Diabète
+  2    \[45;55\[   M          Hypertension artérielle
+  3    \[45;55\[   F          Cancer
+  4    \[45;55\[   F          Grippe
+  5    \[70;75\[   M          Diabète
+  6    \[45;55\[   M          Diabète
 
   : Exemple d'un fichier individuel 1-anonyme, l'âge et le genre étant considérés comme quasi-identifiants
 :::
+
+## Limites du $k$-anonymat
+
+- Forte dépendance à la qualité/véracité du scénario   
+  $\Rightarrow$ choix des QI est crucial.  
+
+- Ne réduit pas les risques de divulgation d'attributs sensibles.
+
+
+## Quantifier le risque (2): la l-diversité
+
+::: {.callout-note}
+### La l-diversité
+
+Elle s'assure d'une *diversité suffisante des modalités* d'une variable sensible prises par les individus au sein d'une même combinaison de quasi-identifiants.
+
 :::
 
-## Quantifier le risque : la l-diversité
-::: frame
-
-::: block
-La l-diversité Assure une diversité suffisante des modalités d'une variable sensible prises par les individus au sein d'une même combinaison de quasi-identifiants.
-:::
-
--   Raffinement du $\mathbf{k}$-anonymat.
+-   Raffinement du $k$-anonymat.
 
 -   Protection contre la divulgation d'attributs sensibles.
-:::
 
-## Quantifier le risque : la l-diversité
-::: frame
 
-     *Age*     *Sexe*   *Maladie(s)*
+## Un exemple
+
+::: {#tbl-ex-l-divers .table .table-striped .table-hover .table-bordered .table-sm}
+
+     Age        Sexe     Maladie
   ----------- -------- --------------
    \[50;55\[     H        Diabète
    \[50;55\[     H        Diabète
@@ -679,7 +726,7 @@ La l-diversité Assure une diversité suffisante des modalités d'une variable s
   : Un fichier 2-anonyme mais pas assez diversifié
 :::
 
-## Limites du k-anonymat
+## Limites du $k$-anonymat
 ::: frame
 
 Ces mesures sont très répandues, faciles à comprendre et à mettre en place, mais elles ont aussi quelques limites:
@@ -691,7 +738,7 @@ Ces mesures sont très répandues, faciles à comprendre et à mettre en place, 
     -   Si l'intrus essaie de faire correspondre les données publiées avec une base de données d'identification, l'évaluation des risques basée sur le $\mathbf{k}$-anonymat est conservatrice.
 
 -   Le $\mathbf{k}$-anonymat **ne prend pas en compte les poids d'échantillonnage**.\
-    $\Rightarrow$ le k-anonymat appliqué à un échantillon sur-évaluera le risque de ré-identification.
+    $\Rightarrow$ le $k$-anonymat appliqué à un échantillon sur-évaluera le risque de ré-identification.
 :::
 
 # Mesures probabilistes du risque
