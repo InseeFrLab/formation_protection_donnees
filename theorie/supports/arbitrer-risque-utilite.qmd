@@ -26,6 +26,10 @@ format:
     toc: true
     toc-depth: 1
     toc-title: Sommaire
+tbl-cap-location: bottom
+include-in-header: 
+  text: |
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   # pick the light mode (onyxia-revealjs) or the dark mode (onyxia-dark-revealjs)
   #onyxia-dark-revealjs:
 controls: true
@@ -314,7 +318,7 @@ Une responsabilisation nécessaire:
 - Chercheurs (Risque de révocation des contrats et conséquences sur l'ensemble du laboratoire)
 
 
-# Objectiver le risque
+# Définir le risque
 
 ## Le risque de divulgation
 
@@ -439,7 +443,8 @@ df |>
     row.names = TRUE
   ) |>
   kableExtra::kable_styling(
-    bootstrap_options = c("hover")
+    bootstrap_options = c("hover", "striped"),
+    full_width = F
   )
   # kableExtra::kable_classic_2() 
 ```
@@ -487,7 +492,8 @@ df |>
     row.names = TRUE
   ) |>
   kableExtra::kable_styling(
-    bootstrap_options = c("hover")
+    bootstrap_options = c("hover","striped"),
+    full_width = F
   )
   # kableExtra::kable_classic_2() 
 ```
@@ -495,30 +501,44 @@ df |>
 
 
 ## Risque de divulgation par différenciation 
-::: frame
-Deux types de différenciation :
 
--   Différenciation par \"emboîtement\" : différenciation possible engendrée par l'existence de deux zonages parfaitement emboîtés l'un dans l'autre (cas le plus classique)
+::: {.callout-tip}
+### Définition
+Lorsqu'une information agrégée est diffusée pour divers croisements, il est parfois possible d'en déuire une information additionnelle en différenciant les divers résultats.
 
--   Différenciation par \"recoupement\" : différenciation entre des zonages recouvrant un même territoire mais sans s'emboîter l'un dans l'autre - les zones de l'un recoupant celles de l'autre
+:::
+
+::: {style="font-size: 80%;"}
+
+Exemples:
+
+- Différenciation marginale: consiste à utiliser les marges de données tabulées
+- Différenciation par emboîtement géographique: consiste à utiliser des agrégats diffusés sur des zonages emboîtés (variante du premier)
+- Différenciation par recoupement: consiste à utiliser des agrégats diffusés sur des zonages imparfaitement emboîtés
+
 :::
 
 ## Différenciation par recoupement
-::: frame
 
-![Exemple de différenciation par recoupement en France entre un département (zonage administratif) et un EPCI (zonage d'étude)](Images/diff_geo_recoupment1.png){#fig:enter-label width="0.8\\linewidth"}
+
+::: {style="text-align:center;"}
+![Exemple de différenciation par recoupement en France entre un département et une communauté de communes (EPCI)](img/diff_geo_recoupment1.png){#fig-diff-rec1 height=80% fig-alt="Exemple de différenciation par recoupement" fig-align="center"}
 :::
+
 
 ## Différenciation par recoupement
-::: frame
 
-![Zoom sur l'EPCI qui chevauche les départments du Rhône (69) et de l'Ain (01)](Images/diff_geo_recoupement2.png){#fig:enter-label width="1\\linewidth"}
+
+::: {style="text-align:center;"}
+![Zoom sur le problème de différenciation](img/diff_geo_recoupement2.png){#fig-diff-rec2 height=80% fig-alt="Exemple de différenciation par recoupement" fig-align="center"}
 :::
 
-# Le paradigme classique: le k-anonymat
+
+# Mesurer le risque
 
 ## Distinguer les variables
-::: frame
+
+Dans un jeu de données individuelles, on distinguera:
 
 -   **Identifiants**: Variables permettant d'identifier directement un individu.
 
@@ -527,10 +547,9 @@ Deux types de différenciation :
 -   **Variables sensibles**: Variables pour lesquelles des mesures de protection spécifiques peuvent s'avérer nécessaires.
 
 -   Autres variables
-:::
+
 
 ## Distinguer les variables
-::: frame
 
 Remarques:
 
@@ -545,11 +564,48 @@ Remarques:
     -   Liste à déterminer à chaque fois
 
     -   De quelles variables un attaquant dispose-t-il déjà ?
-:::
 
-## Distinguer les variables
-::: frame
-::: {#tab:types_variables}
+
+## Un exemple
+
+```{r}
+#| label: tbl-type-var
+#| tbl-cap: Différentes types de variables
+#| tbl-cap-location: bottom
+#| echo: false
+library(kableExtra)
+
+df <- data.frame(
+  Nom = c("Johan", "Jeanne", "Johnny","Jeannette"),
+  Adresse = c("3 rue...", "11 bd...", "12 pl...", "8 rue..."),
+  Commune = c("Paris", "Malakoff", "Pithiviers", "Belval"),
+  Age = c(36, 41, 23, 85),
+  Diplôme = c("Bac", "Bac+3", "Bac Pro", ""),
+  Revenus = c(150000, 60000, 25000, 10000)
+)
+
+df |> 
+  kableExtra::kbl(
+    booktabs = T,
+    # col.names = c("Femmes", "Hommes"),
+    row.names = FALSE
+  ) |>
+  kableExtra::add_header_above(
+    c("Identifiants" = 2, 
+      "Quasi Id."=3, 
+      "Sensible"=1), 
+    align = "c"
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = c("hover", "striped", "bordered"),
+    full_width = F
+  )
+  # kableExtra::kable_classic_2() 
+```
+
+
+<!-- 
+::: {#tbl-types-variables tbl-colwidths="[75,25]"}
   Var. Identifiantes                     Var Quasi-Identifiantes                           Autre Variable            Var. Sensible
   -------------------- ----------------- ------------------------- --------- ------------- ------------------------- ----------------
   **Nom**              **Adresse**       **Commune**               **Âge**   **Diplôme**   **Statut d'occupation**   **Revenus**
@@ -563,9 +619,9 @@ Remarques:
   Jean                 3, impasse \...   Orléans                   48        Bac           Actif occupé              *32 000,00 €*
   Jeannette            8, chemin ...     Paris                     85        Aucun         Retraité                  *10 000,00 €*
 
-  : Les différents types de variables dans un jeu de données
-:::
-:::
+  : Les différents types de variables dans un jeu de données {.striped .bordered}
+::: -->
+
 
 ## Quantifier le risque : le k-anonymat
 ::: frame
