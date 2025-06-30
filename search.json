@@ -1414,6 +1414,76 @@
     "text": "Objectiver: définir et mesurer\nPour arbitrer, il faut pouvoir\n\nDéfinir les termes de l’arbitrage\nMesurer les phénomènes."
   },
   {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#gouvernance-des-données",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#gouvernance-des-données",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Gouvernance des données",
+    "text": "Gouvernance des données\nAvant de définir les risques:\n\nQuels sont les objectifs de diffusion ?\nQui accède à quoi avec quels droits ?\n\n\n\n\n\n\n\nObjectif\n\n\nPour mieux maîtriser les risques, prendre conscience du contexte dans lequel ils sont susceptibles d’apparaître."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#sécuriser-laccès",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#sécuriser-laccès",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Sécuriser l’accès",
+    "text": "Sécuriser l’accès\n\nOn peut distinguer quatre grands types d’utilisateurs:\n\ngrand public et acteurs publics: statistiques agrégées\nchercheurs: statistiques détaillées voire données individuelles\nchargés d’études de la statistique publique: données individuelles sans identifiants directs\nchargés de collecte: données individuelles avec identifiants"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#adapter-laccès-en-fonction-des-besoins-des-utilisateurs",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#adapter-laccès-en-fonction-des-besoins-des-utilisateurs",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Adapter l’accès en fonction des besoins des utilisateurs",
+    "text": "Adapter l’accès en fonction des besoins des utilisateurs\n\nPrincipe de minimisation : chaque utilisateur ne doit accéder qu’aux données strictement nécessaires à ses missions."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#adapter-laccès-en-fonction-des-besoins-des-utilisateurs-1",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#adapter-laccès-en-fonction-des-besoins-des-utilisateurs-1",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Adapter l’accès en fonction des besoins des utilisateurs",
+    "text": "Adapter l’accès en fonction des besoins des utilisateurs\n\nDifférenciation des accès :\n\ngrand public et acteurs publics: accès gratuit et sans condition.\nchercheurs: accès sous conditions strictes (contrats, projets d’utilité publics, environnement sécurisé de travail, etc.).\nchargés d’études: accès à des données sur serveurs internes soumis à autorisation préalable.\nchargés de collecte: accès aux données de collecte pour la seule enquête sur laquelle ils travaillent."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#adapter-laccès-en-fonction-des-besoins-des-utilisateurs-2",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#adapter-laccès-en-fonction-des-besoins-des-utilisateurs-2",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Adapter l’accès en fonction des besoins des utilisateurs",
+    "text": "Adapter l’accès en fonction des besoins des utilisateurs\n\nAssurer un suivi et un contrôle des accès : chaque accès doit pouvoir être contrôlé et révoqué si besoin."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#adapter-le-niveau-danonymisation-nécessaire",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#adapter-le-niveau-danonymisation-nécessaire",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Adapter le niveau d’anonymisation nécessaire",
+    "text": "Adapter le niveau d’anonymisation nécessaire\nPlus l’accès est lâche, plus l’anonymisation doit pouvoir être élevé:\n\ngrand public:\n\nlibre accès \\(\\iff\\) protection statistique forte"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#adapter-le-niveau-danonymisation-nécessaire-1",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#adapter-le-niveau-danonymisation-nécessaire-1",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Adapter le niveau d’anonymisation nécessaire",
+    "text": "Adapter le niveau d’anonymisation nécessaire\nPlus l’accès est lâche, plus l’anonymisation doit pouvoir être élevé:\n\nchercheurs et chargés d’études:\n\naccès sécurisé \\(\\iff\\) protection statistique faible sur les inputs\nMais besoin de traiter/vérifier les outputs publics (output checking)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#adapter-le-niveau-danonymisation-nécessaire-2",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#adapter-le-niveau-danonymisation-nécessaire-2",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Adapter le niveau d’anonymisation nécessaire",
+    "text": "Adapter le niveau d’anonymisation nécessaire\nPlus l’accès est lâche, plus l’anonymisation doit pouvoir être élevé:\n\nchargés de collecte:\n\naccès très sécurisé \\(\\iff\\) aucune protection statistique des données\nMais nécessité de respecter les réglements sur la protection des données individuelles (RGPD en Europe)."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#gouvernance-déontologie-confiance",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#gouvernance-déontologie-confiance",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Gouvernance, Déontologie, Confiance",
+    "text": "Gouvernance, Déontologie, Confiance\n\nLa maîtrise de la sécurité des accès et la meilleure gouvernance possible des données ne sont pas des boucliers infaillibles.\nDéontologie forte des statisticiens publics.\nConfiance dans les différents acteurs (chercheurs) à qui on donne accès aux données."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#responsabiliser",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#responsabiliser",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Responsabiliser",
+    "text": "Responsabiliser\nUne responsabilisation nécessaire:\n\nStatisticiens publics (en France loi de 1951 sur le secret statistique)\nChercheurs (Risque de révocation des contrats et conséquences sur l’ensemble du laboratoire)"
+  },
+  {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#le-risque-de-divulgation",
     "href": "theorie/supports/arbitrer-risque-utilite.html#le-risque-de-divulgation",
     "title": "L’Arbitrage Risque/Utilité",
@@ -1446,21 +1516,21 @@
     "href": "theorie/supports/arbitrer-risque-utilite.html#risque-de-divulgation-dattribut",
     "title": "L’Arbitrage Risque/Utilité",
     "section": "Risque de divulgation d’attribut",
-    "text": "Risque de divulgation d’attribut\n\n\n\n\n\n\nDéfinition\n\n\nRisque de divulguer de l’information sensible sur des individus à partir des données diffusées.\n\n\n\nExemples :\n\nUne ré-identification conduit souvent à une divulgation d’attribut.\nIl est possible de divulguer un attribut sur des groupes entiers."
+    "text": "Risque de divulgation d’attribut\n\n\n\n\n\n\nDéfinition\n\n\nRisque de divulguer une information sensible sur un ou plusieurs individus à partir des données diffusées.\n\n\n\nExemples :\n\nUne ré-identification conduit souvent à une divulgation d’attribut.\nIl est possible de divulguer un attribut sur des groupes entiers."
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#divulgation-dun-attribut-de-groupe",
     "href": "theorie/supports/arbitrer-risque-utilite.html#divulgation-dun-attribut-de-groupe",
     "title": "L’Arbitrage Risque/Utilité",
     "section": "Divulgation d’un attribut de groupe",
-    "text": "Divulgation d’un attribut de groupe\n\nDivulgation d’une information sensible pour un groupe entier de personnes.\nSans nécessairement avoir besoin de ré-identifier préalablement.\n\n\n\n\n\n\n\n\n\n\n\nHommes\nFemmes\n\n\n\n\nDiabétiques\n30\n40\n\n\nNon diabétiques\n12\n0\n\n\n\n\n\n\nTable 1: Un exemple de divulgation d’attributs de groupe"
+    "text": "Divulgation d’un attribut de groupe\n\nDivulgation d’une information sensible pour un groupe entier de personnes.\nSans nécessairement avoir besoin de ré-identifier préalablement.\n\n\n\n\n\n\n\n\n\n\n\nFemmes\nHommes\n\n\n\n\nDiabétiques\n30\n40\n\n\nNon diabétiques\n12\n0\n\n\n\n\n\n\nTable 1: Un exemple de divulgation d’attributs de groupe"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#risque-de-divulgation-par-inférence",
     "href": "theorie/supports/arbitrer-risque-utilite.html#risque-de-divulgation-par-inférence",
     "title": "L’Arbitrage Risque/Utilité",
     "section": "Risque de divulgation par inférence",
-    "text": "Risque de divulgation par inférence\n\n\nRisque de divulgation par inférence Risque de pouvoir déduire avec une certitude élevée des informations sensibles sur des individus à partir des données publiées.\n\nExemples :\n\nLorsque la proportion de certaines caractéristiques est très élevée au sein d’un groupe\n\n\n\n\nFemme\nHomme\n\n\n\n\nDiabétique\n30\n38\n\n\nPas diabétique\n12\n2\n\n\n\nLorsque deux variables sont fortement corrélées, on peut déduire l’une à partir de l’autre"
+    "text": "Risque de divulgation par inférence\n\n\n\n\n\n\nDéfinition\n\n\nRisque de pouvoir déduire avec une certitude élevée des informations sensibles sur des individus à partir des données publiées.\n\n\n\n\nCorrélation forte d’une information avec une caractéristique sensible.\nProportion très élevée au sein d’un groupe.\n\n\n\n\n\n\n\n\n\n\nFemmes\nHommes\n\n\n\n\nDiabétiques\n30\n38\n\n\nNon diabétiques\n12\n2\n\n\n\n\n\n\nTable 2: Un exemple de divulgation d’attributs par inférence"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#risque-de-divulgation-par-différenciation",
