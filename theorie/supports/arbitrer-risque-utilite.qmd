@@ -230,6 +230,89 @@ Pour arbitrer, il faut pouvoir
 -   Mesurer les phénomènes.
 
 
+# Besoin d'une gouvernance
+
+## Gouvernance des données
+
+Avant de définir les risques:
+
+- Quels sont les objectifs de diffusion ?
+- Qui accède à quoi avec quels droits ?
+
+::: {.callout-important}
+### Objectif
+Pour mieux maîtriser les risques, prendre conscience du contexte dans lequel ils sont susceptibles d'apparaître.
+
+:::
+
+## Sécuriser l'accès 
+
+- On peut distinguer quatre grands types d'utilisateurs:
+
+  - **grand public et acteurs publics**: statistiques agrégées 
+  - **chercheurs**: statistiques détaillées voire données individuelles
+  - **chargés d'études de la statistique publique**: données individuelles sans identifiants directs
+  - **chargés de collecte**: données individuelles avec identifiants
+
+
+## Adapter l'accès en fonction des besoins des utilisateurs
+
+  - **Principe de minimisation** : chaque utilisateur ne doit accéder qu'aux données strictement nécessaires à ses missions.
+  
+
+## Adapter l'accès en fonction des besoins des utilisateurs
+
+  - **Différenciation des accès** : 
+    - **grand public et acteurs publics**: accès gratuit et sans condition.
+    - **chercheurs**: accès sous conditions strictes (contrats, projets d'utilité publics, environnement sécurisé de travail, etc.).
+    - **chargés d'études**: accès à des données sur serveurs internes soumis à autorisation préalable.
+    - **chargés de collecte**:  accès aux données de collecte pour la seule enquête sur laquelle ils travaillent.
+  
+
+## Adapter l'accès en fonction des besoins des utilisateurs
+
+  - **Assurer un suivi et un contrôle des accès** : chaque accès doit pouvoir être contrôlé et révoqué si besoin.
+
+
+## Adapter le niveau d'anonymisation nécessaire
+
+Plus l'accès est lâche, plus l'anonymisation doit pouvoir être élevé:  
+
+  - **grand public**: 
+    - libre accès $\iff$ protection statistique forte
+
+
+## Adapter le niveau d'anonymisation nécessaire
+
+Plus l'accès est lâche, plus l'anonymisation doit pouvoir être élevé:  
+
+  - **chercheurs et chargés d'études**: 
+    - accès sécurisé $\iff$ protection statistique faible sur les inputs
+    - Mais besoin de traiter/vérifier les outputs publics (**output checking**)
+
+
+## Adapter le niveau d'anonymisation nécessaire
+
+Plus l'accès est lâche, plus l'anonymisation doit pouvoir être élevé:  
+
+  - **chargés de collecte**: 
+    - accès très sécurisé $\iff$ aucune protection statistique des données
+    - Mais nécessité de respecter les réglements sur la protection des données individuelles (RGPD en Europe).
+
+## Gouvernance, Déontologie, Confiance
+
+- La maîtrise de la sécurité des accès et la meilleure gouvernance possible des données ne sont pas des boucliers infaillibles.
+- **Déontologie** forte des statisticiens publics.
+- **Confiance** dans les différents acteurs (chercheurs) à qui on donne accès aux données.
+
+
+## Responsabiliser
+
+Une responsabilisation nécessaire:
+
+- Statisticiens publics (en France loi de 1951 sur le secret statistique)
+- Chercheurs (Risque de révocation des contrats et conséquences sur l'ensemble du laboratoire)
+
 
 # Objectiver le risque
 
@@ -288,7 +371,7 @@ Exemples :
 ::: {.callout-tip}
 ## Définition
 
-Risque de divulguer de l'information sensible sur des individus à partir des données diffusées.
+Risque de divulguer une **information sensible** sur un ou plusieurs individus à partir des données diffusées.
 
 :::
 
@@ -337,22 +420,22 @@ Exemples :
 -->
 
 ```{r}
-#| label: tbl-planets
+#| label: tbl-div-attr
 #| tbl-cap: Un exemple de divulgation d'attributs de groupe
 #| tbl-cap-location: bottom
 #| echo: false
 library(kableExtra)
 
 df <- data.frame(
-  Hommes = c(30, 12),
-  Femmes = c(40, 0)
+  Femmes = c(30, 12),
+  Hommes = c(40, 0)
 ) 
 row.names(df) <- c("Diabétiques", "Non diabétiques")
 
 df |> 
   kableExtra::kbl(
     booktabs = T,
-    col.names = c("Hommes", "Femmes"),
+    col.names = c("Femmes", "Hommes"),
     row.names = TRUE
   ) |>
   kableExtra::kable_styling(
@@ -373,23 +456,43 @@ df |>
 
 
 ## Risque de divulgation par inférence
-::: frame
 
-::: block
-Risque de divulgation par inférence Risque de pouvoir déduire avec une certitude élevée des informations sensibles sur des individus à partir des données publiées.
+::: {.callout-tip}
+### Définition
+
+Risque de pouvoir déduire avec une certitude élevée des informations sensibles sur des individus à partir des données publiées.
+
 :::
 
-Exemples :
+-   Corrélation forte d'une information avec une caractéristique sensible.
+-   Proportion très élevée au sein d'un groupe.
 
--   Lorsque la proportion de certaines caractéristiques est très élevée au sein d'un groupe
+```{r}
+#| label: tbl-div-infer
+#| tbl-cap: Un exemple de divulgation d'attributs par inférence
+#| tbl-cap-location: bottom
+#| echo: false
+library(kableExtra)
 
-                        Femme   Homme
-      ---------------- ------- -------
-         Diabétique      30      38
-       Pas diabétique    12       2
+df <- data.frame(
+  Femmes = c(30, 12),
+  Hommes = c(38, 2)
+) 
+row.names(df) <- c("Diabétiques", "Non diabétiques")
 
--   Lorsque deux variables sont fortement corrélées, on peut déduire l'une à partir de l'autre
-:::
+df |> 
+  kableExtra::kbl(
+    booktabs = T,
+    col.names = c("Femmes", "Hommes"),
+    row.names = TRUE
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = c("hover")
+  )
+  # kableExtra::kable_classic_2() 
+```
+
+
 
 ## Risque de divulgation par différenciation 
 ::: frame
@@ -902,7 +1005,6 @@ Pour les **variables catégorielles**, 3 idées principales pour évaluer la per
 
     -   Comparaison du 1er plan factoriel d'une analyse factorielle des correspondances.
 :::
-
 
 
 # Une démarche en plusieurs étapes
