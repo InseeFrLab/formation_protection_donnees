@@ -27,7 +27,27 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-7230c0af59ab1606bc2ed49e76979e8e.css">
   <link rel="stylesheet" href="_extensions/InseeFrLab/onyxia/logo.css">
   <link rel="stylesheet" href="custom.css">
@@ -122,6 +142,8 @@
       margin-right: 0; 
     }
   </style>
+  <script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
+  <link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 </head>
 <body class="quarto-light">
@@ -135,263 +157,287 @@
 <div class="quarto-title-authors">
 </div>
 
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">Sommaire</h2>
+<ul>
+<li><a href="#/introduction" id="/toc-introduction">Introduction</a></li>
+<li><a href="#/un-arbitrage-nécessaire" id="/toc-un-arbitrage-nécessaire"><span class="header-section-number">1</span> Un arbitrage nécessaire</a></li>
+<li><a href="#/objectiver-le-risque" id="/toc-objectiver-le-risque"><span class="header-section-number">2</span> Objectiver le risque</a></li>
+<li><a href="#/le-paradigme-classique-le-k-anonymat" id="/toc-le-paradigme-classique-le-k-anonymat"><span class="header-section-number">3</span> Le paradigme classique: le k-anonymat</a></li>
+<li><a href="#/mesures-probabilistes-du-risque" id="/toc-mesures-probabilistes-du-risque"><span class="header-section-number">4</span> Mesures probabilistes du risque</a></li>
+<li><a href="#/objectiver-la-perte-dinformation-utilité" id="/toc-objectiver-la-perte-dinformation-utilité"><span class="header-section-number">5</span> Objectiver la perte d’information (utilité)</a></li>
+<li><a href="#/une-démarche-en-plusieurs-étapes" id="/toc-une-démarche-en-plusieurs-étapes"><span class="header-section-number">6</span> Une démarche en plusieurs étapes</a></li>
+<li><a href="#/étape-1" id="/toc-étape-1"><span class="header-section-number">7</span> Étape 1</a></li>
+<li><a href="#/étape-2" id="/toc-étape-2"><span class="header-section-number">8</span> Étape 2</a></li>
+<li><a href="#/étape-2-1" id="/toc-étape-2-1"><span class="header-section-number">9</span> Étape 2</a></li>
+<li><a href="#/étape-3" id="/toc-étape-3"><span class="header-section-number">10</span> Étape 3</a></li>
+<li><a href="#/étape-4" id="/toc-étape-4"><span class="header-section-number">11</span> Étape 4</a></li>
+<li><a href="#/étape-5" id="/toc-étape-5"><span class="header-section-number">12</span> Étape 5</a></li>
+<li><a href="#/pour-aller-plus-loin" id="/toc-pour-aller-plus-loin"><span class="header-section-number">13</span> Pour aller plus loin</a></li>
+</ul>
+</nav>
 </section>
 <section class="slide level2">
 
 <div class="frame">
 
 </div>
-<section id="sommaire" class="frame" data-background-image="background.svg" data-background-size="contain">
-<h3 data-background-image="background.svg" data-background-size="contain">Sommaire</h3>
 </section>
+<section id="sommaire" class="slide level2 frame" data-background-image="background.svg" data-background-size="contain">
+<h2>Sommaire</h2>
 </section>
-<section id="un-arbitrage-nécessaire" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Un arbitrage nécessaire</h1>
-<div class="frame">
-<p>Introduction</p>
-<p>La définition maximaliste de la protection des données:</p>
-<div class="displayquote">
-<p>If the release of the statistics <span class="math inline">\(T(D)\)</span> makes it possible to determine the value [of confidential statistical data] more accurately than is possible without access to <span class="math inline">\(T(D)\)</span>, a disclosure has taken place. (T. Dalenius, <a href="https://doi.org/10.1016/0378-3758(77)90007-6">Privacy transformations for statistical information systems</a>, 1977)</p>
-</div>
-</div>
-</section>
-
-<section id="introduction" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<section>
+<section id="introduction" class="title-slide slide level1 unnumbered center" data-background-image="background.svg" data-background-size="contain">
 <h1>Introduction</h1>
-<div class="frame">
+
+</section>
+<section id="contexte" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Contexte</h2>
+<p>On se placera dans le contexte suivant:</p>
 <ul>
-<li><p>Une ambition originelle impossible à atteindre.</p></li>
-<li><p>Exemple: Lien fort entre Fumeur et Cancer des poumons <span class="math inline">\(\Rightarrow\)</span> si, on (une compagnie d’assurance) sait qu’un individu est fumeur, alors elle peut lui imputer un risque important d’avoir un cancer.</p></li>
-<li><p>Il faudrait</p>
-<ul>
-<li><p>supposer que l’utilisateur ne dispose d’aucune information auxiliaire (irréaliste)</p></li>
-<li><p>empêcher toute inférence statistique (non souhaitable)</p></li>
-</ul></li>
+<li>Un institut statistique collecte des données individuelles.</li>
+<li>On suppose qu’il respecte les réglements en vigueur en termes de protection des données individuelles (par exemple le RGPD en Europe).</li>
+<li>L’institut cherche à diffuser des statistiques agrégées ou des fichiers de données individuelles à visée statistique.</li>
 </ul>
+</section>
+<section id="problématique" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Problématique</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Problématique de l’ensemble de l’atelier</strong></p>
+</div>
+<div class="callout-content">
+<p>Comment diffuser de l’information statistique sans porter atteinte aux personnes (physiques ou morales) auprès desquelles l’information a été collectée ?</p>
+</div>
+</div>
 </div>
 </section>
-
-<section id="introduction-1" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Introduction</h1>
-<div class="frame">
-<div class="displayquote">
-<p>Les missions du SSP ne dépendent pas seulement de sa capacité à maîtriser les outils ou les méthodes nécessaires à la production d’une information de qualité, mais aussi de <strong>sa capacité à protéger et à garantir la confidentialité des données qui lui sont confiées</strong>. Cette protection est la condition pour continuer à disposer de ces données.</p>
+<section id="protéger-un-enjeu-pour-la-statistique-publique" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Protéger: un enjeu pour la statistique publique</h2>
+<p><em>Les missions [de la statistique publique] ne dépendent pas seulement de sa capacité à maîtriser les outils ou les méthodes nécessaires à la production d’une information de qualité, mais aussi de <span style="color:green;"><strong>sa capacité à protéger et à garantir la confidentialité des données qui lui sont confiées</strong></span>. Cette protection est la condition pour continuer à disposer de ces données.</em> <span class="citation" data-cites="redor_confidentialite_2023">(<a href="#/compromis-entre-risque-et-utilité" role="doc-biblioref" onclick="">Redor 2023</a>)</span></p>
+</section>
+<section id="a-la-recherche-dune-définition" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>A la recherche d’une définition</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Une définition maximaliste de la divulgation…</strong></p>
 </div>
-<div class="displayquote">
-<p><strong>La maîtrise des risques</strong> de perte ou de violation de confidentialité des données dont il est dépositaire représente un enjeu crucial pour le SSP. (P. Redor, Courrier des Statistiques, juin 2023)</p>
+<div class="callout-content">
+<p>T. Dalenius propose en 1977 la définition suivante:</p>
+<p><em>“Si la publication des statistiques <span class="math inline">\(T(D)\)</span> permet de déterminer la valeur de données statistiques confidentielles de façon plus précise qu’il ne serait possible sans accès à <span class="math inline">\(T(D)\)</span>, alors une divulgation a eu lieu.”</em> <span class="citation" data-cites="dalenius_privacy_1977">(<a href="#/compromis-entre-risque-et-utilité" role="doc-biblioref" onclick="">Dalenius 1977</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>… impossible à tenir</strong></p>
+</div>
+<div class="callout-content">
+<p>Cette définition ne prend pas en compte l’information auxiliaire déjà disponible</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Un exemple de divulgation impossible à protéger</strong></p>
+</div>
+<div class="callout-content">
+<p>Des études montrent un lien de corrélation entre le fait de fumer et la survenue d’un cancer des poumons <span class="math inline">\(\Rightarrow\)</span> si, on (une compagnie d’assurance) sait qu’un individu est fumeur, alors on peut lui imputer un risque important d’avoir un cancer, information qui va très probablement générer un préjudice à cette personne.</p>
+</div>
 </div>
 </div>
 </section>
-
-<section id="quel-arbitrage" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Quel arbitrage ?</h1>
-<div class="frame">
-<p>Protéger des données confidentielles, c’est arbitrer entre:</p>
+<section id="a-la-recherche-dune-définition-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>A la recherche d’une définition</h2>
+<p>Il faut tenir compte de deux réalités:</p>
 <ul>
-<li><p>leur utilité pour la connaissance et le débat public;</p></li>
-<li><p>leur risque intrinsèque: toute donnée diffusée divulgue une information sur un individu ou un groupe d’individus.</p></li>
+<li>l’utilisateur dispose d’une <strong>information auxiliaire</strong>.</li>
+<li>l’<strong>inférence statistique</strong> est l’un des moyens de connaissances offertes par la publication de statistiques.</li>
 </ul>
+<p><span class="math inline">\(\Rightarrow\)</span> <strong>une protection inconditionnelle et totale n’est pas possible.</strong></p>
+</section>
+<section id="besoin-de-maîtriser-les-risques" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Besoin de maîtriser les risques</h2>
+<p>La protection de données se définit à travers:</p>
+<ul>
+<li>la maîtrise des risques de divulgation</li>
+<li>et le besoin de continuer à diffuser de l’information statistique.</li>
+</ul>
+<p><span class="math inline">\(\Rightarrow\)</span> <strong>Besoin d’arbitrer entre les deux composantes.</strong></p>
+</section></section>
+<section>
+<section id="un-arbitrage-nécessaire" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="1">
+<h1><span class="header-section-number">1</span> Un arbitrage nécessaire</h1>
+
+</section>
+<section id="arbitrer" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Arbitrer</h2>
+<p>Protéger des données confidentielles, c’est <strong>arbitrer</strong> entre:</p>
+<ul>
+<li><p>leur <strong>utilité</strong> pour la connaissance et le débat public;</p></li>
+<li><p>leur <strong>risque intrinsèque</strong>: toute donnée diffusée peut divulguer une information sur un individu ou un groupe d’individus.</p></li>
+</ul>
+<div style="text-align:center;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Images/trade_off_balance.png"></p>
-<figcaption>image</figcaption>
+<p><img data-src="img/trade_off_balance.png" style="width:40.0%" alt="Arbitrage Risque-Utilité"></p>
+<figcaption>Arbitrer</figcaption>
 </figure>
 </div>
 </div>
 </section>
-
-<section id="un-arbitrage-nécessaire-1" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Un arbitrage nécessaire</h1>
-<div class="frame">
+<section id="deux-écueils" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Deux écueils</h2>
 <ul>
-<li><p>Ne pas diffuser rendrait la statistique publique inutile;</p></li>
-<li><p>Tout diffuser rendrait la statistique publique dangereuse;</p></li>
+<li><p>Ne pas diffuser rendrait la statistique publique inutile.</p></li>
+<li><p>Tout diffuser rendrait la statistique publique dangereuse.</p></li>
 </ul>
+<div style="text-align:center;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Images/trade_off_graph.png"></p>
-<figcaption>image</figcaption>
+<p><img data-src="img/trade_off_graph.png" style="width:80.0%" alt="Arbitrage Risque-Utilité"></p>
+<figcaption>Arbitrer</figcaption>
 </figure>
 </div>
 </div>
 </section>
-
-<section id="un-arbitrage-nécessaire-2" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Un arbitrage nécessaire</h1>
-<div class="frame">
-<div class="block">
-<p>Arbitrer Arbitrer c’est faire un compromis entre minimiser le risque de divulgation d’information confidentielle et minimiser la perte d’information due aux traitements de protection des données.</p>
+<section id="problèmes" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Problèmes</h2>
+<ul>
+<li>Quels sont les risques de divulgation ?</li>
+<li>Comment mesurer ces risques ?</li>
+<li>Comment les traiter ?</li>
+</ul>
+<p><span class="math inline">\(\Rightarrow\)</span> Comment les traiter sans <em>trop</em> détériorer l’information statistique ?</p>
+</section>
+<section id="enjeu-principal-de-larbitrage" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Enjeu principal de l’arbitrage:</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="alertblock">
-<p>Attention Il n’existe pas de méthode minimisant le risque et la perte d’information en même temps!</p>
+<p><strong>Trouver un équilibre entre protection et information</strong></p>
+</div>
+<div class="callout-content">
+<p>Il s’agit de réaliser un <strong>compromis</strong> entre le fait de minimiser les risques de divulgation des informations confidentielles et minimiser la perte d’information due aux traitements de protection des données.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Pas de méthode magique</strong></p>
+</div>
+<div class="callout-content">
+<p>Il n’existe pas de méthode minimisant le risque et la perte d’information en même temps!</p>
+</div>
 </div>
 </div>
 </section>
-
-<section id="un-exemple-darbitrage" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Un exemple d’arbitrage</h1>
-<div class="frame">
-<p>Le recensement de la population en France:</p>
+<section id="un-exemple-darbitrage" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple d’arbitrage</h2>
+<p>Le recensement de la population (RP) en France:</p>
 <ul>
 <li><p>Décret de publication spécifique;</p></li>
-<li><p>Utilité des données du RP très forte (un certain nombre de lois en dépendent - dotation des communes par exemple)</p></li>
-<li><p>Risque d’utilisation des données diffusées contre les personnes est jugé faible.</p>
-<p><span class="math inline">\(\Rightarrow\)</span> L’Insee diffuse des données communales même si elles permettent parfois d’identifier et caractériser des individus.</p></li>
+<li><p>Utilité des données du RP très forte:</p>
+<ul>
+<li>un certain nombre de lois en dépendent</li>
+<li>dotation financière des communes</li>
+</ul></li>
+<li><p>Risque d’utilisation des données diffusées contre les personnes est jugé faible:</p>
+<ul>
+<li>information peu préjudiciable</li>
+<li>à l’exception de variables sensibles</li>
+</ul></li>
 </ul>
-</div>
 </section>
-
-<section id="un-arbitrage-inhérent-à-la-gestion-de-la-confidentialité" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Un arbitrage inhérent à la gestion de la confidentialité</h1>
-<div class="frame">
+<section id="un-exemple-de-divulgation-assumée" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple de divulgation assumée</h2>
+<p>L’Insee diffuse des données communales même pour les très petites communes:</p>
+<p><a href="https://www.insee.fr/fr/statistiques/2011101?geo=COM-26274">Voir l’exemple de la commune de Rochefourchat</a>:</p>
+<ul>
+<li>Une commune de <span class="math inline">\(2\)</span> habitants</li>
+<li>On connaît leur sexe, leur situation conjugale, leur âge, une description grossière de leurs logements, le statut d’occupation de leur logement, leur niveau de diplôme, leur statut d’activité, etc.</li>
+</ul>
+</section>
+<section id="larbitrage-risqueutilité-un-paradigme" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>L’arbitrage Risque/Utilité: un paradigme</h2>
 <ul>
 <li><p>Il n’existe pas de risque zéro</p></li>
 <li><p>Aucune méthode ne supprime totalement le risque <span class="math inline">\(\Rightarrow\)</span></p>
 <ul>
-<li><p>Arbitrer est donc inhérent à la discipline.</p></li>
+<li><p>Arbitrer est donc inhérent à la protection des données.</p></li>
 <li><p>Cet arbitrage considéré comme <strong>le paradigme</strong> de la discipline.</p></li>
 </ul></li>
-<li><p>Un paradigme parfois critiqué (Cox et al.&nbsp;2011):</p>
+</ul>
+</section>
+<section id="un-paradigme-criticable" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un paradigme criticable</h2>
+<p><span class="citation" data-cites="cox_risk-utility_2011">(Voir <a href="#/compromis-entre-risque-et-utilité" role="doc-biblioref" onclick="">Cox, Karr, et Kinney 2011</a>)</span></p>
 <ul>
-<li><p>S’il aide à savoir comment penser...</p></li>
-<li><p>...il aide moins à savoir comment agir.</p></li>
+<li><p>S’il aide à savoir <strong>comment penser</strong>…</p></li>
+<li><p>…il aide moins à savoir <strong>comment agir</strong>.</p></li>
+</ul>
+</section>
+<section id="en-pratique-un-autre-arbitrage-a-lieu" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>En pratique, un autre arbitrage a lieu</h2>
+<p>Un arbitrage Coûts/Bénéfices est réalisé:</p>
+<ul>
+<li>Par le producteur de données:
+<ul>
+<li>Quels moyens déployer pour quel niveau de protection (temps, moyens financiers)?</li>
+</ul></li>
+<li>Par l’attaquant:
+<ul>
+<li>L’information confidentielle espérée est-elle à la hauteur des moyens nécessaires à sa divulgation ?</li>
 </ul></li>
 </ul>
-</div>
+<p><span class="math inline">\(\Longrightarrow\)</span> Mettre en place des méthodes qui ont un coût adapté au risque objectivé et à la sensibilité des données.</p>
 </section>
-
-<section id="un-arbitrage-nécessaire-3" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Un arbitrage nécessaire</h1>
-<div class="frame">
+<section id="objectiver-définir-et-mesurer" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Objectiver: définir et mesurer</h2>
 <p>Pour arbitrer, il faut pouvoir</p>
 <ul>
 <li><p>Définir les termes de l’arbitrage</p></li>
 <li><p>Mesurer les phénomènes.</p></li>
 </ul>
-<p><span class="math inline">\(\Rightarrow\)</span> Objectiver les notions de risque et d’utilité afin de pouvoir mener un arbitrage honnête.</p>
-</div>
-</section>
-
-<section id="en-pratique-un-autre-arbitrage-a-lieu" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>En pratique, un autre arbitrage a lieu</h1>
-<div class="frame">
-<p>Un arbitrage Coûts/Bénéfices est réalisé:</p>
-<ul>
-<li><p>Par l’INS: Quels moyens (en termes de temps, de complexité et de coûts financiers) déployer pour quel niveau de protection ?</p></li>
-<li><p>Par l’attaquant: Vaut-il le coût de déployer des moyens importants à tenter de retrouver de l’information confidentielle contenue dans les données diffusées ?</p></li>
-</ul>
-<p><span class="math inline">\(\Longrightarrow\)</span> Mettre en place des méthodes qui ont un coût adapté au risque objectivé et à la sensibilité des données.</p>
-</div>
-</section>
-
-<section id="une-démarche-en-plusieurs-étapes" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Une démarche en plusieurs étapes</h1>
-<div class="frame">
-<p>Étapes clés du processus de protection des données</p>
-<p>Une démarche reprise de (Hundepool et al.&nbsp;2010):</p>
-<ol type="1">
-<li><p>Est-il nécessaire de protéger les données ?</p></li>
-<li><p>Quelles sont les caractéristiques et utilisations principales des données ?</p></li>
-<li><p>Définition et mesure des risques de divulgation</p></li>
-<li><p>Choix des méthodes de protection des données</p></li>
-<li><p>Mise en oeuvre des méthodes</p></li>
-</ol>
-</div>
-</section>
-
-<section id="étape-1" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Étape 1</h1>
-<div class="frame">
-<p>Est-il nécessaire de protéger les données ?</p>
-<ul>
-<li><p>Analyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d’effectuer de traitement pour la protection des données</p></li>
-<li><p>Quel type de diffusion ? (tableaux de données, cartes, microdonnées ...)</p></li>
-</ul>
-</div>
-</section>
-
-<section id="étape-2" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Étape 2</h1>
-<div class="frame">
-<p>Quelles sont les caractéristiques et utilisations principales des données ? (I)</p>
-<ul>
-<li><p>Analyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection</p></li>
-<li><p>Analyse de la méthodologie de l’enquête</p></li>
-<li><p>Définition des objectifs de l’institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié</p></li>
-</ul>
-</div>
-</section>
-
-<section id="étape-2-1" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Étape 2</h1>
-<div class="frame">
-<p>Quelles sont les caractéristiques et utilisations principales des données ? (II)</p>
-<ul>
-<li><p>Analyse des besoins des utilisateurs (variables prioritaires, types d’analyses qui seront réalisées)</p></li>
-<li><p>Analyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)</p></li>
-</ul>
-</div>
-</section>
-
-<section id="étape-3" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Étape 3</h1>
-<div class="frame">
-<p>Définition et mesure des risques de divulgation</p>
-<ul>
-<li><p>Recenser les différents scénarios possibles conduisant à la divulgation des données</p></li>
-<li><p>Ces scénarios dépendent du type de données considérées (données exhaustives, enquêtes) et de la diffusion choisie (pour les chercheurs ou le grand public)</p></li>
-<li><p>Choisir la ou les méthodes pour mesurer le risque de divulgation (développé dans la partie "Les différents types de risques")</p></li>
-<li><p>Si on considère que le risque de divulgation est trop élevé alors il faut mettre en place des méthodes de protection des données</p></li>
-</ul>
-</div>
-</section>
-
-<section id="étape-4" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Étape 4</h1>
-<div class="frame">
-<p>Choix des méthodes de protection des données</p>
-<ul>
-<li><p>Choisir une / plusieurs méthode(s) de protection pour réduire les risques de divulgation au seuil de tolérance qu’on s’est fixé</p></li>
-<li><p>Le choix de la méthode dépend de l’impact sur l’utilité des données de ladite méthode</p></li>
-<li><p>Analyse de perte d’utilité due à la protection</p></li>
-</ul>
-</div>
-</section>
-
-<section id="étape-5" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Étape 5</h1>
-<div class="frame">
-<p>Mise en oeuvre des méthodes</p>
-<ol type="1">
-<li><p>Choisir un logiciel</p></li>
-<li><p>Réaliser la mesure des risques de divulgation</p></li>
-<li><p>Protéger les données</p></li>
-<li><p>Quantification de l’information perdue</p></li>
-<li><p>Contrôle du processus de protection</p>
-<ul>
-<li>vérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable</li>
-</ul></li>
-<li><p>Réalisation d’un document synthétisant les méthodes de protection utilisées et faisant le bilan de l’information perdue</p>
-<ul>
-<li><p>si possible le transmettre aux utilisateurs des données publiées</p></li>
-<li><p>peut contenir des avertissements sur les précautions à prendre lors de l’utilisation d’un fichier anonymisé</p></li>
-</ul></li>
-</ol>
-</div>
-</section>
-
+</section></section>
 <section>
-<section id="objectiver-le-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Objectiver le risque</h1>
+<section id="objectiver-le-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="2">
+<h1><span class="header-section-number">2</span> Objectiver le risque</h1>
 
 </section>
-<section id="les-différents-types-de-risque" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les différents types de risque</h2>
-<div class="frame">
-<div class="block">
-<p>Risque de divulgation Risque de divulguer une information confidentielle en publiant des données.</p>
+<section id="le-risque-de-divulgation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le risque de divulgation</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>Quatre types de risque de divulgation :</p>
+<p><strong>Définition générale</strong></p>
+</div>
+<div class="callout-content">
+<p>Risque de divulguer une information confidentielle en publiant des données agrégées ou individuelles.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="quatre-types-de-risque-de-divulgation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Quatre types de risque de divulgation</h2>
 <ul>
 <li><p>Risque de divulgation d’identité</p></li>
 <li><p>Risque de divulgation d’attribut</p></li>
@@ -402,46 +448,142 @@
 <li><p>par "recoupement"</p></li>
 </ul></li>
 </ul>
-</div>
 </section>
 <section id="risque-de-divulgation-didentité" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Risque de divulgation d’identité</h2>
-<div class="frame">
-<div class="block">
-<p>Risque de divulgation d’identité Risque de reconnaître un individu spécifique dans les données publiées : un attaquant peut identifier une unité à partir de la publication.</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Définition</strong></p>
+</div>
+<div class="callout-content">
+<p>Risque de reconnaître un individu spécifique dans les données publiées : un attaquant peut identifier une unité à partir de la publication.</p>
+</div>
+</div>
 </div>
 <p>Exemples :</p>
 <ul>
-<li><p>Certaines variables comme le nom, l’adresse qui identifient directement des individus ou des foyers.</p></li>
-<li><p>Toutes les personnes avec de caractéristiques très rares (ex : personnes très âgées).</p></li>
-<li><p>Il a été montré que 87% de la population américaine est unique uniquement à partir du ZIP code, du genre et de la date de naissance (Sweeney, 2000).</p></li>
+<li><p>Certaines variables comme le nom, l’adresse qui identifient <em>directement</em> des individus ou des foyers.</p></li>
+<li><p>Toutes les personnes ayant des caractéristiques très rares (ex : personnes très âgées).</p></li>
+<li><p>87% de la population américaine est unique uniquement à partir du ZIP code, du genre et de la date de naissance <span class="citation" data-cites="sweeney_simple_2000">(<a href="#/compromis-entre-risque-et-utilité" role="doc-biblioref" onclick="">Sweeney 2000</a>)</span>.</p></li>
 </ul>
-</div>
 </section>
-<section id="risque-de-divulgation-didentité-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Risque de divulgation d’identité</h2>
-<div class="frame">
+<section id="remarques" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Remarques</h2>
 <ul>
-<li><p>L’âge, le genre, la profession et le niveau d’éducation sont généralement considérés comme des <strong>quasi-identifiants</strong></p></li>
-<li><p>La divulgation d’identité ne permet pas toujours d’apprendre de nouvelles information sur l’individu (si l’attaquant parvient juste à matcher mais qu’il n’y a pas de variable en plus dans les données alors il n’a rien appris).</p></li>
+<li><p>Les identifiants directs (nom, prénom, adresse) sont utiles pour la collecte mais supprimés des bases à vocation statistique.</p></li>
+<li><p>D’autres variables ont un fort pouvoir ré-identifiant (le lieu de résidence, l’âge, le genre, la profession, le niveau d’éducation, etc.).</p></li>
+<li><p>Ré-identifier ne permet as toujours d’obtenir plus d’informations sur les personnes.</p></li>
 </ul>
-</div>
 </section>
 <section id="risque-de-divulgation-dattribut" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Risque de divulgation d’attribut</h2>
-<div class="frame">
-<div class="block">
-<p>Risque de divulgation d’attribut Risque de divulguer de l’information sensible sur certains individus dans les données diffusées.</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Définition</strong></p>
+</div>
+<div class="callout-content">
+<p>Risque de divulguer de l’information sensible sur des individus à partir des données diffusées.</p>
+</div>
+</div>
 </div>
 <p>Exemples :</p>
 <ul>
-<li><p>Si un individu est identifié à partir de certaines variables alors l’attaquant connaît toutes ses autres caractéristiques pour les autres variables publiées</p></li>
-<li><p>Divulgation d’un attribut de groupe : on parle de divulgation d’attribut même si l’attribut ne concerne pas un unique individu mais tout un groupe. A partir de la table ci-dessous on sait que tous les hommes sont diabétiques.</p>
-<pre><code>            Femme   Homme</code></pre>
-<hr>
-<p>Diabétique 30 40 Pas diabétique 12 0</p></li>
+<li>Une ré-identification conduit souvent à une divulgation d’attribut.</li>
+<li>Il est possible de divulguer un attribut sur des groupes entiers.</li>
 </ul>
+</section>
+<section id="divulgation-dun-attribut-de-groupe" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Divulgation d’un attribut de groupe</h2>
+<ul>
+<li>Divulgation d’une information sensible pour un groupe entier de personnes.</li>
+<li>Sans nécessairement avoir besoin de ré-identifier préalablement.</li>
+</ul>
+<!-- 
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:2px;font-family:Arial, sans-serif;font-size:30px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:2px;font-family:Arial, sans-serif;font-size:28px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-p8l5{border-color:#9b9b9b;color:#656565;text-align:right;vertical-align:top}
+.tg .tg-o57y{border-color:#9b9b9b;color:#656565;text-align:center;vertical-align:top}
+.tg .tg-8trw{border-color:#9b9b9b;color:#656565;text-align:left;vertical-align:top}
+.tg .tg-ho01{border-color:#9b9b9b;color:#9a0000;font-weight:bold;text-align:right;vertical-align:top}
+</style>
+
+<table class="tg caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th class="tg-8trw" data-quarto-table-cell-role="th"></th>
+<th class="tg-o57y" data-quarto-table-cell-role="th">Hommes</th>
+<th class="tg-o57y" data-quarto-table-cell-role="th">Femmes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="tg-8trw">Diabétiques</td>
+<td class="tg-p8l5">30</td>
+<td class="tg-p8l5">40</td>
+</tr>
+<tr class="even">
+<td class="tg-8trw">Non Diabétiques</td>
+<td class="tg-p8l5">12</td>
+<td class="tg-ho01">0</td>
+</tr>
+</tbody>
+</table>
+ 
+-->
+<div class="cell" data-tbl-cap-location="bottom">
+<div id="tbl-planets" class="cell quarto-float quarto-figure quarto-figure-center" data-tbl-cap-location="bottom">
+<figure class="quarto-float quarto-float-tbl">
+<div aria-describedby="tbl-planets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table table-hover do-not-create-environment cell caption-top" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Hommes</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Femmes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Diabétiques</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Non diabétiques</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
 </div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-planets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Un exemple de divulgation d’attributs de groupe
+</figcaption>
+</figure>
+</div>
+</div>
+<!-- 
+
+|                 | Hommes | Femmes |
+|-----------------|:------:|:------:|
+| Diabétiques     |     30 |     40 |
+| Non Diabétiques |     12 |  **0** | 
+
+: Un exemple de divulgation d'attributs de groupe -->
 </section>
 <section id="risque-de-divulgation-par-inférence" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Risque de divulgation par inférence</h2>
@@ -510,8 +652,8 @@
 </div>
 </section></section>
 <section>
-<section id="le-paradigme-classique-le-k-anonymat" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Le paradigme classique: le k-anonymat</h1>
+<section id="le-paradigme-classique-le-k-anonymat" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="3">
+<h1><span class="header-section-number">3</span> Le paradigme classique: le k-anonymat</h1>
 
 </section>
 <section id="distinguer-les-variables" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -793,8 +935,8 @@
 </div>
 </section></section>
 <section>
-<section id="mesures-probabilistes-du-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Mesures probabilistes du risque</h1>
+<section id="mesures-probabilistes-du-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="4">
+<h1><span class="header-section-number">4</span> Mesures probabilistes du risque</h1>
 
 </section>
 <section id="mesures-naïves-du-risque-individuel" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -877,8 +1019,8 @@ où <span class="math inline">\(w_i\)</span> est le poids de l’individu <span 
 </div>
 </section></section>
 <section>
-<section id="objectiver-la-perte-dinformation-utilité" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Objectiver la perte d’information (utilité)</h1>
+<section id="objectiver-la-perte-dinformation-utilité" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="5">
+<h1><span class="header-section-number">5</span> Objectiver la perte d’information (utilité)</h1>
 
 </section>
 <section id="comment-la-définir" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -1277,6 +1419,102 @@ où <span class="math inline">\(w_i\)</span> est le poids de l’individu <span 
 </ul></li>
 </ul>
 </div>
+</section></section>
+<section id="une-démarche-en-plusieurs-étapes" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="6">
+<h1><span class="header-section-number">6</span> Une démarche en plusieurs étapes</h1>
+<div class="frame">
+<p>Étapes clés du processus de protection des données</p>
+<p>Une démarche reprise de (Hundepool et al.&nbsp;2010):</p>
+<ol type="1">
+<li><p>Est-il nécessaire de protéger les données ?</p></li>
+<li><p>Quelles sont les caractéristiques et utilisations principales des données ?</p></li>
+<li><p>Définition et mesure des risques de divulgation</p></li>
+<li><p>Choix des méthodes de protection des données</p></li>
+<li><p>Mise en oeuvre des méthodes</p></li>
+</ol>
+</div>
+</section>
+
+<section id="étape-1" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="7">
+<h1><span class="header-section-number">7</span> Étape 1</h1>
+<div class="frame">
+<p>Est-il nécessaire de protéger les données ?</p>
+<ul>
+<li><p>Analyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d’effectuer de traitement pour la protection des données</p></li>
+<li><p>Quel type de diffusion ? (tableaux de données, cartes, microdonnées ...)</p></li>
+</ul>
+</div>
+</section>
+
+<section id="étape-2" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="8">
+<h1><span class="header-section-number">8</span> Étape 2</h1>
+<div class="frame">
+<p>Quelles sont les caractéristiques et utilisations principales des données ? (I)</p>
+<ul>
+<li><p>Analyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection</p></li>
+<li><p>Analyse de la méthodologie de l’enquête</p></li>
+<li><p>Définition des objectifs de l’institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié</p></li>
+</ul>
+</div>
+</section>
+
+<section id="étape-2-1" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="9">
+<h1><span class="header-section-number">9</span> Étape 2</h1>
+<div class="frame">
+<p>Quelles sont les caractéristiques et utilisations principales des données ? (II)</p>
+<ul>
+<li><p>Analyse des besoins des utilisateurs (variables prioritaires, types d’analyses qui seront réalisées)</p></li>
+<li><p>Analyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)</p></li>
+</ul>
+</div>
+</section>
+
+<section id="étape-3" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="10">
+<h1><span class="header-section-number">10</span> Étape 3</h1>
+<div class="frame">
+<p>Définition et mesure des risques de divulgation</p>
+<ul>
+<li><p>Recenser les différents scénarios possibles conduisant à la divulgation des données</p></li>
+<li><p>Ces scénarios dépendent du type de données considérées (données exhaustives, enquêtes) et de la diffusion choisie (pour les chercheurs ou le grand public)</p></li>
+<li><p>Choisir la ou les méthodes pour mesurer le risque de divulgation (développé dans la partie "Les différents types de risques")</p></li>
+<li><p>Si on considère que le risque de divulgation est trop élevé alors il faut mettre en place des méthodes de protection des données</p></li>
+</ul>
+</div>
+</section>
+
+<section id="étape-4" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="11">
+<h1><span class="header-section-number">11</span> Étape 4</h1>
+<div class="frame">
+<p>Choix des méthodes de protection des données</p>
+<ul>
+<li><p>Choisir une / plusieurs méthode(s) de protection pour réduire les risques de divulgation au seuil de tolérance qu’on s’est fixé</p></li>
+<li><p>Le choix de la méthode dépend de l’impact sur l’utilité des données de ladite méthode</p></li>
+<li><p>Analyse de perte d’utilité due à la protection</p></li>
+</ul>
+</div>
+</section>
+
+<section>
+<section id="étape-5" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="12">
+<h1><span class="header-section-number">12</span> Étape 5</h1>
+<div class="frame">
+<p>Mise en oeuvre des méthodes</p>
+<ol type="1">
+<li><p>Choisir un logiciel</p></li>
+<li><p>Réaliser la mesure des risques de divulgation</p></li>
+<li><p>Protéger les données</p></li>
+<li><p>Quantification de l’information perdue</p></li>
+<li><p>Contrôle du processus de protection</p>
+<ul>
+<li>vérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable</li>
+</ul></li>
+<li><p>Réalisation d’un document synthétisant les méthodes de protection utilisées et faisant le bilan de l’information perdue</p>
+<ul>
+<li><p>si possible le transmettre aux utilisateurs des données publiées</p></li>
+<li><p>peut contenir des avertissements sur les précautions à prendre lors de l’utilisation d’un fichier anonymisé</p></li>
+</ul></li>
+</ol>
+</div>
 </section>
 <section id="en-guise-de-conclusion" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>EN guise de conclusion</h2>
@@ -1292,8 +1530,8 @@ où <span class="math inline">\(w_i\)</span> est le poids de l’individu <span 
 </div>
 </section></section>
 <section>
-<section id="pour-aller-plus-loin" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Pour aller plus loin</h1>
+<section id="pour-aller-plus-loin" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="13">
+<h1><span class="header-section-number">13</span> Pour aller plus loin</h1>
 
 </section>
 <section id="source-généraliste" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -1312,7 +1550,7 @@ Une version libre et gratuite est disponible ici: <a href="https://ec.europa.eu/
 </ul>
 </div>
 </section>
-<section id="compromis-entre-risque-et-utilité" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<section id="compromis-entre-risque-et-utilité" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain">
 <h2>Compromis entre Risque et Utilité:</h2>
 <div class="frame">
 <ul>
@@ -1321,6 +1559,20 @@ Une version libre et gratuite est disponible ici: <a href="https://ec.europa.eu/
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cox_risk-utility_2011" class="csl-entry" role="listitem">
+Cox, Lawrence H., Alan F. Karr, et Satkartar K. Kinney. 2011. <span>«&nbsp;Risk-<span>Utility</span> <span>Paradigms</span> for <span>Statistical</span> <span>Disclosure</span> <span>Limitation</span>: <span>How</span> to <span>Think</span>, <span>But</span> <span>Not</span> <span>How</span> to <span>Act</span>: <span>Risk</span>-<span>Utility</span> <span>Paradigms</span> for <span>SDL</span>&nbsp;»</span>. <em>International Statistical Review</em> 79 (2): 160‑83. <a href="https://doi.org/10.1111/j.1751-5823.2011.00140.x">https://doi.org/10.1111/j.1751-5823.2011.00140.x</a>.
+</div>
+<div id="ref-dalenius_privacy_1977" class="csl-entry" role="listitem">
+Dalenius, Tore. 1977. <span>«&nbsp;Privacy transformations for statistical information systems&nbsp;»</span>. <em>Journal of Statistical Planning and Inference</em> 1 (1): 73‑86. <a href="https://doi.org/10.1016/0378-3758(77)90007-6">https://doi.org/10.1016/0378-3758(77)90007-6</a>.
+</div>
+<div id="ref-redor_confidentialite_2023" class="csl-entry" role="listitem">
+Redor, Patrick. 2023. <span>«&nbsp;Confidentialité des données statistiques : un enjeu majeur pour le service statistique public&nbsp;»</span>. <em>Courrier des Statistiques</em>, nᵒ 9: 46‑64. <a href="https://www.insee.fr/fr/information/7635823?sommaire=7635842">https://www.insee.fr/fr/information/7635823?sommaire=7635842</a>.
+</div>
+<div id="ref-sweeney_simple_2000" class="csl-entry" role="listitem">
+Sweeney, Latanya. 2000. <span>«&nbsp;Simple <span>Demographics</span> <span>Often</span> <span>Identify</span> <span>People</span> <span>Uniquely</span>.&nbsp;»</span> <em>Carnegie Mellon University, Data Privacy Working Paper</em> 3.
+</div>
+</div>
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -1537,6 +1789,44 @@ Une version libre et gratuite est disponible ici: <a href="https://ec.europa.eu/
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

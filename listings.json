@@ -1,26 +1,5 @@
 [
   {
-    "listing": "/ressources/index.html",
-    "items": [
-      "/ressources/fiches/bibliographie.html",
-      "/ressources/fiches/outils-install.html"
-    ]
-  },
-  {
-    "listing": "/pratique/fiches/sujets-avances.html",
-    "items": [
-      "/pratique/fiches/generer-synth.html",
-      "/pratique/fiches/confidentialite-differentielle.html"
-    ]
-  },
-  {
-    "listing": "/pratique/fiches/arbitrage.html",
-    "items": [
-      "/pratique/fiches/mesurer-risque.html",
-      "/pratique/fiches/mesurer-utilite.html"
-    ]
-  },
-  {
     "listing": "/theorie/index.html",
     "items": [
       "/theorie/supports/arbitrer-risque-utilite.html",
@@ -28,6 +7,13 @@
       "/theorie/supports/methodes-suppressives.html",
       "/theorie/supports/methodes-perturbatrices.html",
       "/theorie/supports/confidentialite-differentielle.html"
+    ]
+  },
+  {
+    "listing": "/ressources/index.html",
+    "items": [
+      "/ressources/fiches/bibliographie.html",
+      "/ressources/fiches/outils-install.html"
     ]
   },
   {
@@ -39,11 +25,10 @@
     ]
   },
   {
-    "listing": "/pratique/fiches/perturbatif.html",
+    "listing": "/pratique/fiches/arbitrage.html",
     "items": [
-      "/pratique/fiches/proteger-tableaux-cellkey.html",
-      "/pratique/fiches/proteger-micro-swapping.html",
-      "/pratique/fiches/proteger-micro-pram.html"
+      "/pratique/fiches/mesurer-risque.html",
+      "/pratique/fiches/mesurer-utilite.html"
     ]
   },
   {
@@ -54,6 +39,21 @@
       "/pratique/fiches/arbitrage.html",
       "/pratique/fiches/sujets-avances.html",
       "/pratique/fiches/description-data.html"
+    ]
+  },
+  {
+    "listing": "/pratique/fiches/perturbatif.html",
+    "items": [
+      "/pratique/fiches/proteger-tableaux-cellkey.html",
+      "/pratique/fiches/proteger-micro-swapping.html",
+      "/pratique/fiches/proteger-micro-pram.html"
+    ]
+  },
+  {
+    "listing": "/pratique/fiches/sujets-avances.html",
+    "items": [
+      "/pratique/fiches/generer-synth.html",
+      "/pratique/fiches/confidentialite-differentielle.html"
     ]
   },
   {
