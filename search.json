@@ -1537,42 +1537,42 @@
     "href": "theorie/supports/arbitrer-risque-utilite.html#risque-de-divulgation-par-différenciation",
     "title": "L’Arbitrage Risque/Utilité",
     "section": "Risque de divulgation par différenciation",
-    "text": "Risque de divulgation par différenciation\n\nDeux types de différenciation :\n\nDifférenciation par \"emboîtement\" : différenciation possible engendrée par l’existence de deux zonages parfaitement emboîtés l’un dans l’autre (cas le plus classique)\nDifférenciation par \"recoupement\" : différenciation entre des zonages recouvrant un même territoire mais sans s’emboîter l’un dans l’autre - les zones de l’un recoupant celles de l’autre"
+    "text": "Risque de divulgation par différenciation\n\n\n\n\n\n\nDéfinition\n\n\nLorsqu’une information agrégée est diffusée pour divers croisements, il est parfois possible d’en déuire une information additionnelle en différenciant les divers résultats.\n\n\n\n\nExemples:\n\nDifférenciation marginale: consiste à utiliser les marges de données tabulées\nDifférenciation par emboîtement géographique: consiste à utiliser des agrégats diffusés sur des zonages emboîtés (variante du premier)\nDifférenciation par recoupement: consiste à utiliser des agrégats diffusés sur des zonages imparfaitement emboîtés"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#différenciation-par-recoupement",
     "href": "theorie/supports/arbitrer-risque-utilite.html#différenciation-par-recoupement",
     "title": "L’Arbitrage Risque/Utilité",
     "section": "Différenciation par recoupement",
-    "text": "Différenciation par recoupement\n\n\n\n\nExemple de différenciation par recoupement en France entre un département (zonage administratif) et un EPCI (zonage d’étude)"
+    "text": "Différenciation par recoupement\n\n\n\n\n\n\n\nFigure 1: Exemple de différenciation par recoupement en France entre un département et une communauté de communes (EPCI)"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#différenciation-par-recoupement-1",
     "href": "theorie/supports/arbitrer-risque-utilite.html#différenciation-par-recoupement-1",
     "title": "L’Arbitrage Risque/Utilité",
     "section": "Différenciation par recoupement",
-    "text": "Différenciation par recoupement\n\n\n\n\nZoom sur l’EPCI qui chevauche les départments du Rhône (69) et de l’Ain (01)"
+    "text": "Différenciation par recoupement\n\n\n\n\n\n\n\nFigure 2: Zoom sur le problème de différenciation"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#distinguer-les-variables",
     "href": "theorie/supports/arbitrer-risque-utilite.html#distinguer-les-variables",
     "title": "L’Arbitrage Risque/Utilité",
     "section": "Distinguer les variables",
-    "text": "Distinguer les variables\n\n\nIdentifiants: Variables permettant d’identifier directement un individu.\nQuasi-identifiants: Variables pouvant conduire à réidentifier un individu à partir d’une information auxiliaire.\nVariables sensibles: Variables pour lesquelles des mesures de protection spécifiques peuvent s’avérer nécessaires.\nAutres variables"
+    "text": "Distinguer les variables\nDans un jeu de données individuelles, on distinguera:\n\nIdentifiants: Variables permettant d’identifier directement un individu.\nQuasi-identifiants: Variables pouvant conduire à réidentifier un individu à partir d’une information auxiliaire.\nVariables sensibles: Variables pour lesquelles des mesures de protection spécifiques peuvent s’avérer nécessaires.\nAutres variables"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#distinguer-les-variables-1",
     "href": "theorie/supports/arbitrer-risque-utilite.html#distinguer-les-variables-1",
     "title": "L’Arbitrage Risque/Utilité",
     "section": "Distinguer les variables",
-    "text": "Distinguer les variables\n\nRemarques:\n\nLes identifiants sont retirés très tôt au cours du processus de production \\(\\Rightarrow\\) ils ne posent pas de problème en termes de gestion de la confidentialité.\nLes quasi-identifiants:\n\nPour des données individus: sexe, âge, lieu d’habitation, diplôme, statut marital, etc.\nPour des données entreprises: Secteur d’activité, lieu du siège, etc.\nListe à déterminer à chaque fois\nDe quelles variables un attaquant dispose-t-il déjà ?"
+    "text": "Distinguer les variables\nRemarques:\n\nLes identifiants sont retirés très tôt au cours du processus de production \\(\\Rightarrow\\) ils ne posent pas de problème en termes de gestion de la confidentialité.\nLes quasi-identifiants:\n\nPour des données individus: sexe, âge, lieu d’habitation, diplôme, statut marital, etc.\nPour des données entreprises: Secteur d’activité, lieu du siège, etc.\nListe à déterminer à chaque fois\nDe quelles variables un attaquant dispose-t-il déjà ?"
   },
   {
-    "objectID": "theorie/supports/arbitrer-risque-utilite.html#distinguer-les-variables-2",
-    "href": "theorie/supports/arbitrer-risque-utilite.html#distinguer-les-variables-2",
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-exemple",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#un-exemple",
     "title": "L’Arbitrage Risque/Utilité",
-    "section": "Distinguer les variables",
-    "text": "Distinguer les variables\n\n\n\nLes différents types de variables dans un jeu de données\n\n\nVar. Identifiantes\n\nVar Quasi-Identifiantes\n\n\nAutre Variable\nVar. Sensible\n\n\n\n\nNom\nAdresse\nCommune\nÂge\nDiplôme\nStatut d’occupation\nRevenus\n\n\nJohan\n3, rue ...\nParis\n36\nBac\nActif occupé\n150 000,00 €\n\n\nJeanne\n115, bd ...\nMalakoff\n41\nBac +3\nActif occupé\n60 000,00 €\n\n\nJehanne\n68, rue ...\nLyon\n52\nBac +5\nChômeur\n75 000,00 €\n\n\nJoann\n7, chemin ...\nVilleurbanne\n45\nBac\nActif occupé\n32 000,00 €\n\n\nYoann\n53, avenue ...\nCerisy-La-Salle\n41\nBEP\nActif occupé\n19 000,00 €\n\n\nJenny\n26bis, rue ...\nCherbourg\n26\nCAP\nChômeur\n5 000,00 €\n\n\nJohnny\n12, place ...\nPithiviers\n31\nBac Pro\nActif occupé\n25 000,00 €\n\n\nJean\n3, impasse ...\nOrléans\n48\nBac\nActif occupé\n32 000,00 €\n\n\nJeannette\n8, chemin …\nParis\n85\nAucun\nRetraité\n10 000,00 €"
+    "section": "Un exemple",
+    "text": "Un exemple\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIdentifiants\n\n\nQuasi Id.\n\n\nSensible\n\n\n\nNom\nAdresse\nCommune\nAge\nDiplôme\nRevenus\n\n\n\n\nJohan\n3 rue...\nParis\n36\nBac\n150000\n\n\nJeanne\n11 bd...\nMalakoff\n41\nBac+3\n60000\n\n\nJohnny\n12 pl...\nPithiviers\n23\nBac Pro\n25000\n\n\nJeannette\n8 rue...\nBelval\n85\n\n10000\n\n\n\n\n\n\nTable 3: Différentes types de variables"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#quantifier-le-risque-le-k-anonymat",

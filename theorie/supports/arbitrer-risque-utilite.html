@@ -144,6 +144,7 @@
   </style>
   <script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 </head>
 <body class="quarto-light">
@@ -164,8 +165,8 @@
 <li><a href="#/introduction" id="/toc-introduction">Introduction</a></li>
 <li><a href="#/un-arbitrage-nécessaire" id="/toc-un-arbitrage-nécessaire"><span class="header-section-number">1</span> Un arbitrage nécessaire</a></li>
 <li><a href="#/besoin-dune-gouvernance" id="/toc-besoin-dune-gouvernance"><span class="header-section-number">2</span> Besoin d’une gouvernance</a></li>
-<li><a href="#/objectiver-le-risque" id="/toc-objectiver-le-risque"><span class="header-section-number">3</span> Objectiver le risque</a></li>
-<li><a href="#/le-paradigme-classique-le-k-anonymat" id="/toc-le-paradigme-classique-le-k-anonymat"><span class="header-section-number">4</span> Le paradigme classique: le k-anonymat</a></li>
+<li><a href="#/définir-le-risque" id="/toc-définir-le-risque"><span class="header-section-number">3</span> Définir le risque</a></li>
+<li><a href="#/mesurer-le-risque" id="/toc-mesurer-le-risque"><span class="header-section-number">4</span> Mesurer le risque</a></li>
 <li><a href="#/mesures-probabilistes-du-risque" id="/toc-mesures-probabilistes-du-risque"><span class="header-section-number">5</span> Mesures probabilistes du risque</a></li>
 <li><a href="#/objectiver-la-perte-dinformation-utilité" id="/toc-objectiver-la-perte-dinformation-utilité"><span class="header-section-number">6</span> Objectiver la perte d’information (utilité)</a></li>
 <li><a href="#/une-démarche-en-plusieurs-étapes" id="/toc-une-démarche-en-plusieurs-étapes"><span class="header-section-number">7</span> Une démarche en plusieurs étapes</a></li>
@@ -527,8 +528,8 @@
 </ul>
 </section></section>
 <section>
-<section id="objectiver-le-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="3">
-<h1><span class="header-section-number">3</span> Objectiver le risque</h1>
+<section id="définir-le-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="3">
+<h1><span class="header-section-number">3</span> Définir le risque</h1>
 
 </section>
 <section id="le-risque-de-divulgation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -630,7 +631,7 @@
 .tg .tg-ho01{border-color:#9b9b9b;color:#9a0000;font-weight:bold;text-align:right;vertical-align:top}
 </style>
 
-<table class="tg caption-top" data-quarto-postprocess="true">
+<table class="tg" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th class="tg-8trw" data-quarto-table-cell-role="th"></th>
@@ -658,7 +659,7 @@
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-div-attr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table table-hover do-not-create-environment cell caption-top" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<table class="table table-hover table-striped do-not-create-environment cell" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -720,7 +721,7 @@ Table&nbsp;1: Un exemple de divulgation d’attributs de groupe
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-div-infer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table table-hover do-not-create-environment cell caption-top" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<table class="table table-hover table-striped do-not-create-environment cell" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -752,55 +753,75 @@ Table&nbsp;2: Un exemple de divulgation d’attributs par inférence
 </section>
 <section id="risque-de-divulgation-par-différenciation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Risque de divulgation par différenciation</h2>
-<div class="frame">
-<p>Deux types de différenciation :</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Définition</strong></p>
+</div>
+<div class="callout-content">
+<p>Lorsqu’une information agrégée est diffusée pour divers croisements, il est parfois possible d’en déuire une information additionnelle en différenciant les divers résultats.</p>
+</div>
+</div>
+</div>
+<div style="font-size: 80%;">
+<p>Exemples:</p>
 <ul>
-<li><p>Différenciation par "emboîtement" : différenciation possible engendrée par l’existence de deux zonages parfaitement emboîtés l’un dans l’autre (cas le plus classique)</p></li>
-<li><p>Différenciation par "recoupement" : différenciation entre des zonages recouvrant un même territoire mais sans s’emboîter l’un dans l’autre - les zones de l’un recoupant celles de l’autre</p></li>
+<li>Différenciation marginale: consiste à utiliser les marges de données tabulées</li>
+<li>Différenciation par emboîtement géographique: consiste à utiliser des agrégats diffusés sur des zonages emboîtés (variante du premier)</li>
+<li>Différenciation par recoupement: consiste à utiliser des agrégats diffusés sur des zonages imparfaitement emboîtés</li>
 </ul>
 </div>
 </section>
 <section id="différenciation-par-recoupement" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Différenciation par recoupement</h2>
-<div class="frame">
-<div id="fig:enter-label" class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="Images/diff_geo_recoupment1.png"></p>
-<figcaption>Exemple de différenciation par recoupement en France entre un département (zonage administratif) et un EPCI (zonage d’étude)</figcaption>
+<div style="text-align:center;">
+<div id="fig-diff-rec1" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Exemple de différenciation par recoupement">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-diff-rec1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="img/diff_geo_recoupment1.png" class="quarto-figure quarto-figure-center" style="height:80.0%" alt="Exemple de différenciation par recoupement">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diff-rec1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Exemple de différenciation par recoupement en France entre un département et une communauté de communes (EPCI)
+</figcaption>
 </figure>
 </div>
 </div>
 </section>
 <section id="différenciation-par-recoupement-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Différenciation par recoupement</h2>
-<div class="frame">
-<div id="fig:enter-label" class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="Images/diff_geo_recoupement2.png"></p>
-<figcaption>Zoom sur l’EPCI qui chevauche les départments du Rhône (69) et de l’Ain (01)</figcaption>
+<div style="text-align:center;">
+<div id="fig-diff-rec2" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Exemple de différenciation par recoupement">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-diff-rec2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="img/diff_geo_recoupement2.png" class="quarto-figure quarto-figure-center" style="height:80.0%" alt="Exemple de différenciation par recoupement">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diff-rec2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Zoom sur le problème de différenciation
+</figcaption>
 </figure>
 </div>
 </div>
 </section></section>
 <section>
-<section id="le-paradigme-classique-le-k-anonymat" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="4">
-<h1><span class="header-section-number">4</span> Le paradigme classique: le k-anonymat</h1>
+<section id="mesurer-le-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="4">
+<h1><span class="header-section-number">4</span> Mesurer le risque</h1>
 
 </section>
 <section id="distinguer-les-variables" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Distinguer les variables</h2>
-<div class="frame">
+<p>Dans un jeu de données individuelles, on distinguera:</p>
 <ul>
 <li><p><strong>Identifiants</strong>: Variables permettant d’identifier directement un individu.</p></li>
 <li><p><strong>Quasi-identifiants</strong>: Variables pouvant conduire à réidentifier un individu à partir d’une information auxiliaire.</p></li>
 <li><p><strong>Variables sensibles</strong>: Variables pour lesquelles des mesures de protection spécifiques peuvent s’avérer nécessaires.</p></li>
 <li><p>Autres variables</p></li>
 </ul>
-</div>
 </section>
 <section id="distinguer-les-variables-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Distinguer les variables</h2>
-<div class="frame">
 <p>Remarques:</p>
 <ul>
 <li><p>Les identifiants sont retirés très tôt au cours du processus de production <span class="math inline">\(\Rightarrow\)</span> ils ne posent pas de problème en termes de gestion de la confidentialité.</p></li>
@@ -812,120 +833,104 @@ Table&nbsp;2: Un exemple de divulgation d’attributs par inférence
 <li><p>De quelles variables un attaquant dispose-t-il déjà ?</p></li>
 </ul></li>
 </ul>
-</div>
 </section>
-<section id="distinguer-les-variables-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Distinguer les variables</h2>
-<div class="frame">
-<div id="tab:types_variables">
-<table class="caption-top">
-<caption>Les différents types de variables dans un jeu de données</caption>
+<section id="un-exemple" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple</h2>
+<div class="cell" data-tbl-cap-location="bottom">
+<div id="tbl-type-var" class="cell quarto-float quarto-figure quarto-figure-center" data-tbl-cap-location="bottom">
+<figure class="quarto-float quarto-float-tbl">
+<div aria-describedby="tbl-type-var-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table table-hover table-striped table-bordered do-not-create-environment cell" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Var. Identifiantes</th>
-<th></th>
-<th style="text-align: left;">Var Quasi-Identifiantes</th>
-<th></th>
-<th></th>
-<th style="text-align: left;">Autre Variable</th>
-<th style="text-align: left;">Var. Sensible</th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Identifiants
+</div></th>
+<th colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Quasi Id.
+</div></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Sensible
+</div></th>
+</tr>
+<tr class="even">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Nom</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Adresse</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Commune</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Age</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Diplôme</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Revenus</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>Nom</strong></td>
-<td><strong>Adresse</strong></td>
-<td style="text-align: left;"><strong>Commune</strong></td>
-<td><strong>Âge</strong></td>
-<td><strong>Diplôme</strong></td>
-<td style="text-align: left;"><strong>Statut d’occupation</strong></td>
-<td style="text-align: left;"><strong>Revenus</strong></td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Johan</td>
-<td>3, rue ...</td>
+<td style="text-align: left;">3 rue...</td>
 <td style="text-align: left;">Paris</td>
-<td>36</td>
-<td>Bac</td>
-<td style="text-align: left;">Actif occupé</td>
-<td style="text-align: left;"><em>150 000,00 €</em></td>
+<td style="text-align: right;">36</td>
+<td style="text-align: left;">Bac</td>
+<td style="text-align: right;">150000</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Jeanne</td>
-<td>115, bd ...</td>
+<td style="text-align: left;">11 bd...</td>
 <td style="text-align: left;">Malakoff</td>
-<td>41</td>
-<td>Bac +3</td>
-<td style="text-align: left;">Actif occupé</td>
-<td style="text-align: left;"><em>60 000,00 €</em></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Jehanne</td>
-<td>68, rue ...</td>
-<td style="text-align: left;">Lyon</td>
-<td>52</td>
-<td>Bac +5</td>
-<td style="text-align: left;">Chômeur</td>
-<td style="text-align: left;"><em>75 000,00 €</em></td>
+<td style="text-align: right;">41</td>
+<td style="text-align: left;">Bac+3</td>
+<td style="text-align: right;">60000</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Joann</td>
-<td>7, chemin ...</td>
-<td style="text-align: left;">Villeurbanne</td>
-<td>45</td>
-<td>Bac</td>
-<td style="text-align: left;">Actif occupé</td>
-<td style="text-align: left;"><em>32 000,00 €</em></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Yoann</td>
-<td>53, avenue ...</td>
-<td style="text-align: left;">Cerisy-La-Salle</td>
-<td>41</td>
-<td>BEP</td>
-<td style="text-align: left;">Actif occupé</td>
-<td style="text-align: left;"><em>19 000,00 €</em></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Jenny</td>
-<td>26bis, rue ...</td>
-<td style="text-align: left;">Cherbourg</td>
-<td>26</td>
-<td>CAP</td>
-<td style="text-align: left;">Chômeur</td>
-<td style="text-align: left;"><em>5 000,00 €</em></td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Johnny</td>
-<td>12, place ...</td>
+<td style="text-align: left;">12 pl...</td>
 <td style="text-align: left;">Pithiviers</td>
-<td>31</td>
-<td>Bac Pro</td>
-<td style="text-align: left;">Actif occupé</td>
-<td style="text-align: left;"><em>25 000,00 €</em></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Jean</td>
-<td>3, impasse ...</td>
-<td style="text-align: left;">Orléans</td>
-<td>48</td>
-<td>Bac</td>
-<td style="text-align: left;">Actif occupé</td>
-<td style="text-align: left;"><em>32 000,00 €</em></td>
+<td style="text-align: right;">23</td>
+<td style="text-align: left;">Bac Pro</td>
+<td style="text-align: right;">25000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Jeannette</td>
-<td>8, chemin …</td>
-<td style="text-align: left;">Paris</td>
-<td>85</td>
-<td>Aucun</td>
-<td style="text-align: left;">Retraité</td>
-<td style="text-align: left;"><em>10 000,00 €</em></td>
+<td style="text-align: left;">8 rue...</td>
+<td style="text-align: left;">Belval</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">10000</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-type-var-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Différentes types de variables
+</figcaption>
+</figure>
+</div>
+</div>
+<!-- 
+::: {#tbl-types-variables tbl-colwidths="[75,25]"}
+  Var. Identifiantes                     Var Quasi-Identifiantes                           Autre Variable            Var. Sensible
+  -------------------- ----------------- ------------------------- --------- ------------- ------------------------- ----------------
+  **Nom**              **Adresse**       **Commune**               **Âge**   **Diplôme**   **Statut d'occupation**   **Revenus**
+  Johan                3, rue \...       Paris                     36        Bac           Actif occupé              *150 000,00 €*
+  Jeanne               115, bd \...      Malakoff                  41        Bac +3        Actif occupé              *60 000,00 €*
+  Jehanne              68, rue \...      Lyon                      52        Bac +5        Chômeur                   *75 000,00 €*
+  Joann                7, chemin \...    Villeurbanne              45        Bac           Actif occupé              *32 000,00 €*
+  Yoann                53, avenue \...   Cerisy-La-Salle           41        BEP           Actif occupé              *19 000,00 €*
+  Jenny                26bis, rue \...   Cherbourg                 26        CAP           Chômeur                   *5 000,00 €*
+  Johnny               12, place \...    Pithiviers                31        Bac Pro       Actif occupé              *25 000,00 €*
+  Jean                 3, impasse \...   Orléans                   48        Bac           Actif occupé              *32 000,00 €*
+  Jeannette            8, chemin ...     Paris                     85        Aucun         Retraité                  *10 000,00 €*
+
+  : Les différents types de variables dans un jeu de données {.striped .bordered}
+::: -->
 </section>
 <section id="quantifier-le-risque-le-k-anonymat" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Quantifier le risque : le k-anonymat</h2>
@@ -944,7 +949,7 @@ Table&nbsp;2: Un exemple de divulgation d’attributs par inférence
 <h2>Quantifier le risque : le k-anonymat</h2>
 <div class="frame">
 <div id="tab:1-anonyme">
-<table class="caption-top">
+<table>
 <caption>Exemple d’un fichier individuel 1-anonyme, l’âge et le genre étant considérés comme quasi-identifiants</caption>
 <thead>
 <tr class="header">
@@ -1011,7 +1016,7 @@ Table&nbsp;2: Un exemple de divulgation d’attributs par inférence
 <section id="quantifier-le-risque-la-l-diversité-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Quantifier le risque : la l-diversité</h2>
 <div class="frame">
-<table class="caption-top">
+<table>
 <caption>Un fichier 2-anonyme mais pas assez diversifié</caption>
 <thead>
 <tr class="header">
@@ -1164,7 +1169,7 @@ où <span class="math inline">\(w_i\)</span> est le poids de l’individu <span 
 <div class="columns">
 <div class="column">
 <p>0.49</p>
-<table class="caption-top">
+<table>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Région</td>
@@ -1220,7 +1225,7 @@ où <span class="math inline">\(w_i\)</span> est le poids de l’individu <span 
 </table>
 </div><div class="column">
 <p>0.49</p>
-<table class="caption-top" style="width:39%;">
+<table style="width:39%;">
 <colgroup>
 <col style="width: 12%">
 <col style="width: 8%">
@@ -1299,7 +1304,7 @@ où <span class="math inline">\(w_i\)</span> est le poids de l’individu <span 
 <ul>
 <li><span style="color: blue"><span class="math inline">\(X\)</span></span> en haut, <span style="color: blue"><span class="math inline">\(X^{'}\)</span></span> en bas, les données perturbées</li>
 </ul>
-<table class="caption-top">
+<table>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Sexe</td>
@@ -1333,7 +1338,7 @@ où <span class="math inline">\(w_i\)</span> est le poids de l’individu <span 
 </tr>
 </tbody>
 </table>
-<table class="caption-top">
+<table>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Sexe</td>
