@@ -778,7 +778,7 @@ Table&nbsp;2: Un exemple de divulgation d’attributs par inférence
 <section id="différenciation-par-recoupement" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Différenciation par recoupement</h2>
 <div style="text-align:center;">
-<div id="fig-diff-rec1" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Exemple de différenciation par recoupement">
+<div id="fig-diff-rec1" class="quarto-float quarto-figure quarto-figure-center" alt="Exemple de différenciation par recoupement" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-diff-rec1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/diff_geo_recoupment1.png" class="quarto-figure quarto-figure-center" style="height:80.0%" alt="Exemple de différenciation par recoupement">
@@ -793,7 +793,7 @@ Figure&nbsp;1: Exemple de différenciation par recoupement en France entre un d�
 <section id="différenciation-par-recoupement-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Différenciation par recoupement</h2>
 <div style="text-align:center;">
-<div id="fig-diff-rec2" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Exemple de différenciation par recoupement">
+<div id="fig-diff-rec2" class="quarto-float quarto-figure quarto-figure-center" alt="Exemple de différenciation par recoupement" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-diff-rec2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/diff_geo_recoupement2.png" class="quarto-figure quarto-figure-center" style="height:80.0%" alt="Exemple de différenciation par recoupement">
@@ -820,18 +820,20 @@ Figure&nbsp;2: Zoom sur le problème de différenciation
 <li><p>Autres variables</p></li>
 </ul>
 </section>
-<section id="distinguer-les-variables-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Distinguer les variables</h2>
-<p>Remarques:</p>
+<section id="les-identifiants" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les identifiants</h2>
 <ul>
-<li><p>Les identifiants sont retirés très tôt au cours du processus de production <span class="math inline">\(\Rightarrow\)</span> ils ne posent pas de problème en termes de gestion de la confidentialité.</p></li>
-<li><p>Les quasi-identifiants:</p>
+<li><p>Les identifiants sont retirés très tôt au cours du processus de production pour respecter les réglements sur la protection des données.</p></li>
+<li><p>On supposera par la suite que tous les identifiants directs ont été retirées.</p></li>
+</ul>
+</section>
+<section id="les-quasi-identifiants" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les quasi-identifiants</h2>
 <ul>
-<li><p>Pour des données individus: sexe, âge, lieu d’habitation, diplôme, statut marital, etc.</p></li>
+<li><p>Pour des données individus/ménages: sexe, âge, lieu d’habitation, diplôme, statut marital, etc.</p></li>
 <li><p>Pour des données entreprises: Secteur d’activité, lieu du siège, etc.</p></li>
 <li><p>Liste à déterminer à chaque fois</p></li>
 <li><p>De quelles variables un attaquant dispose-t-il déjà ?</p></li>
-</ul></li>
 </ul>
 </section>
 <section id="un-exemple" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -932,97 +934,177 @@ Table&nbsp;3: Différentes types de variables
   : Les différents types de variables dans un jeu de données {.striped .bordered}
 ::: -->
 </section>
-<section id="quantifier-le-risque-le-k-anonymat" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Quantifier le risque : le k-anonymat</h2>
-<div class="frame">
-<div class="block">
-<p>Le k-anonymat (Samarati et Sweeney, 1998) Un jeu de données est considéré comme k-anonyme si la combinaison la moins fréquente des modalités des variables quasi-identifiantes compte au moins <em>k</em> unités.</p>
+<section id="quantifier-le-risque-1-le-k-anonymat" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Quantifier le risque (1): le <span class="math inline">\(k\)</span>-anonymat</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<p><strong>Le <span class="math inline">\(k\)</span>-anonymat <span class="citation" data-cites="sweeney_k-anonymity_2002">(<a href="#/compromis-entre-risque-et-utilité" role="doc-biblioref" onclick="">Sweeney 2002</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>Un jeu de données est considéré comme <em>k-anonyme</em> si la combinaison la moins fréquente des modalités des variables quasi-identifiantes compte au moins <em>k</em> unités.</p>
+</div>
+</div>
+</div>
+<div style="font-size: 80%;">
 <ul>
-<li><p>Cette mesure assure que tous les individus sont similaires à au moins k-1 autres.</p></li>
+<li><p>Cette mesure assure que tous les individus sont similaires à au moins <span class="math inline">\(k-1\)</span> autres.</p></li>
 <li><p><strong>Mesure de risque globale</strong> qui se focalise sur les individus les plus à risque de ré-identification.</p></li>
-<li><p>La probabilité associée au risque pour un individu du fichier d’être ré-identifié est au minimum 1/<em>k</em></p></li>
+<li><p>La probabilité associée au risque pour un individu du fichier d’être ré-identifié est au minimum <span class="math inline">\(1/k\)</span></p></li>
 </ul>
 </div>
 </section>
-<section id="quantifier-le-risque-le-k-anonymat-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Quantifier le risque : le k-anonymat</h2>
-<div class="frame">
-<div id="tab:1-anonyme">
-<table>
+<section id="le-scénario-dattaque-envisagé" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le scénario d’attaque envisagé</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Caractéristiques du scénario d’attaque</strong></p>
+</div>
+<div class="callout-content">
+<p>Le <strong><span class="math inline">\(k\)</span>-anonymat</strong> protège les données d’une attaque de ré-identification lorsque l’attaquant dispose d’une information auxiliaire sur les mêmes individus:</p>
+<ul>
+<li>l’attaquant procède à un <strong>appariement</strong> entre les deux jeux de données</li>
+<li>les <strong>quasi-identifiants (QI)</strong> servent de clés d’appariement</li>
+<li>plus un individu a des caractéristiques rares sur les QI, meilleure sera la ré-identification.
+<ul>
+<li><strong>Les uniques</strong> sur les QI: la ré-identification sera certaine</li>
+<li>Plus un individu est commun, moins la probabilité de ré-identification sera élevée.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="limportance-du-scénario" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>L’importance du scénario</h2>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Une efficacité qui dépend du réalisme du scénario</strong></p>
+</div>
+<div class="callout-content">
+<p>Assurer un certain niveau d’anonymité permet de réduire le risque de ré-identification, mais :</p>
+<ul>
+<li>Si l’attaquant dispose de plus d’information auxiliaire <span class="math inline">\(\Rightarrow\)</span> <span style="color:red;"><strong>sous-estimation</strong></span> du risque avec le <em><span class="math inline">\(k\)</span>-anonymat</em>.</li>
+<li>Avec le temps, l’attaquant peut disposer de plus d’informations. Or, le scénario est posé une fois <span class="math inline">\(\Rightarrow\)</span> <span style="color:red;"><strong>sous-estimation</strong></span> du risque avec le <em><span class="math inline">\(k\)</span>-anonymat</em>.</li>
+<li>Si l’attaquant dispose de moins d’information auxiliaire <span class="math inline">\(\Rightarrow\)</span> <span style="color:green;"><strong>sur-estimation</strong></span> du risque avec le <em><span class="math inline">\(k\)</span>-anonymat</em>.</li>
+<li>La qualité des appariements dépend de beaucoup d’autres facteurs (millésimes, qualité des variables, cohérence des champs, etc.) <span class="math inline">\(\Rightarrow\)</span> <span style="color:green;"><strong>sur-estimation</strong></span> du risque avec le <em><span class="math inline">\(k\)</span>-anonymat</em>.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="un-exemple-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple</h2>
+<div id="tbl-1-anonyme" class="table table-striped table-hover table-bordered table-sm quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl">
+<div aria-describedby="tbl-1-anonyme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table table-striped table-hover table-bordered table-sm small">
 <caption>Exemple d’un fichier individuel 1-anonyme, l’âge et le genre étant considérés comme quasi-identifiants</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Id</th>
-<th style="text-align: left;">Age</th>
-<th style="text-align: left;">Genre</th>
-<th style="text-align: left;">Maladie(s)</th>
+<th style="text-align: center;">Id</th>
+<th style="text-align: center;">Age</th>
+<th style="text-align: center;">Genre</th>
+<th style="text-align: center;">Maladie</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">[45;55[</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: left;">Diabète</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">[45;55[</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">Diabète</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">[45;55[</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: left;">Hypertension artérielle</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">[45;55[</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">Hypertension artérielle</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">[45;55[</td>
-<td style="text-align: left;">F</td>
-<td style="text-align: left;">Cancer</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">[45;55[</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">Cancer</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">4</td>
-<td style="text-align: left;">[45;55[</td>
-<td style="text-align: left;">F</td>
-<td style="text-align: left;">Grippe</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">[45;55[</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">Grippe</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">5</td>
-<td style="text-align: left;">[70;75[</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: left;">Diabète</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">[70;75[</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">Diabète</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">6</td>
-<td style="text-align: left;">[45;55[</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: left;">Diabète</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">[45;55[</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">Diabète</td>
 </tr>
 </tbody>
 </table>
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-1-anonyme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Exemple d’un fichier individuel 1-anonyme, l’âge et le genre étant considérés comme quasi-identifiants
+</figcaption>
+</figure>
 </div>
 </section>
-<section id="quantifier-le-risque-la-l-diversité" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Quantifier le risque : la l-diversité</h2>
-<div class="frame">
-<div class="block">
-<p>La l-diversité Assure une diversité suffisante des modalités d’une variable sensible prises par les individus au sein d’une même combinaison de quasi-identifiants.</p>
+<section id="limites-du-k-anonymat" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Limites du <span class="math inline">\(k\)</span>-anonymat</h2>
+<ul>
+<li><p>Forte dépendance à la qualité/véracité du scénario<br>
+<span class="math inline">\(\Rightarrow\)</span> choix des QI est crucial.</p></li>
+<li><p>Ne réduit pas les risques de divulgation d’attributs sensibles.</p></li>
+</ul>
+</section>
+<section id="quantifier-le-risque-2-la-l-diversité" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Quantifier le risque (2): la l-diversité</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>La l-diversité</strong></p>
+</div>
+<div class="callout-content">
+<p>Elle s’assure d’une <em>diversité suffisante des modalités</em> d’une variable sensible prises par les individus au sein d’une même combinaison de quasi-identifiants.</p>
+</div>
+</div>
 </div>
 <ul>
-<li><p>Raffinement du <span class="math inline">\(\mathbf{k}\)</span>-anonymat.</p></li>
+<li><p>Raffinement du <span class="math inline">\(k\)</span>-anonymat.</p></li>
 <li><p>Protection contre la divulgation d’attributs sensibles.</p></li>
 </ul>
-</div>
 </section>
-<section id="quantifier-le-risque-la-l-diversité-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Quantifier le risque : la l-diversité</h2>
-<div class="frame">
-<table>
+<section id="un-exemple-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Un exemple</h2>
+<div id="tbl-ex-l-divers" class="table table-striped table-hover table-bordered table-sm quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl">
+<div aria-describedby="tbl-ex-l-divers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table table-striped table-hover table-bordered table-sm small">
 <caption>Un fichier 2-anonyme mais pas assez diversifié</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;"><em>Age</em></th>
-<th style="text-align: center;"><em>Sexe</em></th>
-<th style="text-align: center;"><em>Maladie(s)</em></th>
+<th style="text-align: center;">Age</th>
+<th style="text-align: center;">Sexe</th>
+<th style="text-align: center;">Maladie</th>
 </tr>
 </thead>
 <tbody>
@@ -1054,9 +1136,14 @@ Table&nbsp;3: Différentes types de variables
 </tbody>
 </table>
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-ex-l-divers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5: Un fichier 2-anonyme mais pas assez diversifié
+</figcaption>
+</figure>
+</div>
 </section>
-<section id="limites-du-k-anonymat" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Limites du k-anonymat</h2>
+<section id="limites-du-k-anonymat-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Limites du <span class="math inline">\(k\)</span>-anonymat</h2>
 <div class="frame">
 <p>Ces mesures sont très répandues, faciles à comprendre et à mettre en place, mais elles ont aussi quelques limites:</p>
 <ul>
@@ -1066,7 +1153,7 @@ Table&nbsp;3: Différentes types de variables
 <li><p>Si l’intrus essaie de faire correspondre les données publiées avec une base de données d’identification, l’évaluation des risques basée sur le <span class="math inline">\(\mathbf{k}\)</span>-anonymat est conservatrice.</p></li>
 </ul></li>
 <li><p>Le <span class="math inline">\(\mathbf{k}\)</span>-anonymat <strong>ne prend pas en compte les poids d’échantillonnage</strong>.<br>
-<span class="math inline">\(\Rightarrow\)</span> le k-anonymat appliqué à un échantillon sur-évaluera le risque de ré-identification.</p></li>
+<span class="math inline">\(\Rightarrow\)</span> le <span class="math inline">\(k\)</span>-anonymat appliqué à un échantillon sur-évaluera le risque de ré-identification.</p></li>
 </ul>
 </div>
 </section></section>
@@ -1707,6 +1794,9 @@ Redor, Patrick. 2023. <span>«&nbsp;Confidentialité des données statistiques :
 </div>
 <div id="ref-sweeney_simple_2000" class="csl-entry" role="listitem">
 Sweeney, Latanya. 2000. <span>«&nbsp;Simple <span>Demographics</span> <span>Often</span> <span>Identify</span> <span>People</span> <span>Uniquely</span>.&nbsp;»</span> <em>Carnegie Mellon University, Data Privacy Working Paper</em> 3.
+</div>
+<div id="ref-sweeney_k-anonymity_2002" class="csl-entry" role="listitem">
+———. 2002. <span>«&nbsp;k-<span>ANONYMITY</span>: <span>A</span> <span>MODEL</span> <span>FOR</span> <span>PROTECTING</span> <span>PRIVACY</span>&nbsp;»</span>. <em>International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems</em> 10 (05): 557‑70. <a href="https://doi.org/10.1142/S0218488502001648">https://doi.org/10.1142/S0218488502001648</a>.
 </div>
 </div>
 </section></section>
