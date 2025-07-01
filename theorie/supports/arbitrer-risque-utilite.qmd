@@ -536,6 +536,12 @@ Exemples:
 
 # Mesurer le risque
 
+## Vision bayésienne / retour à Dalenius
+
+Si on repart de la proposition (impossible) de Dalenius, on peut l'envisager dans un cadre bayésien en cherchant à limiter la capacité d'un attaquant à significativement améliorer ses croyances a priori en observant les données diffusées. [Voir la notion de bayésien optimal proposée par @machanavajjhalaDiversityPrivacyAnonymity2007]
+
+Notion qui reste idéale/non praticable
+
 ## Distinguer les variables
 
 Dans un jeu de données individuelles, on distinguera:
@@ -711,7 +717,7 @@ Assurer un certain niveau d'anonymité permet de réduire le risque de ré-ident
 ## Quantifier le risque (2): la l-diversité
 
 ::: {.callout-note}
-### La l-diversité
+### La l-diversité [@machanavajjhalaDiversityPrivacyAnonymity2007]
 
 Elle s'assure d'une *diversité suffisante des modalités* d'une variable sensible prises par les individus au sein d'une même combinaison de quasi-identifiants.
 
@@ -721,11 +727,13 @@ Elle s'assure d'une *diversité suffisante des modalités* d'une variable sensib
 
 -   Protection contre la divulgation d'attributs sensibles.
 
--   Chaque groupe doit contenir au moins $l$ modalités différentes de la variable sensible étudiée.
+-   Chaque groupe doit contenir au moins $l$ modalités différentes de la variable sensible étudiée (ou $l$ modalités parmi les plus fréquentes).
    
--   Choix de la cible $l$ en focntion des règles existantes et/ou d'un arbitrage risque-utilité.
+-   Choix de la cible $l$ en fonction des règles existantes et/ou d'un arbitrage risque-utilité.
 
 ## Un exemple
+
+<!-- Revoir exemple => faire un tableau agrégé (fréquences sur les QI et ventilation par modalités de la var sensible) -->
 
 ::: {#tbl-ex-l-divers .table .table-striped .table-hover .table-bordered .table-sm}
 
@@ -739,6 +747,15 @@ Elle s'assure d'une *diversité suffisante des modalités* d'une variable sensib
 
   : Un fichier 2-anonyme mais pas assez diversifié
 :::
+
+
+## Les scénarios d'attaque envisagés
+
+
+[@machanavajjhalaDiversityPrivacyAnonymity2007]
+
+- Manque d'homogénéité
+- Utilisation d'une information auxiliaire
 
 
 # Mesures probabilistes du risque
@@ -873,6 +890,14 @@ Scénario d'attaque Définir des scénarios d'attaque c'est envisager les moyens
 
 -   Arbitrage Coûts/Bénéfices (Attaquant)
 :::
+
+
+
+## Les attaques sur données k-anonymes et/ou l-diverses
+
+@cohen_attacks_2022
+
+
 
 # Objectiver la perte d'information (utilité)
 
