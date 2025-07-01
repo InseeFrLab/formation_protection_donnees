@@ -640,6 +640,8 @@ df |>
 -   **Mesure de risque globale** qui se focalise sur les individus les plus à risque de ré-identification.
 
 -   La probabilité associée au risque pour un individu du fichier d'être ré-identifié est au minimum $1/k$
+
+-   Choix de $k$ en prenant en compte les règles existantes et/ou par arbitrage risque-utilité.
   
 :::
 
@@ -649,11 +651,12 @@ df |>
 ::: {.callout-important}
 ### Caractéristiques du scénario d'attaque
 
-Le **$k$-anonymat** protège les données d'une attaque de ré-identification lorsque l'attaquant dispose d'une information auxiliaire sur les mêmes individus:
+Le **$k$-anonymat** protège les données d'une attaque de ré-identification lorsque l'attaquant dispose d'une information auxiliaire sur les mêmes individus (un au moins):
 
-- l'attaquant procède à un **appariement** entre les deux jeux de données
-- les **quasi-identifiants (QI)** servent de clés d'appariement
-- plus un individu a des caractéristiques rares sur les QI, meilleure sera la ré-identification.
+- Si l'intrus sait qu'un individu spécifique est dans l'ensemble de données, le $k$-anonymat est une **manière équitable d'évaluer le risque de ré-identification**.
+- L'attaquant procède à un **appariement** entre les deux jeux de données.
+- Les **quasi-identifiants (QI)** servent de clés d'appariement.
+- Plus un individu a des caractéristiques rares sur les QI, meilleure sera la ré-identification.
   - **Les uniques** sur les QI: la ré-identification sera certaine
   - Plus un individu est commun, moins la probabilité de ré-identification sera élevée.
 
@@ -691,11 +694,19 @@ Assurer un certain niveau d'anonymité permet de réduire le risque de ré-ident
 
 ## Limites du $k$-anonymat
 
-- Forte dépendance à la qualité/véracité du scénario   
+::: {style="font-size: 80%;"}
+
+- Forte **dépendance à la qualité/véracité du scénario**   
   $\Rightarrow$ choix des QI est crucial.  
+  - Le $k$-anonymat sur-estime le risque si l'attaquant dispose de moins d'info que supposé 
+  - Le $k$-anonymat sous-estime le risque si l'attaquant dispose de plus d'info que supposé
+  - Difficile de mesurer la vraisemblance de l'attaque.
 
-- Ne réduit pas les risques de divulgation d'attributs sensibles.
-
+- Le $k$-anonymat **ne prend pas en compte les poids d'échantillonnage**.
+    $\Rightarrow$ Appliqué à un échantillon, il sur-estimera le risque de ré-identification.
+- Ne réduit pas les risques de **divulgation d'attributs sensibles**.
+  
+:::
 
 ## Quantifier le risque (2): la l-diversité
 
@@ -710,6 +721,9 @@ Elle s'assure d'une *diversité suffisante des modalités* d'une variable sensib
 
 -   Protection contre la divulgation d'attributs sensibles.
 
+-   Chaque groupe doit contenir au moins $l$ modalités différentes de la variable sensible étudiée.
+   
+-   Choix de la cible $l$ en focntion des règles existantes et/ou d'un arbitrage risque-utilité.
 
 ## Un exemple
 
@@ -726,41 +740,81 @@ Elle s'assure d'une *diversité suffisante des modalités* d'une variable sensib
   : Un fichier 2-anonyme mais pas assez diversifié
 :::
 
-## Limites du $k$-anonymat
-::: frame
-
-Ces mesures sont très répandues, faciles à comprendre et à mettre en place, mais elles ont aussi quelques limites:
-
--   L'efficacité dépend du **scénario de divulgation** :
-
-    -   Si l'intrus sait qu'un individu spécifique est dans l'ensemble de données, le $\mathbf{k}$-anonymat est une **manière équitable d'évaluer le risque de ré-identification**.
-
-    -   Si l'intrus essaie de faire correspondre les données publiées avec une base de données d'identification, l'évaluation des risques basée sur le $\mathbf{k}$-anonymat est conservatrice.
-
--   Le $\mathbf{k}$-anonymat **ne prend pas en compte les poids d'échantillonnage**.\
-    $\Rightarrow$ le $k$-anonymat appliqué à un échantillon sur-évaluera le risque de ré-identification.
-:::
 
 # Mesures probabilistes du risque
 
-## Mesures (naïves) du risque individuel
-::: frame
 
--   **Probabilité de ré-identifier un individu** d'une *population*: $r_k = \frac{1}{N_k}$\
-    ($N_k$ = nb d'individus partageant la même combinaison de clés $k$).
+## Quelques notations pour aller plus loin
 
--   **Probabilité de ré-identifier un individu d'un *échantillon***:
+::: {style="font-size: 70%;"}
 
-    -   Soit on raisonne *au niveau de l'échantillon*: $r_k = \frac{1}{n_k}$\
-        ($n_k$ = nb d'individus de l'échantillon partageant la même combinaison de clés $k$).
 
-    -   Soit on raisonne *au niveau de la population*: $r_k$ peut être estimé par $\hat{r_k} = \frac{1}{\sum\limits_{i \in k}{w_i}}$,\
-        où $w_i$ est le poids de l'individu $i$.
+- $N$: la taille de la population
+- $n$: la taille de l'échantillon éventuel
+- $w_i$: le poids de l'individu $i$ dans l'échantillon ($\sum_i{w_i}=N$)
+- $c$: le groupe constitué par un type de croisement des variables quasi-identifiantes.
+  - Par exemple, si les QI sont l'âge et le sexe, $c$ pourra correspondre au croisement $[25; 35] \times Femmes$, ou $[55; 95] \times Hommes$, etc.
+- $N_c$: le nombre d'individus dans la population partageant les caractéristiques $c$
+- $n_c$: le nombre d'individus dans l'échantillon (éventuel) partageant les caractéristiques $c$
+
+
+$\Rightarrow$ Si un fichier exhaustif est $k$-anonyme, alors $\forall c, N_c \geq k$.
+
 :::
 
-## Mesures probabilistes du risque
-::: frame
 
+## Les individus les plus à risque de ré-identification
+
+-   Les **uniques dans la population**: $N_c = 1$
+
+-   Les **uniques dans l'échantillon**: $n_c = 1$
+
+-   Les **uniques dans l'échantillon qui sont également uniques dans la population**: $n_c = 1$ et $\sum\limits_{i \in c}{w_i} = 1$
+
+
+## Mesurer le risque individuel dans un fichier exhaustif
+
+- Le $k$-anonymat et la $l$-diversité sont des mesures globales.  
+  
+- On peut passer au niveau individuel:   
+  
+  - en considérant comme à risque chaque individu d'un groupe de modalités de moins de $k$ individus
+  - en associant à chaque individu de la base de données, une **mesure individuelle du risque de ré-identification**: 
+  
+  $$r_c = \frac{1}{N_c}$$
+
+
+## Mesurer le risque individuel dans un échantillon
+
+::: {.callout-note}
+### Probabilité de ré-identifier un individu dans un échantillon
+
+- *Au niveau de l'échantillon*: 
+  $$r_c = \frac{1}{n_c}$$
+
+  - Si la présence d'un individu dans l'échantillon est connue de l'attaquant, c'est une mesure adéquate.
+  - Sinon, cette mesure sur-estime le risque de ré-identification.
+
+- *Au niveau de la population*, le risque de ré-identification peut être estimé par:
+
+ $$\hat r_c = \frac{1}{\sum\limits_{i \in c}{w_i}}$$
+
+ où $\sum\limits_{i \in c}{w_i}$ est une estimation de $\hat N_c$.
+
+:::
+
+
+## Une mesure globale du risque
+
+Pour réaliser l'arbitrage, une mesure de risque globale est plus  pratique. On pourra considérer:
+
+- **Le nombre d'uniques** (dans l'échantillon ou la population, selon les cas);
+- **Le risque individuel moyen** défini, dans le cadre d'un échantillon, par:
+    $$\tau = \frac{\sum\limits_{c}{n_c \times r_c}}{n}$$
+
+<!-- 
+
+## Le risque individuel
 
 -   Les individus les plus à risque:
 
@@ -772,10 +826,8 @@ Ces mesures sont très répandues, faciles à comprendre et à mettre en place, 
 
 -   Les mesures individuelles permettent de cibler les individus les plus à risque.
 
--   Les mesures globales sont utiles pour réaliser l'arbitrage.
+ -->
 
-    -   Par exemple, le risque individuel moyen $\tau = \frac{\sum\limits_{k}{n_k \times r_k}}{n}$.
-:::
 
 ## Mesures probabilistes du risque 
 ::: frame
