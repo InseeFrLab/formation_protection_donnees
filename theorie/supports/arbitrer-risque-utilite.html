@@ -810,6 +810,11 @@ Figure&nbsp;2: Zoom sur le problème de différenciation
 <h1><span class="header-section-number">4</span> Mesurer le risque</h1>
 
 </section>
+<section id="vision-bayésienne-retour-à-dalenius" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Vision bayésienne / retour à Dalenius</h2>
+<p>Si on repart de la proposition (impossible) de Dalenius, on peut l’envisager dans un cadre bayésien en cherchant à limiter la capacité d’un attaquant à significativement améliorer ses croyances a priori en observant les données diffusées. <span class="citation" data-cites="machanavajjhalaDiversityPrivacyAnonymity2007">(Voir la notion de bayésien optimal proposée par <a href="#/compromis-entre-risque-et-utilité" role="doc-biblioref" onclick=""><strong>machanavajjhalaDiversityPrivacyAnonymity2007?</strong></a>)</span></p>
+<p>Notion qui reste idéale/non praticable</p>
+</section>
 <section id="distinguer-les-variables" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Distinguer les variables</h2>
 <p>Dans un jeu de données individuelles, on distinguera:</p>
@@ -1091,7 +1096,7 @@ Table&nbsp;4: Exemple d’un fichier individuel 1-anonyme, l’âge et le genre 
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>La l-diversité</strong></p>
+<p><strong>La l-diversité <span class="citation" data-cites="machanavajjhalaDiversityPrivacyAnonymity2007">(<a href="#/compromis-entre-risque-et-utilité" role="doc-biblioref" onclick=""><strong>machanavajjhalaDiversityPrivacyAnonymity2007?</strong></a>)</span></strong></p>
 </div>
 <div class="callout-content">
 <p>Elle s’assure d’une <em>diversité suffisante des modalités</em> d’une variable sensible prises par les individus au sein d’une même combinaison de quasi-identifiants.</p>
@@ -1101,12 +1106,13 @@ Table&nbsp;4: Exemple d’un fichier individuel 1-anonyme, l’âge et le genre 
 <ul>
 <li><p>Raffinement du <span class="math inline">\(k\)</span>-anonymat.</p></li>
 <li><p>Protection contre la divulgation d’attributs sensibles.</p></li>
-<li><p>Chaque groupe doit contenir au moins <span class="math inline">\(l\)</span> modalités différentes de la variable sensible étudiée.</p></li>
-<li><p>Choix de la cible <span class="math inline">\(l\)</span> en focntion des règles existantes et/ou d’un arbitrage risque-utilité.</p></li>
+<li><p>Chaque groupe doit contenir au moins <span class="math inline">\(l\)</span> modalités différentes de la variable sensible étudiée (ou <span class="math inline">\(l\)</span> modalités parmi les plus fréquentes).</p></li>
+<li><p>Choix de la cible <span class="math inline">\(l\)</span> en fonction des règles existantes et/ou d’un arbitrage risque-utilité.</p></li>
 </ul>
 </section>
 <section id="un-exemple-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Un exemple</h2>
+<!-- Revoir exemple => faire un tableau agrégé (fréquences sur les QI et ventilation par modalités de la var sensible) -->
 <div id="tbl-ex-l-divers" class="table table-striped table-hover table-bordered table-sm quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-ex-l-divers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1153,6 +1159,14 @@ Table&nbsp;5: Un fichier 2-anonyme mais pas assez diversifié
 </figcaption>
 </figure>
 </div>
+</section>
+<section id="les-scénarios-dattaque-envisagés" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les scénarios d’attaque envisagés</h2>
+<p><span class="citation" data-cites="machanavajjhalaDiversityPrivacyAnonymity2007">(<a href="#/compromis-entre-risque-et-utilité" role="doc-biblioref" onclick=""><strong>machanavajjhalaDiversityPrivacyAnonymity2007?</strong></a>)</span></p>
+<ul>
+<li>Manque d’homogénéité</li>
+<li>Utilisation d’une information auxiliaire</li>
+</ul>
 </section></section>
 <section>
 <section id="mesures-probabilistes-du-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="5">
@@ -1288,6 +1302,10 @@ Table&nbsp;5: Un fichier 2-anonyme mais pas assez diversifié
 <li><p>Arbitrage Coûts/Bénéfices (Attaquant)</p></li>
 </ul>
 </div>
+</section>
+<section id="les-attaques-sur-données-k-anonymes-etou-l-diverses" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les attaques sur données k-anonymes et/ou l-diverses</h2>
+<p><span class="citation" data-cites="cohen_attacks_2022">Cohen (<a href="#/compromis-entre-risque-et-utilité" role="doc-biblioref" onclick="">2022</a>)</span></p>
 </section></section>
 <section>
 <section id="objectiver-la-perte-dinformation-utilité" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="6">
@@ -1831,6 +1849,9 @@ Une version libre et gratuite est disponible ici: <a href="https://ec.europa.eu/
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cohen_attacks_2022" class="csl-entry" role="listitem">
+Cohen, Aloni. 2022. <span>«&nbsp;Attacks on <span>Deidentification</span>’s <span>Defenses</span>&nbsp;»</span>. arXiv. <a href="http://arxiv.org/abs/2202.13470">http://arxiv.org/abs/2202.13470</a>.
+</div>
 <div id="ref-cox_risk-utility_2011" class="csl-entry" role="listitem">
 Cox, Lawrence H., Alan F. Karr, et Satkartar K. Kinney. 2011. <span>«&nbsp;Risk-<span>Utility</span> <span>Paradigms</span> for <span>Statistical</span> <span>Disclosure</span> <span>Limitation</span>: <span>How</span> to <span>Think</span>, <span>But</span> <span>Not</span> <span>How</span> to <span>Act</span>: <span>Risk</span>-<span>Utility</span> <span>Paradigms</span> for <span>SDL</span>&nbsp;»</span>. <em>International Statistical Review</em> 79 (2): 160‑83. <a href="https://doi.org/10.1111/j.1751-5823.2011.00140.x">https://doi.org/10.1111/j.1751-5823.2011.00140.x</a>.
 </div>
