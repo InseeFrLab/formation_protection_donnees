@@ -21,6 +21,23 @@ page-layout: full
 toc: false
 ---
 
+
+
+::: {.callout-tip}
+# Pour s'exercer
+
+Pour reproduire les résultats et réaliser les exercices, il est possible de travailler 
+directement sur le [`datalab` de l'Insee](datalab.sspcloud.fr). 
+
+Si vous disposez d'un compte, vous pouvez [Ouvrir un service RStudio](https://datalab.sspcloud.fr/launcher/ide/rstudio?name=rstudio-formation-protection-exos&version=2.3.1&s3=region-ec97c721&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Frstudio-exos.sh») ou [Ouvrir un service vscode R-Python](https://datalab.sspcloud.fr/launcher/ide/vscode-r-python-julia?name=vscode-formation-protection-exos&version=2.3.5&s3=region-ec97c721&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Fvscode-r-python-exos.sh»), à votre convenance. 
+
+Ces services installeront automatiquement les packages 
+nécessaires pour réaliser les exercices de l'ensemble des fiches pratiques.
+
+:::
+
+
+
 <!-- 
 ## Les fiches pratiques
 
