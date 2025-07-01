@@ -758,6 +758,12 @@ Elle s'assure d'une *diversité suffisante des modalités* d'une variable sensib
 - Utilisation d'une information auxiliaire
 
 
+## Limites
+
+- Adaptée pour les variables sensibles catégorielles uniquement
+- => pas pour les variables continues (par exemple CA, niveau de vie, etc.)
+
+
 # Mesures probabilistes du risque
 
 
