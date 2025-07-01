@@ -1096,7 +1096,7 @@
     "href": "pratique/index.html",
     "title": "En pratique",
     "section": "",
-    "text": "Pratiquer les méthodes suppressives\n\n\nDécouvrir l’application des méthodes suppressives avec R.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPratiquer les méthodes perturbatrices\n\n\nDécouvrir l’application des méthodes perturbatrices avec R ou Python.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nArbitrer entre risque et utilité\n\n\nOutils à disposition pour réaliser l’arbitrage\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDes sujets pour aller plus loin\n\n\nDécouvrir en particulier la génération de données synthétiques et l’application de la confidentialité différentielle\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPrésentation des données\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Pour s’exercer\n\n\n\nPour reproduire les résultats et réaliser les exercices, il est possible de travailler directement sur le datalab de l’Insee.\nSi vous disposez d’un compte, vous pouvez Ouvrir un service RStudio ou Ouvrir un service vscode R-Python, à votre convenance.\nCes services installeront automatiquement les packages nécessaires pour réaliser les exercices de l’ensemble des fiches pratiques.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPratiquer les méthodes suppressives\n\n\nDécouvrir l’application des méthodes suppressives avec R.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPratiquer les méthodes perturbatrices\n\n\nDécouvrir l’application des méthodes perturbatrices avec R ou Python.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nArbitrer entre risque et utilité\n\n\nOutils à disposition pour réaliser l’arbitrage\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDes sujets pour aller plus loin\n\n\nDécouvrir en particulier la génération de données synthétiques et l’application de la confidentialité différentielle\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPrésentation des données\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "pratique/fiches/perturbatif.html",
@@ -1558,7 +1558,7 @@
     "href": "theorie/supports/arbitrer-risque-utilite.html#vision-bayésienne-retour-à-dalenius",
     "title": "L’Arbitrage Risque/Utilité",
     "section": "Vision bayésienne / retour à Dalenius",
-    "text": "Vision bayésienne / retour à Dalenius\nSi on repart de la proposition (impossible) de Dalenius, on peut l’envisager dans un cadre bayésien en cherchant à limiter la capacité d’un attaquant à significativement améliorer ses croyances a priori en observant les données diffusées. (Voir la notion de bayésien optimal proposée par machanavajjhalaDiversityPrivacyAnonymity2007?)\nNotion qui reste idéale/non praticable"
+    "text": "Vision bayésienne / retour à Dalenius\nSi on repart de la proposition (impossible) de Dalenius, on peut l’envisager dans un cadre bayésien en cherchant à limiter la capacité d’un attaquant à significativement améliorer ses croyances a priori en observant les données diffusées. (Voir la notion de bayésien optimal proposée par Machanavajjhala et al. 2007)\nNotion qui reste idéale/non praticable"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#distinguer-les-variables",
@@ -1628,7 +1628,7 @@
     "href": "theorie/supports/arbitrer-risque-utilite.html#quantifier-le-risque-2-la-l-diversité",
     "title": "L’Arbitrage Risque/Utilité",
     "section": "Quantifier le risque (2): la l-diversité",
-    "text": "Quantifier le risque (2): la l-diversité\n\n\n\n\n\n\nLa l-diversité (machanavajjhalaDiversityPrivacyAnonymity2007?)\n\n\nElle s’assure d’une diversité suffisante des modalités d’une variable sensible prises par les individus au sein d’une même combinaison de quasi-identifiants.\n\n\n\n\nRaffinement du \\(k\\)-anonymat.\nProtection contre la divulgation d’attributs sensibles.\nChaque groupe doit contenir au moins \\(l\\) modalités différentes de la variable sensible étudiée (ou \\(l\\) modalités parmi les plus fréquentes).\nChoix de la cible \\(l\\) en fonction des règles existantes et/ou d’un arbitrage risque-utilité."
+    "text": "Quantifier le risque (2): la l-diversité\n\n\n\n\n\n\nLa l-diversité (Machanavajjhala et al. 2007)\n\n\nElle s’assure d’une diversité suffisante des modalités d’une variable sensible prises par les individus au sein d’une même combinaison de quasi-identifiants.\n\n\n\n\nRaffinement du \\(k\\)-anonymat.\nProtection contre la divulgation d’attributs sensibles.\nChaque groupe doit contenir au moins \\(l\\) modalités différentes de la variable sensible étudiée (ou \\(l\\) modalités parmi les plus fréquentes).\nChoix de la cible \\(l\\) en fonction des règles existantes et/ou d’un arbitrage risque-utilité."
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-2",
@@ -1642,7 +1642,7 @@
     "href": "theorie/supports/arbitrer-risque-utilite.html#les-scénarios-dattaque-envisagés",
     "title": "L’Arbitrage Risque/Utilité",
     "section": "Les scénarios d’attaque envisagés",
-    "text": "Les scénarios d’attaque envisagés\n(machanavajjhalaDiversityPrivacyAnonymity2007?)\n\nManque d’homogénéité\nUtilisation d’une information auxiliaire"
+    "text": "Les scénarios d’attaque envisagés\n(Machanavajjhala et al. 2007)\n\nManque d’homogénéité\nUtilisation d’une information auxiliaire"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#quelques-notations-pour-aller-plus-loin",
@@ -1845,7 +1845,7 @@
     "href": "theorie/supports/arbitrer-risque-utilite.html#compromis-entre-risque-et-utilité",
     "title": "L’Arbitrage Risque/Utilité",
     "section": "Compromis entre Risque et Utilité:",
-    "text": "Compromis entre Risque et Utilité:\n\n\nDomingo-Ferrer, J., Mateo-Sanz, J. M., & Torra, V. (2001, May). Comparing SDC methods for microdata on the basis of information loss and disclosure risk. In Pre-proceedings of ETK-NTTS (Vol. 2, pp. 807-826).\n\n\n\n\n\n\nCohen, Aloni. 2022. « Attacks on Deidentification’s Defenses ». arXiv. http://arxiv.org/abs/2202.13470.\n\n\nCox, Lawrence H., Alan F. Karr, et Satkartar K. Kinney. 2011. « Risk-Utility Paradigms for Statistical Disclosure Limitation: How to Think, But Not How to Act: Risk-Utility Paradigms for SDL ». International Statistical Review 79 (2): 160‑83. https://doi.org/10.1111/j.1751-5823.2011.00140.x.\n\n\nDalenius, Tore. 1977. « Privacy transformations for statistical information systems ». Journal of Statistical Planning and Inference 1 (1): 73‑86. https://doi.org/10.1016/0378-3758(77)90007-6.\n\n\nRedor, Patrick. 2023. « Confidentialité des données statistiques : un enjeu majeur pour le service statistique public ». Courrier des Statistiques, nᵒ 9: 46‑64. https://www.insee.fr/fr/information/7635823?sommaire=7635842.\n\n\nSweeney, Latanya. 2000. « Simple Demographics Often Identify People Uniquely. » Carnegie Mellon University, Data Privacy Working Paper 3.\n\n\n———. 2002. « k-ANONYMITY: A MODEL FOR PROTECTING PRIVACY ». International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems 10 (05): 557‑70. https://doi.org/10.1142/S0218488502001648."
+    "text": "Compromis entre Risque et Utilité:\n\n\nDomingo-Ferrer, J., Mateo-Sanz, J. M., & Torra, V. (2001, May). Comparing SDC methods for microdata on the basis of information loss and disclosure risk. In Pre-proceedings of ETK-NTTS (Vol. 2, pp. 807-826).\n\n\n\n\n\n\nCohen, Aloni. 2022. « Attacks on Deidentification’s Defenses ». arXiv. http://arxiv.org/abs/2202.13470.\n\n\nCox, Lawrence H., Alan F. Karr, et Satkartar K. Kinney. 2011. « Risk-Utility Paradigms for Statistical Disclosure Limitation: How to Think, But Not How to Act: Risk-Utility Paradigms for SDL ». International Statistical Review 79 (2): 160‑83. https://doi.org/10.1111/j.1751-5823.2011.00140.x.\n\n\nDalenius, Tore. 1977. « Privacy transformations for statistical information systems ». Journal of Statistical Planning and Inference 1 (1): 73‑86. https://doi.org/10.1016/0378-3758(77)90007-6.\n\n\nMachanavajjhala, Ashwin, Daniel Kifer, Johannes Gehrke, et Muthuramakrishnan Venkitasubramaniam. 2007. « L -Diversity: Privacy Beyond k -Anonymity ». ACM Transactions on Knowledge Discovery from Data 1 (1): 3. https://doi.org/10.1145/1217299.1217302.\n\n\nRedor, Patrick. 2023. « Confidentialité des données statistiques : un enjeu majeur pour le service statistique public ». Courrier des Statistiques, nᵒ 9: 46‑64. https://www.insee.fr/fr/information/7635823?sommaire=7635842.\n\n\nSweeney, Latanya. 2000. « Simple Demographics Often Identify People Uniquely. » Carnegie Mellon University, Data Privacy Working Paper 3.\n\n\n———. 2002. « k-ANONYMITY: A MODEL FOR PROTECTING PRIVACY ». International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems 10 (05): 557‑70. https://doi.org/10.1142/S0218488502001648."
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#méthodes-classiques-de-protection-des-données-disponibles",
