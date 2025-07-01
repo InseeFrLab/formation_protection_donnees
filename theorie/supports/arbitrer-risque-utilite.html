@@ -778,7 +778,7 @@ Table&nbsp;2: Un exemple de divulgation d’attributs par inférence
 <section id="différenciation-par-recoupement" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Différenciation par recoupement</h2>
 <div style="text-align:center;">
-<div id="fig-diff-rec1" class="quarto-float quarto-figure quarto-figure-center" alt="Exemple de différenciation par recoupement" data-fig-align="center">
+<div id="fig-diff-rec1" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Exemple de différenciation par recoupement">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-diff-rec1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/diff_geo_recoupment1.png" class="quarto-figure quarto-figure-center" style="height:80.0%" alt="Exemple de différenciation par recoupement">
@@ -793,7 +793,7 @@ Figure&nbsp;1: Exemple de différenciation par recoupement en France entre un d�
 <section id="différenciation-par-recoupement-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Différenciation par recoupement</h2>
 <div style="text-align:center;">
-<div id="fig-diff-rec2" class="quarto-float quarto-figure quarto-figure-center" alt="Exemple de différenciation par recoupement" data-fig-align="center">
+<div id="fig-diff-rec2" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Exemple de différenciation par recoupement">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-diff-rec2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/diff_geo_recoupement2.png" class="quarto-figure quarto-figure-center" style="height:80.0%" alt="Exemple de différenciation par recoupement">
@@ -954,6 +954,7 @@ Table&nbsp;3: Différentes types de variables
 <li><p>Cette mesure assure que tous les individus sont similaires à au moins <span class="math inline">\(k-1\)</span> autres.</p></li>
 <li><p><strong>Mesure de risque globale</strong> qui se focalise sur les individus les plus à risque de ré-identification.</p></li>
 <li><p>La probabilité associée au risque pour un individu du fichier d’être ré-identifié est au minimum <span class="math inline">\(1/k\)</span></p></li>
+<li><p>Choix de <span class="math inline">\(k\)</span> en prenant en compte les règles existantes et/ou par arbitrage risque-utilité.</p></li>
 </ul>
 </div>
 </section>
@@ -968,11 +969,12 @@ Table&nbsp;3: Différentes types de variables
 <p><strong>Caractéristiques du scénario d’attaque</strong></p>
 </div>
 <div class="callout-content">
-<p>Le <strong><span class="math inline">\(k\)</span>-anonymat</strong> protège les données d’une attaque de ré-identification lorsque l’attaquant dispose d’une information auxiliaire sur les mêmes individus:</p>
+<p>Le <strong><span class="math inline">\(k\)</span>-anonymat</strong> protège les données d’une attaque de ré-identification lorsque l’attaquant dispose d’une information auxiliaire sur les mêmes individus (un au moins):</p>
 <ul>
-<li>l’attaquant procède à un <strong>appariement</strong> entre les deux jeux de données</li>
-<li>les <strong>quasi-identifiants (QI)</strong> servent de clés d’appariement</li>
-<li>plus un individu a des caractéristiques rares sur les QI, meilleure sera la ré-identification.
+<li>Si l’intrus sait qu’un individu spécifique est dans l’ensemble de données, le <span class="math inline">\(k\)</span>-anonymat est une <strong>manière équitable d’évaluer le risque de ré-identification</strong>.</li>
+<li>L’attaquant procède à un <strong>appariement</strong> entre les deux jeux de données.</li>
+<li>Les <strong>quasi-identifiants (QI)</strong> servent de clés d’appariement.</li>
+<li>Plus un individu a des caractéristiques rares sur les QI, meilleure sera la ré-identification.
 <ul>
 <li><strong>Les uniques</strong> sur les QI: la ré-identification sera certaine</li>
 <li>Plus un individu est commun, moins la probabilité de ré-identification sera élevée.</li>
@@ -1067,11 +1069,19 @@ Table&nbsp;4: Exemple d’un fichier individuel 1-anonyme, l’âge et le genre 
 </section>
 <section id="limites-du-k-anonymat" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Limites du <span class="math inline">\(k\)</span>-anonymat</h2>
+<div style="font-size: 80%;">
 <ul>
-<li><p>Forte dépendance à la qualité/véracité du scénario<br>
-<span class="math inline">\(\Rightarrow\)</span> choix des QI est crucial.</p></li>
-<li><p>Ne réduit pas les risques de divulgation d’attributs sensibles.</p></li>
+<li>Forte <strong>dépendance à la qualité/véracité du scénario</strong><br>
+<span class="math inline">\(\Rightarrow\)</span> choix des QI est crucial.
+<ul>
+<li>Le <span class="math inline">\(k\)</span>-anonymat sur-estime le risque si l’attaquant dispose de moins d’info que supposé</li>
+<li>Le <span class="math inline">\(k\)</span>-anonymat sous-estime le risque si l’attaquant dispose de plus d’info que supposé</li>
+<li>Difficile de mesurer la vraisemblance de l’attaque.</li>
+</ul></li>
+<li>Le <span class="math inline">\(k\)</span>-anonymat <strong>ne prend pas en compte les poids d’échantillonnage</strong>. <span class="math inline">\(\Rightarrow\)</span> Appliqué à un échantillon, il sur-estimera le risque de ré-identification.</li>
+<li>Ne réduit pas les risques de <strong>divulgation d’attributs sensibles</strong>.</li>
 </ul>
+</div>
 </section>
 <section id="quantifier-le-risque-2-la-l-diversité" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Quantifier le risque (2): la l-diversité</h2>
@@ -1091,6 +1101,8 @@ Table&nbsp;4: Exemple d’un fichier individuel 1-anonyme, l’âge et le genre 
 <ul>
 <li><p>Raffinement du <span class="math inline">\(k\)</span>-anonymat.</p></li>
 <li><p>Protection contre la divulgation d’attributs sensibles.</p></li>
+<li><p>Chaque groupe doit contenir au moins <span class="math inline">\(l\)</span> modalités différentes de la variable sensible étudiée.</p></li>
+<li><p>Choix de la cible <span class="math inline">\(l\)</span> en focntion des règles existantes et/ou d’un arbitrage risque-utilité.</p></li>
 </ul>
 </section>
 <section id="un-exemple-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -1141,62 +1153,98 @@ Table&nbsp;5: Un fichier 2-anonyme mais pas assez diversifié
 </figcaption>
 </figure>
 </div>
-</section>
-<section id="limites-du-k-anonymat-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Limites du <span class="math inline">\(k\)</span>-anonymat</h2>
-<div class="frame">
-<p>Ces mesures sont très répandues, faciles à comprendre et à mettre en place, mais elles ont aussi quelques limites:</p>
-<ul>
-<li><p>L’efficacité dépend du <strong>scénario de divulgation</strong> :</p>
-<ul>
-<li><p>Si l’intrus sait qu’un individu spécifique est dans l’ensemble de données, le <span class="math inline">\(\mathbf{k}\)</span>-anonymat est une <strong>manière équitable d’évaluer le risque de ré-identification</strong>.</p></li>
-<li><p>Si l’intrus essaie de faire correspondre les données publiées avec une base de données d’identification, l’évaluation des risques basée sur le <span class="math inline">\(\mathbf{k}\)</span>-anonymat est conservatrice.</p></li>
-</ul></li>
-<li><p>Le <span class="math inline">\(\mathbf{k}\)</span>-anonymat <strong>ne prend pas en compte les poids d’échantillonnage</strong>.<br>
-<span class="math inline">\(\Rightarrow\)</span> le <span class="math inline">\(k\)</span>-anonymat appliqué à un échantillon sur-évaluera le risque de ré-identification.</p></li>
-</ul>
-</div>
 </section></section>
 <section>
 <section id="mesures-probabilistes-du-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="5">
 <h1><span class="header-section-number">5</span> Mesures probabilistes du risque</h1>
 
 </section>
-<section id="mesures-naïves-du-risque-individuel" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Mesures (naïves) du risque individuel</h2>
-<div class="frame">
+<section id="quelques-notations-pour-aller-plus-loin" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Quelques notations pour aller plus loin</h2>
+<div style="font-size: 70%;">
 <ul>
-<li><p><strong>Probabilité de ré-identifier un individu</strong> d’une <em>population</em>: <span class="math inline">\(r_k = \frac{1}{N_k}\)</span><br>
-(<span class="math inline">\(N_k\)</span> = nb d’individus partageant la même combinaison de clés <span class="math inline">\(k\)</span>).</p></li>
-<li><p><strong>Probabilité de ré-identifier un individu d’un <em>échantillon</em></strong>:</p>
+<li><span class="math inline">\(N\)</span>: la taille de la population</li>
+<li><span class="math inline">\(n\)</span>: la taille de l’échantillon éventuel</li>
+<li><span class="math inline">\(w_i\)</span>: le poids de l’individu <span class="math inline">\(i\)</span> dans l’échantillon (<span class="math inline">\(\sum_i{w_i}=N\)</span>)</li>
+<li><span class="math inline">\(c\)</span>: le groupe constitué par un type de croisement des variables quasi-identifiantes.
 <ul>
-<li><p>Soit on raisonne <em>au niveau de l’échantillon</em>: <span class="math inline">\(r_k = \frac{1}{n_k}\)</span><br>
-(<span class="math inline">\(n_k\)</span> = nb d’individus de l’échantillon partageant la même combinaison de clés <span class="math inline">\(k\)</span>).</p></li>
-<li><p>Soit on raisonne <em>au niveau de la population</em>: <span class="math inline">\(r_k\)</span> peut être estimé par <span class="math inline">\(\hat{r_k} = \frac{1}{\sum\limits_{i \in k}{w_i}}\)</span>,<br>
-où <span class="math inline">\(w_i\)</span> est le poids de l’individu <span class="math inline">\(i\)</span>.</p></li>
+<li>Par exemple, si les QI sont l’âge et le sexe, <span class="math inline">\(c\)</span> pourra correspondre au croisement <span class="math inline">\([25; 35] \times Femmes\)</span>, ou <span class="math inline">\([55; 95] \times Hommes\)</span>, etc.</li>
 </ul></li>
+<li><span class="math inline">\(N_c\)</span>: le nombre d’individus dans la population partageant les caractéristiques <span class="math inline">\(c\)</span></li>
+<li><span class="math inline">\(n_c\)</span>: le nombre d’individus dans l’échantillon (éventuel) partageant les caractéristiques <span class="math inline">\(c\)</span></li>
 </ul>
+<p><span class="math inline">\(\Rightarrow\)</span> Si un fichier exhaustif est <span class="math inline">\(k\)</span>-anonyme, alors <span class="math inline">\(\forall c, N_c \geq k\)</span>.</p>
 </div>
+</section>
+<section id="les-individus-les-plus-à-risque-de-ré-identification" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les individus les plus à risque de ré-identification</h2>
+<ul>
+<li><p>Les <strong>uniques dans la population</strong>: <span class="math inline">\(N_c = 1\)</span></p></li>
+<li><p>Les <strong>uniques dans l’échantillon</strong>: <span class="math inline">\(n_c = 1\)</span></p></li>
+<li><p>Les <strong>uniques dans l’échantillon qui sont également uniques dans la population</strong>: <span class="math inline">\(n_c = 1\)</span> et <span class="math inline">\(\sum\limits_{i \in c}{w_i} = 1\)</span></p></li>
+</ul>
+</section>
+<section id="mesurer-le-risque-individuel-dans-un-fichier-exhaustif" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Mesurer le risque individuel dans un fichier exhaustif</h2>
+<ul>
+<li><p>Le <span class="math inline">\(k\)</span>-anonymat et la <span class="math inline">\(l\)</span>-diversité sont des mesures globales.</p></li>
+<li><p>On peut passer au niveau individuel:</p>
+<ul>
+<li>en considérant comme à risque chaque individu d’un groupe de modalités de moins de <span class="math inline">\(k\)</span> individus</li>
+<li>en associant à chaque individu de la base de données, une <strong>mesure individuelle du risque de ré-identification</strong>:</li>
+</ul>
+<p><span class="math display">\[r_c = \frac{1}{N_c}\]</span></p></li>
+</ul>
+</section>
+<section id="mesurer-le-risque-individuel-dans-un-échantillon" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Mesurer le risque individuel dans un échantillon</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Probabilité de ré-identifier un individu dans un échantillon</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p><em>Au niveau de l’échantillon</em>: <span class="math display">\[r_c = \frac{1}{n_c}\]</span></p>
+<ul>
+<li>Si la présence d’un individu dans l’échantillon est connue de l’attaquant, c’est une mesure adéquate.</li>
+<li>Sinon, cette mesure sur-estime le risque de ré-identification.</li>
+</ul></li>
+<li><p><em>Au niveau de la population</em>, le risque de ré-identification peut être estimé par:</p></li>
+</ul>
+<p><span class="math display">\[\hat r_c = \frac{1}{\sum\limits_{i \in c}{w_i}}\]</span></p>
+<p>où <span class="math inline">\(\sum\limits_{i \in c}{w_i}\)</span> est une estimation de <span class="math inline">\(\hat N_c\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="une-mesure-globale-du-risque" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Une mesure globale du risque</h2>
+<p>Pour réaliser l’arbitrage, une mesure de risque globale est plus pratique. On pourra considérer:</p>
+<ul>
+<li><strong>Le nombre d’uniques</strong> (dans l’échantillon ou la population, selon les cas);</li>
+<li><strong>Le risque individuel moyen</strong> défini, dans le cadre d’un échantillon, par: <span class="math display">\[\tau = \frac{\sum\limits_{c}{n_c \times r_c}}{n}\]</span></li>
+</ul>
+<!-- 
+
+## Le risque individuel
+
+-   Les individus les plus à risque:
+
+    -   Les uniques de population, quand $N_k = 1$
+
+    -   Les uniques dans l'échantillon, quand $n_k = 1$
+
+    -   Les uniques dans l'échantillon qui sont également uniques dans la population, quand $\sum\limits_{i \in k}{w_i} = 1$
+
+-   Les mesures individuelles permettent de cibler les individus les plus à risque.
+
+ -->
 </section>
 <section id="mesures-probabilistes-du-risque-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Mesures probabilistes du risque</h2>
-<div class="frame">
-<ul>
-<li><p>Les individus les plus à risque:</p>
-<ul>
-<li><p>Les uniques de population, quand <span class="math inline">\(N_k = 1\)</span></p></li>
-<li><p>Les uniques dans l’échantillon, quand <span class="math inline">\(n_k = 1\)</span></p></li>
-<li><p>Les uniques dans l’échantillon qui sont également uniques dans la population, quand <span class="math inline">\(\sum\limits_{i \in k}{w_i} = 1\)</span></p></li>
-</ul></li>
-<li><p>Les mesures individuelles permettent de cibler les individus les plus à risque.</p></li>
-<li><p>Les mesures globales sont utiles pour réaliser l’arbitrage.</p>
-<ul>
-<li>Par exemple, le risque individuel moyen <span class="math inline">\(\tau = \frac{\sum\limits_{k}{n_k \times r_k}}{n}\)</span>.</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="mesures-probabilistes-du-risque-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Mesures probabilistes du risque</h2>
 <div class="frame">
 <p>Des mesures plus raffinées sont implémentées dans des outils classiques tels que <span class="math inline">\(\mu\)</span>-Argus ou le package R sdcmicro.</p>
