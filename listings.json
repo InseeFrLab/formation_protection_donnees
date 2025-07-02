@@ -3,32 +3,35 @@
     "listing": "/theorie/index.html",
     "items": [
       "/theorie/supports/arbitrer-risque-utilite.html",
-      "/theorie/supports/tour-des-methodes.html",
       "/theorie/supports/methodes-suppressives.html",
       "/theorie/supports/methodes-perturbatrices.html",
-      "/theorie/supports/confidentialite-differentielle.html"
+      "/theorie/supports/confidentialite-differentielle.html",
+      "/theorie/supports/mesurer-utilite.html",
+      "/theorie/supports/tour-des-methodes.html"
     ]
   },
   {
-    "listing": "/ressources/index.html",
+    "listing": "/index.html",
     "items": [
-      "/ressources/fiches/bibliographie.html",
-      "/ressources/fiches/outils-install.html"
+      "/theorie/index.html",
+      "/pratique/index.html",
+      "/ressources/index.html",
+      "/glossaire/index.html"
     ]
   },
   {
-    "listing": "/pratique/fiches/suppressif.html",
+    "listing": "/pratique/fiches/sujets-avances.html",
     "items": [
-      "/pratique/fiches/proteger-tableaux-suppressif.html",
-      "/pratique/fiches/analyse-demande.html",
-      "/pratique/fiches/analyse-automatique.html"
+      "/pratique/fiches/generer-synth.html",
+      "/pratique/fiches/confidentialite-differentielle.html"
     ]
   },
   {
-    "listing": "/pratique/fiches/arbitrage.html",
+    "listing": "/pratique/fiches/perturbatif.html",
     "items": [
-      "/pratique/fiches/mesurer-risque.html",
-      "/pratique/fiches/mesurer-utilite.html"
+      "/pratique/fiches/proteger-tableaux-cellkey.html",
+      "/pratique/fiches/proteger-micro-swapping.html",
+      "/pratique/fiches/proteger-micro-pram.html"
     ]
   },
   {
@@ -42,27 +45,25 @@
     ]
   },
   {
-    "listing": "/pratique/fiches/perturbatif.html",
+    "listing": "/pratique/fiches/arbitrage.html",
     "items": [
-      "/pratique/fiches/proteger-tableaux-cellkey.html",
-      "/pratique/fiches/proteger-micro-swapping.html",
-      "/pratique/fiches/proteger-micro-pram.html"
+      "/pratique/fiches/mesurer-risque.html",
+      "/pratique/fiches/mesurer-utilite.html"
     ]
   },
   {
-    "listing": "/pratique/fiches/sujets-avances.html",
+    "listing": "/pratique/fiches/suppressif.html",
     "items": [
-      "/pratique/fiches/generer-synth.html",
-      "/pratique/fiches/confidentialite-differentielle.html"
+      "/pratique/fiches/proteger-tableaux-suppressif.html",
+      "/pratique/fiches/analyse-demande.html",
+      "/pratique/fiches/analyse-automatique.html"
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/ressources/index.html",
     "items": [
-      "/theorie/index.html",
-      "/pratique/index.html",
-      "/ressources/index.html",
-      "/glossaire/index.html"
+      "/ressources/fiches/bibliographie.html",
+      "/ressources/fiches/outils-install.html"
     ]
   }
 ]
