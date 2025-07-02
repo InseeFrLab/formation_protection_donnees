@@ -2,7 +2,7 @@
 title: Les méthodes de protection statistique des données confidentielles
 subtitle: |
   **[Un tour d'horizon]{.orange}**
-order: 2
+order: 6
 href: theorie/supports/tour-des-methodes.html
 image: ../../images/theorie.png
 # date: 

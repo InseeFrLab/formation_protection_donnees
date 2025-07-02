@@ -7,7 +7,7 @@ href: theorie/supports/arbitrer-risque-utilite.html
 image: ../../images/theorie.png
 slide-number: true
 header: |
-  [Retour à l'accueil](https://github.com/InseeFrLab/formation_protection_donnees)
+  [Retour à l'accueil](https://inseefrlab.github.io/formation_protection_donnees)
 footer: |
   L'arbitrage risque/utilité
 # uncomment for French presentations:
@@ -538,9 +538,14 @@ Exemples:
 
 ## Vision bayésienne / retour à Dalenius
 
-Si on repart de la proposition (impossible) de Dalenius, on peut l'envisager dans un cadre bayésien en cherchant à limiter la capacité d'un attaquant à significativement améliorer ses croyances a priori en observant les données diffusées. [Voir la notion de bayésien optimal proposée par @machanavajjhalaDiversityPrivacyAnonymity2007]
+Si on repart de la proposition (impossible) de Dalenius, on peut l'envisager dans un cadre bayésien en cherchant à limiter la capacité d'un attaquant à significativement améliorer ses croyances a priori en observant les données diffusées. [Voir @willenborgElementsStatisticalDisclosure2001, p.44 et @machanavajjhalaDiversityPrivacyAnonymity2007]
 
-Notion qui reste idéale/non praticable
+Limite de l'approche:
+
+- Mesure de la capacité d'inférence dépend de chaque variable sensible considérée
+- Un attaquant avec peu d'informations au préalable pourrait avoir une forte augmentation 
+  d'info qu'un attaquant disposant de beaucoup d'infos.
+- Une bonne capacité d'inférence ne signifie pas nécessairement une divulgation d'information confidentielle.
 
 ## Distinguer les variables
 
@@ -761,7 +766,7 @@ Elle s'assure d'une *diversité suffisante des modalités* d'une variable sensib
 ## Limites
 
 - Adaptée pour les variables sensibles catégorielles uniquement
-- => pas pour les variables continues (par exemple CA, niveau de vie, etc.)
+- => mal adaptée pour les variables continues (par exemple CA, niveau de vie, etc.)
 
 
 # Mesures probabilistes du risque
@@ -903,294 +908,6 @@ Scénario d'attaque Définir des scénarios d'attaque c'est envisager les moyens
 
 @cohen_attacks_2022
 
-
-
-# Objectiver la perte d'information (utilité)
-
-## Comment la définir ?
-
-::: frame
-Comment la définir ?
-
--   Le processus de protection des données entraîne nécessairement une perte d'information
-
-::: columns
-::: column
-0.49
-
-  -------- ----- ------------
-   Région   Âge   Profession
-                    Statut
-     92     14     Inactif
-     75     41     Chômeur
-     75     52     Employé
-     94     45     Employé
-     75     41     Chômeur
-     92     26     Employé
-     92     31     Employé
-     94     14     Inactif
-  -------- ----- ------------
-:::
-
-::: column
-0.49
-
-  -------- ----- ------------
-   Région   Âge   Profession
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-  -------- ----- ------------
-:::
-:::
-
-risque = 100 % , Perte d'info = 0 risque = 0 % , Perte d'info = 100 %
-:::
-
-## Perte d'information
-::: frame
-Comment la définir ? Les utilisateurs
-
--   Pas de définition de la perte d'information sans connaître la **gamme envisagée des utilisateurs des données**
-
--   En **fonction des utilisateurs finaux**, le concept de perte d'information peut changer
-
--   Il n'est pas recommandé de publier plusieurs versions protégées du même jeu de données pour chaque type d'utilisateur $\longrightarrow$ risques de divulgation importants par différenciation.
-:::
-
-## Perte d'information
-::: frame
-Comment la définir ? Idée principale
-
-Deux moyens pour mesurer la perte d'information :
-
-1.  **Comparer les enregistrements bruts** entre le jeu de données original et le jeu de données protégé
-
-2.  **Comparer certaines statistiques** calculées sur les jeux de données originaux et protégés
-:::
-
-## Perte d'information
-::: frame
-Données continues Pour les **données continues**, formellement :
-
--   $I_1,\dots, I_n$, $n$ enregistrements individuels
-
--   $Z_1,..,Z_p$, $p$ données continues
-
--   $X$ la matrice de données originale, $X^{'}$ la matrice de données protégée
-:::
-
-## Perte d'information
-::: frame
-Données continues, distance entre matrices
-
--   **Erreur quadratique moyenne** : somme des différences au carré, composante par composante entre 2 matrices, divisée par le nombre de coefficients de chaque matrice : $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n(x_{ij}-x^{'}_{ij})^2$$
-:::
-
-::: frame
-Perte d'informationDonnées continues, distance entre matrices
-
--   **Erreur absolue moyenne** : somme des différences absolues, composante par composante entre 2 matrices, divisée par le nombre de coefficients de chaque matrice $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n|x_{ij}-x^{'}_{ij}|$$
-:::
-
-::: frame
-Perte d'informationDonnées continues, distance entre matrices
-
--   **Variation moyenne** : somme des variations absolues en pourcentage des composantes de la matrice protégée par rapport à la matrice de données originale $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{|x_{ij}|}$$
-:::
-
-## Perte d'information 
-::: frame
-Un exemple
-
--   [$X$]{style="color: blue"} en haut, [$X^{'}$]{style="color: blue"} en bas, les données perturbées
-
-  ------ -------- --------------------------- ---------------------------
-   Sexe   Région              Âge                 heures travaillées
-                                                      par semaine
-    F       92     [36]{style="color: blue"}   [17]{style="color: blue"}
-    M       75     [41]{style="color: blue"}   [35]{style="color: blue"}
-    F       75     [52]{style="color: blue"}   [5]{style="color: blue"}
-  ------ -------- --------------------------- ---------------------------
-
-  ------ -------- --------------------------- ---------------------------
-   Sexe   Région              Âge                 heures travaillées
-                                                      par semaine
-    F       92     [34]{style="color: blue"}   [23]{style="color: blue"}
-    F       75     [48]{style="color: blue"}   [35]{style="color: blue"}
-    M       75     [58]{style="color: blue"}   [2]{style="color: blue"}
-  ------ -------- --------------------------- ---------------------------
-:::
-
-## Perte d'information
-::: frame
-Un exemple
-
--   **Erreur quadratique moyenne** = $\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n(x_{ij}-x^{'}_{ij})^2=\frac{(36-34)^2+(41-48)^2+(52-58)^2+(17-23)^2+(35-35)^2+(5-2)^2}{6}=\frac{4+49+36+36+9}{6}=22$
-
--   **Erreur absolue moyenne** = $\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n|x_{ij}-x^{'}_{ij}|=\frac{|36-34|+|41-48|+|52-58|+|17-23|+|35-35|+|5-2|}{6}=\frac{2+7+6+6+0+3}{6}=\frac{24}{6}=4$
-
--   **Variation moyenne** = $\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{|x_{ij}|}=\frac{\frac{|36-34|}{36}+\frac{|41-48|}{41}+\frac{|52-58|}{52}+\frac{|17-23|}{17}+\frac{|35-35|}{35}+\frac{|5-2|}{5}}{6}=\frac{\frac{2}{36}+\frac{7}{41}+\frac{6}{52}+\frac{6}{17}+\frac{0}{35}+\frac{3}{5}}{6}=0.15$
-:::
-
-## Perte d'information
-::: frame
-
--   Les petites valeurs de $x_{ij}$ peuvent entraîner une instabilité lors du calcul de la variation moyenne $\longrightarrow$ pour éviter cela, la solution est la formulation : $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{\sqrt{2}S_j}$$ avec $S_j$ l'écart type de la $j$-ème variable
-:::
-
-## Perte d'information
-::: frame
-Données continues
-
-Mesures spécifiques:
-
--   Comparaisons univariées (comparaison de la distribution d'une variable avant et après perturbation).
-
--   Comparaisons bivariées: Corrélations linéaires par exemple.
-
--   Comparaison multivariées: Comparaison des plans d'une analyse en composante principale.
-
--   Comparaison des paramètres d'une régression, etc.
-:::
-
-## Données catégorielles
-::: frame
-
-Pour les **variables catégorielles**, 3 idées principales pour évaluer la perte d'information avec des données catégorielles :
-
--   **Comparaison directe** des valeurs des variables
-
-    -   Écarts absolus moyens
-
-    -   
-
--   Comparaison des **tables de contingence**
-
--   Mesures basées sur **l'entropie**
-:::
-
-## Mesure basée sur l'entropie
-::: frame
-
--   L'entropie mesure l'incertitude induite par une distribution de probabilité donnée : $$H(V/V^{'}=j) = - \sum_{i=1}^K P(V=i|V^{'} = j) \log(P(V=i|V^{'} = j))$$
-
--   Selon la méthode, il peut être difficile d'évaluer la quantité $P(V=i|V^{'} = j)$
-
--   Risque global $$R = \sum_{r \in enregistrements} H(V/V^{'}=\underset{valeur protégée}{\underbrace{j_{r}}})$$
-:::
-
-## Perte d'information
-::: frame
-
--   $K = 5$ catégories, soit $j = 4$, et examinons $P(V=i|V^{'} = 4)_{1\leq i\leq 5}$
-
-::: columns
-::: column
-0.30
-
-![image](Images/Dirac.png){width="4cm"}
-:::
-
-::: column
-0.30
-
-![image](Images/Compromise.png){width="4cm"}
-:::
-
-::: column
-0.30
-
-![image](Images/uniform.png){width="4cm"}
-:::
-:::
-
--   $\longrightarrow$ Compromis entre risque et perte d'information !
-:::
-
-## Visualisation
-::: frame
-
--   De nombreux moyens de visualisation de la perte d'information:
-
-    -   Univarié: histogrammes, boîtes à moustaches, diagrammes en barres
-
-    -   Bivarié: Matrices de corrélations, Diagrammes en mosaïques, Plan d'une analyse factorielle des correspondances, etc.
-
-    -   Multivarié: 1er plan d'une analyse factorielle (ACP, ACM, AFDM)
-:::
-
-## Visualisation
-::: frame
-
-Matrice de corrélations dans les données originales et différences observées après perturbation selon deux méthodes différentes:
-
-::: columns
-::: column
-0.30
-
-![Original](Images/cor_original.png){width="4cm"}
-:::
-
-::: column
-0.30
-
-![Méthode 1](Images/cor_cart.png){width="4cm"}
-:::
-
-::: column
-0.30
-
-![Méthode 2](Images/cor_ctgan.png){width="4cm"}
-:::
-:::
-:::
-
-## Visualisation
-::: frame
-
-
-Matrice de corrélations dans les données originales et différences observées après perturbation selon deux méthodes différentes:
-
-::: columns
-::: column
-0.48
-
-![Original](Images/acp_original.png){width="4cm"}
-:::
-
-::: column
-0.48
-
-![Perturbé](Images/acp_ctgan.png){width="4cm"}
-:::
-:::
-:::
-
-## Données tabulées
-::: frame
-
-Pour les **variables catégorielles**, 3 idées principales pour évaluer la perte d'information avec des données catégorielles :
-
--   Mesures globales
-
-    -   Écarts absolus moyens
-
-    -   Distance de Hellinger\
-        $$HD(\mathbf{X}, \mathbf{X}') = \frac{1}{\sqrt{2}} \sqrt{\sum_{j = 1}^M \left(\sqrt{\frac{x'_j}{\sum_{j=1}^M x'_j}} - \sqrt{\frac{x_j}{\sum_{j=1}^M x_j}}\right)^2}$$
-
--   Pour Tableau de contingence:
-
-    -   Comparaison des V de Cramer (basée sur la statistique du $\chi^2$
-
-    -   Comparaison du 1er plan factoriel d'une analyse factorielle des correspondances.
-:::
 
 
 # Une démarche en plusieurs étapes

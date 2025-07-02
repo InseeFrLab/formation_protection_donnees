@@ -2,13 +2,13 @@
 title: Les méthodes perturbatrices
 subtitle: |
   **[Pour données tabulées ou individuelles]{.orange}**
-order: 4
+order: 3
 href: theorie/supports/methodes-perturbatrices.html
 image: ../../images/theorie.png
 # date: 
 slide-number: true
 header: |
-  [Retour à l'accueil](https://github.com/InseeFrLab/formation_protection_donnees)
+  [Retour à l'accueil](https://inseefrlab.github.io/formation_protection_donnees)
 footer: |
   Les méthodes de protection statistique des données confidentielles
 # uncomment for French presentations:

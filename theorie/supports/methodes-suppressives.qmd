@@ -2,13 +2,13 @@
 title: Les méthodes suppressives
 subtitle: |
   **[Pour données tabulées ou individuelles]{.orange}**
-order: 3
+order: 2
 href: theorie/supports/methodes-suppressives.html
 image: ../../images/theorie.png
 # date: 
 slide-number: true
 header: |
-  [Retour à l'accueil](https://github.com/InseeFrLab/formation_protection_donnees)
+  [Retour à l'accueil](https://inseefrlab.github.io/formation_protection_donnees)
 footer: |
   Les méthodes de protection statistique des données confidentielles
 # uncomment for French presentations:
