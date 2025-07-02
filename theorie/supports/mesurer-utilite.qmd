@@ -1,0 +1,337 @@
+---
+title: Mesurer l'utilité
+subtitle: |
+  **[Contrôler la perte d'information]{.orange}**
+order: 5
+href: theorie/supports/mesurer-utilite.html
+image: ../../img/theorie.png
+slide-number: true
+header: |
+  [Retour à l'accueil](https://inseefrlab.github.io/formation_protection_donnees)
+footer: |
+  Mesurer l'utilité
+# uncomment for French presentations:
+lang: fr-FR
+# for blind readers:
+slide-tone: false
+# for @olevitt:
+# chalkboard: # press the B key to toggle chalkboard
+#   theme: whiteboard
+# uncomment to use the multiplex mode:
+#multiplex: true
+format:
+  onyxia-revealjs:
+    number-sections: true
+    number-depth: 1
+    toc: true
+    toc-depth: 1
+    toc-title: Sommaire
+tbl-cap-location: bottom
+include-in-header: 
+  text: |
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  # pick the light mode (onyxia-revealjs) or the dark mode (onyxia-dark-revealjs)
+  #onyxia-dark-revealjs:
+controls: true
+css: custom.css
+# from: markdown+emoji
+# listing:
+#   id: sample-listings
+#   contents: teaching
+#   sort: "date desc"
+#   type: table
+bibliography: ../../references-SDC.bib
+# csl: ../style.csl  # Décommentez besoin d'un style de biblio spécifique
+---
+
+::: frame
+:::
+
+# Définir
+
+## Comment la définir ?
+
+-   Le processus de protection des données entraîne nécessairement une perte d'information
+
+:::: {.columns}
+
+::: {.column width="49%"}
+::: {#tbl-ut-max style="font-size: 80%;" .table .table-striped .table-hover .table-bordered .table-sm}
+
+| Région | Âge |  Statut |
+|:------:|:---:|:-------:|
+|   92   |  14 | Inactif |
+|   75   |  41 | Chômeur |
+|   75   |  52 | Employé |
+|   94   |  45 | Employé |
+|   75   |  41 | Chômeur |
+|   92   |  26 | Employé |
+|   92   |  31 | Employé |
+|   94   |  14 | Inactif |
+
+:  risque = 100 % , Perte d'info = 0 %
+:::
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+::: {#tbl-ut-min style="font-size: 80%;" .table .table-striped .table-hover .table-bordered .table-sm}
+
+| Région | Âge | Statut |
+|:------:|:---:|:------:|
+|    ∅   |  ∅  |    ∅   |
+|    ∅   |  ∅  |    ∅   |
+|    ∅   |  ∅  |    ∅   |
+|    ∅   |  ∅  |    ∅   |
+|    ∅   |  ∅  |    ∅   |
+|    ∅   |  ∅  |    ∅   |
+|    ∅   |  ∅  |    ∅   |
+|    ∅   |  ∅  |    ∅   |
+
+: risque = 0 % , Perte d'info = 100 %
+:::
+:::
+
+::::
+
+
+
+## Quels usages des données ?
+
+-   Pas de définition de la perte d'information sans connaître la **gamme envisagée des utilisateurs des données**
+
+-   En **fonction des utilisateurs finaux**, le concept de perte d'information peut changer
+
+-   Il n'est pas recommandé de publier plusieurs versions protégées du même jeu de données pour chaque type d'utilisateur $\longrightarrow$ risques de divulgation importants par différenciation.
+
+
+## Idée principale
+
+Deux moyens pour mesurer la perte d'information :
+
+1.  **Comparer les enregistrements bruts** entre le jeu de données original et le jeu de données protégé
+
+2.  **Comparer certaines statistiques** calculées sur les jeux de données originaux et protégés
+
+
+# Données continues 
+
+## Notations
+
+Pour les **données continues**, formellement :
+
+-   $I_1,\dots, I_n$, $n$ enregistrements individuels
+
+-   $Z_1,..,Z_p$, $p$ données continues
+
+-   $X$ la matrice de données originale, $X^{'}$ la matrice de données protégée
+
+
+## Distance entre matrices
+
+-   **Erreur quadratique moyenne** : somme des différences au carré, composante par composante entre 2 matrices, divisée par le nombre de coefficients de chaque matrice : $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n(x_{ij}-x^{'}_{ij})^2$$
+
+
+## Distance entre matrices
+
+-   **Erreur absolue moyenne** : somme des différences absolues, composante par composante entre 2 matrices, divisée par le nombre de coefficients de chaque matrice $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n|x_{ij}-x^{'}_{ij}|$$
+
+
+## Distance entre matrices
+
+-   **Variation moyenne** : somme des variations absolues en pourcentage des composantes de la matrice protégée par rapport à la matrice de données originale $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{|x_{ij}|}$$
+
+
+## Un exemple
+
+-   [$X$]{style="color: blue"} en haut, [$X^{'}$]{style="color: blue"} en bas, les données perturbées
+
+::: {#tbl-ex-haut}
+  ------ -------- --------------------------- ---------------------------
+   Sexe   Région              Âge                 heures travaillées
+                                                      par semaine
+    F       92     [36]{style="color: blue"}   [17]{style="color: blue"}
+    M       75     [41]{style="color: blue"}   [35]{style="color: blue"}
+    F       75     [52]{style="color: blue"}   [5]{style="color: blue"}
+  ------ -------- --------------------------- ---------------------------
+: titre
+:::
+
+  ------ -------- --------------------------- ---------------------------
+   Sexe   Région              Âge                 heures travaillées
+                                                      par semaine
+    F       92     [34]{style="color: blue"}   [23]{style="color: blue"}
+    F       75     [48]{style="color: blue"}   [35]{style="color: blue"}
+    M       75     [58]{style="color: blue"}   [2]{style="color: blue"}
+  ------ -------- --------------------------- ---------------------------
+
+## Un exemple
+
+-   **Erreur quadratique moyenne** = 
+  
+  $\frac{(36-34)^2+(41-48)^2+(52-58)^2+(17-23)^2+(35-35)^2+(5-2)^2}{6}=22$
+
+-   **Erreur absolue moyenne** = 
+  
+  $\frac{|36-34|+|41-48|+|52-58|+|17-23|+|35-35|+|5-2|}{6}=4$
+
+-   **Variation moyenne** = 
+  
+  $\frac{\frac{|36-34|}{36}+\frac{|41-48|}{41}+\frac{|52-58|}{52}+\frac{|17-23|}{17}+\frac{|35-35|}{35}+\frac{|5-2|}{5}}{6}=0.15$
+
+## Cas des petites valeurs
+
+-   Les petites valeurs de $x_{ij}$ peuvent entraîner une instabilité lors du calcul de la variation moyenne $\longrightarrow$ pour éviter cela, la solution est la formulation : $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{\sqrt{2}S_j}$$ avec $S_j$ l'écart type de la $j$-ème variable
+
+## Mesures spécifiques:
+
+-   Comparaisons univariées (comparaison de la distribution d'une variable avant et après perturbation).
+
+-   Comparaisons bivariées: Corrélations linéaires par exemple.
+
+-   Comparaison multivariées: Comparaison des plans d'une analyse en composante principale.
+
+-   Comparaison des paramètres d'une régression, etc.
+
+
+# Données catégorielles
+
+Pour les **variables catégorielles**, 3 idées principales pour évaluer la perte d'information avec des données catégorielles :
+
+-   **Comparaison directe** des valeurs des variables
+
+    -   Écarts absolus moyens
+
+    -   Écarts absolus relatifs moyens
+
+-   Comparaison des **tables de contingence**
+
+-   Mesures basées sur **l'entropie**
+
+## Mesure basée sur l'entropie
+
+-   L'entropie mesure l'incertitude induite par une distribution de probabilité donnée : $$H(V|V^\prime=j) = - \sum_{i=1}^K P(V=i|V^\prime = j) \log(P(V=i|V^\prime = j))$$
+
+-   Selon la méthode, il peut être difficile d'évaluer la quantité $P(V=i|V^{'} = j)$
+
+-   Risque global $$R = \sum_{r \in enregistrements} H(V|V^\prime=\underset{valeur protégée}{\underbrace{j_{r}}})$$
+
+
+## Mesurer la qualité d'une inférence
+
+-   $K = 5$ catégories, soit $j = 4$, et examinons $P(V=i|V^{'} = 4)_{1\leq i\leq 5}$
+
+:::: {.columns}
+
+::: {.column width="33%"}
+::: {style="text-align:center;"}
+![Dirac](img/Dirac.png){#fig-bruit-dirac width=90% fig-alt="Bruit nul" fig-align="center"}
+:::
+:::
+
+::: {.column width="33%"}
+::: {style="text-align:center;"}
+![Compromis](img/Compromise.png){#fig-bruit-compromis width=90% fig-alt="Compromis" fig-align="center"}
+:::
+:::
+
+::: {.column width="33%"}
+::: {style="text-align:center;"}
+![Bruit fort](img/uniform.png){#fig-bruit-unif width=90% fig-alt="Bruit fort" fig-align="center"}
+:::
+:::
+::::
+
+-   $\longrightarrow$ Compromis entre risque et perte d'information !
+-   
+
+## Données tabulées
+
+Pour les **variables catégorielles**, 3 idées principales pour évaluer la perte d'information avec des données tabulées :
+
+-   Mesures globales
+
+    -   Écarts absolus moyens ou relatifs
+
+    -   Distance de Hellinger\
+        $$HD(\mathbf{X}, \mathbf{X}') = \frac{1}{\sqrt{2}} \sqrt{\sum_{j = 1}^M \left(\sqrt{\frac{x'_j}{\sum_{j=1}^M x'_j}} - \sqrt{\frac{x_j}{\sum_{j=1}^M x_j}}\right)^2}$$
+
+## Données tabulées
+
+-   Métriques spécifiques pour tableau de contingence:
+
+    -   Comparaison des V de Cramer (basée sur la statistique du $\chi^2$)
+
+    -   Comparaison du 1er plan factoriel d'une analyse factorielle des correspondances.
+
+
+# S'appuyer sur la visualisation
+
+## De nombreux possibilités
+
+-   De nombreux moyens de visualisation de la perte d'information:
+
+    -   Univarié: histogrammes, boîtes à moustaches, diagrammes en barres
+
+    -   Bivarié: Matrices de corrélations, Diagrammes en mosaïques, Plan d'une analyse factorielle des correspondances, etc.
+
+    -   Multivarié: 1er plan d'une analyse factorielle (ACP, ACM, AFDM)
+
+## Comparer des matrices de corrélation
+
+Matrice de corrélations dans les données originales et différences observées après perturbation selon deux méthodes différentes:
+
+:::: {.columns}
+
+::: {.column width="33%"}
+::: {style="text-align:center;"}
+![Original](img/cor_original.png){#fig-cor-original width=90% fig-alt="Matrice originale des corrélations" fig-align="center"}
+:::
+:::
+
+::: {.column width="33%"}
+::: {style="text-align:center;"}
+![Méthode 1](img/cor_cart.png){#fig-diff-cor-cart width=90% fig-alt="Matrice des différences entre l'original et la méthode 1" fig-align="center"}
+:::
+:::
+
+::: {.column width="33%"}
+::: {style="text-align:center;"}
+![Méthode 2](img/cor_ctgan.png){#fig-diff-cor-ctgan width=90% fig-alt="Matrice des différences entre l'original et la méthode 2" fig-align="center"}
+:::
+:::
+
+::::
+
+La comparaison visuelle permet immédiatement de saisir la supériorité de la première méthode sur la seconde pour conserver les relations bivariées.
+
+
+## Comparer les nuages d'une analyse factorielle
+
+Comparaison de la projection des individus sur le premier plan d'une analyse factorielle.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {style="text-align:center;"}
+![Original](img/acp_original.png){#fig-acp-originale width=90% fig-alt="Individus originaux projetés sur le premier plan d'une ACP" fig-align="center"}
+:::
+:::
+
+
+::: {.column width="50%"}
+::: {style="text-align:center;"}
+![Perturbé](img/acp_ctgan.png){#fig-acp-ctgan  width=90% fig-alt="Individus bruités projetés sur le premier plan de la même ACP" fig-align="center"}
+:::
+:::
+::::
+
+
+
+## Comparer les résultats d'une régression
+
+::: {style="text-align:center;"}
+![Intervalle de confiance des coeeficients d'une régression logistique selon la méthode de traitement des données](img/puf65_intervalle_confiance_glm.png){#fig-ic-coeff-glm  width=90% fig-alt="Intervalles de confiance des coefficients d'une régression logistique en fonction de la méthode de traitement des données" fig-align="center"}
+:::
