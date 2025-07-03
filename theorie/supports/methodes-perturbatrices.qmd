@@ -21,10 +21,17 @@ slide-tone: false
 # uncomment to use the multiplex mode:
 #multiplex: true
 format:
-  onyxia-revealjs
-  # pick the light mode (onyxia-revealjs) or the dark mode (onyxia-dark-revealjs)
-  #onyxia-dark-revealjs:
+  onyxia-revealjs:
+    number-sections: true
+    number-depth: 1
+    toc: true
+    toc-depth: 1
+    toc-title: Sommaire
+tbl-cap-location: bottom
 controls: true
+include-in-header: 
+  text: |
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 css: custom.css
 # from: markdown+emoji
 # listing:
@@ -37,107 +44,227 @@ bibliography: ../../references-SDC.bib
 ---
 
 
+# Introduction {.unnumbered}
 
-::: frame
+
+## Objectifs
+
+::: {style="font-size: 80%;"}
+
+- Quelles sont les méthodes perturbatrices qui permettent de limiter les risques de divulgation ?  
+- Quelles méthodes s'appliquent aux données tabulées, lesquelles aux données individuelles ?  
+- De quel type de risque les méthodes nous protègent-elles?  
+- Quels sont les conséquences sur la perte d'information ?  
+
 :::
 
-::: frame
-### Sommaire
+## Les méthodes principales à disposition
+
+::: {#tbl-class-meth}
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#C44D58;border-spacing:0;}
+.tg td{background-color:#F9CDAD;border-color:#C44D58;border-style:solid;border-width:2px;color:#002b36;
+  font-family:Arial, sans-serif;font-size:24px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#FE4365;border-color:#C44D58;border-style:solid;border-width:1px;color:#fdf6e3;
+  font-family:Arial, sans-serif;font-size:28px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-ouj0{border-color:#fdf6e3;text-align:center;vertical-align:top}
+.tg .tg-ukzp{border-color:#fdf6e3;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-jusz{background-color:#fe4365;border-color:#fdf6e3;color:#fdf6e3;font-weight:bold;text-align:center;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-ukzp"></th>
+    <th class="tg-ukzp" colspan="2">Méthodes</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-jusz">Traitements</td>
+    <td class="tg-jusz">Non-Perturbatrices</td>
+    <td class="tg-jusz">Perturbatrices</td>
+  </tr>
+  <tr>
+    <td class="tg-jusz" rowspan="3"><br>Avant tabulation <br>(sur micro-données)<br></td>
+    <td class="tg-ouj0">Ré-échantillonnage</td>
+    <td class="tg-ouj0">Injection de bruit</td>
+  </tr>
+  <tr>
+    <td class="tg-ouj0">Recodage des variables</td>
+    <td class="tg-ouj0">Micro-agrégation</td>
+  </tr>
+  <tr>
+    <td class="tg-ouj0">Suppression locale</td>
+    <td class="tg-ouj0">Swapping (rang ou ciblé)</td>
+  </tr>
+  <tr>
+    <td class="tg-jusz" rowspan="3"><br>Après tabulation <br>(sur données agrégées)<br></td>
+    <td class="tg-ouj0">Recodage des variables</td>
+    <td class="tg-ouj0">Arrondis</td>
+  </tr>
+  <tr>
+    <td class="tg-ouj0">Suppression de cases</td>
+    <td class="tg-ouj0">Clés aléatoires</td>
+  </tr>
+  <tr>
+    <td class="tg-ouj0"></td>
+    <td class="tg-ouj0">Algo de confidentialité différentielle</td>
+  </tr>
+</tbody></table>
+
+: Les méthodes pour gérer la protection des données
+
 :::
 
-# Introduction
+Il existe aussi une autre technique consistant à produire des données synthétiques.
 
-## Méthodes classiques de protection des données disponibles
 
-::: frame
+# Données tabulées
 
-::: {#tab:my_label}
-  Type de données    **Méthodes non-perturbatrices**      **Méthodes perturbatrices**
-  ------------------ ------------------------------------ ----------------------------------------------------
-  Microdonnées       Techniques de sous-échantillonnage   Perturbation par un bruit (additif, multiplicatif)
-                     Recodage des variables               Microagrégation
-                     Suppression locale                   Techniques de swapping
-  Données tabulées   Suppression de cellules              Bruitage des sorties
-                     Recodage des variables               Méthodes d'arrondi
-                                                          Ajouter du bruit (CKM)
+## Perturbatif vs suppressif
 
-  : Un tour d'horizon des méthodes de protection des données
-:::
-:::
+Dans quels cas, les méthodes perturbatrices sont préférables aux méthodes suppressives?
+
+- Permettent la prise en charge de diffusions complexes à prendre en charge avec des méthodes suppressives: 
+  - nombreux tableaux (diffusion industrielle),
+  - diffusion en plusieurs moments
+  - différenciation géographique ou de nomenclature
+- Contrôler la perte d'utilité:
+  - un arbitrage possible en général en jouant sur les paramètres du bruit
+  - pas de suppression => une information disponible et manipulable
+
+## Perturbatif vs suppressif
+
+Leurs limites:
+
+- Perte parfois de caractéristiques basiques (additivité dans les tableaux)
+- Une perception du traitement du secret moins immédiate qu'avec le blanchiment
+- Une pédagogie nécessaire vis-à-vis du public pour l'utilisation des données
+- Des règles historiques de secret à revisiter car adaptées pour des méthodes suppressives
+
 
 ## Méthodes perturbatrices
 
-::: frame
-
 -   Étendue de la perturbation:
 
-    -   Seulement sur les plus petits comptages (données les plus à risque de divulgation)
+  -   Seulement sur les plus petits comptages (données les plus à risque de divulgation)
 
-    -   Sur toutes les cellules: toutes les cellules du tableau sont perturbées (arrondi, Méthode des clés aléatoires (CKM))
+-   Sur toutes les cellules: toutes les cellules du tableau sont perturbées (arrondi, Méthode des clés aléatoires (CKM))
 
 -   Problématiques des méthodes perturbatrices:
 
-    -   Comment assurer la cohérence des tableaux entre eux ?
+-   Comment assurer la cohérence des tableaux entre eux ?
 
-    -   Comment préserver l'additivité au sein des tableaux ?
-:::
+-   Comment préserver l'additivité au sein des tableaux ?
+
 
 # Méthodes d'arrondi et apparentées
-::: frame
 
-Il existe plusieurs méthodes basées sur des arrondis, dont:
+## Méthodes d'arrondi et apparentées
 
--   Arrondi des petits comptages avec préservation de l'additivité des tableaux (Small Count Rounding) $\Rightarrow$ une protection limitée.
+- Arrondis déterministes 
+- Arrondis aléatoires
+- Small Count Rounding
+- Controlled Rounding
 
--   Arrondi contrôlé (Controlled Rounding): Arrondi de l'ensemble des cellules du tableau tout en conservant l'additivité.
+Des méthodes principalement adaptées aux tableaux de comptages.  
 
--   Controlled Tabular adjustment (CTA): Les valeurs des cellules sensibles sont perturbées pour respecter un **intervalle de protection**. Les autres cellules sont ajustées pour restaurer l'additivité dans les tableaux.
-:::
+Pour plus d'informations: [https://sdctools.github.io/HandbookSDC/05-frequency-tables.html#sec-Rounding_freq]() [@hundepool_handbook_2024]
+
+##  Arrondis déterministes ou aléatoires
+
+- Arrondi de tous les comptages
+- Un paramètre: la base d'arrondi $b$
+- Arrondi déterministe
+  - Un comptage est toujours arrondi de la même manière
+- Arrondi aléatoire: 
+  - un comptage est arrondi aléatoirement à l'inférieur ou au supérieur
+  - Une méthode non biaisée par nature
+  - Une meilleure protection que l'arrondi déterministe
+
+Exemple avec une base $10$
+
+- Arrondi déterministe: $X=23$ => $X^\prime = 20$.
+- Arrondi aléatoire: $X=23$ => $X^\prime = 20$ (probabilité de $0.7$) ou $X^\prime = 30$ (probabilité de $0.3$).
+
+
+##  Arrondis des petits comptages
+
+- Algorithme Small Count Rounding
+- Les comptages sensibles (en général les petits comptages) sont systématiquement arrondis
+- Quelques comptages supplémentaires sont arrondis pour conserver l'additivité dans les tableaux
+- Avantages: 
+  - Ne perturbe qu'une partie du tableau 
+  - Minimise les perturbations globales
+  - Assure la conservation de l'additivité
+- Limite principale:
+  - Ne permet pas d'assurer une protection systématique des cas de différenciation
+- Implémenté dans le package `R` `GaussSuppression`
+
+##  Arrondi contrôlé 
+
+- Controlled Rounding
+- Toutes les cases d'un tableau sont arrondies en respectant une base $b$
+- Un algorithme assure en même temps:
+  - la conservation de l'additivité dans le tableau 
+  - la minimisation de la somme des différences absolues entre valeurs originales et arrondies
+- Implémenté dans le logiciel `Tau-ARGUS` 
+  - avec prise en compte des hiérarchies
+
+<!---
+## Controlled Tabular adjustment (CTA)
+
+Les valeurs des cellules sensibles sont perturbées pour respecter un **intervalle de protection**. Les autres cellules sont ajustées pour restaurer l'additivité dans les tableaux.
+--->
 
 ## Un exemple
-::: frame
 
-Tableau de comptage original:
+Supposons le tableau de comptage suivant (en gras les informations jugées sensibles)
 
-         Région                                     
-  ----- -------- -------- -------- -------- ------- ----
-   3-7    Nord    Ouest     Est      Sud     Total  
-          Oui       6        14     **1**      7     28
-   2-7    Non     **3**    **2**    **1**     13     19
-   2-7   Total      9        16     **2**     20     47
+::: {.table .table-striped .table-hover .table-bordered}
 
-Secret primaire = les comptages inférieurs strictement à 5.
+
+|               | Nord  | Ouest |  Sud  | Est | Total |
+| :-----------: | :---: | :---: | :---: | :-: | :---: |
+|   Polluante   |   6   |  14   | **1** |  7  |  28   |
+| Non-Polluante | **3** | **2** | **1** | 13  |  19   |
+|     Total     |   9   |  16   | **2** | 20  |  47   |
+: Nombre d'entreprises en fonction de leur implantation et du caractère polluant de leurs activités {#tbl-compt-orig}
+
 :::
 
 
 ## Small Count Rounding
-::: frame
- base d'arrondi = 5.
 
-         Région                                    
-  ----- -------- -------- -------- ------- ------- --------
-   3-7    Nord    Ouest     Est      Sud    Total  
-          Oui       6        14     **0**     7       27
-   2-7    Non     **5**    **0**    **0**    13     **18**
-   2-7   Total    **11**   **14**   **0**    20     **45**
+::: {.table .table-striped .table-hover .table-bordered}
 
-Moyenne des écarts absolus: $1.067$.
+
+|               |  Nord  | Ouest  |  Sud  | Est | Total  |
+| :-----------: | :----: | :----: | :---: | :-: | :----: |
+|   Polluante   |   6    |   14   | **0** |  7  |   28   |
+| Non-Polluante | **5**  | **0**  | **0** | 13  | **18** |
+|     Total     | **11** | **14** | **0** | 20  | **45** |
+
+: Application d'un algorithme de type Small Count Rounding (Moyenne des écarts absolus: $1.067$.) {#tbl-compt-smcr}
+
 :::
+
 
 ## Arrondi contrôlé 
-::: frame
-avec b = 5
 
-         Région                                     
-  ----- -------- -------- -------- ------- -------- --------
-   3-7    Nord    Ouest     Est      Sud    Total   
-          Oui     **5**    **15**   **0**   **5**    **25**
-   2-7    Non     **5**    **0**    **0**   **15**   **20**
-   2-7   Total    **10**   **15**   **0**   **20**   **45**
+::: {.table .table-striped .table-hover .table-bordered}
 
-Moyenne des écarts absolus: $1.467$.
+
+|               |  Nord  | Ouest  |  Sud  |  Est   | Total  |
+| :-----------: | :----: | :----: | :---: | :----: | :----: |
+|   Polluante   | **5**  | **15** | **0** | **5**  | **25** |
+| Non-Polluante | **5**  | **2**  | **0** | **15** | **20** |
+|     Total     | **10** | **15** | **0** | **20** | **45** |
+
+: Application d'un arrondi contrôlé avec une base $b=5$ (Moyenne des écarts absolus: $1.467$.) {#tbl-compt-arr-ctr}
+
 :::
 
+<!---
 ## Controlled Tabular Adjustment 
 ::: frame
 
@@ -154,17 +281,16 @@ Moyenne des écarts absolus: $0.933$.
 :::
 
 ## Avantages / inconvénients
-::: frame
 
   **Avantages**                                                      **Inconvénients**
   ------------------------------------------------------------------ -------------------------------------------------------------------------------------------------------
   Conservation de l'additivité                                       CR et CTA: Recherche de la solution optimale sur grands tableaux très couteuse en temps (optim. lin.)
   SCR: Algorithme très efficace sur R                                CR: Une perte d'information parfois excessive
   Perception de la protection (en particulier des petites valeurs)   Difficile à utiliser dans le cadre d'une diffusion complexe
-:::
+
+--->
 
 # La méthode des clés aléatoires (CKM)
-::: frame
 
 Principales caractéristiques de la méthode: 
 
@@ -175,10 +301,9 @@ Principales caractéristiques de la méthode:
 -   Une même cellule est toujours perturbée de la même manière
 
 -   Les zéros originaux ne sont pas perturbés (mais un effectif faible peut devenir un zéro)
-:::
+
 
 ## La distribution de probabilités
-::: frame
 
 Propriétés :
 
@@ -187,23 +312,26 @@ Propriétés :
 -   Le bruit injecté est sans biais
 
 -   La loi de probabilité de la déviation injectée est définie à partir d'une matrice de transition
-:::
+
 
 ## Un exemple
-::: frame
 
-CKM avec $D = [0;5]$ et $V = 3$
 
-         Région                                     
-  ----- -------- -------- -------- ------- -------- --------
-   3-7    Nord    Ouest     Est      Sud    Total   
-          Oui     **4**    **15**   **0**   **8**    **28**
-   2-7    Non     **1**    **3**    **2**   **15**   **20**
-   2-7   Total    **10**   **16**   **4**   **21**   **46**
+::: {.table .table-striped .table-hover .table-bordered}
+
+
+|               |  Nord  | Ouest  |  Sud  |  Est   | Total  |
+| :-----------: | :----: | :----: | :---: | :----: | :----: |
+|   Polluante   | **4**  | **15** | **0** | **8**  | **28** |
+| Non-Polluante | **1**  | **3**  | **2** | **15** | **20** |
+|     Total     | **10** | **16** | **4** | **21** | **46** |
+
+: Application de la CKM avec $D = [0;5]$ et $V = 3$ {#tbl-compt-arr-ctr}
+
 :::
 
+
 ## Les usages
-::: frame
 
 La méthode est utilisée par plusieurs INS:
 
@@ -214,34 +342,42 @@ La méthode est utilisée par plusieurs INS:
 -   Dans ce cadre, Destatis utilise la CKM pour diffuser des données sur des grilles de 500m.
 
 -   2024/2025: l'Insee diffuse les données sur les Quartiers de la Politique de la Ville (QPV).
-:::
+
 
 ## Un exemple pour illustrer la CKM
-::: frame
+
 
 **Etape 1 : Construction de la matrice de transition**
 
-Prenons D = 3 et V = 1.5. Avec le package `ptable` de `R` on peut calculer une matrice de transition :
-:::
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-cap: Probabilités de transition pour $D = 3$ et $V = 1.5$
+library(ptable)
+plot(ptable::create_cnt_ptable(D=3, V=1.5), type="p")
+```
+
 
 ## Un exemple pour illustrer la CKM
-::: frame
 
 **Etape 2 : Création d'une clé individuelle aléatoire**
 
 Supposons que la base $\mathcal{B}$ soit composé des 6 individus suivant et qu'à chacun on associe une clé :
 
-::: center
-   **id**   **Ville**   **Ecole**    **KEY**
-  -------- ----------- ----------- -----------
-     1       Rennes       Ensai     0.9177275
-     2        Paris       Mines     0.1850062
-     3       Rennes       Ensai     0.6266963
-     4        Lyon      Centrale    0.1117820
-     5      Marseille   Centrale    0.6496634
-     6        Lille     Centrale    0.2813433
+::: {.table .table-striped .table-hover .table-bordered}
+
+  **id**   **Ville**   **Ecole**    **KEY**
+-------- ----------- ----------- -----------
+    1       Rennes       Ensai     0.9177275
+    2        Paris       Mines     0.1850062
+    3       Rennes       Ensai     0.6266963
+    4        Lyon      Centrale    0.1117820
+    5      Marseille   Centrale    0.6496634
+    6        Lille     Centrale    0.2813433
+
+: Ajout d'une clé aléatoire dans le jeu de données individuelles {#tbl-ckm-ind}
 :::
-:::
+
 
 ## Un exemple pour illustrer la CKM
 ::: frame
