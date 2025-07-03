@@ -1,7 +1,7 @@
 ---
-title: L'Arbitrage Risque/Utilité
+title: Les risques de divulgation
 subtitle: |
-  **[Arbitrer pour mieux maîtriser]{.orange}**
+  **[Arbitrer, définir, mesurer]{.orange}**
 order: 1
 href: theorie/supports/arbitrer-risque-utilite.html
 image: ../../images/theorie.png
@@ -9,7 +9,7 @@ slide-number: true
 header: |
   [Retour à l'accueil](https://inseefrlab.github.io/formation_protection_donnees)
 footer: |
-  L'arbitrage risque/utilité
+  Les risques de divulgation
 # uncomment for French presentations:
 lang: fr-FR
 # for blind readers:
@@ -43,13 +43,6 @@ css: custom.css
 bibliography: ../../references-SDC.bib
 # csl: ../style.csl  # Décommentez besoin d'un style de biblio spécifique
 ---
-
-::: frame
-:::
-
-::: frame
-## Sommaire
-:::
 
 # Introduction {.unnumbered}
 
