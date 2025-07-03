@@ -318,6 +318,86 @@ Une responsabilisation nécessaire:
 - Chercheurs (Risque de révocation des contrats et conséquences sur l'ensemble du laboratoire)
 
 
+
+
+# Une démarche en plusieurs étapes
+
+## Étapes clés du processus de protection des données
+
+1.  Est-il nécessaire de protéger les données ?
+
+2.  Quelles sont les caractéristiques et utilisations principales des données ?
+
+3.  Définition et mesure des risques de divulgation
+
+4.  Choix des méthodes de protection des données
+
+5.  Mise en oeuvre des méthodes
+
+Source:  [@hundepool_handbook_2024]
+
+## Étape 1: Est-il nécessaire de protéger les données ?
+
+-   Analyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d'effectuer de traitement pour la protection des données
+
+-   Quel type de diffusion ? (tableaux de données, cartes, microdonnées \...)
+
+## Étape 2: Caractéristiques et utilisations principales des données (I)
+
+-   Analyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection
+
+-   Analyse de la méthodologie de l'enquête
+
+-   Définition des objectifs de l'institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié
+
+
+## Étape 2: Caractéristiques et utilisations principales des données (II)
+
+-   Analyse des besoins des utilisateurs (variables prioritaires, types d'analyses qui seront réalisées)
+
+-   Analyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)
+
+
+## Étape 3: Définition et mesure des risques de divulgation
+
+-   Recenser les différents scénarios possibles conduisant à la divulgation des données
+
+-   Ces scénarios dépendent du type de données considérées (données exhaustives, enquêtes) et de la diffusion choisie (pour les chercheurs ou le grand public)
+
+-   Choisir la ou les méthodes pour mesurer le risque de divulgation (développé dans la partie \"Les différents types de risques\")
+
+-   Si on considère que le risque de divulgation est trop élevé alors il faut mettre en place des méthodes de protection des données
+
+
+## Étape 4: Choix des méthodes
+
+-   Choisir une / plusieurs méthode(s) de protection pour réduire les risques de divulgation au seuil de tolérance qu'on s'est fixé
+
+-   Le choix de la méthode dépend de l'impact sur l'utilité des données de ladite méthode
+
+-   Analyse de perte d'utilité due à la protection
+
+## Étape 5: Mise en oeuvre des méthodes
+
+
+1.  Choisir un logiciel
+
+2.  Réaliser la mesure des risques de divulgation
+
+3.  Protéger les données
+
+4.  Quantification de l'information perdue
+
+5.  Contrôle du processus de protection
+
+    -   vérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable
+
+6.  Réalisation d'un document synthétisant les méthodes de protection utilisées et faisant le bilan de l'information perdue
+
+    -   si possible le transmettre aux utilisateurs des données publiées
+
+    -   peut contenir des avertissements sur les précautions à prendre lors de l'utilisation d'un fichier anonymisé
+
 # Définir le risque
 
 ## Le risque de divulgation
@@ -858,7 +938,7 @@ Pour réaliser l'arbitrage, une mesure de risque globale est plus  pratique. On 
 
 
 ## Mesures probabilistes du risque 
-::: frame
+
 Des mesures plus raffinées sont implémentées dans des outils classiques tels que $\mu$-Argus ou le package R sdcmicro.
 
 -   Quand on dispose d'un échantillon (donc des $n_k$), on ne connaît en général pas les $N_k$.
@@ -869,39 +949,36 @@ Des mesures plus raffinées sont implémentées dans des outils classiques tels 
 
     -   Modélisation des fréquences des clés dans la population conditionnellement à leur fréquence dans l'échantillon.
 
-    -   Par une binomiale négative par exemple dans Benedetti et Franconi, 1998.
-:::
+    -   Par une binomiale négative par exemple dans @Benedetti_Franconi_1998.
 
-## Autres mesures
-::: frame
+# Autres mesures
 
--   Le **Record Linkage**:
+## Le Record Linkage
 
-    -   Mesure *a posteriori* de la distance entre les individus du jeu protégé et ceux du jeu original.
+  -   Mesure *a posteriori* de la distance entre les individus du jeu protégé et ceux du jeu original.
 
-    -   Permet d'évaluer le nombre de correspondances exactes entre données perturbées et originales.
+  -   Permet d'évaluer le nombre de correspondances exactes entre données perturbées et originales.
 
--   Les **Outliers**:
+## Les Outliers
 
-    -   Fort risque de réidentification des individus ayant des valeurs en queue de distribution (par ex. les très hauts revenus des footballeurs)
+  -   Fort risque de ré-identification des individus ayant des valeurs en queue de distribution (par ex. les très hauts revenus des footballeurs)
 
-    -   Une perturbation n'est pas toujours suffisante (Un outlier perturbé reste souvent un outlier).
+  -   Une perturbation n'est pas toujours suffisante (Un outlier perturbé reste souvent un outlier).
 
-    -   Détection des outliers à partir des quantiles de la distribution.
-:::
+  -   Détection des outliers à partir des quantiles de la distribution.
+
+# Les scénarios d'attaque
 
 ## Définir un scénario d'attaque
-::: frame
 
-::: block
-Scénario d'attaque Définir des scénarios d'attaque c'est envisager les moyens utilisés par l'attaquant et objectiver les utilisations frauduleuses que nous chercherons à empêcher.
+::: {.callout-tip}
+### Scénario d'attaque
+Définir des scénarios d'attaque c'est envisager les moyens utilisés par l'attaquant et objectiver les utilisations frauduleuses que nous chercherons à empêcher.
 :::
 
 -   Arbitrage Coûts/Risques (INS)
 
 -   Arbitrage Coûts/Bénéfices (Attaquant)
-:::
-
 
 
 ## Les attaques sur données k-anonymes et/ou l-diverses
@@ -909,103 +986,9 @@ Scénario d'attaque Définir des scénarios d'attaque c'est envisager les moyens
 @cohen_attacks_2022
 
 
+# Conclusion
 
-# Une démarche en plusieurs étapes
-::: frame
-Étapes clés du processus de protection des données
-
-Une démarche reprise de (Hundepool et al. 2010):
-
-1.  Est-il nécessaire de protéger les données ?
-
-2.  Quelles sont les caractéristiques et utilisations principales des données ?
-
-3.  Définition et mesure des risques de divulgation
-
-4.  Choix des méthodes de protection des données
-
-5.  Mise en oeuvre des méthodes
-:::
-
-# Étape 1
-::: frame
-Est-il nécessaire de protéger les données ?
-
--   Analyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d'effectuer de traitement pour la protection des données
-
--   Quel type de diffusion ? (tableaux de données, cartes, microdonnées \...)
-:::
-
-# Étape 2
-::: frame
-Quelles sont les caractéristiques et utilisations principales des données ? (I)
-
--   Analyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection
-
--   Analyse de la méthodologie de l'enquête
-
--   Définition des objectifs de l'institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié
-:::
-
-# Étape 2
-::: frame
-Quelles sont les caractéristiques et utilisations principales des données ? (II)
-
--   Analyse des besoins des utilisateurs (variables prioritaires, types d'analyses qui seront réalisées)
-
--   Analyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)
-:::
-
-# Étape 3
-::: frame
-Définition et mesure des risques de divulgation
-
--   Recenser les différents scénarios possibles conduisant à la divulgation des données
-
--   Ces scénarios dépendent du type de données considérées (données exhaustives, enquêtes) et de la diffusion choisie (pour les chercheurs ou le grand public)
-
--   Choisir la ou les méthodes pour mesurer le risque de divulgation (développé dans la partie \"Les différents types de risques\")
-
--   Si on considère que le risque de divulgation est trop élevé alors il faut mettre en place des méthodes de protection des données
-:::
-
-# Étape 4
-::: frame
-Choix des méthodes de protection des données
-
--   Choisir une / plusieurs méthode(s) de protection pour réduire les risques de divulgation au seuil de tolérance qu'on s'est fixé
-
--   Le choix de la méthode dépend de l'impact sur l'utilité des données de ladite méthode
-
--   Analyse de perte d'utilité due à la protection
-:::
-
-# Étape 5
-::: frame
-Mise en oeuvre des méthodes
-
-1.  Choisir un logiciel
-
-2.  Réaliser la mesure des risques de divulgation
-
-3.  Protéger les données
-
-4.  Quantification de l'information perdue
-
-5.  Contrôle du processus de protection
-
-    -   vérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable
-
-6.  Réalisation d'un document synthétisant les méthodes de protection utilisées et faisant le bilan de l'information perdue
-
-    -   si possible le transmettre aux utilisateurs des données publiées
-
-    -   peut contenir des avertissements sur les précautions à prendre lors de l'utilisation d'un fichier anonymisé
-:::
-
-
-## EN guise de conclusion
-::: frame
+## En guise de conclusion {.smaller}
 
 -   Il existe de nombreuses façons d'évaluer la perte d'information.
 
@@ -1018,27 +1001,28 @@ Mise en oeuvre des méthodes
 -   Nécessité de faire des concessions sur certaines caractéristiques d'un tableau pour libérer des contraintes ailleurs.
 
 -   On ne peut pas préserver toutes les caractéristiques d'un ensemble de données.
-:::
+
 
 # Pour aller plus loin
 
+## Biblio 
+::: {#refs}
+:::
+
+<!---
 ## Source généraliste
-::: frame
 
 Hundepool and alt., *Handbook on Statistical Disclosure Control*, Wiley, 2012\
 Une version libre et gratuite est disponible ici: <https://ec.europa.eu/eurostat/cros/system/files/SDC_Handbook.pdf> (2010)
-:::
+
 
 ## Risques de divulgation
-::: frame
 
 -   Sweeney, L. (2000). Simple demographics often identify people uniquely. *Health* (San Francisco), 671(2000), 1-34.
 
 -   El Emam, K., & Dankar, F. K. (2008). Protecting privacy using k-anonymity. *Journal of the American Medical Informatics Association*, 15(5), 627-637.
-:::
 
 ## Compromis entre Risque et Utilité:
-::: frame
 
 -   Domingo-Ferrer, J., Mateo-Sanz, J. M., & Torra, V. (2001, May). Comparing SDC methods for microdata on the basis of information loss and disclosure risk. In *Pre-proceedings of ETK-NTTS* (Vol. 2, pp. 807-826).
-:::
+--->
