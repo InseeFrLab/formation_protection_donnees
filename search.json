@@ -504,6 +504,55 @@
     "text": "Responsabiliser\nUne responsabilisation nécessaire:\n\nStatisticiens publics (en France loi de 1951 sur le secret statistique)\nChercheurs (Risque de révocation des contrats et conséquences sur l’ensemble du laboratoire)"
   },
   {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étapes-clés-du-processus-de-protection-des-données",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étapes-clés-du-processus-de-protection-des-données",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Étapes clés du processus de protection des données",
+    "text": "Étapes clés du processus de protection des données\n\nEst-il nécessaire de protéger les données ?\nQuelles sont les caractéristiques et utilisations principales des données ?\nDéfinition et mesure des risques de divulgation\nChoix des méthodes de protection des données\nMise en oeuvre des méthodes\n\nSource: (Hundepool et al. 2024)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-1-est-il-nécessaire-de-protéger-les-données",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étape-1-est-il-nécessaire-de-protéger-les-données",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Étape 1: Est-il nécessaire de protéger les données ?",
+    "text": "Étape 1: Est-il nécessaire de protéger les données ?\n\nAnalyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d’effectuer de traitement pour la protection des données\nQuel type de diffusion ? (tableaux de données, cartes, microdonnées ...)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-2-caractéristiques-et-utilisations-principales-des-données-i",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étape-2-caractéristiques-et-utilisations-principales-des-données-i",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Étape 2: Caractéristiques et utilisations principales des données (I)",
+    "text": "Étape 2: Caractéristiques et utilisations principales des données (I)\n\nAnalyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection\nAnalyse de la méthodologie de l’enquête\nDéfinition des objectifs de l’institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-2-caractéristiques-et-utilisations-principales-des-données-ii",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étape-2-caractéristiques-et-utilisations-principales-des-données-ii",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Étape 2: Caractéristiques et utilisations principales des données (II)",
+    "text": "Étape 2: Caractéristiques et utilisations principales des données (II)\n\nAnalyse des besoins des utilisateurs (variables prioritaires, types d’analyses qui seront réalisées)\nAnalyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-3-définition-et-mesure-des-risques-de-divulgation",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étape-3-définition-et-mesure-des-risques-de-divulgation",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Étape 3: Définition et mesure des risques de divulgation",
+    "text": "Étape 3: Définition et mesure des risques de divulgation\n\nRecenser les différents scénarios possibles conduisant à la divulgation des données\nCes scénarios dépendent du type de données considérées (données exhaustives, enquêtes) et de la diffusion choisie (pour les chercheurs ou le grand public)\nChoisir la ou les méthodes pour mesurer le risque de divulgation (développé dans la partie \"Les différents types de risques\")\nSi on considère que le risque de divulgation est trop élevé alors il faut mettre en place des méthodes de protection des données"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-4-choix-des-méthodes",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étape-4-choix-des-méthodes",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Étape 4: Choix des méthodes",
+    "text": "Étape 4: Choix des méthodes\n\nChoisir une / plusieurs méthode(s) de protection pour réduire les risques de divulgation au seuil de tolérance qu’on s’est fixé\nLe choix de la méthode dépend de l’impact sur l’utilité des données de ladite méthode\nAnalyse de perte d’utilité due à la protection"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-5-mise-en-oeuvre-des-méthodes",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étape-5-mise-en-oeuvre-des-méthodes",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Étape 5: Mise en oeuvre des méthodes",
+    "text": "Étape 5: Mise en oeuvre des méthodes\n\nChoisir un logiciel\nRéaliser la mesure des risques de divulgation\nProtéger les données\nQuantification de l’information perdue\nContrôle du processus de protection\n\nvérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable\n\nRéalisation d’un document synthétisant les méthodes de protection utilisées et faisant le bilan de l’information perdue\n\nsi possible le transmettre aux utilisateurs des données publiées\npeut contenir des avertissements sur les précautions à prendre lors de l’utilisation d’un fichier anonymisé"
+  },
+  {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#le-risque-de-divulgation",
     "href": "theorie/supports/arbitrer-risque-utilite.html#le-risque-de-divulgation",
     "title": "L’Arbitrage Risque/Utilité",
@@ -711,21 +760,28 @@
     "href": "theorie/supports/arbitrer-risque-utilite.html#mesures-probabilistes-du-risque-1",
     "title": "L’Arbitrage Risque/Utilité",
     "section": "Mesures probabilistes du risque",
-    "text": "Mesures probabilistes du risque\n\nDes mesures plus raffinées sont implémentées dans des outils classiques tels que \\(\\mu\\)-Argus ou le package R sdcmicro.\n\nQuand on dispose d’un échantillon (donc des \\(n_k\\)), on ne connaît en général pas les \\(N_k\\).\nMesure du risque individuel conditionnellement à l’échantillon: \\(r_k = \\mathbb{E}(\\frac{1}{N_k}|n_k)\\).\nMesure dépendant d’une modélisation de la loi (posterior) de \\(N_k | n_k\\)\n\nModélisation des fréquences des clés dans la population conditionnellement à leur fréquence dans l’échantillon.\nPar une binomiale négative par exemple dans Benedetti et Franconi, 1998."
+    "text": "Mesures probabilistes du risque\nDes mesures plus raffinées sont implémentées dans des outils classiques tels que \\(\\mu\\)-Argus ou le package R sdcmicro.\n\nQuand on dispose d’un échantillon (donc des \\(n_k\\)), on ne connaît en général pas les \\(N_k\\).\nMesure du risque individuel conditionnellement à l’échantillon: \\(r_k = \\mathbb{E}(\\frac{1}{N_k}|n_k)\\).\nMesure dépendant d’une modélisation de la loi (posterior) de \\(N_k | n_k\\)\n\nModélisation des fréquences des clés dans la population conditionnellement à leur fréquence dans l’échantillon.\nPar une binomiale négative par exemple dans Benedetti et Franconi (1998)."
   },
   {
-    "objectID": "theorie/supports/arbitrer-risque-utilite.html#autres-mesures",
-    "href": "theorie/supports/arbitrer-risque-utilite.html#autres-mesures",
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#le-record-linkage",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#le-record-linkage",
     "title": "L’Arbitrage Risque/Utilité",
-    "section": "Autres mesures",
-    "text": "Autres mesures\n\n\nLe Record Linkage:\n\nMesure a posteriori de la distance entre les individus du jeu protégé et ceux du jeu original.\nPermet d’évaluer le nombre de correspondances exactes entre données perturbées et originales.\n\nLes Outliers:\n\nFort risque de réidentification des individus ayant des valeurs en queue de distribution (par ex. les très hauts revenus des footballeurs)\nUne perturbation n’est pas toujours suffisante (Un outlier perturbé reste souvent un outlier).\nDétection des outliers à partir des quantiles de la distribution."
+    "section": "Le Record Linkage",
+    "text": "Le Record Linkage\n\nMesure a posteriori de la distance entre les individus du jeu protégé et ceux du jeu original.\nPermet d’évaluer le nombre de correspondances exactes entre données perturbées et originales."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#les-outliers",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#les-outliers",
+    "title": "L’Arbitrage Risque/Utilité",
+    "section": "Les Outliers",
+    "text": "Les Outliers\n\nFort risque de ré-identification des individus ayant des valeurs en queue de distribution (par ex. les très hauts revenus des footballeurs)\nUne perturbation n’est pas toujours suffisante (Un outlier perturbé reste souvent un outlier).\nDétection des outliers à partir des quantiles de la distribution."
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#définir-un-scénario-dattaque",
     "href": "theorie/supports/arbitrer-risque-utilite.html#définir-un-scénario-dattaque",
     "title": "L’Arbitrage Risque/Utilité",
     "section": "Définir un scénario d’attaque",
-    "text": "Définir un scénario d’attaque\n\n\nScénario d’attaque Définir des scénarios d’attaque c’est envisager les moyens utilisés par l’attaquant et objectiver les utilisations frauduleuses que nous chercherons à empêcher.\n\n\nArbitrage Coûts/Risques (INS)\nArbitrage Coûts/Bénéfices (Attaquant)"
+    "text": "Définir un scénario d’attaque\n\n\n\n\n\n\nScénario d’attaque\n\n\nDéfinir des scénarios d’attaque c’est envisager les moyens utilisés par l’attaquant et objectiver les utilisations frauduleuses que nous chercherons à empêcher.\n\n\n\n\nArbitrage Coûts/Risques (INS)\nArbitrage Coûts/Bénéfices (Attaquant)"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#les-attaques-sur-données-k-anonymes-etou-l-diverses",
@@ -738,29 +794,15 @@
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#en-guise-de-conclusion",
     "href": "theorie/supports/arbitrer-risque-utilite.html#en-guise-de-conclusion",
     "title": "L’Arbitrage Risque/Utilité",
-    "section": "EN guise de conclusion",
-    "text": "EN guise de conclusion\n\n\nIl existe de nombreuses façons d’évaluer la perte d’information.\nFortement liée au niveau de protection.\nDe nombreuses méthodes pour évaluer la perte d’information, le choix de la mesure dépend entièrement des utilisateurs finaux des données publiées.\nDifficile d’anticiper toutes les utilisations d’un ensemble de données et donc toutes les mesures associées de perte d’information.\nNécessité de faire des concessions sur certaines caractéristiques d’un tableau pour libérer des contraintes ailleurs.\nOn ne peut pas préserver toutes les caractéristiques d’un ensemble de données."
+    "section": "En guise de conclusion",
+    "text": "En guise de conclusion\n\nIl existe de nombreuses façons d’évaluer la perte d’information.\nFortement liée au niveau de protection.\nDe nombreuses méthodes pour évaluer la perte d’information, le choix de la mesure dépend entièrement des utilisateurs finaux des données publiées.\nDifficile d’anticiper toutes les utilisations d’un ensemble de données et donc toutes les mesures associées de perte d’information.\nNécessité de faire des concessions sur certaines caractéristiques d’un tableau pour libérer des contraintes ailleurs.\nOn ne peut pas préserver toutes les caractéristiques d’un ensemble de données."
   },
   {
-    "objectID": "theorie/supports/arbitrer-risque-utilite.html#source-généraliste",
-    "href": "theorie/supports/arbitrer-risque-utilite.html#source-généraliste",
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#biblio",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#biblio",
     "title": "L’Arbitrage Risque/Utilité",
-    "section": "Source généraliste",
-    "text": "Source généraliste\n\nHundepool and alt., Handbook on Statistical Disclosure Control, Wiley, 2012\nUne version libre et gratuite est disponible ici: https://ec.europa.eu/eurostat/cros/system/files/SDC_Handbook.pdf (2010)"
-  },
-  {
-    "objectID": "theorie/supports/arbitrer-risque-utilite.html#risques-de-divulgation",
-    "href": "theorie/supports/arbitrer-risque-utilite.html#risques-de-divulgation",
-    "title": "L’Arbitrage Risque/Utilité",
-    "section": "Risques de divulgation",
-    "text": "Risques de divulgation\n\n\nSweeney, L. (2000). Simple demographics often identify people uniquely. Health (San Francisco), 671(2000), 1-34.\nEl Emam, K., & Dankar, F. K. (2008). Protecting privacy using k-anonymity. Journal of the American Medical Informatics Association, 15(5), 627-637."
-  },
-  {
-    "objectID": "theorie/supports/arbitrer-risque-utilite.html#compromis-entre-risque-et-utilité",
-    "href": "theorie/supports/arbitrer-risque-utilite.html#compromis-entre-risque-et-utilité",
-    "title": "L’Arbitrage Risque/Utilité",
-    "section": "Compromis entre Risque et Utilité:",
-    "text": "Compromis entre Risque et Utilité:\n\n\nDomingo-Ferrer, J., Mateo-Sanz, J. M., & Torra, V. (2001, May). Comparing SDC methods for microdata on the basis of information loss and disclosure risk. In Pre-proceedings of ETK-NTTS (Vol. 2, pp. 807-826).\n\n\n\n\n\n\nCohen, Aloni. 2022. « Attacks on Deidentification’s Defenses ». arXiv. http://arxiv.org/abs/2202.13470.\n\n\nCox, Lawrence H., Alan F. Karr, et Satkartar K. Kinney. 2011. « Risk-Utility Paradigms for Statistical Disclosure Limitation: How to Think, But Not How to Act: Risk-Utility Paradigms for SDL ». International Statistical Review 79 (2): 160‑83. https://doi.org/10.1111/j.1751-5823.2011.00140.x.\n\n\nDalenius, Tore. 1977. « Privacy transformations for statistical information systems ». Journal of Statistical Planning and Inference 1 (1): 73‑86. https://doi.org/10.1016/0378-3758(77)90007-6.\n\n\nMachanavajjhala, Ashwin, Daniel Kifer, Johannes Gehrke, et Muthuramakrishnan Venkitasubramaniam. 2007. « L -Diversity: Privacy Beyond k -Anonymity ». ACM Transactions on Knowledge Discovery from Data 1 (1): 3. https://doi.org/10.1145/1217299.1217302.\n\n\nRedor, Patrick. 2023. « Confidentialité des données statistiques : un enjeu majeur pour le service statistique public ». Courrier des Statistiques, nᵒ 9: 46‑64. https://www.insee.fr/fr/information/7635823?sommaire=7635842.\n\n\nSweeney, Latanya. 2000. « Simple Demographics Often Identify People Uniquely. » Carnegie Mellon University, Data Privacy Working Paper 3.\n\n\n———. 2002. « k-ANONYMITY: A MODEL FOR PROTECTING PRIVACY ». International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems 10 (05): 557‑70. https://doi.org/10.1142/S0218488502001648.\n\n\nWillenborg, Leon, et Ton De Waal. 2001. Elements of Statistical Disclosure Control. Édité par P. Bickel, P. Diggle, S. Fienberg, K. Krickeberg, I. Olkin, N. Wermuth, et S. Zeger. Vol. 155. Lecture Notes in Statistics. New York, NY: Springer New York. https://doi.org/10.1007/978-1-4613-0121-9."
+    "section": "Biblio",
+    "text": "Biblio\n\n\nBenedetti, Roberto, et Luisa Franconi. 1998. « Statistical and Technological Solutions for Controlled Data Dissemination ». Pre-proceedings of New Techniques and Technologies for Statistics 1: 225_232.\n\n\nCohen, Aloni. 2022. « Attacks on Deidentification’s Defenses ». arXiv. http://arxiv.org/abs/2202.13470.\n\n\nCox, Lawrence H., Alan F. Karr, et Satkartar K. Kinney. 2011. « Risk-Utility Paradigms for Statistical Disclosure Limitation: How to Think, But Not How to Act: Risk-Utility Paradigms for SDL ». International Statistical Review 79 (2): 160‑83. https://doi.org/10.1111/j.1751-5823.2011.00140.x.\n\n\nDalenius, Tore. 1977. « Privacy transformations for statistical information systems ». Journal of Statistical Planning and Inference 1 (1): 73‑86. https://doi.org/10.1016/0378-3758(77)90007-6.\n\n\nHundepool, Anco, Josep Domingo-Ferre, Luisa Franconi, Sarah Giessing, Rainer Lenz, Jane Longhurst, Eric Schulte Nordholt, et al. 2024. Handbook on Statistical Disclosure Control. 2nd Edition. ESSNet SDC. https://sdctools.github.io/HandbookSDC/.\n\n\nMachanavajjhala, Ashwin, Daniel Kifer, Johannes Gehrke, et Muthuramakrishnan Venkitasubramaniam. 2007. « L -Diversity: Privacy Beyond k -Anonymity ». ACM Transactions on Knowledge Discovery from Data 1 (1): 3. https://doi.org/10.1145/1217299.1217302.\n\n\nRedor, Patrick. 2023. « Confidentialité des données statistiques : un enjeu majeur pour le service statistique public ». Courrier des Statistiques, nᵒ 9: 46‑64. https://www.insee.fr/fr/information/7635823?sommaire=7635842.\n\n\nSweeney, Latanya. 2000. « Simple Demographics Often Identify People Uniquely. » Carnegie Mellon University, Data Privacy Working Paper 3.\n\n\n———. 2002. « k-ANONYMITY: A MODEL FOR PROTECTING PRIVACY ». International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems 10 (05): 557‑70. https://doi.org/10.1142/S0218488502001648.\n\n\nWillenborg, Leon, et Ton De Waal. 2001. Elements of Statistical Disclosure Control. Édité par P. Bickel, P. Diggle, S. Fienberg, K. Krickeberg, I. Olkin, N. Wermuth, et S. Zeger. Vol. 155. Lecture Notes in Statistics. New York, NY: Springer New York. https://doi.org/10.1007/978-1-4613-0121-9."
   },
   {
     "objectID": "ressources/fiches/bibliographie.html",
@@ -844,7 +886,7 @@
     "href": "pratique/fiches/generer-synth.html#risque-utilité",
     "title": "Générer des données synthétiques",
     "section": "Risque / Utilité",
-    "text": "Risque / Utilité\n\n\nCode\nsynthpop::disclosure(lfs_syn, lfs_orig, keys = c(\"AGE6\", \"SEXE\", \"REG\", \"DEP\"), target = c(\"IS_CHOM\"))\n\n\n-------------------Synthesis 1 --------------------\nTable for target IS_CHOM from GT alone with keys has 2 rows 240 colums.\nTable for target  IS_CHOM from GT & SD with all key combinations has 2 rows 246 colums.\n\n\nDisclosure measures from synthesis for 34053 records in original data.\n\nIdentity  measures for keys REG DEP SEXE AGE6 \nand attribute measures for IS_CHOM from the same keys\n            Identity (UiO/repU) Attrib (Dorig/DiSCO)\nOriginal                   0.01                20.71\nSynthesis 1                0.00                24.39\n\nThe 1 way distributions of IS_CHOM has a large contribution to disclosure from level Check  IS_CHOM  level  0 \nPlease add 'check_1way' to to.print (e.g. print(disclosure_result, to.print = 'check_1way'),\nand look at original data to decide if backround knowledge would make this disclosure likely\nConsider excluding this level with the not.targetlev parameter to the disclosure function.\n\n\nDetails of target-key pairs contributing disproportionately to disclosure of IS_CHOM \n36 pairs need checks \n\nPlease examine component $check_2way of the disclosure object and look at original data.\nConsider excluding these key-target pairs with some the following parameters to disclosure:\nexclude_ov_denom_lim = TRUE or defining key-target combinations from exclude.targetlevs,\nexclude.keys and exclude.keylevs"
+    "text": "Risque / Utilité\n\n\nCode\nsynthpop::disclosure(lfs_syn, lfs_orig, keys = c(\"AGE6\", \"SEXE\", \"REG\", \"DEP\"), target = c(\"IS_CHOM\"))\n\n\n-------------------Synthesis 1 --------------------\nTable for target IS_CHOM from GT alone with keys has 2 rows 240 colums.\nTable for target  IS_CHOM from GT & SD with all key combinations has 2 rows 243 colums.\n\n\nDisclosure measures from synthesis for 34053 records in original data.\n\nIdentity  measures for keys REG DEP SEXE AGE6 \nand attribute measures for IS_CHOM from the same keys\n            Identity (UiO/repU) Attrib (Dorig/DiSCO)\nOriginal                   0.01                20.71\nSynthesis 1                0.00                21.67\n\nThe 1 way distributions of IS_CHOM has a large contribution to disclosure from level Check  IS_CHOM  level  0 \nPlease add 'check_1way' to to.print (e.g. print(disclosure_result, to.print = 'check_1way'),\nand look at original data to decide if backround knowledge would make this disclosure likely\nConsider excluding this level with the not.targetlev parameter to the disclosure function.\n\n\nDetails of target-key pairs contributing disproportionately to disclosure of IS_CHOM \n37 pairs need checks \n\nPlease examine component $check_2way of the disclosure object and look at original data.\nConsider excluding these key-target pairs with some the following parameters to disclosure:\nexclude_ov_denom_lim = TRUE or defining key-target combinations from exclude.targetlevs,\nexclude.keys and exclude.keylevs"
   },
   {
     "objectID": "pratique/fiches/sujets-avances.html",
