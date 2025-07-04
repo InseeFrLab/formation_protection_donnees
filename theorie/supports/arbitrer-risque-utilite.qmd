@@ -296,6 +296,13 @@ Plus l'accès est lâche, plus l'anonymisation doit pouvoir être élevé:
     - accès très sécurisé $\iff$ aucune protection statistique des données
     - Mais nécessité de respecter les réglements sur la protection des données individuelles (RGPD en Europe).
 
+## Un exemple
+
+::: {style="text-align:center;"}
+![Adapter les fichiers au type de public (Source: Insee)](img/types_fichiers_confidentialite.png){#fig-types-fichiers width=90% fig-alt="Adapter les fichiers aux publics" fig-align="center"}
+:::
+
+
 ## Gouvernance, Déontologie, Confiance
 
 - La maîtrise de la sécurité des accès et la meilleure gouvernance possible des données ne sont pas des boucliers infaillibles.
@@ -317,6 +324,7 @@ Une responsabilisation nécessaire:
 
 ## Étapes clés du processus de protection des données
 
+::: {style="font-size: 80%;"}
 1.  Est-il nécessaire de protéger les données ?
 
 2.  Quelles sont les caractéristiques et utilisations principales des données ?
@@ -327,69 +335,87 @@ Une responsabilisation nécessaire:
 
 5.  Mise en oeuvre des méthodes
 
+6.  Contrôles et documentation
+
+:::
+
 Source:  [@hundepool_handbook_2024]
 
 ## Étape 1: Est-il nécessaire de protéger les données ?
 
+::: {style="font-size: 80%;"}
 -   Analyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d'effectuer de traitement pour la protection des données
 
 -   Quel type de diffusion ? (tableaux de données, cartes, microdonnées \...)
+:::
 
 ## Étape 2: Caractéristiques et utilisations principales des données (I)
 
+::: {style="font-size: 80%;"}
 -   Analyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection
 
 -   Analyse de la méthodologie de l'enquête
 
 -   Définition des objectifs de l'institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié
-
+:::
 
 ## Étape 2: Caractéristiques et utilisations principales des données (II)
 
+::: {style="font-size: 80%;"}
 -   Analyse des besoins des utilisateurs (variables prioritaires, types d'analyses qui seront réalisées)
 
 -   Analyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)
-
+:::
 
 ## Étape 3: Définition et mesure des risques de divulgation
 
+::: {style="font-size: 80%;"}
 -   Recenser les différents scénarios possibles conduisant à la divulgation des données
 
--   Ces scénarios dépendent du type de données considérées (données exhaustives, enquêtes) et de la diffusion choisie (pour les chercheurs ou le grand public)
+    -   En fonction du type de données considérées (données exhaustives, enquêtes) 
+    -   En fonction du public visé (chercheurs, décideurs, grand public)
 
--   Choisir la ou les méthodes pour mesurer le risque de divulgation (développé dans la partie \"Les différents types de risques\")
-
--   Si on considère que le risque de divulgation est trop élevé alors il faut mettre en place des méthodes de protection des données
-
+-   Choisir la ou les mesures du risque de divulgation
+-   Seuil de tolérance au risque à fixer
+:::
 
 ## Étape 4: Choix des méthodes
 
--   Choisir une / plusieurs méthode(s) de protection pour réduire les risques de divulgation au seuil de tolérance qu'on s'est fixé
+::: {style="font-size: 80%;"}
+-   Choisir une / plusieurs méthode(s) de protection
 
--   Le choix de la méthode dépend de l'impact sur l'utilité des données de ladite méthode
+-   Comparer les méthodes: niveau de risque vs perte d'utilité
+:::
 
--   Analyse de perte d'utilité due à la protection
+::: {style="text-align:center;"}
+![Arbitrage risque-utilité](img/trade_off_graph_smiley.png){#fig-trade-off-sm width=80% fig-alt="Arbitrage risque-utilité" fig-align="center"}
+:::
+
 
 ## Étape 5: Mise en oeuvre des méthodes
 
-
+::: {style="font-size: 80%;"}
 1.  Choisir un logiciel
 
 2.  Réaliser la mesure des risques de divulgation
 
 3.  Protéger les données
 
-4.  Quantification de l'information perdue
+4.  Quantification de la perte d'information
+:::
 
-5.  Contrôle du processus de protection
+## Étape 6: Contrôles et documentation
+
+::: {style="font-size: 80%;"}
+- Contrôle du processus de protection
 
     -   vérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable
 
-6.  Réalisation d'un document synthétisant les méthodes de protection utilisées et faisant le bilan de l'information perdue
+- Réalisation d'un document synthétisant les méthodes utilisées et faisant le bilan de la perte d'information
 
     -   si possible le transmettre aux utilisateurs des données publiées
-
     -   peut contenir des avertissements sur les précautions à prendre lors de l'utilisation d'un fichier anonymisé
+:::
 
 # Définir le risque
 
