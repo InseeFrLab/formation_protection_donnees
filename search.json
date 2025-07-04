@@ -4,7 +4,7 @@
     "href": "theorie/index.html",
     "title": "Un peu de théorie",
     "section": "",
-    "text": "Les risques de divulgation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLes méthodes suppressives\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLes méthodes perturbatrices\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLa confidentialité différentielle\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMesurer l’utilité\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLes méthodes de protection statistique des données confidentielles\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Les risques de divulgation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLes méthodes suppressives\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLes méthodes perturbatrices\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMesurer l’utilité\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#objectifs",
@@ -25,21 +25,28 @@
     "href": "theorie/supports/methodes-perturbatrices.html#perturbatif-vs-suppressif",
     "title": "Les méthodes perturbatrices",
     "section": "Perturbatif vs suppressif",
-    "text": "Perturbatif vs suppressif\nDans quels cas, les méthodes perturbatrices sont préférables aux méthodes suppressives?\n\nPermettent la prise en charge de diffusions complexes à prendre en charge avec des méthodes suppressives:\n\nnombreux tableaux (diffusion industrielle),\ndiffusion en plusieurs moments\ndifférenciation géographique ou de nomenclature\n\nContrôler la perte d’utilité:\n\nun arbitrage possible en général en jouant sur les paramètres du bruit\npas de suppression =&gt; une information disponible et manipulable"
+    "text": "Perturbatif vs suppressif\nDans quels cas préférer les méthodes perturbatrices aux méthodes suppressives?\n\nPrise en charge de diffusions complexes à traiter avec des méthodes suppressives:\n\nnombreux tableaux (diffusion industrielle),\ndiffusion en plusieurs moments\ndifférenciation géographique ou de nomenclature\n\nContrôler la perte d’utilité plus finement:\n\nun arbitrage possible en général en jouant sur les paramètres du bruit\npas de suppression =&gt; une information disponible et manipulable\n\nUn cadre institutionnel qui autorise un tel usage"
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#perturbatif-vs-suppressif-1",
     "href": "theorie/supports/methodes-perturbatrices.html#perturbatif-vs-suppressif-1",
     "title": "Les méthodes perturbatrices",
     "section": "Perturbatif vs suppressif",
-    "text": "Perturbatif vs suppressif\nLeurs limites:\n\nPerte parfois de caractéristiques basiques (additivité dans les tableaux)\nUne perception du traitement du secret moins immédiate qu’avec le blanchiment\nUne pédagogie nécessaire vis-à-vis du public pour l’utilisation des données\nDes règles historiques de secret à revisiter car adaptées pour des méthodes suppressives"
+    "text": "Perturbatif vs suppressif\nCertaines limites des méthodes perturbatrices:\n\nDans certains cas, perte de caractéristiques basiques des données (additivité dans les tableaux)\nUne perception du traitement du secret moins immédiate qu’avec le blanchiment\nUne pédagogie nécessaire vis-à-vis du public pour l’utilisation des données\nDes règles historiques de secret à revisiter car adaptées pour des méthodes suppressives"
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#méthodes-perturbatrices",
-    "href": "theorie/supports/methodes-perturbatrices.html#méthodes-perturbatrices",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#les-méthodes-post-tabulation-1",
+    "href": "theorie/supports/methodes-perturbatrices.html#les-méthodes-post-tabulation-1",
     "title": "Les méthodes perturbatrices",
-    "section": "Méthodes perturbatrices",
-    "text": "Méthodes perturbatrices\n\nÉtendue de la perturbation:\nSeulement sur les plus petits comptages (données les plus à risque de divulgation)\nSur toutes les cellules: toutes les cellules du tableau sont perturbées (arrondi, Méthode des clés aléatoires (CKM))\nProblématiques des méthodes perturbatrices:\nComment assurer la cohérence des tableaux entre eux ?\nComment préserver l’additivité au sein des tableaux ?"
+    "section": "Les méthodes post-tabulation",
+    "text": "Les méthodes post-tabulation\n\nMéthodes qui sont appliquées sur les données agrégées\nCertaines méthodes (en particulier les arrondis) sont plus adaptées aux comptages qu’aux volumes\nPerturbation de tout ou partie des tableaux selon la méthode"
+  },
+  {
+    "objectID": "theorie/supports/methodes-perturbatrices.html#quelques-enjeux",
+    "href": "theorie/supports/methodes-perturbatrices.html#quelques-enjeux",
+    "title": "Les méthodes perturbatrices",
+    "section": "Quelques enjeux ?",
+    "text": "Quelques enjeux ?\nEn perturbant les données dans des tableaux:\n\nFaut-il tout perturber ou seulement une partie ?\nComment assurer la cohérence entre les tableaux ?\nFaut-il préserver l’additivité au sein des tabeaux ?\n\nEn répondant à ces questions, on s’orientera vers une méthode plutôt qu’une autre."
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#méthodes-darrondi-et-apparentées-1",
@@ -49,46 +56,53 @@
     "text": "Méthodes d’arrondi et apparentées\n\nArrondis déterministes\nArrondis aléatoires\nSmall Count Rounding\nControlled Rounding\n\nDes méthodes principalement adaptées aux tableaux de comptages.\nPour plus d’informations: https://sdctools.github.io/HandbookSDC/05-frequency-tables.html#sec-Rounding_freq (Hundepool et al. 2024)"
   },
   {
+    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple",
+    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple",
+    "title": "Les méthodes perturbatrices",
+    "section": "Un exemple",
+    "text": "Un exemple\nSupposons le tableau de comptage suivant (en gras les informations jugées sensibles)\n\n\n\n\nNombre d’entreprises en fonction de leur implantation et du caractère polluant de leurs activités\n\n\nCaractéristique\nNord\nOuest\nSud\nEst\nTotal\n\n\n\n\nPolluante\n6\n14\n1\n7\n28\n\n\nNon-Polluante\n3\n2\n1\n13\n19\n\n\nTotal\n9\n16\n2\n20\n47\n\n\n\n\n\nTable 2: Nombre d’entreprises en fonction de leur implantation et du caractère polluant de leurs activités"
+  },
+  {
     "objectID": "theorie/supports/methodes-perturbatrices.html#arrondis-déterministes-ou-aléatoires",
     "href": "theorie/supports/methodes-perturbatrices.html#arrondis-déterministes-ou-aléatoires",
     "title": "Les méthodes perturbatrices",
     "section": "Arrondis déterministes ou aléatoires",
-    "text": "Arrondis déterministes ou aléatoires\n\nArrondi de tous les comptages\nUn paramètre: la base d’arrondi \\(b\\)\nArrondi déterministe\n\nUn comptage est toujours arrondi de la même manière\n\nArrondi aléatoire:\n\nun comptage est arrondi aléatoirement à l’inférieur ou au supérieur\nUne méthode non biaisée par nature\nUne meilleure protection que l’arrondi déterministe\n\n\nExemple avec une base \\(10\\)\n\nArrondi déterministe: \\(X=23\\) =&gt; \\(X^\\prime = 20\\).\nArrondi aléatoire: \\(X=23\\) =&gt; \\(X^\\prime = 20\\) (probabilité de \\(0.7\\)) ou \\(X^\\prime = 30\\) (probabilité de \\(0.3\\))."
+    "text": "Arrondis déterministes ou aléatoires\n\n\n\n\n\n\nArrondir\n\n\nArrondir un comptage \\(x\\), c’est ramener sa valeur à un multiple de la base d’arrondi \\(b\\) choisie:\n\nSoit au multiple le plus proche (arrondi déterministe)\n\n=&gt; Un arrondi déterministe renvoie toujours la même valeur\n\nSoit, aléatoirement, à l’un des deux multiples les plus proches (arrondi aléatoire).\n\nL’arrondi est sans biais en choisissant les probabilités adéquates.\nCette technique offre une meilleure protection\n\n\n\n\n\n\n\n\n\n\n\nExemple\n\n\n\\(b=10\\) et \\(x=23\\):\n\nArrondi déterministe: \\(x^\\prime = 20\\).\nArrondi aléatoire:\n\n\\(x^\\prime = 20\\) avec probabilité de \\(0.7\\) ou\n\\(x^\\prime = 30\\) probabilité de \\(0.3\\)."
+  },
+  {
+    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-1",
+    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-1",
+    "title": "Les méthodes perturbatrices",
+    "section": "Un exemple",
+    "text": "Un exemple\n\n\n\n\nApplication d’un arrondi déterministe de base \\(b=5\\) (Moyenne des écarts absolus: \\(1.4\\).)\n\n\nCaractéristique\nNord\nOuest\nSud\nEst\nTotal\n\n\n\n\nPolluante\n5\n15\n0\n5\n30\n\n\nNon-Polluante\n5\n0\n0\n15\n20\n\n\nTotal\n10\n15\n0\n20\n45\n\n\n\n\n\nTable 3: Application d’un arrondi déterministe de base \\(b=5\\) (Moyenne des écarts absolus: \\(1.4\\).)"
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#arrondis-des-petits-comptages",
     "href": "theorie/supports/methodes-perturbatrices.html#arrondis-des-petits-comptages",
     "title": "Les méthodes perturbatrices",
     "section": "Arrondis des petits comptages",
-    "text": "Arrondis des petits comptages\n\nAlgorithme Small Count Rounding\nLes comptages sensibles (en général les petits comptages) sont systématiquement arrondis\nQuelques comptages supplémentaires sont arrondis pour conserver l’additivité dans les tableaux\nAvantages:\n\nNe perturbe qu’une partie du tableau\nMinimise les perturbations globales\nAssure la conservation de l’additivité\n\nLimite principale:\n\nNe permet pas d’assurer une protection systématique des cas de différenciation\n\nImplémenté dans le package R GaussSuppression"
+    "text": "Arrondis des petits comptages\n\n\n\n\n\n\nSmall Count Rounding\n\n\nAlgorithme appliqué à des tableaux de données assurant:\n\nl’arrondi des petits comptages (cad les plus sensibles) dans une base \\(b\\)\ndes comptages supplémentaires sont déviés pour:\n\nconserver l’additivité dans les tableaux\net minimiser la perturbation globale\n\n\nTechnique implémentée dans le package R SmallCountRounding"
+  },
+  {
+    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-2",
+    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-2",
+    "title": "Les méthodes perturbatrices",
+    "section": "Un exemple",
+    "text": "Un exemple\n\n\n\n\nApplication d’un algorithme de type Small Count Rounding (Moyenne des écarts absolus: \\(1.07\\).)\n\n\nCaractéristique\nNord\nOuest\nSud\nEst\nTotal\n\n\n\n\nPolluante\n6\n14\n0\n7\n28\n\n\nNon-Polluante\n5\n0\n0\n13\n18\n\n\nTotal\n11\n14\n0\n20\n45\n\n\n\n\n\nTable 4: Application d’un algorithme de type Small Count Rounding (Moyenne des écarts absolus: \\(1.07\\).)"
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#arrondi-contrôlé",
     "href": "theorie/supports/methodes-perturbatrices.html#arrondi-contrôlé",
     "title": "Les méthodes perturbatrices",
     "section": "Arrondi contrôlé",
-    "text": "Arrondi contrôlé\n\nControlled Rounding\nToutes les cases d’un tableau sont arrondies en respectant une base \\(b\\)\nUn algorithme assure en même temps:\n\nla conservation de l’additivité dans le tableau\nla minimisation de la somme des différences absolues entre valeurs originales et arrondies\n\nImplémenté dans le logiciel Tau-ARGUS\n\navec prise en compte des hiérarchies"
+    "text": "Arrondi contrôlé\n\n\n\n\n\n\nControlled Rounding\n\n\nAlgorithme appliqué à des tableaux de données assurant:\n\nl’arrondi de tous les comptages selon une base \\(b\\)\ntout en assurant:\n\nla conservation de l’additivité dans les tableaux\nla minimisation de la somme des différences absolues entre valeurs originales et arrondies\n\n\nTechnique implémentée dans le logiciel Tau-ARGUS"
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple",
-    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-3",
+    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-3",
     "title": "Les méthodes perturbatrices",
     "section": "Un exemple",
-    "text": "Un exemple\nSupposons le tableau de comptage suivant (en gras les informations jugées sensibles)\n\n\n\n\n\n\n\n\nNord\nOuest\nSud\nEst\nTotal\n\n\n\n\nPolluante\n6\n14\n1\n7\n28\n\n\nNon-Polluante\n3\n2\n1\n13\n19\n\n\nTotal\n9\n16\n2\n20\n47\n\n\n\n\n\nTable 2: Nombre d’entreprises en fonction de leur implantation et du caractère polluant de leurs activités"
-  },
-  {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#small-count-rounding",
-    "href": "theorie/supports/methodes-perturbatrices.html#small-count-rounding",
-    "title": "Les méthodes perturbatrices",
-    "section": "Small Count Rounding",
-    "text": "Small Count Rounding\n\n\n\n\n\n\n\n\nNord\nOuest\nSud\nEst\nTotal\n\n\n\n\nPolluante\n6\n14\n0\n7\n28\n\n\nNon-Polluante\n5\n0\n0\n13\n18\n\n\nTotal\n11\n14\n0\n20\n45\n\n\n\n\n\nTable 3: Application d’un algorithme de type Small Count Rounding (Moyenne des écarts absolus: \\(1.067\\).)"
-  },
-  {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#arrondi-contrôlé-1",
-    "href": "theorie/supports/methodes-perturbatrices.html#arrondi-contrôlé-1",
-    "title": "Les méthodes perturbatrices",
-    "section": "Arrondi contrôlé",
-    "text": "Arrondi contrôlé\n\n\n\n\n\n\n\n\nNord\nOuest\nSud\nEst\nTotal\n\n\n\n\nPolluante\n5\n15\n0\n5\n25\n\n\nNon-Polluante\n5\n2\n0\n15\n20\n\n\nTotal\n10\n15\n0\n20\n45\n\n\n\n\n\nTable 4: Application d’un arrondi contrôlé avec une base \\(b=5\\) (Moyenne des écarts absolus: \\(1.467\\).)"
+    "text": "Un exemple\n\n\n\n\nApplication d’un arrondi contrôlé avec une base \\(b=5\\) (Moyenne des écarts absolus: \\(1.5\\).)\n\n\nCaractéristique\nNord\nOuest\nSud\nEst\nTotal\n\n\n\n\nPolluante\n5\n15\n0\n5\n25\n\n\nNon-Polluante\n5\n2\n0\n15\n20\n\n\nTotal\n10\n15\n0\n20\n45\n\n\n\n\n\nTable 5: Application d’un arrondi contrôlé avec une base \\(b=5\\) (Moyenne des écarts absolus: \\(1.5\\).)"
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#la-distribution-de-probabilités",
@@ -98,11 +112,11 @@
     "text": "La distribution de probabilités\nPropriétés :\n\nUne déviation maximale D et une variance V sont fixés en amont\nLe bruit injecté est sans biais\nLa loi de probabilité de la déviation injectée est définie à partir d’une matrice de transition"
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-1",
-    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-1",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-4",
+    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-4",
     "title": "Les méthodes perturbatrices",
     "section": "Un exemple",
-    "text": "Un exemple\n\n\n\n\n\n\n\n\nNord\nOuest\nSud\nEst\nTotal\n\n\n\n\nPolluante\n4\n15\n0\n8\n28\n\n\nNon-Polluante\n1\n3\n2\n15\n20\n\n\nTotal\n10\n16\n4\n21\n46\n\n\n\n\n\nTable 5: Application de la CKM avec \\(D = [0;5]\\) et \\(V = 3\\)"
+    "text": "Un exemple\n\n\n\n\nApplication de la CKM avec \\(D = 5\\) et \\(V = 3\\) (Moyenne des écarts absolus: \\(1.1\\))\n\n\nCaractéristique\nNord\nOuest\nSud\nEst\nTotal\n\n\n\n\nPolluante\n4\n15\n0\n8\n28\n\n\nNon-Polluante\n1\n3\n2\n15\n20\n\n\nTotal\n10\n16\n4\n21\n46\n\n\n\n\n\nTable 6: Application de la CKM avec \\(D = 5\\) et \\(V = 3\\) (Moyenne des écarts absolus: \\(1.1\\))"
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#les-usages",
@@ -112,130 +126,158 @@
     "text": "Les usages\nLa méthode est utilisée par plusieurs INS:\n\nDepuis 2006, ABS met à disposition un outil de requêtage en ligne pour obtenir des données de son recensement quinquennal. Les données sont protégées avec la CKM. (https://tablebuilder.abs.gov.au)\nLa CKM est une des méthodes préconisées par Eurostat pour protéger les données du Census européen 2021.\nDans ce cadre, Destatis utilise la CKM pour diffuser des données sur des grilles de 500m.\n2024/2025: l’Insee diffuse les données sur les Quartiers de la Politique de la Ville (QPV)."
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-pour-illustrer-la-ckm",
-    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-pour-illustrer-la-ckm",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#etape-1-création-dune-clé-individuelle-aléatoire",
+    "href": "theorie/supports/methodes-perturbatrices.html#etape-1-création-dune-clé-individuelle-aléatoire",
     "title": "Les méthodes perturbatrices",
-    "section": "Un exemple pour illustrer la CKM",
-    "text": "Un exemple pour illustrer la CKM\nEtape 1 : Construction de la matrice de transition\n\nProbabilités de transition pour \\(D = 3\\) et \\(V = 1.5\\)"
+    "section": "Etape 1: Création d’une clé individuelle aléatoire",
+    "text": "Etape 1: Création d’une clé individuelle aléatoire\n\n\n\n\n\n\n\nFigure 1: Arbitrer"
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-pour-illustrer-la-ckm-1",
-    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-pour-illustrer-la-ckm-1",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#etape-2-construction-du-tableau",
+    "href": "theorie/supports/methodes-perturbatrices.html#etape-2-construction-du-tableau",
     "title": "Les méthodes perturbatrices",
-    "section": "Un exemple pour illustrer la CKM",
-    "text": "Un exemple pour illustrer la CKM\nEtape 2 : Création d’une clé individuelle aléatoire\nSupposons que la base \\(\\mathcal{B}\\) soit composé des 6 individus suivant et qu’à chacun on associe une clé :\n\n\n\n\n\n\n\nid\nVille\nEcole\nKEY\n\n\n\n\n1\nRennes\nEnsai\n0.9177275\n\n\n2\nParis\nMines\n0.1850062\n\n\n3\nRennes\nEnsai\n0.6266963\n\n\n4\nLyon\nCentrale\n0.1117820\n\n\n5\nMarseille\nCentrale\n0.6496634\n\n\n6\nLille\nCentrale\n0.2813433\n\n\n\n\n\nTable 6: Ajout d’une clé aléatoire dans le jeu de données individuelles"
+    "section": "Etape 2: Construction du tableau",
+    "text": "Etape 2: Construction du tableau\n\n\n\n\n\n\n\nFigure 2: Construction du tableau et des clés de chaque case"
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-pour-illustrer-la-ckm-2",
-    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-pour-illustrer-la-ckm-2",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#etape-3-les-probabilités-de-transition",
+    "href": "theorie/supports/methodes-perturbatrices.html#etape-3-les-probabilités-de-transition",
     "title": "Les méthodes perturbatrices",
-    "section": "Un exemple pour illustrer la CKM",
-    "text": "Un exemple pour illustrer la CKM\n\nEtape 3 : Construction de la clé d’une cellule\nNous souhaitons diffuser le nombre d’individus selon leur école.\nOn a :\n\n\n\n\nEcole\ni\nindividus\nSkey\nCK\n\n\n\n\nEnsai\n2\n{1,3}\n1.544424\n0.544425\n\n\nMines\n1\n{2}\n0.1805062\n0.1805062\n\n\nCentrale\n3\n{4,5,6}\n1.0422789\n0.42789\n\n\nTotal\n6\n{1,2,3,4,5,6}\n2.772219\n0.772219"
+    "section": "Etape 3: Les probabilités de transition",
+    "text": "Etape 3: Les probabilités de transition\n\n\n\n\n\n\n\nFigure 3: Matrice de transition pour D=2 et V=1"
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-pour-illustrer-la-ckm-3",
-    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-pour-illustrer-la-ckm-3",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#etape-4-déterminer-la-perturbation-à-injecter",
+    "href": "theorie/supports/methodes-perturbatrices.html#etape-4-déterminer-la-perturbation-à-injecter",
     "title": "Les méthodes perturbatrices",
-    "section": "Un exemple pour illustrer la CKM",
-    "text": "Un exemple pour illustrer la CKM\n\nEtape 4 : Déterminer la perturbation à injecter\n\n\n\ni\nj\np\nv\np_int_lb\np_int_ub\n\n\n\n\n0\n0\n1.00000000\n0\n0.00000000\n1.00000000\n\n\n1\n0\n0.37967089\n-1\n0.00000000\n0.37967089\n\n\n1\n1\n0.37967089\n0\n0.37967089\n0.75934178\n\n\n1\n2\n0.13660124\n1\n0.75934178\n0.89594302\n\n\n1\n3\n0.06910130\n2\n0.89594302\n0.96504432\n\n\n1\n4\n0.03495568\n3\n0.96504432\n1.00000000\n\n\n2\n0\n0.11466600\n-2\n0.00000000\n0.11466600\n\n\n2\n1\n0.24491770\n-1\n0.11466600\n0.35958370\n\n\n2\n2\n0.30449462\n0\n0.35958370\n0.66407832\n\n\n2\n3\n0.22034995\n1\n0.66407832\n0.88442827\n\n\n2\n4\n0.09281544\n2\n0.88442827\n0.97724371\n\n\n2\n5\n0.02275629\n3\n0.97724371\n1.00000000\n\n\n3\n0\n0.01792237\n-3\n0.00000000\n0.01792237\n\n\n3\n1\n0.08898737\n-2\n0.01792237\n0.10690974\n\n\n3\n2\n0.23274919\n-1\n0.10690974\n0.33965893\n\n\n3\n3\n0.32068214\n0\n0.33965893\n0.66034107\n\n\n3\n4\n0.23274919\n1\n0.66034107\n0.89309026\n\n\n3\n5\n0.08898737\n2\n0.89309026\n0.98207763\n\n\n3\n6\n0.01792237\n3\n0.98207763\n1.00000000"
+    "section": "Etape 4 : Déterminer la perturbation à injecter",
+    "text": "Etape 4 : Déterminer la perturbation à injecter\n\n\n\n\n\n\n\nFigure 4: La perturbation à injecter” fig-align=“center"
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-pour-illustrer-la-ckm-4",
-    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-pour-illustrer-la-ckm-4",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#etape-5-construire-le-tableau-final",
+    "href": "theorie/supports/methodes-perturbatrices.html#etape-5-construire-le-tableau-final",
     "title": "Les méthodes perturbatrices",
-    "section": "Un exemple pour illustrer la CKM",
-    "text": "Un exemple pour illustrer la CKM\n\nEtape 5 : Conclusion\n\n\n\n\nEcole\nValeur originale i\nValeur pertubée j\n\n\n\n\n\n\nEnsai\n2\n2\n\n\n\n\nMines\n1\n0\n\n\n\n\nCentrale\n3\n3\n\n\n\n\nTotal\n6\n7"
+    "section": "Etape 5 : Construire le tableau final",
+    "text": "Etape 5 : Construire le tableau final\n\n\n\n\n\n\n\nFigure 5: Table après perturbation"
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#avantages-inconvénients",
     "href": "theorie/supports/methodes-perturbatrices.html#avantages-inconvénients",
     "title": "Les méthodes perturbatrices",
     "section": "Avantages / inconvénients",
-    "text": "Avantages / inconvénients\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nFacile d’implémentation\nPerte d’additivité\n\n\nAssure la cohérence des tableaux\nPerception potentielle d’une non-protection de la part des utilisateurs\n\n\nRéduit drastiquement le risque de différenciation géographique\n\n\n\nCompatible avec le requêtage / la diffusion sur mesure\n\n\n\nUtilité statistique des données très forte par rapport à des arrondis ou des suppressions"
+    "text": "Avantages / inconvénients\n\n\n\n\nAvantages et onconvénients de la méthode des clés aléatoires\n\n\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nFacile d’implémentation\nPerte de l’additivité\n\n\nCohérence des tableaux\nPerception de gestion du secret moins facile\n\n\nRéduit les risques de différenciation\nCumulation des bruits pour les statistiques de second ordre (ratios par ex.)\n\n\nCompatible avec le requêtage\n\n\n\nCompatible avec une diffusion sur mesure\n\n\n\nA protection égale, meilleure utilité que les arrondis\n\n\n\n\n\n\nTable 7: Avantages et onconvénients de la méthode des clés aléatoires"
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-2",
-    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-2",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-5",
+    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-5",
     "title": "Les méthodes perturbatrices",
     "section": "Un exemple",
-    "text": "Un exemple\n\n\n\n\nRégion\nAge\nHeures travaillées\nPoids\n\n\n\n\n\npar semaine\nde sondage\n\n\n\n92\n36\n17\n1000\n\n\n\n75\n41\n35\n2000\n\n\n\n75\n52\n0\n1100\n\n\n\n94\n45\n35\n2500\n\n\n\n75\n41\n0\n1900\n\n\n\n92\n26\n46\n1500\n\n\n\n92\n31\n38\n800\n\n\n\n94\n48\n30\n1200\n\n\n\n\n\nIl y a des croisements uniques pour la clef Age \\(\\times\\) Région"
+    "text": "Un exemple\n\n\n\n\nDes données individuelles avec des uniques sur les croisements Âge \\(\\times\\) Région\n\n\nRégion\nÂge\nHeures travaillées par semaine\nRevenu mensuel\n\n\n\n\n92\n36\n17\n1000\n\n\n75\n41\n35\n2000\n\n\n75\n52\n0\n1100\n\n\n94\n45\n35\n2500\n\n\n75\n41\n0\n1900\n\n\n92\n26\n46\n1500\n\n\n92\n31\n38\n800\n\n\n94\n48\n30\n1200\n\n\n\n\n\nTable 8: Des données individuelles avec des uniques sur les croisements Âge \\(\\times\\) Région"
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-3",
-    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-3",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-6",
+    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-6",
     "title": "Les méthodes perturbatrices",
     "section": "Un exemple",
-    "text": "Un exemple\n\n\n\n\nRégion\nAge\nHeures travaillées\nPoids\n\n\n\n\npar semaine\nde sondage\n\n\n92\n36 31\n17\n1000\n\n\n75\n41 45\n35\n2000\n\n\n75\n52 45\n0\n1100\n\n\n94\n45 47\n35\n2500\n\n\n75\n41 45\n0\n1900\n\n\n92\n26 31\n46\n1500\n\n\n92\n31 31\n38\n800\n\n\n94\n48 47\n30\n1200\n\n\n\n\n\\(\\mu_{red} = 45\\), \\(\\mu_{yellow} = 31\\), \\(\\mu_{green} = 47\\)"
+    "text": "Un exemple\n\n\n\n\nDes données individuelles avec des uniques sur les croisements Âge \\(\\times\\) Région\n\n\n\n\n\n\n\n\nRégion\nÂge\nHeures travaillées par semaine\nRevenu mensuel\n\n\n\n\n92\n36 31\n17\n1000\n\n\n75\n41 45\n35\n2000\n\n\n75\n52 45\n0\n1100\n\n\n94\n45 47\n35\n2500\n\n\n75\n41 45\n0\n1900\n\n\n92\n26 31\n46\n1500\n\n\n92\n31 31\n38\n800\n\n\n94\n48 47\n30\n1200\n\n\n\n\n\nTable 9: Des données individuelles avec des uniques sur les croisements Âge \\(\\times\\) Région\n\n\n\n\n\n\\(\\mu_{red} = 45\\), \\(\\mu_{yellow} = 31\\), \\(\\mu_{green} = 47\\)"
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#paramètres",
     "href": "theorie/supports/methodes-perturbatrices.html#paramètres",
     "title": "Les méthodes perturbatrices",
     "section": "Paramètres",
-    "text": "Paramètres\n\nUn grand nombre de sorties possibles pour cette méthode selon :\n\nla définition d’homogénéité choisie\nl’algorithme utilisé pour construire les groupes\nla détermination de la valeur de remplacement\n\nLes paramètres à définir :\n\nTaille \\(g\\) de chaque groupe (plus la taille du groupe est grande, plus grande sera la perte d’information, et plus celle-ci est grande, plus le niveau de protection est élevé ..)\nQuelles variables sont utilisées pour calculer la distance ?\nQuelles statistiques choisir une fois que les groupes ont été formés ? (moyenne, médiane ?)"
+    "text": "Paramètres\nUn grand nombre de sorties possibles pour cette méthode selon :\n\nla définition d’homogénéité choisie\nl’algorithme utilisé pour construire les groupes\nla détermination de la valeur de remplacement\n\nLes paramètres à définir :\n\nTaille \\(g\\) de chaque groupe (plus la taille du groupe est grande, plus grande sera la perte d’information, et plus celle-ci est grande, plus le niveau de protection est élevé ..)\nQuelles variables sont utilisées pour calculer la distance ?\nQuelles statistiques choisir une fois que les groupes ont été formés ? (moyenne, médiane ?)"
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#minimiser-la-variance-intra-groupe",
     "href": "theorie/supports/methodes-perturbatrices.html#minimiser-la-variance-intra-groupe",
     "title": "Les méthodes perturbatrices",
     "section": "Minimiser la variance intra-groupe",
-    "text": "Minimiser la variance intra-groupe\n\nL’algorithme cherche à minimiser la somme des carrés intra-groupe \\[SSE = \\sum_{i=1}^g\\sum_{j \\in i} (x_{ij}-\\bar x_{i})^T(x_{ij}-\\bar x_{i})\\]"
+    "text": "Minimiser la variance intra-groupe\n\n\n\n\n\n\n\nFigure 6: Table après perturbation\n\n\n\n\nL’algorithme cherche à minimiser la somme des carrés intra-groupe:\n\\[SSE = \\sum_{i=1}^g\\sum_{j \\in i} (x_{ij}-\\bar x_{i})^T(x_{ij}-\\bar x_{i})\\]"
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#avantages-inconvénients-1",
     "href": "theorie/supports/methodes-perturbatrices.html#avantages-inconvénients-1",
     "title": "Les méthodes perturbatrices",
     "section": "Avantages / inconvénients",
-    "text": "Avantages / inconvénients\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nAdapté au \\(k\\)-anonymat\nTemps de calcul important\n\n\nConstruction de classes pertinentes"
+    "text": "Avantages / inconvénients\n\n\n\n\nAvantages et inconvénients de l’injection d’un bruit additif\n\n\nAvantages\nInconvénients\n\n\n\n\nAdapté au \\(k\\)-anonymat\nTemps de calcul important\n\n\nDes classes statistiquement pertinentes\n\n\n\n\n\n\nTable 10: Avantages et inconvénients de l’injection d’un bruit additif"
+  },
+  {
+    "objectID": "theorie/supports/methodes-perturbatrices.html#injection-de-bruit-1",
+    "href": "theorie/supports/methodes-perturbatrices.html#injection-de-bruit-1",
+    "title": "Les méthodes perturbatrices",
+    "section": "Injection de bruit",
+    "text": "Injection de bruit\n\nMéthode adaptée pour traiter les variables continues\nEn général, on injecte un bruit additif sans biais et à variance fixe\nEnjeu principal: comment bruiter en préservant les caractéristiuqes des variables et de leurs éventuels liens ?"
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#perturbation-par-un-bruit-additif",
     "href": "theorie/supports/methodes-perturbatrices.html#perturbation-par-un-bruit-additif",
     "title": "Les méthodes perturbatrices",
     "section": "Perturbation par un bruit additif",
-    "text": "Perturbation par un bruit additif\n\n\nAdaptée pour les variables continues\nPas d’hypothèses faites sur les valeurs possiblement prises par les variables à perturber\nLe bruit ajouté est généralement continu et d’espérance nulle"
+    "text": "Perturbation par un bruit additif\n\nUn bruit est ajouté à chaque valeur observée\nGénéralement un bruit gaussien d’espérance nulle\nAdapté aux variables continues de faible amplitude"
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#trois-types-de-perturbation-par-un-bruit-additif",
-    "href": "theorie/supports/methodes-perturbatrices.html#trois-types-de-perturbation-par-un-bruit-additif",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#bruits-additifs-indépendants",
+    "href": "theorie/supports/methodes-perturbatrices.html#bruits-additifs-indépendants",
     "title": "Les méthodes perturbatrices",
-    "section": "Trois types de perturbation par un bruit additif",
-    "text": "Trois types de perturbation par un bruit additif\n\n\nBruits indépendants\n\nLes moyennes et covariances sont préservées\nLes variances et les coefficients de corrélation ne sont pas conservés\n\nBruits corrélés\n\nConservation des coefficients de corrélation et de l’espérance\nPréférable à l’ajout des bruits indépendants car on peut obtenir des estimations non biaisées pour plusieurs statistiques importantes"
+    "section": "Bruits additifs indépendants",
+    "text": "Bruits additifs indépendants\n\nChaque variable est bruitée indépendamment des autres variables\nLes moyennes et covariances de chaque variable perturbée sont préservées\nMais, les variances et les coefficients de corrélation ne sont pas conservés"
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#trois-types-de-perturbation-par-un-bruit-additif-1",
-    "href": "theorie/supports/methodes-perturbatrices.html#trois-types-de-perturbation-par-un-bruit-additif-1",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#bruits-additifs-corrélés",
+    "href": "theorie/supports/methodes-perturbatrices.html#bruits-additifs-corrélés",
     "title": "Les méthodes perturbatrices",
-    "section": "Trois types de perturbation par un bruit additif",
-    "text": "Trois types de perturbation par un bruit additif\n\nCes deux méthodes sont rarement utilisées en pratique car apporte une protection relativement faible contre la divulgation d’identité (valeurs extrêmes).\n\nAddition de bruit et transformation linéaire\n\nMatrice de variance-covariance des variables perturbées est un estimateur sans biais de la matrice de variance-covariance des variables originelles"
+    "section": "Bruits additifs corrélés",
+    "text": "Bruits additifs corrélés\n\nLa matrice de variance-covariance des bruits est proportionnelle à la matrice de variance covariance des valeurs originales\nConservation de la moyenne et des coefficients de corrélation\nPréférable à l’ajout des bruits indépendants car on peut obtenir des estimations non biaisées pour plusieurs statistiques importantes"
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#avantages-inconvénients-2",
     "href": "theorie/supports/methodes-perturbatrices.html#avantages-inconvénients-2",
     "title": "Les méthodes perturbatrices",
     "section": "Avantages / inconvénients",
-    "text": "Avantages / inconvénients\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nTraitement de variables sensibles continues\nPas adapté aux traitements des outliers de grandes valeurs"
+    "text": "Avantages / inconvénients\n\n\n\n\nAvantages et inconvénients de l’injection d’un bruit additif\n\n\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nTraitement de variables sensibles continues\nPas adapté aux traitements des outliers de grandes valeurs\n\n\nPréservations de statistiques importantes\n\n\n\n\n\n\nTable 11: Avantages et inconvénients de l’injection d’un bruit additif"
+  },
+  {
+    "objectID": "theorie/supports/methodes-perturbatrices.html#targeted-record-swapping-trs-1",
+    "href": "theorie/supports/methodes-perturbatrices.html#targeted-record-swapping-trs-1",
+    "title": "Les méthodes perturbatrices",
+    "section": "Targeted Record Swapping (TRS)",
+    "text": "Targeted Record Swapping (TRS)\n\n\n\n\n\n\nDéfinition\n\n\nLe Target Record Swapping (TRS) est une méthode s’appliquant directement sur un jeu de données individuelles pour réduire les risques de ré-identification.\nIl consiste à échanger la localisation de certains individus jugés à risque avec d’autres individus d’une autre entité géographique.\nD’où son nom: le swapping, c’est-à-dire l’échange, va concerner des unités de la base (les records) détectés à l’avance, devenant ainsi les cibles (target) sur lesquelles l’échange se concentrera."
+  },
+  {
+    "objectID": "theorie/supports/methodes-perturbatrices.html#les-individus-à-risque-cibles",
+    "href": "theorie/supports/methodes-perturbatrices.html#les-individus-à-risque-cibles",
+    "title": "Les méthodes perturbatrices",
+    "section": "Les individus à risque (cibles)",
+    "text": "Les individus à risque (cibles)\n\nCible les individus à risque:\n\nDétection par \\(k\\)-anonymat: croisements de quasi-identifiants de moins de \\(k\\) individus\nDétection par \\(l\\)-diversité: homogénéité d’un groupe sur une variable sensible\nMesure probabiliste du risque individuel\nPrincipalement un risque de ré-identification"
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#une-méthode-très-utilisée",
     "href": "theorie/supports/methodes-perturbatrices.html#une-méthode-très-utilisée",
     "title": "Les méthodes perturbatrices",
     "section": "Une méthode très utilisée",
-    "text": "Une méthode très utilisée\n\n\nInsee: Données européennes du recensement 2021\nEurostat préconise cette méthode (couplée à la CKM) pour la diffusion du Census européen\nUS Census Bureau: Recensement US 2010\nONS (UK): Recensement depuis 2010"
+    "text": "Une méthode très utilisée\n\nInsee: Données européennes du recensement 2021\nEurostat préconise cette méthode (couplée à la CKM) pour la diffusion du Census européen\nUS Census Bureau: Recensement US 2010\nONS (UK): Recensement depuis 2010"
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-4",
-    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-4",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-7",
+    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-7",
     "title": "Les méthodes perturbatrices",
     "section": "Un exemple",
-    "text": "Un exemple"
+    "text": "Un exemple\n\n\n\n\n\n\n\nFigure 7: Avant Swapping"
+  },
+  {
+    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-8",
+    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-8",
+    "title": "Les méthodes perturbatrices",
+    "section": "Un exemple",
+    "text": "Un exemple\n\n\n\n\n\n\n\nFigure 8: Après Swapping"
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#avantages-inconvénients-3",
     "href": "theorie/supports/methodes-perturbatrices.html#avantages-inconvénients-3",
     "title": "Les méthodes perturbatrices",
     "section": "Avantages / inconvénients",
-    "text": "Avantages / inconvénients\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nTrès efficace pour traiter différents types de risque.\nNécessite de fixer un grand nombre de paramètres (mesure de risque, variables similarité, taux de swapping).\n\n\nMéthode souple, adaptation à des cas très différents (structures ménages-individus par ex.).\nBruit injecté dans les données n’est pas vraiment contrôlable\n\n\nPréserve les agrégats du niveau géographique au sein duquel le swapping a été opéré.\nGénère localement du biais dans les données."
+    "text": "Avantages / inconvénients\n\n\n\n\nAvantages et inconvénients du TRS\n\n\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nEfficace pour traiter différents types de risque\nNécessite de fixer un grand nombre de paramètres (mesure de risque, variables similarité, taux de swapping)\n\n\nMéthode souple, adaptation à des cas très différents (structures ménages-individus par ex.)\nBruit injecté dans les données n’est pas vraiment contrôlable\n\n\nPréserve les agrégats du niveau géographique au sein duquel le swapping a été opéré.\nGénère localement du biais dans les données\n\n\nConserve l’additivité des tableaux générés à partir des micro-données bruitées.\n\n\n\n\n\n\nTable 12: Avantages et inconvénients du TRS"
   },
   {
     "objectID": "theorie/supports/methodes-perturbatrices.html#méthode-pram",
@@ -245,22 +287,22 @@
     "text": "Méthode PRAM\n\nPermet de traiter les variables sensibles catégorielles en bruitant les données.\nConsiste à modifier aléatoirement l’appartenance des individus à une classe donnée.\nMéthode particulièrement intéressante pour traiter les divulgations d’attributs sensibles : un attaquant ne peut avoir aucune certitude sur l’attribut d’une observation."
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-5",
-    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-5",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-9",
+    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-9",
     "title": "Les méthodes perturbatrices",
     "section": "Un exemple",
     "text": "Un exemple\n\n\n\nRegion\nAge\nSituation pro.\n\n\n92\n14\nInactif\n\n\n75\n41\nChômeur\n\n\n75\n52\nActif\n\n\n94\n45\nActif\n\n\n75\n41\nChômeur\n\n\n92\n26\nActif\n\n\n92\n31\nActif\n\n\n94\n14\nInactif\n\n\n\n\nInactif : 2 ind., Chômeur = 2 ind., Actif = 4 ind."
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-6",
-    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-6",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-10",
+    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-10",
     "title": "Les méthodes perturbatrices",
     "section": "Un exemple",
     "text": "Un exemple\n\n\n\nRegion\nAge\nSituation pro.\nSituation pro. (PRAM)\n\n\n92\n14\nInactif\nChômeur\n\n\n75\n41\nChômeur\nActif\n\n\n75\n52\nActif\nActif\n\n\n94\n45\nActif\nActif\n\n\n75\n41\nChômeur\nInactif\n\n\n92\n26\nActif\nActif\n\n\n92\n31\nActif\nChômeur\n\n\n94\n48\nInactif\nInactif\n\n\n\n\nInactif : 2 ind., Chômeur = 2 ind., Actif = 4 ind."
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-7",
-    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-7",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#un-exemple-11",
+    "href": "theorie/supports/methodes-perturbatrices.html#un-exemple-11",
     "title": "Les méthodes perturbatrices",
     "section": "Un exemple",
     "text": "Un exemple\n\n\n\nRegion\nAge\nSituation pro.\nSituation pro. (PRAM)\n\n\n92\n14\nInactif\nChômeur\n\n\n75\n41\nChômeur\nActif\n\n\n75\n52\nActif\nActif\n\n\n94\n45\nActif\nActif\n\n\n75\n41\nChômeur\nInactif\n\n\n92\n26\nActif\nActif\n\n\n92\n31\nActif\nChômeur\n\n\n94\n48\nInactif\nInactif\n\n\n\n\nAttention aux incohérences !"
@@ -333,21 +375,35 @@
     "href": "theorie/supports/methodes-perturbatrices.html#avantages-inconvénients-4",
     "title": "Les méthodes perturbatrices",
     "section": "Avantages / inconvénients",
-    "text": "Avantages / inconvénients\n\n\n\nAvantages\nInconvénients\n\n\n\n\nPermet de fournir le niveau de protection associé au bruit injecté en calculant les probabilités de transition inverses.\nCréation d’éventuelles combinaisons impossibles (ex : enfant à la retraite).\n\n\nConserve l’additivité des tableaux générés à partir des micro-données bruitées.\nDifficile de définir une matrice de protection qui prend en compte les liens avec toutes les variables.\n\n\n.\n."
+    "text": "Avantages / inconvénients\n\n\n\n\nAvantages et inconvénients de PRAM\n\n\n\n\n\n\nAvantages\nInconvénients\n\n\n\n\nPermet de fournir le niveau de protection associé au bruit injecté en calculant les probabilités de transition inverses\nCréation d’éventuelles combinaisons impossibles (ex : enfant à la retraite).\n\n\nConserve l’additivité des tableaux générés à partir des micro-données bruitées.\nDifficile de définir une matrice de protection qui prend en compte les liens avec toutes les variables.\n\n\n\n\n\nTable 13: Avantages et inconvénients de PRAM"
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#les-méthodes-de-génération-i",
-    "href": "theorie/supports/methodes-perturbatrices.html#les-méthodes-de-génération-i",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#modélisation-séquentielle",
+    "href": "theorie/supports/methodes-perturbatrices.html#modélisation-séquentielle",
     "title": "Les méthodes perturbatrices",
-    "section": "Les méthodes de génération (I)",
-    "text": "Les méthodes de génération (I)\n\nLes principales méthodes de génération sont:\n\nModélisation séquentielle conditionnelle (Fully Conditional Specification, FCS): Chaque variable est modélisée l’une après l’autre, conditionnellement aux variables déjà modélisées.\n\nMéthode très populaire et efficace\nPour générer la \\(p^e\\) variable, on cherche à modéliser sa distribution conditionnelle : \\[f_{X_p | X_1 , X_2 , \\dots , X_{p-1}}\\]\nModélisation paramétrique (régression linéaire ou logistique) ou non paramétrique (en particulier méthodes à base d’arbres: CART, Boosting, random forest, XGBoost)."
+    "section": "Modélisation séquentielle",
+    "text": "Modélisation séquentielle\n\n\n\n\n\n\nFully Conditional Specification\n\n\nChaque variable du jeu de données est modélisée séquentiellement et conditionnellement aux variables précédentes.\nPour générer la \\(p^e\\) variable, on cherche à modéliser sa distribution conditionnelle :\n\\[f_{X_p | X_1 , X_2 , \\dots , X_{p-1}}\\]\nModèles statistiques couramment utilisés: - modèles paramétriques (régression linéaire ou logistique) - méthodes à base d’arbres: CART, Boosting, random forest, XGBoost."
   },
   {
-    "objectID": "theorie/supports/methodes-perturbatrices.html#les-méthodes-de-génération-ii",
-    "href": "theorie/supports/methodes-perturbatrices.html#les-méthodes-de-génération-ii",
+    "objectID": "theorie/supports/methodes-perturbatrices.html#les-méthodes-deep-learning-i",
+    "href": "theorie/supports/methodes-perturbatrices.html#les-méthodes-deep-learning-i",
     "title": "Les méthodes perturbatrices",
-    "section": "Les méthodes de génération (II)",
-    "text": "Les méthodes de génération (II)\n\nLes principales méthodes de génération sont (suite):\n\nMéthodes de Deep Learning:\n\nTabular Variational Auto Encoder (TVAE): L’auto encodage consiste à combiner une phase d’encodage qui réduit la dimension des données pour apprendre les caractéristiques les plus importantes et une phase de décodage pour reconstituer des données dans leur dimension originale.\nConditional Tabular Generative Adversarial Network (CTGAN): Les GAN sont très populaires dans la génération d’images. Les CTGAN sont une adaptation des GAN pour générer des données tabulaires (microdonnées ou données agrégées). Un générateur construit des données synthétiques et les soumet à un discriminateur dont l’objectif est de distinguer ces données générées des données originales.\n\n\n\n\n\n\n\nHundepool, Anco, Josep Domingo-Ferre, Luisa Franconi, Sarah Giessing, Rainer Lenz, Jane Longhurst, Eric Schulte Nordholt, et al. 2024. Handbook on Statistical Disclosure Control. 2nd Edition. ESSNet SDC. https://sdctools.github.io/HandbookSDC/."
+    "section": "Les méthodes Deep Learning (I)",
+    "text": "Les méthodes Deep Learning (I)\n\n\n\n\n\n\nTabular Variational Auto Encoder (TVAE)\n\n\nL’auto encodage consiste à combiner une phase d’encodage qui réduit la dimension des données pour apprendre les caractéristiques les plus importantes et une phase de décodage pour reconstituer des données dans leur dimension originale."
+  },
+  {
+    "objectID": "theorie/supports/methodes-perturbatrices.html#les-méthodes-deep-learning-ii",
+    "href": "theorie/supports/methodes-perturbatrices.html#les-méthodes-deep-learning-ii",
+    "title": "Les méthodes perturbatrices",
+    "section": "Les méthodes Deep Learning (II)",
+    "text": "Les méthodes Deep Learning (II)\n\n\n\n\n\n\nConditional Tabular Generative Adversarial Network (CTGAN)\n\n\nLes GAN sont très populaires dans la génération d’images. Les CTGAN sont une adaptation des GAN pour générer des données tabulaires (microdonnées ou données agrégées). Un générateur construit des données synthétiques et les soumet à un discriminateur dont l’objectif est de distinguer ces données générées des données originales."
+  },
+  {
+    "objectID": "theorie/supports/methodes-perturbatrices.html#références",
+    "href": "theorie/supports/methodes-perturbatrices.html#références",
+    "title": "Les méthodes perturbatrices",
+    "section": "Références",
+    "text": "Références\n\n\nChipperfield, James, Daniel Gow, et Bronwyn Loong. 2016. « The Australian Bureau of Statistics and releasing frequency tables via a remote server ». Statistical Journal of the IAOS 32 (1): 53‑64. https://doi.org/10.3233/SJI-160969.\n\n\nGießing, Sarah, et Reinhard Tent. 2019. « Concepts for generalising tools implementing the cell key method to the case of continuous variables ». In UNECE - Expert Meeting on Statistical Data Confidentiality. the Hague. https://unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2019/mtg1/SDC2019_S2_Germany_Giessing_Tent_AD.pdf.\n\n\nHundepool, Anco, Josep Domingo-Ferre, Luisa Franconi, Sarah Giessing, Rainer Lenz, Jane Longhurst, Eric Schulte Nordholt, et al. 2024. Handbook on Statistical Disclosure Control. 2nd Edition. ESSNet SDC. https://sdctools.github.io/HandbookSDC/.\n\n\nThompson, Gwenda, Stephen Broadfoot, et Daniel Elazar. 2013. « Methodology for the Automatic Confidentialisation of Statistical Outputs from Remote Servers at the Australian Bureau of Statistics ». In Joint UNECE/Eurostat work session on statistical data confidentiality. Ottawa. https://unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2013/Topic_1_ABS.pdf."
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#contexte",
@@ -518,6 +574,13 @@
     "text": "Adapter le niveau d’anonymisation nécessaire\nPlus l’accès est lâche, plus l’anonymisation doit pouvoir être élevé:\n\nchargés de collecte:\n\naccès très sécurisé \\(\\iff\\) aucune protection statistique des données\nMais nécessité de respecter les réglements sur la protection des données individuelles (RGPD en Europe)."
   },
   {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-exemple",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#un-exemple",
+    "title": "Les risques de divulgation",
+    "section": "Un exemple",
+    "text": "Un exemple\n\n\n\n\n\n\n\nFigure 1: Adapter les fichiers au type de public (Source: Insee)"
+  },
+  {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#gouvernance-déontologie-confiance",
     "href": "theorie/supports/arbitrer-risque-utilite.html#gouvernance-déontologie-confiance",
     "title": "Les risques de divulgation",
@@ -536,49 +599,56 @@
     "href": "theorie/supports/arbitrer-risque-utilite.html#étapes-clés-du-processus-de-protection-des-données",
     "title": "Les risques de divulgation",
     "section": "Étapes clés du processus de protection des données",
-    "text": "Étapes clés du processus de protection des données\n\nEst-il nécessaire de protéger les données ?\nQuelles sont les caractéristiques et utilisations principales des données ?\nDéfinition et mesure des risques de divulgation\nChoix des méthodes de protection des données\nMise en oeuvre des méthodes\n\nSource: (Hundepool et al. 2024)"
+    "text": "Étapes clés du processus de protection des données\n\n\nEst-il nécessaire de protéger les données ?\nQuelles sont les caractéristiques et utilisations principales des données ?\nDéfinition et mesure des risques de divulgation\nChoix des méthodes de protection des données\nMise en oeuvre des méthodes\nContrôles et documentation\n\n\nSource: (Hundepool et al. 2024)"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-1-est-il-nécessaire-de-protéger-les-données",
     "href": "theorie/supports/arbitrer-risque-utilite.html#étape-1-est-il-nécessaire-de-protéger-les-données",
     "title": "Les risques de divulgation",
     "section": "Étape 1: Est-il nécessaire de protéger les données ?",
-    "text": "Étape 1: Est-il nécessaire de protéger les données ?\n\nAnalyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d’effectuer de traitement pour la protection des données\nQuel type de diffusion ? (tableaux de données, cartes, microdonnées ...)"
+    "text": "Étape 1: Est-il nécessaire de protéger les données ?\n\n\nAnalyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d’effectuer de traitement pour la protection des données\nQuel type de diffusion ? (tableaux de données, cartes, microdonnées ...)"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-2-caractéristiques-et-utilisations-principales-des-données-i",
     "href": "theorie/supports/arbitrer-risque-utilite.html#étape-2-caractéristiques-et-utilisations-principales-des-données-i",
     "title": "Les risques de divulgation",
     "section": "Étape 2: Caractéristiques et utilisations principales des données (I)",
-    "text": "Étape 2: Caractéristiques et utilisations principales des données (I)\n\nAnalyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection\nAnalyse de la méthodologie de l’enquête\nDéfinition des objectifs de l’institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié"
+    "text": "Étape 2: Caractéristiques et utilisations principales des données (I)\n\n\nAnalyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection\nAnalyse de la méthodologie de l’enquête\nDéfinition des objectifs de l’institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-2-caractéristiques-et-utilisations-principales-des-données-ii",
     "href": "theorie/supports/arbitrer-risque-utilite.html#étape-2-caractéristiques-et-utilisations-principales-des-données-ii",
     "title": "Les risques de divulgation",
     "section": "Étape 2: Caractéristiques et utilisations principales des données (II)",
-    "text": "Étape 2: Caractéristiques et utilisations principales des données (II)\n\nAnalyse des besoins des utilisateurs (variables prioritaires, types d’analyses qui seront réalisées)\nAnalyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)"
+    "text": "Étape 2: Caractéristiques et utilisations principales des données (II)\n\n\nAnalyse des besoins des utilisateurs (variables prioritaires, types d’analyses qui seront réalisées)\nAnalyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-3-définition-et-mesure-des-risques-de-divulgation",
     "href": "theorie/supports/arbitrer-risque-utilite.html#étape-3-définition-et-mesure-des-risques-de-divulgation",
     "title": "Les risques de divulgation",
     "section": "Étape 3: Définition et mesure des risques de divulgation",
-    "text": "Étape 3: Définition et mesure des risques de divulgation\n\nRecenser les différents scénarios possibles conduisant à la divulgation des données\nCes scénarios dépendent du type de données considérées (données exhaustives, enquêtes) et de la diffusion choisie (pour les chercheurs ou le grand public)\nChoisir la ou les méthodes pour mesurer le risque de divulgation (développé dans la partie \"Les différents types de risques\")\nSi on considère que le risque de divulgation est trop élevé alors il faut mettre en place des méthodes de protection des données"
+    "text": "Étape 3: Définition et mesure des risques de divulgation\n\n\nRecenser les différents scénarios possibles conduisant à la divulgation des données\n\nEn fonction du type de données considérées (données exhaustives, enquêtes)\nEn fonction du public visé (chercheurs, décideurs, grand public)\n\nChoisir la ou les mesures du risque de divulgation\nSeuil de tolérance au risque à fixer"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-4-choix-des-méthodes",
     "href": "theorie/supports/arbitrer-risque-utilite.html#étape-4-choix-des-méthodes",
     "title": "Les risques de divulgation",
     "section": "Étape 4: Choix des méthodes",
-    "text": "Étape 4: Choix des méthodes\n\nChoisir une / plusieurs méthode(s) de protection pour réduire les risques de divulgation au seuil de tolérance qu’on s’est fixé\nLe choix de la méthode dépend de l’impact sur l’utilité des données de ladite méthode\nAnalyse de perte d’utilité due à la protection"
+    "text": "Étape 4: Choix des méthodes\n\n\nChoisir une / plusieurs méthode(s) de protection\nComparer les méthodes: niveau de risque vs perte d’utilité\n\n\n\n\n\n\n\n\n\nFigure 2: Arbitrage risque-utilité"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-5-mise-en-oeuvre-des-méthodes",
     "href": "theorie/supports/arbitrer-risque-utilite.html#étape-5-mise-en-oeuvre-des-méthodes",
     "title": "Les risques de divulgation",
     "section": "Étape 5: Mise en oeuvre des méthodes",
-    "text": "Étape 5: Mise en oeuvre des méthodes\n\nChoisir un logiciel\nRéaliser la mesure des risques de divulgation\nProtéger les données\nQuantification de l’information perdue\nContrôle du processus de protection\n\nvérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable\n\nRéalisation d’un document synthétisant les méthodes de protection utilisées et faisant le bilan de l’information perdue\n\nsi possible le transmettre aux utilisateurs des données publiées\npeut contenir des avertissements sur les précautions à prendre lors de l’utilisation d’un fichier anonymisé"
+    "text": "Étape 5: Mise en oeuvre des méthodes\n\n\nChoisir un logiciel\nRéaliser la mesure des risques de divulgation\nProtéger les données\nQuantification de la perte d’information"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-6-contrôles-et-documentation",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étape-6-contrôles-et-documentation",
+    "title": "Les risques de divulgation",
+    "section": "Étape 6: Contrôles et documentation",
+    "text": "Étape 6: Contrôles et documentation\n\n\nContrôle du processus de protection\n\nvérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable\n\nRéalisation d’un document synthétisant les méthodes utilisées et faisant le bilan de la perte d’information\n\nsi possible le transmettre aux utilisateurs des données publiées\npeut contenir des avertissements sur les précautions à prendre lors de l’utilisation d’un fichier anonymisé"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#le-risque-de-divulgation",
@@ -641,14 +711,14 @@
     "href": "theorie/supports/arbitrer-risque-utilite.html#différenciation-par-recoupement",
     "title": "Les risques de divulgation",
     "section": "Différenciation par recoupement",
-    "text": "Différenciation par recoupement\n\n\n\n\n\n\n\nFigure 1: Exemple de différenciation par recoupement en France entre un département et une communauté de communes (EPCI)"
+    "text": "Différenciation par recoupement\n\n\n\n\n\n\n\nFigure 3: Exemple de différenciation par recoupement en France entre un département et une communauté de communes (EPCI)"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#différenciation-par-recoupement-1",
     "href": "theorie/supports/arbitrer-risque-utilite.html#différenciation-par-recoupement-1",
     "title": "Les risques de divulgation",
     "section": "Différenciation par recoupement",
-    "text": "Différenciation par recoupement\n\n\n\n\n\n\n\nFigure 2: Zoom sur le problème de différenciation"
+    "text": "Différenciation par recoupement\n\n\n\n\n\n\n\nFigure 4: Zoom sur le problème de différenciation"
   },
   {
     "objectID": "theorie/supports/arbitrer-risque-utilite.html#vision-bayésienne-retour-à-dalenius",
@@ -679,8 +749,8 @@
     "text": "Les quasi-identifiants\n\nPour des données individus/ménages: sexe, âge, lieu d’habitation, diplôme, statut marital, etc.\nPour des données entreprises: Secteur d’activité, lieu du siège, etc.\nListe à déterminer à chaque fois\nDe quelles variables un attaquant dispose-t-il déjà ?"
   },
   {
-    "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-exemple",
-    "href": "theorie/supports/arbitrer-risque-utilite.html#un-exemple",
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-1",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-1",
     "title": "Les risques de divulgation",
     "section": "Un exemple",
     "text": "Un exemple\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIdentifiants\n\n\nQuasi Id.\n\n\nSensible\n\n\n\nNom\nAdresse\nCommune\nAge\nDiplôme\nRevenus\n\n\n\n\nJohan\n3 rue...\nParis\n36\nBac\n150000\n\n\nJeanne\n11 bd...\nMalakoff\n41\nBac+3\n60000\n\n\nJohnny\n12 pl...\nPithiviers\n23\nBac Pro\n25000\n\n\nJeannette\n8 rue...\nBelval\n85\n\n10000\n\n\n\n\n\n\nTable 3: Différentes types de variables"
@@ -707,8 +777,8 @@
     "text": "L’importance du scénario\n\n\n\n\n\n\nUne efficacité qui dépend du réalisme du scénario\n\n\nAssurer un certain niveau d’anonymité permet de réduire le risque de ré-identification, mais :\n\nSi l’attaquant dispose de plus d’information auxiliaire \\(\\Rightarrow\\) sous-estimation du risque avec le \\(k\\)-anonymat.\nAvec le temps, l’attaquant peut disposer de plus d’informations. Or, le scénario est posé une fois \\(\\Rightarrow\\) sous-estimation du risque avec le \\(k\\)-anonymat.\nSi l’attaquant dispose de moins d’information auxiliaire \\(\\Rightarrow\\) sur-estimation du risque avec le \\(k\\)-anonymat.\nLa qualité des appariements dépend de beaucoup d’autres facteurs (millésimes, qualité des variables, cohérence des champs, etc.) \\(\\Rightarrow\\) sur-estimation du risque avec le \\(k\\)-anonymat."
   },
   {
-    "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-1",
-    "href": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-1",
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-2",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-2",
     "title": "Les risques de divulgation",
     "section": "Un exemple",
     "text": "Un exemple\n\n\n\n\nExemple d’un fichier individuel 1-anonyme, l’âge et le genre étant considérés comme quasi-identifiants\n\n\nId\nAge\nGenre\nMaladie\n\n\n\n\n1\n[45;55[\nM\nDiabète\n\n\n2\n[45;55[\nM\nHypertension artérielle\n\n\n3\n[45;55[\nF\nCancer\n\n\n4\n[45;55[\nF\nGrippe\n\n\n5\n[70;75[\nM\nDiabète\n\n\n6\n[45;55[\nM\nDiabète\n\n\n\n\n\nTable 4: Exemple d’un fichier individuel 1-anonyme, l’âge et le genre étant considérés comme quasi-identifiants"
@@ -728,8 +798,8 @@
     "text": "Quantifier le risque (2): la l-diversité\n\n\n\n\n\n\nLa l-diversité (Machanavajjhala et al. 2007)\n\n\nElle s’assure d’une diversité suffisante des modalités d’une variable sensible prises par les individus au sein d’une même combinaison de quasi-identifiants.\n\n\n\n\nRaffinement du \\(k\\)-anonymat.\nProtection contre la divulgation d’attributs sensibles.\nChaque groupe doit contenir au moins \\(l\\) modalités différentes de la variable sensible étudiée (ou \\(l\\) modalités parmi les plus fréquentes).\nChoix de la cible \\(l\\) en fonction des règles existantes et/ou d’un arbitrage risque-utilité."
   },
   {
-    "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-2",
-    "href": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-2",
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-3",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-3",
     "title": "Les risques de divulgation",
     "section": "Un exemple",
     "text": "Un exemple\n\n\n\n\n\nUn fichier 2-anonyme mais pas assez diversifié\n\n\nAge\nSexe\nMaladie\n\n\n\n\n[50;55[\nH\nDiabète\n\n\n[50;55[\nH\nDiabète\n\n\n[50;55[\nF\nCancer\n\n\n[50;55[\nF\nGrippe\n\n\n[50;55[\nH\nDiabète\n\n\n\n\n\nTable 5: Un fichier 2-anonyme mais pas assez diversifié"
@@ -830,7 +900,7 @@
     "href": "theorie/supports/arbitrer-risque-utilite.html#biblio",
     "title": "Les risques de divulgation",
     "section": "Biblio",
-    "text": "Biblio\n\n\nBenedetti, Roberto, et Luisa Franconi. 1998. « Statistical and Technological Solutions for Controlled Data Dissemination ». Pre-proceedings of New Techniques and Technologies for Statistics 1: 225_232.\n\n\nCohen, Aloni. 2022. « Attacks on Deidentification’s Defenses ». arXiv. http://arxiv.org/abs/2202.13470.\n\n\nCox, Lawrence H., Alan F. Karr, et Satkartar K. Kinney. 2011. « Risk-Utility Paradigms for Statistical Disclosure Limitation: How to Think, But Not How to Act: Risk-Utility Paradigms for SDL ». International Statistical Review 79 (2): 160‑83. https://doi.org/10.1111/j.1751-5823.2011.00140.x.\n\n\nDalenius, Tore. 1977. « Privacy transformations for statistical information systems ». Journal of Statistical Planning and Inference 1 (1): 73‑86. https://doi.org/10.1016/0378-3758(77)90007-6.\n\n\nHundepool, Anco, Josep Domingo-Ferre, Luisa Franconi, Sarah Giessing, Rainer Lenz, Jane Longhurst, Eric Schulte Nordholt, et al. 2024. Handbook on Statistical Disclosure Control. 2nd Edition. ESSNet SDC. https://sdctools.github.io/HandbookSDC/.\n\n\nMachanavajjhala, Ashwin, Daniel Kifer, Johannes Gehrke, et Muthuramakrishnan Venkitasubramaniam. 2007. « L -Diversity: Privacy Beyond k -Anonymity ». ACM Transactions on Knowledge Discovery from Data 1 (1): 3. https://doi.org/10.1145/1217299.1217302.\n\n\nRedor, Patrick. 2023. « Confidentialité des données statistiques : un enjeu majeur pour le service statistique public ». Courrier des Statistiques, nᵒ 9: 46‑64. https://www.insee.fr/fr/information/7635823?sommaire=7635842.\n\n\nSweeney, Latanya. 2000. « Simple Demographics Often Identify People Uniquely. » Carnegie Mellon University, Data Privacy Working Paper 3.\n\n\n———. 2002. « k-ANONYMITY: A MODEL FOR PROTECTING PRIVACY ». International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems 10 (05): 557‑70. https://doi.org/10.1142/S0218488502001648.\n\n\nWillenborg, Leon, et Ton De Waal. 2001. Elements of Statistical Disclosure Control. Édité par P. Bickel, P. Diggle, S. Fienberg, K. Krickeberg, I. Olkin, N. Wermuth, et S. Zeger. Vol. 155. Lecture Notes in Statistics. New York, NY: Springer New York. https://doi.org/10.1007/978-1-4613-0121-9."
+    "text": "Biblio\n\n\nBenedetti, Roberto, et Luisa Franconi. 1998. « Statistical and Technological Solutions for Controlled Data Dissemination ». Pre-proceedings of New Techniques and Technologies for Statistics 1: 225_232.\n\n\nCohen, Aloni. 2022. « Attacks on Deidentification’s Defenses ». arXiv. http://arxiv.org/abs/2202.13470.\n\n\nCox, Lawrence H., Alan F. Karr, et Satkartar K. Kinney. 2011. « Risk-Utility Paradigms for Statistical Disclosure Limitation: How to Think, But Not How to Act: Risk-Utility Paradigms for SDL ». International Statistical Review 79 (2): 160‑83. https://doi.org/10.1111/j.1751-5823.2011.00140.x.\n\n\nDalenius, Tore. 1977. « Privacy transformations for statistical information systems ». Journal of Statistical Planning and Inference 1 (1): 73‑86. https://doi.org/10.1016/0378-3758(77)90007-6.\n\n\nHundepool, Anco, Josep Domingo-Ferre, Luisa Franconi, Sarah Giessing, Rainer Lenz, Jane Longhurst, Eric Schulte Nordholt, et al. 2024. Handbook on Statistical Disclosure Control. 2nd Edition. ESSNet SDC. https://sdctools.github.io/HandbookSDC/.\n\n\nMachanavajjhala, Ashwin, Daniel Kifer, Johannes Gehrke, et Muthuramakrishnan Venkitasubramaniam. 2007. « L-Diversity: Privacy Beyond k -Anonymity ». ACM Transactions on Knowledge Discovery from Data 1 (1): 3. https://doi.org/10.1145/1217299.1217302.\n\n\nRedor, Patrick. 2023. « Confidentialité des données statistiques : un enjeu majeur pour le service statistique public ». Courrier des Statistiques, nᵒ 9: 46‑64. https://www.insee.fr/fr/information/7635823?sommaire=7635842.\n\n\nSweeney, Latanya. 2000. « Simple Demographics Often Identify People Uniquely. » Carnegie Mellon University, Data Privacy Working Paper 3.\n\n\n———. 2002. « k-ANONYMITY: A MODEL FOR PROTECTING PRIVACY ». International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems 10 (05): 557‑70. https://doi.org/10.1142/S0218488502001648.\n\n\nWillenborg, Leon, et Ton De Waal. 2001. Elements of Statistical Disclosure Control. Édité par P. Bickel, P. Diggle, S. Fienberg, K. Krickeberg, I. Olkin, N. Wermuth, et S. Zeger. Vol. 155. Lecture Notes in Statistics. New York, NY: Springer New York. https://doi.org/10.1007/978-1-4613-0121-9."
   },
   {
     "objectID": "ressources/fiches/bibliographie.html",
@@ -914,7 +984,7 @@
     "href": "pratique/fiches/generer-synth.html#risque-utilité",
     "title": "Générer des données synthétiques",
     "section": "Risque / Utilité",
-    "text": "Risque / Utilité\n\n\nCode\nsynthpop::disclosure(lfs_syn, lfs_orig, keys = c(\"AGE6\", \"SEXE\", \"REG\", \"DEP\"), target = c(\"IS_CHOM\"))\n\n\n-------------------Synthesis 1 --------------------\nTable for target IS_CHOM from GT alone with keys has 2 rows 240 colums.\nTable for target  IS_CHOM from GT & SD with all key combinations has 2 rows 244 colums.\n\n\nDisclosure measures from synthesis for 34053 records in original data.\n\nIdentity  measures for keys REG DEP SEXE AGE6 \nand attribute measures for IS_CHOM from the same keys\n            Identity (UiO/repU) Attrib (Dorig/DiSCO)\nOriginal                   0.01                20.71\nSynthesis 1                0.01                27.55\n\nThe 1 way distributions of IS_CHOM has a large contribution to disclosure from level Check  IS_CHOM  level  0 \nPlease add 'check_1way' to to.print (e.g. print(disclosure_result, to.print = 'check_1way'),\nand look at original data to decide if backround knowledge would make this disclosure likely\nConsider excluding this level with the not.targetlev parameter to the disclosure function.\n\n\nDetails of target-key pairs contributing disproportionately to disclosure of IS_CHOM \n38 pairs need checks \n\nPlease examine component $check_2way of the disclosure object and look at original data.\nConsider excluding these key-target pairs with some the following parameters to disclosure:\nexclude_ov_denom_lim = TRUE or defining key-target combinations from exclude.targetlevs,\nexclude.keys and exclude.keylevs"
+    "text": "Risque / Utilité\n\n\nCode\nsynthpop::disclosure(lfs_syn, lfs_orig, keys = c(\"AGE6\", \"SEXE\", \"REG\", \"DEP\"), target = c(\"IS_CHOM\"))\n\n\n-------------------Synthesis 1 --------------------\nTable for target IS_CHOM from GT alone with keys has 2 rows 240 colums.\nTable for target  IS_CHOM from GT & SD with all key combinations has 2 rows 243 colums.\n\n\nDisclosure measures from synthesis for 34053 records in original data.\n\nIdentity  measures for keys REG DEP SEXE AGE6 \nand attribute measures for IS_CHOM from the same keys\n            Identity (UiO/repU) Attrib (Dorig/DiSCO)\nOriginal                   0.01                20.71\nSynthesis 1                0.01                20.22\n\nThe 1 way distributions of IS_CHOM has a large contribution to disclosure from level Check  IS_CHOM  level  0 \nPlease add 'check_1way' to to.print (e.g. print(disclosure_result, to.print = 'check_1way'),\nand look at original data to decide if backround knowledge would make this disclosure likely\nConsider excluding this level with the not.targetlev parameter to the disclosure function.\n\n\nDetails of target-key pairs contributing disproportionately to disclosure of IS_CHOM \n35 pairs need checks \n\nPlease examine component $check_2way of the disclosure object and look at original data.\nConsider excluding these key-target pairs with some the following parameters to disclosure:\nexclude_ov_denom_lim = TRUE or defining key-target combinations from exclude.targetlevs,\nexclude.keys and exclude.keylevs"
   },
   {
     "objectID": "pratique/fiches/sujets-avances.html",
