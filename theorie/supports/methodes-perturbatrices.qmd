@@ -489,7 +489,7 @@ plot(ptable::create_cnt_ptable(D=3, V=1.5), type="p")
 
 ## Avantages / inconvénients
 
-::: {#tbl-ckm-avtg-incv style="font-size: 80%;" .table .table-striped .table-hover}
+::: {#tbl-ckm-avtg-incv style="font-size: 70%;" .table .table-striped .table-hover}
 |                       Avantages                        |                                Inconvénients                                 |
 | :----------------------------------------------------: | :--------------------------------------------------------------------------: |
 |                Facile d'implémentation                 |                            Perte de l'additivité                             |
@@ -598,7 +598,7 @@ $$SSE = \sum_{i=1}^g\sum_{j \in i} (x_{ij}-\bar x_{i})^T(x_{ij}-\bar x_{i})$$
 
 ## Avantages / inconvénients
 
-::: {#tbl-bruit-add-avtg-incv style="font-size: 80%;" .table .table-striped .table-hover}
+::: {#tbl-bruit-add-avtg-incv style="font-size: 70%;" .table .table-striped .table-hover}
 |                Avantages                |       Inconvénients       |
 | :-------------------------------------: | :-----------------------: |
 |         Adapté au $k$-anonymat          | Temps de calcul important |
@@ -642,7 +642,7 @@ $$SSE = \sum_{i=1}^g\sum_{j \in i} (x_{ij}-\bar x_{i})^T(x_{ij}-\bar x_{i})$$
 
 ## Avantages / inconvénients
 
-::: {#tbl-bruit-add-avtg-incv style="font-size: 80%;" .table .table-striped .table-hover}
+::: {#tbl-bruit-add-avtg-incv style="font-size: 70%;" .table .table-striped .table-hover}
 |                  Avantages                  |                       Inconvénients                        |
 | :-----------------------------------------: | :--------------------------------------------------------: |
 | Traitement de variables sensibles continues | Pas adapté aux traitements des outliers de grandes valeurs |
@@ -705,7 +705,7 @@ devenant ainsi les cibles (*target*) sur lesquelles l'échange se concentrera.
 
 ## Avantages / inconvénients
 
-::: {#tbl-trs-avtg-incv style="font-size: 80%;" .table .table-striped .table-hover}
+::: {#tbl-trs-avtg-incv style="font-size: 70%;" .table .table-striped .table-hover}
 |                                          Avantages                                          |                                                Inconvénients                                                |
 | :-----------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------: |
 |                      Efficace pour traiter différents types de risque                       | Nécessite de fixer un grand nombre de paramètres (mesure de risque, variables similarité, taux de swapping) |
@@ -875,12 +875,11 @@ On observe k dans le jeu pertubé :
 
 
 
-::: {#tbl-pram-avtg-incv style="font-size: 80%;" .table .table-striped .table-hover}
+::: {#tbl-pram-avtg-incv style="font-size: 70%;" .table .table-striped .table-hover}
 |                                                        Avantages                                                        |                                              Inconvénients                                              |
 | :---------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: |
 | Permet de fournir le niveau de protection associé au bruit injecté en calculant les probabilités de transition inverses |              Création d'éventuelles combinaisons impossibles (ex : enfant à la retraite).               |
-|                     Conserve l'additivité des tableaux générés à partir des micro-données bruitées.                     | Difficile de définir une matrice de protection qui prend en compte les liens avec toutes les variables. |
-|                  Préserve les agrégats du niveau géographique au sein duquel le swapping a été opéré.                   |                                                                                                         |
+|                     Conserve l'additivité des tableaux générés à partir des micro-données bruitées.                     | Difficile de définir une matrice de protection qui prend en compte les liens avec toutes les variables. |                                                                                                        
 
 : Avantages et inconvénients de PRAM
 :::
@@ -896,28 +895,43 @@ On observe k dans le jeu pertubé :
 
     -   Synthèse partielle: Seulement certaines variables sont générées (principalement les variables sensibles).
 
-## Les méthodes de génération (I)
+## Modélisation séquentielle
 
-Les principales méthodes de génération sont:
+::: {.callout-note}
+### Fully Conditional Specification
 
--   Modélisation séquentielle conditionnelle (Fully Conditional Specification, FCS): Chaque variable est modélisée l'une après l'autre, conditionnellement aux variables déjà modélisées.
+Chaque variable du jeu de données est modélisée séquentiellement et conditionnellement aux variables précédentes.
 
-    -   Méthode très populaire et efficace
+Pour générer la $p^e$ variable, on cherche à modéliser sa distribution conditionnelle : 
 
-    -   Pour générer la $p^e$ variable, on cherche à modéliser sa distribution conditionnelle : $$f_{X_p | X_1 , X_2 , \dots , X_{p-1}}$$
+$$f_{X_p | X_1 , X_2 , \dots , X_{p-1}}$$
 
-    -   Modélisation paramétrique (régression linéaire ou logistique) ou non paramétrique (en particulier méthodes à base d'arbres: CART, Boosting, random forest, XGBoost).
+Modèles statistiques couramment utilisés:
+  - modèles paramétriques (régression linéaire ou logistique) 
+  - méthodes à base d'arbres: CART, Boosting, random forest, XGBoost.
 
-## Les méthodes de génération (II)
+:::
 
-Les principales méthodes de génération sont (suite):
+## Les méthodes Deep Learning (I)
 
--   Méthodes de Deep Learning:
+::: {.callout-note}
+### Tabular Variational Auto Encoder (TVAE)
 
-    -   **Tabular Variational Auto Encoder** (TVAE): L'auto encodage consiste à combiner une phase d'encodage qui réduit la dimension des données pour apprendre les caractéristiques les plus importantes et une phase de décodage pour reconstituer des données dans leur dimension originale.
+L'auto encodage consiste à combiner **une phase d'encodage** qui réduit la dimension des données pour apprendre les caractéristiques les plus importantes et **une phase de décodage** pour reconstituer des données dans leur dimension originale.
 
-    -   **Conditional Tabular Generative Adversarial Network** (CTGAN): Les GAN sont très populaires dans la génération d'images. Les CTGAN sont une adaptation des GAN pour générer des données tabulaires (microdonnées ou données agrégées). Un générateur construit des données synthétiques et les soumet à un discriminateur dont l'objectif est de distinguer ces données générées des données originales.
+:::
 
+
+## Les méthodes Deep Learning (II)
+
+::: {.callout-note}
+### Conditional Tabular Generative Adversarial Network (CTGAN)
+
+Les GAN sont très populaires dans la génération d'images. Les CTGAN sont une adaptation des GAN pour générer des données tabulaires (microdonnées ou données agrégées). Un générateur construit des données synthétiques et les soumet à un discriminateur dont l'objectif est de distinguer ces données générées des données originales.
+
+:::
+    
+## Références
 
 ::: {#refs}
 :::
