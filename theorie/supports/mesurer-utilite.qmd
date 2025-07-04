@@ -4,7 +4,7 @@ subtitle: |
   **[Contrôler la perte d'information]{.orange}**
 order: 5
 href: theorie/supports/mesurer-utilite.html
-image: ../../img/theorie.png
+image: ../../images/theorie.png
 slide-number: true
 header: |
   [Retour à l'accueil](https://inseefrlab.github.io/formation_protection_donnees)

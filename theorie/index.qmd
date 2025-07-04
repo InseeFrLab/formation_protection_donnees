@@ -9,6 +9,8 @@ listing:
   id: theorie
   contents:
     - "supports/*.qmd"
+    - "!supports/tour-des-methodes.qmd"
+    - "!supports/confidentialite-differentielle.qmd"
   sort: "order"
   type: grid
   image-height: 300px
