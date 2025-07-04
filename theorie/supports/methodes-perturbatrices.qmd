@@ -118,43 +118,46 @@ bibliography: ../../references-SDC.bib
 Il existe aussi une autre technique consistant à produire des données synthétiques.
 
 
-# Données tabulées
-
 ## Perturbatif vs suppressif
 
-Dans quels cas, les méthodes perturbatrices sont préférables aux méthodes suppressives?
+Dans quels cas préférer les méthodes perturbatrices aux méthodes suppressives?
 
-- Permettent la prise en charge de diffusions complexes à prendre en charge avec des méthodes suppressives: 
+- Prise en charge de diffusions complexes à traiter avec des méthodes suppressives: 
   - nombreux tableaux (diffusion industrielle),
   - diffusion en plusieurs moments
   - différenciation géographique ou de nomenclature
-- Contrôler la perte d'utilité:
+- Contrôler la perte d'utilité plus finement:
   - un arbitrage possible en général en jouant sur les paramètres du bruit
   - pas de suppression => une information disponible et manipulable
+- Un cadre institutionnel qui autorise un tel usage
 
 ## Perturbatif vs suppressif
 
-Leurs limites:
+Certaines limites des méthodes perturbatrices:
 
-- Perte parfois de caractéristiques basiques (additivité dans les tableaux)
+- Dans certains cas, perte de caractéristiques basiques des données (additivité dans les tableaux)
 - Une perception du traitement du secret moins immédiate qu'avec le blanchiment
 - Une pédagogie nécessaire vis-à-vis du public pour l'utilisation des données
 - Des règles historiques de secret à revisiter car adaptées pour des méthodes suppressives
 
 
-## Méthodes perturbatrices
+# Les méthodes post-tabulation
 
--   Étendue de la perturbation:
+## Les méthodes post-tabulation
 
-  -   Seulement sur les plus petits comptages (données les plus à risque de divulgation)
+- Méthodes qui sont appliquées sur les données agrégées
+- Certaines méthodes (en particulier les arrondis) sont plus adaptées aux comptages qu'aux volumes
+- Perturbation de tout ou partie des tableaux selon la méthode
 
--   Sur toutes les cellules: toutes les cellules du tableau sont perturbées (arrondi, Méthode des clés aléatoires (CKM))
+## Quelques enjeux ?
 
--   Problématiques des méthodes perturbatrices:
+En perturbant les données dans des tableaux:
 
--   Comment assurer la cohérence des tableaux entre eux ?
+- Faut-il tout perturber ou seulement une partie ?
+- Comment assurer la cohérence entre les tableaux ?
+- Faut-il préserver l'additivité au sein des tabeaux ?
 
--   Comment préserver l'additivité au sein des tableaux ?
+En répondant à ces questions, on s'orientera vers une méthode plutôt qu'une autre.
 
 
 # Méthodes d'arrondi et apparentées
@@ -170,45 +173,107 @@ Des méthodes principalement adaptées aux tableaux de comptages.
 
 Pour plus d'informations: [https://sdctools.github.io/HandbookSDC/05-frequency-tables.html#sec-Rounding_freq]() [@hundepool_handbook_2024]
 
-##  Arrondis déterministes ou aléatoires
 
-- Arrondi de tous les comptages
-- Un paramètre: la base d'arrondi $b$
-- Arrondi déterministe
-  - Un comptage est toujours arrondi de la même manière
+
+## Un exemple
+
+Supposons le tableau de comptage suivant (en gras les informations jugées sensibles)
+
+::: {#tbl-compt-orig .table .table-striped .table-hover .table-bordered}
+
+
+| Caractéristique | Nord  | Ouest |  Sud  | Est | Total |
+| :-------------: | :---: | :---: | :---: | :-: | :---: |
+|    Polluante    |   6   |  14   | **1** |  7  |  28   |
+|  Non-Polluante  | **3** | **2** | **1** | 13  |  19   |
+|      Total      |   9   |  16   | **2** | 20  |  47   |
+: Nombre d'entreprises en fonction de leur implantation et du caractère polluant de leurs activités
+
+:::
+
+## Arrondis déterministes ou aléatoires
+
+::: {.callout-note}
+### Arrondir
+Arrondir un comptage $x$, c'est ramener sa valeur à un multiple de la base d'arrondi $b$ choisie:
+
+- Soit au multiple le plus proche (arrondi déterministe)
+  - => Un arrondi déterministe renvoie toujours la même valeur
+- Soit, aléatoirement, à l'un des deux multiples les plus proches (arrondi aléatoire).
+  - L'arrondi est sans biais en choisissant les probabilités adéquates.
+  - Cette technique offre une meilleure protection
+:::
+
+::: {.callout-tip}
+### Exemple
+$b=10$ et $x=23$:
+
+- Arrondi déterministe: $x^\prime = 20$.
 - Arrondi aléatoire: 
-  - un comptage est arrondi aléatoirement à l'inférieur ou au supérieur
-  - Une méthode non biaisée par nature
-  - Une meilleure protection que l'arrondi déterministe
+  - $x^\prime = 20$ avec probabilité de $0.7$ ou
+  - $x^\prime = 30$ probabilité de $0.3$.
+:::
 
-Exemple avec une base $10$
 
-- Arrondi déterministe: $X=23$ => $X^\prime = 20$.
-- Arrondi aléatoire: $X=23$ => $X^\prime = 20$ (probabilité de $0.7$) ou $X^\prime = 30$ (probabilité de $0.3$).
+## Un exemple
+
+::: {#tbl-compt-arr .table .table-striped .table-hover .table-bordered}
+| Caractéristique |  Nord  | Ouest  |  Sud  |  Est   | Total  |
+| :-------------: | :----: | :----: | :---: | :----: | :----: |
+|    Polluante    | **5**  | **15** | **0** | **5**  | **30** |
+|  Non-Polluante  | **5**  | **0**  | **0** | **15** | **20** |
+|      Total      | **10** | **15** | **0** |   20   | **45** |
+
+: Application d'un arrondi déterministe de base $b=5$ (Moyenne des écarts absolus: $1.4$.)
+
+:::
 
 
 ##  Arrondis des petits comptages
 
-- Algorithme Small Count Rounding
-- Les comptages sensibles (en général les petits comptages) sont systématiquement arrondis
-- Quelques comptages supplémentaires sont arrondis pour conserver l'additivité dans les tableaux
-- Avantages: 
-  - Ne perturbe qu'une partie du tableau 
-  - Minimise les perturbations globales
-  - Assure la conservation de l'additivité
-- Limite principale:
-  - Ne permet pas d'assurer une protection systématique des cas de différenciation
-- Implémenté dans le package `R` `GaussSuppression`
+
+::: {.callout-note}
+### Small Count Rounding
+Algorithme appliqué à des tableaux de données assurant:
+
+- l'arrondi des petits comptages (cad les plus sensibles) dans une base $b$
+- des comptages supplémentaires sont déviés pour:
+  - conserver l'additivité dans les tableaux
+  - et minimiser la perturbation globale
+
+Technique implémentée dans le package `R` `SmallCountRounding`
+:::
+
+
+
+## Un exemple
+
+::: {#tbl-compt-smcr .table .table-striped .table-hover .table-bordered}
+
+
+| Caractéristique |  Nord  | Ouest  |  Sud  | Est | Total  |
+| :-------------: | :----: | :----: | :---: | :-: | :----: |
+|    Polluante    |   6    |   14   | **0** |  7  |   28   |
+|  Non-Polluante  | **5**  | **0**  | **0** | 13  | **18** |
+|      Total      | **11** | **14** | **0** | 20  | **45** |
+
+: Application d'un algorithme de type Small Count Rounding (Moyenne des écarts absolus: $1.07$.)
+
+:::
 
 ##  Arrondi contrôlé 
 
-- Controlled Rounding
-- Toutes les cases d'un tableau sont arrondies en respectant une base $b$
-- Un algorithme assure en même temps:
-  - la conservation de l'additivité dans le tableau 
+::: {.callout-note}
+### Controlled Rounding
+Algorithme appliqué à des tableaux de données assurant:
+
+- l'arrondi de tous les comptages selon une base $b$
+- tout en assurant:
+  - la conservation de l'additivité dans les tableaux
   - la minimisation de la somme des différences absolues entre valeurs originales et arrondies
-- Implémenté dans le logiciel `Tau-ARGUS` 
-  - avec prise en compte des hiérarchies
+
+Technique implémentée dans le logiciel `Tau-ARGUS` 
+:::
 
 <!---
 ## Controlled Tabular adjustment (CTA)
@@ -216,51 +281,19 @@ Exemple avec une base $10$
 Les valeurs des cellules sensibles sont perturbées pour respecter un **intervalle de protection**. Les autres cellules sont ajustées pour restaurer l'additivité dans les tableaux.
 --->
 
+
 ## Un exemple
 
-Supposons le tableau de comptage suivant (en gras les informations jugées sensibles)
-
-::: {.table .table-striped .table-hover .table-bordered}
+::: {#tbl-compt-arr-ctr .table .table-striped .table-hover .table-bordered}
 
 
-|               | Nord  | Ouest |  Sud  | Est | Total |
-| :-----------: | :---: | :---: | :---: | :-: | :---: |
-|   Polluante   |   6   |  14   | **1** |  7  |  28   |
-| Non-Polluante | **3** | **2** | **1** | 13  |  19   |
-|     Total     |   9   |  16   | **2** | 20  |  47   |
-: Nombre d'entreprises en fonction de leur implantation et du caractère polluant de leurs activités {#tbl-compt-orig}
+| Caractéristique |  Nord  | Ouest  |  Sud  |  Est   | Total  |
+| :-------------: | :----: | :----: | :---: | :----: | :----: |
+|    Polluante    | **5**  | **15** | **0** | **5**  | **25** |
+|  Non-Polluante  | **5**  | **2**  | **0** | **15** | **20** |
+|      Total      | **10** | **15** | **0** | **20** | **45** |
 
-:::
-
-
-## Small Count Rounding
-
-::: {.table .table-striped .table-hover .table-bordered}
-
-
-|               |  Nord  | Ouest  |  Sud  | Est | Total  |
-| :-----------: | :----: | :----: | :---: | :-: | :----: |
-|   Polluante   |   6    |   14   | **0** |  7  |   28   |
-| Non-Polluante | **5**  | **0**  | **0** | 13  | **18** |
-|     Total     | **11** | **14** | **0** | 20  | **45** |
-
-: Application d'un algorithme de type Small Count Rounding (Moyenne des écarts absolus: $1.067$.) {#tbl-compt-smcr}
-
-:::
-
-
-## Arrondi contrôlé 
-
-::: {.table .table-striped .table-hover .table-bordered}
-
-
-|               |  Nord  | Ouest  |  Sud  |  Est   | Total  |
-| :-----------: | :----: | :----: | :---: | :----: | :----: |
-|   Polluante   | **5**  | **15** | **0** | **5**  | **25** |
-| Non-Polluante | **5**  | **2**  | **0** | **15** | **20** |
-|     Total     | **10** | **15** | **0** | **20** | **45** |
-
-: Application d'un arrondi contrôlé avec une base $b=5$ (Moyenne des écarts absolus: $1.467$.) {#tbl-compt-arr-ctr}
+: Application d'un arrondi contrôlé avec une base $b=5$ (Moyenne des écarts absolus: $1.5$.)
 
 :::
 
@@ -292,16 +325,18 @@ Moyenne des écarts absolus: $0.933$.
 
 # La méthode des clés aléatoires (CKM)
 
-Principales caractéristiques de la méthode: 
+::: {.callout-note}
+### La méthode des clés aléatoires
 
--   Toutes les cellules sont perturbées
+Méthode qui consiste à dévier tous les comptages indépendamment les uns des autres:
 
--   Les cellules sont perturbées indépendamment les unes des autres
+- chaque comptage est dévié d'une valeur comprise entre $-D$ et $+D$, $D$ étant un paramètre de la méthode;
+- une case est toujours perturbée de la même manière grâce à l'utilisation de **clés individuelles**
+- un comptage nul n'est pas perturbé;
+- la quantité de bruit injecté dans les tableaux est de variance $V$, un autre paramètre de la méthode.
 
--   Une même cellule est toujours perturbée de la même manière
-
--   Les zéros originaux ne sont pas perturbés (mais un effectif faible peut devenir un zéro)
-
+Sources: @thompson_methodology_2013, @chipperfield_australian_2016, @giesing_concepts_2019
+:::
 
 ## La distribution de probabilités
 
@@ -316,17 +351,16 @@ Propriétés :
 
 ## Un exemple
 
+::: {#tbl-compt-ckm .table .table-striped .table-hover .table-bordered}
 
-::: {.table .table-striped .table-hover .table-bordered}
 
+| Caractéristique |  Nord  | Ouest  |  Sud  |  Est   | Total  |
+| :-------------: | :----: | :----: | :---: | :----: | :----: |
+|    Polluante    | **4**  | **15** | **0** | **8**  | **28** |
+|  Non-Polluante  | **1**  | **3**  | **2** | **15** | **20** |
+|      Total      | **10** | **16** | **4** | **21** | **46** |
 
-|               |  Nord  | Ouest  |  Sud  |  Est   | Total  |
-| :-----------: | :----: | :----: | :---: | :----: | :----: |
-|   Polluante   | **4**  | **15** | **0** | **8**  | **28** |
-| Non-Polluante | **1**  | **3**  | **2** | **15** | **20** |
-|     Total     | **10** | **16** | **4** | **21** | **46** |
-
-: Application de la CKM avec $D = [0;5]$ et $V = 3$ {#tbl-compt-arr-ctr}
+: Application de la CKM avec $D = 5$ et $V = 3$ (Moyenne des écarts absolus: $1.1$)
 
 :::
 
@@ -344,27 +378,16 @@ La méthode est utilisée par plusieurs INS:
 -   2024/2025: l'Insee diffuse les données sur les Quartiers de la Politique de la Ville (QPV).
 
 
-## Un exemple pour illustrer la CKM
+## Etape 1: Création d'une clé individuelle aléatoire
 
+::: {style="text-align:center;"}
+![Arbitrer](img/ckm-ind-cles.png){#fig-mat-trans width=90% fig-alt="Ajout des clés individuelles aux micro-données" fig-align="center"}
+:::
 
-**Etape 1 : Construction de la matrice de transition**
-
-```{r}
-#| echo: false
-#| fig-align: center
-#| fig-cap: Probabilités de transition pour $D = 3$ et $V = 1.5$
-library(ptable)
-plot(ptable::create_cnt_ptable(D=3, V=1.5), type="p")
-```
-
-
-## Un exemple pour illustrer la CKM
-
-**Etape 2 : Création d'une clé individuelle aléatoire**
-
+<!---
 Supposons que la base $\mathcal{B}$ soit composé des 6 individus suivant et qu'à chacun on associe une clé :
 
-::: {.table .table-striped .table-hover .table-bordered}
+::: {#tbl-ckm-ind .table .table-striped .table-hover .table-bordered}
 
   **id**   **Ville**   **Ecole**    **KEY**
 -------- ----------- ----------- -----------
@@ -375,15 +398,17 @@ Supposons que la base $\mathcal{B}$ soit composé des 6 individus suivant et qu'
     5      Marseille   Centrale    0.6496634
     6        Lille     Centrale    0.2813433
 
-: Ajout d'une clé aléatoire dans le jeu de données individuelles {#tbl-ckm-ind}
+: Ajout d'une clé aléatoire dans le jeu de données individuelles
+:::
+--->
+
+## Etape 2: Construction du tableau
+
+::: {style="text-align:center;"}
+![Construction du tableau et des clés de chaque case](img/ckm-table-depart.png){#fig-mat-trans width=90% fig-alt="Construction du tableau et des clés de chaque case" fig-align="center"}
 :::
 
-
-## Un exemple pour illustrer la CKM
-::: frame
-
-**Etape 3 : Construction de la clé d'une cellule**
-
+<!-- 
 Nous souhaitons diffuser le nombre d'individus selon leur école.
 
 On a :
@@ -395,14 +420,33 @@ On a :
      Mines       1          {2}        0.1805062   0.1805062
    Centrale      3        {4,5,6}      1.0422789    0.42789
      Total       6     {1,2,3,4,5,6}   2.772219    0.772219
+::: -->
+
+## Etape 3: Les probabilités de transition
+
+::: {style="text-align:center;"}
+![Matrice de transition pour D=2 et V=1](img/ckm-mat-trans.png){#fig-mat-trans width=90% fig-alt="Matrice de transition pour D=2 et V=1" fig-align="center"}
 :::
+
+
+<!---
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-cap: Probabilités de transition pour $D = 3$ et $V = 1.5$
+#| label: fig-cnt-table
+library(ptable)
+plot(ptable::create_cnt_ptable(D=3, V=1.5), type="p")
+```
+--->
+
+
+## Etape 4 : Déterminer la perturbation à injecter
+
+::: {style="text-align:center;"}
+![La perturbation à injecter" fig-align="center](img/ckm-table-pert.png){#fig-tab-pert width=90% fig-alt="La perturbation à injecter" fig-align="center"}
 :::
-
-## Un exemple pour illustrer la CKM
-::: frame
-
-**Etape 4 : Déterminer la perturbation à injecter**
-
+<!-- 
    i   j       p        v     p_int_lb     p_int_ub
   --- --- ------------ ---- ------------ ------------
    0   0   1.00000000   0    0.00000000   1.00000000
@@ -424,13 +468,15 @@ On a :
    3   4   0.23274919   1    0.66034107   0.89309026
    3   5   0.08898737   2    0.89309026   0.98207763
    3   6   0.01792237   3    0.98207763   1.00000000
+::: -->
+
+## Etape 5 : Construire le tableau final
+
+::: {style="text-align:center;"}
+![Table après perturbation](img/ckm-table-finale.png){#fig-tab-finale width=90% fig-alt="Table après perturbation" fig-align="center"}
 :::
 
-## Un exemple pour illustrer la CKM
-::: frame
-
-**Etape 5 : Conclusion**
-
+<!-- 
 ::: center
    **Ecole**   **Valeur originale i**   **Valeur pertubée j**     
   ----------- ------------------------ ----------------------- -- --
@@ -439,23 +485,25 @@ On a :
    Centrale              3                        3               
      Total               6                        7               
 :::
-:::
+::: -->
 
 ## Avantages / inconvénients
-::: frame
 
-  **Avantages**                                                                               **Inconvénients**
-  ------------------------------------------------------------------------------------------- -------------------------------------------------------------------------
-  Facile d'implémentation                                                                     Perte d'additivité
-  Assure la cohérence des tableaux                                                            Perception potentielle d'une non-protection de la part des utilisateurs
-  Réduit drastiquement le risque de différenciation géographique                              
-  Compatible avec le requêtage / la diffusion sur mesure                                      
-  Utilité statistique des données très forte par rapport à des arrondis ou des suppressions   
+::: {#tbl-ckm-avtg-incv style="font-size: 80%;" .table .table-striped .table-hover}
+|                       Avantages                        |                                Inconvénients                                 |
+| :----------------------------------------------------: | :--------------------------------------------------------------------------: |
+|                Facile d'implémentation                 |                            Perte de l'additivité                             |
+|                 Cohérence des tableaux                 |                 Perception de gestion du secret moins facile                 |
+|         Réduit les risques de différenciation          | Cumulation des bruits pour les statistiques de second ordre (ratios par ex.) |
+|              Compatible avec le requêtage              |                                                                              |
+|        Compatible avec une diffusion sur mesure        |                                                                              |
+| A protection égale, meilleure utilité que les arrondis |                                                                              |
+
+: Avantages et onconvénients de la méthode des clés aléatoires
 :::
 
-# La microagrégation*
 
-::: frame
+# La microagrégation
 
 -   Méthode perturbatrice, plus adaptée aux variables continues, mais peut-être adaptée aux variables catégorielles ordonnées
 
@@ -464,48 +512,62 @@ On a :
     -   **Créer des petits groupes homogènes** en prenant en compte les valeurs des variables sélectionnées
 
     -   **Remplacer les valeurs** de tous les individus appartenant au groupe **par une unique valeur** (peut être la valeur moyenne de valeurs observées dans le groupe)
-:::
 
 ## Un exemple
-::: frame
 
-  -------- ----- -------------------- ------------ --
-   Région   Age   Heures travaillées     Poids     
-                     par semaine       de sondage  
-     92     36            17              1000     
-     75     41            35              2000     
-     75     52            0               1100     
-     94     45            35              2500     
-     75     41            0               1900     
-     92     26            46              1500     
-     92     31            38              800      
-     94     48            30              1200     
-  -------- ----- -------------------- ------------ --
+::: {#tbl-ckm-avtg-incv style="font-size: 70%;" .table .table-striped .table-hover .table-bordered}
 
--   Il y a des croisements uniques pour la clef Age $\times$ Région
+| Région | Âge | Heures travaillées par semaine | Revenu mensuel |
+| :----: | :-: | :----------------------------: | :------------: |
+|   92   | 36  |               17               |      1000      |
+|   75   | 41  |               35               |      2000      |
+|   75   | 52  |               0                |      1100      |
+|   94   | 45  |               35               |      2500      |
+|   75   | 41  |               0                |      1900      |
+|   92   | 26  |               46               |      1500      |
+|   92   | 31  |               38               |      800       |
+|   94   | 48  |               30               |      1200      |
+
+: Des données individuelles avec des uniques sur les croisements Âge $\times$ Région
 :::
 
-## Un exemple
-::: frame
 
-  -------- ----------- -------------------- ------------
+## Un exemple
+
+
+
+::: {#tbl-ckm-avtg-incv style="font-size: 70%;" .table .table-striped .table-hover .table-bordered}
+
+|                 Région                  |                      Âge                       | Heures travaillées par semaine | Revenu mensuel |
+| :-------------------------------------: | :--------------------------------------------: | :----------------------------: | :------------: |
+| [92]{style="background-color:#fbff91;"} | [~~36~~ 31]{style="background-color:#fbff91;"} |               17               |      1000      |
+| [75]{style="background-color:#ff796d;"} | [~~41~~ 45]{style="background-color:#ff796d;"} |               35               |      2000      |
+| [75]{style="background-color:#ff796d;"} | [~~52~~ 45]{style="background-color:#ff796d;"} |               0                |      1100      |
+| [94]{style="background-color:#baf2c2;"} | [~~45~~ 47]{style="background-color:#baf2c2;"} |               35               |      2500      |
+| [75]{style="background-color:#ff796d;"} | [~~41~~ 45]{style="background-color:#ff796d;"} |               0                |      1900      |
+| [92]{style="background-color:#fbff91;"} | [~~26~~ 31]{style="background-color:#fbff91;"} |               46               |      1500      |
+| [92]{style="background-color:#fbff91;"} | [~~31~~ 31]{style="background-color:#fbff91;"} |               38               |      800       |
+| [94]{style="background-color:#baf2c2;"} | [~~48~~ 47]{style="background-color:#baf2c2;"} |               30               |      1200      |
+
+: Des données individuelles avec des uniques sur les croisements Âge $\times$ Région
+:::
+  <!-- -------- ----------- -------------------- ------------
    Région      Age      Heures travaillées     Poids
                            par semaine       de sondage
      92     ~~36~~ 31           17              1000
-     75     ~~41~~ 45           35              2000
+     [red]{style="color:green;"}75     ~~41~~ 45           35              2000
      75     ~~52~~ 45           0               1100
      94     ~~45~~ 47           35              2500
      75     ~~41~~ 45           0               1900
      92     ~~26~~ 31           46              1500
      92     ~~31~~ 31           38              800
      94     ~~48~~ 47           30              1200
-  -------- ----------- -------------------- ------------
+  -------- ----------- -------------------- ------------ -->
 
 -   $\mu_{red} = 45$, $\mu_{yellow} = 31$, $\mu_{green} = 47$
-:::
+
 
 ## Paramètres 
-::: frame
 
 Un grand nombre de sorties possibles pour cette méthode selon :
 
@@ -522,94 +584,102 @@ Les paramètres à définir :
 -   Quelles variables sont utilisées pour calculer la distance ?
 
 -   Quelles statistiques choisir une fois que les groupes ont été formés ? (moyenne, médiane ?)
-:::
 
 ## Minimiser la variance intra-groupe 
-::: frame
 
-L'algorithme cherche à minimiser la somme des carrés intra-groupe $$SSE = \sum_{i=1}^g\sum_{j \in i} (x_{ij}-\bar x_{i})^T(x_{ij}-\bar x_{i})$$
-
-<figure id="fig:my_label">
-<p><img src="Images/within.png" style="width:6cm" alt="image" /> <span id="fig:my_label" label="fig:my_label"></span></p>
-</figure>
+::: {style="text-align:center;"}
+![Table après perturbation](img/within.png){#fig-within width=50% fig-alt="Minimisation de la variance intra-groupe" fig-align="center"}
 :::
+
+L'algorithme cherche à minimiser la somme des carrés intra-groupe:
+
+$$SSE = \sum_{i=1}^g\sum_{j \in i} (x_{ij}-\bar x_{i})^T(x_{ij}-\bar x_{i})$$
+
 
 ## Avantages / inconvénients
-::: frame
 
-  **Avantages**                         **Inconvénients**
-  ------------------------------------- ---------------------------
-  Adapté au $k$-anonymat                Temps de calcul important
-  Construction de classes pertinentes   
+::: {#tbl-bruit-add-avtg-incv style="font-size: 80%;" .table .table-striped .table-hover}
+|                Avantages                |       Inconvénients       |
+| :-------------------------------------: | :-----------------------: |
+|         Adapté au $k$-anonymat          | Temps de calcul important |
+| Des classes statistiquement pertinentes |                           |
+
+: Avantages et inconvénients de l'injection d'un bruit additif
 :::
 
+
 # Injection de bruit
-::: frame
+
+## Injection de bruit
 
 -   Méthode adaptée pour traiter les variables continues
 
 -   En général, on injecte un bruit additif sans biais et à variance fixe
-:::
+
+-   Enjeu principal: comment bruiter en préservant les caractéristiuqes des variables et de leurs éventuels liens ?
 
 ## Perturbation par un bruit additif
-::: frame
 
--   Adaptée pour les variables continues
+-   Un bruit est ajouté à chaque valeur observée
+-   Généralement un bruit gaussien d'espérance nulle
+-   Adapté aux variables continues de faible amplitude
 
--   Pas d'hypothèses faites sur les valeurs possiblement prises par les variables à perturber
+## Bruits additifs indépendants
 
--   Le bruit ajouté est généralement continu et d'espérance nulle
-:::
+- Chaque variable est bruitée indépendamment des autres variables
 
-## Trois types de perturbation par un bruit additif
-::: frame
+- Les moyennes et covariances de chaque variable perturbée sont préservées
 
--   Bruits indépendants
+- Mais, les variances et les coefficients de corrélation ne sont pas conservés
 
-    -   Les moyennes et covariances sont préservées
+## Bruits additifs corrélés
 
-    -   Les variances et les coefficients de corrélation ne sont pas conservés
+-  La matrice de variance-covariance des bruits est proportionnelle à la matrice de variance covariance des valeurs originales
 
--   Bruits corrélés
+-  Conservation de la moyenne et des coefficients de corrélation
 
-    -   Conservation des coefficients de corrélation et de l'espérance
-
-    -   Préférable à l'ajout des bruits indépendants car on peut obtenir des estimations non biaisées pour plusieurs statistiques importantes
-:::
-
-## Trois types de perturbation par un bruit additif
-::: frame
-
-Ces deux méthodes sont rarement utilisées en pratique car apporte une protection relativement faible contre la divulgation d'identité (valeurs extrêmes).
-
--   Addition de bruit et transformation linéaire
-
-    -   Matrice de variance-covariance des variables perturbées est un estimateur sans biais de la matrice de variance-covariance des variables originelles
-:::
+-  Préférable à l'ajout des bruits indépendants car on peut obtenir des estimations non biaisées pour plusieurs statistiques importantes
 
 ## Avantages / inconvénients
-::: frame
 
-  **Avantages**                                 **Inconvénients**
-  --------------------------------------------- ------------------------------------------------------------
-  Traitement de variables sensibles continues   Pas adapté aux traitements des outliers de grandes valeurs
-                                                
+::: {#tbl-bruit-add-avtg-incv style="font-size: 80%;" .table .table-striped .table-hover}
+|                  Avantages                  |                       Inconvénients                        |
+| :-----------------------------------------: | :--------------------------------------------------------: |
+| Traitement de variables sensibles continues | Pas adapté aux traitements des outliers de grandes valeurs |
+|  Préservations de statistiques importantes  |                                                            |
+
+: Avantages et inconvénients de l'injection d'un bruit additif
 :::
+                           
+
 
 # Targeted Record Swapping (TRS)
-::: frame
 
--   Raffinement de méthodes de swapping
+## Targeted Record Swapping (TRS)
 
--   Consiste à échanger la localisation de certains individus jugés à risque avec d'autres individus d'une autre entité géographique
+::: {.callout-note}
+### Définition
 
--   Réalisé de telle sorte que les individus échangés se ressemblent suffisamment pour limiter l'effet perturbatif de l'échange
+Le `Target Record Swapping (TRS)` est une méthode s'appliquant directement sur un jeu 
+de données individuelles pour réduire les risques de ré-identification.
 
--   Ciblage des individus préalablement détectés comme à risque de ré-identification (voire risque de divulgation d'attributs sensibles)
+Il consiste à échanger la localisation de certains individus jugés à risque avec d'autres individus d'une autre entité géographique.
+
+D'où son nom: le *swapping*, c'est-à-dire 
+l'échange, va concerner des unités de la base (les *records*) détectés à l'avance, 
+devenant ainsi les cibles (*target*) sur lesquelles l'échange se concentrera.
+
 :::
 
+## Les individus à risque (cibles)
+
+- Cible les individus à risque:
+  - Détection par $k$-anonymat:  croisements de quasi-identifiants de moins de $k$ individus
+  - Détection par $l$-diversité: homogénéité d'un groupe sur une variable sensible
+  - Mesure probabiliste du risque individuel
+  - Principalement un risque de ré-identification
+
 ## Une méthode très utilisée
-::: frame
 
 -   Insee: Données européennes du recensement 2021
 
@@ -618,25 +688,34 @@ Ces deux méthodes sont rarement utilisées en pratique car apporte une protecti
 -   US Census Bureau: Recensement US 2010
 
 -   ONS (UK): Recensement depuis 2010
+
+
+## Un exemple
+
+::: {style="text-align:center;"}
+![Avant Swapping](img/swapping-exemple-avant.png){#fig-swap-avt width=80% fig-alt="Avant swapping" fig-align="center"}
 :::
 
 ## Un exemple
-::: frame
 
-<figure id="fig:my_label">
-
-</figure>
+::: {style="text-align:center;"}
+![Après Swapping](img/swapping-exemple-apres.png){#fig-swap-apr width=80% fig-alt="Après swapping" fig-align="center"}
 :::
+
 
 ## Avantages / inconvénients
-::: frame
 
-  **Avantages**                                                                                  **Inconvénients**
-  ---------------------------------------------------------------------------------------------- --------------------------------------------------------------------------------------------------------------
-  Très efficace pour traiter différents types de risque.                                         Nécessite de fixer un grand nombre de paramètres (mesure de risque, variables similarité, taux de swapping).
-  Méthode souple, adaptation à des cas très différents (structures ménages-individus par ex.).   Bruit injecté dans les données n'est pas vraiment contrôlable
-  Préserve les agrégats du niveau géographique au sein duquel le swapping a été opéré.           Génère localement du biais dans les données.
+::: {#tbl-trs-avtg-incv style="font-size: 80%;" .table .table-striped .table-hover}
+|                                          Avantages                                          |                                                Inconvénients                                                |
+| :-----------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------: |
+|                      Efficace pour traiter différents types de risque                       | Nécessite de fixer un grand nombre de paramètres (mesure de risque, variables similarité, taux de swapping) |
+| Méthode souple, adaptation à des cas très différents (structures ménages-individus par ex.) |                        Bruit injecté dans les données n'est pas vraiment contrôlable                        |
+|    Préserve les agrégats du niveau géographique au sein duquel le swapping a été opéré.     |                                 Génère localement du biais dans les données                                 |
+|       Conserve l'additivité des tableaux générés à partir des micro-données bruitées.       |                                                                                                             |
+
+: Avantages et inconvénients du TRS
 :::
+        
 
 # Post-Randomisation Method (PRAM)
 
@@ -794,15 +873,20 @@ On observe k dans le jeu pertubé :
 
 ## Avantages / inconvénients
 
-  **Avantages**                                                                                                              **Inconvénients**
-  -------------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------
-  Permet de fournir le niveau de protection associé au bruit injecté en calculant les probabilités de transition inverses.   Création d'éventuelles combinaisons impossibles (ex : enfant à la retraite).
-  Conserve l'additivité des tableaux générés à partir des micro-données bruitées.                                            Difficile de définir une matrice de protection qui prend en compte les liens avec toutes les variables.
-  .                                                                                                                          .
+
+
+::: {#tbl-pram-avtg-incv style="font-size: 80%;" .table .table-striped .table-hover}
+|                                                        Avantages                                                        |                                              Inconvénients                                              |
+| :---------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: |
+| Permet de fournir le niveau de protection associé au bruit injecté en calculant les probabilités de transition inverses |              Création d'éventuelles combinaisons impossibles (ex : enfant à la retraite).               |
+|                     Conserve l'additivité des tableaux générés à partir des micro-données bruitées.                     | Difficile de définir une matrice de protection qui prend en compte les liens avec toutes les variables. |
+|                  Préserve les agrégats du niveau géographique au sein duquel le swapping a été opéré.                   |                                                                                                         |
+
+: Avantages et inconvénients de PRAM
+:::
+
 
 # Les données synthétiques
-
-::: frame
 
 -   Idée: Générer tout ou partie des données individuelles.
 
@@ -811,10 +895,8 @@ On observe k dans le jeu pertubé :
     -   Synthèse complète: toutes les variables et tous les individus sont générés.
 
     -   Synthèse partielle: Seulement certaines variables sont générées (principalement les variables sensibles).
-:::
 
 ## Les méthodes de génération (I)
-::: frame
 
 Les principales méthodes de génération sont:
 
@@ -825,10 +907,8 @@ Les principales méthodes de génération sont:
     -   Pour générer la $p^e$ variable, on cherche à modéliser sa distribution conditionnelle : $$f_{X_p | X_1 , X_2 , \dots , X_{p-1}}$$
 
     -   Modélisation paramétrique (régression linéaire ou logistique) ou non paramétrique (en particulier méthodes à base d'arbres: CART, Boosting, random forest, XGBoost).
-:::
 
 ## Les méthodes de génération (II)
-::: frame
 
 Les principales méthodes de génération sont (suite):
 
@@ -837,4 +917,7 @@ Les principales méthodes de génération sont (suite):
     -   **Tabular Variational Auto Encoder** (TVAE): L'auto encodage consiste à combiner une phase d'encodage qui réduit la dimension des données pour apprendre les caractéristiques les plus importantes et une phase de décodage pour reconstituer des données dans leur dimension originale.
 
     -   **Conditional Tabular Generative Adversarial Network** (CTGAN): Les GAN sont très populaires dans la génération d'images. Les CTGAN sont une adaptation des GAN pour générer des données tabulaires (microdonnées ou données agrégées). Un générateur construit des données synthétiques et les soumet à un discriminateur dont l'objectif est de distinguer ces données générées des données originales.
+
+
+::: {#refs}
 :::
