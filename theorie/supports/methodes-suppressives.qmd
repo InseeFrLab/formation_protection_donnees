@@ -24,6 +24,10 @@ format:
   onyxia-revealjs
   # pick the light mode (onyxia-revealjs) or the dark mode (onyxia-dark-revealjs)
   #onyxia-dark-revealjs:
+tbl-cap-location: bottom
+include-in-header: 
+  text: |
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 controls: true
 css: custom.css
 # from: markdown+emoji
@@ -53,19 +57,20 @@ Regroupement des catégories et suppression de cellules.
 
 ## Tableaux d'effectifs
 
+::: {#tbl-eff}
 |                   | Nord | Ouest | Est | Sud | Total |
 |:------------------|-----:|------:|----:|----:|------:|
 | **Polluante**     |    6 |    14 |   1 |   7 |    28 |
 | **Non polluante** |    3 |     2 |   1 |  13 |    19 |
 | **Total**         |    9 |    16 |   2 |  20 |    47 |
-
-<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
-  Tableau 1 – Nombre d'entreprises polluantes par région
-</div>
+: Nombre d'entreprises polluantes par région
+:::
 
 . . .
 
 Y a-t-il des cellules à risque ?
+
+
 
 ## Tableaux d'effectifs
 
@@ -77,18 +82,20 @@ Pour les données entreprises à l'Insee, n = 3.
 
 ## Tableaux d'effectifs
 
+::: {#tbl-eff}
 |                   | Nord | Ouest | Est | Sud | Total |
 |:------------------|-----:|------:|----:|----:|------:|
 | **Polluante**     |    6 |    14 | <span style="color: red;">1</span> |   7 |    28 |
 | **Non polluante** |    3 | <span style="color: red;">2</span> | <span style="color: red;">1</span> |  13 |    19 |
 | **Total**         |    9 |    16 | <span style="color: red;">2</span> |  20 |    47 |
 
-<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
-  Tableau 1 – Nombre d'entreprises polluantes par région
-</div>
+: Nombre d'entreprises polluantes par région
+
+:::
 
 ## Tableaux de volume
 
+::: {#tbl-vol}
 |                   | Harpes | Piano | Orgues  |  Total |
 |:------------------|------:|------:|------:|------:|------:|
 | **Nord**          |     58 |     71 |     92 |    221 |
@@ -96,16 +103,15 @@ Pour les données entreprises à l'Insee, n = 3.
 | **Sud**           |     36 |     24 |     60 |    120 |
 | **Total**         |    105 |    219 |    309 |    633 |
 
-<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
-  Tableau 2 – Répartition des ventes d'instruments par région et par type, en millions d'euros
-</div>
-
+: Répartition des ventes d'instruments par région et par type, en millions d'euros
+:::
 . . .
 
 Y a-t-il des cellules à risque ?
 
 ## Tableaux de volume
 
+::: {#tbl-vol}
 | Région     | Harpes           | Piano            | Orgues           | Total            |
 |:-----------|-----------------:|-----------------:|-----------------:|-----------------:|
 | **Nord**   | 58 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span>   | 71 <span style="color:blue;" title="Nombre d'entreprises"> (17)</span>  | 92 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span>   | 221 <span style="color:blue;" title="Nombre d'entreprises"> (27)</span> |
@@ -113,9 +119,8 @@ Y a-t-il des cellules à risque ?
 | **Sud**    | 36 <span style="color:blue;" title="Nombre d'entreprises"> (3)</span>   | 24 <span style="color:blue;" title="Nombre d'entreprises"> (6)</span>   | 60 <span style="color:blue;" title="Nombre d'entreprises"> (1)</span>   | 120 <span style="color:blue;" title="Nombre d'entreprises"> (10)</span> |
 | **Total**  | 105 <span style="color:blue;" title="Nombre d'entreprises"> (12)</span> | 219 <span style="color:blue;" title="Nombre d'entreprises"> (34)</span> | 309 <span style="color:blue;" title="Nombre d'entreprises"> (8)</span>  | 633 <span style="color:blue;" title="Nombre d'entreprises"> (54)</span> |
 
-<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
-  Tableau 2 – Répartition des ventes d'instruments par région et par type, en millions d'euros
-</div>
+: Répartition des ventes d'instruments par région et par type, en millions d'euros
+:::
 
 <div style="font-size: 0.9em; margin-top: 0.5em;">
   <em>Note :</em> les valeurs entre parenthèses indiquent le <span style="color:blue;">nombre de contributeurs</span>.
@@ -125,6 +130,7 @@ Y a-t-il des cellules à risque ?
 
 Secret primaire de fréquence.
 
+::: {#tbl-vol}
 | Région     | Harpes           | Piano            | Orgues           | Total            |
 |:-----------|-----------------:|-----------------:|-----------------:|-----------------:|
 | **Nord**   | 58 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span>   | 71 <span style="color:blue;" title="Nombre d'entreprises"> (17)</span>  | 92 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span>   | 221 <span style="color:blue;" title="Nombre d'entreprises"> (27)</span> |
@@ -132,9 +138,8 @@ Secret primaire de fréquence.
 | **Sud**    | 36 <span style="color:blue;" title="Nombre d'entreprises"> (3)</span>   | 24 <span style="color:blue;" title="Nombre d'entreprises"> (6)</span>   | 60 <span style="color:red;" title="n<3"> (1)</span>   | 120 <span style="color:blue;" title="Nombre d'entreprises"> (10)</span> |
 | **Total**  | 105 <span style="color:blue;" title="Nombre d'entreprises"> (12)</span> | 219 <span style="color:blue;" title="Nombre d'entreprises"> (34)</span> | 309 <span style="color:blue;" title="Nombre d'entreprises"> (8)</span>  | 633 <span style="color:blue;" title="Nombre d'entreprises"> (54)</span> |
 
-<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
-  Tableau 2 – Répartition des ventes d'instruments par région et par type, en millions d'euros
-</div>
+: Répartition des ventes d'instruments par région et par type, en millions d'euros
+:::
 
 <div style="font-size: 0.9em; margin-top: 0.5em;">
   <em>Note :</em> les valeurs entre parenthèses indiquent le <span style="color:blue;">nombre de contributeurs</span>.
@@ -153,6 +158,7 @@ Secret primaire de fréquence.
 
 Secret primaire de dominance.
 
+::: {#tbl-volsp}
 | Région     | Harpes           | Piano            | Orgues           | Total            |
 |:-----------|-----------------:|-----------------:|-----------------:|-----------------:|
 | **Nord**   | 58 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span>   | 71 <span style="color:blue;" title="Nombre d'entreprises"> (17)</span>  | <span style="color:orange;" title="92 = 86 + 3 + 1 + 1 + 1">92</span> <span style="color:orange;" title="k = 93% > 85%"> (5)</span>   | 221 <span style="color:blue;" title="Nombre d'entreprises"> (27)</span> |
@@ -160,10 +166,8 @@ Secret primaire de dominance.
 | **Sud**    | 36 <span style="color:blue;" title="Nombre d'entreprises"> (3)</span>   | 24 <span style="color:blue;" title="Nombre d'entreprises"> (6)</span>   | 60 <span style="color:red;" title="SP fréquence"> (1)</span>   | 120 <span style="color:blue;" title="Nombre d'entreprises"> (10)</span> |
 | **Total**  | 105 <span style="color:blue;" title="Nombre d'entreprises"> (12)</span> | 219 <span style="color:blue;" title="Nombre d'entreprises"> (34)</span> | 309 <span style="color:blue;" title="Nombre d'entreprises"> (8)</span>  | 633 <span style="color:blue;" title="Nombre d'entreprises"> (54)</span> |
 
-<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
-  Tableau 2 – Répartition des ventes d'instruments par région et par type, en millions d'euros
-</div>
-
+: Répartition des ventes d'instruments par région et par type, en millions d'euros
+:::
 <div style="font-size: 0.9em; margin-top: 0.5em;">
   <em>Note :</em> les valeurs entre parenthèses indiquent le <span style="color:blue;">nombre de contributeurs</span>.
 </div>
@@ -180,6 +184,7 @@ Secret primaire de dominance.
 
 Secret primaire dû à la règle du p%.
 
+::: {#tbl-vol_p_pourc}
 | Région     | Harpes           | Piano            | Orgues           | Total            |
 |:-----------|-----------------:|-----------------:|-----------------:|-----------------:|
 | **Nord**   | 58 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span>   | 71 <span style="color:blue;" title="Nombre d'entreprises"> (17)</span>  | <span style="color:orange;" title="92 = 86 + 3 + 1 + 1 + 1">92</span> <span style="color:orange;" title="k = 93% > 85%"> (5)</span>   | 221 <span style="color:blue;" title="Nombre d'entreprises"> (27)</span> |
@@ -187,10 +192,8 @@ Secret primaire dû à la règle du p%.
 | **Sud**    | <span style="color:purple;" title="36 = 19 + 16 + 1">36</span> <span style="color:purple;" title="p = 5,3% < 10%"> (3)</span>   | 24 <span style="color:blue;" title="Nombre d'entreprises"> (6)</span>   | 60 <span style="color:red;" title="SP fréquence"> (1)</span>   | 120 <span style="color:blue;" title="Nombre d'entreprises"> (10)</span> |
 | **Total**  | 105 <span style="color:blue;" title="Nombre d'entreprises"> (12)</span> | 219 <span style="color:blue;" title="Nombre d'entreprises"> (34)</span> | 309 <span style="color:blue;" title="Nombre d'entreprises"> (8)</span>  | 633 <span style="color:blue;" title="Nombre d'entreprises"> (54)</span> |
 
-<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
-  Tableau 2 – Répartition des ventes d'instruments par région et par type, en millions d'euros
-</div>
-
+: Répartition des ventes d'instruments par région et par type, en millions d'euros
+:::
 <div style="font-size: 0.9em; margin-top: 0.5em;">
   <em>Note :</em> les valeurs entre parenthèses indiquent le <span style="color:blue;">nombre de contributeurs</span>.
 </div>
@@ -216,31 +219,30 @@ Envisager cette option avant les autres méthodes.
 
 ## Le recodage : un exemple
 
+::: {#tbl-recodage}
 |                   | <25 | 25-30 | 30-50 | > 50 | Total |
 |:------------------|----:|------:|------:|-----:|------:|
-| **Polluante**     |   <span style="color: red;">2</span> |     5 |     7 |    6 |    20 |
+| **Polluante**     | <span style="color: red;">2</span> |     5 |     7 |    6 |    20 |
 | **Non polluante** |   8 |    15 |    17 |   20 |    60 |
 | **Total**         |  10 |    20 |    24 |   26 |    80 |
 
-<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
-  Tableau 3 – Nombre d'entreprises polluantes selon l'âge du dirigeant
-</div>
-
+: Nombre d'entreprises polluantes selon l'âge du dirigeant
+:::
 . . .
 
 Définir de nouvelles modalités pour augmenter le nombre de répondants par cellule.
 
 ## Le recodage : un exemple
 
+::: {#tbl-recodage2}
 |                   | <28 | 28-35 | 35-55 | > 55 | Total |
 |:------------------|----:|------:|------:|-----:|------:|
 | **Polluante**     |   3 |     6 |     6 |    5 |    20 |
 | **Non polluante** |   9 |    17 |    19 |   15 |    60 |
 | **Total**         |  12 |    23 |    25 |   20 |    80 |
 
-<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
-  Tableau 3bis – Nombre d'entreprises polluantes selon l'âge du dirigeant
-</div>
+: Nombre d'entreprises polluantes selon l'âge du dirigeant
+:::
 
 ## Le recodage : à vous de jouer !
 
@@ -271,15 +273,15 @@ Comment protéger le secret primaire restant ?
 
 Première étape : supprimer les cellules ne respectant pas les règles du secret primaire.
 
+::: {#tbl-sp}
 |                   | Nord | Ouest | Est | Sud | Total |
 |:------------------|-----:|------:|----:|----:|------:|
 | **Polluante**     |    6 |    14 | <span style="color: red;">X</span> |   7 |    28 |
 | **Non polluante** |    3 | <span style="color: red;">X</span> | 3 |  13 |    21 |
 | **Total**         |    9 |    16 | 4 |  20 |    49 |
 
-<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
-  Tableau 1 – Nombre d'entreprises polluantes par région
-</div>
+: Nombre d'entreprises polluantes par région
+:::
 . . .
 
 Ce n'est pas suffisant, les cellules sont liées entre elles par des équations (marges).
@@ -288,29 +290,29 @@ Ce n'est pas suffisant, les cellules sont liées entre elles par des équations 
 
 Deuxième étape : supprimer des cellules pour protéger le secret primaire.
 
+::: {#tbl-ssd}
 |                   | Nord | Ouest |  Est | Sud | Total |
 |:------------------|-----:|------:|-----:|----:|------:|
 | **Polluante**     |    6 | <span style="color: red;">X</span> | <span style="color: red;">X</span> |   7 |    28 |
 | **Non polluante** |    3 | <span style="color: red;">X</span> | <span style="color: red;">X</span> |  13 |    21 |
 | **Total**         |    9 |    16                              | 4                                  |  20 |    49 |
 
-<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
-  Tableau 1 – Nombre d'entreprises polluantes par région
-</div>
+: Nombre d'entreprises polluantes par région
+:::
 
 ## Le secret secondaire
 
 Plusieurs structures de suppressions (masques de secret) sont possibles.
 
+::: {#tbl-ssd2}
 |                   | Nord | Ouest |  Est | Sud | Total |
 |:------------------|-----:|------:|-----:|----:|------:|
 | **Polluante**     | <span style="color: red;">X</span> |     14                             | <span style="color: red;">X</span> |   7 |    28 |
 | **Non polluante** | <span style="color: red;">X</span> | <span style="color: red;">X</span> |   3                                |  13 |    21 |
 | **Total**         |    9 | <span style="color: red;">X</span> | <span style="color: red;">X</span> |  20 |    49 |
 
-<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
-  Tableau 1 – Nombre d'entreprises polluantes par région
-</div>
+: Nombre d'entreprises polluantes par région
+:::
 
 ## Les intervalles de protection
 
@@ -341,6 +343,7 @@ $$
 
 ## Les intervalles de protection
 
+::: {#tbl-ip}
 | Région     | Harpes           | Piano            | Orgues           | Total            |
 |:-----------|-----------------:|-----------------:|-----------------:|-----------------:|
 | **Nord**   | 58 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span>   | 71 <span style="color:blue;" title="Nombre d'entreprises"> (17)</span>  | 92 <span style="color:blue;" title="Nombre d'entreprises"> (5)</span>   | 221 <span style="color:blue;" title="Nombre d'entreprises"> (27)</span> |
@@ -348,9 +351,8 @@ $$
 | **Sud**    | 36 <span style="color:blue;" title="Nombre d'entreprises"> (3)</span>   | 24 <span style="color:blue;" title="Nombre d'entreprises"> (6)</span>   | <span style="color:red;" title="[54 ; 66]">60</span> <span style="color:red;" title="n < 3"> (1)</span>   | 120 <span style="color:blue;" title="Nombre d'entreprises"> (10)</span> |
 | **Total**  | 105 <span style="color:blue;" title="Nombre d'entreprises"> (12)</span> | 219 <span style="color:blue;" title="Nombre d'entreprises"> (34)</span> | 309 <span style="color:blue;" title="Nombre d'entreprises"> (8)</span>  | 633 <span style="color:blue;" title="Nombre d'entreprises"> (54)</span> |
 
-<div style="text-align: center; font-weight: bold; margin-bottom: 0.5em;">
-  Tableau 2 – Répartition des ventes d'instruments par région et par type, en millions d'euros
-</div>
+: Répartition des ventes d'instruments par région et par type, en millions d'euros
+:::
 
 <div style="font-size: 0.9em; margin-top: 0.5em;">
   <em>Note :</em> glisser la souris sur les valeurs en secret primaire de fréquence pour voir les intervalles de protection.
