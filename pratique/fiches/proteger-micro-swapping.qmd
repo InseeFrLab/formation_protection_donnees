@@ -399,19 +399,26 @@ mean(lfs_sdc@risk$individual[,2] < 10)*100
 ```{r}
 risk_variables <- c("AGE6","SEXE","DIP7")
 hierarchy <- c("REG", "DEP")
-carry_along <- NULL
+similar <- list(
+  c("REG","AGE6","SEXE"), 
+  c("REG","SEXE"), 
+  c("REG","AGE6"), 
+  c("AGE6","SEXE"),
+  "REG"
+  )
+carry_along <- "ARR"
 hid <- "ID" # swapping d'individus
 ```
 
 ```{r}
 lfs_2023_pr_swap <- lfs_2023 |>
-  select(all_of(c(risk_variables, hierarchy, similar, sens_vars, hhid_vars))) |>
+  # select(all_of(c(risk_variables, hierarchy, unlist(similar), sens_vars, hhid_vars))) |>
   mutate(across(everything(), as.integer))|>
   mutate(ID = 1:n())
 ```
 
 
-### Swapper les individus
+## Swapper les individus
 
 Les paramètres:
 
@@ -447,6 +454,22 @@ lfs_swapped %>% group_by(REG) %>%
 ```
 
 
+### Un exemple d'échange
+
+```{r}
+head(lfs_swapped, 5)
+```
+
+Par exemple, l'individu 3 a été échangé:
+
+```{r}
+lfs_2023 |> slice(c(3,lfs_swapped|>slice(3)|>pull(ID_swapped)))
+```
+
+On peut remarquer que ces individus sont similaires sur la région, le sexe et l'âge (`AGE6`).
+
+
+<!-- 
 #### Vérifier que les individus à risque ont bien été swappés
 
 ```{r}
@@ -454,15 +477,28 @@ lfs_swapped
 ```
 
 #### Intégrité de la composition des ménages
+ -->
 
+## La base swappée
 
+```{r}
+str(lfs_swapped)
+```
 
-### Swapper les ménages
+<!-- 
+```{r}
+# lfs_pert <- bind_cols(
+#   lfs_2023_pr_swap |> select(REG, DEP, ARR),
+#   lfs_swapped |> select(-REG, -DEP, -ARR) |> arrange(ID_swapped) 
+# ) 
+```
+ -->
 
+## Swapper les ménages
 
 ```{r}
 hid <- "HHID" # swapping de ménages
-similar <- "TAILLE"
+similar <- list(c("HH_TAILLE", "HH_AGE"), c("HH_TAILLE"), c("HH_AGE"))
 
 lfs_swapped_hh <- recordSwap(
   data = lfs_2023_pr_swap,
@@ -482,20 +518,17 @@ lfs_swapped_hh <- recordSwap(
 #### Taux de swapping des ménages vs taux de swapping des individus
 
 ```{r}
-lfs_swapped_hh %>% summarise(mean(HHID != HHID_swapped)) #6.2 des ménages
-lfs_swapped_hh %>% filter(HHID != HHID_swapped) %>%
-  summarise(n()/nrow(lfs_swapped_hh)*100) #6.2% des individus (les ménages swappés sont de même taille)
-lfs_swapped_hh %>% filter(HHID != HHID_swapped) %>%
-  summarise(mean(TAILLE))
-
+lfs_swapped_hh %>% summarise(mean(HHID != HHID_swapped)) 
 ```
+
+
+
 
 ## Mesurer la perte d'utilité 
 
 
-Comparer différents taux de swapping.
-
-### Comparer les intervalles de confiance d'un modèle logistique
+On se propose de  comparer les intervalles de confiance des coefficients d'un modèle logistique 
+pour évaluer la perte d'information engendrée par le swapping.
 
 ```{r}
 source("../R/fun_cio.R")
@@ -529,8 +562,9 @@ graph_cios(all_cios, titre = "Superposition des intervalles de confiance\ndes Od
 ```
 
 
-## Exercices
+## Exercice 
 
-### Choisir le taux de swapping 
+Comparer la perte d'information de différents taux de swapping.
+Vous utiliserez la mesure de perte d'information que vous souhaitez.
 
-### Appliquer le swapping au niveau ménages
+
