@@ -6,6 +6,15 @@ code-block-border-left: "#bf9aff"
 code-fold: show
 ---
 
+# Les packages
+
+```{r}
+#| eval: false
+#| echo: false
+setwd("./pratique/fiches")
+```
+
+
 
 ```{r}
 #| echo: true
@@ -142,7 +151,7 @@ cas, on définit un scénario minimaliste, dans le second le scénario est maxim
 Dans notre jeu de données fictif sur l'emploi et le chômage, on pourrait définir 
 
 - un scénario minimaliste: l'attaquant ne dispose que de la géographie, du sexe et de l'âge de ses clients
-- un scénario intermédiaire: l'attaquant dispose en plus d'informations sur sa catégorie sociale et son niveau de diplôme
+- un scénario intermédiaire: l'attaquant dispose en plus d'informations sur son niveau de diplôme
 - un scénario maximaliste: l'attaquant dispose en réalité de toutes les informations sur les individus sauf de son ancienneté au chômage.
 
 
@@ -150,7 +159,7 @@ Selon ces trois scénarios, le niveau de risque de ré-identifcation des individ
 
 
 ```{r}
-qi_vars_II <- c(qi_vars_I, "PCS1Q", "DIP7")
+qi_vars_II <- c(qi_vars_I, "DIP7")
 qi_vars_III <- c(names(lfs_2023)[!names(lfs_2023) %in% c("ANCCHOM")])
 
 risques_reident <- 
@@ -182,8 +191,6 @@ risques_reident$r_stats |>
 ```
 
 
-
-
 ::: {.callout-warning}
 ### Des variables très efficaces pour la ré-identification
 
@@ -212,9 +219,9 @@ ci-dessus:
 - **scénario II-c**: combinaison des deux scénarios ci-dessus.
 
 ```{r}
-qi_vars_IIa <- c("REG", "DEP", "AGE", "PCS1Q", "DIP7")
-qi_vars_IIb <-  c("REG", "DEP", "ARR", "AGE6", "PCS1Q", "DIP7")
-qi_vars_IIc <- c("REG", "DEP", "AGE6", "PCS1Q", "DIP7")
+qi_vars_IIa <- c("REG", "DEP", "SEXE", "AGE", "DIP7")
+qi_vars_IIb <-  c("REG", "DEP", "ARR", "SEXE",  "AGE6", "DIP7")
+qi_vars_IIc <- c("REG", "DEP", "SEXE", "AGE6", "DIP7")
 
 risques_reident2 <- list(
   "II" = qi_vars_II, 
@@ -269,7 +276,7 @@ comme quasi-identfiantes.
 ```{r}
 lfs_sdc <- sdcMicro::createSdcObj(
   lfs_2023,
-  keyVars = qi_vars_I
+  keyVars = qi_vars_IIc
 )
 ```
 
@@ -283,28 +290,107 @@ slotNames(lfs_sdc)
 ```
 
 
-Lors de la création de l'objet, un certain nombre de métriques de risque ont été 
-calculées:
-
-- des mesures globales: 
+Lors de la création de l'objet, un certain nombre de métriques de risque ont été calculées. D'un point de vue global, la proportion d'individus à risque de ré-identification est une mesure calculée à partir des groupes constitués par les quasi-identifiants. Il s'agit du risque moyen qu'un individu de la base de donnée soit ré-identifié: $$ R = \frac{1}{n} \sum_i{ r_i }$$, où $r_i$ est le risque pour l'individu $i$ d'être ré-identifié (voir plus bas pour plus de précision).
 
 ```{r}
-lfs_sdc@risk$global
+lfs_sdc@risk$global$risk * 100
+```
+
+Le nombre de ré-identifications auxquelles on peut s'attendre en moyenne (risque global * n) est fourni par:
+
+```{r}
+lfs_sdc@risk$global$risk_ER
+```
+
+On peut également retrouver la part d'individus à risque au sens du $k$-anonymat:
+
+```{r}
+print(lfs_sdc, 'kAnon')
+```
+
+On observe en particulier que $77$ individus sont uniques sur les clés utilisées ($2$-anonymity).
+
+ou pour d'autres valeurs de $k$, on peut faire, par exemple, pour $k=10$:
+
+```{r}
+mean(lfs_sdc@risk$individual[,2] < 10)*100
 ```
 
 
-- des mesures individuelles :
+## Le risque de divulgation d'attributs sensibles
+
+On suppose que `ACTEU` est une variable sensible. Pour réduire 
+le risque de divulgation d'attributs sur cette variable, on peut 
+mesure la $l$-diversité du fichier et être particulier vigilant 
+aux groupes de quasi-identifiants qui seraient constitués 
+d'individus partageant la même catégorie.
+
+```{r}
+lfs_sdc <- ldiversity(obj = lfs_sdc, ldiv_index = c("ACTEU"), missing = NA)
+lfs_sdc@risk$ldiversity
+```
+
+
+Calculons la part d'individus présents dans un groupe ne comptant qu'une seule des trois catégories:
+
+```{r}
+mean(lfs_sdc@risk$ldiversity[,"ACTEU_Distinct_Ldiversity"]==1)*100
+```
+
+En réalité, parmi les trois catégories de la variable, une seule est réellement sensible: il s'agit de la catégorie `2` correspondant aux personnes au chômage.
+
+Vérifions le nombre d'individus réellement à risque de divulgation d'attributs sensibles:
+
+```{r}
+indiv_1diverses <- which(lfs_sdc@risk$ldiversity[,"ACTEU_Distinct_Ldiversity"]==1)
+
+lfs_2023|>
+  slice(indiv_1diverses)|> 
+  filter(ACTEU == 2)|>
+  nrow()
+```
+
+
+## Les mesures du risque individuel
+
+```{r}
+head(lfs_sdc@risk$individual)
+```
+
   - `risk` : risque individuel défini par $\frac{1}{fk}$ si le fichier est une population
   - `fk` : nombre d'individus du fichier partageant les mêmes clés (croisements de quasi-identifiants)
   - `Fk` : nombre d'individus dans la population partageant les mêmes clés (croisements de quasi-identifiants)
   
+Le risque de ré-identification est calculé différemment selon que l'on a affaire à une population ou à un échantillon.
+
+
 ::: {.callout-note}
 ### Echantillon et Population
 
 #### Population
 
 Si le jeu de données étudié correspond à une population (fichier exhaustif du champ),
-alors $fk = Fk = \sum_i{ 1(i \in k)}$, nombre d'individus $i$ partageant la clé $k$.
+alors $fk = Fk = \sum_i{ 1(i \in k)}$, le nombre d'individus $i$ partageant la clé $k$.
+
+Dans ce cas, le risque de ré-identification d'un individu est défini par $r_k = 1/f_k = 1/F_k$ et correspond à la probabilité de ré-identifier l'individu correctement si on connaît ses caractéristiques $k$ sur les variables quasi-identifiantes.
+
+En se reportant aux premières lignes du tableau des risques présenté ci-dessous que la colonne `risk` est bien égale à `1/fk`.
+
+```{r}
+head(lfs_sdc@risk$individual)
+```
+
+Dans notre jeu de données, la distribution du risque individuel est la suivante (on multiplie par 100 pour l'interpréter comme le pourcentage de chances de correctement ré-identifier l'individu):
+
+```{r}
+hist(lfs_sdc@risk$individual[,"risk"]*100)
+```
+
+La grande partie des individus ont un risque inférieur à $20\%$. On note qu'il y a des individus dont le risque est maximal, en revanche. Il s'agit d'individus uniques pour les clés que nous avons choisies:
+
+```{r}
+sum(lfs_sdc@risk$individual[,"risk"] == 1)
+```
 
 
 #### Echantillon
@@ -317,45 +403,48 @@ Si, au contraire, il s'agit d'un échantillon, on distinguera:
 où $S$ désigne l'échantillon (le fichier) et $w_i$ le poids de l'individu 
 $i \in S$.
 
-[@templ_statistical_2015; et @Rinott_Shlomo_2006].
-
-:::
-
-Certaines variables ont un pouvoir de ré-identification très fort, en particulier :
+En revanche, la colonne `risk` n'est pas calculée directement à partir des $F_k$. En effet, un tel risque est jugé trop conservateur et conduit à surestimer le risque de ré-identification [@templ_statistical_2015; et @Rinott_Shlomo_2006]. En effet, les $F_k$ sont en réalité des estimations. Une approche bayésienne est préférée 
+(voir [la présentation sur les mesures de risque](theorie/supports/arbitrer-risque-utilite.html) pour plus de détails).
 
 
 
 ```{r}
-head(lfs_sdc@risk$individual)
+set.seed(14789)
+
+N = 1e6
+n = nrow(lfs_2023)
+
+w = N/n + rnorm(n-1, -2/(n-1), 2)
+w = c(w, N-sum(w))
+lfs_samp <- lfs_2023 |> 
+  mutate(poids = sample(w, n, replace=TRUE))
+```
+
+```{r}
+lfs_sdc_samp <- sdcMicro::createSdcObj(
+  lfs_samp,
+  keyVars = qi_vars_IIc,
+  weightVar = "poids"
+)
 ```
 
 
+```{r}
+lfs_sdc_samp@risk$global$risk
+```
 
-## Le risque de divulgation d'attributs sensibles
-
-
-
-
-## SUDA
-
-
-## Le risque individuel 
+```{r}
+head(lfs_sdc_samp@risk$individual)
+```
 
 
-### Mesures naïves
+```{r}
+hist(lfs_sdc_samp@risk$individual[,"risk"]*100)
+```
 
-
-### Mesures probabilistes
-
-
-### Les outliers
-
-
+:::
 
 ### References
 
 ::: {#refs}
 :::
-
-
-
