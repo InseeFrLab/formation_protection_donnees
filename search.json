@@ -984,7 +984,7 @@
     "href": "pratique/fiches/generer-synth.html#risque-utilité",
     "title": "Générer des données synthétiques",
     "section": "Risque / Utilité",
-    "text": "Risque / Utilité\n\n\nCode\nsynthpop::disclosure(lfs_syn, lfs_orig, keys = c(\"AGE6\", \"SEXE\", \"REG\", \"DEP\"), target = c(\"IS_CHOM\"))\n\n\n-------------------Synthesis 1 --------------------\nTable for target IS_CHOM from GT alone with keys has 2 rows 240 colums.\nTable for target  IS_CHOM from GT & SD with all key combinations has 2 rows 244 colums.\n\n\nDisclosure measures from synthesis for 34053 records in original data.\n\nIdentity  measures for keys REG DEP SEXE AGE6 \nand attribute measures for IS_CHOM from the same keys\n            Identity (UiO/repU) Attrib (Dorig/DiSCO)\nOriginal                   0.01                20.71\nSynthesis 1                0.00                19.68\n\nThe 1 way distributions of IS_CHOM has a large contribution to disclosure from level Check  IS_CHOM  level  0 \nPlease add 'check_1way' to to.print (e.g. print(disclosure_result, to.print = 'check_1way'),\nand look at original data to decide if backround knowledge would make this disclosure likely\nConsider excluding this level with the not.targetlev parameter to the disclosure function.\n\n\nDetails of target-key pairs contributing disproportionately to disclosure of IS_CHOM \n35 pairs need checks \n\nPlease examine component $check_2way of the disclosure object and look at original data.\nConsider excluding these key-target pairs with some the following parameters to disclosure:\nexclude_ov_denom_lim = TRUE or defining key-target combinations from exclude.targetlevs,\nexclude.keys and exclude.keylevs"
+    "text": "Risque / Utilité\n\n\nCode\nsynthpop::disclosure(lfs_syn, lfs_orig, keys = c(\"AGE6\", \"SEXE\", \"REG\", \"DEP\"), target = c(\"IS_CHOM\"))\n\n\n-------------------Synthesis 1 --------------------\nTable for target IS_CHOM from GT alone with keys has 2 rows 240 colums.\nTable for target  IS_CHOM from GT & SD with all key combinations has 2 rows 243 colums.\n\n\nDisclosure measures from synthesis for 34053 records in original data.\n\nIdentity  measures for keys REG DEP SEXE AGE6 \nand attribute measures for IS_CHOM from the same keys\n            Identity (UiO/repU) Attrib (Dorig/DiSCO)\nOriginal                   0.01                20.71\nSynthesis 1                0.00                22.76\n\nThe 1 way distributions of IS_CHOM has a large contribution to disclosure from level Check  IS_CHOM  level  0 \nPlease add 'check_1way' to to.print (e.g. print(disclosure_result, to.print = 'check_1way'),\nand look at original data to decide if backround knowledge would make this disclosure likely\nConsider excluding this level with the not.targetlev parameter to the disclosure function.\n\n\nDetails of target-key pairs contributing disproportionately to disclosure of IS_CHOM \n37 pairs need checks \n\nPlease examine component $check_2way of the disclosure object and look at original data.\nConsider excluding these key-target pairs with some the following parameters to disclosure:\nexclude_ov_denom_lim = TRUE or defining key-target combinations from exclude.targetlevs,\nexclude.keys and exclude.keylevs"
   },
   {
     "objectID": "pratique/fiches/sujets-avances.html",
@@ -1904,41 +1904,6 @@
     "text": "Les méthodes à disposition\n\nDeux types de méthodes en fonction du moment où elles sont appliquées :\n\nLes méthodes pré-tabulation sont appliquées sur les données individuelles, i.e. avant toute tabulation\nLes méthodes post-tabulation sont appliquées sur les données agrégées, i.e. après tabulation"
   },
   {
-    "objectID": "theorie/supports/methodes-suppressives.html#les-méthodes-à-disposition-1",
-    "href": "theorie/supports/methodes-suppressives.html#les-méthodes-à-disposition-1",
-    "title": "Les méthodes suppressives",
-    "section": "Les méthodes à disposition",
-    "text": "Les méthodes à disposition\n\n\n\n\n\n\n\n\nType de méthode\nType de données\nMéthodes\n\n\n\n\nPré-tabulation\nMicro-données\nRecodage des variables  Suppression locale\n\n\nPost-tabulation\nDonnées tabulées\nSuppression de cellules  Regroupement de catégories"
-  },
-  {
-    "objectID": "theorie/supports/methodes-suppressives.html#le-recodage-des-variables",
-    "href": "theorie/supports/methodes-suppressives.html#le-recodage-des-variables",
-    "title": "Les méthodes suppressives",
-    "section": "Le recodage des variables",
-    "text": "Le recodage des variables\n\n\n\nid\nâge\nGenre\nProfession\n\n\n\n\n1\n23\nH\nstatistiques\n\n\n2\n24\nH\nstatistiques\n\n\n3\n50\nF\nstatistiques\n\n\n4\n53\nH\nstatistiques\n\n\n5\n51\nF\nstatistiques"
-  },
-  {
-    "objectID": "theorie/supports/methodes-suppressives.html#le-recodage-des-variables-1",
-    "href": "theorie/supports/methodes-suppressives.html#le-recodage-des-variables-1",
-    "title": "Les méthodes suppressives",
-    "section": "Le recodage des variables",
-    "text": "Le recodage des variables\n\n\n\nid\nâge\nGenre\nProfession\n\n\n\n\n1\n20-30\nH\nstatistiques\n\n\n2\n20-30\nH\nstatistiques\n\n\n3\n50-60\nF\nstatistiques\n\n\n4\n50-60\nH\nstatistiques\n\n\n5\n50-60\nF\nstatistiques"
-  },
-  {
-    "objectID": "theorie/supports/methodes-suppressives.html#la-suppression-locale",
-    "href": "theorie/supports/methodes-suppressives.html#la-suppression-locale",
-    "title": "Les méthodes suppressives",
-    "section": "La suppression locale",
-    "text": "La suppression locale\nS’applique aux variables catégorielles.\n\nSuppression d’au moins une catégorie présente dans une combinaison à risque, i.e. on la remplace par une valeur manquante.\n\n\n\n\n\nid\nLieu de résidence\nGenre\nProfession\n\n\n\n\n1\npoitiers\nH\nstatistiques\n\n\n2\npoitiers\nH\nstatistiques\n\n\n3\nbarfleur\nH\npêche\n\n\n4\nbarfleur\nH\npêche\n\n\n5\nbarfleur\nF\nmaire"
-  },
-  {
-    "objectID": "theorie/supports/methodes-suppressives.html#la-suppression-locale-1",
-    "href": "theorie/supports/methodes-suppressives.html#la-suppression-locale-1",
-    "title": "Les méthodes suppressives",
-    "section": "La suppression locale",
-    "text": "La suppression locale\n\n\n\nid\nLieu de résidence\nGenre\nProfession\n\n\n\n\n1\npoitiers\nH\nstatistiques\n\n\n2\npoitiers\nH\nstatistiques\n\n\n3\nbarfleur\nH\npêche\n\n\n4\nbarfleur\nH\npêche\n\n\n5\nbarfleur\nF\nNA"
-  },
-  {
     "objectID": "theorie/supports/methodes-suppressives.html#tableaux-deffectifs",
     "href": "theorie/supports/methodes-suppressives.html#tableaux-deffectifs",
     "title": "Les méthodes suppressives",
@@ -2041,7 +2006,7 @@
     "href": "theorie/supports/methodes-suppressives.html#le-recodage-à-vous-de-jouer",
     "title": "Les méthodes suppressives",
     "section": "Le recodage : à vous de jouer !",
-    "text": "Le recodage : à vous de jouer !\nOn cherche à publier le tableau suivant :\n\nPopulation d’une région par leur zone d’emploi de résidence, leur zone d’emploi de travail, leur profession et leur âge.\nBeaucoup de secret primaire dans ce tableau puisque la plupart des gens résident et travaillent dans la même zone d’emploi.\nComment recoder ce tableau ?\n\n\nUn premier recodage consiste à regrouper toutes les zones d’emploi de travail hors région dans une seule catégorie."
+    "text": "Le recodage : à vous de jouer !\nOn cherche à publier le tableau suivant :\n\nPopulation d’une région par leur département de résidence, leur département de travail, leur profession et leur âge.\nBeaucoup de secret primaire dans ce tableau puisque la plupart des gens résident et travaillent dans le même département.\nComment recoder ce tableau ?\n\n\nUn premier recodage consiste à regrouper tous les départements de travail hors du département de résidence dans une seule catégorie."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#le-recodage",
@@ -2167,21 +2132,21 @@
     "href": "theorie/supports/methodes-suppressives.html#tau-argus",
     "title": "Les méthodes suppressives",
     "section": "\\(\\tau\\)-Argus",
-    "text": "\\(\\tau\\)-Argus\n\n\n\nPermet de calculer le secret primaire et secondaire ou faire des arrondis contrôlés\n\n\nDéveloppement maintenance et support : groupé d’expert européens coordonné par CBS\n\n\nLogiciel de référence en Europe pour gérer la confidentialité des tableaux\n\n\nLogiciel libre et open source\n\n\nDernière version stable 4.2.4 (26 avril 2023)"
+    "text": "\\(\\tau\\)-Argus\n\n\n\nPermet de calculer le secret primaire et secondaire ou faire des arrondis contrôlés\n\n\nDéveloppement maintenance et support : groupe d’expert européens coordonné par CBS\n\n\nLogiciel de référence en Europe pour gérer la confidentialité des tableaux\n\n\nLogiciel libre et open source\n\n\nDernière version stable 4.2.4 (26 avril 2023)"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#tau-argus-1",
     "href": "theorie/supports/methodes-suppressives.html#tau-argus-1",
     "title": "Les méthodes suppressives",
     "section": "\\(\\tau\\)-Argus",
-    "text": "\\(\\tau\\)-Argus\n\n\n\n\n\n\n\n👍\n👎\n\n\n\n\nOutil qui fait référence.\nInterface fouillis.\n\n\nPerformant sur la partie pose de secret grâce à une optimisation globale.\nBugs et erreurs pas faciles à comprendre et corriger.\n\n\nOutil maintenu régulièrement.\nReproductibilité des opérations limitées."
+    "text": "\\(\\tau\\)-Argus\n\n\n\n\n\n\n\n👍\n👎\n\n\n\n\nOutil qui fait référence.\nInterface fouillis.\n\n\nPerformant sur la partie pose de secret grâce à une optimisation globale.\nBugs et erreurs pas faciles à comprendre et corriger.\n\n\nOutil maintenu régulièrement.\nReproductibilité des opérations limitée."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#rtauargus",
     "href": "theorie/supports/methodes-suppressives.html#rtauargus",
     "title": "Les méthodes suppressives",
     "section": "rtauargus",
-    "text": "rtauargus\nUn package R pour bénéficier des avantages de \\(\\tau\\)-Argus tout en limitant les inconvénients.\n\n\n\nDéveloppé à l’Insee\n\n\nCode open-source\n\n\nVersion la plus récente 02/25 : v-1.2.999-dev\n\n\nUne documentation en ligne\n\n\nUtiliser les fonctions tab_XXX()"
+    "text": "rtauargus\nUn package R pour bénéficier des avantages de \\(\\tau\\)-Argus tout en limitant les inconvénients.\n\n\n\nDéveloppé à l’Insee\n\n\nCode open-source\n\n\nVersion la plus récente 06/25 : v-1.3.0\n\n\nUne documentation en ligne\n\n\nUtiliser les fonctions tab_XXX()"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#rtauargus-1",
@@ -2258,7 +2223,7 @@
     "href": "theorie/supports/methodes-suppressives.html#etapes-de-lanalyse-1",
     "title": "Les méthodes suppressives",
     "section": "Etapes de l’analyse",
-    "text": "Etapes de l’analyse\n\nLa demande peut-elle être découpée en sous-demandes indépendantes ?\n\n\nchamps différents et non complémentaires \\(\\perp\\!\\!\\!\\perp\\)\nvariable de réponses différentes (et non liées par une équation / corrélation) \\(\\perp\\!\\!\\!\\perp\\)\nvariables de croisement toutes différentes \\(\\perp\\!\\!\\!\\perp\\)\n\nDans les cas d’indépendance il faut gérer séparément les différentes sous-demandes."
+    "text": "Etapes de l’analyse\n\nLa demande peut-elle être découpée en sous-demandes indépendantes ?\n\n\nchamps différents et non complémentaires \\(\\perp\\!\\!\\!\\perp\\)\nvariables de réponses différentes (et non liées par une équation / corrélation) \\(\\perp\\!\\!\\!\\perp\\)\nvariables de croisement toutes différentes \\(\\perp\\!\\!\\!\\perp\\)\n\nDans les cas d’indépendance il faut gérer séparément les différentes sous-demandes."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#etapes-de-lanalyse-2",

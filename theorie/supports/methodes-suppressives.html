@@ -130,7 +130,7 @@
 
 <section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center">
   <h1 class="title">Les méthodes suppressives</h1>
-  <p class="subtitle"></p><p><strong><span class="orange">Pour données tabulées ou individuelles</span></strong></p><p></p>
+  <p class="subtitle"></p><p><strong><span class="orange">Pour données tabulées</span></strong></p><p></p>
 
 <div class="quarto-title-authors">
 </div>
@@ -146,226 +146,6 @@
 </ul>
 </div>
 </section>
-<section id="les-méthodes-à-disposition-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les méthodes à disposition</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 21%">
-<col style="width: 37%">
-<col style="width: 40%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Type de méthode</th>
-<th>Type de données</th>
-<th><strong>Méthodes</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Pré-tabulation</td>
-<td>Micro-données</td>
-<td>Recodage des variables <br> Suppression locale</td>
-</tr>
-<tr class="even">
-<td>Post-tabulation</td>
-<td>Données tabulées</td>
-<td>Suppression de cellules <br> Regroupement de catégories</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section>
-<section id="les-méthodes-pré-tabulation" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Les méthodes pré-tabulation</h1>
-
-</section>
-<section id="le-recodage-des-variables" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Le recodage des variables</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>id</th>
-<th>âge</th>
-<th>Genre</th>
-<th>Profession</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>23</td>
-<td>H</td>
-<td>statistiques</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>24</td>
-<td>H</td>
-<td>statistiques</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>50</td>
-<td>F</td>
-<td>statistiques</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>53</td>
-<td>H</td>
-<td>statistiques</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>51</td>
-<td>F</td>
-<td>statistiques</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="le-recodage-des-variables-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Le recodage des variables</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>id</th>
-<th>âge</th>
-<th>Genre</th>
-<th>Profession</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>20-30</td>
-<td>H</td>
-<td>statistiques</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>20-30</td>
-<td>H</td>
-<td>statistiques</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>50-60</td>
-<td>F</td>
-<td>statistiques</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>50-60</td>
-<td>H</td>
-<td>statistiques</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>50-60</td>
-<td>F</td>
-<td>statistiques</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="la-suppression-locale" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>La suppression locale</h2>
-<p>S’applique aux variables catégorielles.</p>
-<div class="fragment">
-<p>Suppression d’au moins une catégorie présente dans une combinaison à risque, i.e.&nbsp;on la remplace par une <strong>valeur manquante</strong>.</p>
-</div>
-<div class="fragment">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>id</th>
-<th>Lieu de résidence</th>
-<th>Genre</th>
-<th>Profession</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>poitiers</td>
-<td>H</td>
-<td>statistiques</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>poitiers</td>
-<td>H</td>
-<td>statistiques</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>barfleur</td>
-<td>H</td>
-<td>pêche</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>barfleur</td>
-<td>H</td>
-<td>pêche</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>barfleur</td>
-<td>F</td>
-<td>maire</td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="la-suppression-locale-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>La suppression locale</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>id</th>
-<th>Lieu de résidence</th>
-<th>Genre</th>
-<th>Profession</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>poitiers</td>
-<td>H</td>
-<td>statistiques</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>poitiers</td>
-<td>H</td>
-<td>statistiques</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>barfleur</td>
-<td>H</td>
-<td>pêche</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>barfleur</td>
-<td>H</td>
-<td>pêche</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>barfleur</td>
-<td>F</td>
-<td><em>NA</em></td>
-</tr>
-</tbody>
-</table>
-</section></section>
 <section>
 <section id="les-méthodes-post-tabulation" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
 <h1>Les méthodes post-tabulation</h1>
@@ -897,12 +677,12 @@
 <h2>Le recodage : à vous de jouer !</h2>
 <p>On cherche à publier le tableau suivant :</p>
 <ul>
-<li>Population d’une région par leur zone d’emploi de résidence, leur zone d’emploi de travail, leur profession et leur âge.</li>
-<li>Beaucoup de secret primaire dans ce tableau puisque la plupart des gens résident et travaillent dans la même zone d’emploi.</li>
+<li>Population d’une région par leur département de résidence, leur département de travail, leur profession et leur âge.</li>
+<li>Beaucoup de secret primaire dans ce tableau puisque la plupart des gens résident et travaillent dans le même département.</li>
 <li>Comment recoder ce tableau ?</li>
 </ul>
 <div class="fragment">
-<p>Un premier recodage consiste à regrouper toutes les zones d’emploi de travail hors région dans une seule catégorie.</p>
+<p>Un premier recodage consiste à regrouper tous les départements de travail hors du département de résidence dans une seule catégorie.</p>
 </div>
 </section>
 <section id="le-recodage" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -1564,7 +1344,7 @@
 Permet de calculer le secret primaire et secondaire ou faire des arrondis contrôlés
 </li>
 <li>
-Développement maintenance et support : groupé d’expert européens coordonné par CBS
+Développement maintenance et support : groupe d’expert européens coordonné par CBS
 </li>
 <li>
 Logiciel de référence en Europe pour gérer la confidentialité des tableaux
@@ -1603,7 +1383,7 @@ Dernière version stable 4.2.4 (26 avril 2023)
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Outil maintenu régulièrement.</td>
-<td style="text-align: center;">Reproductibilité des opérations limitées.</td>
+<td style="text-align: center;">Reproductibilité des opérations limitée.</td>
 </tr>
 </tbody>
 </table>
@@ -1620,7 +1400,7 @@ Développé à l’Insee
 <a href="https://github.com/InseeFrLab/rtauargus">Code open-source</a>
 </li>
 <li>
-Version la plus récente 02/25 : v-1.2.999-dev
+Version la plus récente 06/25 : v-1.3.0
 </li>
 <li>
 <a href="https://inseefrlab.github.io/rtauargus/">Une documentation en ligne</a>
@@ -1744,7 +1524,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x6
 </ol>
 <ul>
 <li>champs différents et non complémentaires <span class="math inline">\(\perp\!\!\!\perp\)</span></li>
-<li>variable de réponses différentes (et non liées par une équation / corrélation) <span class="math inline">\(\perp\!\!\!\perp\)</span></li>
+<li>variables de réponses différentes (et non liées par une équation / corrélation) <span class="math inline">\(\perp\!\!\!\perp\)</span></li>
 <li>variables de croisement toutes différentes <span class="math inline">\(\perp\!\!\!\perp\)</span></li>
 </ul>
 <p>Dans les cas d’indépendance il faut <em>gérer séparément les différentes sous-demandes</em>.</p>
@@ -1767,7 +1547,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x6
 </ol>
 <ul>
 <li>Détecter les variables hiérarchiques</li>
-<li>Construire les fichiers .hrc nécessaires (manuellement ou avec <code>write_hrc2()</code>)</li>
+<li>Construire les fichiers <strong>.hrc</strong> nécessaires (manuellement ou avec <code>write_hrc2()</code>)</li>
 </ul>
 </section></section>
 <section>
