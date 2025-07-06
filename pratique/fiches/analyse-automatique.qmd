@@ -10,6 +10,7 @@ On peut aussi utiliser la fonction `analyse_metadata()` qui permet une analyse a
 
 Installation du package rtauargus.
 ```{r installation_rtauargus, warning=FALSE, message=FALSE}
+#| eval: false
 remotes::install_github(
   'InseeFrLab/rtauargus',
   dependencies = TRUE,
