@@ -984,7 +984,7 @@
     "href": "pratique/fiches/generer-synth.html#risque-utilité",
     "title": "Générer des données synthétiques",
     "section": "Risque / Utilité",
-    "text": "Risque / Utilité\n\n\nCode\nsynthpop::disclosure(lfs_syn, lfs_orig, keys = c(\"AGE6\", \"SEXE\", \"REG\", \"DEP\"), target = c(\"IS_CHOM\"))\n\n\n-------------------Synthesis 1 --------------------\nTable for target IS_CHOM from GT alone with keys has 2 rows 240 colums.\nTable for target  IS_CHOM from GT & SD with all key combinations has 2 rows 243 colums.\n\n\nDisclosure measures from synthesis for 34053 records in original data.\n\nIdentity  measures for keys REG DEP SEXE AGE6 \nand attribute measures for IS_CHOM from the same keys\n            Identity (UiO/repU) Attrib (Dorig/DiSCO)\nOriginal                   0.01                20.71\nSynthesis 1                0.00                22.76\n\nThe 1 way distributions of IS_CHOM has a large contribution to disclosure from level Check  IS_CHOM  level  0 \nPlease add 'check_1way' to to.print (e.g. print(disclosure_result, to.print = 'check_1way'),\nand look at original data to decide if backround knowledge would make this disclosure likely\nConsider excluding this level with the not.targetlev parameter to the disclosure function.\n\n\nDetails of target-key pairs contributing disproportionately to disclosure of IS_CHOM \n37 pairs need checks \n\nPlease examine component $check_2way of the disclosure object and look at original data.\nConsider excluding these key-target pairs with some the following parameters to disclosure:\nexclude_ov_denom_lim = TRUE or defining key-target combinations from exclude.targetlevs,\nexclude.keys and exclude.keylevs"
+    "text": "Risque / Utilité\n\n\nCode\nsynthpop::disclosure(lfs_syn, lfs_orig, keys = c(\"AGE6\", \"SEXE\", \"REG\", \"DEP\"), target = c(\"IS_CHOM\"))\n\n\n-------------------Synthesis 1 --------------------\nTable for target IS_CHOM from GT alone with keys has 2 rows 240 colums.\nTable for target  IS_CHOM from GT & SD with all key combinations has 2 rows 243 colums.\n\n\nDisclosure measures from synthesis for 34053 records in original data.\n\nIdentity  measures for keys REG DEP SEXE AGE6 \nand attribute measures for IS_CHOM from the same keys\n            Identity (UiO/repU) Attrib (Dorig/DiSCO)\nOriginal                   0.01                20.71\nSynthesis 1                0.00                26.79\n\nThe 1 way distributions of IS_CHOM has a large contribution to disclosure from level Check  IS_CHOM  level  0 \nPlease add 'check_1way' to to.print (e.g. print(disclosure_result, to.print = 'check_1way'),\nand look at original data to decide if backround knowledge would make this disclosure likely\nConsider excluding this level with the not.targetlev parameter to the disclosure function.\n\n\nDetails of target-key pairs contributing disproportionately to disclosure of IS_CHOM \n38 pairs need checks \n\nPlease examine component $check_2way of the disclosure object and look at original data.\nConsider excluding these key-target pairs with some the following parameters to disclosure:\nexclude_ov_denom_lim = TRUE or defining key-target combinations from exclude.targetlevs,\nexclude.keys and exclude.keylevs"
   },
   {
     "objectID": "pratique/fiches/sujets-avances.html",
@@ -1908,7 +1908,7 @@
     "href": "theorie/supports/methodes-suppressives.html#tableaux-deffectifs",
     "title": "Les méthodes suppressives",
     "section": "Tableaux d’effectifs",
-    "text": "Tableaux d’effectifs\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\n14\n1\n7\n28\n\n\nNon polluante\n3\n2\n1\n13\n19\n\n\nTotal\n9\n16\n2\n20\n47\n\n\n\n\nTableau 1 – Nombre d’entreprises polluantes par région\n\n\nY a-t-il des cellules à risque ?"
+    "text": "Tableaux d’effectifs\n\n\n\n\nNombre d’entreprises polluantes par région\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\n14\n1\n7\n28\n\n\nNon polluante\n3\n2\n1\n13\n19\n\n\nTotal\n9\n16\n2\n20\n47\n\n\n\n\n\nTable 1: Nombre d’entreprises polluantes par région\n\n\n\n\nY a-t-il des cellules à risque ?"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#tableaux-deffectifs-1",
@@ -1922,28 +1922,28 @@
     "href": "theorie/supports/methodes-suppressives.html#tableaux-deffectifs-2",
     "title": "Les méthodes suppressives",
     "section": "Tableaux d’effectifs",
-    "text": "Tableaux d’effectifs\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\n14\n1\n7\n28\n\n\nNon polluante\n3\n2\n1\n13\n19\n\n\nTotal\n9\n16\n2\n20\n47\n\n\n\n\nTableau 1 – Nombre d’entreprises polluantes par région"
+    "text": "Tableaux d’effectifs\n\n\n\n\nNombre d’entreprises polluantes par région\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\n14\n1\n7\n28\n\n\nNon polluante\n3\n2\n1\n13\n19\n\n\nTotal\n9\n16\n2\n20\n47\n\n\n\n\n\nTable 2: Nombre d’entreprises polluantes par région"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#tableaux-de-volume",
     "href": "theorie/supports/methodes-suppressives.html#tableaux-de-volume",
     "title": "Les méthodes suppressives",
     "section": "Tableaux de volume",
-    "text": "Tableaux de volume\n\n\n\n\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\n\nNord\n58\n71\n92\n221\n\n\n\nCentre\n11\n124\n157\n292\n\n\n\nSud\n36\n24\n60\n120\n\n\n\nTotal\n105\n219\n309\n633\n\n\n\n\n\nTableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\nY a-t-il des cellules à risque ?"
+    "text": "Tableaux de volume\n\n\n\n\nRépartition des ventes d’instruments par région et par type, en millions d’euros\n\n\n\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\n\nNord\n58\n71\n92\n221\n\n\n\nCentre\n11\n124\n157\n292\n\n\n\nSud\n36\n24\n60\n120\n\n\n\nTotal\n105\n219\n309\n633\n\n\n\n\n\n\nTable 3: Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\n\n\nY a-t-il des cellules à risque ?"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-1",
     "href": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-1",
     "title": "Les méthodes suppressives",
     "section": "Tableaux de volume",
-    "text": "Tableaux de volume\n\n\n\n\n\n\n\n\n\n\nRégion\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\nNord\n58  (5)\n71  (17)\n92  (5)\n221  (27)\n\n\nCentre\n11  (4)\n124  (11)\n157  (2)\n292  (17)\n\n\nSud\n36  (3)\n24  (6)\n60  (1)\n120  (10)\n\n\nTotal\n105  (12)\n219  (34)\n309  (8)\n633  (54)\n\n\n\n\nTableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\nNote : les valeurs entre parenthèses indiquent le nombre de contributeurs."
+    "text": "Tableaux de volume\n\n\n\n\nRépartition des ventes d’instruments par région et par type, en millions d’euros\n\n\n\n\n\n\n\n\n\nRégion\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\nNord\n58  (5)\n71  (17)\n92  (5)\n221  (27)\n\n\nCentre\n11  (4)\n124  (11)\n157  (2)\n292  (17)\n\n\nSud\n36  (3)\n24  (6)\n60  (1)\n120  (10)\n\n\nTotal\n105  (12)\n219  (34)\n309  (8)\n633  (54)\n\n\n\n\n\nTable 4: Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\n\n\nNote : les valeurs entre parenthèses indiquent le nombre de contributeurs."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-2",
     "href": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-2",
     "title": "Les méthodes suppressives",
     "section": "Tableaux de volume",
-    "text": "Tableaux de volume\nSecret primaire de fréquence.\n\n\n\n\n\n\n\n\n\n\nRégion\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\nNord\n58  (5)\n71  (17)\n92  (5)\n221  (27)\n\n\nCentre\n11  (4)\n124  (11)\n157  (2)\n292  (17)\n\n\nSud\n36  (3)\n24  (6)\n60  (1)\n120  (10)\n\n\nTotal\n105  (12)\n219  (34)\n309  (8)\n633  (54)\n\n\n\n\nTableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\nNote : les valeurs entre parenthèses indiquent le nombre de contributeurs."
+    "text": "Tableaux de volume\nSecret primaire de fréquence.\n\n\n\n\nRépartition des ventes d’instruments par région et par type, en millions d’euros\n\n\n\n\n\n\n\n\n\nRégion\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\nNord\n58  (5)\n71  (17)\n92  (5)\n221  (27)\n\n\nCentre\n11  (4)\n124  (11)\n157  (2)\n292  (17)\n\n\nSud\n36  (3)\n24  (6)\n60  (1)\n120  (10)\n\n\nTotal\n105  (12)\n219  (34)\n309  (8)\n633  (54)\n\n\n\n\n\nTable 5: Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\n\n\nNote : les valeurs entre parenthèses indiquent le nombre de contributeurs."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-3",
@@ -1957,7 +1957,7 @@
     "href": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-4",
     "title": "Les méthodes suppressives",
     "section": "Tableaux de volume",
-    "text": "Tableaux de volume\nSecret primaire de dominance.\n\n\n\n\n\n\n\n\n\n\nRégion\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\nNord\n58  (5)\n71  (17)\n92  (5)\n221  (27)\n\n\nCentre\n11  (4)\n124  (11)\n157  (2)\n292  (17)\n\n\nSud\n36  (3)\n24  (6)\n60  (1)\n120  (10)\n\n\nTotal\n105  (12)\n219  (34)\n309  (8)\n633  (54)\n\n\n\n\nTableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\nNote : les valeurs entre parenthèses indiquent le nombre de contributeurs."
+    "text": "Tableaux de volume\nSecret primaire de dominance.\n\n\n\n\nRépartition des ventes d’instruments par région et par type, en millions d’euros\n\n\n\n\n\n\n\n\n\nRégion\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\nNord\n58  (5)\n71  (17)\n92  (5)\n221  (27)\n\n\nCentre\n11  (4)\n124  (11)\n157  (2)\n292  (17)\n\n\nSud\n36  (3)\n24  (6)\n60  (1)\n120  (10)\n\n\nTotal\n105  (12)\n219  (34)\n309  (8)\n633  (54)\n\n\n\n\n\nTable 6: Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\n\n\nNote : les valeurs entre parenthèses indiquent le nombre de contributeurs."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-5",
@@ -1971,7 +1971,7 @@
     "href": "theorie/supports/methodes-suppressives.html#tableaux-de-volume-6",
     "title": "Les méthodes suppressives",
     "section": "Tableaux de volume",
-    "text": "Tableaux de volume\nSecret primaire dû à la règle du p%.\n\n\n\n\n\n\n\n\n\n\nRégion\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\nNord\n58  (5)\n71  (17)\n92  (5)\n221  (27)\n\n\nCentre\n11  (4)\n124  (11)\n157  (2)\n292  (17)\n\n\nSud\n36  (3)\n24  (6)\n60  (1)\n120  (10)\n\n\nTotal\n105  (12)\n219  (34)\n309  (8)\n633  (54)\n\n\n\n\nTableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\nNote : les valeurs entre parenthèses indiquent le nombre de contributeurs."
+    "text": "Tableaux de volume\nSecret primaire dû à la règle du p%.\n\n\n\n\nRépartition des ventes d’instruments par région et par type, en millions d’euros\n\n\n\n\n\n\n\n\n\nRégion\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\nNord\n58  (5)\n71  (17)\n92  (5)\n221  (27)\n\n\nCentre\n11  (4)\n124  (11)\n157  (2)\n292  (17)\n\n\nSud\n36  (3)\n24  (6)\n60  (1)\n120  (10)\n\n\nTotal\n105  (12)\n219  (34)\n309  (8)\n633  (54)\n\n\n\n\n\nTable 7: Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\n\n\nNote : les valeurs entre parenthèses indiquent le nombre de contributeurs."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#le-secret-primaire",
@@ -1992,14 +1992,14 @@
     "href": "theorie/supports/methodes-suppressives.html#le-recodage-un-exemple",
     "title": "Les méthodes suppressives",
     "section": "Le recodage : un exemple",
-    "text": "Le recodage : un exemple\n\n\n\n\n\n\n\n\n\n\n\n\n&lt;25\n25-30\n30-50\n&gt; 50\nTotal\n\n\n\n\nPolluante\n2\n5\n7\n6\n20\n\n\nNon polluante\n8\n15\n17\n20\n60\n\n\nTotal\n10\n20\n24\n26\n80\n\n\n\n\nTableau 3 – Nombre d’entreprises polluantes selon l’âge du dirigeant\n\n\nDéfinir de nouvelles modalités pour augmenter le nombre de répondants par cellule."
+    "text": "Le recodage : un exemple\n\n\n\n\nNombre d’entreprises polluantes selon l’âge du dirigeant\n\n\n\n\n\n\n\n\n\n\n\n&lt;25\n25-30\n30-50\n&gt; 50\nTotal\n\n\n\n\nPolluante\n2\n5\n7\n6\n20\n\n\nNon polluante\n8\n15\n17\n20\n60\n\n\nTotal\n10\n20\n24\n26\n80\n\n\n\n\n\nTable 8: Nombre d’entreprises polluantes selon l’âge du dirigeant\n\n\n\n\nDéfinir de nouvelles modalités pour augmenter le nombre de répondants par cellule."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#le-recodage-un-exemple-1",
     "href": "theorie/supports/methodes-suppressives.html#le-recodage-un-exemple-1",
     "title": "Les méthodes suppressives",
     "section": "Le recodage : un exemple",
-    "text": "Le recodage : un exemple\n\n\n\n\n&lt;28\n28-35\n35-55\n&gt; 55\nTotal\n\n\n\n\nPolluante\n3\n6\n6\n5\n20\n\n\nNon polluante\n9\n17\n19\n15\n60\n\n\nTotal\n12\n23\n25\n20\n80\n\n\n\n\nTableau 3bis – Nombre d’entreprises polluantes selon l’âge du dirigeant"
+    "text": "Le recodage : un exemple\n\n\n\n\nNombre d’entreprises polluantes selon l’âge du dirigeant\n\n\n\n&lt;28\n28-35\n35-55\n&gt; 55\nTotal\n\n\n\n\nPolluante\n3\n6\n6\n5\n20\n\n\nNon polluante\n9\n17\n19\n15\n60\n\n\nTotal\n12\n23\n25\n20\n80\n\n\n\n\n\nTable 9: Nombre d’entreprises polluantes selon l’âge du dirigeant"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#le-recodage-à-vous-de-jouer",
@@ -2020,21 +2020,21 @@
     "href": "theorie/supports/methodes-suppressives.html#le-secret-primaire-1",
     "title": "Les méthodes suppressives",
     "section": "Le secret primaire",
-    "text": "Le secret primaire\nPremière étape : supprimer les cellules ne respectant pas les règles du secret primaire.\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\n14\nX\n7\n28\n\n\nNon polluante\n3\nX\n3\n13\n21\n\n\nTotal\n9\n16\n4\n20\n49\n\n\n\n\nTableau 1 – Nombre d’entreprises polluantes par région\n\n\nCe n’est pas suffisant, les cellules sont liées entre elles par des équations (marges)."
+    "text": "Le secret primaire\nPremière étape : supprimer les cellules ne respectant pas les règles du secret primaire.\n\n\n\n\nNombre d’entreprises polluantes par région\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\n14\nX\n7\n28\n\n\nNon polluante\n3\nX\n3\n13\n21\n\n\nTotal\n9\n16\n4\n20\n49\n\n\n\n\n\nTable 10: Nombre d’entreprises polluantes par région\n\n\n\n\nCe n’est pas suffisant, les cellules sont liées entre elles par des équations (marges)."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#le-secret-secondaire",
     "href": "theorie/supports/methodes-suppressives.html#le-secret-secondaire",
     "title": "Les méthodes suppressives",
     "section": "Le secret secondaire",
-    "text": "Le secret secondaire\nDeuxième étape : supprimer des cellules pour protéger le secret primaire.\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\nX\nX\n7\n28\n\n\nNon polluante\n3\nX\nX\n13\n21\n\n\nTotal\n9\n16\n4\n20\n49\n\n\n\n\nTableau 1 – Nombre d’entreprises polluantes par région"
+    "text": "Le secret secondaire\nDeuxième étape : supprimer des cellules pour protéger le secret primaire.\n\n\n\n\nNombre d’entreprises polluantes par région\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\n6\nX\nX\n7\n28\n\n\nNon polluante\n3\nX\nX\n13\n21\n\n\nTotal\n9\n16\n4\n20\n49\n\n\n\n\n\nTable 11: Nombre d’entreprises polluantes par région"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#le-secret-secondaire-1",
     "href": "theorie/supports/methodes-suppressives.html#le-secret-secondaire-1",
     "title": "Les méthodes suppressives",
     "section": "Le secret secondaire",
-    "text": "Le secret secondaire\nPlusieurs structures de suppressions (masques de secret) sont possibles.\n\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\nX\n14\nX\n7\n28\n\n\nNon polluante\nX\nX\n3\n13\n21\n\n\nTotal\n9\nX\nX\n20\n49\n\n\n\n\nTableau 1 – Nombre d’entreprises polluantes par région"
+    "text": "Le secret secondaire\nPlusieurs structures de suppressions (masques de secret) sont possibles.\n\n\n\n\nNombre d’entreprises polluantes par région\n\n\n\n\n\n\n\n\n\n\n\nNord\nOuest\nEst\nSud\nTotal\n\n\n\n\nPolluante\nX\n14\nX\n7\n28\n\n\nNon polluante\nX\nX\n3\n13\n21\n\n\nTotal\n9\nX\nX\n20\n49\n\n\n\n\n\nTable 12: Nombre d’entreprises polluantes par région"
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection",
@@ -2055,7 +2055,7 @@
     "href": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-2",
     "title": "Les méthodes suppressives",
     "section": "Les intervalles de protection",
-    "text": "Les intervalles de protection\n\n\n\n\n\n\n\n\n\n\nRégion\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\nNord\n58  (5)\n71  (17)\n92  (5)\n221  (27)\n\n\nCentre\n11  (4)\n124  (11)\n157  (2)\n292  (17)\n\n\nSud\n36  (3)\n24  (6)\n60  (1)\n120  (10)\n\n\nTotal\n105  (12)\n219  (34)\n309  (8)\n633  (54)\n\n\n\n\nTableau 2 – Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\nNote : glisser la souris sur les valeurs en secret primaire de fréquence pour voir les intervalles de protection."
+    "text": "Les intervalles de protection\n\n\n\n\nRépartition des ventes d’instruments par région et par type, en millions d’euros\n\n\n\n\n\n\n\n\n\nRégion\nHarpes\nPiano\nOrgues\nTotal\n\n\n\n\nNord\n58  (5)\n71  (17)\n92  (5)\n221  (27)\n\n\nCentre\n11  (4)\n124  (11)\n157  (2)\n292  (17)\n\n\nSud\n36  (3)\n24  (6)\n60  (1)\n120  (10)\n\n\nTotal\n105  (12)\n219  (34)\n309  (8)\n633  (54)\n\n\n\n\n\nTable 13: Répartition des ventes d’instruments par région et par type, en millions d’euros\n\n\n\n\nNote : glisser la souris sur les valeurs en secret primaire de fréquence pour voir les intervalles de protection."
   },
   {
     "objectID": "theorie/supports/methodes-suppressives.html#les-intervalles-de-protection-3",
