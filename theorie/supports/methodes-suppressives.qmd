@@ -1,7 +1,7 @@
 ---
 title: Les méthodes suppressives
 subtitle: |
-  **[Pour données tabulées ou individuelles]{.orange}**
+  **[Pour données tabulées]{.orange}**
 order: 2
 href: theorie/supports/methodes-suppressives.html
 image: ../../images/theorie.png
@@ -46,64 +46,6 @@ Deux types de méthodes en fonction du moment où elles sont appliquées :
 - Les **méthodes post-tabulation** sont appliquées sur les données agrégées, *i.e.* **après** tabulation
 
 :::
-
-## Les méthodes à disposition
-
-| Type de méthode     | Type de données                     | **Méthodes**                          |
-|---------------------|-------------------------------------|----------------------------------------|
-| Pré-tabulation      | Micro-données\index{Microdata}      | Recodage des variables  <br> Suppression locale |
-| Post-tabulation     | Données tabulées                    | Suppression de cellules <br> Regroupement de catégories |
-
-
-# Les méthodes pré-tabulation
-
-## Le recodage des variables
-
-| id | âge | Genre | Profession   |
-|----|-----|-------|--------------|
-| 1  | 23  | H     | statistiques |
-| 2  | 24  | H     | statistiques |
-| 3  | 50  | F     | statistiques |
-| 4  | 53  | H     | statistiques |
-| 5  | 51  | F     | statistiques |
-
-## Le recodage des variables
-
-| id | âge   | Genre | Profession   |
-|----|-------|-------|--------------|
-| 1  | 20-30 | H     | statistiques |
-| 2  | 20-30 | H     | statistiques |
-| 3  | 50-60 | F     | statistiques |
-| 4  | 50-60 | H     | statistiques |
-| 5  | 50-60 | F     | statistiques |
-
-## La suppression locale
-
-S'applique aux variables catégorielles.
-
-. . .
-
-Suppression d'au moins une catégorie présente dans une combinaison à risque, i.e. on la remplace par une **valeur manquante**.
-
-. . . 
-
-| id | Lieu de résidence | Genre | Profession   |
-|----|-------------------|-------|--------------|
-| 1  | poitiers          | H     | statistiques |
-| 2  | poitiers          | H     | statistiques |
-| 3  | barfleur          | H     | pêche        |
-| 4  | barfleur          | H     | pêche        |
-| 5  | barfleur          | F     | maire        |
-
-## La suppression locale
-
-| id | Lieu de résidence | Genre | Profession   |
-|----|-------------------|-------|--------------|
-| 1  | poitiers          | H     | statistiques |
-| 2  | poitiers          | H     | statistiques |
-| 3  | barfleur          | H     | pêche        |
-| 4  | barfleur          | H     | pêche        |
-| 5  | barfleur          | F     | *NA*         |
 
 # Les méthodes post-tabulation
 
@@ -304,13 +246,13 @@ Définir de nouvelles modalités pour augmenter le nombre de répondants par cel
 
 On cherche à publier le tableau suivant :
 
-- Population d'une région par leur zone d'emploi de résidence, leur zone d'emploi de travail, leur profession et leur âge.
-- Beaucoup de secret primaire dans ce tableau puisque la plupart des gens résident et travaillent dans la même zone d'emploi.
+- Population d'une région par leur département de résidence, leur département de travail, leur profession et leur âge.
+- Beaucoup de secret primaire dans ce tableau puisque la plupart des gens résident et travaillent dans le même département.
 - Comment recoder ce tableau ?
 
 . . .
 
-Un premier recodage consiste à regrouper toutes les zones d'emploi de travail hors région dans une seule catégorie.
+Un premier recodage consiste à regrouper tous les départements de travail hors du département de résidence dans une seule catégorie.
 
 ## Le recodage
 
@@ -531,7 +473,7 @@ Plusieurs possibilités :
 <div style="display: flex; align-items: center; justify-content: space-between;">
   <ul>
     <li>Permet de calculer le secret primaire et secondaire ou faire des arrondis contrôlés</li>
-    <li>Développement maintenance et support : groupé d'expert européens coordonné par CBS</li>
+    <li>Développement maintenance et support : groupe d'expert européens coordonné par CBS</li>
     <li>Logiciel de référence en Europe pour gérer la confidentialité des tableaux</li>
     <li>Logiciel libre et open source</li>
     <li>Dernière version stable 4.2.4 (26 avril 2023)</li>
@@ -539,14 +481,13 @@ Plusieurs possibilités :
   <img src="./img/tau_argus_logo.png" alt="Tau-Argus Logo" style="height: 200px; margin-left: 20px; object-fit: contain;">
 </div>
 
-
 ## $\tau$-Argus
 
 | 👍 | 👎 |
 |:--:|:--:|
 | Outil qui fait référence. | Interface fouillis. |
 | Performant sur la partie pose de secret grâce à une optimisation globale. | Bugs et erreurs pas faciles à comprendre et corriger. |
-|Outil maintenu régulièrement. | Reproductibilité des opérations limitées. |
+|Outil maintenu régulièrement. | Reproductibilité des opérations limitée. |
 
 ## rtauargus
 
@@ -557,7 +498,7 @@ Un package R pour bénéficier des avantages de $\tau$-Argus tout en limitant le
     <li>Développé à l'Insee</li>
     <li>[Code open-source](https://github.com/InseeFrLab/rtauargus)
 </li>
-    <li>Version la plus récente 02/25 : v-1.2.999-dev</li>
+    <li>Version la plus récente 06/25 : v-1.3.0</li>
     <li>[Une documentation en ligne](https://inseefrlab.github.io/rtauargus/)</li>
     <li>Utiliser les fonctions tab_XXX()</li>
   </ul>
@@ -655,7 +596,7 @@ Les tableaux diffusés ne sont pas les mêmes que les tableaux à protéger.
 2) La demande peut-elle être découpée en sous-demandes indépendantes ?
 
 - champs différents et non complémentaires $\perp\!\!\!\perp$
-- variable de réponses différentes (et non liées par une équation / corrélation) $\perp\!\!\!\perp$
+- variables de réponses différentes (et non liées par une équation / corrélation) $\perp\!\!\!\perp$
 - variables de croisement toutes différentes $\perp\!\!\!\perp$
 
 Dans les cas d'indépendance il faut *gérer séparément les différentes sous-demandes*.
@@ -671,7 +612,7 @@ Dans les cas d'indépendance il faut *gérer séparément les différentes sous-
 4) Préparer les hiérarchies
 
 - Détecter les variables hiérarchiques
-- Construire les fichiers .hrc nécessaires (manuellement ou avec `write_hrc2()`)
+- Construire les fichiers **.hrc** nécessaires (manuellement ou avec `write_hrc2()`)
 
 # Liens spécifiques
 ## Traiter un lien additif entre des variables réponses
