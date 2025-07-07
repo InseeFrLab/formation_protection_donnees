@@ -22,7 +22,6 @@ remotes::install_github(
 
 Import des packages.
 ```{r import_packages, warning=FALSE, message=FALSE}
-library(tidyverse)
 library(rtauargus)
 ```
 
