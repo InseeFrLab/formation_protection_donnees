@@ -984,7 +984,7 @@
     "href": "pratique/fiches/generer-synth.html#risque-utilité",
     "title": "Générer des données synthétiques",
     "section": "Risque / Utilité",
-    "text": "Risque / Utilité\n\n\nCode\nsynthpop::disclosure(lfs_syn, lfs_orig, keys = c(\"AGE6\", \"SEXE\", \"REG\", \"DEP\"), target = c(\"IS_CHOM\"))\n\n\n-------------------Synthesis 1 --------------------\nTable for target IS_CHOM from GT alone with keys has 2 rows 240 colums.\nTable for target  IS_CHOM from GT & SD with all key combinations has 2 rows 243 colums.\n\n\nDisclosure measures from synthesis for 34053 records in original data.\n\nIdentity  measures for keys REG DEP SEXE AGE6 \nand attribute measures for IS_CHOM from the same keys\n            Identity (UiO/repU) Attrib (Dorig/DiSCO)\nOriginal                   0.01                20.71\nSynthesis 1                0.01                22.15\n\nThe 1 way distributions of IS_CHOM has a large contribution to disclosure from level Check  IS_CHOM  level  0 \nPlease add 'check_1way' to to.print (e.g. print(disclosure_result, to.print = 'check_1way'),\nand look at original data to decide if backround knowledge would make this disclosure likely\nConsider excluding this level with the not.targetlev parameter to the disclosure function.\n\n\nDetails of target-key pairs contributing disproportionately to disclosure of IS_CHOM \n35 pairs need checks \n\nPlease examine component $check_2way of the disclosure object and look at original data.\nConsider excluding these key-target pairs with some the following parameters to disclosure:\nexclude_ov_denom_lim = TRUE or defining key-target combinations from exclude.targetlevs,\nexclude.keys and exclude.keylevs"
+    "text": "Risque / Utilité\n\n\nCode\nsynthpop::disclosure(lfs_syn, lfs_orig, keys = c(\"AGE6\", \"SEXE\", \"REG\", \"DEP\"), target = c(\"IS_CHOM\"))\n\n\n-------------------Synthesis 1 --------------------\nTable for target IS_CHOM from GT alone with keys has 2 rows 240 colums.\nTable for target  IS_CHOM from GT & SD with all key combinations has 2 rows 245 colums.\n\n\nDisclosure measures from synthesis for 34053 records in original data.\n\nIdentity  measures for keys REG DEP SEXE AGE6 \nand attribute measures for IS_CHOM from the same keys\n            Identity (UiO/repU) Attrib (Dorig/DiSCO)\nOriginal                   0.01                20.71\nSynthesis 1                0.00                23.90\n\nThe 1 way distributions of IS_CHOM has a large contribution to disclosure from level Check  IS_CHOM  level  0 \nPlease add 'check_1way' to to.print (e.g. print(disclosure_result, to.print = 'check_1way'),\nand look at original data to decide if backround knowledge would make this disclosure likely\nConsider excluding this level with the not.targetlev parameter to the disclosure function.\n\n\nDetails of target-key pairs contributing disproportionately to disclosure of IS_CHOM \n37 pairs need checks \n\nPlease examine component $check_2way of the disclosure object and look at original data.\nConsider excluding these key-target pairs with some the following parameters to disclosure:\nexclude_ov_denom_lim = TRUE or defining key-target combinations from exclude.targetlevs,\nexclude.keys and exclude.keylevs"
   },
   {
     "objectID": "pratique/fiches/sujets-avances.html",
@@ -2307,14 +2307,14 @@
     "href": "theorie/supports/mesurer-utilite.html#quels-usages-des-données",
     "title": "Mesurer l’utilité",
     "section": "Quels usages des données ?",
-    "text": "Quels usages des données ?\n\nPas de définition de la perte d’information sans connaître la gamme envisagée des utilisateurs des données\nEn fonction des utilisateurs finaux, le concept de perte d’information peut changer\nIl n’est pas recommandé de publier plusieurs versions protégées du même jeu de données pour chaque type d’utilisateur \\(\\longrightarrow\\) risques de divulgation importants par différenciation."
+    "text": "Quels usages des données ?\n\nEn fonction des utilisateurs finaux, le concept de perte d’information peut changer\nConnaître les utilisations qui seront faites des données (ex. régression, aggrégats, moyennes)\nIl n’est pas recommandé de publier plusieurs versions protégées du même jeu de données pour chaque type d’utilisateur \\(\\rightarrow\\) risques de divulgation importants par différenciation."
   },
   {
     "objectID": "theorie/supports/mesurer-utilite.html#idée-principale",
     "href": "theorie/supports/mesurer-utilite.html#idée-principale",
     "title": "Mesurer l’utilité",
     "section": "Idée principale",
-    "text": "Idée principale\nDeux moyens pour mesurer la perte d’information :\n\nComparer les enregistrements bruts entre le jeu de données original et le jeu de données protégé\nComparer certaines statistiques calculées sur les jeux de données originaux et protégés"
+    "text": "Idée principale\nDeux moyens de mesurer la perte d’information :\n\nComparer les enregistrements bruts entre le jeu de données original et le jeu de données protégé\nComparer certaines statistiques calculées sur les jeux de données originaux et protégés"
   },
   {
     "objectID": "theorie/supports/mesurer-utilite.html#notations",
@@ -2328,28 +2328,28 @@
     "href": "theorie/supports/mesurer-utilite.html#distance-entre-matrices",
     "title": "Mesurer l’utilité",
     "section": "Distance entre matrices",
-    "text": "Distance entre matrices\n\nErreur quadratique moyenne : somme des différences au carré, composante par composante entre 2 matrices, divisée par le nombre de coefficients de chaque matrice : \\[\\frac{1}{np}\\sum_{j=1}^p\\sum_{i=1}^n(x_{ij}-x^{'}_{ij})^2\\]"
+    "text": "Distance entre matrices\n\nErreur quadratique moyenne : somme des différences au carré entre les deux matrices, composante par compasante, divisée par le nombre de coefficients d’une matrice (même pour les deux) \\[\\frac{1}{np}\\sum_{j=1}^p\\sum_{i=1}^n(x_{ij}-x^{'}_{ij})^2\\]"
   },
   {
     "objectID": "theorie/supports/mesurer-utilite.html#distance-entre-matrices-1",
     "href": "theorie/supports/mesurer-utilite.html#distance-entre-matrices-1",
     "title": "Mesurer l’utilité",
     "section": "Distance entre matrices",
-    "text": "Distance entre matrices\n\nErreur absolue moyenne : somme des différences absolues, composante par composante entre 2 matrices, divisée par le nombre de coefficients de chaque matrice \\[\\frac{1}{np}\\sum_{j=1}^p\\sum_{i=1}^n|x_{ij}-x^{'}_{ij}|\\]"
+    "text": "Distance entre matrices\n\nErreur absolue moyenne : somme des différences absolues entre les deux matrices, composante par composante, divisée par le nombre de coefficients d’une matrice (même pour les deux) \\[\\frac{1}{np}\\sum_{j=1}^p\\sum_{i=1}^n|x_{ij}-x^{'}_{ij}|\\]"
   },
   {
     "objectID": "theorie/supports/mesurer-utilite.html#distance-entre-matrices-2",
     "href": "theorie/supports/mesurer-utilite.html#distance-entre-matrices-2",
     "title": "Mesurer l’utilité",
     "section": "Distance entre matrices",
-    "text": "Distance entre matrices\n\nVariation moyenne : somme des variations absolues en pourcentage des composantes de la matrice protégée par rapport à la matrice de données originale \\[\\frac{1}{np}\\sum_{j=1}^p\\sum_{i=1}^n\\frac{|x_{ij}-x^{'}_{ij}|}{|x_{ij}|}\\]"
+    "text": "Distance entre matrices\n\nVariation moyenne : somme des variations absolues en pourcentage des composantes de la matrice protégée par rapport à la matrice de données originale \\[\\frac{1}{np}\\sum_{j=1}^p\\sum_{i=1}^n\\frac{|x_{ij}-x^{'}_{ij}|}{|x_{ij}|}\\]\n\nAvec \\(x_{ij} \\ne 0\\).\n“En moyenne, chaque cellule a été modifiée de x% par rapport à la valeur d’origine.”"
   },
   {
     "objectID": "theorie/supports/mesurer-utilite.html#un-exemple",
     "href": "theorie/supports/mesurer-utilite.html#un-exemple",
     "title": "Mesurer l’utilité",
     "section": "Un exemple",
-    "text": "Un exemple\n\n\\(X\\) en haut, \\(X^{'}\\) en bas, les données perturbées\n\n\n\n\n\ntitre\n\n\nSexe\nRégion\nÂge\nheures travaillées\n\n\n\n\n\npar semaine\n\n\nF\n92\n36\n17\n\n\nM\n75\n41\n35\n\n\nF\n75\n52\n5\n\n\n\n\n\nTable 3: titre\n\n\n\n\n\n\nSexe\nRégion\nÂge\nheures travaillées\n\n\n\n\n\npar semaine\n\n\nF\n92\n34\n23\n\n\nF\n75\n48\n35\n\n\nM\n75\n58\n2"
+    "text": "Un exemple\n\n\n\n\n\n\nHeures travaillées par semaine par sexe, âge et région (données originales \\(X\\))\n\n\nSexe\nRég\nÂge\nh / semaine\n\n\nF\n92\n36\n17\n\n\nM\n75\n41\n35\n\n\nF\n75\n52\n5\n\n\n\n\n\nTable 3: Heures travaillées par semaine par sexe, âge et région (données originales \\(X\\))\n\n\n\n\n\n\n\n\n\n\nHeures travaillées par semaine par sexe, âge et région (données perturbées \\(X^{'}\\))\n\n\nSexe\nRég\nÂge\nh / semaine\n\n\nF\n92\n34\n23\n\n\nF\n75\n48\n35\n\n\nM\n75\n58\n2\n\n\n\n\n\nTable 4: Heures travaillées par semaine par sexe, âge et région (données perturbées \\(X^{'}\\))"
   },
   {
     "objectID": "theorie/supports/mesurer-utilite.html#un-exemple-1",
@@ -2359,18 +2359,32 @@
     "text": "Un exemple\n\nErreur quadratique moyenne =\n\n\\(\\frac{(36-34)^2+(41-48)^2+(52-58)^2+(17-23)^2+(35-35)^2+(5-2)^2}{6}=22\\)\n\nErreur absolue moyenne =\n\n\\(\\frac{|36-34|+|41-48|+|52-58|+|17-23|+|35-35|+|5-2|}{6}=4\\)\n\nVariation moyenne =\n\n\\(\\frac{\\frac{|36-34|}{36}+\\frac{|41-48|}{41}+\\frac{|52-58|}{52}+\\frac{|17-23|}{17}+\\frac{|35-35|}{35}+\\frac{|5-2|}{5}}{6}=0.15\\)"
   },
   {
-    "objectID": "theorie/supports/mesurer-utilite.html#cas-des-petites-valeurs",
-    "href": "theorie/supports/mesurer-utilite.html#cas-des-petites-valeurs",
+    "objectID": "theorie/supports/mesurer-utilite.html#effet-de-taille-variation-moyenne",
+    "href": "theorie/supports/mesurer-utilite.html#effet-de-taille-variation-moyenne",
     "title": "Mesurer l’utilité",
-    "section": "Cas des petites valeurs",
-    "text": "Cas des petites valeurs\n\nLes petites valeurs de \\(x_{ij}\\) peuvent entraîner une instabilité lors du calcul de la variation moyenne \\(\\longrightarrow\\) pour éviter cela, la solution est la formulation : \\[\\frac{1}{np}\\sum_{j=1}^p\\sum_{i=1}^n\\frac{|x_{ij}-x^{'}_{ij}|}{\\sqrt{2}S_j}\\] avec \\(S_j\\) l’écart type de la \\(j\\)-ème variable"
+    "section": "Effet de taille variation moyenne",
+    "text": "Effet de taille variation moyenne\nLa variation moyenne dépend de la taille de \\(x_{ij}\\) :\n\n\\(x_{ij}\\) grande \\(\\rightarrow\\) même une différence importante \\(|x_{ij} - x^{'}_{ij}|\\) donne un ratio faible\n\\(x_{ij}\\) petite \\(\\rightarrow\\) même un petit écart absolu \\(|x_{ij} - x^{'}_{ij}|\\) donne un ratio élevé"
+  },
+  {
+    "objectID": "theorie/supports/mesurer-utilite.html#corriger-leffet-de-taille",
+    "href": "theorie/supports/mesurer-utilite.html#corriger-leffet-de-taille",
+    "title": "Mesurer l’utilité",
+    "section": "Corriger l’effet de taille",
+    "text": "Corriger l’effet de taille\nPour que le ratio ne dépende pas de la taille de \\(x_{ij}\\) on utilise une autre mesure : \\[\\frac{1}{np}\\sum_{j=1}^p\\sum_{i=1}^n\\frac{|x_{ij}-x^{'}_{ij}|}{\\sqrt{2}S_j}\\] avec \\(S_j\\) l’écart type de la \\(j\\)-ème variable\nPermet de comparer les variations à variabilité “normale” de la variable."
   },
   {
     "objectID": "theorie/supports/mesurer-utilite.html#mesures-spécifiques",
     "href": "theorie/supports/mesurer-utilite.html#mesures-spécifiques",
     "title": "Mesurer l’utilité",
-    "section": "Mesures spécifiques:",
-    "text": "Mesures spécifiques:\n\nComparaisons univariées (comparaison de la distribution d’une variable avant et après perturbation).\nComparaisons bivariées: Corrélations linéaires par exemple.\nComparaison multivariées: Comparaison des plans d’une analyse en composante principale.\nComparaison des paramètres d’une régression, etc."
+    "section": "Mesures spécifiques",
+    "text": "Mesures spécifiques\n\nComparaisons univariées (comparaison de la distribution d’une variable avant et après perturbation).\nComparaisons bivariées: Corrélations linéaires par exemple.\nComparaison multivariées: Comparaison des plans d’une analyse en composante principale.\nComparaison des paramètres d’une régression, etc."
+  },
+  {
+    "objectID": "theorie/supports/mesurer-utilite.html#différentes-comparaisons",
+    "href": "theorie/supports/mesurer-utilite.html#différentes-comparaisons",
+    "title": "Mesurer l’utilité",
+    "section": "Différentes comparaisons",
+    "text": "Différentes comparaisons\nPour les variables catégorielles, 3 idées principales pour évaluer la perte d’information avec des données catégorielles :\n\nComparaison directe des valeurs des variables\n\nÉcarts absolus moyens\nÉcarts absolus relatifs moyens\n\nComparaison des tables de contingence\nMesures basées sur l’entropie"
   },
   {
     "objectID": "theorie/supports/mesurer-utilite.html#mesure-basée-sur-lentropie",
@@ -2384,48 +2398,48 @@
     "href": "theorie/supports/mesurer-utilite.html#mesurer-la-qualité-dune-inférence",
     "title": "Mesurer l’utilité",
     "section": "Mesurer la qualité d’une inférence",
-    "text": "Mesurer la qualité d’une inférence\n\n\\(K = 5\\) catégories, soit \\(j = 4\\), et examinons \\(P(V=i|V^{'} = 4)_{1\\leq i\\leq 5}\\)\n\n\n\n\n\n\n\n\n\n\nFigure 1: Dirac\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Compromis\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Bruit fort\n\n\n\n\n\n\n\\(\\longrightarrow\\) Compromis entre risque et perte d’information !"
+    "text": "Mesurer la qualité d’une inférence\n\n\\(K = 5\\) catégories, soit \\(j = 4\\), et examinons \\(P(V=i|V^{'} = 4)_{1\\leq i\\leq 5}\\)\n\n\n\n\n\n\n\n\n\n\nFigure 1: Dirac\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Compromis\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Bruit fort\n\n\n\n\n\n\nCompromis entre risque et perte d’information !"
   },
   {
-    "objectID": "theorie/supports/mesurer-utilite.html#données-tabulées",
-    "href": "theorie/supports/mesurer-utilite.html#données-tabulées",
+    "objectID": "theorie/supports/mesurer-utilite.html#mesures-globales",
+    "href": "theorie/supports/mesurer-utilite.html#mesures-globales",
     "title": "Mesurer l’utilité",
-    "section": "Données tabulées",
-    "text": "Données tabulées\nPour les variables catégorielles, 3 idées principales pour évaluer la perte d’information avec des données tabulées :\n\nMesures globales\n\nÉcarts absolus moyens ou relatifs\nDistance de Hellinger\n\\[HD(\\mathbf{X}, \\mathbf{X}') = \\frac{1}{\\sqrt{2}} \\sqrt{\\sum_{j = 1}^M \\left(\\sqrt{\\frac{x'_j}{\\sum_{j=1}^M x'_j}} - \\sqrt{\\frac{x_j}{\\sum_{j=1}^M x_j}}\\right)^2}\\]"
+    "section": "Mesures globales",
+    "text": "Mesures globales\n\nÉcarts absolus moyens ou relatifs\nDistance de Hellinger\n\\[HD(\\mathbf{X}, \\mathbf{X}') = \\frac{1}{\\sqrt{2}} \\sqrt{\\sum_{j = 1}^M \\left(\\sqrt{\\frac{x'_j}{\\sum_{j=1}^M x'_j}} - \\sqrt{\\frac{x_j}{\\sum_{j=1}^M x_j}}\\right)^2}\\]"
   },
   {
-    "objectID": "theorie/supports/mesurer-utilite.html#données-tabulées-1",
-    "href": "theorie/supports/mesurer-utilite.html#données-tabulées-1",
+    "objectID": "theorie/supports/mesurer-utilite.html#métriques-spécifiques-pour-tableau-de-contingence",
+    "href": "theorie/supports/mesurer-utilite.html#métriques-spécifiques-pour-tableau-de-contingence",
     "title": "Mesurer l’utilité",
-    "section": "Données tabulées",
-    "text": "Données tabulées\n\nMétriques spécifiques pour tableau de contingence:\n\nComparaison des V de Cramer (basée sur la statistique du \\(\\chi^2\\))\nComparaison du 1er plan factoriel d’une analyse factorielle des correspondances."
+    "section": "Métriques spécifiques pour tableau de contingence",
+    "text": "Métriques spécifiques pour tableau de contingence\n\nComparaison des V de Cramer (basée sur la statistique du \\(\\chi^2\\))\nComparaison du 1er plan factoriel d’une analyse factorielle des correspondances."
   },
   {
-    "objectID": "theorie/supports/mesurer-utilite.html#de-nombreux-possibilités",
-    "href": "theorie/supports/mesurer-utilite.html#de-nombreux-possibilités",
+    "objectID": "theorie/supports/mesurer-utilite.html#de-nombreuses-possibilités",
+    "href": "theorie/supports/mesurer-utilite.html#de-nombreuses-possibilités",
     "title": "Mesurer l’utilité",
-    "section": "De nombreux possibilités",
-    "text": "De nombreux possibilités\n\nDe nombreux moyens de visualisation de la perte d’information:\n\nUnivarié: histogrammes, boîtes à moustaches, diagrammes en barres\nBivarié: Matrices de corrélations, Diagrammes en mosaïques, Plan d’une analyse factorielle des correspondances, etc.\nMultivarié: 1er plan d’une analyse factorielle (ACP, ACM, AFDM)"
+    "section": "De nombreuses possibilités",
+    "text": "De nombreuses possibilités\n\nUnivarié: histogrammes, boîtes à moustaches, diagrammes en barres\nBivarié: Matrices de corrélations, Diagrammes en mosaïques, Plan d’une analyse factorielle des correspondances, etc.\nMultivarié: 1er plan d’une analyse factorielle (ACP, ACM, AFDM)"
   },
   {
-    "objectID": "theorie/supports/mesurer-utilite.html#comparer-des-matrices-de-corrélation",
-    "href": "theorie/supports/mesurer-utilite.html#comparer-des-matrices-de-corrélation",
+    "objectID": "theorie/supports/mesurer-utilite.html#matrice-de-corrélation",
+    "href": "theorie/supports/mesurer-utilite.html#matrice-de-corrélation",
     "title": "Mesurer l’utilité",
-    "section": "Comparer des matrices de corrélation",
-    "text": "Comparer des matrices de corrélation\nMatrice de corrélations dans les données originales et différences observées après perturbation selon deux méthodes différentes:\n\n\n\n\n\n\n\n\n\nFigure 4: Original\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Méthode 1\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Méthode 2\n\n\n\n\n\nLa comparaison visuelle permet immédiatement de saisir la supériorité de la première méthode sur la seconde pour conserver les relations bivariées."
+    "section": "Matrice de corrélation",
+    "text": "Matrice de corrélation\n\n\n\n\n\n\n\n\n\nFigure 4: Originale\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Différences méthode 1\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Différences méthode 2\n\n\n\n\n\nLa comparaison visuelle permet immédiatement de voir que la 1ere méthode conserve mieux les relations bivariées que la 2eme."
   },
   {
-    "objectID": "theorie/supports/mesurer-utilite.html#comparer-les-nuages-dune-analyse-factorielle",
-    "href": "theorie/supports/mesurer-utilite.html#comparer-les-nuages-dune-analyse-factorielle",
+    "objectID": "theorie/supports/mesurer-utilite.html#nuages-dune-analyse-factorielle",
+    "href": "theorie/supports/mesurer-utilite.html#nuages-dune-analyse-factorielle",
     "title": "Mesurer l’utilité",
-    "section": "Comparer les nuages d’une analyse factorielle",
-    "text": "Comparer les nuages d’une analyse factorielle\nComparaison de la projection des individus sur le premier plan d’une analyse factorielle.\n\n\n\n\n\n\n\n\n\nFigure 7: Original\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 8: Perturbé"
+    "section": "Nuages d’une analyse factorielle",
+    "text": "Nuages d’une analyse factorielle\nComparaison de la projection des individus sur le premier plan d’une analyse factorielle.\n\n\n\n\n\n\n\n\n\nFigure 7: Original\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 8: Perturbé"
   },
   {
-    "objectID": "theorie/supports/mesurer-utilite.html#comparer-les-résultats-dune-régression",
-    "href": "theorie/supports/mesurer-utilite.html#comparer-les-résultats-dune-régression",
+    "objectID": "theorie/supports/mesurer-utilite.html#résultats-dune-régression",
+    "href": "theorie/supports/mesurer-utilite.html#résultats-dune-régression",
     "title": "Mesurer l’utilité",
-    "section": "Comparer les résultats d’une régression",
-    "text": "Comparer les résultats d’une régression\n\n\n\n\n\n\n\nFigure 9: Intervalle de confiance des coeeficients d’une régression logistique selon la méthode de traitement des données"
+    "section": "Résultats d’une régression",
+    "text": "Résultats d’une régression\n\n\n\n\n\n\n\nFigure 9: Intervalle de confiance des coeeficients d’une régression logistique selon la méthode de traitement des données"
   }
 ]

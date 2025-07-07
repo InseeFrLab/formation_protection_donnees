@@ -147,12 +147,6 @@
 </ul>
 </nav>
 </section>
-<section class="slide level2">
-
-<div class="frame">
-
-</div>
-</section>
 <section>
 <section id="définir" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="1">
 <h1><span class="header-section-number">1</span> Définir</h1>
@@ -295,14 +289,14 @@ Table&nbsp;2: risque = 0 % , Perte d’info = 100 %
 <section id="quels-usages-des-données" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Quels usages des données ?</h2>
 <ul>
-<li><p>Pas de définition de la perte d’information sans connaître la <strong>gamme envisagée des utilisateurs des données</strong></p></li>
 <li><p>En <strong>fonction des utilisateurs finaux</strong>, le concept de perte d’information peut changer</p></li>
-<li><p>Il n’est pas recommandé de publier plusieurs versions protégées du même jeu de données pour chaque type d’utilisateur <span class="math inline">\(\longrightarrow\)</span> risques de divulgation importants par différenciation.</p></li>
+<li><p>Connaître les <strong>utilisations</strong> qui seront faites des données (ex. régression, aggrégats, moyennes)</p></li>
+<li><p>Il n’est pas recommandé de publier plusieurs versions protégées du même jeu de données pour chaque type d’utilisateur <span class="math inline">\(\rightarrow\)</span> risques de divulgation importants par différenciation.</p></li>
 </ul>
 </section>
 <section id="idée-principale" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Idée principale</h2>
-<p>Deux moyens pour mesurer la perte d’information :</p>
+<p>Deux moyens de mesurer la perte d’information :</p>
 <ol type="1">
 <li><p><strong>Comparer les enregistrements bruts</strong> entre le jeu de données original et le jeu de données protégé</p></li>
 <li><p><strong>Comparer certaines statistiques</strong> calculées sur les jeux de données originaux et protégés</p></li>
@@ -325,13 +319,13 @@ Table&nbsp;2: risque = 0 % , Perte d’info = 100 %
 <section id="distance-entre-matrices" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Distance entre matrices</h2>
 <ul>
-<li><strong>Erreur quadratique moyenne</strong> : somme des différences au carré, composante par composante entre 2 matrices, divisée par le nombre de coefficients de chaque matrice : <span class="math display">\[\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n(x_{ij}-x^{'}_{ij})^2\]</span></li>
+<li><strong>Erreur quadratique moyenne</strong> : somme des différences au carré entre les deux matrices, composante par compasante, divisée par le nombre de coefficients d’une matrice (même pour les deux) <span class="math display">\[\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n(x_{ij}-x^{'}_{ij})^2\]</span></li>
 </ul>
 </section>
 <section id="distance-entre-matrices-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Distance entre matrices</h2>
 <ul>
-<li><strong>Erreur absolue moyenne</strong> : somme des différences absolues, composante par composante entre 2 matrices, divisée par le nombre de coefficients de chaque matrice <span class="math display">\[\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n|x_{ij}-x^{'}_{ij}|\]</span></li>
+<li><strong>Erreur absolue moyenne</strong> : somme des différences absolues entre les deux matrices, composante par composante, divisée par le nombre de coefficients d’une matrice (même pour les deux) <span class="math display">\[\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n|x_{ij}-x^{'}_{ij}|\]</span></li>
 </ul>
 </section>
 <section id="distance-entre-matrices-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -339,43 +333,38 @@ Table&nbsp;2: risque = 0 % , Perte d’info = 100 %
 <ul>
 <li><strong>Variation moyenne</strong> : somme des variations absolues en pourcentage des composantes de la matrice protégée par rapport à la matrice de données originale <span class="math display">\[\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{|x_{ij}|}\]</span></li>
 </ul>
+<p>Avec <span class="math inline">\(x_{ij} \ne 0\)</span>.</p>
+<p>“En moyenne, chaque cellule a été modifiée de x% par rapport à la valeur d’origine.”</p>
 </section>
 <section id="un-exemple" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Un exemple</h2>
-<ul>
-<li><span style="color: blue"><span class="math inline">\(X\)</span></span> en haut, <span style="color: blue"><span class="math inline">\(X^{'}\)</span></span> en bas, les données perturbées</li>
-</ul>
+<div class="columns">
+<div class="column" style="width:49%;">
 <div id="tbl-ex-haut" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-ex-haut-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table>
-<caption>titre</caption>
+<caption>Heures travaillées par semaine par sexe, âge et région (données originales <span style="color: blue"><span class="math inline">\(X\)</span></span>)</caption>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Sexe</td>
-<td style="text-align: center;">Région</td>
+<td style="text-align: center;">Rég</td>
 <td style="text-align: center;">Âge</td>
-<td style="text-align: center;">heures travaillées</td>
+<td style="text-align: center;">h / semaine</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">par semaine</td>
-</tr>
-<tr class="odd">
 <td style="text-align: center;">F</td>
 <td style="text-align: center;">92</td>
 <td style="text-align: center;"><span style="color: blue">36</span></td>
 <td style="text-align: center;"><span style="color: blue">17</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;">M</td>
 <td style="text-align: center;">75</td>
 <td style="text-align: center;"><span style="color: blue">41</span></td>
 <td style="text-align: center;"><span style="color: blue">35</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;">F</td>
 <td style="text-align: center;">75</td>
 <td style="text-align: center;"><span style="color: blue">52</span></td>
@@ -385,37 +374,38 @@ Table&nbsp;2: risque = 0 % , Perte d’info = 100 %
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-ex-haut-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3: titre
+Table&nbsp;3: Heures travaillées par semaine par sexe, âge et région (données originales <span style="color: blue"><span class="math inline">\(X\)</span></span>)
 </figcaption>
 </figure>
 </div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<div id="tbl-perturbees" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl">
+<div aria-describedby="tbl-perturbees-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table>
+<caption>Heures travaillées par semaine par sexe, âge et région (données perturbées <span style="color: blue"><span class="math inline">\(X^{'}\)</span></span>)</caption>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Sexe</td>
-<td style="text-align: center;">Région</td>
+<td style="text-align: center;">Rég</td>
 <td style="text-align: center;">Âge</td>
-<td style="text-align: center;">heures travaillées</td>
+<td style="text-align: center;">h / semaine</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">par semaine</td>
-</tr>
-<tr class="odd">
 <td style="text-align: center;">F</td>
 <td style="text-align: center;">92</td>
 <td style="text-align: center;"><span style="color: blue">34</span></td>
 <td style="text-align: center;"><span style="color: blue">23</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;">F</td>
 <td style="text-align: center;">75</td>
 <td style="text-align: center;"><span style="color: blue">48</span></td>
 <td style="text-align: center;"><span style="color: blue">35</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;">M</td>
 <td style="text-align: center;">75</td>
 <td style="text-align: center;"><span style="color: blue">58</span></td>
@@ -423,6 +413,13 @@ Table&nbsp;3: titre
 </tr>
 </tbody>
 </table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-perturbees-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Heures travaillées par semaine par sexe, âge et région (données perturbées <span style="color: blue"><span class="math inline">\(X^{'}\)</span></span>)
+</figcaption>
+</figure>
+</div>
+</div></div>
 </section>
 <section id="un-exemple-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Un exemple</h2>
@@ -439,14 +436,21 @@ Table&nbsp;3: titre
 </ul>
 <p><span class="math inline">\(\frac{\frac{|36-34|}{36}+\frac{|41-48|}{41}+\frac{|52-58|}{52}+\frac{|17-23|}{17}+\frac{|35-35|}{35}+\frac{|5-2|}{5}}{6}=0.15\)</span></p>
 </section>
-<section id="cas-des-petites-valeurs" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Cas des petites valeurs</h2>
+<section id="effet-de-taille-variation-moyenne" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Effet de taille variation moyenne</h2>
+<p>La variation moyenne dépend de la taille de <span class="math inline">\(x_{ij}\)</span> :</p>
 <ul>
-<li>Les petites valeurs de <span class="math inline">\(x_{ij}\)</span> peuvent entraîner une instabilité lors du calcul de la variation moyenne <span class="math inline">\(\longrightarrow\)</span> pour éviter cela, la solution est la formulation : <span class="math display">\[\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{\sqrt{2}S_j}\]</span> avec <span class="math inline">\(S_j\)</span> l’écart type de la <span class="math inline">\(j\)</span>-ème variable</li>
+<li><p><span class="math inline">\(x_{ij}\)</span> grande <span class="math inline">\(\rightarrow\)</span> même une différence importante <span class="math inline">\(|x_{ij} - x^{'}_{ij}|\)</span> donne un ratio faible</p></li>
+<li><p><span class="math inline">\(x_{ij}\)</span> petite <span class="math inline">\(\rightarrow\)</span> même un petit écart absolu <span class="math inline">\(|x_{ij} - x^{'}_{ij}|\)</span> donne un ratio élevé</p></li>
 </ul>
 </section>
+<section id="corriger-leffet-de-taille" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Corriger l’effet de taille</h2>
+<p>Pour que le ratio ne dépende pas de la taille de <span class="math inline">\(x_{ij}\)</span> on utilise une autre mesure : <span class="math display">\[\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{\sqrt{2}S_j}\]</span> avec <span class="math inline">\(S_j\)</span> l’écart type de la <span class="math inline">\(j\)</span>-ème variable</p>
+<p>Permet de comparer les variations à variabilité “normale” de la variable.</p>
+</section>
 <section id="mesures-spécifiques" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Mesures spécifiques:</h2>
+<h2>Mesures spécifiques</h2>
 <ul>
 <li><p>Comparaisons univariées (comparaison de la distribution d’une variable avant et après perturbation).</p></li>
 <li><p>Comparaisons bivariées: Corrélations linéaires par exemple.</p></li>
@@ -457,6 +461,10 @@ Table&nbsp;3: titre
 <section>
 <section id="données-catégorielles" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="3">
 <h1><span class="header-section-number">3</span> Données catégorielles</h1>
+
+</section>
+<section id="différentes-comparaisons" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Différentes comparaisons</h2>
 <p>Pour les <strong>variables catégorielles</strong>, 3 idées principales pour évaluer la perte d’information avec des données catégorielles :</p>
 <ul>
 <li><p><strong>Comparaison directe</strong> des valeurs des variables</p>
@@ -523,30 +531,22 @@ Figure&nbsp;3: Bruit fort
 </div>
 </div></div>
 <ul>
-<li><span class="math inline">\(\longrightarrow\)</span> Compromis entre risque et perte d’information !</li>
-<li></li>
+<li>Compromis entre risque et perte d’information !</li>
 </ul>
 </section>
-<section id="données-tabulées" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Données tabulées</h2>
-<p>Pour les <strong>variables catégorielles</strong>, 3 idées principales pour évaluer la perte d’information avec des données tabulées :</p>
+<section id="mesures-globales" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Mesures globales</h2>
 <ul>
-<li><p>Mesures globales</p>
-<ul>
-<li><p>Écarts absolus moyens ou relatifs</p></li>
-<li><p>Distance de Hellinger<br>
-<span class="math display">\[HD(\mathbf{X}, \mathbf{X}') = \frac{1}{\sqrt{2}} \sqrt{\sum_{j = 1}^M \left(\sqrt{\frac{x'_j}{\sum_{j=1}^M x'_j}} - \sqrt{\frac{x_j}{\sum_{j=1}^M x_j}}\right)^2}\]</span></p></li>
-</ul></li>
+<li>Écarts absolus moyens ou relatifs</li>
+<li>Distance de Hellinger<br>
+<span class="math display">\[HD(\mathbf{X}, \mathbf{X}') = \frac{1}{\sqrt{2}} \sqrt{\sum_{j = 1}^M \left(\sqrt{\frac{x'_j}{\sum_{j=1}^M x'_j}} - \sqrt{\frac{x_j}{\sum_{j=1}^M x_j}}\right)^2}\]</span></li>
 </ul>
 </section>
-<section id="données-tabulées-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Données tabulées</h2>
+<section id="métriques-spécifiques-pour-tableau-de-contingence" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Métriques spécifiques pour tableau de contingence</h2>
 <ul>
-<li><p>Métriques spécifiques pour tableau de contingence:</p>
-<ul>
-<li><p>Comparaison des V de Cramer (basée sur la statistique du <span class="math inline">\(\chi^2\)</span>)</p></li>
-<li><p>Comparaison du 1er plan factoriel d’une analyse factorielle des correspondances.</p></li>
-</ul></li>
+<li>Comparaison des V de Cramer (basée sur la statistique du <span class="math inline">\(\chi^2\)</span>)</li>
+<li>Comparaison du 1er plan factoriel d’une analyse factorielle des correspondances.</li>
 </ul>
 </section></section>
 <section>
@@ -554,20 +554,16 @@ Figure&nbsp;3: Bruit fort
 <h1><span class="header-section-number">4</span> S’appuyer sur la visualisation</h1>
 
 </section>
-<section id="de-nombreux-possibilités" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>De nombreux possibilités</h2>
+<section id="de-nombreuses-possibilités" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>De nombreuses possibilités</h2>
 <ul>
-<li><p>De nombreux moyens de visualisation de la perte d’information:</p>
-<ul>
-<li><p>Univarié: histogrammes, boîtes à moustaches, diagrammes en barres</p></li>
-<li><p>Bivarié: Matrices de corrélations, Diagrammes en mosaïques, Plan d’une analyse factorielle des correspondances, etc.</p></li>
-<li><p>Multivarié: 1er plan d’une analyse factorielle (ACP, ACM, AFDM)</p></li>
-</ul></li>
+<li>Univarié: histogrammes, boîtes à moustaches, diagrammes en barres</li>
+<li>Bivarié: Matrices de corrélations, Diagrammes en mosaïques, Plan d’une analyse factorielle des correspondances, etc.</li>
+<li>Multivarié: 1er plan d’une analyse factorielle (ACP, ACM, AFDM)</li>
 </ul>
 </section>
-<section id="comparer-des-matrices-de-corrélation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Comparer des matrices de corrélation</h2>
-<p>Matrice de corrélations dans les données originales et différences observées après perturbation selon deux méthodes différentes:</p>
+<section id="matrice-de-corrélation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Matrice de corrélation</h2>
 <div class="columns">
 <div class="column" style="width:33%;">
 <div style="text-align:center;">
@@ -577,7 +573,7 @@ Figure&nbsp;3: Bruit fort
 <img data-src="img/cor_original.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Matrice originale des corrélations">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cor-original-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Original
+Figure&nbsp;4: Originale
 </figcaption>
 </figure>
 </div>
@@ -590,7 +586,7 @@ Figure&nbsp;4: Original
 <img data-src="img/cor_cart.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Matrice des différences entre l'original et la méthode 1">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diff-cor-cart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Méthode 1
+Figure&nbsp;5: Différences méthode 1
 </figcaption>
 </figure>
 </div>
@@ -603,16 +599,16 @@ Figure&nbsp;5: Méthode 1
 <img data-src="img/cor_ctgan.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Matrice des différences entre l'original et la méthode 2">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diff-cor-ctgan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: Méthode 2
+Figure&nbsp;6: Différences méthode 2
 </figcaption>
 </figure>
 </div>
 </div>
 </div></div>
-<p>La comparaison visuelle permet immédiatement de saisir la supériorité de la première méthode sur la seconde pour conserver les relations bivariées.</p>
+<p>La comparaison visuelle permet immédiatement de voir que la 1ere méthode conserve mieux les relations bivariées que la 2eme.</p>
 </section>
-<section id="comparer-les-nuages-dune-analyse-factorielle" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Comparer les nuages d’une analyse factorielle</h2>
+<section id="nuages-dune-analyse-factorielle" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Nuages d’une analyse factorielle</h2>
 <p>Comparaison de la projection des individus sur le premier plan d’une analyse factorielle.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -620,7 +616,7 @@ Figure&nbsp;6: Méthode 2
 <div id="fig-acp-originale" class="quarto-float quarto-figure quarto-figure-center" alt="Individus originaux projetés sur le premier plan d'une ACP" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-acp-originale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="img/acp_original.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Individus originaux projetés sur le premier plan d'une ACP">
+<img data-src="img/acp_original.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Individus originaux projetés sur le premier plan d'une ACP">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-acp-originale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: Original
@@ -633,7 +629,7 @@ Figure&nbsp;7: Original
 <div id="fig-acp-ctgan" class="quarto-float quarto-figure quarto-figure-center" alt="Individus bruités projetés sur le premier plan de la même ACP" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-acp-ctgan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="img/acp_ctgan.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Individus bruités projetés sur le premier plan de la même ACP">
+<img data-src="img/acp_ctgan.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Individus bruités projetés sur le premier plan de la même ACP">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-acp-ctgan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: Perturbé
@@ -643,8 +639,8 @@ Figure&nbsp;8: Perturbé
 </div>
 </div></div>
 </section>
-<section id="comparer-les-résultats-dune-régression" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Comparer les résultats d’une régression</h2>
+<section id="résultats-dune-régression" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Résultats d’une régression</h2>
 <div style="text-align:center;">
 <div id="fig-ic-coeff-glm" class="quarto-float quarto-figure quarto-figure-center" alt="Intervalles de confiance des coefficients d'une régression logistique en fonction de la méthode de traitement des données" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
