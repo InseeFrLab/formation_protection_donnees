@@ -1,3 +1,144 @@
 ---
 title: Appliquer la suppression locale
+href: pratique/fiches/suppression-locale.html
+
 ---
+
+::: {.callout-tip}
+# Pour s'exercer
+
+Pour reproduire les résultats et réaliser les exercices, il est possible de travailler 
+directement sur le [`datalab` de l'Insee](datalab.sspcloud.fr). Si vous disposez d'un compte, vous pouvez [Ouvrir un service RStudio](https://datalab.sspcloud.fr/launcher/ide/rstudio?name=rstudio-formation-protection&version=2.3.1&s3=region-ec97c721&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Frstudio.sh») ou [Ouvrir un service vscode R-Python](https://datalab.sspcloud.fr/launcher/ide/vscode-r-python-julia?name=vscode-formation-protection&version=2.3.5&s3=region-ec97c721&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Fvscode-r-python.sh»), à votre convenance. Ces services installeront automatiquement les packages 
+nécessaires pour réaliser les exercices de l'ensemble des fiches pratiques.
+
+:::
+
+# En pratique
+
+Pour installer les packages nécessaires, vous trouverez les instructions à suivre 
+dans la fiche [Ressources / Installer les packages et les outils sur R](../../ressources/fiches/outils-install.html).  
+
+
+## Les packages
+
+```{r}
+#| eval: false
+#| echo: false
+setwd("./pratique/fiches")
+```
+
+
+```{r}
+#| echo: false
+library(readr)
+library(purrr)
+library(dplyr)
+library(sdcMicro)
+```
+
+## Les données
+
+```{r}
+source("../R/fun_import_data.R")
+lfs_2023 <- import_lfs()
+```
+
+
+```{r}
+head(lfs_2023)
+```
+
+Pour plus d'informations sur les données, on pourra se reporter à la fiche 
+["Présentation des données"](description-data.html).
+
+```{r}
+lfs_2023 %>% head()
+```
+
+
+```{r}
+key_vars <- c("AGE","SEXE","DEP","DIP7")
+sens_vars <- c("ACTEU","ANCCHOM","IS_CHOM")
+hhid_vars <- c("HHID")
+```
+
+```{r}
+f <- freqCalc(lfs_2023, keyVars = key_vars)
+f
+```
+
+```{r}
+f$fk %>% head()
+f$Fk %>% head()
+```
+
+Ici, fk = Fk puisqu'il n'y a pas de poids.
+
+```{r}
+indivf <- indivRisk(f)
+indivf$rk %>% head()
+```
+
+Fort risque individuel pour le troisième individu des données.
+
+Suppression locale univariée avec `localSupp()` :
+-   obj : objet de classe freqCalc ou sdcMicroObj-class (ici f est un objet freqCalc)
+-   threshold : seuil de risque individuel
+-   keyVar : variable dont certaines modalités peuvent être supprimées
+
+```{r}
+localS <- localSupp(f, keyVar = "AGE6", threshold = 0.5)
+```
+
+```{r}
+f2 <- freqCalc(localS$freqCalc, keyVars = keyVars, w = 8)
+indivf2 <- indivRisk(f2)
+indivf2$rk
+identical(indivf$rk, indivf2$rk)
+```
+
+
+Suppression locale pour atteindre le k-anonymat avec `localSuppression()`:  
+-   obj : un objet de classe sdcMicroObj ou un dataframe
+-   k : le seuil de k-anonymat, par défaut k = 2
+-   
+
+```{r}
+localS2 <- localSuppression(lfs_2023,
+                            k = 2,
+                            keyVar = key_vars)
+```
+
+```{r}
+localS2
+```
+
+```{r}
+plot(localS2)
+```
+
+6672 individus pour lesquels on supprime l'âge.
+
+```{r}
+head(localS2$xAnon)
+```
+
+A présent, faisons la même chose avec l'âge en classes.
+
+```{r}
+f_age6 <- freqCalc(lfs_2023, keyVars = c("AGE6","SEXE","DEP","DIP7"))
+f_age6
+```
+
+Beaucoup moins d'individus ne respectent pas les 2- et 3-anonymat.
+
+```{r}
+localS3 <- localSuppression(lfs_2023,
+                            keyVar = c("AGE6","SEXE","DEP","DIP7"))
+```
+
+```{r}
+plot(localS3)
+```
+
+Cette fois-ci on supprime des modalités uniquement sur le département. On en supprime beaucoup moins que précédemment ce qui n'est pas surprenant puisque le fichier original contenait moin d'individus qui ne respectent pas les 2- et 3-anonymat.
