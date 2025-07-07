@@ -371,7 +371,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#les-données" id="toc-les-données" class="nav-link active" data-scroll-target="#les-données">Les données</a></li>
+  <li><a href="#les-packages" id="toc-les-packages" class="nav-link active" data-scroll-target="#les-packages">Les packages</a>
+  <ul class="collapse">
+  <li><a href="#les-données" id="toc-les-données" class="nav-link" data-scroll-target="#les-données">Les données</a></li>
   <li><a href="#les-différents-types-de-variables" id="toc-les-différents-types-de-variables" class="nav-link" data-scroll-target="#les-différents-types-de-variables">Les différents types de variables</a></li>
   <li><a href="#le-risque-de-ré-identification-et-le-rôle-des-quasi-identifiants" id="toc-le-risque-de-ré-identification-et-le-rôle-des-quasi-identifiants" class="nav-link" data-scroll-target="#le-risque-de-ré-identification-et-le-rôle-des-quasi-identifiants">Le risque de ré-identification et le rôle des quasi-identifiants</a>
   <ul class="collapse">
@@ -380,13 +382,10 @@ window.Quarto = {
   <li><a href="#avec-le-package-sdcmicro" id="toc-avec-le-package-sdcmicro" class="nav-link" data-scroll-target="#avec-le-package-sdcmicro">Avec le package <code>sdcMicro</code></a></li>
   </ul></li>
   <li><a href="#le-risque-de-divulgation-dattributs-sensibles" id="toc-le-risque-de-divulgation-dattributs-sensibles" class="nav-link" data-scroll-target="#le-risque-de-divulgation-dattributs-sensibles">Le risque de divulgation d’attributs sensibles</a></li>
-  <li><a href="#suda" id="toc-suda" class="nav-link" data-scroll-target="#suda">SUDA</a></li>
-  <li><a href="#le-risque-individuel" id="toc-le-risque-individuel" class="nav-link" data-scroll-target="#le-risque-individuel">Le risque individuel</a>
+  <li><a href="#les-mesures-du-risque-individuel" id="toc-les-mesures-du-risque-individuel" class="nav-link" data-scroll-target="#les-mesures-du-risque-individuel">Les mesures du risque individuel</a>
   <ul class="collapse">
-  <li><a href="#mesures-naïves" id="toc-mesures-naïves" class="nav-link" data-scroll-target="#mesures-naïves">Mesures naïves</a></li>
-  <li><a href="#mesures-probabilistes" id="toc-mesures-probabilistes" class="nav-link" data-scroll-target="#mesures-probabilistes">Mesures probabilistes</a></li>
-  <li><a href="#les-outliers" id="toc-les-outliers" class="nav-link" data-scroll-target="#les-outliers">Les outliers</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -414,6 +413,8 @@ window.Quarto = {
 </header>
 
 
+<section id="les-packages" class="level1 page-columns page-full">
+<h1>Les packages</h1>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -473,7 +474,7 @@ window.Quarto = {
 <li>les <em>variables ni identifiantes ni sensibles</em>: celles qui a priori ne posent pas de problème spécifique en terme de confidentialité.</li>
 </ul>
 </section>
-<section id="le-risque-de-ré-identification-et-le-rôle-des-quasi-identifiants" class="level2 page-columns page-full">
+<section id="le-risque-de-ré-identification-et-le-rôle-des-quasi-identifiants" class="level2">
 <h2 class="anchored" data-anchor-id="le-risque-de-ré-identification-et-le-rôle-des-quasi-identifiants">Le risque de ré-identification et le rôle des quasi-identifiants</h2>
 <p>Ainsi, le premier type de variables engendre un risque de divulgation d’information confidentielle par la possibilité pour l’attaquant de ré-identifier des individus. En effet, si un ataquant dispose d’un fichier nomminatif - un fichier client par exemple - contenant des variables communes avec le jeu de données qu’on s’apprête à publier, il est alors en mesure d’apparier les deux et être en capacité de ré-identifier des individus si ceux-ci se trouvent avoir des caractéristiques peu fréquentes.</p>
 <section id="un-premier-exemple" class="level3">
@@ -541,14 +542,14 @@ window.Quarto = {
 <p>Dans notre jeu de données fictif sur l’emploi et le chômage, on pourrait définir</p>
 <ul>
 <li>un scénario minimaliste: l’attaquant ne dispose que de la géographie, du sexe et de l’âge de ses clients</li>
-<li>un scénario intermédiaire: l’attaquant dispose en plus d’informations sur sa catégorie sociale et son niveau de diplôme</li>
+<li>un scénario intermédiaire: l’attaquant dispose en plus d’informations sur son niveau de diplôme</li>
 <li>un scénario maximaliste: l’attaquant dispose en réalité de toutes les informations sur les individus sauf de son ancienneté au chômage.</li>
 </ul>
 <p>Selon ces trois scénarios, le niveau de risque de ré-identifcation des individus ne sera pas le même</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>qi_vars_II <span class="ot">&lt;-</span> <span class="fu">c</span>(qi_vars_I, <span class="st">"PCS1Q"</span>, <span class="st">"DIP7"</span>)</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>qi_vars_II <span class="ot">&lt;-</span> <span class="fu">c</span>(qi_vars_I, <span class="st">"DIP7"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>qi_vars_III <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">names</span>(lfs_2023)[<span class="sc">!</span><span class="fu">names</span>(lfs_2023) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"ANCCHOM"</span>)])</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>risques_reident <span class="ot">&lt;-</span> </span>
@@ -575,7 +576,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="mesurer-risque_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="mesurer-risque_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -613,11 +614,11 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td style="text-align: left;">II</td>
-<td style="text-align: right;">0.889</td>
-<td style="text-align: right;">0.500</td>
+<td style="text-align: right;">0.802</td>
+<td style="text-align: right;">0.333</td>
 <td style="text-align: right;">1.000</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">61.865</td>
+<td style="text-align: right;">41.641</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">III</td>
@@ -656,9 +657,9 @@ Des variables très efficaces pour la ré-identification
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>qi_vars_IIa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>, <span class="st">"AGE"</span>, <span class="st">"PCS1Q"</span>, <span class="st">"DIP7"</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>qi_vars_IIb <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>, <span class="st">"ARR"</span>, <span class="st">"AGE6"</span>, <span class="st">"PCS1Q"</span>, <span class="st">"DIP7"</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>qi_vars_IIc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>, <span class="st">"AGE6"</span>, <span class="st">"PCS1Q"</span>, <span class="st">"DIP7"</span>)</span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>qi_vars_IIa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>, <span class="st">"SEXE"</span>, <span class="st">"AGE"</span>, <span class="st">"DIP7"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>qi_vars_IIb <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>, <span class="st">"ARR"</span>, <span class="st">"SEXE"</span>,  <span class="st">"AGE6"</span>, <span class="st">"DIP7"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>qi_vars_IIc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>, <span class="st">"SEXE"</span>, <span class="st">"AGE6"</span>, <span class="st">"DIP7"</span>)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>risques_reident2 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"II"</span> <span class="ot">=</span> qi_vars_II, </span>
@@ -693,35 +694,35 @@ Des variables très efficaces pour la ré-identification
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">II</td>
-<td style="text-align: right;">0.889</td>
-<td style="text-align: right;">0.500</td>
+<td style="text-align: right;">0.802</td>
+<td style="text-align: right;">0.333</td>
 <td style="text-align: right;">1.000</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">61.865</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">41.641</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">IIa</td>
-<td style="text-align: right;">0.763</td>
-<td style="text-align: right;">0.250</td>
-<td style="text-align: right;">1.000</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">32.605</td>
+<td style="text-align: right;">0.650</td>
+<td style="text-align: right;">0.200</td>
+<td style="text-align: right;">0.500</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">19.637</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">IIb</td>
-<td style="text-align: right;">0.419</td>
-<td style="text-align: right;">0.071</td>
-<td style="text-align: right;">0.333</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3.406</td>
+<td style="text-align: right;">0.275</td>
+<td style="text-align: right;">0.042</td>
+<td style="text-align: right;">0.167</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.022</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">IIc</td>
-<td style="text-align: right;">0.347</td>
-<td style="text-align: right;">0.038</td>
-<td style="text-align: right;">0.250</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1.559</td>
+<td style="text-align: right;">0.168</td>
+<td style="text-align: right;">0.016</td>
+<td style="text-align: right;">0.074</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">0.226</td>
 </tr>
 </tbody>
 </table>
@@ -741,7 +742,7 @@ Des variables très efficaces pour la ré-identification
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="mesurer-risque_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="mesurer-risque_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -751,7 +752,7 @@ Des variables très efficaces pour la ré-identification
 </div>
 </div>
 </section>
-<section id="avec-le-package-sdcmicro" class="level3 page-columns page-full">
+<section id="avec-le-package-sdcmicro" class="level3">
 <h3 class="anchored" data-anchor-id="avec-le-package-sdcmicro">Avec le package <code>sdcMicro</code></h3>
 <p>Le package <code>sdcMicro</code> permet de mesurer les risques de ré-identification et le niveau d’anonymité d’un jeu de données individuelles assez simplement.</p>
 <p>Dans un premier temps, on initialise un objet de la classe <code>sdcMicroObj</code> en mentionnant uniquement le jeu de données et les variables considérées comme quasi-identfiantes.</p>
@@ -760,7 +761,7 @@ Des variables très efficaces pour la ré-identification
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>lfs_sdc <span class="ot">&lt;-</span> sdcMicro<span class="sc">::</span><span class="fu">createSdcObj</span>(</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  lfs_2023,</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">keyVars =</span> qi_vars_I</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">keyVars =</span> qi_vars_IIc</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -782,40 +783,129 @@ Des variables très efficaces pour la ré-identification
 [22] "set"               "prev"              "deletedVars"      </code></pre>
 </div>
 </div>
-<p>Lors de la création de l’objet, un certain nombre de métriques de risque ont été calculées:</p>
-<ul>
-<li>des mesures globales:</li>
-</ul>
+<p>Lors de la création de l’objet, un certain nombre de métriques de risque ont été calculées. D’un point de vue global, la proportion d’individus à risque de ré-identification est une mesure calculée à partir des groupes constitués par les quasi-identifiants. Il s’agit du risque moyen qu’un individu de la base de donnée soit ré-identifié: <span class="math display">\[ R = \frac{1}{n} \sum_i{ r_i }\]</span>, où <span class="math inline">\(r_i\)</span> est le risque pour l’individu <span class="math inline">\(i\)</span> d’être ré-identifié (voir plus bas pour plus de précision).</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>global</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>global<span class="sc">$</span>risk <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>$risk
-[1] 0.2659384
-
-$risk_ER
-[1] 9056
-
-$risk_pct
-[1] 26.59384
-
-$threshold
-[1] 0
-
-$max_risk
-[1] 0.01</code></pre>
+<pre><code>[1] 4.269815</code></pre>
 </div>
 </div>
-<ul>
-<li>des mesures individuelles :
+<p>Le nombre de ré-identifications auxquelles on peut s’attendre en moyenne (risque global * n) est fourni par:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>global<span class="sc">$</span>risk_ER</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1454</code></pre>
+</div>
+</div>
+<p>On peut également retrouver la part d’individus à risque au sens du <span class="math inline">\(k\)</span>-anonymat:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lfs_sdc, <span class="st">'kAnon'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Infos on 2/3-Anonymity:
+
+Number of observations violating
+  - 2-anonymity: 77 (0.226%)
+  - 3-anonymity: 267 (0.784%)
+  - 5-anonymity: 825 (2.423%)
+
+----------------------------------------------------------------------</code></pre>
+</div>
+</div>
+<p>On observe en particulier que <span class="math inline">\(77\)</span> individus sont uniques sur les clés utilisées (<span class="math inline">\(2\)</span>-anonymity).</p>
+<p>ou pour d’autres valeurs de <span class="math inline">\(k\)</span>, on peut faire, par exemple, pour <span class="math inline">\(k=10\)</span>:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual[,<span class="dv">2</span>] <span class="sc">&lt;</span> <span class="dv">10</span>)<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.335624</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="le-risque-de-divulgation-dattributs-sensibles" class="level2">
+<h2 class="anchored" data-anchor-id="le-risque-de-divulgation-dattributs-sensibles">Le risque de divulgation d’attributs sensibles</h2>
+<p>On suppose que <code>ACTEU</code> est une variable sensible. Pour réduire le risque de divulgation d’attributs sur cette variable, on peut mesure la <span class="math inline">\(l\)</span>-diversité du fichier et être particulier vigilant aux groupes de quasi-identifiants qui seraient constitués d’individus partageant la même catégorie.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>lfs_sdc <span class="ot">&lt;-</span> <span class="fu">ldiversity</span>(<span class="at">obj =</span> lfs_sdc, <span class="at">ldiv_index =</span> <span class="fu">c</span>(<span class="st">"ACTEU"</span>), <span class="at">missing =</span> <span class="cn">NA</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>ldiversity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>--------------------------</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>L-Diversity Measures </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>--------------------------</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  1.000   2.000   2.000   2.325   3.000   3.000 </code></pre>
+</div>
+</div>
+<p>Calculons la part d’individus présents dans un groupe ne comptant qu’une seule des trois catégories:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>ldiversity[,<span class="st">"ACTEU_Distinct_Ldiversity"</span>]<span class="sc">==</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15.69612</code></pre>
+</div>
+</div>
+<p>En réalité, parmi les trois catégories de la variable, une seule est réellement sensible: il s’agit de la catégorie <code>2</code> correspondant aux personnes au chômage.</p>
+<p>Vérifions le nombre d’individus réellement à risque de divulgation d’attributs sensibles:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>indiv_1diverses <span class="ot">&lt;-</span> <span class="fu">which</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>ldiversity[,<span class="st">"ACTEU_Distinct_Ldiversity"</span>]<span class="sc">==</span><span class="dv">1</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>lfs_2023<span class="sc">|&gt;</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(indiv_1diverses)<span class="sc">|&gt;</span> </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ACTEU <span class="sc">==</span> <span class="dv">2</span>)<span class="sc">|&gt;</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 27</code></pre>
+</div>
+</div>
+</section>
+<section id="les-mesures-du-risque-individuel" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="les-mesures-du-risque-individuel">Les mesures du risque individuel</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>           risk fk Fk
+[1,] 0.02777778 36 36
+[2,] 0.04166667 24 24
+[3,] 0.33333333  3  3
+[4,] 0.03448276 29 29
+[5,] 0.04000000 25 25
+[6,] 0.02173913 46 46</code></pre>
+</div>
+</div>
 <ul>
 <li><code>risk</code> : risque individuel défini par <span class="math inline">\(\frac{1}{fk}\)</span> si le fichier est une population</li>
 <li><code>fk</code> : nombre d’individus du fichier partageant les mêmes clés (croisements de quasi-identifiants)</li>
 <li><code>Fk</code> : nombre d’individus dans la population partageant les mêmes clés (croisements de quasi-identifiants)</li>
-</ul></li>
 </ul>
+<p>Le risque de ré-identification est calculé différemment selon que l’on a affaire à une population ou à un échantillon.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -828,7 +918,48 @@ Echantillon et Population
 <div class="callout-body-container callout-body">
 <section id="population" class="level4">
 <h4 class="anchored" data-anchor-id="population">Population</h4>
-<p>Si le jeu de données étudié correspond à une population (fichier exhaustif du champ), alors <span class="math inline">\(fk = Fk = \sum_i{ 1(i \in k)}\)</span>, nombre d’individus <span class="math inline">\(i\)</span> partageant la clé <span class="math inline">\(k\)</span>.</p>
+<p>Si le jeu de données étudié correspond à une population (fichier exhaustif du champ), alors <span class="math inline">\(fk = Fk = \sum_i{ 1(i \in k)}\)</span>, le nombre d’individus <span class="math inline">\(i\)</span> partageant la clé <span class="math inline">\(k\)</span>.</p>
+<p>Dans ce cas, le risque de ré-identification d’un individu est défini par <span class="math inline">\(r_k = 1/f_k = 1/F_k\)</span> et correspond à la probabilité de ré-identifier l’individu correctement si on connaît ses caractéristiques <span class="math inline">\(k\)</span> sur les variables quasi-identifiantes.</p>
+<p>En se reportant aux premières lignes du tableau des risques présenté ci-dessous que la colonne <code>risk</code> est bien égale à <code>1/fk</code>.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>           risk fk Fk
+[1,] 0.02777778 36 36
+[2,] 0.04166667 24 24
+[3,] 0.33333333  3  3
+[4,] 0.03448276 29 29
+[5,] 0.04000000 25 25
+[6,] 0.02173913 46 46</code></pre>
+</div>
+</div>
+<p>Dans notre jeu de données, la distribution du risque individuel est la suivante (on multiplie par 100 pour l’interpréter comme le pourcentage de chances de correctement ré-identifier l’individu):</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual[,<span class="st">"risk"</span>]<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mesurer-risque_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La grande partie des individus ont un risque inférieur à <span class="math inline">\(20\%\)</span>. On note qu’il y a des individus dont le risque est maximal, en revanche. Il s’agit d’individus uniques pour les clés que nous avons choisies:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual[,<span class="st">"risk"</span>] <span class="sc">==</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 77</code></pre>
+</div>
+</div>
 </section>
 <section id="echantillon" class="level4">
 <h4 class="anchored" data-anchor-id="echantillon">Echantillon</h4>
@@ -838,7 +969,68 @@ Echantillon et Population
 <li><span class="math inline">\(Fk = \sum_{i \in S}{  w_i \times 1(i \in k)}\)</span></li>
 </ul>
 <p>où <span class="math inline">\(S\)</span> désigne l’échantillon (le fichier) et <span class="math inline">\(w_i\)</span> le poids de l’individu <span class="math inline">\(i \in S\)</span>.</p>
-<p><span class="citation" data-cites="templ_statistical_2015 Rinott_Shlomo_2006">(<a href="#ref-templ_statistical_2015" role="doc-biblioref">Templ, Kowarik, and Meindl 2015</a>; et <a href="#ref-Rinott_Shlomo_2006" role="doc-biblioref">Rinott and Shlomo 2006</a>)</span>.</p>
+<p>En revanche, la colonne <code>risk</code> n’est pas calculée directement à partir des <span class="math inline">\(F_k\)</span>. En effet, un tel risque est jugé trop conservateur et conduit à surestimer le risque de ré-identification <span class="citation" data-cites="templ_statistical_2015 Rinott_Shlomo_2006">(<a href="#ref-templ_statistical_2015" role="doc-biblioref">Templ, Kowarik, and Meindl 2015</a>; et <a href="#ref-Rinott_Shlomo_2006" role="doc-biblioref">Rinott and Shlomo 2006</a>)</span>. En effet, les <span class="math inline">\(F_k\)</span> sont en réalité des estimations. Une approche bayésienne est préférée (voir <a href="theorie/supports/arbitrer-risque-utilite.html">la présentation sur les mesures de risque</a> pour plus de détails).</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">14789</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="fl">1e6</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">nrow</span>(lfs_2023)</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> N<span class="sc">/</span>n <span class="sc">+</span> <span class="fu">rnorm</span>(n<span class="dv">-1</span>, <span class="sc">-</span><span class="dv">2</span><span class="sc">/</span>(n<span class="dv">-1</span>), <span class="dv">2</span>)</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">c</span>(w, N<span class="sc">-</span><span class="fu">sum</span>(w))</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>lfs_samp <span class="ot">&lt;-</span> lfs_2023 <span class="sc">|&gt;</span> </span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">poids =</span> <span class="fu">sample</span>(w, n, <span class="at">replace=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>lfs_sdc_samp <span class="ot">&lt;-</span> sdcMicro<span class="sc">::</span><span class="fu">createSdcObj</span>(</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  lfs_samp,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">keyVars =</span> qi_vars_IIc,</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weightVar =</span> <span class="st">"poids"</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>lfs_sdc_samp<span class="sc">@</span>risk<span class="sc">$</span>global<span class="sc">$</span>risk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.001868871</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_sdc_samp<span class="sc">@</span>risk<span class="sc">$</span>individual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>             risk fk         Fk
+[1,] 0.0009641090 36 1065.83365
+[2,] 0.0014528593 24  717.18039
+[3,] 0.0168594121  3   87.47107
+[4,] 0.0011948446 29  865.78354
+[5,] 0.0013632238 25  763.07839
+[6,] 0.0007567189 46 1349.83893</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lfs_sdc_samp<span class="sc">@</span>risk<span class="sc">$</span>individual[,<span class="st">"risk"</span>]<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mesurer-risque_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </div>
 </div>
@@ -846,48 +1038,14 @@ Echantillon et Population
 Rinott, Yosef, and Natalie Shlomo. 2006. <span>“A Generalized Negative Binomial Smoothing Model for Sample Disclosure Risk Estimation.”</span> In <em>Privacy in Statistical Databases</em>, edited by Josep Domingo-Ferrer and Luisa Franconi, 82–93. Berlin, Heidelberg: Springer. <a href="https://doi.org/10.1007/11930242_8">https://doi.org/10.1007/11930242_8</a>.
 </div></div><div class="no-row-height column-margin column-container"><div id="ref-templ_statistical_2015" class="csl-entry" role="listitem">
 Templ, Matthias, Alexander Kowarik, and Bernhard Meindl. 2015. <span>“Statistical <span>Disclosure</span> <span>Control</span> for <span>Micro</span>-<span>Data</span> <span>Using</span> the <em>r</em> <span>Package</span> <strong>sdcMicro</strong>.”</span> <em>Journal of Statistical Software</em> 67 (4). <a href="https://doi.org/10.18637/jss.v067.i04">https://doi.org/10.18637/jss.v067.i04</a>.
-</div></div><p>Certaines variables ont un pouvoir de ré-identification très fort, en particulier :</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>           risk fk Fk
-[1,] 0.25000000  4  4
-[2,] 0.14285714  7  7
-[3,] 0.33333333  3  3
-[4,] 0.09090909 11 11
-[5,] 0.12500000  8  8
-[6,] 0.06250000 16 16</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="le-risque-de-divulgation-dattributs-sensibles" class="level2">
-<h2 class="anchored" data-anchor-id="le-risque-de-divulgation-dattributs-sensibles">Le risque de divulgation d’attributs sensibles</h2>
-</section>
-<section id="suda" class="level2">
-<h2 class="anchored" data-anchor-id="suda">SUDA</h2>
-</section>
-<section id="le-risque-individuel" class="level2">
-<h2 class="anchored" data-anchor-id="le-risque-individuel">Le risque individuel</h2>
-<section id="mesures-naïves" class="level3">
-<h3 class="anchored" data-anchor-id="mesures-naïves">Mesures naïves</h3>
-</section>
-<section id="mesures-probabilistes" class="level3">
-<h3 class="anchored" data-anchor-id="mesures-probabilistes">Mesures probabilistes</h3>
-</section>
-<section id="les-outliers" class="level3">
-<h3 class="anchored" data-anchor-id="les-outliers">Les outliers</h3>
-</section>
-<section id="references" class="level3">
+</div></div><section id="references" class="level3">
 <h3 class="anchored" data-anchor-id="references">References</h3>
 
 
 
 <!-- -->
 
+</section>
 </section>
 </section>
 
@@ -1355,366 +1513,456 @@ Templ, Matthias, Alexander Kowarik, and Bernhard Meindl. 2015. <span>“Statisti
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb24" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Les mesures du risque de divulgation</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> pratique/fiches/mesurer-risque.html</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="an">code-block-bg:</span><span class="co"> true</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="an">code-block-border-left:</span><span class="co"> "#bf9aff"</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> show</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdcMicro)</span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les données</span></span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_risque.R"</span>)</span>
-<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_import_data.R"</span>)</span>
-<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> <span class="fu">import_lfs</span>()</span>
-<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-40"><a href="#cb24-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-43"><a href="#cb24-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-44"><a href="#cb24-44" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_2023)</span>
-<span id="cb24-45"><a href="#cb24-45" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb24-46"><a href="#cb24-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-47"><a href="#cb24-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-48"><a href="#cb24-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les différents types de variables</span></span>
-<span id="cb24-49"><a href="#cb24-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-50"><a href="#cb24-50" aria-hidden="true" tabindex="-1"></a>Dans un jeu de données, on distingue trois grands types de variables:</span>
-<span id="cb24-51"><a href="#cb24-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-52"><a href="#cb24-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>les *quasi-identifiants*: un ensemble de variables dont on suppose qu'un </span>
-<span id="cb24-53"><a href="#cb24-53" aria-hidden="true" tabindex="-1"></a>attaquant est susceptible de les avoir déjà à sa disposition.</span>
-<span id="cb24-54"><a href="#cb24-54" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>les *variables sensibles*: les variables portant sur des thématiques </span>
-<span id="cb24-55"><a href="#cb24-55" aria-hidden="true" tabindex="-1"></a>sensibles au sens de la Loi Informatique et Libertés </span>
-<span id="cb24-56"><a href="#cb24-56" aria-hidden="true" tabindex="-1"></a>(religion, opinion, orientation sexuelle, etc.), mais on peut aussi y inclure </span>
-<span id="cb24-57"><a href="#cb24-57" aria-hidden="true" tabindex="-1"></a>des variables dont la connaissance est susceptible de porter préjudice </span>
-<span id="cb24-58"><a href="#cb24-58" aria-hidden="true" tabindex="-1"></a>à la personne (par exemple le salaire, le fait d'avoir une maladie, le fait </span>
-<span id="cb24-59"><a href="#cb24-59" aria-hidden="true" tabindex="-1"></a>d'être au chômage, etc.).</span>
-<span id="cb24-60"><a href="#cb24-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>les *variables ni identifiantes ni sensibles*: celles qui a priori ne </span>
-<span id="cb24-61"><a href="#cb24-61" aria-hidden="true" tabindex="-1"></a>posent pas de problème spécifique en terme de confidentialité.</span>
-<span id="cb24-62"><a href="#cb24-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-63"><a href="#cb24-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-64"><a href="#cb24-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## Le risque de ré-identification et le rôle des quasi-identifiants</span></span>
-<span id="cb24-65"><a href="#cb24-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-66"><a href="#cb24-66" aria-hidden="true" tabindex="-1"></a>Ainsi, le premier type de variables engendre un risque de divulgation d'information</span>
-<span id="cb24-67"><a href="#cb24-67" aria-hidden="true" tabindex="-1"></a>confidentielle par la possibilité pour l'attaquant de ré-identifier des individus. </span>
-<span id="cb24-68"><a href="#cb24-68" aria-hidden="true" tabindex="-1"></a>En effet, si un ataquant dispose d'un fichier nomminatif - un fichier client par </span>
-<span id="cb24-69"><a href="#cb24-69" aria-hidden="true" tabindex="-1"></a>exemple - contenant des variables communes avec le jeu de données qu'on s'apprête </span>
-<span id="cb24-70"><a href="#cb24-70" aria-hidden="true" tabindex="-1"></a>à publier, il est alors en mesure d'apparier les deux et être en capacité de </span>
-<span id="cb24-71"><a href="#cb24-71" aria-hidden="true" tabindex="-1"></a>ré-identifier des individus si ceux-ci se trouvent avoir des caractéristiques </span>
-<span id="cb24-72"><a href="#cb24-72" aria-hidden="true" tabindex="-1"></a>peu fréquentes.</span>
-<span id="cb24-73"><a href="#cb24-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-74"><a href="#cb24-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-75"><a href="#cb24-75" aria-hidden="true" tabindex="-1"></a><span class="fu">### Un premier exemple</span></span>
-<span id="cb24-76"><a href="#cb24-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-77"><a href="#cb24-77" aria-hidden="true" tabindex="-1"></a>Prenons une liste très restreinte de quasi-identifiants: la géographie de résidence,</span>
-<span id="cb24-78"><a href="#cb24-78" aria-hidden="true" tabindex="-1"></a>le sexe et l'âge de l'individu. Ces informations sont disponibles par de </span>
-<span id="cb24-79"><a href="#cb24-79" aria-hidden="true" tabindex="-1"></a>nombreuses entreprises auprès desquelles nous souscrivons des services </span>
-<span id="cb24-80"><a href="#cb24-80" aria-hidden="true" tabindex="-1"></a>(banque, assurance, téléphonie, etc.). </span>
-<span id="cb24-81"><a href="#cb24-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-82"><a href="#cb24-82" aria-hidden="true" tabindex="-1"></a>En dénombrant les individus de chaque croisement entre les variables quasi-identifiantes,</span>
-<span id="cb24-83"><a href="#cb24-83" aria-hidden="true" tabindex="-1"></a>on peut détecter :</span>
-<span id="cb24-84"><a href="#cb24-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-85"><a href="#cb24-85" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>le **niveau d'anonymité du fichier** au sens du **k-anonymat**: ici notre fichier est </span>
-<span id="cb24-86"><a href="#cb24-86" aria-hidden="true" tabindex="-1"></a>1-anonyme puisqu'il contient de nombreux individus uniques dans leur catégorie.</span>
-<span id="cb24-87"><a href="#cb24-87" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>la détection des croisements et des **individus les plus à risque**:</span>
-<span id="cb24-88"><a href="#cb24-88" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Moins il y a d'individus dans un groupe, plus la probabilité de ré-identification </span></span>
-<span id="cb24-89"><a href="#cb24-89" aria-hidden="true" tabindex="-1"></a><span class="at">par l'attaquant est forte. Dans le cas d'un groupe unique, la ré-identification </span></span>
-<span id="cb24-90"><a href="#cb24-90" aria-hidden="true" tabindex="-1"></a><span class="at">est même certaine.</span></span>
-<span id="cb24-91"><a href="#cb24-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-94"><a href="#cb24-94" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-95"><a href="#cb24-95" aria-hidden="true" tabindex="-1"></a>qi_vars_I <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>,<span class="st">"DEP"</span>,<span class="st">"ARR"</span>, <span class="st">"SEXE"</span>, <span class="st">"AGE"</span>)</span>
-<span id="cb24-96"><a href="#cb24-96" aria-hidden="true" tabindex="-1"></a>freq_qi_vars <span class="ot">&lt;-</span> lfs_2023 <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(qi_vars_I))) </span>
-<span id="cb24-97"><a href="#cb24-97" aria-hidden="true" tabindex="-1"></a>freq_qi_vars <span class="sc">|&gt;</span> <span class="fu">arrange</span>(n) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
-<span id="cb24-98"><a href="#cb24-98" aria-hidden="true" tabindex="-1"></a>freq_qi_vars <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="sc">-</span>n) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
-<span id="cb24-99"><a href="#cb24-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb24-100"><a href="#cb24-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-101"><a href="#cb24-101" aria-hidden="true" tabindex="-1"></a>Ainsi, si une entreprise de notre contrée imaginaire dispose d'un fichier sur </span>
-<span id="cb24-102"><a href="#cb24-102" aria-hidden="true" tabindex="-1"></a>tout ou partie de la population en âge de travailler (par exemple un opérateur </span>
-<span id="cb24-103"><a href="#cb24-103" aria-hidden="true" tabindex="-1"></a>téléphonique), il pourra ré-identifier sans peine les individus uniques du jeu </span>
-<span id="cb24-104"><a href="#cb24-104" aria-hidden="true" tabindex="-1"></a>de données qui seraient présents dans son fchier.</span>
-<span id="cb24-105"><a href="#cb24-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-106"><a href="#cb24-106" aria-hidden="true" tabindex="-1"></a>La **capacité d'un attaquant à pouvoir ré-identifier un individu** dépend du </span>
-<span id="cb24-107"><a href="#cb24-107" aria-hidden="true" tabindex="-1"></a>nombre d'individus du jeu de données qui partagent les mêmes caractéristiques</span>
-<span id="cb24-108"><a href="#cb24-108" aria-hidden="true" tabindex="-1"></a>sur les variables quasi-identifiantes.</span>
-<span id="cb24-109"><a href="#cb24-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-110"><a href="#cb24-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-111"><a href="#cb24-111" aria-hidden="true" tabindex="-1"></a>Par exemple, si Thérèse est une femme de 97 ans résidant dans l'arrondissement <span class="in">`751`</span>,</span>
-<span id="cb24-112"><a href="#cb24-112" aria-hidden="true" tabindex="-1"></a>alors le jeu de données permet de la ré-identifier de façon certaine, puisqu'elle </span>
-<span id="cb24-113"><a href="#cb24-113" aria-hidden="true" tabindex="-1"></a>serait la seule dans ce cas.</span>
-<span id="cb24-114"><a href="#cb24-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-115"><a href="#cb24-115" aria-hidden="true" tabindex="-1"></a>Au contraire, si Thérèse est une femme de 52 ans résidant dans le même arrondissement, </span>
-<span id="cb24-116"><a href="#cb24-116" aria-hidden="true" tabindex="-1"></a>alors la probabilité de la ré-identifier dans le jeu de données </span>
-<span id="cb24-117"><a href="#cb24-117" aria-hidden="true" tabindex="-1"></a>avec ces seules informations serait de 1 chance sur </span>
-<span id="cb24-118"><a href="#cb24-118" aria-hidden="true" tabindex="-1"></a><span class="in">`r freq_qi_vars |&gt; filter(ARR == "751", SEXE == 2, AGE == 52) |&gt; pull(n)`</span>.</span>
-<span id="cb24-119"><a href="#cb24-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-120"><a href="#cb24-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-121"><a href="#cb24-121" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r} --&gt;</span></span>
-<span id="cb24-122"><a href="#cb24-122" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- freq_qi_vars &lt;- freq_qi_vars |&gt; --&gt;</span></span>
-<span id="cb24-123"><a href="#cb24-123" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   mutate(p = 1/n) |&gt; --&gt;</span></span>
-<span id="cb24-124"><a href="#cb24-124" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   mutate(p_cl = cut(p, breaks = c(0,0.1,0.25,0.34,0.5,1))) --&gt;</span></span>
-<span id="cb24-125"><a href="#cb24-125" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
-<span id="cb24-126"><a href="#cb24-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-127"><a href="#cb24-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-128"><a href="#cb24-128" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r} --&gt;</span></span>
-<span id="cb24-129"><a href="#cb24-129" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| code-fold: true --&gt;</span></span>
-<span id="cb24-130"><a href="#cb24-130" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ggplot(freq_qi_vars) + --&gt;</span></span>
-<span id="cb24-131"><a href="#cb24-131" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   geom_bar(aes(x=p_cl), fill = "forestgreen", alpha = 0.6, color = "snow") + --&gt;</span></span>
-<span id="cb24-132"><a href="#cb24-132" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   labs(x="Probabilité d'être ré-identifié", y="Nb d'individus") + --&gt;</span></span>
-<span id="cb24-133"><a href="#cb24-133" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   ggtitle("Probabilité de ré-identification des individus") + --&gt;</span></span>
-<span id="cb24-134"><a href="#cb24-134" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   theme_minimal() --&gt;</span></span>
-<span id="cb24-135"><a href="#cb24-135" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
-<span id="cb24-136"><a href="#cb24-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-137"><a href="#cb24-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-138"><a href="#cb24-138" aria-hidden="true" tabindex="-1"></a><span class="fu">### Le choix des variables quasi-identifiantes</span></span>
-<span id="cb24-139"><a href="#cb24-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-140"><a href="#cb24-140" aria-hidden="true" tabindex="-1"></a>Choisir les variables quasi-identifiantes est un exercice difficile puisqu'en </span>
-<span id="cb24-141"><a href="#cb24-141" aria-hidden="true" tabindex="-1"></a>général, nous n'avons pas une idée exacte des données à la disposition </span>
-<span id="cb24-142"><a href="#cb24-142" aria-hidden="true" tabindex="-1"></a>des attaquants potentiels. Il faut donc définir un scénario théorique suffisamment </span>
-<span id="cb24-143"><a href="#cb24-143" aria-hidden="true" tabindex="-1"></a>réaliste pour s'assurer de **protéger** les données individuelles </span>
-<span id="cb24-144"><a href="#cb24-144" aria-hidden="true" tabindex="-1"></a>des risques de ré-identification les plus importants.  </span>
-<span id="cb24-145"><a href="#cb24-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-146"><a href="#cb24-146" aria-hidden="true" tabindex="-1"></a>En choisissant le premier jeu de variables quasi-identifiantes (géographie, sexe et âge),</span>
-<span id="cb24-147"><a href="#cb24-147" aria-hidden="true" tabindex="-1"></a>on considère le jeu minimal de quasi-idenfiants. L'extrême inverse consisterait </span>
-<span id="cb24-148"><a href="#cb24-148" aria-hidden="true" tabindex="-1"></a>à considérer toutes les variable comme des quasi-identifiants. Dans le premier </span>
-<span id="cb24-149"><a href="#cb24-149" aria-hidden="true" tabindex="-1"></a>cas, on définit un scénario minimaliste, dans le second le scénario est maximaliste.</span>
-<span id="cb24-150"><a href="#cb24-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-151"><a href="#cb24-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-152"><a href="#cb24-152" aria-hidden="true" tabindex="-1"></a>Dans notre jeu de données fictif sur l'emploi et le chômage, on pourrait définir </span>
-<span id="cb24-153"><a href="#cb24-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-154"><a href="#cb24-154" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>un scénario minimaliste: l'attaquant ne dispose que de la géographie, du sexe et de l'âge de ses clients</span>
-<span id="cb24-155"><a href="#cb24-155" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>un scénario intermédiaire: l'attaquant dispose en plus d'informations sur sa catégorie sociale et son niveau de diplôme</span>
-<span id="cb24-156"><a href="#cb24-156" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>un scénario maximaliste: l'attaquant dispose en réalité de toutes les informations sur les individus sauf de son ancienneté au chômage.</span>
-<span id="cb24-157"><a href="#cb24-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-158"><a href="#cb24-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-159"><a href="#cb24-159" aria-hidden="true" tabindex="-1"></a>Selon ces trois scénarios, le niveau de risque de ré-identifcation des individus ne sera pas le même</span>
-<span id="cb24-160"><a href="#cb24-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-161"><a href="#cb24-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-164"><a href="#cb24-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-165"><a href="#cb24-165" aria-hidden="true" tabindex="-1"></a>qi_vars_II <span class="ot">&lt;-</span> <span class="fu">c</span>(qi_vars_I, <span class="st">"PCS1Q"</span>, <span class="st">"DIP7"</span>)</span>
-<span id="cb24-166"><a href="#cb24-166" aria-hidden="true" tabindex="-1"></a>qi_vars_III <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">names</span>(lfs_2023)[<span class="sc">!</span><span class="fu">names</span>(lfs_2023) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"ANCCHOM"</span>)])</span>
-<span id="cb24-167"><a href="#cb24-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-168"><a href="#cb24-168" aria-hidden="true" tabindex="-1"></a>risques_reident <span class="ot">&lt;-</span> </span>
-<span id="cb24-169"><a href="#cb24-169" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="st">"I"</span> <span class="ot">=</span> qi_vars_I, </span>
-<span id="cb24-170"><a href="#cb24-170" aria-hidden="true" tabindex="-1"></a>       <span class="st">"II"</span> <span class="ot">=</span> qi_vars_II,</span>
-<span id="cb24-171"><a href="#cb24-171" aria-hidden="true" tabindex="-1"></a>       <span class="st">"III"</span> <span class="ot">=</span> qi_vars_III) <span class="sc">|&gt;</span></span>
-<span id="cb24-172"><a href="#cb24-172" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comparer_risque_reidentification</span>(<span class="at">data =</span> lfs_2023)</span>
-<span id="cb24-173"><a href="#cb24-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb24-174"><a href="#cb24-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-175"><a href="#cb24-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-178"><a href="#cb24-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-179"><a href="#cb24-179" aria-hidden="true" tabindex="-1"></a><span class="co">#| cold-fold: true</span></span>
-<span id="cb24-180"><a href="#cb24-180" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(risques_reident<span class="sc">$</span>r_graph <span class="sc">|&gt;</span> <span class="fu">ungroup</span>()) <span class="sc">+</span></span>
-<span id="cb24-181"><a href="#cb24-181" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill=</span>p_cl, <span class="at">x =</span> scenario, <span class="at">y =</span> n), </span>
-<span id="cb24-182"><a href="#cb24-182" aria-hidden="true" tabindex="-1"></a>           <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">color =</span> <span class="st">"grey25"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb24-183"><a href="#cb24-183" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="st">"Probabilité"</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">7</span>) <span class="sc">+</span></span>
-<span id="cb24-184"><a href="#cb24-184" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Scénario"</span>, <span class="at">y=</span><span class="st">"Nb d'individus"</span>) <span class="sc">+</span></span>
-<span id="cb24-185"><a href="#cb24-185" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Probabilité de ré-identification des individus selon le scénario"</span>) <span class="sc">+</span></span>
-<span id="cb24-186"><a href="#cb24-186" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb24-187"><a href="#cb24-187" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb24-188"><a href="#cb24-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-191"><a href="#cb24-191" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-192"><a href="#cb24-192" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb24-193"><a href="#cb24-193" aria-hidden="true" tabindex="-1"></a>risques_reident<span class="sc">$</span>r_stats <span class="sc">|&gt;</span></span>
-<span id="cb24-194"><a href="#cb24-194" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb24-195"><a href="#cb24-195" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Risque de ré-identification des individus en fonction du scénario"</span>,</span>
-<span id="cb24-196"><a href="#cb24-196" aria-hidden="true" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">3</span></span>
-<span id="cb24-197"><a href="#cb24-197" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb24-198"><a href="#cb24-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb24-199"><a href="#cb24-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-200"><a href="#cb24-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-201"><a href="#cb24-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-202"><a href="#cb24-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-203"><a href="#cb24-203" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning}</span>
-<span id="cb24-204"><a href="#cb24-204" aria-hidden="true" tabindex="-1"></a><span class="fu">### Des variables très efficaces pour la ré-identification</span></span>
-<span id="cb24-205"><a href="#cb24-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-206"><a href="#cb24-206" aria-hidden="true" tabindex="-1"></a>Certaines variables ont un pouvoir de ré-identification très fort, en particulier :</span>
-<span id="cb24-207"><a href="#cb24-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-208"><a href="#cb24-208" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>la **géographie** (de résidence, de travail, d'implantation): plus elle est précise </span>
-<span id="cb24-209"><a href="#cb24-209" aria-hidden="true" tabindex="-1"></a>plus la ré-identification est aisée, d'autant plus que l'adresse est souvent par </span>
-<span id="cb24-210"><a href="#cb24-210" aria-hidden="true" tabindex="-1"></a>ailleurs une donnée très largement partagée par les individus et les entreprises.</span>
-<span id="cb24-211"><a href="#cb24-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-212"><a href="#cb24-212" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>l'**âge** est également très ré-identifiant puisqu'il est à la fois public avec </span>
-<span id="cb24-213"><a href="#cb24-213" aria-hidden="true" tabindex="-1"></a>la disponibilité de l'état-civil et concerne, pour certains âges avancés, peu </span>
-<span id="cb24-214"><a href="#cb24-214" aria-hidden="true" tabindex="-1"></a>d'individus. Ainsi, si la personne la plus âgée résidant en France est dans notre</span>
-<span id="cb24-215"><a href="#cb24-215" aria-hidden="true" tabindex="-1"></a>fichier, nous avons toutes les chances de la ré-identifier de façon certaine </span>
-<span id="cb24-216"><a href="#cb24-216" aria-hidden="true" tabindex="-1"></a>en ne connaissant que son âge.</span>
-<span id="cb24-217"><a href="#cb24-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-218"><a href="#cb24-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-219"><a href="#cb24-219" aria-hidden="true" tabindex="-1"></a>Pour réduire le risque de ré-identification, il est souvent très efficace de </span>
-<span id="cb24-220"><a href="#cb24-220" aria-hidden="true" tabindex="-1"></a>choisir de diffuser des variables d'âge et de géographie agrégées.</span>
-<span id="cb24-221"><a href="#cb24-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-222"><a href="#cb24-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-223"><a href="#cb24-223" aria-hidden="true" tabindex="-1"></a>Comparons, par exemple, trois scénarios alternatifs au <span class="in">`scénario II`</span> présenté </span>
-<span id="cb24-224"><a href="#cb24-224" aria-hidden="true" tabindex="-1"></a>ci-dessus:</span>
-<span id="cb24-225"><a href="#cb24-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-226"><a href="#cb24-226" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**scénario II-a**: le lieu de résidence n'est plus diffusé à l'arrondisement mais au département.</span>
-<span id="cb24-227"><a href="#cb24-227" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**scénario II-b**: l'âge détaillé est remplacé par 5 tranches d'âges.</span>
-<span id="cb24-228"><a href="#cb24-228" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**scénario II-c**: combinaison des deux scénarios ci-dessus.</span>
-<span id="cb24-229"><a href="#cb24-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-232"><a href="#cb24-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-233"><a href="#cb24-233" aria-hidden="true" tabindex="-1"></a>qi_vars_IIa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>, <span class="st">"AGE"</span>, <span class="st">"PCS1Q"</span>, <span class="st">"DIP7"</span>)</span>
-<span id="cb24-234"><a href="#cb24-234" aria-hidden="true" tabindex="-1"></a>qi_vars_IIb <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>, <span class="st">"ARR"</span>, <span class="st">"AGE6"</span>, <span class="st">"PCS1Q"</span>, <span class="st">"DIP7"</span>)</span>
-<span id="cb24-235"><a href="#cb24-235" aria-hidden="true" tabindex="-1"></a>qi_vars_IIc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>, <span class="st">"AGE6"</span>, <span class="st">"PCS1Q"</span>, <span class="st">"DIP7"</span>)</span>
-<span id="cb24-236"><a href="#cb24-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-237"><a href="#cb24-237" aria-hidden="true" tabindex="-1"></a>risques_reident2 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb24-238"><a href="#cb24-238" aria-hidden="true" tabindex="-1"></a>  <span class="st">"II"</span> <span class="ot">=</span> qi_vars_II, </span>
-<span id="cb24-239"><a href="#cb24-239" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IIa"</span> <span class="ot">=</span> qi_vars_IIa, </span>
-<span id="cb24-240"><a href="#cb24-240" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IIb"</span> <span class="ot">=</span> qi_vars_IIb, </span>
-<span id="cb24-241"><a href="#cb24-241" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IIc"</span> <span class="ot">=</span> qi_vars_IIc) <span class="sc">|&gt;</span></span>
-<span id="cb24-242"><a href="#cb24-242" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comparer_risque_reidentification</span>(<span class="at">data =</span> lfs_2023)</span>
-<span id="cb24-243"><a href="#cb24-243" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb24-244"><a href="#cb24-244" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb24-245"><a href="#cb24-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-246"><a href="#cb24-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-249"><a href="#cb24-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-250"><a href="#cb24-250" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb24-251"><a href="#cb24-251" aria-hidden="true" tabindex="-1"></a>risques_reident2<span class="sc">$</span>r_stats <span class="sc">|&gt;</span></span>
-<span id="cb24-252"><a href="#cb24-252" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb24-253"><a href="#cb24-253" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Risque de ré-identification des individus en fonction du scénario"</span>,</span>
-<span id="cb24-254"><a href="#cb24-254" aria-hidden="true" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">3</span></span>
-<span id="cb24-255"><a href="#cb24-255" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb24-256"><a href="#cb24-256" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb24-257"><a href="#cb24-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-258"><a href="#cb24-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-261"><a href="#cb24-261" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-262"><a href="#cb24-262" aria-hidden="true" tabindex="-1"></a><span class="co">#| cold-fold: true</span></span>
-<span id="cb24-263"><a href="#cb24-263" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(risques_reident2<span class="sc">$</span>r_graph <span class="sc">|&gt;</span> <span class="fu">ungroup</span>()) <span class="sc">+</span></span>
-<span id="cb24-264"><a href="#cb24-264" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill=</span>p_cl, <span class="at">x =</span> scenario, <span class="at">y =</span> n), </span>
-<span id="cb24-265"><a href="#cb24-265" aria-hidden="true" tabindex="-1"></a>           <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">color =</span> <span class="st">"grey25"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb24-266"><a href="#cb24-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="st">"Probabilité"</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">7</span>) <span class="sc">+</span></span>
-<span id="cb24-267"><a href="#cb24-267" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Scénario"</span>, <span class="at">y=</span><span class="st">"Nb d'individus"</span>) <span class="sc">+</span></span>
-<span id="cb24-268"><a href="#cb24-268" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Probabilité de ré-identification des individus selon le scénario"</span>) <span class="sc">+</span></span>
-<span id="cb24-269"><a href="#cb24-269" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb24-270"><a href="#cb24-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb24-271"><a href="#cb24-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-272"><a href="#cb24-272" aria-hidden="true" tabindex="-1"></a>En réduisant le détail géographique, on a ici divisé par deux la part des uniques. </span>
-<span id="cb24-273"><a href="#cb24-273" aria-hidden="true" tabindex="-1"></a>Mais en passant à 6 tranches d'âges, celle-ci est divisée par 20!</span>
-<span id="cb24-274"><a href="#cb24-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-275"><a href="#cb24-275" aria-hidden="true" tabindex="-1"></a>Ainsi, les traitements les plus simples (recoder une variable) sont parfois </span>
-<span id="cb24-276"><a href="#cb24-276" aria-hidden="true" tabindex="-1"></a>les plus efficaces pour réduire massivement les risques individuels, même si </span>
-<span id="cb24-277"><a href="#cb24-277" aria-hidden="true" tabindex="-1"></a>cela ne les annihile pas tous.</span>
-<span id="cb24-278"><a href="#cb24-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-279"><a href="#cb24-279" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb24-280"><a href="#cb24-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-281"><a href="#cb24-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-282"><a href="#cb24-282" aria-hidden="true" tabindex="-1"></a><span class="fu">### Avec le package `sdcMicro`</span></span>
-<span id="cb24-283"><a href="#cb24-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-284"><a href="#cb24-284" aria-hidden="true" tabindex="-1"></a>Le package <span class="in">`sdcMicro`</span> permet de mesurer les risques de ré-identification et le</span>
-<span id="cb24-285"><a href="#cb24-285" aria-hidden="true" tabindex="-1"></a>niveau d'anonymité d'un jeu de données individuelles assez simplement.</span>
-<span id="cb24-286"><a href="#cb24-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-287"><a href="#cb24-287" aria-hidden="true" tabindex="-1"></a>Dans un premier temps, on initialise un objet de la classe <span class="in">`sdcMicroObj`</span> en </span>
-<span id="cb24-288"><a href="#cb24-288" aria-hidden="true" tabindex="-1"></a>mentionnant uniquement le jeu de données et les variables considérées</span>
-<span id="cb24-289"><a href="#cb24-289" aria-hidden="true" tabindex="-1"></a>comme quasi-identfiantes.</span>
-<span id="cb24-290"><a href="#cb24-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-293"><a href="#cb24-293" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-294"><a href="#cb24-294" aria-hidden="true" tabindex="-1"></a>lfs_sdc <span class="ot">&lt;-</span> sdcMicro<span class="sc">::</span><span class="fu">createSdcObj</span>(</span>
-<span id="cb24-295"><a href="#cb24-295" aria-hidden="true" tabindex="-1"></a>  lfs_2023,</span>
-<span id="cb24-296"><a href="#cb24-296" aria-hidden="true" tabindex="-1"></a>  <span class="at">keyVars =</span> qi_vars_I</span>
-<span id="cb24-297"><a href="#cb24-297" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb24-298"><a href="#cb24-298" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb24-299"><a href="#cb24-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-300"><a href="#cb24-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-301"><a href="#cb24-301" aria-hidden="true" tabindex="-1"></a>La fonction crée un objet dans une classe <span class="in">`S4`</span>. Les différents attributs de l'objet (on dit des <span class="in">`slots`</span>) sont donc accessibles avec le symbole <span class="in">`@`</span>.</span>
-<span id="cb24-302"><a href="#cb24-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-303"><a href="#cb24-303" aria-hidden="true" tabindex="-1"></a>Les attributs disponibles pour un tel objet sont les suivants:</span>
-<span id="cb24-304"><a href="#cb24-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-307"><a href="#cb24-307" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-308"><a href="#cb24-308" aria-hidden="true" tabindex="-1"></a><span class="fu">slotNames</span>(lfs_sdc)</span>
-<span id="cb24-309"><a href="#cb24-309" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb24-310"><a href="#cb24-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-311"><a href="#cb24-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-312"><a href="#cb24-312" aria-hidden="true" tabindex="-1"></a>Lors de la création de l'objet, un certain nombre de métriques de risque ont été </span>
-<span id="cb24-313"><a href="#cb24-313" aria-hidden="true" tabindex="-1"></a>calculées:</span>
-<span id="cb24-314"><a href="#cb24-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-315"><a href="#cb24-315" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>des mesures globales: </span>
-<span id="cb24-316"><a href="#cb24-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-319"><a href="#cb24-319" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-320"><a href="#cb24-320" aria-hidden="true" tabindex="-1"></a>lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>global</span>
-<span id="cb24-321"><a href="#cb24-321" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb24-322"><a href="#cb24-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-323"><a href="#cb24-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-324"><a href="#cb24-324" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>des mesures individuelles :</span>
-<span id="cb24-325"><a href="#cb24-325" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`risk`</span> : risque individuel défini par $\frac{1}{fk}$ si le fichier est une population</span>
-<span id="cb24-326"><a href="#cb24-326" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`fk`</span> : nombre d'individus du fichier partageant les mêmes clés (croisements de quasi-identifiants)</span>
-<span id="cb24-327"><a href="#cb24-327" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`Fk`</span> : nombre d'individus dans la population partageant les mêmes clés (croisements de quasi-identifiants)</span>
-<span id="cb24-328"><a href="#cb24-328" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb24-329"><a href="#cb24-329" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb24-330"><a href="#cb24-330" aria-hidden="true" tabindex="-1"></a><span class="fu">### Echantillon et Population</span></span>
-<span id="cb24-331"><a href="#cb24-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-332"><a href="#cb24-332" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Population</span></span>
-<span id="cb24-333"><a href="#cb24-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-334"><a href="#cb24-334" aria-hidden="true" tabindex="-1"></a>Si le jeu de données étudié correspond à une population (fichier exhaustif du champ),</span>
-<span id="cb24-335"><a href="#cb24-335" aria-hidden="true" tabindex="-1"></a>alors $fk = Fk = \sum_i{ 1(i \in k)}$, nombre d'individus $i$ partageant la clé $k$.</span>
-<span id="cb24-336"><a href="#cb24-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-337"><a href="#cb24-337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-338"><a href="#cb24-338" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Echantillon</span></span>
-<span id="cb24-339"><a href="#cb24-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-340"><a href="#cb24-340" aria-hidden="true" tabindex="-1"></a>Si, au contraire, il s'agit d'un échantillon, on distinguera:</span>
-<span id="cb24-341"><a href="#cb24-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-342"><a href="#cb24-342" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$fk = \sum_{i \in S}{ 1(i \in k)}$</span>
-<span id="cb24-343"><a href="#cb24-343" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$Fk = \sum_{i \in S}{  w_i \times 1(i \in k)}$</span>
-<span id="cb24-344"><a href="#cb24-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-345"><a href="#cb24-345" aria-hidden="true" tabindex="-1"></a>où $S$ désigne l'échantillon (le fichier) et $w_i$ le poids de l'individu </span>
-<span id="cb24-346"><a href="#cb24-346" aria-hidden="true" tabindex="-1"></a>$i \in S$.</span>
-<span id="cb24-347"><a href="#cb24-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-348"><a href="#cb24-348" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@templ_statistical_2015; et @Rinott_Shlomo_2006</span><span class="co">]</span>.</span>
-<span id="cb24-349"><a href="#cb24-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-350"><a href="#cb24-350" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb24-351"><a href="#cb24-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-352"><a href="#cb24-352" aria-hidden="true" tabindex="-1"></a>Certaines variables ont un pouvoir de ré-identification très fort, en particulier :</span>
-<span id="cb24-353"><a href="#cb24-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-354"><a href="#cb24-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-355"><a href="#cb24-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-358"><a href="#cb24-358" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-359"><a href="#cb24-359" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual)</span>
-<span id="cb24-360"><a href="#cb24-360" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb24-361"><a href="#cb24-361" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-362"><a href="#cb24-362" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-363"><a href="#cb24-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-364"><a href="#cb24-364" aria-hidden="true" tabindex="-1"></a><span class="fu">## Le risque de divulgation d'attributs sensibles</span></span>
-<span id="cb24-365"><a href="#cb24-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-366"><a href="#cb24-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-367"><a href="#cb24-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-368"><a href="#cb24-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-369"><a href="#cb24-369" aria-hidden="true" tabindex="-1"></a><span class="fu">## SUDA</span></span>
-<span id="cb24-370"><a href="#cb24-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-371"><a href="#cb24-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-372"><a href="#cb24-372" aria-hidden="true" tabindex="-1"></a><span class="fu">## Le risque individuel </span></span>
-<span id="cb24-373"><a href="#cb24-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-374"><a href="#cb24-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-375"><a href="#cb24-375" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mesures naïves</span></span>
-<span id="cb24-376"><a href="#cb24-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-377"><a href="#cb24-377" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-378"><a href="#cb24-378" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mesures probabilistes</span></span>
-<span id="cb24-379"><a href="#cb24-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-380"><a href="#cb24-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-381"><a href="#cb24-381" aria-hidden="true" tabindex="-1"></a><span class="fu">### Les outliers</span></span>
-<span id="cb24-382"><a href="#cb24-382" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-383"><a href="#cb24-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-384"><a href="#cb24-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-385"><a href="#cb24-385" aria-hidden="true" tabindex="-1"></a><span class="fu">### References</span></span>
-<span id="cb24-386"><a href="#cb24-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-387"><a href="#cb24-387" aria-hidden="true" tabindex="-1"></a>::: {#refs}</span>
-<span id="cb24-388"><a href="#cb24-388" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb24-389"><a href="#cb24-389" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-390"><a href="#cb24-390" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb51" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Les mesures du risque de divulgation</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> pratique/fiches/mesurer-risque.html</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="an">code-block-bg:</span><span class="co"> true</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="an">code-block-border-left:</span><span class="co"> "#bf9aff"</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> show</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="fu"># Les packages</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"./pratique/fiches"</span>)</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb51-27"><a href="#cb51-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb51-28"><a href="#cb51-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb51-29"><a href="#cb51-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb51-30"><a href="#cb51-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb51-31"><a href="#cb51-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdcMicro)</span>
+<span id="cb51-32"><a href="#cb51-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-33"><a href="#cb51-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-34"><a href="#cb51-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les données</span></span>
+<span id="cb51-35"><a href="#cb51-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-38"><a href="#cb51-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-39"><a href="#cb51-39" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb51-40"><a href="#cb51-40" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb51-41"><a href="#cb51-41" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_risque.R"</span>)</span>
+<span id="cb51-42"><a href="#cb51-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-43"><a href="#cb51-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-46"><a href="#cb51-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-47"><a href="#cb51-47" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_import_data.R"</span>)</span>
+<span id="cb51-48"><a href="#cb51-48" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> <span class="fu">import_lfs</span>()</span>
+<span id="cb51-49"><a href="#cb51-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-50"><a href="#cb51-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-51"><a href="#cb51-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-54"><a href="#cb51-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-55"><a href="#cb51-55" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_2023)</span>
+<span id="cb51-56"><a href="#cb51-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-57"><a href="#cb51-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-58"><a href="#cb51-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-59"><a href="#cb51-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les différents types de variables</span></span>
+<span id="cb51-60"><a href="#cb51-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-61"><a href="#cb51-61" aria-hidden="true" tabindex="-1"></a>Dans un jeu de données, on distingue trois grands types de variables:</span>
+<span id="cb51-62"><a href="#cb51-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-63"><a href="#cb51-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>les *quasi-identifiants*: un ensemble de variables dont on suppose qu'un </span>
+<span id="cb51-64"><a href="#cb51-64" aria-hidden="true" tabindex="-1"></a>attaquant est susceptible de les avoir déjà à sa disposition.</span>
+<span id="cb51-65"><a href="#cb51-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>les *variables sensibles*: les variables portant sur des thématiques </span>
+<span id="cb51-66"><a href="#cb51-66" aria-hidden="true" tabindex="-1"></a>sensibles au sens de la Loi Informatique et Libertés </span>
+<span id="cb51-67"><a href="#cb51-67" aria-hidden="true" tabindex="-1"></a>(religion, opinion, orientation sexuelle, etc.), mais on peut aussi y inclure </span>
+<span id="cb51-68"><a href="#cb51-68" aria-hidden="true" tabindex="-1"></a>des variables dont la connaissance est susceptible de porter préjudice </span>
+<span id="cb51-69"><a href="#cb51-69" aria-hidden="true" tabindex="-1"></a>à la personne (par exemple le salaire, le fait d'avoir une maladie, le fait </span>
+<span id="cb51-70"><a href="#cb51-70" aria-hidden="true" tabindex="-1"></a>d'être au chômage, etc.).</span>
+<span id="cb51-71"><a href="#cb51-71" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>les *variables ni identifiantes ni sensibles*: celles qui a priori ne </span>
+<span id="cb51-72"><a href="#cb51-72" aria-hidden="true" tabindex="-1"></a>posent pas de problème spécifique en terme de confidentialité.</span>
+<span id="cb51-73"><a href="#cb51-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-74"><a href="#cb51-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-75"><a href="#cb51-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## Le risque de ré-identification et le rôle des quasi-identifiants</span></span>
+<span id="cb51-76"><a href="#cb51-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-77"><a href="#cb51-77" aria-hidden="true" tabindex="-1"></a>Ainsi, le premier type de variables engendre un risque de divulgation d'information</span>
+<span id="cb51-78"><a href="#cb51-78" aria-hidden="true" tabindex="-1"></a>confidentielle par la possibilité pour l'attaquant de ré-identifier des individus. </span>
+<span id="cb51-79"><a href="#cb51-79" aria-hidden="true" tabindex="-1"></a>En effet, si un ataquant dispose d'un fichier nomminatif - un fichier client par </span>
+<span id="cb51-80"><a href="#cb51-80" aria-hidden="true" tabindex="-1"></a>exemple - contenant des variables communes avec le jeu de données qu'on s'apprête </span>
+<span id="cb51-81"><a href="#cb51-81" aria-hidden="true" tabindex="-1"></a>à publier, il est alors en mesure d'apparier les deux et être en capacité de </span>
+<span id="cb51-82"><a href="#cb51-82" aria-hidden="true" tabindex="-1"></a>ré-identifier des individus si ceux-ci se trouvent avoir des caractéristiques </span>
+<span id="cb51-83"><a href="#cb51-83" aria-hidden="true" tabindex="-1"></a>peu fréquentes.</span>
+<span id="cb51-84"><a href="#cb51-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-85"><a href="#cb51-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-86"><a href="#cb51-86" aria-hidden="true" tabindex="-1"></a><span class="fu">### Un premier exemple</span></span>
+<span id="cb51-87"><a href="#cb51-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-88"><a href="#cb51-88" aria-hidden="true" tabindex="-1"></a>Prenons une liste très restreinte de quasi-identifiants: la géographie de résidence,</span>
+<span id="cb51-89"><a href="#cb51-89" aria-hidden="true" tabindex="-1"></a>le sexe et l'âge de l'individu. Ces informations sont disponibles par de </span>
+<span id="cb51-90"><a href="#cb51-90" aria-hidden="true" tabindex="-1"></a>nombreuses entreprises auprès desquelles nous souscrivons des services </span>
+<span id="cb51-91"><a href="#cb51-91" aria-hidden="true" tabindex="-1"></a>(banque, assurance, téléphonie, etc.). </span>
+<span id="cb51-92"><a href="#cb51-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-93"><a href="#cb51-93" aria-hidden="true" tabindex="-1"></a>En dénombrant les individus de chaque croisement entre les variables quasi-identifiantes,</span>
+<span id="cb51-94"><a href="#cb51-94" aria-hidden="true" tabindex="-1"></a>on peut détecter :</span>
+<span id="cb51-95"><a href="#cb51-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-96"><a href="#cb51-96" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>le **niveau d'anonymité du fichier** au sens du **k-anonymat**: ici notre fichier est </span>
+<span id="cb51-97"><a href="#cb51-97" aria-hidden="true" tabindex="-1"></a>1-anonyme puisqu'il contient de nombreux individus uniques dans leur catégorie.</span>
+<span id="cb51-98"><a href="#cb51-98" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>la détection des croisements et des **individus les plus à risque**:</span>
+<span id="cb51-99"><a href="#cb51-99" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Moins il y a d'individus dans un groupe, plus la probabilité de ré-identification </span></span>
+<span id="cb51-100"><a href="#cb51-100" aria-hidden="true" tabindex="-1"></a><span class="at">par l'attaquant est forte. Dans le cas d'un groupe unique, la ré-identification </span></span>
+<span id="cb51-101"><a href="#cb51-101" aria-hidden="true" tabindex="-1"></a><span class="at">est même certaine.</span></span>
+<span id="cb51-102"><a href="#cb51-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-105"><a href="#cb51-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-106"><a href="#cb51-106" aria-hidden="true" tabindex="-1"></a>qi_vars_I <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>,<span class="st">"DEP"</span>,<span class="st">"ARR"</span>, <span class="st">"SEXE"</span>, <span class="st">"AGE"</span>)</span>
+<span id="cb51-107"><a href="#cb51-107" aria-hidden="true" tabindex="-1"></a>freq_qi_vars <span class="ot">&lt;-</span> lfs_2023 <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(qi_vars_I))) </span>
+<span id="cb51-108"><a href="#cb51-108" aria-hidden="true" tabindex="-1"></a>freq_qi_vars <span class="sc">|&gt;</span> <span class="fu">arrange</span>(n) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
+<span id="cb51-109"><a href="#cb51-109" aria-hidden="true" tabindex="-1"></a>freq_qi_vars <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="sc">-</span>n) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
+<span id="cb51-110"><a href="#cb51-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-111"><a href="#cb51-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-112"><a href="#cb51-112" aria-hidden="true" tabindex="-1"></a>Ainsi, si une entreprise de notre contrée imaginaire dispose d'un fichier sur </span>
+<span id="cb51-113"><a href="#cb51-113" aria-hidden="true" tabindex="-1"></a>tout ou partie de la population en âge de travailler (par exemple un opérateur </span>
+<span id="cb51-114"><a href="#cb51-114" aria-hidden="true" tabindex="-1"></a>téléphonique), il pourra ré-identifier sans peine les individus uniques du jeu </span>
+<span id="cb51-115"><a href="#cb51-115" aria-hidden="true" tabindex="-1"></a>de données qui seraient présents dans son fchier.</span>
+<span id="cb51-116"><a href="#cb51-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-117"><a href="#cb51-117" aria-hidden="true" tabindex="-1"></a>La **capacité d'un attaquant à pouvoir ré-identifier un individu** dépend du </span>
+<span id="cb51-118"><a href="#cb51-118" aria-hidden="true" tabindex="-1"></a>nombre d'individus du jeu de données qui partagent les mêmes caractéristiques</span>
+<span id="cb51-119"><a href="#cb51-119" aria-hidden="true" tabindex="-1"></a>sur les variables quasi-identifiantes.</span>
+<span id="cb51-120"><a href="#cb51-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-121"><a href="#cb51-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-122"><a href="#cb51-122" aria-hidden="true" tabindex="-1"></a>Par exemple, si Thérèse est une femme de 97 ans résidant dans l'arrondissement <span class="in">`751`</span>,</span>
+<span id="cb51-123"><a href="#cb51-123" aria-hidden="true" tabindex="-1"></a>alors le jeu de données permet de la ré-identifier de façon certaine, puisqu'elle </span>
+<span id="cb51-124"><a href="#cb51-124" aria-hidden="true" tabindex="-1"></a>serait la seule dans ce cas.</span>
+<span id="cb51-125"><a href="#cb51-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-126"><a href="#cb51-126" aria-hidden="true" tabindex="-1"></a>Au contraire, si Thérèse est une femme de 52 ans résidant dans le même arrondissement, </span>
+<span id="cb51-127"><a href="#cb51-127" aria-hidden="true" tabindex="-1"></a>alors la probabilité de la ré-identifier dans le jeu de données </span>
+<span id="cb51-128"><a href="#cb51-128" aria-hidden="true" tabindex="-1"></a>avec ces seules informations serait de 1 chance sur </span>
+<span id="cb51-129"><a href="#cb51-129" aria-hidden="true" tabindex="-1"></a><span class="in">`r freq_qi_vars |&gt; filter(ARR == "751", SEXE == 2, AGE == 52) |&gt; pull(n)`</span>.</span>
+<span id="cb51-130"><a href="#cb51-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-131"><a href="#cb51-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-132"><a href="#cb51-132" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r} --&gt;</span></span>
+<span id="cb51-133"><a href="#cb51-133" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- freq_qi_vars &lt;- freq_qi_vars |&gt; --&gt;</span></span>
+<span id="cb51-134"><a href="#cb51-134" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   mutate(p = 1/n) |&gt; --&gt;</span></span>
+<span id="cb51-135"><a href="#cb51-135" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   mutate(p_cl = cut(p, breaks = c(0,0.1,0.25,0.34,0.5,1))) --&gt;</span></span>
+<span id="cb51-136"><a href="#cb51-136" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb51-137"><a href="#cb51-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-138"><a href="#cb51-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-139"><a href="#cb51-139" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r} --&gt;</span></span>
+<span id="cb51-140"><a href="#cb51-140" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| code-fold: true --&gt;</span></span>
+<span id="cb51-141"><a href="#cb51-141" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ggplot(freq_qi_vars) + --&gt;</span></span>
+<span id="cb51-142"><a href="#cb51-142" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   geom_bar(aes(x=p_cl), fill = "forestgreen", alpha = 0.6, color = "snow") + --&gt;</span></span>
+<span id="cb51-143"><a href="#cb51-143" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   labs(x="Probabilité d'être ré-identifié", y="Nb d'individus") + --&gt;</span></span>
+<span id="cb51-144"><a href="#cb51-144" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   ggtitle("Probabilité de ré-identification des individus") + --&gt;</span></span>
+<span id="cb51-145"><a href="#cb51-145" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   theme_minimal() --&gt;</span></span>
+<span id="cb51-146"><a href="#cb51-146" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb51-147"><a href="#cb51-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-148"><a href="#cb51-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-149"><a href="#cb51-149" aria-hidden="true" tabindex="-1"></a><span class="fu">### Le choix des variables quasi-identifiantes</span></span>
+<span id="cb51-150"><a href="#cb51-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-151"><a href="#cb51-151" aria-hidden="true" tabindex="-1"></a>Choisir les variables quasi-identifiantes est un exercice difficile puisqu'en </span>
+<span id="cb51-152"><a href="#cb51-152" aria-hidden="true" tabindex="-1"></a>général, nous n'avons pas une idée exacte des données à la disposition </span>
+<span id="cb51-153"><a href="#cb51-153" aria-hidden="true" tabindex="-1"></a>des attaquants potentiels. Il faut donc définir un scénario théorique suffisamment </span>
+<span id="cb51-154"><a href="#cb51-154" aria-hidden="true" tabindex="-1"></a>réaliste pour s'assurer de **protéger** les données individuelles </span>
+<span id="cb51-155"><a href="#cb51-155" aria-hidden="true" tabindex="-1"></a>des risques de ré-identification les plus importants.  </span>
+<span id="cb51-156"><a href="#cb51-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-157"><a href="#cb51-157" aria-hidden="true" tabindex="-1"></a>En choisissant le premier jeu de variables quasi-identifiantes (géographie, sexe et âge),</span>
+<span id="cb51-158"><a href="#cb51-158" aria-hidden="true" tabindex="-1"></a>on considère le jeu minimal de quasi-idenfiants. L'extrême inverse consisterait </span>
+<span id="cb51-159"><a href="#cb51-159" aria-hidden="true" tabindex="-1"></a>à considérer toutes les variable comme des quasi-identifiants. Dans le premier </span>
+<span id="cb51-160"><a href="#cb51-160" aria-hidden="true" tabindex="-1"></a>cas, on définit un scénario minimaliste, dans le second le scénario est maximaliste.</span>
+<span id="cb51-161"><a href="#cb51-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-162"><a href="#cb51-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-163"><a href="#cb51-163" aria-hidden="true" tabindex="-1"></a>Dans notre jeu de données fictif sur l'emploi et le chômage, on pourrait définir </span>
+<span id="cb51-164"><a href="#cb51-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-165"><a href="#cb51-165" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>un scénario minimaliste: l'attaquant ne dispose que de la géographie, du sexe et de l'âge de ses clients</span>
+<span id="cb51-166"><a href="#cb51-166" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>un scénario intermédiaire: l'attaquant dispose en plus d'informations sur son niveau de diplôme</span>
+<span id="cb51-167"><a href="#cb51-167" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>un scénario maximaliste: l'attaquant dispose en réalité de toutes les informations sur les individus sauf de son ancienneté au chômage.</span>
+<span id="cb51-168"><a href="#cb51-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-169"><a href="#cb51-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-170"><a href="#cb51-170" aria-hidden="true" tabindex="-1"></a>Selon ces trois scénarios, le niveau de risque de ré-identifcation des individus ne sera pas le même</span>
+<span id="cb51-171"><a href="#cb51-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-172"><a href="#cb51-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-175"><a href="#cb51-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-176"><a href="#cb51-176" aria-hidden="true" tabindex="-1"></a>qi_vars_II <span class="ot">&lt;-</span> <span class="fu">c</span>(qi_vars_I, <span class="st">"DIP7"</span>)</span>
+<span id="cb51-177"><a href="#cb51-177" aria-hidden="true" tabindex="-1"></a>qi_vars_III <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">names</span>(lfs_2023)[<span class="sc">!</span><span class="fu">names</span>(lfs_2023) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"ANCCHOM"</span>)])</span>
+<span id="cb51-178"><a href="#cb51-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-179"><a href="#cb51-179" aria-hidden="true" tabindex="-1"></a>risques_reident <span class="ot">&lt;-</span> </span>
+<span id="cb51-180"><a href="#cb51-180" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="st">"I"</span> <span class="ot">=</span> qi_vars_I, </span>
+<span id="cb51-181"><a href="#cb51-181" aria-hidden="true" tabindex="-1"></a>       <span class="st">"II"</span> <span class="ot">=</span> qi_vars_II,</span>
+<span id="cb51-182"><a href="#cb51-182" aria-hidden="true" tabindex="-1"></a>       <span class="st">"III"</span> <span class="ot">=</span> qi_vars_III) <span class="sc">|&gt;</span></span>
+<span id="cb51-183"><a href="#cb51-183" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comparer_risque_reidentification</span>(<span class="at">data =</span> lfs_2023)</span>
+<span id="cb51-184"><a href="#cb51-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-185"><a href="#cb51-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-186"><a href="#cb51-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-189"><a href="#cb51-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-190"><a href="#cb51-190" aria-hidden="true" tabindex="-1"></a><span class="co">#| cold-fold: true</span></span>
+<span id="cb51-191"><a href="#cb51-191" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(risques_reident<span class="sc">$</span>r_graph <span class="sc">|&gt;</span> <span class="fu">ungroup</span>()) <span class="sc">+</span></span>
+<span id="cb51-192"><a href="#cb51-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill=</span>p_cl, <span class="at">x =</span> scenario, <span class="at">y =</span> n), </span>
+<span id="cb51-193"><a href="#cb51-193" aria-hidden="true" tabindex="-1"></a>           <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">color =</span> <span class="st">"grey25"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb51-194"><a href="#cb51-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="st">"Probabilité"</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">7</span>) <span class="sc">+</span></span>
+<span id="cb51-195"><a href="#cb51-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Scénario"</span>, <span class="at">y=</span><span class="st">"Nb d'individus"</span>) <span class="sc">+</span></span>
+<span id="cb51-196"><a href="#cb51-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Probabilité de ré-identification des individus selon le scénario"</span>) <span class="sc">+</span></span>
+<span id="cb51-197"><a href="#cb51-197" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb51-198"><a href="#cb51-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-199"><a href="#cb51-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-202"><a href="#cb51-202" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-203"><a href="#cb51-203" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb51-204"><a href="#cb51-204" aria-hidden="true" tabindex="-1"></a>risques_reident<span class="sc">$</span>r_stats <span class="sc">|&gt;</span></span>
+<span id="cb51-205"><a href="#cb51-205" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb51-206"><a href="#cb51-206" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Risque de ré-identification des individus en fonction du scénario"</span>,</span>
+<span id="cb51-207"><a href="#cb51-207" aria-hidden="true" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">3</span></span>
+<span id="cb51-208"><a href="#cb51-208" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb51-209"><a href="#cb51-209" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-210"><a href="#cb51-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-211"><a href="#cb51-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-212"><a href="#cb51-212" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning}</span>
+<span id="cb51-213"><a href="#cb51-213" aria-hidden="true" tabindex="-1"></a><span class="fu">### Des variables très efficaces pour la ré-identification</span></span>
+<span id="cb51-214"><a href="#cb51-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-215"><a href="#cb51-215" aria-hidden="true" tabindex="-1"></a>Certaines variables ont un pouvoir de ré-identification très fort, en particulier :</span>
+<span id="cb51-216"><a href="#cb51-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-217"><a href="#cb51-217" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>la **géographie** (de résidence, de travail, d'implantation): plus elle est précise </span>
+<span id="cb51-218"><a href="#cb51-218" aria-hidden="true" tabindex="-1"></a>plus la ré-identification est aisée, d'autant plus que l'adresse est souvent par </span>
+<span id="cb51-219"><a href="#cb51-219" aria-hidden="true" tabindex="-1"></a>ailleurs une donnée très largement partagée par les individus et les entreprises.</span>
+<span id="cb51-220"><a href="#cb51-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-221"><a href="#cb51-221" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>l'**âge** est également très ré-identifiant puisqu'il est à la fois public avec </span>
+<span id="cb51-222"><a href="#cb51-222" aria-hidden="true" tabindex="-1"></a>la disponibilité de l'état-civil et concerne, pour certains âges avancés, peu </span>
+<span id="cb51-223"><a href="#cb51-223" aria-hidden="true" tabindex="-1"></a>d'individus. Ainsi, si la personne la plus âgée résidant en France est dans notre</span>
+<span id="cb51-224"><a href="#cb51-224" aria-hidden="true" tabindex="-1"></a>fichier, nous avons toutes les chances de la ré-identifier de façon certaine </span>
+<span id="cb51-225"><a href="#cb51-225" aria-hidden="true" tabindex="-1"></a>en ne connaissant que son âge.</span>
+<span id="cb51-226"><a href="#cb51-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-227"><a href="#cb51-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-228"><a href="#cb51-228" aria-hidden="true" tabindex="-1"></a>Pour réduire le risque de ré-identification, il est souvent très efficace de </span>
+<span id="cb51-229"><a href="#cb51-229" aria-hidden="true" tabindex="-1"></a>choisir de diffuser des variables d'âge et de géographie agrégées.</span>
+<span id="cb51-230"><a href="#cb51-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-231"><a href="#cb51-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-232"><a href="#cb51-232" aria-hidden="true" tabindex="-1"></a>Comparons, par exemple, trois scénarios alternatifs au <span class="in">`scénario II`</span> présenté </span>
+<span id="cb51-233"><a href="#cb51-233" aria-hidden="true" tabindex="-1"></a>ci-dessus:</span>
+<span id="cb51-234"><a href="#cb51-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-235"><a href="#cb51-235" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**scénario II-a**: le lieu de résidence n'est plus diffusé à l'arrondisement mais au département.</span>
+<span id="cb51-236"><a href="#cb51-236" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**scénario II-b**: l'âge détaillé est remplacé par 5 tranches d'âges.</span>
+<span id="cb51-237"><a href="#cb51-237" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**scénario II-c**: combinaison des deux scénarios ci-dessus.</span>
+<span id="cb51-238"><a href="#cb51-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-241"><a href="#cb51-241" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-242"><a href="#cb51-242" aria-hidden="true" tabindex="-1"></a>qi_vars_IIa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>, <span class="st">"SEXE"</span>, <span class="st">"AGE"</span>, <span class="st">"DIP7"</span>)</span>
+<span id="cb51-243"><a href="#cb51-243" aria-hidden="true" tabindex="-1"></a>qi_vars_IIb <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>, <span class="st">"ARR"</span>, <span class="st">"SEXE"</span>,  <span class="st">"AGE6"</span>, <span class="st">"DIP7"</span>)</span>
+<span id="cb51-244"><a href="#cb51-244" aria-hidden="true" tabindex="-1"></a>qi_vars_IIc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>, <span class="st">"SEXE"</span>, <span class="st">"AGE6"</span>, <span class="st">"DIP7"</span>)</span>
+<span id="cb51-245"><a href="#cb51-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-246"><a href="#cb51-246" aria-hidden="true" tabindex="-1"></a>risques_reident2 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb51-247"><a href="#cb51-247" aria-hidden="true" tabindex="-1"></a>  <span class="st">"II"</span> <span class="ot">=</span> qi_vars_II, </span>
+<span id="cb51-248"><a href="#cb51-248" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IIa"</span> <span class="ot">=</span> qi_vars_IIa, </span>
+<span id="cb51-249"><a href="#cb51-249" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IIb"</span> <span class="ot">=</span> qi_vars_IIb, </span>
+<span id="cb51-250"><a href="#cb51-250" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IIc"</span> <span class="ot">=</span> qi_vars_IIc) <span class="sc">|&gt;</span></span>
+<span id="cb51-251"><a href="#cb51-251" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comparer_risque_reidentification</span>(<span class="at">data =</span> lfs_2023)</span>
+<span id="cb51-252"><a href="#cb51-252" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb51-253"><a href="#cb51-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-254"><a href="#cb51-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-255"><a href="#cb51-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-258"><a href="#cb51-258" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-259"><a href="#cb51-259" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb51-260"><a href="#cb51-260" aria-hidden="true" tabindex="-1"></a>risques_reident2<span class="sc">$</span>r_stats <span class="sc">|&gt;</span></span>
+<span id="cb51-261"><a href="#cb51-261" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb51-262"><a href="#cb51-262" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Risque de ré-identification des individus en fonction du scénario"</span>,</span>
+<span id="cb51-263"><a href="#cb51-263" aria-hidden="true" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">3</span></span>
+<span id="cb51-264"><a href="#cb51-264" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb51-265"><a href="#cb51-265" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-266"><a href="#cb51-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-267"><a href="#cb51-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-270"><a href="#cb51-270" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-271"><a href="#cb51-271" aria-hidden="true" tabindex="-1"></a><span class="co">#| cold-fold: true</span></span>
+<span id="cb51-272"><a href="#cb51-272" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(risques_reident2<span class="sc">$</span>r_graph <span class="sc">|&gt;</span> <span class="fu">ungroup</span>()) <span class="sc">+</span></span>
+<span id="cb51-273"><a href="#cb51-273" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill=</span>p_cl, <span class="at">x =</span> scenario, <span class="at">y =</span> n), </span>
+<span id="cb51-274"><a href="#cb51-274" aria-hidden="true" tabindex="-1"></a>           <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">color =</span> <span class="st">"grey25"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb51-275"><a href="#cb51-275" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="st">"Probabilité"</span>, <span class="at">type =</span> <span class="st">"seq"</span>, <span class="at">palette =</span> <span class="dv">7</span>) <span class="sc">+</span></span>
+<span id="cb51-276"><a href="#cb51-276" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Scénario"</span>, <span class="at">y=</span><span class="st">"Nb d'individus"</span>) <span class="sc">+</span></span>
+<span id="cb51-277"><a href="#cb51-277" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Probabilité de ré-identification des individus selon le scénario"</span>) <span class="sc">+</span></span>
+<span id="cb51-278"><a href="#cb51-278" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb51-279"><a href="#cb51-279" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-280"><a href="#cb51-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-281"><a href="#cb51-281" aria-hidden="true" tabindex="-1"></a>En réduisant le détail géographique, on a ici divisé par deux la part des uniques. </span>
+<span id="cb51-282"><a href="#cb51-282" aria-hidden="true" tabindex="-1"></a>Mais en passant à 6 tranches d'âges, celle-ci est divisée par 20!</span>
+<span id="cb51-283"><a href="#cb51-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-284"><a href="#cb51-284" aria-hidden="true" tabindex="-1"></a>Ainsi, les traitements les plus simples (recoder une variable) sont parfois </span>
+<span id="cb51-285"><a href="#cb51-285" aria-hidden="true" tabindex="-1"></a>les plus efficaces pour réduire massivement les risques individuels, même si </span>
+<span id="cb51-286"><a href="#cb51-286" aria-hidden="true" tabindex="-1"></a>cela ne les annihile pas tous.</span>
+<span id="cb51-287"><a href="#cb51-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-288"><a href="#cb51-288" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb51-289"><a href="#cb51-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-290"><a href="#cb51-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-291"><a href="#cb51-291" aria-hidden="true" tabindex="-1"></a><span class="fu">### Avec le package `sdcMicro`</span></span>
+<span id="cb51-292"><a href="#cb51-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-293"><a href="#cb51-293" aria-hidden="true" tabindex="-1"></a>Le package <span class="in">`sdcMicro`</span> permet de mesurer les risques de ré-identification et le</span>
+<span id="cb51-294"><a href="#cb51-294" aria-hidden="true" tabindex="-1"></a>niveau d'anonymité d'un jeu de données individuelles assez simplement.</span>
+<span id="cb51-295"><a href="#cb51-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-296"><a href="#cb51-296" aria-hidden="true" tabindex="-1"></a>Dans un premier temps, on initialise un objet de la classe <span class="in">`sdcMicroObj`</span> en </span>
+<span id="cb51-297"><a href="#cb51-297" aria-hidden="true" tabindex="-1"></a>mentionnant uniquement le jeu de données et les variables considérées</span>
+<span id="cb51-298"><a href="#cb51-298" aria-hidden="true" tabindex="-1"></a>comme quasi-identfiantes.</span>
+<span id="cb51-299"><a href="#cb51-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-302"><a href="#cb51-302" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-303"><a href="#cb51-303" aria-hidden="true" tabindex="-1"></a>lfs_sdc <span class="ot">&lt;-</span> sdcMicro<span class="sc">::</span><span class="fu">createSdcObj</span>(</span>
+<span id="cb51-304"><a href="#cb51-304" aria-hidden="true" tabindex="-1"></a>  lfs_2023,</span>
+<span id="cb51-305"><a href="#cb51-305" aria-hidden="true" tabindex="-1"></a>  <span class="at">keyVars =</span> qi_vars_IIc</span>
+<span id="cb51-306"><a href="#cb51-306" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb51-307"><a href="#cb51-307" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-308"><a href="#cb51-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-309"><a href="#cb51-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-310"><a href="#cb51-310" aria-hidden="true" tabindex="-1"></a>La fonction crée un objet dans une classe <span class="in">`S4`</span>. Les différents attributs de l'objet (on dit des <span class="in">`slots`</span>) sont donc accessibles avec le symbole <span class="in">`@`</span>.</span>
+<span id="cb51-311"><a href="#cb51-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-312"><a href="#cb51-312" aria-hidden="true" tabindex="-1"></a>Les attributs disponibles pour un tel objet sont les suivants:</span>
+<span id="cb51-313"><a href="#cb51-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-316"><a href="#cb51-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-317"><a href="#cb51-317" aria-hidden="true" tabindex="-1"></a><span class="fu">slotNames</span>(lfs_sdc)</span>
+<span id="cb51-318"><a href="#cb51-318" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-319"><a href="#cb51-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-320"><a href="#cb51-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-321"><a href="#cb51-321" aria-hidden="true" tabindex="-1"></a>Lors de la création de l'objet, un certain nombre de métriques de risque ont été calculées. D'un point de vue global, la proportion d'individus à risque de ré-identification est une mesure calculée à partir des groupes constitués par les quasi-identifiants. Il s'agit du risque moyen qu'un individu de la base de donnée soit ré-identifié: $$ R = \frac{1}{n} \sum_i{ r_i }$$, où $r_i$ est le risque pour l'individu $i$ d'être ré-identifié (voir plus bas pour plus de précision).</span>
+<span id="cb51-322"><a href="#cb51-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-325"><a href="#cb51-325" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-326"><a href="#cb51-326" aria-hidden="true" tabindex="-1"></a>lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>global<span class="sc">$</span>risk <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb51-327"><a href="#cb51-327" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-328"><a href="#cb51-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-329"><a href="#cb51-329" aria-hidden="true" tabindex="-1"></a>Le nombre de ré-identifications auxquelles on peut s'attendre en moyenne (risque global * n) est fourni par:</span>
+<span id="cb51-330"><a href="#cb51-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-333"><a href="#cb51-333" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-334"><a href="#cb51-334" aria-hidden="true" tabindex="-1"></a>lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>global<span class="sc">$</span>risk_ER</span>
+<span id="cb51-335"><a href="#cb51-335" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-336"><a href="#cb51-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-337"><a href="#cb51-337" aria-hidden="true" tabindex="-1"></a>On peut également retrouver la part d'individus à risque au sens du $k$-anonymat:</span>
+<span id="cb51-338"><a href="#cb51-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-341"><a href="#cb51-341" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-342"><a href="#cb51-342" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lfs_sdc, <span class="st">'kAnon'</span>)</span>
+<span id="cb51-343"><a href="#cb51-343" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-344"><a href="#cb51-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-345"><a href="#cb51-345" aria-hidden="true" tabindex="-1"></a>On observe en particulier que $77$ individus sont uniques sur les clés utilisées ($2$-anonymity).</span>
+<span id="cb51-346"><a href="#cb51-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-347"><a href="#cb51-347" aria-hidden="true" tabindex="-1"></a>ou pour d'autres valeurs de $k$, on peut faire, par exemple, pour $k=10$:</span>
+<span id="cb51-348"><a href="#cb51-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-351"><a href="#cb51-351" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-352"><a href="#cb51-352" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual[,<span class="dv">2</span>] <span class="sc">&lt;</span> <span class="dv">10</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb51-353"><a href="#cb51-353" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-354"><a href="#cb51-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-355"><a href="#cb51-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-356"><a href="#cb51-356" aria-hidden="true" tabindex="-1"></a><span class="fu">## Le risque de divulgation d'attributs sensibles</span></span>
+<span id="cb51-357"><a href="#cb51-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-358"><a href="#cb51-358" aria-hidden="true" tabindex="-1"></a>On suppose que <span class="in">`ACTEU`</span> est une variable sensible. Pour réduire </span>
+<span id="cb51-359"><a href="#cb51-359" aria-hidden="true" tabindex="-1"></a>le risque de divulgation d'attributs sur cette variable, on peut </span>
+<span id="cb51-360"><a href="#cb51-360" aria-hidden="true" tabindex="-1"></a>mesure la $l$-diversité du fichier et être particulier vigilant </span>
+<span id="cb51-361"><a href="#cb51-361" aria-hidden="true" tabindex="-1"></a>aux groupes de quasi-identifiants qui seraient constitués </span>
+<span id="cb51-362"><a href="#cb51-362" aria-hidden="true" tabindex="-1"></a>d'individus partageant la même catégorie.</span>
+<span id="cb51-363"><a href="#cb51-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-366"><a href="#cb51-366" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-367"><a href="#cb51-367" aria-hidden="true" tabindex="-1"></a>lfs_sdc <span class="ot">&lt;-</span> <span class="fu">ldiversity</span>(<span class="at">obj =</span> lfs_sdc, <span class="at">ldiv_index =</span> <span class="fu">c</span>(<span class="st">"ACTEU"</span>), <span class="at">missing =</span> <span class="cn">NA</span>)</span>
+<span id="cb51-368"><a href="#cb51-368" aria-hidden="true" tabindex="-1"></a>lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>ldiversity</span>
+<span id="cb51-369"><a href="#cb51-369" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-370"><a href="#cb51-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-371"><a href="#cb51-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-372"><a href="#cb51-372" aria-hidden="true" tabindex="-1"></a>Calculons la part d'individus présents dans un groupe ne comptant qu'une seule des trois catégories:</span>
+<span id="cb51-373"><a href="#cb51-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-376"><a href="#cb51-376" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-377"><a href="#cb51-377" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>ldiversity[,<span class="st">"ACTEU_Distinct_Ldiversity"</span>]<span class="sc">==</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb51-378"><a href="#cb51-378" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-379"><a href="#cb51-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-380"><a href="#cb51-380" aria-hidden="true" tabindex="-1"></a>En réalité, parmi les trois catégories de la variable, une seule est réellement sensible: il s'agit de la catégorie <span class="in">`2`</span> correspondant aux personnes au chômage.</span>
+<span id="cb51-381"><a href="#cb51-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-382"><a href="#cb51-382" aria-hidden="true" tabindex="-1"></a>Vérifions le nombre d'individus réellement à risque de divulgation d'attributs sensibles:</span>
+<span id="cb51-383"><a href="#cb51-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-386"><a href="#cb51-386" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-387"><a href="#cb51-387" aria-hidden="true" tabindex="-1"></a>indiv_1diverses <span class="ot">&lt;-</span> <span class="fu">which</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>ldiversity[,<span class="st">"ACTEU_Distinct_Ldiversity"</span>]<span class="sc">==</span><span class="dv">1</span>)</span>
+<span id="cb51-388"><a href="#cb51-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-389"><a href="#cb51-389" aria-hidden="true" tabindex="-1"></a>lfs_2023<span class="sc">|&gt;</span></span>
+<span id="cb51-390"><a href="#cb51-390" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(indiv_1diverses)<span class="sc">|&gt;</span> </span>
+<span id="cb51-391"><a href="#cb51-391" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ACTEU <span class="sc">==</span> <span class="dv">2</span>)<span class="sc">|&gt;</span></span>
+<span id="cb51-392"><a href="#cb51-392" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span>
+<span id="cb51-393"><a href="#cb51-393" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-394"><a href="#cb51-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-395"><a href="#cb51-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-396"><a href="#cb51-396" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les mesures du risque individuel</span></span>
+<span id="cb51-397"><a href="#cb51-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-400"><a href="#cb51-400" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-401"><a href="#cb51-401" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual)</span>
+<span id="cb51-402"><a href="#cb51-402" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-403"><a href="#cb51-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-404"><a href="#cb51-404" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`risk`</span> : risque individuel défini par $\frac{1}{fk}$ si le fichier est une population</span>
+<span id="cb51-405"><a href="#cb51-405" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`fk`</span> : nombre d'individus du fichier partageant les mêmes clés (croisements de quasi-identifiants)</span>
+<span id="cb51-406"><a href="#cb51-406" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span><span class="in">`Fk`</span> : nombre d'individus dans la population partageant les mêmes clés (croisements de quasi-identifiants)</span>
+<span id="cb51-407"><a href="#cb51-407" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-408"><a href="#cb51-408" aria-hidden="true" tabindex="-1"></a>Le risque de ré-identification est calculé différemment selon que l'on a affaire à une population ou à un échantillon.</span>
+<span id="cb51-409"><a href="#cb51-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-410"><a href="#cb51-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-411"><a href="#cb51-411" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb51-412"><a href="#cb51-412" aria-hidden="true" tabindex="-1"></a><span class="fu">### Echantillon et Population</span></span>
+<span id="cb51-413"><a href="#cb51-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-414"><a href="#cb51-414" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Population</span></span>
+<span id="cb51-415"><a href="#cb51-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-416"><a href="#cb51-416" aria-hidden="true" tabindex="-1"></a>Si le jeu de données étudié correspond à une population (fichier exhaustif du champ),</span>
+<span id="cb51-417"><a href="#cb51-417" aria-hidden="true" tabindex="-1"></a>alors $fk = Fk = \sum_i{ 1(i \in k)}$, le nombre d'individus $i$ partageant la clé $k$.</span>
+<span id="cb51-418"><a href="#cb51-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-419"><a href="#cb51-419" aria-hidden="true" tabindex="-1"></a>Dans ce cas, le risque de ré-identification d'un individu est défini par $r_k = 1/f_k = 1/F_k$ et correspond à la probabilité de ré-identifier l'individu correctement si on connaît ses caractéristiques $k$ sur les variables quasi-identifiantes.</span>
+<span id="cb51-420"><a href="#cb51-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-421"><a href="#cb51-421" aria-hidden="true" tabindex="-1"></a>En se reportant aux premières lignes du tableau des risques présenté ci-dessous que la colonne <span class="in">`risk`</span> est bien égale à <span class="in">`1/fk`</span>.</span>
+<span id="cb51-422"><a href="#cb51-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-425"><a href="#cb51-425" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-426"><a href="#cb51-426" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual)</span>
+<span id="cb51-427"><a href="#cb51-427" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-428"><a href="#cb51-428" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-429"><a href="#cb51-429" aria-hidden="true" tabindex="-1"></a>Dans notre jeu de données, la distribution du risque individuel est la suivante (on multiplie par 100 pour l'interpréter comme le pourcentage de chances de correctement ré-identifier l'individu):</span>
+<span id="cb51-430"><a href="#cb51-430" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-433"><a href="#cb51-433" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-434"><a href="#cb51-434" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual[,<span class="st">"risk"</span>]<span class="sc">*</span><span class="dv">100</span>)</span>
+<span id="cb51-435"><a href="#cb51-435" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-436"><a href="#cb51-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-437"><a href="#cb51-437" aria-hidden="true" tabindex="-1"></a>La grande partie des individus ont un risque inférieur à $20\%$. On note qu'il y a des individus dont le risque est maximal, en revanche. Il s'agit d'individus uniques pour les clés que nous avons choisies:</span>
+<span id="cb51-438"><a href="#cb51-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-441"><a href="#cb51-441" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-442"><a href="#cb51-442" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual[,<span class="st">"risk"</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb51-443"><a href="#cb51-443" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-444"><a href="#cb51-444" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-445"><a href="#cb51-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-446"><a href="#cb51-446" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Echantillon</span></span>
+<span id="cb51-447"><a href="#cb51-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-448"><a href="#cb51-448" aria-hidden="true" tabindex="-1"></a>Si, au contraire, il s'agit d'un échantillon, on distinguera:</span>
+<span id="cb51-449"><a href="#cb51-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-450"><a href="#cb51-450" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$fk = \sum_{i \in S}{ 1(i \in k)}$</span>
+<span id="cb51-451"><a href="#cb51-451" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$Fk = \sum_{i \in S}{  w_i \times 1(i \in k)}$</span>
+<span id="cb51-452"><a href="#cb51-452" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-453"><a href="#cb51-453" aria-hidden="true" tabindex="-1"></a>où $S$ désigne l'échantillon (le fichier) et $w_i$ le poids de l'individu </span>
+<span id="cb51-454"><a href="#cb51-454" aria-hidden="true" tabindex="-1"></a>$i \in S$.</span>
+<span id="cb51-455"><a href="#cb51-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-456"><a href="#cb51-456" aria-hidden="true" tabindex="-1"></a>En revanche, la colonne <span class="in">`risk`</span> n'est pas calculée directement à partir des $F_k$. En effet, un tel risque est jugé trop conservateur et conduit à surestimer le risque de ré-identification <span class="co">[</span><span class="ot">@templ_statistical_2015; et @Rinott_Shlomo_2006</span><span class="co">]</span>. En effet, les $F_k$ sont en réalité des estimations. Une approche bayésienne est préférée </span>
+<span id="cb51-457"><a href="#cb51-457" aria-hidden="true" tabindex="-1"></a>(voir <span class="co">[</span><span class="ot">la présentation sur les mesures de risque</span><span class="co">](theorie/supports/arbitrer-risque-utilite.html)</span> pour plus de détails).</span>
+<span id="cb51-458"><a href="#cb51-458" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-459"><a href="#cb51-459" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-460"><a href="#cb51-460" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-463"><a href="#cb51-463" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-464"><a href="#cb51-464" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">14789</span>)</span>
+<span id="cb51-465"><a href="#cb51-465" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-466"><a href="#cb51-466" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="fl">1e6</span></span>
+<span id="cb51-467"><a href="#cb51-467" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">nrow</span>(lfs_2023)</span>
+<span id="cb51-468"><a href="#cb51-468" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-469"><a href="#cb51-469" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> N<span class="sc">/</span>n <span class="sc">+</span> <span class="fu">rnorm</span>(n<span class="dv">-1</span>, <span class="sc">-</span><span class="dv">2</span><span class="sc">/</span>(n<span class="dv">-1</span>), <span class="dv">2</span>)</span>
+<span id="cb51-470"><a href="#cb51-470" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">c</span>(w, N<span class="sc">-</span><span class="fu">sum</span>(w))</span>
+<span id="cb51-471"><a href="#cb51-471" aria-hidden="true" tabindex="-1"></a>lfs_samp <span class="ot">&lt;-</span> lfs_2023 <span class="sc">|&gt;</span> </span>
+<span id="cb51-472"><a href="#cb51-472" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">poids =</span> <span class="fu">sample</span>(w, n, <span class="at">replace=</span><span class="cn">TRUE</span>))</span>
+<span id="cb51-473"><a href="#cb51-473" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-474"><a href="#cb51-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-477"><a href="#cb51-477" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-478"><a href="#cb51-478" aria-hidden="true" tabindex="-1"></a>lfs_sdc_samp <span class="ot">&lt;-</span> sdcMicro<span class="sc">::</span><span class="fu">createSdcObj</span>(</span>
+<span id="cb51-479"><a href="#cb51-479" aria-hidden="true" tabindex="-1"></a>  lfs_samp,</span>
+<span id="cb51-480"><a href="#cb51-480" aria-hidden="true" tabindex="-1"></a>  <span class="at">keyVars =</span> qi_vars_IIc,</span>
+<span id="cb51-481"><a href="#cb51-481" aria-hidden="true" tabindex="-1"></a>  <span class="at">weightVar =</span> <span class="st">"poids"</span></span>
+<span id="cb51-482"><a href="#cb51-482" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb51-483"><a href="#cb51-483" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-484"><a href="#cb51-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-485"><a href="#cb51-485" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-488"><a href="#cb51-488" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-489"><a href="#cb51-489" aria-hidden="true" tabindex="-1"></a>lfs_sdc_samp<span class="sc">@</span>risk<span class="sc">$</span>global<span class="sc">$</span>risk</span>
+<span id="cb51-490"><a href="#cb51-490" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-491"><a href="#cb51-491" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-494"><a href="#cb51-494" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-495"><a href="#cb51-495" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_sdc_samp<span class="sc">@</span>risk<span class="sc">$</span>individual)</span>
+<span id="cb51-496"><a href="#cb51-496" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-497"><a href="#cb51-497" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-498"><a href="#cb51-498" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-501"><a href="#cb51-501" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-502"><a href="#cb51-502" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lfs_sdc_samp<span class="sc">@</span>risk<span class="sc">$</span>individual[,<span class="st">"risk"</span>]<span class="sc">*</span><span class="dv">100</span>)</span>
+<span id="cb51-503"><a href="#cb51-503" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-504"><a href="#cb51-504" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-505"><a href="#cb51-505" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb51-506"><a href="#cb51-506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-507"><a href="#cb51-507" aria-hidden="true" tabindex="-1"></a><span class="fu">### References</span></span>
+<span id="cb51-508"><a href="#cb51-508" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-509"><a href="#cb51-509" aria-hidden="true" tabindex="-1"></a>::: {#refs}</span>
+<span id="cb51-510"><a href="#cb51-510" aria-hidden="true" tabindex="-1"></a>:::</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

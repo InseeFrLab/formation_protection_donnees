@@ -385,25 +385,21 @@ window.Quarto = {
   </ul></li>
   <li><a href="#en-pratique" id="toc-en-pratique" class="nav-link" data-scroll-target="#en-pratique">En pratique</a>
   <ul class="collapse">
-  <li><a href="#importons-les-données" id="toc-importons-les-données" class="nav-link" data-scroll-target="#importons-les-données">Importons les données</a></li>
+  <li><a href="#les-packages" id="toc-les-packages" class="nav-link" data-scroll-target="#les-packages">Les packages</a></li>
+  <li><a href="#les-données" id="toc-les-données" class="nav-link" data-scroll-target="#les-données">Les données</a></li>
   <li><a href="#mesurons-les-risques-du-fichier" id="toc-mesurons-les-risques-du-fichier" class="nav-link" data-scroll-target="#mesurons-les-risques-du-fichier">Mesurons les risques du fichier</a>
   <ul class="collapse">
   <li><a href="#les-types-de-variables" id="toc-les-types-de-variables" class="nav-link" data-scroll-target="#les-types-de-variables">Les types de variables</a></li>
   </ul></li>
-  <li><a href="#préparartion-pour-le-swapping" id="toc-préparartion-pour-le-swapping" class="nav-link" data-scroll-target="#préparartion-pour-le-swapping">Préparartion pour le swapping</a>
+  <li><a href="#préparation-pour-le-swapping" id="toc-préparation-pour-le-swapping" class="nav-link" data-scroll-target="#préparation-pour-le-swapping">Préparation pour le swapping</a></li>
+  <li><a href="#swapper-les-individus" id="toc-swapper-les-individus" class="nav-link" data-scroll-target="#swapper-les-individus">Swapper les individus</a>
   <ul class="collapse">
-  <li><a href="#swapper-les-individus" id="toc-swapper-les-individus" class="nav-link" data-scroll-target="#swapper-les-individus">Swapper les individus</a></li>
+  <li><a href="#un-exemple-déchange" id="toc-un-exemple-déchange" class="nav-link" data-scroll-target="#un-exemple-déchange">Un exemple d’échange</a></li>
+  </ul></li>
+  <li><a href="#la-base-swappée" id="toc-la-base-swappée" class="nav-link" data-scroll-target="#la-base-swappée">La base swappée</a></li>
   <li><a href="#swapper-les-ménages" id="toc-swapper-les-ménages" class="nav-link" data-scroll-target="#swapper-les-ménages">Swapper les ménages</a></li>
-  </ul></li>
-  <li><a href="#mesurer-la-perte-dutilité" id="toc-mesurer-la-perte-dutilité" class="nav-link" data-scroll-target="#mesurer-la-perte-dutilité">Mesurer la perte d’utilité</a>
-  <ul class="collapse">
-  <li><a href="#comparer-les-intervalles-de-confiance-dun-modèle-logistique" id="toc-comparer-les-intervalles-de-confiance-dun-modèle-logistique" class="nav-link" data-scroll-target="#comparer-les-intervalles-de-confiance-dun-modèle-logistique">Comparer les intervalles de confiance d’un modèle logistique</a></li>
-  </ul></li>
-  <li><a href="#exercices" id="toc-exercices" class="nav-link" data-scroll-target="#exercices">Exercices</a>
-  <ul class="collapse">
-  <li><a href="#choisir-le-taux-de-swapping" id="toc-choisir-le-taux-de-swapping" class="nav-link" data-scroll-target="#choisir-le-taux-de-swapping">Choisir le taux de swapping</a></li>
-  <li><a href="#appliquer-le-swapping-au-niveau-ménages" id="toc-appliquer-le-swapping-au-niveau-ménages" class="nav-link" data-scroll-target="#appliquer-le-swapping-au-niveau-ménages">Appliquer le swapping au niveau ménages</a></li>
-  </ul></li>
+  <li><a href="#mesurer-la-perte-dutilité" id="toc-mesurer-la-perte-dutilité" class="nav-link" data-scroll-target="#mesurer-la-perte-dutilité">Mesurer la perte d’utilité</a></li>
+  <li><a href="#exercice" id="toc-exercice" class="nav-link" data-scroll-target="#exercice">Exercice</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -641,6 +637,8 @@ est le seul dont le risque de ré-identification est très élevé.
 <section id="en-pratique" class="level1">
 <h1>En pratique</h1>
 <p>Pour installer les packages nécessaires, vous trouverez les instructions à suivre dans la fiche <a href="../../ressources/fiches/outils-install.html">Ressources / Installer les packages et les outils sur R</a>.</p>
+<section id="les-packages" class="level2">
+<h2 class="anchored" data-anchor-id="les-packages">Les packages</h2>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>
@@ -657,8 +655,9 @@ Attaching package: 'dplyr'</code></pre>
     intersect, setdiff, setequal, union</code></pre>
 </div>
 </div>
-<section id="importons-les-données" class="level2">
-<h2 class="anchored" data-anchor-id="importons-les-données">Importons les données</h2>
+</section>
+<section id="les-données" class="level2">
+<h2 class="anchored" data-anchor-id="les-données">Les données</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -707,117 +706,431 @@ Attaching package: 'dplyr'</code></pre>
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>key_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sens_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ACTEU"</span>,<span class="st">"ANCCHOM"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sens_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ACTEU"</span>,<span class="st">"ANCCHOM"</span>,<span class="st">"IS_CHOM"</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>hhid_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"HHID"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
-</section>
-<section id="préparartion-pour-le-swapping" class="level2">
-<h2 class="anchored" data-anchor-id="préparartion-pour-le-swapping">Préparartion pour le swapping</h2>
+<p>Les comptages par croisement des modalités des variables quasi-identifiantes:</p>
+<p>La part des individus ne respectant pas appartenant à des groupes de moins de <span class="math inline">\(k\)</span> individus est fournie par la table ci-dessous:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lfs_2023_pr_swap <span class="ot">&lt;-</span> lfs_2023 <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), as.integer)) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">REG =</span> <span class="fu">floor</span>(DEP <span class="sc">/</span> <span class="dv">10</span>),</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(HHID) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TAILLE =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  data.table<span class="sc">::</span><span class="fu">as.data.table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mesurer_risk_reidentif <span class="ot">&lt;-</span> <span class="cf">function</span>(data, key_vars, ks){</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  groupes_QI <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(key_vars))) <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(n)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  risk_quantif <span class="ot">&lt;-</span> <span class="fu">map</span>(</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  ks,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  \(k){</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    groupes_QI <span class="sc">|&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">part =</span> <span class="fu">sum</span>(n[n<span class="sc">&lt;</span>k])<span class="sc">/</span><span class="fu">sum</span>(n)<span class="sc">*</span><span class="dv">100</span>, <span class="at">.groups=</span><span class="st">"drop"</span>)<span class="sc">|&gt;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">k=</span>k)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    purrr<span class="sc">::</span><span class="fu">list_rbind</span>()</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>risk_variables <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>,<span class="st">"ACTEU"</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>hierarchy <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>similar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"DIP7"</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>carry_along <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>k_anonymity <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>swaprate <span class="ot">&lt;-</span> .<span class="dv">05</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>hid <span class="ot">&lt;-</span> <span class="st">"ID"</span> <span class="co"># swapping d'individus</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>risk_mes <span class="ot">&lt;-</span> <span class="fu">mesurer_risk_reidentif</span>(lfs_2023, key_vars, <span class="at">ks=</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="swapper-les-individus" class="level3">
-<h3 class="anchored" data-anchor-id="swapper-les-individus">Swapper les individus</h3>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">k</th>
+<th style="text-align: right;">part</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">19.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">39.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">56.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">69.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">78.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">86.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">91.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">94.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">96.8</td>
+</tr>
+</tbody>
+</table>
+<p>Part d’individus à risque de ré-identification en fonction du niveau d’anonymité choisi</p>
+</div>
+</div>
+<p>Comme l’âge détaillé est une variable utilisée dans les quasi-identifiants, la part d’individus à risque de réidentification est assez importante (plus de la moitié des individus dès lors que <span class="math inline">\(k\geq4\)</span>).</p>
+<p>Si on choisit de ne diffuser que la variable de tranche d’âge, on réduit sensiblement ce risque:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>lfs_swapped <span class="ot">&lt;-</span> <span class="fu">recordSwap</span>(</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> lfs_2023_pr_swap,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">hid =</span> hid,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">hierarchy =</span> hierarchy,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">similar =</span> similar,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">risk_variables =</span> risk_variables,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">carry_along =</span> carry_along,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">k_anonymity =</span> k_anonymity,</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">swaprate =</span> swaprate,</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">return_swapped_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">123456</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>key_vars2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>risk_mes2 <span class="ot">&lt;-</span> <span class="fu">mesurer_risk_reidentif</span>(lfs_2023, key_vars2, <span class="at">ks=</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">k</th>
+<th style="text-align: right;">part</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">5.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">6.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">7.3</td>
+</tr>
+</tbody>
+</table>
+<p>Part d’individus à risque de ré-identification en fonction du niveau d’anonymité choisi</p>
+</div>
+</div>
+<p>Dès lors, avec <span class="math inline">\(k=10\)</span>, on dénombre <code>7.3%</code> d’individus à risque de ré-identification.</p>
+<p>On peut retrouver ces mêmes résultats avec le package <code>sdcMicro</code>:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>lfs_sdc <span class="ot">&lt;-</span> sdcMicro<span class="sc">::</span><span class="fu">createSdcObj</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  lfs_2023,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">keyVars =</span> key_vars2</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lfs_sdc, <span class="st">'kAnon'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Infos on 2/3-Anonymity:
+
+Number of observations violating
+  - 2-anonymity: 77 (0.226%)
+  - 3-anonymity: 267 (0.784%)
+  - 5-anonymity: 825 (2.423%)
+
+----------------------------------------------------------------------</code></pre>
+</div>
+</div>
+<p>La part d’individus à risque de ré-identification pour <span class="math inline">\(k=10\)</span>:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual[,<span class="dv">2</span>] <span class="sc">&lt;</span> <span class="dv">10</span>)<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.335624</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="préparation-pour-le-swapping" class="level2">
+<h2 class="anchored" data-anchor-id="préparation-pour-le-swapping">Préparation pour le swapping</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>risk_variables <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>,<span class="st">"DIP7"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>hierarchy <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>similar <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">"REG"</span>,<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>), </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">"REG"</span>,<span class="st">"SEXE"</span>), </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">"REG"</span>,<span class="st">"AGE6"</span>), </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>),</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"REG"</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>carry_along <span class="ot">&lt;-</span> <span class="st">"ARR"</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>hid <span class="ot">&lt;-</span> <span class="st">"ID"</span> <span class="co"># swapping d'individus</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>lfs_2023_pr_swap <span class="ot">&lt;-</span> lfs_2023 <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select(all_of(c(risk_variables, hierarchy, unlist(similar), sens_vars, hhid_vars))) |&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), as.integer))<span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="swapper-les-individus" class="level2">
+<h2 class="anchored" data-anchor-id="swapper-les-individus">Swapper les individus</h2>
+<p>Les paramètres:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>k_anonymity <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>swaprate <span class="ot">&lt;-</span> .<span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>lfs_swapped <span class="ot">&lt;-</span> <span class="fu">recordSwap</span>(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> lfs_2023_pr_swap,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">hid =</span> hid,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">hierarchy =</span> hierarchy,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">similar =</span> similar,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">risk_variables =</span> risk_variables,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">carry_along =</span> carry_along,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">k_anonymity =</span> k_anonymity,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">swaprate =</span> swaprate,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">return_swapped_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">123456</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Recordswapping was successful!</code></pre>
 </div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lfs_swapped <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">mean</span>(ID <span class="sc">!=</span> ID_swapped)) <span class="co">#5%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  mean(ID != ID_swapped)
-1             0.05003964</code></pre>
 </div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>lfs_swapped <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(REG) <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(ID <span class="sc">!=</span> ID_swapped)) <span class="co">#5%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-    REG `mean(ID != ID_swapped)`
-  &lt;int&gt;                    &lt;dbl&gt;
-1     0                   0.0641
-2     1                   0.0519
-3     2                   0.0430</code></pre>
-</div>
-</div>
-<section id="vérifier-que-les-individus-à-risque-ont-bien-été-swappés" class="level4">
-<h4 class="anchored" data-anchor-id="vérifier-que-les-individus-à-risque-ont-bien-été-swappés">Vérifier que les individus à risque ont bien été swappés</h4>
-</section>
-<section id="intégrité-de-la-composition-des-ménages" class="level4">
-<h4 class="anchored" data-anchor-id="intégrité-de-la-composition-des-ménages">Intégrité de la composition des ménages</h4>
-</section>
-</section>
-<section id="swapper-les-ménages" class="level3">
-<h3 class="anchored" data-anchor-id="swapper-les-ménages">Swapper les ménages</h3>
+<p>Le taux de swapping réel:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>hid <span class="ot">&lt;-</span> <span class="st">"HHID"</span> <span class="co"># swapping de ménages</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>similar <span class="ot">&lt;-</span> <span class="st">"TAILLE"</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>lfs_swapped_hh <span class="ot">&lt;-</span> <span class="fu">recordSwap</span>(</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> lfs_2023_pr_swap,</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">hid =</span> hid,</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">hierarchy =</span> hierarchy,</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">similar =</span> similar,</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">risk_variables =</span> risk_variables,</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">carry_along =</span> carry_along,</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">k_anonymity =</span> k_anonymity,</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">swaprate =</span> swaprate,</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">return_swapped_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">123456</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lfs_swapped <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">mean</span>(ID <span class="sc">!=</span> ID_swapped))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mean(ID != ID_swapped)
+1              0.1144686</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lfs_swapped <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(REG) <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(ID <span class="sc">!=</span> ID_swapped))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+    REG `mean(ID != ID_swapped)`
+  &lt;int&gt;                    &lt;dbl&gt;
+1     1                    0.101
+2     2                    0.107
+3     3                    0.136
+4     4                    0.305</code></pre>
+</div>
+</div>
+<section id="un-exemple-déchange" class="level3">
+<h3 class="anchored" data-anchor-id="un-exemple-déchange">Un exemple d’échange</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_swapped, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>     REG   DEP   ARR  SEXE   AGE  AGE6 ACTEU  DIP7 PCS1Q ANCCHOM  HHID
+   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt;
+1:     2    19    53     1    53     3     1     4     4      10  3558
+2:     2    19    53     2    43     2     1     7     7      10  3558
+3:     2     5    14     2    17     1     3     5    10      10  3558
+4:     2    19    53     1    17     1     3     4    10      10  3558
+5:     1    27    79     1    42     2     1     7     9      10  5973
+   HH_TAILLE HH_AGE HH_DIP HH_PCS IS_CHOM    ID ID_swapped
+       &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;   &lt;int&gt; &lt;int&gt;      &lt;int&gt;
+1:         4     39      4      4       0     1          1
+2:         4     39      4      4       0     2          2
+3:         4     39      4      4       0     3      23261
+4:         4     39      4      4       0     4          4
+5:         2     40      7      9       0     5      22096</code></pre>
+</div>
+</div>
+<p>Par exemple, l’individu 3 a été échangé:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="sc">|&gt;</span> <span class="fu">slice</span>(<span class="fu">c</span>(<span class="dv">3</span>,lfs_swapped<span class="sc">|&gt;</span><span class="fu">slice</span>(<span class="dv">3</span>)<span class="sc">|&gt;</span><span class="fu">pull</span>(ID_swapped)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      REG    DEP    ARR   SEXE   AGE   AGE6  ACTEU   DIP7  PCS1Q ANCCHOM  HHID
+   &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;int&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt;  &lt;fctr&gt; &lt;int&gt;
+1:     28     76    761      2    17     15      3      5     99      99  3558
+2:     28     27    271      2    17     15      3      7     99      99   698
+   HH_TAILLE HH_AGE HH_DIP HH_PCS IS_CHOM
+      &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt;   &lt;int&gt;
+1:         4     53      4     30       0
+2:        12     54      7     99       0</code></pre>
+</div>
+</div>
+<p>On peut remarquer que ces individus sont similaires sur la région, le sexe et l’âge (<code>AGE6</code>).</p>
+<!-- 
+#### Vérifier que les individus à risque ont bien été swappés
+
+
+::: {.cell}
+
+```{.r .cell-code}
+lfs_swapped 
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+         REG   DEP   ARR  SEXE   AGE  AGE6 ACTEU  DIP7 PCS1Q ANCCHOM  HHID
+       <int> <int> <int> <int> <int> <int> <int> <int> <int>   <int> <int>
+    1:     2    19    53     1    53     3     1     4     4      10  3558
+    2:     2    19    53     2    43     2     1     7     7      10  3558
+    3:     2     5    14     2    17     1     3     5    10      10  3558
+    4:     2    19    53     1    17     1     3     4    10      10  3558
+    5:     1    27    79     1    42     2     1     7     9      10  5973
+   ---                                                                    
+34049:     1    20    57     1    74     4     1     4     3      10  4013
+34050:     1    20    57     2    88     4     1     7     3      10  4013
+34051:     1    28    82     2    54     3     1     7     7      10  7302
+34052:     3     8    23     2    26     2     1     2     5      10  1121
+34053:     3     8    23     1    47     2     1     1     4      10  1121
+       HH_TAILLE HH_AGE HH_DIP HH_PCS IS_CHOM    ID ID_swapped
+           <int>  <int>  <int>  <int>   <int> <int>      <int>
+    1:         4     39      4      4       0     1          1
+    2:         4     39      4      4       0     2          2
+    3:         4     39      4      4       0     3      23261
+    4:         4     39      4      4       0     4          4
+    5:         2     40      7      9       0     5      22096
+   ---                                                        
+34049:         2     74      7      3       0 34049      34049
+34050:         2     74      7      3       0 34050      34050
+34051:         1     40      7      7       0 34051      34051
+34052:         2     33      1      4       0 34052      34052
+34053:         2     33      1      4       0 34053      34053
+```
+
+
+:::
+:::
+
+
+#### Intégrité de la composition des ménages
+ -->
+</section>
+</section>
+<section id="la-base-swappée" class="level2">
+<h2 class="anchored" data-anchor-id="la-base-swappée">La base swappée</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(lfs_swapped)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Classes 'data.table' and 'data.frame':  34053 obs. of  18 variables:
+ $ REG       : int  2 2 2 2 1 1 1 1 1 3 ...
+ $ DEP       : int  19 19 5 19 27 25 18 21 20 9 ...
+ $ ARR       : int  53 53 14 53 79 73 52 62 60 27 ...
+ $ SEXE      : int  1 2 2 1 1 2 2 1 2 1 ...
+ $ AGE       : int  53 43 17 17 42 54 57 20 17 28 ...
+ $ AGE6      : int  3 2 1 1 2 3 3 1 1 2 ...
+ $ ACTEU     : int  1 1 3 3 1 1 1 3 3 1 ...
+ $ DIP7      : int  4 7 5 4 7 7 7 7 7 5 ...
+ $ PCS1Q     : int  4 7 10 10 9 9 7 10 10 8 ...
+ $ ANCCHOM   : int  10 10 10 10 10 10 10 10 10 10 ...
+ $ HHID      : int  3558 3558 3558 3558 5973 5973 6779 4906 4906 1135 ...
+ $ HH_TAILLE : int  4 4 4 4 2 2 1 2 2 3 ...
+ $ HH_AGE    : int  39 39 39 39 40 40 43 6 6 14 ...
+ $ HH_DIP    : int  4 4 4 4 7 7 7 7 7 5 ...
+ $ HH_PCS    : int  4 4 4 4 9 9 7 10 10 8 ...
+ $ IS_CHOM   : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ ID        : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ ID_swapped: int  1 2 23261 4 22096 6 2970 8 8230 10 ...
+ - attr(*, ".internal.selfref")=&lt;externalptr&gt; </code></pre>
+</div>
+</div>
+<!-- 
+
+::: {.cell}
+
+```{.r .cell-code}
+# lfs_pert <- bind_cols(
+#   lfs_2023_pr_swap |> select(REG, DEP, ARR),
+#   lfs_swapped |> select(-REG, -DEP, -ARR) |> arrange(ID_swapped) 
+# ) 
+```
+:::
+
+ -->
+</section>
+<section id="swapper-les-ménages" class="level2">
+<h2 class="anchored" data-anchor-id="swapper-les-ménages">Swapper les ménages</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>hid <span class="ot">&lt;-</span> <span class="st">"HHID"</span> <span class="co"># swapping de ménages</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>similar <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"HH_TAILLE"</span>, <span class="st">"HH_AGE"</span>), <span class="fu">c</span>(<span class="st">"HH_TAILLE"</span>), <span class="fu">c</span>(<span class="st">"HH_AGE"</span>))</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>lfs_swapped_hh <span class="ot">&lt;-</span> <span class="fu">recordSwap</span>(</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> lfs_2023_pr_swap,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">hid =</span> hid,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">hierarchy =</span> hierarchy,</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">similar =</span> similar,</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">risk_variables =</span> risk_variables,</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">carry_along =</span> carry_along,</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">k_anonymity =</span> k_anonymity,</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">swaprate =</span> swaprate,</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">return_swapped_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">123456</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>Donor household was not found in 1 case(s).
-See TRS_logfile.txt for a detailed list</code></pre>
+<pre><code>Recordswapping was successful!</code></pre>
 </div>
 </div>
 <section id="taux-de-swapping-des-ménages-vs-taux-de-swapping-des-individus" class="level4">
@@ -825,43 +1138,22 @@ See TRS_logfile.txt for a detailed list</code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>lfs_swapped_hh <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">mean</span>(HHID <span class="sc">!=</span> HHID_swapped)) <span class="co">#6.2 des ménages</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>lfs_swapped_hh <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">mean</span>(HHID <span class="sc">!=</span> HHID_swapped)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  mean(HHID != HHID_swapped)
-1                 0.06025901</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lfs_swapped_hh <span class="sc">%&gt;%</span> <span class="fu">filter</span>(HHID <span class="sc">!=</span> HHID_swapped) <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">n</span>()<span class="sc">/</span><span class="fu">nrow</span>(lfs_swapped_hh)<span class="sc">*</span><span class="dv">100</span>) <span class="co">#6.2% des individus (les ménages swappés sont de même taille)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  n()/nrow(lfs_swapped_hh) * 100
-1                       6.025901</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lfs_swapped_hh <span class="sc">%&gt;%</span> <span class="fu">filter</span>(HHID <span class="sc">!=</span> HHID_swapped) <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(TAILLE))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  mean(TAILLE)
-1     7.888889</code></pre>
+1                  0.1605732</code></pre>
 </div>
 </div>
-</section>
 </section>
 </section>
 <section id="mesurer-la-perte-dutilité" class="level2">
 <h2 class="anchored" data-anchor-id="mesurer-la-perte-dutilité">Mesurer la perte d’utilité</h2>
-<p>Comparer différents taux de swapping.</p>
-<section id="comparer-les-intervalles-de-confiance-dun-modèle-logistique" class="level3">
-<h3 class="anchored" data-anchor-id="comparer-les-intervalles-de-confiance-dun-modèle-logistique">Comparer les intervalles de confiance d’un modèle logistique</h3>
+<p>On se propose de comparer les intervalles de confiance des coefficients d’un modèle logistique pour évaluer la perte d’information engendrée par le swapping.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_cio.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_cio.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Étudions la stabilité d’un modèle relativement simple, cherchant à expliquer le fait d’être au chômage par différentes variables à notre disposition: l’âge, le diplôme et le sexe.</p>
@@ -869,15 +1161,15 @@ See TRS_logfile.txt for a detailed list</code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>m_original <span class="ot">&lt;-</span> <span class="fu">glm</span>(IS_CHOM <span class="sc">~</span> SEXE <span class="sc">+</span> AGE6 <span class="sc">+</span> DIP7, <span class="at">data =</span> lfs_2023 <span class="sc">|&gt;</span> <span class="fu">filter</span>(ACTEU <span class="sc">!=</span> <span class="dv">3</span>))</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>m_swapped <span class="ot">&lt;-</span> <span class="fu">glm</span>(IS_CHOM <span class="sc">~</span> SEXE <span class="sc">+</span> AGE6 <span class="sc">+</span> DIP7, <span class="at">data =</span> lfs_2023 <span class="sc">|&gt;</span> <span class="fu">filter</span>(ACTEU <span class="sc">!=</span> <span class="dv">3</span>))</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>mes_modeles <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"original"</span> <span class="ot">=</span> m_original,</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"swapped"</span> <span class="ot">=</span> m_swapped</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>all_cios <span class="ot">&lt;-</span> <span class="fu">get_all_confints</span>(mes_modeles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>m_original <span class="ot">&lt;-</span> <span class="fu">glm</span>(IS_CHOM <span class="sc">~</span> SEXE <span class="sc">+</span> AGE6 <span class="sc">+</span> DIP7, <span class="at">data =</span> lfs_2023 <span class="sc">|&gt;</span> <span class="fu">filter</span>(ACTEU <span class="sc">!=</span> <span class="dv">3</span>))</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>m_swapped <span class="ot">&lt;-</span> <span class="fu">glm</span>(IS_CHOM <span class="sc">~</span> SEXE <span class="sc">+</span> AGE6 <span class="sc">+</span> DIP7, <span class="at">data =</span> lfs_2023 <span class="sc">|&gt;</span> <span class="fu">filter</span>(ACTEU <span class="sc">!=</span> <span class="dv">3</span>))</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>mes_modeles <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"original"</span> <span class="ot">=</span> m_original,</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"swapped"</span> <span class="ot">=</span> m_swapped</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>all_cios <span class="ot">&lt;-</span> <span class="fu">get_all_confints</span>(mes_modeles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(vars)`</code></pre>
@@ -886,8 +1178,8 @@ See TRS_logfile.txt for a detailed list</code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">graph_cios</span>(all_cios, <span class="at">titre =</span> <span class="st">"Superposition des intervalles de confiance</span><span class="sc">\n</span><span class="st">des Odds Ratio du modèle selon le jeu de données"</span>) <span class="sc">+</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span>  <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">graph_cios</span>(all_cios, <span class="at">titre =</span> <span class="st">"Superposition des intervalles de confiance</span><span class="sc">\n</span><span class="st">des Odds Ratio du modèle selon le jeu de données"</span>) <span class="sc">+</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span>  <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: ggplot2</code></pre>
@@ -895,26 +1187,20 @@ See TRS_logfile.txt for a detailed list</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="proteger-micro-swapping_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="proteger-micro-swapping_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-</section>
-<section id="exercices" class="level2">
-<h2 class="anchored" data-anchor-id="exercices">Exercices</h2>
-<section id="choisir-le-taux-de-swapping" class="level3">
-<h3 class="anchored" data-anchor-id="choisir-le-taux-de-swapping">Choisir le taux de swapping</h3>
-</section>
-<section id="appliquer-le-swapping-au-niveau-ménages" class="level3">
-<h3 class="anchored" data-anchor-id="appliquer-le-swapping-au-niveau-ménages">Appliquer le swapping au niveau ménages</h3>
+<section id="exercice" class="level2">
+<h2 class="anchored" data-anchor-id="exercice">Exercice</h2>
+<p>Comparer la perte d’information de différents taux de swapping. Vous utiliserez la mesure de perte d’information que vous souhaitez.</p>
 
 
 <!-- -->
 
 
-</section>
 </section>
 </section>
 
@@ -1382,454 +1668,574 @@ See TRS_logfile.txt for a detailed list</code></pre>
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb29" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Appliquer le Target Record Swapping</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> pratique/fiches/proteger-micro-swapping.html</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="an">code-block-bg:</span><span class="co"> true</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="an">code-block-border-left:</span><span class="co"> "#bf9aff"</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> show</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># Objectif:</span></span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>La fiche pratique présente comment appliquer le <span class="in">`Target Record Swapping`</span> à</span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>un jeu de données individuelles afin d'assurer une protection optimale </span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>des informations confidentielles des individus (ou ménages ou entreprises) qui </span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>le composent.</span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>La première partie s'attache à présenter les différentes étapes à suivre pour </span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>que cette application soit pertinente au regard des données utilisées.</span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>La seconde partie montre comment utiliser la fonction <span class="in">`sdcMicro::recordSwap()`</span> </span>
-<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>pour appliquer la méthode à un jeu de données dont on aura repérer les </span>
-<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>individus à risque préalablement.</span>
-<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a><span class="fu"># Pour s'exercer</span></span>
-<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>Pour reproduire les résultats et réaliser les exercices, il est possible de travailler </span>
-<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>directement sur le <span class="co">[</span><span class="ot">`datalab` de l'Insee</span><span class="co">](datalab.sspcloud.fr)</span>. Si vous disposez d'un compte, vous pouvez <span class="co">[</span><span class="ot">Ouvrir un service RStudio</span><span class="co">](https://datalab.sspcloud.fr/launcher/ide/rstudio?name=rstudio-formation-protection&amp;version=2.3.1&amp;s3=region-ec97c721&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Frstudio.sh»)</span> ou <span class="co">[</span><span class="ot">Ouvrir un service vscode R-Python</span><span class="co">](https://datalab.sspcloud.fr/launcher/ide/vscode-r-python-julia?name=vscode-formation-protection&amp;version=2.3.5&amp;s3=region-ec97c721&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Fvscode-r-python.sh»)</span>, à votre convenance. Ces services installeront automatiquement les packages </span>
-<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>nécessaires pour réaliser les exercices de l'ensemble des fiches pratiques.</span>
-<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a><span class="fu"># Rappels sur la méthode:</span></span>
-<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a>Le <span class="in">`Target Record Swapping (TRS)`</span> est une méthode s'appliquant directement sur un jeu </span>
-<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a>de données individuelles pour réduire principalement les risques de ré-identification.</span>
-<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a>Il ciblera donc les individus pour lesquels ce risque est jugé trop élevé, c'est-à-dire  </span>
-<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a>ceux partageant des caractéristiques trop rares sur un ensemble </span>
-<span id="cb29-42"><a href="#cb29-42" aria-hidden="true" tabindex="-1"></a>de variables dites quasi-identifiantes. Les variables quasi-identifiantes sont celles </span>
-<span id="cb29-43"><a href="#cb29-43" aria-hidden="true" tabindex="-1"></a>qui sont susceptibles d'être déjà publiques ou du moins à la disposition d'un attaquant.</span>
-<span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a>D'où son nom: le *swapping*, c'est-à-dire </span>
-<span id="cb29-46"><a href="#cb29-46" aria-hidden="true" tabindex="-1"></a>l'échange, va concerner des unités de la base (les *records*) détectés à l'avance, </span>
-<span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a>devenant ainsi les cibles (*target*) sur lesquelles on va se concentrer.</span>
-<span id="cb29-48"><a href="#cb29-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-49"><a href="#cb29-49" aria-hidden="true" tabindex="-1"></a>Bien qu'elle soit appliquée sur des microdonnées, la méthode a principalement vocation à </span>
-<span id="cb29-50"><a href="#cb29-50" aria-hidden="true" tabindex="-1"></a>protéger la diffusion de données tabulées <span class="co">[</span><span class="ot">@hundepool_handbook_2024, [section 5.6](https://sdctools.github.io/HandbookSDC/05-frequency-tables.html#sec-TRS)</span><span class="co">]</span>. Dans ce type d'utilisation, en tant que méthode pré-tabulée, </span>
-<span id="cb29-51"><a href="#cb29-51" aria-hidden="true" tabindex="-1"></a>elle permet de produire des tableaux parfaitement additifs.</span>
-<span id="cb29-52"><a href="#cb29-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-53"><a href="#cb29-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-54"><a href="#cb29-54" aria-hidden="true" tabindex="-1"></a><span class="fu">## En quoi consiste la méthode ?</span></span>
-<span id="cb29-55"><a href="#cb29-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-56"><a href="#cb29-56" aria-hidden="true" tabindex="-1"></a>Après avoir détecté un individu dont le risque de ré-identification est jugé trop </span>
-<span id="cb29-57"><a href="#cb29-57" aria-hidden="true" tabindex="-1"></a>élevé, un autre individu est tiré aléatoirement parmi les individus au risque de ré-identification </span>
-<span id="cb29-58"><a href="#cb29-58" aria-hidden="true" tabindex="-1"></a>les plus faibles et certaines des caractéristiques de ces deux individus sont échangées (*swapped*).</span>
-<span id="cb29-59"><a href="#cb29-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-60"><a href="#cb29-60" aria-hidden="true" tabindex="-1"></a>Après l'échange, la ré-identification de l'individu est rendue beaucoup plus difficile et </span>
-<span id="cb29-61"><a href="#cb29-61" aria-hidden="true" tabindex="-1"></a>ne permet plus d'obtenir d'informations pertinentes à son sujet.</span>
-<span id="cb29-62"><a href="#cb29-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-63"><a href="#cb29-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-64"><a href="#cb29-64" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb29-65"><a href="#cb29-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### Un exemple très simple. </span></span>
-<span id="cb29-66"><a href="#cb29-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-67"><a href="#cb29-67" aria-hidden="true" tabindex="-1"></a>Soit un territoire donné découpé en six zones où résident un certain nombre d'individus. </span>
-<span id="cb29-68"><a href="#cb29-68" aria-hidden="true" tabindex="-1"></a>Avec les informations disponibles à leur sujet, on considère qu'un seul individu a un risque </span>
-<span id="cb29-69"><a href="#cb29-69" aria-hidden="true" tabindex="-1"></a>de ré-identification trop élevé (croix rouge sur la @fig-swap-avant).</span>
-<span id="cb29-70"><a href="#cb29-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-71"><a href="#cb29-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-72"><a href="#cb29-72" aria-hidden="true" tabindex="-1"></a>::: {#fig-swap-avant}</span>
-<span id="cb29-73"><a href="#cb29-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-74"><a href="#cb29-74" aria-hidden="true" tabindex="-1"></a><span class="al">![Avant swapping](images/swapping-exemple-avant.png)</span></span>
-<span id="cb29-75"><a href="#cb29-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-76"><a href="#cb29-76" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb29-77"><a href="#cb29-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-78"><a href="#cb29-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-79"><a href="#cb29-79" aria-hidden="true" tabindex="-1"></a>On tire alors au hasard un autre individu présent sur le territoire pour échanger </span>
-<span id="cb29-80"><a href="#cb29-80" aria-hidden="true" tabindex="-1"></a>certaines de leurs caractéristiques. Ce tirage pourrait être purement aléatoire. Mais, cela </span>
-<span id="cb29-81"><a href="#cb29-81" aria-hidden="true" tabindex="-1"></a>conduirait à détruire certaines statistiques bien utiles. Par exemple, en trouvant </span>
-<span id="cb29-82"><a href="#cb29-82" aria-hidden="true" tabindex="-1"></a>un individu d'une autre zone partageant certaines caractéristiques (par exemple </span>
-<span id="cb29-83"><a href="#cb29-83" aria-hidden="true" tabindex="-1"></a>le sexe, l'âge et la catégorie sociale, @fig-swap-apres), on s'assure de conserver les marges </span>
-<span id="cb29-84"><a href="#cb29-84" aria-hidden="true" tabindex="-1"></a>sur ces variables au niveau géographique le plus fin. </span>
-<span id="cb29-85"><a href="#cb29-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-86"><a href="#cb29-86" aria-hidden="true" tabindex="-1"></a>En revanche, les autres caractéristiques sont bruitées de façon non contrôlée.</span>
-<span id="cb29-87"><a href="#cb29-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-88"><a href="#cb29-88" aria-hidden="true" tabindex="-1"></a>::: {#fig-swap-apres}</span>
-<span id="cb29-89"><a href="#cb29-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-90"><a href="#cb29-90" aria-hidden="true" tabindex="-1"></a><span class="al">![Après swapping](images/swapping-exemple-après.png)</span></span>
-<span id="cb29-91"><a href="#cb29-91" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb29-92"><a href="#cb29-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-93"><a href="#cb29-93" aria-hidden="true" tabindex="-1"></a>Ainsi, l'éventuelle ré-identification de l'individu à risque ne pourrait conduire </span>
-<span id="cb29-94"><a href="#cb29-94" aria-hidden="true" tabindex="-1"></a>l'attaquant qu'à obtenir des informations très probablement fausses à son sujet.</span>
-<span id="cb29-95"><a href="#cb29-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-96"><a href="#cb29-96" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb29-97"><a href="#cb29-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-98"><a href="#cb29-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les variables de similarité</span></span>
-<span id="cb29-99"><a href="#cb29-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-100"><a href="#cb29-100" aria-hidden="true" tabindex="-1"></a>La méthode est très souple puisqu'elle permet de s'adapter aux données dont on dispose et </span>
-<span id="cb29-101"><a href="#cb29-101" aria-hidden="true" tabindex="-1"></a>aux besoins en termes de diffusion. Les **variables de similarité** entre individus échangés </span>
-<span id="cb29-102"><a href="#cb29-102" aria-hidden="true" tabindex="-1"></a>peuvent ainsi être choisies parmi les variables dont on veut conserver </span>
-<span id="cb29-103"><a href="#cb29-103" aria-hidden="true" tabindex="-1"></a>le mieux possible l'information marginale. En effet, en échangeant des individus </span>
-<span id="cb29-104"><a href="#cb29-104" aria-hidden="true" tabindex="-1"></a>parfaitement similaires sur certaines caractéristiques (**les variables de similarité**), </span>
-<span id="cb29-105"><a href="#cb29-105" aria-hidden="true" tabindex="-1"></a>l'échange ne produira aucune perte d'information sur celles-ci. </span>
-<span id="cb29-106"><a href="#cb29-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-107"><a href="#cb29-107" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning}</span>
-<span id="cb29-108"><a href="#cb29-108" aria-hidden="true" tabindex="-1"></a><span class="fu">### Similarité et ré-identification</span></span>
-<span id="cb29-109"><a href="#cb29-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-110"><a href="#cb29-110" aria-hidden="true" tabindex="-1"></a>Si l'objectif est de réduire le risque de ré-identification, sélectionner toutes les variables </span>
-<span id="cb29-111"><a href="#cb29-111" aria-hidden="true" tabindex="-1"></a>quasi-identifiantes comme variables de similarité ne perturberait aucunement </span>
-<span id="cb29-112"><a href="#cb29-112" aria-hidden="true" tabindex="-1"></a>la capacité de l'attaquant à ré-identifier les individus. Ce choix produirait </span>
-<span id="cb29-113"><a href="#cb29-113" aria-hidden="true" tabindex="-1"></a>en revanche du bruit sur les autres variables: donc en ré-identifiant, l'attaquant </span>
-<span id="cb29-114"><a href="#cb29-114" aria-hidden="true" tabindex="-1"></a>ne serait pas en mesure d'obtenir des informations supplémentaires fiables.</span>
-<span id="cb29-115"><a href="#cb29-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-116"><a href="#cb29-116" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb29-117"><a href="#cb29-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-118"><a href="#cb29-118" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb29-119"><a href="#cb29-119" aria-hidden="true" tabindex="-1"></a><span class="fu">### Utiliser la hiérarchie des emboîtements géographiques</span></span>
-<span id="cb29-120"><a href="#cb29-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-121"><a href="#cb29-121" aria-hidden="true" tabindex="-1"></a>Les données contiennent généralement des informations géographiques. Or, la géographie, </span>
-<span id="cb29-122"><a href="#cb29-122" aria-hidden="true" tabindex="-1"></a>en particulier à des niveaux fins, est très identifiante. On choisira en général </span>
-<span id="cb29-123"><a href="#cb29-123" aria-hidden="true" tabindex="-1"></a>d'échanger des individus résidant à des endroits différents, en tenant compte </span>
-<span id="cb29-124"><a href="#cb29-124" aria-hidden="true" tabindex="-1"></a>du niveau géographique auquel un individu est facilement ré-identifiable.</span>
-<span id="cb29-125"><a href="#cb29-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-126"><a href="#cb29-126" aria-hidden="true" tabindex="-1"></a>Par exemple, si un individu est facilement ré-identifiable dans sa commune mais </span>
-<span id="cb29-127"><a href="#cb29-127" aria-hidden="true" tabindex="-1"></a>pas dans son département de résidence, alors on privilégiera l'échange avec </span>
-<span id="cb29-128"><a href="#cb29-128" aria-hidden="true" tabindex="-1"></a>un autre individu du département en dehors de la commune de notre individu à risque.</span>
-<span id="cb29-129"><a href="#cb29-129" aria-hidden="true" tabindex="-1"></a>Si le niveau départemental posait lui aussi problème on remonterait au niveau régional, etc.</span>
-<span id="cb29-130"><a href="#cb29-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-131"><a href="#cb29-131" aria-hidden="true" tabindex="-1"></a>Ainsi, en général, la méthode consistera à échanger la localisation d'individus ou de ménages <span class="co">[</span><span class="ot">@longhurst_statistical_nodate</span><span class="co">]</span>.</span>
-<span id="cb29-132"><a href="#cb29-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-133"><a href="#cb29-133" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb29-134"><a href="#cb29-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-135"><a href="#cb29-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-136"><a href="#cb29-136" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comment définir des individus similaires ?</span></span>
-<span id="cb29-137"><a href="#cb29-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-138"><a href="#cb29-138" aria-hidden="true" tabindex="-1"></a>La **similarité** entre deux individus peut être envisagée de deux manières:</span>
-<span id="cb29-139"><a href="#cb29-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-140"><a href="#cb29-140" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>en cherchant la **correspondance exacte** sur les variables de similarité, quitte à relâcher </span>
-<span id="cb29-141"><a href="#cb29-141" aria-hidden="true" tabindex="-1"></a>des contraintes quand il n'y pas de donneur: un donneur est tiré aléatoirement parmi la liste </span>
-<span id="cb29-142"><a href="#cb29-142" aria-hidden="true" tabindex="-1"></a>des prétendants.</span>
-<span id="cb29-143"><a href="#cb29-143" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>en calculant une **distance** entre le receveur et l'ensemble des donneurs: un donneur est </span>
-<span id="cb29-144"><a href="#cb29-144" aria-hidden="true" tabindex="-1"></a>tiré parmi les individus avec lesquels la distance est la plus faible.</span>
-<span id="cb29-145"><a href="#cb29-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-146"><a href="#cb29-146" aria-hidden="true" tabindex="-1"></a>La première option nécessite d'utiliser uniquement des variables catégorielles, </span>
-<span id="cb29-147"><a href="#cb29-147" aria-hidden="true" tabindex="-1"></a>quitte à créer des classes pour les variables continues qu'on souhaiterait inclure </span>
-<span id="cb29-148"><a href="#cb29-148" aria-hidden="true" tabindex="-1"></a>dans la liste. </span>
-<span id="cb29-149"><a href="#cb29-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-150"><a href="#cb29-150" aria-hidden="true" tabindex="-1"></a>Dans la pratique, cette première option est la moins gourmande en ressources de calcul, </span>
-<span id="cb29-151"><a href="#cb29-151" aria-hidden="true" tabindex="-1"></a>car elle ne nécessite pas de calculer une distance entre chaque receveur et chaque donneur potentiel. </span>
-<span id="cb29-152"><a href="#cb29-152" aria-hidden="true" tabindex="-1"></a>Elle est probablement la seule envisageable si le jeu de données contient plusieurs millions de lignes.</span>
-<span id="cb29-153"><a href="#cb29-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-154"><a href="#cb29-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-155"><a href="#cb29-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-156"><a href="#cb29-156" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb29-157"><a href="#cb29-157" aria-hidden="true" tabindex="-1"></a><span class="fu">### Une astuce pour gérer la présence de poids de sondage</span></span>
-<span id="cb29-158"><a href="#cb29-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-159"><a href="#cb29-159" aria-hidden="true" tabindex="-1"></a>Si nous disposons d'un échantillon, chaque individu dispose d'un poids de sondage. </span>
-<span id="cb29-160"><a href="#cb29-160" aria-hidden="true" tabindex="-1"></a>Avec le <span class="in">`Target Record Swapping`</span>, on prend le risque d'échanger deux individus avec des poids très différents et </span>
-<span id="cb29-161"><a href="#cb29-161" aria-hidden="true" tabindex="-1"></a>de déséquilibrer des agrégats importants. Pour éviter ce genre de désagrément, il est possible</span>
-<span id="cb29-162"><a href="#cb29-162" aria-hidden="true" tabindex="-1"></a>d'ajouter le poids parmi les variables de similarité, sous la forme d'un arrondi à l'unité </span>
-<span id="cb29-163"><a href="#cb29-163" aria-hidden="true" tabindex="-1"></a>ou bien de tranches de valeurs. On pourra également exclure des donneurs potentiels, </span>
-<span id="cb29-164"><a href="#cb29-164" aria-hidden="true" tabindex="-1"></a>les individus ayant des poids très élevés comparés aux autres. Ceci permettra de limiter </span>
-<span id="cb29-165"><a href="#cb29-165" aria-hidden="true" tabindex="-1"></a>les déformations des distributions.</span>
-<span id="cb29-166"><a href="#cb29-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-167"><a href="#cb29-167" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb29-168"><a href="#cb29-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-169"><a href="#cb29-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-170"><a href="#cb29-170" aria-hidden="true" tabindex="-1"></a><span class="fu">### Individus ou ménages ?</span></span>
-<span id="cb29-171"><a href="#cb29-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-172"><a href="#cb29-172" aria-hidden="true" tabindex="-1"></a>Une autre souplesse de la méthode est de pouvoir prendre en compte des </span>
-<span id="cb29-173"><a href="#cb29-173" aria-hidden="true" tabindex="-1"></a>structures hiérarchiques entre les individus. Par exemple, lorsque le fichier </span>
-<span id="cb29-174"><a href="#cb29-174" aria-hidden="true" tabindex="-1"></a>d'individus contient également des informations sur la composition des ménages. </span>
-<span id="cb29-175"><a href="#cb29-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-176"><a href="#cb29-176" aria-hidden="true" tabindex="-1"></a>Dans ce cas, l'échange d'individus risque de déstabiliser la composition des </span>
-<span id="cb29-177"><a href="#cb29-177" aria-hidden="true" tabindex="-1"></a>ménages concernés, en termes d'âge en particulier: on pourrait voir se créer des </span>
-<span id="cb29-178"><a href="#cb29-178" aria-hidden="true" tabindex="-1"></a>ménages où il n'y a aucun individu majeur par exemple. </span>
-<span id="cb29-179"><a href="#cb29-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-180"><a href="#cb29-180" aria-hidden="true" tabindex="-1"></a>Une solution consisterait à échanger des ménages entiers plutôt que des individus. </span>
-<span id="cb29-181"><a href="#cb29-181" aria-hidden="true" tabindex="-1"></a>Mais cette solution n'est à retenir que si on dispose de suffisamment d'informations </span>
-<span id="cb29-182"><a href="#cb29-182" aria-hidden="true" tabindex="-1"></a>sur les ménages pour détecter des ménages similaires de bonne qualité. </span>
-<span id="cb29-183"><a href="#cb29-183" aria-hidden="true" tabindex="-1"></a>Si ce n'est pas le cas, il peut être préférable d'échanger des individus et de contrôler </span>
-<span id="cb29-184"><a href="#cb29-184" aria-hidden="true" tabindex="-1"></a>d'une autre manière, car un choix judicieux de variables de similarité peut limiter ces </span>
-<span id="cb29-185"><a href="#cb29-185" aria-hidden="true" tabindex="-1"></a>désagréments.</span>
-<span id="cb29-186"><a href="#cb29-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-187"><a href="#cb29-187" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- La @tbl-exemple-ind-men présente un exemple de données individuelles contenant une information </span></span>
-<span id="cb29-188"><a href="#cb29-188" aria-hidden="true" tabindex="-1"></a><span class="co">sur la composition des ménages. Ici, les individus sont répartis en deux ménages de trois individus, dont deux adultes.</span></span>
-<span id="cb29-189"><a href="#cb29-189" aria-hidden="true" tabindex="-1"></a><span class="co">Pour chaque individu, une mesure de risque de ré-identification est fournie. Le premier individu </span></span>
-<span id="cb29-190"><a href="#cb29-190" aria-hidden="true" tabindex="-1"></a><span class="co">est le seul dont le risque de ré-identification est très élevé. </span></span>
-<span id="cb29-191"><a href="#cb29-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-192"><a href="#cb29-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-193"><a href="#cb29-193" aria-hidden="true" tabindex="-1"></a><span class="co">| ID  | Géo. | Sexe | Age | Statut    | Diplome | Catégorie&lt;br&gt;Sociale | Risque | Ménage |</span></span>
-<span id="cb29-194"><a href="#cb29-194" aria-hidden="true" tabindex="-1"></a><span class="co">|-----|------|------|-----|-----------|---------|----------------------|-------:|--------|</span></span>
-<span id="cb29-195"><a href="#cb29-195" aria-hidden="true" tabindex="-1"></a><span class="co">| ID1 | C1   | H    | 35  | Chômage   | Bac+2   | Employé              |      1 | MEN1   |</span></span>
-<span id="cb29-196"><a href="#cb29-196" aria-hidden="true" tabindex="-1"></a><span class="co">| ID2 | C1   | F    | 40  | En emploi | Bac+5   | Cadre                |   0,05 | MEN1   |</span></span>
-<span id="cb29-197"><a href="#cb29-197" aria-hidden="true" tabindex="-1"></a><span class="co">| ID3 | C1   | F    | 12  | Inactif   |         | Elève                |   0,05 | MEN1   |</span></span>
-<span id="cb29-198"><a href="#cb29-198" aria-hidden="true" tabindex="-1"></a><span class="co">| ID4 | C2   | H    | 55  | En emploi | Bac+5   | Cadre                |   0,05 | MEN2   |</span></span>
-<span id="cb29-199"><a href="#cb29-199" aria-hidden="true" tabindex="-1"></a><span class="co">| ID5 | C2   | F    | 53  | En emploi | Bac+5   | Cadre                |   0,05 | MEN2   |</span></span>
-<span id="cb29-200"><a href="#cb29-200" aria-hidden="true" tabindex="-1"></a><span class="co">| ID6 | C2   | H    | 17  | Inactif   | BEP     | Ouvrier              |   0,05 | MEN2   |</span></span>
-<span id="cb29-201"><a href="#cb29-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-202"><a href="#cb29-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-203"><a href="#cb29-203" aria-hidden="true" tabindex="-1"></a><span class="co">: Table indiviudelle et composition des ménages {.striped #tbl-exemple-ind-men}</span></span>
-<span id="cb29-204"><a href="#cb29-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-205"><a href="#cb29-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-206"><a href="#cb29-206" aria-hidden="true" tabindex="-1"></a><span class="co">:::: {.columns}</span></span>
-<span id="cb29-207"><a href="#cb29-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-208"><a href="#cb29-208" aria-hidden="true" tabindex="-1"></a><span class="co">::: {.column width="45%"}</span></span>
-<span id="cb29-209"><a href="#cb29-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-210"><a href="#cb29-210" aria-hidden="true" tabindex="-1"></a><span class="co">:::</span></span>
-<span id="cb29-211"><a href="#cb29-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-212"><a href="#cb29-212" aria-hidden="true" tabindex="-1"></a><span class="co">::: {.column width="5%"}</span></span>
-<span id="cb29-213"><a href="#cb29-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-214"><a href="#cb29-214" aria-hidden="true" tabindex="-1"></a><span class="co">:::</span></span>
-<span id="cb29-215"><a href="#cb29-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-216"><a href="#cb29-216" aria-hidden="true" tabindex="-1"></a><span class="co">::: {.column width="45%"}</span></span>
-<span id="cb29-217"><a href="#cb29-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-218"><a href="#cb29-218" aria-hidden="true" tabindex="-1"></a><span class="co">:::</span></span>
-<span id="cb29-219"><a href="#cb29-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-220"><a href="#cb29-220" aria-hidden="true" tabindex="-1"></a><span class="co">::::</span></span>
-<span id="cb29-221"><a href="#cb29-221" aria-hidden="true" tabindex="-1"></a><span class="co"> --&gt;</span></span>
-<span id="cb29-222"><a href="#cb29-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-223"><a href="#cb29-223" aria-hidden="true" tabindex="-1"></a><span class="fu">### Le taux de *swapping*</span></span>
-<span id="cb29-224"><a href="#cb29-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-225"><a href="#cb29-225" aria-hidden="true" tabindex="-1"></a>Le __taux d'échange__ ou __taux de *swapping*__ est la part d'individus du jeu de données </span>
-<span id="cb29-226"><a href="#cb29-226" aria-hidden="true" tabindex="-1"></a>qui a pris part aux échanges, soit $s=\frac{E+D}{N}$, où $E$ est le nombre d'individus à échanger,</span>
-<span id="cb29-227"><a href="#cb29-227" aria-hidden="true" tabindex="-1"></a>$D$ le nombre de donneurs ($D=E$) et $N$ le nombre d'individus dans la base. </span>
-<span id="cb29-228"><a href="#cb29-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-229"><a href="#cb29-229" aria-hidden="true" tabindex="-1"></a>En pratique, on fixe un taux de swapping $s$ de telle sorte que l'algorithme procède à un minimum </span>
-<span id="cb29-230"><a href="#cb29-230" aria-hidden="true" tabindex="-1"></a>d'échanges. Si le nombre d'individus à risque ne permet pas d'atteindre ce seuil, des individus </span>
-<span id="cb29-231"><a href="#cb29-231" aria-hidden="true" tabindex="-1"></a>supplémentaires seront également échangés pour atteindre $s$. Sinon, le taux de swapping étant atteint ou dépassé,</span>
-<span id="cb29-232"><a href="#cb29-232" aria-hidden="true" tabindex="-1"></a>aucun individu additionnel n'est ajouté.</span>
-<span id="cb29-233"><a href="#cb29-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-234"><a href="#cb29-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-235"><a href="#cb29-235" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les grandes étapes à suivre pour appliquer le `TRS`</span></span>
-<span id="cb29-236"><a href="#cb29-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-237"><a href="#cb29-237" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>De quels risques cherche-t-on à se protéger ?</span>
-<span id="cb29-238"><a href="#cb29-238" aria-hidden="true" tabindex="-1"></a><span class="ss">   1. </span>Si c'est du risque de ré-identification, le <span class="in">`TRS`</span> est une méthode adaptée</span>
-<span id="cb29-239"><a href="#cb29-239" aria-hidden="true" tabindex="-1"></a><span class="ss">   2. </span>Sinon, il faut peut-être aller voir ailleurs.</span>
-<span id="cb29-240"><a href="#cb29-240" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Quelles sont les variables quasi-identifiantes dans mes données ?</span>
-<span id="cb29-241"><a href="#cb29-241" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Mesurer le risque de ré-identification basé sur ces variables ? </span>
-<span id="cb29-242"><a href="#cb29-242" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Choisir un seuil de risque de ré-identification maximal acceptable, au-delà duquel les individus devront être traités.</span>
-<span id="cb29-243"><a href="#cb29-243" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Quelles sont les marges que la méthode devrait conserver intactes en priorité ?</span>
-<span id="cb29-244"><a href="#cb29-244" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Un *swapping* des ménages est-il préférable à un swapping d'individus ? </span>
-<span id="cb29-245"><a href="#cb29-245" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>Sélection des paramètres de la méthode:</span>
-<span id="cb29-246"><a href="#cb29-246" aria-hidden="true" tabindex="-1"></a><span class="ss">   1. </span>Les variables de similarités, en tenant compte des risques et des objectifs de diffusion.</span>
-<span id="cb29-247"><a href="#cb29-247" aria-hidden="true" tabindex="-1"></a><span class="ss">   2. </span>Le taux de swapping.</span>
-<span id="cb29-248"><a href="#cb29-248" aria-hidden="true" tabindex="-1"></a><span class="ss">8. </span>Procéder au swapping</span>
-<span id="cb29-249"><a href="#cb29-249" aria-hidden="true" tabindex="-1"></a><span class="ss">9. </span>Mesurer la perte d'information </span>
-<span id="cb29-250"><a href="#cb29-250" aria-hidden="true" tabindex="-1"></a><span class="ss">10. </span>Reprendre les étapes 4. à 9. si la perte d'information s'avère trop grande ou la protection trop faible</span>
-<span id="cb29-251"><a href="#cb29-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-252"><a href="#cb29-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-253"><a href="#cb29-253" aria-hidden="true" tabindex="-1"></a>L'avantage de la méthode  est sa grande capacité d'adaptation aux données dont on dispose. </span>
-<span id="cb29-254"><a href="#cb29-254" aria-hidden="true" tabindex="-1"></a>Même si cette fiche va présenter comment l'appliquer avec le package <span class="in">`sdcMicro`</span>, </span>
-<span id="cb29-255"><a href="#cb29-255" aria-hidden="true" tabindex="-1"></a>il est en réalité tout à fait possible de développer son propre algorithme pour </span>
-<span id="cb29-256"><a href="#cb29-256" aria-hidden="true" tabindex="-1"></a>affiner la façon de tirer les individus ou les ménages à échanger.</span>
-<span id="cb29-257"><a href="#cb29-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-258"><a href="#cb29-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-259"><a href="#cb29-259" aria-hidden="true" tabindex="-1"></a>On pourra se reporter à la </span>
-<span id="cb29-260"><a href="#cb29-260" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">fiche sur les mesures de risque</span><span class="co">](pratique/fiches/mesurer-risque.html)</span> </span>
-<span id="cb29-261"><a href="#cb29-261" aria-hidden="true" tabindex="-1"></a>pour en savoir plus sur les risques et la façon de les mesurer.</span>
-<span id="cb29-262"><a href="#cb29-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-263"><a href="#cb29-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-264"><a href="#cb29-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-265"><a href="#cb29-265" aria-hidden="true" tabindex="-1"></a><span class="fu"># En pratique</span></span>
-<span id="cb29-266"><a href="#cb29-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-267"><a href="#cb29-267" aria-hidden="true" tabindex="-1"></a>Pour installer les packages nécessaires, vous trouverez les instructions à suivre </span>
-<span id="cb29-268"><a href="#cb29-268" aria-hidden="true" tabindex="-1"></a>dans la fiche <span class="co">[</span><span class="ot">Ressources / Installer les packages et les outils sur R</span><span class="co">](../../ressources/fiches/outils-install.html)</span>.  </span>
-<span id="cb29-269"><a href="#cb29-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-272"><a href="#cb29-272" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-273"><a href="#cb29-273" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb29-274"><a href="#cb29-274" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb29-275"><a href="#cb29-275" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb29-276"><a href="#cb29-276" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb29-277"><a href="#cb29-277" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdcMicro)</span>
-<span id="cb29-278"><a href="#cb29-278" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-279"><a href="#cb29-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-280"><a href="#cb29-280" aria-hidden="true" tabindex="-1"></a><span class="fu">## Importons les données</span></span>
-<span id="cb29-281"><a href="#cb29-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-284"><a href="#cb29-284" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-285"><a href="#cb29-285" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_import_data.R"</span>)</span>
-<span id="cb29-286"><a href="#cb29-286" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> <span class="fu">import_lfs</span>()</span>
-<span id="cb29-287"><a href="#cb29-287" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-288"><a href="#cb29-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-289"><a href="#cb29-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-292"><a href="#cb29-292" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-293"><a href="#cb29-293" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_2023)</span>
-<span id="cb29-294"><a href="#cb29-294" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-295"><a href="#cb29-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-296"><a href="#cb29-296" aria-hidden="true" tabindex="-1"></a>Pour plus d'informations sur les données, on pourra se reporter à la fiche </span>
-<span id="cb29-297"><a href="#cb29-297" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">"Présentation des données"</span><span class="co">](description-data.html)</span>.  </span>
-<span id="cb29-298"><a href="#cb29-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-299"><a href="#cb29-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-300"><a href="#cb29-300" aria-hidden="true" tabindex="-1"></a><span class="fu">## Mesurons les risques du fichier</span></span>
-<span id="cb29-301"><a href="#cb29-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-302"><a href="#cb29-302" aria-hidden="true" tabindex="-1"></a><span class="fu">### Les types de variables</span></span>
-<span id="cb29-303"><a href="#cb29-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-304"><a href="#cb29-304" aria-hidden="true" tabindex="-1"></a>On définit les variables selon les différentes catégories suivantes:</span>
-<span id="cb29-305"><a href="#cb29-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-306"><a href="#cb29-306" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>les variables quasi-identifiantes (<span class="in">`key_vars`</span>)</span>
-<span id="cb29-307"><a href="#cb29-307" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>les variables sensibles (<span class="in">`sens_vars`</span>)</span>
-<span id="cb29-308"><a href="#cb29-308" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>les variables identifiant la composition des ménages (<span class="in">`hhid_vars`</span>)</span>
-<span id="cb29-309"><a href="#cb29-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-310"><a href="#cb29-310" aria-hidden="true" tabindex="-1"></a>Pour cet exercice, nous ferons les choix suivants:</span>
-<span id="cb29-311"><a href="#cb29-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-314"><a href="#cb29-314" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-315"><a href="#cb29-315" aria-hidden="true" tabindex="-1"></a>key_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>)</span>
-<span id="cb29-316"><a href="#cb29-316" aria-hidden="true" tabindex="-1"></a>sens_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ACTEU"</span>,<span class="st">"ANCCHOM"</span>)</span>
-<span id="cb29-317"><a href="#cb29-317" aria-hidden="true" tabindex="-1"></a>hhid_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"HHID"</span>)</span>
-<span id="cb29-318"><a href="#cb29-318" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-319"><a href="#cb29-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-320"><a href="#cb29-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-321"><a href="#cb29-321" aria-hidden="true" tabindex="-1"></a><span class="fu">## Préparartion pour le swapping</span></span>
-<span id="cb29-322"><a href="#cb29-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-325"><a href="#cb29-325" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-326"><a href="#cb29-326" aria-hidden="true" tabindex="-1"></a>lfs_2023_pr_swap <span class="ot">&lt;-</span> lfs_2023 <span class="sc">%&gt;%</span> </span>
-<span id="cb29-327"><a href="#cb29-327" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), as.integer)) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-328"><a href="#cb29-328" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb29-329"><a href="#cb29-329" aria-hidden="true" tabindex="-1"></a>    <span class="at">REG =</span> <span class="fu">floor</span>(DEP <span class="sc">/</span> <span class="dv">10</span>),</span>
-<span id="cb29-330"><a href="#cb29-330" aria-hidden="true" tabindex="-1"></a>    <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()</span>
-<span id="cb29-331"><a href="#cb29-331" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-332"><a href="#cb29-332" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(HHID) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-333"><a href="#cb29-333" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TAILLE =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-334"><a href="#cb29-334" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb29-335"><a href="#cb29-335" aria-hidden="true" tabindex="-1"></a>  data.table<span class="sc">::</span><span class="fu">as.data.table</span>()</span>
-<span id="cb29-336"><a href="#cb29-336" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-337"><a href="#cb29-337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-338"><a href="#cb29-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-341"><a href="#cb29-341" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-342"><a href="#cb29-342" aria-hidden="true" tabindex="-1"></a>risk_variables <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>,<span class="st">"ACTEU"</span>)</span>
-<span id="cb29-343"><a href="#cb29-343" aria-hidden="true" tabindex="-1"></a>hierarchy <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>)</span>
-<span id="cb29-344"><a href="#cb29-344" aria-hidden="true" tabindex="-1"></a>similar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"DIP7"</span>)</span>
-<span id="cb29-345"><a href="#cb29-345" aria-hidden="true" tabindex="-1"></a>carry_along <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb29-346"><a href="#cb29-346" aria-hidden="true" tabindex="-1"></a>k_anonymity <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb29-347"><a href="#cb29-347" aria-hidden="true" tabindex="-1"></a>swaprate <span class="ot">&lt;-</span> .<span class="dv">05</span></span>
-<span id="cb29-348"><a href="#cb29-348" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-349"><a href="#cb29-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-350"><a href="#cb29-350" aria-hidden="true" tabindex="-1"></a>hid <span class="ot">&lt;-</span> <span class="st">"ID"</span> <span class="co"># swapping d'individus</span></span>
-<span id="cb29-351"><a href="#cb29-351" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-352"><a href="#cb29-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-353"><a href="#cb29-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-354"><a href="#cb29-354" aria-hidden="true" tabindex="-1"></a><span class="fu">### Swapper les individus</span></span>
-<span id="cb29-355"><a href="#cb29-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-356"><a href="#cb29-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-359"><a href="#cb29-359" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-360"><a href="#cb29-360" aria-hidden="true" tabindex="-1"></a>lfs_swapped <span class="ot">&lt;-</span> <span class="fu">recordSwap</span>(</span>
-<span id="cb29-361"><a href="#cb29-361" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> lfs_2023_pr_swap,</span>
-<span id="cb29-362"><a href="#cb29-362" aria-hidden="true" tabindex="-1"></a>  <span class="at">hid =</span> hid,</span>
-<span id="cb29-363"><a href="#cb29-363" aria-hidden="true" tabindex="-1"></a>  <span class="at">hierarchy =</span> hierarchy,</span>
-<span id="cb29-364"><a href="#cb29-364" aria-hidden="true" tabindex="-1"></a>  <span class="at">similar =</span> similar,</span>
-<span id="cb29-365"><a href="#cb29-365" aria-hidden="true" tabindex="-1"></a>  <span class="at">risk_variables =</span> risk_variables,</span>
-<span id="cb29-366"><a href="#cb29-366" aria-hidden="true" tabindex="-1"></a>  <span class="at">carry_along =</span> carry_along,</span>
-<span id="cb29-367"><a href="#cb29-367" aria-hidden="true" tabindex="-1"></a>  <span class="at">k_anonymity =</span> k_anonymity,</span>
-<span id="cb29-368"><a href="#cb29-368" aria-hidden="true" tabindex="-1"></a>  <span class="at">swaprate =</span> swaprate,</span>
-<span id="cb29-369"><a href="#cb29-369" aria-hidden="true" tabindex="-1"></a>  <span class="at">return_swapped_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb29-370"><a href="#cb29-370" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">123456</span></span>
-<span id="cb29-371"><a href="#cb29-371" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb29-372"><a href="#cb29-372" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-373"><a href="#cb29-373" aria-hidden="true" tabindex="-1"></a>lfs_swapped <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">mean</span>(ID <span class="sc">!=</span> ID_swapped)) <span class="co">#5%</span></span>
-<span id="cb29-374"><a href="#cb29-374" aria-hidden="true" tabindex="-1"></a>lfs_swapped <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(REG) <span class="sc">%&gt;%</span></span>
-<span id="cb29-375"><a href="#cb29-375" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(ID <span class="sc">!=</span> ID_swapped)) <span class="co">#5%</span></span>
-<span id="cb29-376"><a href="#cb29-376" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-377"><a href="#cb29-377" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-378"><a href="#cb29-378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-379"><a href="#cb29-379" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Vérifier que les individus à risque ont bien été swappés</span></span>
-<span id="cb29-380"><a href="#cb29-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-381"><a href="#cb29-381" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-382"><a href="#cb29-382" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Intégrité de la composition des ménages</span></span>
-<span id="cb29-383"><a href="#cb29-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-384"><a href="#cb29-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-385"><a href="#cb29-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-386"><a href="#cb29-386" aria-hidden="true" tabindex="-1"></a><span class="fu">### Swapper les ménages</span></span>
-<span id="cb29-387"><a href="#cb29-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-388"><a href="#cb29-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-391"><a href="#cb29-391" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-392"><a href="#cb29-392" aria-hidden="true" tabindex="-1"></a>hid <span class="ot">&lt;-</span> <span class="st">"HHID"</span> <span class="co"># swapping de ménages</span></span>
-<span id="cb29-393"><a href="#cb29-393" aria-hidden="true" tabindex="-1"></a>similar <span class="ot">&lt;-</span> <span class="st">"TAILLE"</span></span>
-<span id="cb29-394"><a href="#cb29-394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-395"><a href="#cb29-395" aria-hidden="true" tabindex="-1"></a>lfs_swapped_hh <span class="ot">&lt;-</span> <span class="fu">recordSwap</span>(</span>
-<span id="cb29-396"><a href="#cb29-396" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> lfs_2023_pr_swap,</span>
-<span id="cb29-397"><a href="#cb29-397" aria-hidden="true" tabindex="-1"></a>  <span class="at">hid =</span> hid,</span>
-<span id="cb29-398"><a href="#cb29-398" aria-hidden="true" tabindex="-1"></a>  <span class="at">hierarchy =</span> hierarchy,</span>
-<span id="cb29-399"><a href="#cb29-399" aria-hidden="true" tabindex="-1"></a>  <span class="at">similar =</span> similar,</span>
-<span id="cb29-400"><a href="#cb29-400" aria-hidden="true" tabindex="-1"></a>  <span class="at">risk_variables =</span> risk_variables,</span>
-<span id="cb29-401"><a href="#cb29-401" aria-hidden="true" tabindex="-1"></a>  <span class="at">carry_along =</span> carry_along,</span>
-<span id="cb29-402"><a href="#cb29-402" aria-hidden="true" tabindex="-1"></a>  <span class="at">k_anonymity =</span> k_anonymity,</span>
-<span id="cb29-403"><a href="#cb29-403" aria-hidden="true" tabindex="-1"></a>  <span class="at">swaprate =</span> swaprate,</span>
-<span id="cb29-404"><a href="#cb29-404" aria-hidden="true" tabindex="-1"></a>  <span class="at">return_swapped_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb29-405"><a href="#cb29-405" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">123456</span></span>
-<span id="cb29-406"><a href="#cb29-406" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb29-407"><a href="#cb29-407" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-408"><a href="#cb29-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-409"><a href="#cb29-409" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-410"><a href="#cb29-410" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Taux de swapping des ménages vs taux de swapping des individus</span></span>
-<span id="cb29-411"><a href="#cb29-411" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-414"><a href="#cb29-414" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-415"><a href="#cb29-415" aria-hidden="true" tabindex="-1"></a>lfs_swapped_hh <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">mean</span>(HHID <span class="sc">!=</span> HHID_swapped)) <span class="co">#6.2 des ménages</span></span>
-<span id="cb29-416"><a href="#cb29-416" aria-hidden="true" tabindex="-1"></a>lfs_swapped_hh <span class="sc">%&gt;%</span> <span class="fu">filter</span>(HHID <span class="sc">!=</span> HHID_swapped) <span class="sc">%&gt;%</span></span>
-<span id="cb29-417"><a href="#cb29-417" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">n</span>()<span class="sc">/</span><span class="fu">nrow</span>(lfs_swapped_hh)<span class="sc">*</span><span class="dv">100</span>) <span class="co">#6.2% des individus (les ménages swappés sont de même taille)</span></span>
-<span id="cb29-418"><a href="#cb29-418" aria-hidden="true" tabindex="-1"></a>lfs_swapped_hh <span class="sc">%&gt;%</span> <span class="fu">filter</span>(HHID <span class="sc">!=</span> HHID_swapped) <span class="sc">%&gt;%</span></span>
-<span id="cb29-419"><a href="#cb29-419" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(TAILLE))</span>
-<span id="cb29-420"><a href="#cb29-420" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-421"><a href="#cb29-421" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-422"><a href="#cb29-422" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-423"><a href="#cb29-423" aria-hidden="true" tabindex="-1"></a><span class="fu">## Mesurer la perte d'utilité </span></span>
-<span id="cb29-424"><a href="#cb29-424" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-425"><a href="#cb29-425" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-426"><a href="#cb29-426" aria-hidden="true" tabindex="-1"></a>Comparer différents taux de swapping.</span>
-<span id="cb29-427"><a href="#cb29-427" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-428"><a href="#cb29-428" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comparer les intervalles de confiance d'un modèle logistique</span></span>
-<span id="cb29-429"><a href="#cb29-429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-432"><a href="#cb29-432" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-433"><a href="#cb29-433" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_cio.R"</span>)</span>
-<span id="cb29-434"><a href="#cb29-434" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-435"><a href="#cb29-435" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-436"><a href="#cb29-436" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-437"><a href="#cb29-437" aria-hidden="true" tabindex="-1"></a>Étudions la stabilité d'un modèle relativement simple, cherchant à expliquer </span>
-<span id="cb29-438"><a href="#cb29-438" aria-hidden="true" tabindex="-1"></a>le fait d'être au chômage par différentes variables à notre disposition:</span>
-<span id="cb29-439"><a href="#cb29-439" aria-hidden="true" tabindex="-1"></a>l'âge, le diplôme et le sexe.</span>
-<span id="cb29-440"><a href="#cb29-440" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-441"><a href="#cb29-441" aria-hidden="true" tabindex="-1"></a>On entraînera ce modèle uniquement sur la population active. On retire donc notamment </span>
-<span id="cb29-442"><a href="#cb29-442" aria-hidden="true" tabindex="-1"></a>la population étudiante et retraitée.</span>
-<span id="cb29-443"><a href="#cb29-443" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-444"><a href="#cb29-444" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-447"><a href="#cb29-447" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-448"><a href="#cb29-448" aria-hidden="true" tabindex="-1"></a>m_original <span class="ot">&lt;-</span> <span class="fu">glm</span>(IS_CHOM <span class="sc">~</span> SEXE <span class="sc">+</span> AGE6 <span class="sc">+</span> DIP7, <span class="at">data =</span> lfs_2023 <span class="sc">|&gt;</span> <span class="fu">filter</span>(ACTEU <span class="sc">!=</span> <span class="dv">3</span>))</span>
-<span id="cb29-449"><a href="#cb29-449" aria-hidden="true" tabindex="-1"></a>m_swapped <span class="ot">&lt;-</span> <span class="fu">glm</span>(IS_CHOM <span class="sc">~</span> SEXE <span class="sc">+</span> AGE6 <span class="sc">+</span> DIP7, <span class="at">data =</span> lfs_2023 <span class="sc">|&gt;</span> <span class="fu">filter</span>(ACTEU <span class="sc">!=</span> <span class="dv">3</span>))</span>
-<span id="cb29-450"><a href="#cb29-450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-451"><a href="#cb29-451" aria-hidden="true" tabindex="-1"></a>mes_modeles <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb29-452"><a href="#cb29-452" aria-hidden="true" tabindex="-1"></a>  <span class="st">"original"</span> <span class="ot">=</span> m_original,</span>
-<span id="cb29-453"><a href="#cb29-453" aria-hidden="true" tabindex="-1"></a>  <span class="st">"swapped"</span> <span class="ot">=</span> m_swapped</span>
-<span id="cb29-454"><a href="#cb29-454" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb29-455"><a href="#cb29-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-456"><a href="#cb29-456" aria-hidden="true" tabindex="-1"></a>all_cios <span class="ot">&lt;-</span> <span class="fu">get_all_confints</span>(mes_modeles)</span>
-<span id="cb29-457"><a href="#cb29-457" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-458"><a href="#cb29-458" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-459"><a href="#cb29-459" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-462"><a href="#cb29-462" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-463"><a href="#cb29-463" aria-hidden="true" tabindex="-1"></a><span class="fu">graph_cios</span>(all_cios, <span class="at">titre =</span> <span class="st">"Superposition des intervalles de confiance</span><span class="sc">\n</span><span class="st">des Odds Ratio du modèle selon le jeu de données"</span>) <span class="sc">+</span></span>
-<span id="cb29-464"><a href="#cb29-464" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span>  <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>))</span>
-<span id="cb29-465"><a href="#cb29-465" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-466"><a href="#cb29-466" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-467"><a href="#cb29-467" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-468"><a href="#cb29-468" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercices</span></span>
-<span id="cb29-469"><a href="#cb29-469" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-470"><a href="#cb29-470" aria-hidden="true" tabindex="-1"></a><span class="fu">### Choisir le taux de swapping </span></span>
-<span id="cb29-471"><a href="#cb29-471" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-472"><a href="#cb29-472" aria-hidden="true" tabindex="-1"></a><span class="fu">### Appliquer le swapping au niveau ménages</span></span>
+<div class="sourceCode" id="cb40" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Appliquer le Target Record Swapping</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> pratique/fiches/proteger-micro-swapping.html</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="an">code-block-bg:</span><span class="co"> true</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="an">code-block-border-left:</span><span class="co"> "#bf9aff"</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> show</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># Objectif:</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>La fiche pratique présente comment appliquer le <span class="in">`Target Record Swapping`</span> à</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>un jeu de données individuelles afin d'assurer une protection optimale </span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>des informations confidentielles des individus (ou ménages ou entreprises) qui </span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>le composent.</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>La première partie s'attache à présenter les différentes étapes à suivre pour </span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>que cette application soit pertinente au regard des données utilisées.</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>La seconde partie montre comment utiliser la fonction <span class="in">`sdcMicro::recordSwap()`</span> </span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>pour appliquer la méthode à un jeu de données dont on aura repérer les </span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>individus à risque préalablement.</span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a><span class="fu"># Pour s'exercer</span></span>
+<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a>Pour reproduire les résultats et réaliser les exercices, il est possible de travailler </span>
+<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a>directement sur le <span class="co">[</span><span class="ot">`datalab` de l'Insee</span><span class="co">](datalab.sspcloud.fr)</span>. Si vous disposez d'un compte, vous pouvez <span class="co">[</span><span class="ot">Ouvrir un service RStudio</span><span class="co">](https://datalab.sspcloud.fr/launcher/ide/rstudio?name=rstudio-formation-protection&amp;version=2.3.1&amp;s3=region-ec97c721&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Frstudio.sh»)</span> ou <span class="co">[</span><span class="ot">Ouvrir un service vscode R-Python</span><span class="co">](https://datalab.sspcloud.fr/launcher/ide/vscode-r-python-julia?name=vscode-formation-protection&amp;version=2.3.5&amp;s3=region-ec97c721&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Fvscode-r-python.sh»)</span>, à votre convenance. Ces services installeront automatiquement les packages </span>
+<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a>nécessaires pour réaliser les exercices de l'ensemble des fiches pratiques.</span>
+<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-36"><a href="#cb40-36" aria-hidden="true" tabindex="-1"></a><span class="fu"># Rappels sur la méthode:</span></span>
+<span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a>Le <span class="in">`Target Record Swapping (TRS)`</span> est une méthode s'appliquant directement sur un jeu </span>
+<span id="cb40-39"><a href="#cb40-39" aria-hidden="true" tabindex="-1"></a>de données individuelles pour réduire principalement les risques de ré-identification.</span>
+<span id="cb40-40"><a href="#cb40-40" aria-hidden="true" tabindex="-1"></a>Il ciblera donc les individus pour lesquels ce risque est jugé trop élevé, c'est-à-dire  </span>
+<span id="cb40-41"><a href="#cb40-41" aria-hidden="true" tabindex="-1"></a>ceux partageant des caractéristiques trop rares sur un ensemble </span>
+<span id="cb40-42"><a href="#cb40-42" aria-hidden="true" tabindex="-1"></a>de variables dites quasi-identifiantes. Les variables quasi-identifiantes sont celles </span>
+<span id="cb40-43"><a href="#cb40-43" aria-hidden="true" tabindex="-1"></a>qui sont susceptibles d'être déjà publiques ou du moins à la disposition d'un attaquant.</span>
+<span id="cb40-44"><a href="#cb40-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-45"><a href="#cb40-45" aria-hidden="true" tabindex="-1"></a>D'où son nom: le *swapping*, c'est-à-dire </span>
+<span id="cb40-46"><a href="#cb40-46" aria-hidden="true" tabindex="-1"></a>l'échange, va concerner des unités de la base (les *records*) détectés à l'avance, </span>
+<span id="cb40-47"><a href="#cb40-47" aria-hidden="true" tabindex="-1"></a>devenant ainsi les cibles (*target*) sur lesquelles on va se concentrer.</span>
+<span id="cb40-48"><a href="#cb40-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-49"><a href="#cb40-49" aria-hidden="true" tabindex="-1"></a>Bien qu'elle soit appliquée sur des microdonnées, la méthode a principalement vocation à </span>
+<span id="cb40-50"><a href="#cb40-50" aria-hidden="true" tabindex="-1"></a>protéger la diffusion de données tabulées <span class="co">[</span><span class="ot">@hundepool_handbook_2024, [section 5.6](https://sdctools.github.io/HandbookSDC/05-frequency-tables.html#sec-TRS)</span><span class="co">]</span>. Dans ce type d'utilisation, en tant que méthode pré-tabulée, </span>
+<span id="cb40-51"><a href="#cb40-51" aria-hidden="true" tabindex="-1"></a>elle permet de produire des tableaux parfaitement additifs.</span>
+<span id="cb40-52"><a href="#cb40-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-53"><a href="#cb40-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-54"><a href="#cb40-54" aria-hidden="true" tabindex="-1"></a><span class="fu">## En quoi consiste la méthode ?</span></span>
+<span id="cb40-55"><a href="#cb40-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-56"><a href="#cb40-56" aria-hidden="true" tabindex="-1"></a>Après avoir détecté un individu dont le risque de ré-identification est jugé trop </span>
+<span id="cb40-57"><a href="#cb40-57" aria-hidden="true" tabindex="-1"></a>élevé, un autre individu est tiré aléatoirement parmi les individus au risque de ré-identification </span>
+<span id="cb40-58"><a href="#cb40-58" aria-hidden="true" tabindex="-1"></a>les plus faibles et certaines des caractéristiques de ces deux individus sont échangées (*swapped*).</span>
+<span id="cb40-59"><a href="#cb40-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-60"><a href="#cb40-60" aria-hidden="true" tabindex="-1"></a>Après l'échange, la ré-identification de l'individu est rendue beaucoup plus difficile et </span>
+<span id="cb40-61"><a href="#cb40-61" aria-hidden="true" tabindex="-1"></a>ne permet plus d'obtenir d'informations pertinentes à son sujet.</span>
+<span id="cb40-62"><a href="#cb40-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-63"><a href="#cb40-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-64"><a href="#cb40-64" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb40-65"><a href="#cb40-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### Un exemple très simple. </span></span>
+<span id="cb40-66"><a href="#cb40-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-67"><a href="#cb40-67" aria-hidden="true" tabindex="-1"></a>Soit un territoire donné découpé en six zones où résident un certain nombre d'individus. </span>
+<span id="cb40-68"><a href="#cb40-68" aria-hidden="true" tabindex="-1"></a>Avec les informations disponibles à leur sujet, on considère qu'un seul individu a un risque </span>
+<span id="cb40-69"><a href="#cb40-69" aria-hidden="true" tabindex="-1"></a>de ré-identification trop élevé (croix rouge sur la @fig-swap-avant).</span>
+<span id="cb40-70"><a href="#cb40-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-71"><a href="#cb40-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-72"><a href="#cb40-72" aria-hidden="true" tabindex="-1"></a>::: {#fig-swap-avant}</span>
+<span id="cb40-73"><a href="#cb40-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-74"><a href="#cb40-74" aria-hidden="true" tabindex="-1"></a><span class="al">![Avant swapping](images/swapping-exemple-avant.png)</span></span>
+<span id="cb40-75"><a href="#cb40-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-76"><a href="#cb40-76" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-77"><a href="#cb40-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-78"><a href="#cb40-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-79"><a href="#cb40-79" aria-hidden="true" tabindex="-1"></a>On tire alors au hasard un autre individu présent sur le territoire pour échanger </span>
+<span id="cb40-80"><a href="#cb40-80" aria-hidden="true" tabindex="-1"></a>certaines de leurs caractéristiques. Ce tirage pourrait être purement aléatoire. Mais, cela </span>
+<span id="cb40-81"><a href="#cb40-81" aria-hidden="true" tabindex="-1"></a>conduirait à détruire certaines statistiques bien utiles. Par exemple, en trouvant </span>
+<span id="cb40-82"><a href="#cb40-82" aria-hidden="true" tabindex="-1"></a>un individu d'une autre zone partageant certaines caractéristiques (par exemple </span>
+<span id="cb40-83"><a href="#cb40-83" aria-hidden="true" tabindex="-1"></a>le sexe, l'âge et la catégorie sociale, @fig-swap-apres), on s'assure de conserver les marges </span>
+<span id="cb40-84"><a href="#cb40-84" aria-hidden="true" tabindex="-1"></a>sur ces variables au niveau géographique le plus fin. </span>
+<span id="cb40-85"><a href="#cb40-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-86"><a href="#cb40-86" aria-hidden="true" tabindex="-1"></a>En revanche, les autres caractéristiques sont bruitées de façon non contrôlée.</span>
+<span id="cb40-87"><a href="#cb40-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-88"><a href="#cb40-88" aria-hidden="true" tabindex="-1"></a>::: {#fig-swap-apres}</span>
+<span id="cb40-89"><a href="#cb40-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-90"><a href="#cb40-90" aria-hidden="true" tabindex="-1"></a><span class="al">![Après swapping](images/swapping-exemple-après.png)</span></span>
+<span id="cb40-91"><a href="#cb40-91" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-92"><a href="#cb40-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-93"><a href="#cb40-93" aria-hidden="true" tabindex="-1"></a>Ainsi, l'éventuelle ré-identification de l'individu à risque ne pourrait conduire </span>
+<span id="cb40-94"><a href="#cb40-94" aria-hidden="true" tabindex="-1"></a>l'attaquant qu'à obtenir des informations très probablement fausses à son sujet.</span>
+<span id="cb40-95"><a href="#cb40-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-96"><a href="#cb40-96" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-97"><a href="#cb40-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-98"><a href="#cb40-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les variables de similarité</span></span>
+<span id="cb40-99"><a href="#cb40-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-100"><a href="#cb40-100" aria-hidden="true" tabindex="-1"></a>La méthode est très souple puisqu'elle permet de s'adapter aux données dont on dispose et </span>
+<span id="cb40-101"><a href="#cb40-101" aria-hidden="true" tabindex="-1"></a>aux besoins en termes de diffusion. Les **variables de similarité** entre individus échangés </span>
+<span id="cb40-102"><a href="#cb40-102" aria-hidden="true" tabindex="-1"></a>peuvent ainsi être choisies parmi les variables dont on veut conserver </span>
+<span id="cb40-103"><a href="#cb40-103" aria-hidden="true" tabindex="-1"></a>le mieux possible l'information marginale. En effet, en échangeant des individus </span>
+<span id="cb40-104"><a href="#cb40-104" aria-hidden="true" tabindex="-1"></a>parfaitement similaires sur certaines caractéristiques (**les variables de similarité**), </span>
+<span id="cb40-105"><a href="#cb40-105" aria-hidden="true" tabindex="-1"></a>l'échange ne produira aucune perte d'information sur celles-ci. </span>
+<span id="cb40-106"><a href="#cb40-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-107"><a href="#cb40-107" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning}</span>
+<span id="cb40-108"><a href="#cb40-108" aria-hidden="true" tabindex="-1"></a><span class="fu">### Similarité et ré-identification</span></span>
+<span id="cb40-109"><a href="#cb40-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-110"><a href="#cb40-110" aria-hidden="true" tabindex="-1"></a>Si l'objectif est de réduire le risque de ré-identification, sélectionner toutes les variables </span>
+<span id="cb40-111"><a href="#cb40-111" aria-hidden="true" tabindex="-1"></a>quasi-identifiantes comme variables de similarité ne perturberait aucunement </span>
+<span id="cb40-112"><a href="#cb40-112" aria-hidden="true" tabindex="-1"></a>la capacité de l'attaquant à ré-identifier les individus. Ce choix produirait </span>
+<span id="cb40-113"><a href="#cb40-113" aria-hidden="true" tabindex="-1"></a>en revanche du bruit sur les autres variables: donc en ré-identifiant, l'attaquant </span>
+<span id="cb40-114"><a href="#cb40-114" aria-hidden="true" tabindex="-1"></a>ne serait pas en mesure d'obtenir des informations supplémentaires fiables.</span>
+<span id="cb40-115"><a href="#cb40-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-116"><a href="#cb40-116" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-117"><a href="#cb40-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-118"><a href="#cb40-118" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb40-119"><a href="#cb40-119" aria-hidden="true" tabindex="-1"></a><span class="fu">### Utiliser la hiérarchie des emboîtements géographiques</span></span>
+<span id="cb40-120"><a href="#cb40-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-121"><a href="#cb40-121" aria-hidden="true" tabindex="-1"></a>Les données contiennent généralement des informations géographiques. Or, la géographie, </span>
+<span id="cb40-122"><a href="#cb40-122" aria-hidden="true" tabindex="-1"></a>en particulier à des niveaux fins, est très identifiante. On choisira en général </span>
+<span id="cb40-123"><a href="#cb40-123" aria-hidden="true" tabindex="-1"></a>d'échanger des individus résidant à des endroits différents, en tenant compte </span>
+<span id="cb40-124"><a href="#cb40-124" aria-hidden="true" tabindex="-1"></a>du niveau géographique auquel un individu est facilement ré-identifiable.</span>
+<span id="cb40-125"><a href="#cb40-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-126"><a href="#cb40-126" aria-hidden="true" tabindex="-1"></a>Par exemple, si un individu est facilement ré-identifiable dans sa commune mais </span>
+<span id="cb40-127"><a href="#cb40-127" aria-hidden="true" tabindex="-1"></a>pas dans son département de résidence, alors on privilégiera l'échange avec </span>
+<span id="cb40-128"><a href="#cb40-128" aria-hidden="true" tabindex="-1"></a>un autre individu du département en dehors de la commune de notre individu à risque.</span>
+<span id="cb40-129"><a href="#cb40-129" aria-hidden="true" tabindex="-1"></a>Si le niveau départemental posait lui aussi problème on remonterait au niveau régional, etc.</span>
+<span id="cb40-130"><a href="#cb40-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-131"><a href="#cb40-131" aria-hidden="true" tabindex="-1"></a>Ainsi, en général, la méthode consistera à échanger la localisation d'individus ou de ménages <span class="co">[</span><span class="ot">@longhurst_statistical_nodate</span><span class="co">]</span>.</span>
+<span id="cb40-132"><a href="#cb40-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-133"><a href="#cb40-133" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-134"><a href="#cb40-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-135"><a href="#cb40-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-136"><a href="#cb40-136" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comment définir des individus similaires ?</span></span>
+<span id="cb40-137"><a href="#cb40-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-138"><a href="#cb40-138" aria-hidden="true" tabindex="-1"></a>La **similarité** entre deux individus peut être envisagée de deux manières:</span>
+<span id="cb40-139"><a href="#cb40-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-140"><a href="#cb40-140" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>en cherchant la **correspondance exacte** sur les variables de similarité, quitte à relâcher </span>
+<span id="cb40-141"><a href="#cb40-141" aria-hidden="true" tabindex="-1"></a>des contraintes quand il n'y pas de donneur: un donneur est tiré aléatoirement parmi la liste </span>
+<span id="cb40-142"><a href="#cb40-142" aria-hidden="true" tabindex="-1"></a>des prétendants.</span>
+<span id="cb40-143"><a href="#cb40-143" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>en calculant une **distance** entre le receveur et l'ensemble des donneurs: un donneur est </span>
+<span id="cb40-144"><a href="#cb40-144" aria-hidden="true" tabindex="-1"></a>tiré parmi les individus avec lesquels la distance est la plus faible.</span>
+<span id="cb40-145"><a href="#cb40-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-146"><a href="#cb40-146" aria-hidden="true" tabindex="-1"></a>La première option nécessite d'utiliser uniquement des variables catégorielles, </span>
+<span id="cb40-147"><a href="#cb40-147" aria-hidden="true" tabindex="-1"></a>quitte à créer des classes pour les variables continues qu'on souhaiterait inclure </span>
+<span id="cb40-148"><a href="#cb40-148" aria-hidden="true" tabindex="-1"></a>dans la liste. </span>
+<span id="cb40-149"><a href="#cb40-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-150"><a href="#cb40-150" aria-hidden="true" tabindex="-1"></a>Dans la pratique, cette première option est la moins gourmande en ressources de calcul, </span>
+<span id="cb40-151"><a href="#cb40-151" aria-hidden="true" tabindex="-1"></a>car elle ne nécessite pas de calculer une distance entre chaque receveur et chaque donneur potentiel. </span>
+<span id="cb40-152"><a href="#cb40-152" aria-hidden="true" tabindex="-1"></a>Elle est probablement la seule envisageable si le jeu de données contient plusieurs millions de lignes.</span>
+<span id="cb40-153"><a href="#cb40-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-154"><a href="#cb40-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-155"><a href="#cb40-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-156"><a href="#cb40-156" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb40-157"><a href="#cb40-157" aria-hidden="true" tabindex="-1"></a><span class="fu">### Une astuce pour gérer la présence de poids de sondage</span></span>
+<span id="cb40-158"><a href="#cb40-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-159"><a href="#cb40-159" aria-hidden="true" tabindex="-1"></a>Si nous disposons d'un échantillon, chaque individu dispose d'un poids de sondage. </span>
+<span id="cb40-160"><a href="#cb40-160" aria-hidden="true" tabindex="-1"></a>Avec le <span class="in">`Target Record Swapping`</span>, on prend le risque d'échanger deux individus avec des poids très différents et </span>
+<span id="cb40-161"><a href="#cb40-161" aria-hidden="true" tabindex="-1"></a>de déséquilibrer des agrégats importants. Pour éviter ce genre de désagrément, il est possible</span>
+<span id="cb40-162"><a href="#cb40-162" aria-hidden="true" tabindex="-1"></a>d'ajouter le poids parmi les variables de similarité, sous la forme d'un arrondi à l'unité </span>
+<span id="cb40-163"><a href="#cb40-163" aria-hidden="true" tabindex="-1"></a>ou bien de tranches de valeurs. On pourra également exclure des donneurs potentiels, </span>
+<span id="cb40-164"><a href="#cb40-164" aria-hidden="true" tabindex="-1"></a>les individus ayant des poids très élevés comparés aux autres. Ceci permettra de limiter </span>
+<span id="cb40-165"><a href="#cb40-165" aria-hidden="true" tabindex="-1"></a>les déformations des distributions.</span>
+<span id="cb40-166"><a href="#cb40-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-167"><a href="#cb40-167" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-168"><a href="#cb40-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-169"><a href="#cb40-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-170"><a href="#cb40-170" aria-hidden="true" tabindex="-1"></a><span class="fu">### Individus ou ménages ?</span></span>
+<span id="cb40-171"><a href="#cb40-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-172"><a href="#cb40-172" aria-hidden="true" tabindex="-1"></a>Une autre souplesse de la méthode est de pouvoir prendre en compte des </span>
+<span id="cb40-173"><a href="#cb40-173" aria-hidden="true" tabindex="-1"></a>structures hiérarchiques entre les individus. Par exemple, lorsque le fichier </span>
+<span id="cb40-174"><a href="#cb40-174" aria-hidden="true" tabindex="-1"></a>d'individus contient également des informations sur la composition des ménages. </span>
+<span id="cb40-175"><a href="#cb40-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-176"><a href="#cb40-176" aria-hidden="true" tabindex="-1"></a>Dans ce cas, l'échange d'individus risque de déstabiliser la composition des </span>
+<span id="cb40-177"><a href="#cb40-177" aria-hidden="true" tabindex="-1"></a>ménages concernés, en termes d'âge en particulier: on pourrait voir se créer des </span>
+<span id="cb40-178"><a href="#cb40-178" aria-hidden="true" tabindex="-1"></a>ménages où il n'y a aucun individu majeur par exemple. </span>
+<span id="cb40-179"><a href="#cb40-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-180"><a href="#cb40-180" aria-hidden="true" tabindex="-1"></a>Une solution consisterait à échanger des ménages entiers plutôt que des individus. </span>
+<span id="cb40-181"><a href="#cb40-181" aria-hidden="true" tabindex="-1"></a>Mais cette solution n'est à retenir que si on dispose de suffisamment d'informations </span>
+<span id="cb40-182"><a href="#cb40-182" aria-hidden="true" tabindex="-1"></a>sur les ménages pour détecter des ménages similaires de bonne qualité. </span>
+<span id="cb40-183"><a href="#cb40-183" aria-hidden="true" tabindex="-1"></a>Si ce n'est pas le cas, il peut être préférable d'échanger des individus et de contrôler </span>
+<span id="cb40-184"><a href="#cb40-184" aria-hidden="true" tabindex="-1"></a>d'une autre manière, car un choix judicieux de variables de similarité peut limiter ces </span>
+<span id="cb40-185"><a href="#cb40-185" aria-hidden="true" tabindex="-1"></a>désagréments.</span>
+<span id="cb40-186"><a href="#cb40-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-187"><a href="#cb40-187" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- La @tbl-exemple-ind-men présente un exemple de données individuelles contenant une information </span></span>
+<span id="cb40-188"><a href="#cb40-188" aria-hidden="true" tabindex="-1"></a><span class="co">sur la composition des ménages. Ici, les individus sont répartis en deux ménages de trois individus, dont deux adultes.</span></span>
+<span id="cb40-189"><a href="#cb40-189" aria-hidden="true" tabindex="-1"></a><span class="co">Pour chaque individu, une mesure de risque de ré-identification est fournie. Le premier individu </span></span>
+<span id="cb40-190"><a href="#cb40-190" aria-hidden="true" tabindex="-1"></a><span class="co">est le seul dont le risque de ré-identification est très élevé. </span></span>
+<span id="cb40-191"><a href="#cb40-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-192"><a href="#cb40-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-193"><a href="#cb40-193" aria-hidden="true" tabindex="-1"></a><span class="co">| ID  | Géo. | Sexe | Age | Statut    | Diplome | Catégorie&lt;br&gt;Sociale | Risque | Ménage |</span></span>
+<span id="cb40-194"><a href="#cb40-194" aria-hidden="true" tabindex="-1"></a><span class="co">|-----|------|------|-----|-----------|---------|----------------------|-------:|--------|</span></span>
+<span id="cb40-195"><a href="#cb40-195" aria-hidden="true" tabindex="-1"></a><span class="co">| ID1 | C1   | H    | 35  | Chômage   | Bac+2   | Employé              |      1 | MEN1   |</span></span>
+<span id="cb40-196"><a href="#cb40-196" aria-hidden="true" tabindex="-1"></a><span class="co">| ID2 | C1   | F    | 40  | En emploi | Bac+5   | Cadre                |   0,05 | MEN1   |</span></span>
+<span id="cb40-197"><a href="#cb40-197" aria-hidden="true" tabindex="-1"></a><span class="co">| ID3 | C1   | F    | 12  | Inactif   |         | Elève                |   0,05 | MEN1   |</span></span>
+<span id="cb40-198"><a href="#cb40-198" aria-hidden="true" tabindex="-1"></a><span class="co">| ID4 | C2   | H    | 55  | En emploi | Bac+5   | Cadre                |   0,05 | MEN2   |</span></span>
+<span id="cb40-199"><a href="#cb40-199" aria-hidden="true" tabindex="-1"></a><span class="co">| ID5 | C2   | F    | 53  | En emploi | Bac+5   | Cadre                |   0,05 | MEN2   |</span></span>
+<span id="cb40-200"><a href="#cb40-200" aria-hidden="true" tabindex="-1"></a><span class="co">| ID6 | C2   | H    | 17  | Inactif   | BEP     | Ouvrier              |   0,05 | MEN2   |</span></span>
+<span id="cb40-201"><a href="#cb40-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-202"><a href="#cb40-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-203"><a href="#cb40-203" aria-hidden="true" tabindex="-1"></a><span class="co">: Table indiviudelle et composition des ménages {.striped #tbl-exemple-ind-men}</span></span>
+<span id="cb40-204"><a href="#cb40-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-205"><a href="#cb40-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-206"><a href="#cb40-206" aria-hidden="true" tabindex="-1"></a><span class="co">:::: {.columns}</span></span>
+<span id="cb40-207"><a href="#cb40-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-208"><a href="#cb40-208" aria-hidden="true" tabindex="-1"></a><span class="co">::: {.column width="45%"}</span></span>
+<span id="cb40-209"><a href="#cb40-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-210"><a href="#cb40-210" aria-hidden="true" tabindex="-1"></a><span class="co">:::</span></span>
+<span id="cb40-211"><a href="#cb40-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-212"><a href="#cb40-212" aria-hidden="true" tabindex="-1"></a><span class="co">::: {.column width="5%"}</span></span>
+<span id="cb40-213"><a href="#cb40-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-214"><a href="#cb40-214" aria-hidden="true" tabindex="-1"></a><span class="co">:::</span></span>
+<span id="cb40-215"><a href="#cb40-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-216"><a href="#cb40-216" aria-hidden="true" tabindex="-1"></a><span class="co">::: {.column width="45%"}</span></span>
+<span id="cb40-217"><a href="#cb40-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-218"><a href="#cb40-218" aria-hidden="true" tabindex="-1"></a><span class="co">:::</span></span>
+<span id="cb40-219"><a href="#cb40-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-220"><a href="#cb40-220" aria-hidden="true" tabindex="-1"></a><span class="co">::::</span></span>
+<span id="cb40-221"><a href="#cb40-221" aria-hidden="true" tabindex="-1"></a><span class="co"> --&gt;</span></span>
+<span id="cb40-222"><a href="#cb40-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-223"><a href="#cb40-223" aria-hidden="true" tabindex="-1"></a><span class="fu">### Le taux de *swapping*</span></span>
+<span id="cb40-224"><a href="#cb40-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-225"><a href="#cb40-225" aria-hidden="true" tabindex="-1"></a>Le __taux d'échange__ ou __taux de *swapping*__ est la part d'individus du jeu de données </span>
+<span id="cb40-226"><a href="#cb40-226" aria-hidden="true" tabindex="-1"></a>qui a pris part aux échanges, soit $s=\frac{E+D}{N}$, où $E$ est le nombre d'individus à échanger,</span>
+<span id="cb40-227"><a href="#cb40-227" aria-hidden="true" tabindex="-1"></a>$D$ le nombre de donneurs ($D=E$) et $N$ le nombre d'individus dans la base. </span>
+<span id="cb40-228"><a href="#cb40-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-229"><a href="#cb40-229" aria-hidden="true" tabindex="-1"></a>En pratique, on fixe un taux de swapping $s$ de telle sorte que l'algorithme procède à un minimum </span>
+<span id="cb40-230"><a href="#cb40-230" aria-hidden="true" tabindex="-1"></a>d'échanges. Si le nombre d'individus à risque ne permet pas d'atteindre ce seuil, des individus </span>
+<span id="cb40-231"><a href="#cb40-231" aria-hidden="true" tabindex="-1"></a>supplémentaires seront également échangés pour atteindre $s$. Sinon, le taux de swapping étant atteint ou dépassé,</span>
+<span id="cb40-232"><a href="#cb40-232" aria-hidden="true" tabindex="-1"></a>aucun individu additionnel n'est ajouté.</span>
+<span id="cb40-233"><a href="#cb40-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-234"><a href="#cb40-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-235"><a href="#cb40-235" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les grandes étapes à suivre pour appliquer le `TRS`</span></span>
+<span id="cb40-236"><a href="#cb40-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-237"><a href="#cb40-237" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>De quels risques cherche-t-on à se protéger ?</span>
+<span id="cb40-238"><a href="#cb40-238" aria-hidden="true" tabindex="-1"></a><span class="ss">   1. </span>Si c'est du risque de ré-identification, le <span class="in">`TRS`</span> est une méthode adaptée</span>
+<span id="cb40-239"><a href="#cb40-239" aria-hidden="true" tabindex="-1"></a><span class="ss">   2. </span>Sinon, il faut peut-être aller voir ailleurs.</span>
+<span id="cb40-240"><a href="#cb40-240" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Quelles sont les variables quasi-identifiantes dans mes données ?</span>
+<span id="cb40-241"><a href="#cb40-241" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Mesurer le risque de ré-identification basé sur ces variables ? </span>
+<span id="cb40-242"><a href="#cb40-242" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Choisir un seuil de risque de ré-identification maximal acceptable, au-delà duquel les individus devront être traités.</span>
+<span id="cb40-243"><a href="#cb40-243" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Quelles sont les marges que la méthode devrait conserver intactes en priorité ?</span>
+<span id="cb40-244"><a href="#cb40-244" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Un *swapping* des ménages est-il préférable à un swapping d'individus ? </span>
+<span id="cb40-245"><a href="#cb40-245" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>Sélection des paramètres de la méthode:</span>
+<span id="cb40-246"><a href="#cb40-246" aria-hidden="true" tabindex="-1"></a><span class="ss">   1. </span>Les variables de similarités, en tenant compte des risques et des objectifs de diffusion.</span>
+<span id="cb40-247"><a href="#cb40-247" aria-hidden="true" tabindex="-1"></a><span class="ss">   2. </span>Le taux de swapping.</span>
+<span id="cb40-248"><a href="#cb40-248" aria-hidden="true" tabindex="-1"></a><span class="ss">8. </span>Procéder au swapping</span>
+<span id="cb40-249"><a href="#cb40-249" aria-hidden="true" tabindex="-1"></a><span class="ss">9. </span>Mesurer la perte d'information </span>
+<span id="cb40-250"><a href="#cb40-250" aria-hidden="true" tabindex="-1"></a><span class="ss">10. </span>Reprendre les étapes 4. à 9. si la perte d'information s'avère trop grande ou la protection trop faible</span>
+<span id="cb40-251"><a href="#cb40-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-252"><a href="#cb40-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-253"><a href="#cb40-253" aria-hidden="true" tabindex="-1"></a>L'avantage de la méthode  est sa grande capacité d'adaptation aux données dont on dispose. </span>
+<span id="cb40-254"><a href="#cb40-254" aria-hidden="true" tabindex="-1"></a>Même si cette fiche va présenter comment l'appliquer avec le package <span class="in">`sdcMicro`</span>, </span>
+<span id="cb40-255"><a href="#cb40-255" aria-hidden="true" tabindex="-1"></a>il est en réalité tout à fait possible de développer son propre algorithme pour </span>
+<span id="cb40-256"><a href="#cb40-256" aria-hidden="true" tabindex="-1"></a>affiner la façon de tirer les individus ou les ménages à échanger.</span>
+<span id="cb40-257"><a href="#cb40-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-258"><a href="#cb40-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-259"><a href="#cb40-259" aria-hidden="true" tabindex="-1"></a>On pourra se reporter à la </span>
+<span id="cb40-260"><a href="#cb40-260" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">fiche sur les mesures de risque</span><span class="co">](pratique/fiches/mesurer-risque.html)</span> </span>
+<span id="cb40-261"><a href="#cb40-261" aria-hidden="true" tabindex="-1"></a>pour en savoir plus sur les risques et la façon de les mesurer.</span>
+<span id="cb40-262"><a href="#cb40-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-263"><a href="#cb40-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-264"><a href="#cb40-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-265"><a href="#cb40-265" aria-hidden="true" tabindex="-1"></a><span class="fu"># En pratique</span></span>
+<span id="cb40-266"><a href="#cb40-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-267"><a href="#cb40-267" aria-hidden="true" tabindex="-1"></a>Pour installer les packages nécessaires, vous trouverez les instructions à suivre </span>
+<span id="cb40-268"><a href="#cb40-268" aria-hidden="true" tabindex="-1"></a>dans la fiche <span class="co">[</span><span class="ot">Ressources / Installer les packages et les outils sur R</span><span class="co">](../../ressources/fiches/outils-install.html)</span>.  </span>
+<span id="cb40-269"><a href="#cb40-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-270"><a href="#cb40-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-271"><a href="#cb40-271" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les packages</span></span>
+<span id="cb40-272"><a href="#cb40-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-275"><a href="#cb40-275" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-276"><a href="#cb40-276" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb40-277"><a href="#cb40-277" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb40-278"><a href="#cb40-278" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"./pratique/fiches"</span>)</span>
+<span id="cb40-279"><a href="#cb40-279" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-280"><a href="#cb40-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-281"><a href="#cb40-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-284"><a href="#cb40-284" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-285"><a href="#cb40-285" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb40-286"><a href="#cb40-286" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb40-287"><a href="#cb40-287" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb40-288"><a href="#cb40-288" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb40-289"><a href="#cb40-289" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdcMicro)</span>
+<span id="cb40-290"><a href="#cb40-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-291"><a href="#cb40-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-292"><a href="#cb40-292" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les données</span></span>
+<span id="cb40-293"><a href="#cb40-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-296"><a href="#cb40-296" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-297"><a href="#cb40-297" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_import_data.R"</span>)</span>
+<span id="cb40-298"><a href="#cb40-298" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> <span class="fu">import_lfs</span>()</span>
+<span id="cb40-299"><a href="#cb40-299" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-300"><a href="#cb40-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-301"><a href="#cb40-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-304"><a href="#cb40-304" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-305"><a href="#cb40-305" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_2023)</span>
+<span id="cb40-306"><a href="#cb40-306" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-307"><a href="#cb40-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-308"><a href="#cb40-308" aria-hidden="true" tabindex="-1"></a>Pour plus d'informations sur les données, on pourra se reporter à la fiche </span>
+<span id="cb40-309"><a href="#cb40-309" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">"Présentation des données"</span><span class="co">](description-data.html)</span>.  </span>
+<span id="cb40-310"><a href="#cb40-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-311"><a href="#cb40-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-312"><a href="#cb40-312" aria-hidden="true" tabindex="-1"></a><span class="fu">## Mesurons les risques du fichier</span></span>
+<span id="cb40-313"><a href="#cb40-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-314"><a href="#cb40-314" aria-hidden="true" tabindex="-1"></a><span class="fu">### Les types de variables</span></span>
+<span id="cb40-315"><a href="#cb40-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-316"><a href="#cb40-316" aria-hidden="true" tabindex="-1"></a>On définit les variables selon les différentes catégories suivantes:</span>
+<span id="cb40-317"><a href="#cb40-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-318"><a href="#cb40-318" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>les variables quasi-identifiantes (<span class="in">`key_vars`</span>)</span>
+<span id="cb40-319"><a href="#cb40-319" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>les variables sensibles (<span class="in">`sens_vars`</span>)</span>
+<span id="cb40-320"><a href="#cb40-320" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>les variables identifiant la composition des ménages (<span class="in">`hhid_vars`</span>)</span>
+<span id="cb40-321"><a href="#cb40-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-322"><a href="#cb40-322" aria-hidden="true" tabindex="-1"></a>Pour cet exercice, nous ferons les choix suivants:</span>
+<span id="cb40-323"><a href="#cb40-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-326"><a href="#cb40-326" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-327"><a href="#cb40-327" aria-hidden="true" tabindex="-1"></a>key_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>)</span>
+<span id="cb40-328"><a href="#cb40-328" aria-hidden="true" tabindex="-1"></a>sens_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ACTEU"</span>,<span class="st">"ANCCHOM"</span>,<span class="st">"IS_CHOM"</span>)</span>
+<span id="cb40-329"><a href="#cb40-329" aria-hidden="true" tabindex="-1"></a>hhid_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"HHID"</span>)</span>
+<span id="cb40-330"><a href="#cb40-330" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-331"><a href="#cb40-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-332"><a href="#cb40-332" aria-hidden="true" tabindex="-1"></a>Les comptages par croisement des modalités des variables quasi-identifiantes:</span>
+<span id="cb40-333"><a href="#cb40-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-336"><a href="#cb40-336" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-337"><a href="#cb40-337" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-338"><a href="#cb40-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-339"><a href="#cb40-339" aria-hidden="true" tabindex="-1"></a>La part des individus ne respectant pas appartenant à des groupes de moins de $k$ individus est fournie par la table ci-dessous:</span>
+<span id="cb40-340"><a href="#cb40-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-343"><a href="#cb40-343" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-344"><a href="#cb40-344" aria-hidden="true" tabindex="-1"></a>mesurer_risk_reidentif <span class="ot">&lt;-</span> <span class="cf">function</span>(data, key_vars, ks){</span>
+<span id="cb40-345"><a href="#cb40-345" aria-hidden="true" tabindex="-1"></a>  groupes_QI <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb40-346"><a href="#cb40-346" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(key_vars))) <span class="sc">|&gt;</span></span>
+<span id="cb40-347"><a href="#cb40-347" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(n)</span>
+<span id="cb40-348"><a href="#cb40-348" aria-hidden="true" tabindex="-1"></a>  risk_quantif <span class="ot">&lt;-</span> <span class="fu">map</span>(</span>
+<span id="cb40-349"><a href="#cb40-349" aria-hidden="true" tabindex="-1"></a>  ks,</span>
+<span id="cb40-350"><a href="#cb40-350" aria-hidden="true" tabindex="-1"></a>  \(k){</span>
+<span id="cb40-351"><a href="#cb40-351" aria-hidden="true" tabindex="-1"></a>    groupes_QI <span class="sc">|&gt;</span></span>
+<span id="cb40-352"><a href="#cb40-352" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">part =</span> <span class="fu">sum</span>(n[n<span class="sc">&lt;</span>k])<span class="sc">/</span><span class="fu">sum</span>(n)<span class="sc">*</span><span class="dv">100</span>, <span class="at">.groups=</span><span class="st">"drop"</span>)<span class="sc">|&gt;</span></span>
+<span id="cb40-353"><a href="#cb40-353" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">k=</span>k)</span>
+<span id="cb40-354"><a href="#cb40-354" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb40-355"><a href="#cb40-355" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb40-356"><a href="#cb40-356" aria-hidden="true" tabindex="-1"></a>    purrr<span class="sc">::</span><span class="fu">list_rbind</span>()</span>
+<span id="cb40-357"><a href="#cb40-357" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-358"><a href="#cb40-358" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-359"><a href="#cb40-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-362"><a href="#cb40-362" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-363"><a href="#cb40-363" aria-hidden="true" tabindex="-1"></a>risk_mes <span class="ot">&lt;-</span> <span class="fu">mesurer_risk_reidentif</span>(lfs_2023, key_vars, <span class="at">ks=</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb40-364"><a href="#cb40-364" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-365"><a href="#cb40-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-368"><a href="#cb40-368" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-369"><a href="#cb40-369" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb40-370"><a href="#cb40-370" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Part d'individus à risque de ré-identification en fonction du niveau d'anonymité choisi"</span></span>
+<span id="cb40-371"><a href="#cb40-371" aria-hidden="true" tabindex="-1"></a>risk_mes <span class="sc">|&gt;</span></span>
+<span id="cb40-372"><a href="#cb40-372" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(k, part) <span class="sc">|&gt;</span></span>
+<span id="cb40-373"><a href="#cb40-373" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits=</span><span class="dv">1</span>)</span>
+<span id="cb40-374"><a href="#cb40-374" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-375"><a href="#cb40-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-376"><a href="#cb40-376" aria-hidden="true" tabindex="-1"></a>Comme l'âge détaillé est une variable utilisée dans les quasi-identifiants, la part d'individus à risque de réidentification est assez importante (plus de la moitié des individus dès lors que $k\geq4$).</span>
+<span id="cb40-377"><a href="#cb40-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-378"><a href="#cb40-378" aria-hidden="true" tabindex="-1"></a>Si on choisit de ne diffuser que la variable de tranche d'âge, on réduit sensiblement ce risque:</span>
+<span id="cb40-379"><a href="#cb40-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-382"><a href="#cb40-382" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-383"><a href="#cb40-383" aria-hidden="true" tabindex="-1"></a>key_vars2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>)</span>
+<span id="cb40-384"><a href="#cb40-384" aria-hidden="true" tabindex="-1"></a>risk_mes2 <span class="ot">&lt;-</span> <span class="fu">mesurer_risk_reidentif</span>(lfs_2023, key_vars2, <span class="at">ks=</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb40-385"><a href="#cb40-385" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-386"><a href="#cb40-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-389"><a href="#cb40-389" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-390"><a href="#cb40-390" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb40-391"><a href="#cb40-391" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Part d'individus à risque de ré-identification en fonction du niveau d'anonymité choisi"</span></span>
+<span id="cb40-392"><a href="#cb40-392" aria-hidden="true" tabindex="-1"></a>risk_mes2 <span class="sc">|&gt;</span></span>
+<span id="cb40-393"><a href="#cb40-393" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(k, part) <span class="sc">|&gt;</span></span>
+<span id="cb40-394"><a href="#cb40-394" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits=</span><span class="dv">1</span>)</span>
+<span id="cb40-395"><a href="#cb40-395" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-396"><a href="#cb40-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-397"><a href="#cb40-397" aria-hidden="true" tabindex="-1"></a>Dès lors, avec $k=10$, on dénombre <span class="in">`7.3%`</span> d'individus à risque de ré-identification.</span>
+<span id="cb40-398"><a href="#cb40-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-399"><a href="#cb40-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-400"><a href="#cb40-400" aria-hidden="true" tabindex="-1"></a>On peut retrouver ces mêmes résultats avec le package <span class="in">`sdcMicro`</span>:</span>
+<span id="cb40-401"><a href="#cb40-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-404"><a href="#cb40-404" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-405"><a href="#cb40-405" aria-hidden="true" tabindex="-1"></a>lfs_sdc <span class="ot">&lt;-</span> sdcMicro<span class="sc">::</span><span class="fu">createSdcObj</span>(</span>
+<span id="cb40-406"><a href="#cb40-406" aria-hidden="true" tabindex="-1"></a>  lfs_2023,</span>
+<span id="cb40-407"><a href="#cb40-407" aria-hidden="true" tabindex="-1"></a>  <span class="at">keyVars =</span> key_vars2</span>
+<span id="cb40-408"><a href="#cb40-408" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-409"><a href="#cb40-409" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-410"><a href="#cb40-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-413"><a href="#cb40-413" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-414"><a href="#cb40-414" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lfs_sdc, <span class="st">'kAnon'</span>)</span>
+<span id="cb40-415"><a href="#cb40-415" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-416"><a href="#cb40-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-417"><a href="#cb40-417" aria-hidden="true" tabindex="-1"></a>La part d'individus à risque de ré-identification pour $k=10$:</span>
+<span id="cb40-420"><a href="#cb40-420" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-421"><a href="#cb40-421" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual[,<span class="dv">2</span>] <span class="sc">&lt;</span> <span class="dv">10</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb40-422"><a href="#cb40-422" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-423"><a href="#cb40-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-424"><a href="#cb40-424" aria-hidden="true" tabindex="-1"></a><span class="fu">## Préparation pour le swapping</span></span>
+<span id="cb40-425"><a href="#cb40-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-428"><a href="#cb40-428" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-429"><a href="#cb40-429" aria-hidden="true" tabindex="-1"></a>risk_variables <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>,<span class="st">"DIP7"</span>)</span>
+<span id="cb40-430"><a href="#cb40-430" aria-hidden="true" tabindex="-1"></a>hierarchy <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"REG"</span>, <span class="st">"DEP"</span>)</span>
+<span id="cb40-431"><a href="#cb40-431" aria-hidden="true" tabindex="-1"></a>similar <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb40-432"><a href="#cb40-432" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">"REG"</span>,<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>), </span>
+<span id="cb40-433"><a href="#cb40-433" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">"REG"</span>,<span class="st">"SEXE"</span>), </span>
+<span id="cb40-434"><a href="#cb40-434" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">"REG"</span>,<span class="st">"AGE6"</span>), </span>
+<span id="cb40-435"><a href="#cb40-435" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>),</span>
+<span id="cb40-436"><a href="#cb40-436" aria-hidden="true" tabindex="-1"></a>  <span class="st">"REG"</span></span>
+<span id="cb40-437"><a href="#cb40-437" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb40-438"><a href="#cb40-438" aria-hidden="true" tabindex="-1"></a>carry_along <span class="ot">&lt;-</span> <span class="st">"ARR"</span></span>
+<span id="cb40-439"><a href="#cb40-439" aria-hidden="true" tabindex="-1"></a>hid <span class="ot">&lt;-</span> <span class="st">"ID"</span> <span class="co"># swapping d'individus</span></span>
+<span id="cb40-440"><a href="#cb40-440" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-441"><a href="#cb40-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-444"><a href="#cb40-444" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-445"><a href="#cb40-445" aria-hidden="true" tabindex="-1"></a>lfs_2023_pr_swap <span class="ot">&lt;-</span> lfs_2023 <span class="sc">|&gt;</span></span>
+<span id="cb40-446"><a href="#cb40-446" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select(all_of(c(risk_variables, hierarchy, unlist(similar), sens_vars, hhid_vars))) |&gt;</span></span>
+<span id="cb40-447"><a href="#cb40-447" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), as.integer))<span class="sc">|&gt;</span></span>
+<span id="cb40-448"><a href="#cb40-448" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>())</span>
+<span id="cb40-449"><a href="#cb40-449" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-450"><a href="#cb40-450" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-451"><a href="#cb40-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-452"><a href="#cb40-452" aria-hidden="true" tabindex="-1"></a><span class="fu">## Swapper les individus</span></span>
+<span id="cb40-453"><a href="#cb40-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-454"><a href="#cb40-454" aria-hidden="true" tabindex="-1"></a>Les paramètres:</span>
+<span id="cb40-455"><a href="#cb40-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-458"><a href="#cb40-458" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-459"><a href="#cb40-459" aria-hidden="true" tabindex="-1"></a>k_anonymity <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb40-460"><a href="#cb40-460" aria-hidden="true" tabindex="-1"></a>swaprate <span class="ot">&lt;-</span> .<span class="dv">1</span></span>
+<span id="cb40-461"><a href="#cb40-461" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-462"><a href="#cb40-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-465"><a href="#cb40-465" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-466"><a href="#cb40-466" aria-hidden="true" tabindex="-1"></a>lfs_swapped <span class="ot">&lt;-</span> <span class="fu">recordSwap</span>(</span>
+<span id="cb40-467"><a href="#cb40-467" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> lfs_2023_pr_swap,</span>
+<span id="cb40-468"><a href="#cb40-468" aria-hidden="true" tabindex="-1"></a>  <span class="at">hid =</span> hid,</span>
+<span id="cb40-469"><a href="#cb40-469" aria-hidden="true" tabindex="-1"></a>  <span class="at">hierarchy =</span> hierarchy,</span>
+<span id="cb40-470"><a href="#cb40-470" aria-hidden="true" tabindex="-1"></a>  <span class="at">similar =</span> similar,</span>
+<span id="cb40-471"><a href="#cb40-471" aria-hidden="true" tabindex="-1"></a>  <span class="at">risk_variables =</span> risk_variables,</span>
+<span id="cb40-472"><a href="#cb40-472" aria-hidden="true" tabindex="-1"></a>  <span class="at">carry_along =</span> carry_along,</span>
+<span id="cb40-473"><a href="#cb40-473" aria-hidden="true" tabindex="-1"></a>  <span class="at">k_anonymity =</span> k_anonymity,</span>
+<span id="cb40-474"><a href="#cb40-474" aria-hidden="true" tabindex="-1"></a>  <span class="at">swaprate =</span> swaprate,</span>
+<span id="cb40-475"><a href="#cb40-475" aria-hidden="true" tabindex="-1"></a>  <span class="at">return_swapped_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb40-476"><a href="#cb40-476" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">123456</span></span>
+<span id="cb40-477"><a href="#cb40-477" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-478"><a href="#cb40-478" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-479"><a href="#cb40-479" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-480"><a href="#cb40-480" aria-hidden="true" tabindex="-1"></a>Le taux de swapping réel:</span>
+<span id="cb40-481"><a href="#cb40-481" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-484"><a href="#cb40-484" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-485"><a href="#cb40-485" aria-hidden="true" tabindex="-1"></a>lfs_swapped <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">mean</span>(ID <span class="sc">!=</span> ID_swapped))</span>
+<span id="cb40-486"><a href="#cb40-486" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-487"><a href="#cb40-487" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-490"><a href="#cb40-490" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-491"><a href="#cb40-491" aria-hidden="true" tabindex="-1"></a>lfs_swapped <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(REG) <span class="sc">%&gt;%</span></span>
+<span id="cb40-492"><a href="#cb40-492" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(ID <span class="sc">!=</span> ID_swapped))</span>
+<span id="cb40-493"><a href="#cb40-493" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-494"><a href="#cb40-494" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-495"><a href="#cb40-495" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-496"><a href="#cb40-496" aria-hidden="true" tabindex="-1"></a><span class="fu">### Un exemple d'échange</span></span>
+<span id="cb40-497"><a href="#cb40-497" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-500"><a href="#cb40-500" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-501"><a href="#cb40-501" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_swapped, <span class="dv">5</span>)</span>
+<span id="cb40-502"><a href="#cb40-502" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-503"><a href="#cb40-503" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-504"><a href="#cb40-504" aria-hidden="true" tabindex="-1"></a>Par exemple, l'individu 3 a été échangé:</span>
+<span id="cb40-505"><a href="#cb40-505" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-508"><a href="#cb40-508" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-509"><a href="#cb40-509" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="sc">|&gt;</span> <span class="fu">slice</span>(<span class="fu">c</span>(<span class="dv">3</span>,lfs_swapped<span class="sc">|&gt;</span><span class="fu">slice</span>(<span class="dv">3</span>)<span class="sc">|&gt;</span><span class="fu">pull</span>(ID_swapped)))</span>
+<span id="cb40-510"><a href="#cb40-510" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-511"><a href="#cb40-511" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-512"><a href="#cb40-512" aria-hidden="true" tabindex="-1"></a>On peut remarquer que ces individus sont similaires sur la région, le sexe et l'âge (<span class="in">`AGE6`</span>).</span>
+<span id="cb40-513"><a href="#cb40-513" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-514"><a href="#cb40-514" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-515"><a href="#cb40-515" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span></span>
+<span id="cb40-516"><a href="#cb40-516" aria-hidden="true" tabindex="-1"></a><span class="co">#### Vérifier que les individus à risque ont bien été swappés</span></span>
+<span id="cb40-517"><a href="#cb40-517" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-520"><a href="#cb40-520" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-521"><a href="#cb40-521" aria-hidden="true" tabindex="-1"></a><span class="co">lfs_swapped </span></span>
+<span id="cb40-522"><a href="#cb40-522" aria-hidden="true" tabindex="-1"></a><span class="co">```</span></span>
+<span id="cb40-523"><a href="#cb40-523" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-524"><a href="#cb40-524" aria-hidden="true" tabindex="-1"></a><span class="co">#### Intégrité de la composition des ménages</span></span>
+<span id="cb40-525"><a href="#cb40-525" aria-hidden="true" tabindex="-1"></a><span class="co"> --&gt;</span></span>
+<span id="cb40-526"><a href="#cb40-526" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-527"><a href="#cb40-527" aria-hidden="true" tabindex="-1"></a><span class="fu">## La base swappée</span></span>
+<span id="cb40-528"><a href="#cb40-528" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-531"><a href="#cb40-531" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-532"><a href="#cb40-532" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(lfs_swapped)</span>
+<span id="cb40-533"><a href="#cb40-533" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-534"><a href="#cb40-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-535"><a href="#cb40-535" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span></span>
+<span id="cb40-538"><a href="#cb40-538" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-539"><a href="#cb40-539" aria-hidden="true" tabindex="-1"></a><span class="co"># lfs_pert &lt;- bind_cols(</span></span>
+<span id="cb40-540"><a href="#cb40-540" aria-hidden="true" tabindex="-1"></a><span class="co">#   lfs_2023_pr_swap |&gt; select(REG, DEP, ARR),</span></span>
+<span id="cb40-541"><a href="#cb40-541" aria-hidden="true" tabindex="-1"></a><span class="co">#   lfs_swapped |&gt; select(-REG, -DEP, -ARR) |&gt; arrange(ID_swapped) </span></span>
+<span id="cb40-542"><a href="#cb40-542" aria-hidden="true" tabindex="-1"></a><span class="co"># ) </span></span>
+<span id="cb40-543"><a href="#cb40-543" aria-hidden="true" tabindex="-1"></a><span class="co">```</span></span>
+<span id="cb40-544"><a href="#cb40-544" aria-hidden="true" tabindex="-1"></a><span class="co"> --&gt;</span></span>
+<span id="cb40-545"><a href="#cb40-545" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-546"><a href="#cb40-546" aria-hidden="true" tabindex="-1"></a><span class="fu">## Swapper les ménages</span></span>
+<span id="cb40-547"><a href="#cb40-547" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-550"><a href="#cb40-550" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-551"><a href="#cb40-551" aria-hidden="true" tabindex="-1"></a>hid <span class="ot">&lt;-</span> <span class="st">"HHID"</span> <span class="co"># swapping de ménages</span></span>
+<span id="cb40-552"><a href="#cb40-552" aria-hidden="true" tabindex="-1"></a>similar <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"HH_TAILLE"</span>, <span class="st">"HH_AGE"</span>), <span class="fu">c</span>(<span class="st">"HH_TAILLE"</span>), <span class="fu">c</span>(<span class="st">"HH_AGE"</span>))</span>
+<span id="cb40-553"><a href="#cb40-553" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-554"><a href="#cb40-554" aria-hidden="true" tabindex="-1"></a>lfs_swapped_hh <span class="ot">&lt;-</span> <span class="fu">recordSwap</span>(</span>
+<span id="cb40-555"><a href="#cb40-555" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> lfs_2023_pr_swap,</span>
+<span id="cb40-556"><a href="#cb40-556" aria-hidden="true" tabindex="-1"></a>  <span class="at">hid =</span> hid,</span>
+<span id="cb40-557"><a href="#cb40-557" aria-hidden="true" tabindex="-1"></a>  <span class="at">hierarchy =</span> hierarchy,</span>
+<span id="cb40-558"><a href="#cb40-558" aria-hidden="true" tabindex="-1"></a>  <span class="at">similar =</span> similar,</span>
+<span id="cb40-559"><a href="#cb40-559" aria-hidden="true" tabindex="-1"></a>  <span class="at">risk_variables =</span> risk_variables,</span>
+<span id="cb40-560"><a href="#cb40-560" aria-hidden="true" tabindex="-1"></a>  <span class="at">carry_along =</span> carry_along,</span>
+<span id="cb40-561"><a href="#cb40-561" aria-hidden="true" tabindex="-1"></a>  <span class="at">k_anonymity =</span> k_anonymity,</span>
+<span id="cb40-562"><a href="#cb40-562" aria-hidden="true" tabindex="-1"></a>  <span class="at">swaprate =</span> swaprate,</span>
+<span id="cb40-563"><a href="#cb40-563" aria-hidden="true" tabindex="-1"></a>  <span class="at">return_swapped_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb40-564"><a href="#cb40-564" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">123456</span></span>
+<span id="cb40-565"><a href="#cb40-565" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-566"><a href="#cb40-566" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-567"><a href="#cb40-567" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-568"><a href="#cb40-568" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-569"><a href="#cb40-569" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Taux de swapping des ménages vs taux de swapping des individus</span></span>
+<span id="cb40-570"><a href="#cb40-570" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-573"><a href="#cb40-573" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-574"><a href="#cb40-574" aria-hidden="true" tabindex="-1"></a>lfs_swapped_hh <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">mean</span>(HHID <span class="sc">!=</span> HHID_swapped)) </span>
+<span id="cb40-575"><a href="#cb40-575" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-576"><a href="#cb40-576" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-577"><a href="#cb40-577" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-578"><a href="#cb40-578" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-579"><a href="#cb40-579" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-580"><a href="#cb40-580" aria-hidden="true" tabindex="-1"></a><span class="fu">## Mesurer la perte d'utilité </span></span>
+<span id="cb40-581"><a href="#cb40-581" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-582"><a href="#cb40-582" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-583"><a href="#cb40-583" aria-hidden="true" tabindex="-1"></a>On se propose de  comparer les intervalles de confiance des coefficients d'un modèle logistique </span>
+<span id="cb40-584"><a href="#cb40-584" aria-hidden="true" tabindex="-1"></a>pour évaluer la perte d'information engendrée par le swapping.</span>
+<span id="cb40-585"><a href="#cb40-585" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-588"><a href="#cb40-588" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-589"><a href="#cb40-589" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_cio.R"</span>)</span>
+<span id="cb40-590"><a href="#cb40-590" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-591"><a href="#cb40-591" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-592"><a href="#cb40-592" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-593"><a href="#cb40-593" aria-hidden="true" tabindex="-1"></a>Étudions la stabilité d'un modèle relativement simple, cherchant à expliquer </span>
+<span id="cb40-594"><a href="#cb40-594" aria-hidden="true" tabindex="-1"></a>le fait d'être au chômage par différentes variables à notre disposition:</span>
+<span id="cb40-595"><a href="#cb40-595" aria-hidden="true" tabindex="-1"></a>l'âge, le diplôme et le sexe.</span>
+<span id="cb40-596"><a href="#cb40-596" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-597"><a href="#cb40-597" aria-hidden="true" tabindex="-1"></a>On entraînera ce modèle uniquement sur la population active. On retire donc notamment </span>
+<span id="cb40-598"><a href="#cb40-598" aria-hidden="true" tabindex="-1"></a>la population étudiante et retraitée.</span>
+<span id="cb40-599"><a href="#cb40-599" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-600"><a href="#cb40-600" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-603"><a href="#cb40-603" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-604"><a href="#cb40-604" aria-hidden="true" tabindex="-1"></a>m_original <span class="ot">&lt;-</span> <span class="fu">glm</span>(IS_CHOM <span class="sc">~</span> SEXE <span class="sc">+</span> AGE6 <span class="sc">+</span> DIP7, <span class="at">data =</span> lfs_2023 <span class="sc">|&gt;</span> <span class="fu">filter</span>(ACTEU <span class="sc">!=</span> <span class="dv">3</span>))</span>
+<span id="cb40-605"><a href="#cb40-605" aria-hidden="true" tabindex="-1"></a>m_swapped <span class="ot">&lt;-</span> <span class="fu">glm</span>(IS_CHOM <span class="sc">~</span> SEXE <span class="sc">+</span> AGE6 <span class="sc">+</span> DIP7, <span class="at">data =</span> lfs_2023 <span class="sc">|&gt;</span> <span class="fu">filter</span>(ACTEU <span class="sc">!=</span> <span class="dv">3</span>))</span>
+<span id="cb40-606"><a href="#cb40-606" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-607"><a href="#cb40-607" aria-hidden="true" tabindex="-1"></a>mes_modeles <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb40-608"><a href="#cb40-608" aria-hidden="true" tabindex="-1"></a>  <span class="st">"original"</span> <span class="ot">=</span> m_original,</span>
+<span id="cb40-609"><a href="#cb40-609" aria-hidden="true" tabindex="-1"></a>  <span class="st">"swapped"</span> <span class="ot">=</span> m_swapped</span>
+<span id="cb40-610"><a href="#cb40-610" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-611"><a href="#cb40-611" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-612"><a href="#cb40-612" aria-hidden="true" tabindex="-1"></a>all_cios <span class="ot">&lt;-</span> <span class="fu">get_all_confints</span>(mes_modeles)</span>
+<span id="cb40-613"><a href="#cb40-613" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-614"><a href="#cb40-614" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-615"><a href="#cb40-615" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-618"><a href="#cb40-618" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-619"><a href="#cb40-619" aria-hidden="true" tabindex="-1"></a><span class="fu">graph_cios</span>(all_cios, <span class="at">titre =</span> <span class="st">"Superposition des intervalles de confiance</span><span class="sc">\n</span><span class="st">des Odds Ratio du modèle selon le jeu de données"</span>) <span class="sc">+</span></span>
+<span id="cb40-620"><a href="#cb40-620" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span>  <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>))</span>
+<span id="cb40-621"><a href="#cb40-621" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-622"><a href="#cb40-622" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-623"><a href="#cb40-623" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-624"><a href="#cb40-624" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercice </span></span>
+<span id="cb40-625"><a href="#cb40-625" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-626"><a href="#cb40-626" aria-hidden="true" tabindex="-1"></a>Comparer la perte d'information de différents taux de swapping.</span>
+<span id="cb40-627"><a href="#cb40-627" aria-hidden="true" tabindex="-1"></a>Vous utiliserez la mesure de perte d'information que vous souhaitez.</span>
+<span id="cb40-628"><a href="#cb40-628" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
