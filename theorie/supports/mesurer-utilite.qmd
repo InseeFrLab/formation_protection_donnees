@@ -44,8 +44,6 @@ bibliography: ../../references-SDC.bib
 # csl: ../style.csl  # Décommentez besoin d'un style de biblio spécifique
 ---
 
-::: frame
-:::
 
 # Définir
 
@@ -100,16 +98,16 @@ bibliography: ../../references-SDC.bib
 
 ## Quels usages des données ?
 
--   Pas de définition de la perte d'information sans connaître la **gamme envisagée des utilisateurs des données**
-
 -   En **fonction des utilisateurs finaux**, le concept de perte d'information peut changer
 
--   Il n'est pas recommandé de publier plusieurs versions protégées du même jeu de données pour chaque type d'utilisateur $\longrightarrow$ risques de divulgation importants par différenciation.
+-   Connaître les **utilisations** qui seront faites des données (ex. régression, aggrégats, moyennes)
+
+-   Il n'est pas recommandé de publier plusieurs versions protégées du même jeu de données pour chaque type d'utilisateur $\rightarrow$ risques de divulgation importants par différenciation.
 
 
 ## Idée principale
 
-Deux moyens pour mesurer la perte d'information :
+Deux moyens de mesurer la perte d'information :
 
 1.  **Comparer les enregistrements bruts** entre le jeu de données original et le jeu de données protégé
 
@@ -131,41 +129,54 @@ Pour les **données continues**, formellement :
 
 ## Distance entre matrices
 
--   **Erreur quadratique moyenne** : somme des différences au carré, composante par composante entre 2 matrices, divisée par le nombre de coefficients de chaque matrice : $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n(x_{ij}-x^{'}_{ij})^2$$
+-   **Erreur quadratique moyenne** : somme des différences au carré entre les deux matrices, composante par compasante, divisée par le nombre de coefficients d'une matrice (même pour les deux) $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n(x_{ij}-x^{'}_{ij})^2$$
 
 
 ## Distance entre matrices
 
--   **Erreur absolue moyenne** : somme des différences absolues, composante par composante entre 2 matrices, divisée par le nombre de coefficients de chaque matrice $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n|x_{ij}-x^{'}_{ij}|$$
+-   **Erreur absolue moyenne** : somme des différences absolues entre les deux matrices, composante par composante, divisée par le nombre de coefficients d'une matrice (même pour les deux) $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n|x_{ij}-x^{'}_{ij}|$$
 
 
 ## Distance entre matrices
 
 -   **Variation moyenne** : somme des variations absolues en pourcentage des composantes de la matrice protégée par rapport à la matrice de données originale $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{|x_{ij}|}$$
 
+Avec $x_{ij} \ne 0$.
+
+"En moyenne, chaque cellule a été modifiée de x% par rapport à la valeur d'origine."
 
 ## Un exemple
 
--   [$X$]{style="color: blue"} en haut, [$X^{'}$]{style="color: blue"} en bas, les données perturbées
+:::: {.columns}
 
+::: {.column width="49%"}
 ::: {#tbl-ex-haut}
-  ------ -------- --------------------------- ---------------------------
-   Sexe   Région              Âge                 heures travaillées
-                                                      par semaine
+  ------ -------- --------------------------- -----------------------------
+   Sexe   Rég              Âge                    h / semaine
     F       92     [36]{style="color: blue"}   [17]{style="color: blue"}
     M       75     [41]{style="color: blue"}   [35]{style="color: blue"}
     F       75     [52]{style="color: blue"}   [5]{style="color: blue"}
-  ------ -------- --------------------------- ---------------------------
-: titre
+  ------ -------- --------------------------- -----------------------------
+: Heures travaillées par semaine par sexe, âge et région (données originales [$X$]{style="color: blue"})
+:::
 :::
 
-  ------ -------- --------------------------- ---------------------------
-   Sexe   Région              Âge                 heures travaillées
-                                                      par semaine
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+::: {#tbl-perturbees}
+  ------ -------- --------------------------- -----------------------------
+   Sexe   Rég              Âge                    h / semaine
     F       92     [34]{style="color: blue"}   [23]{style="color: blue"}
     F       75     [48]{style="color: blue"}   [35]{style="color: blue"}
     M       75     [58]{style="color: blue"}   [2]{style="color: blue"}
-  ------ -------- --------------------------- ---------------------------
+  ------ -------- --------------------------- -----------------------------
+: Heures travaillées par semaine par sexe, âge et région (données perturbées [$X^{'}$]{style="color: blue"})
+:::
+:::
+
+::::
 
 ## Un exemple
 
@@ -181,11 +192,21 @@ Pour les **données continues**, formellement :
   
   $\frac{\frac{|36-34|}{36}+\frac{|41-48|}{41}+\frac{|52-58|}{52}+\frac{|17-23|}{17}+\frac{|35-35|}{35}+\frac{|5-2|}{5}}{6}=0.15$
 
-## Cas des petites valeurs
+## Effet de taille variation moyenne
 
--   Les petites valeurs de $x_{ij}$ peuvent entraîner une instabilité lors du calcul de la variation moyenne $\longrightarrow$ pour éviter cela, la solution est la formulation : $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{\sqrt{2}S_j}$$ avec $S_j$ l'écart type de la $j$-ème variable
+La variation moyenne dépend de la taille de $x_{ij}$ :
 
-## Mesures spécifiques:
+-   $x_{ij}$ grande $\rightarrow$ même une différence importante $|x_{ij} - x^{'}_{ij}|$ donne un ratio faible
+
+-   $x_{ij}$ petite $\rightarrow$ même un petit écart absolu $|x_{ij} - x^{'}_{ij}|$ donne un ratio élevé
+
+## Corriger l'effet de taille
+
+Pour que le ratio ne dépende pas de la taille de $x_{ij}$ on utilise une autre mesure : $$\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{\sqrt{2}S_j}$$ avec $S_j$ l'écart type de la $j$-ème variable
+
+Permet de comparer les variations à variabilité "normale" de la variable.
+
+## Mesures spécifiques
 
 -   Comparaisons univariées (comparaison de la distribution d'une variable avant et après perturbation).
 
@@ -198,6 +219,7 @@ Pour les **données continues**, formellement :
 
 # Données catégorielles
 
+## Différentes comparaisons
 Pour les **variables catégorielles**, 3 idées principales pour évaluer la perte d'information avec des données catégorielles :
 
 -   **Comparaison directe** des valeurs des variables
@@ -244,71 +266,56 @@ Pour les **variables catégorielles**, 3 idées principales pour évaluer la per
 :::
 ::::
 
--   $\longrightarrow$ Compromis entre risque et perte d'information !
--   
+-   Compromis entre risque et perte d'information !
 
-## Données tabulées
+## Mesures globales
 
-Pour les **variables catégorielles**, 3 idées principales pour évaluer la perte d'information avec des données tabulées :
-
--   Mesures globales
-
-    -   Écarts absolus moyens ou relatifs
-
-    -   Distance de Hellinger\
+-   Écarts absolus moyens ou relatifs
+-   Distance de Hellinger\
         $$HD(\mathbf{X}, \mathbf{X}') = \frac{1}{\sqrt{2}} \sqrt{\sum_{j = 1}^M \left(\sqrt{\frac{x'_j}{\sum_{j=1}^M x'_j}} - \sqrt{\frac{x_j}{\sum_{j=1}^M x_j}}\right)^2}$$
 
-## Données tabulées
+## Métriques spécifiques pour tableau de contingence
 
--   Métriques spécifiques pour tableau de contingence:
-
-    -   Comparaison des V de Cramer (basée sur la statistique du $\chi^2$)
-
-    -   Comparaison du 1er plan factoriel d'une analyse factorielle des correspondances.
+-   Comparaison des V de Cramer (basée sur la statistique du $\chi^2$)
+-   Comparaison du 1er plan factoriel d'une analyse factorielle des correspondances.
 
 
 # S'appuyer sur la visualisation
 
-## De nombreux possibilités
+## De nombreuses possibilités
 
--   De nombreux moyens de visualisation de la perte d'information:
+-   Univarié: histogrammes, boîtes à moustaches, diagrammes en barres
+-   Bivarié: Matrices de corrélations, Diagrammes en mosaïques, Plan d'une analyse factorielle des correspondances, etc.
+-   Multivarié: 1er plan d'une analyse factorielle (ACP, ACM, AFDM)
 
-    -   Univarié: histogrammes, boîtes à moustaches, diagrammes en barres
-
-    -   Bivarié: Matrices de corrélations, Diagrammes en mosaïques, Plan d'une analyse factorielle des correspondances, etc.
-
-    -   Multivarié: 1er plan d'une analyse factorielle (ACP, ACM, AFDM)
-
-## Comparer des matrices de corrélation
-
-Matrice de corrélations dans les données originales et différences observées après perturbation selon deux méthodes différentes:
+## Matrice de corrélation
 
 :::: {.columns}
 
 ::: {.column width="33%"}
 ::: {style="text-align:center;"}
-![Original](img/cor_original.png){#fig-cor-original width=90% fig-alt="Matrice originale des corrélations" fig-align="center"}
+![Originale](img/cor_original.png){#fig-cor-original width=90% fig-alt="Matrice originale des corrélations" fig-align="center"}
 :::
 :::
 
 ::: {.column width="33%"}
 ::: {style="text-align:center;"}
-![Méthode 1](img/cor_cart.png){#fig-diff-cor-cart width=90% fig-alt="Matrice des différences entre l'original et la méthode 1" fig-align="center"}
+![Différences méthode 1](img/cor_cart.png){#fig-diff-cor-cart width=90% fig-alt="Matrice des différences entre l'original et la méthode 1" fig-align="center"}
 :::
 :::
 
 ::: {.column width="33%"}
 ::: {style="text-align:center;"}
-![Méthode 2](img/cor_ctgan.png){#fig-diff-cor-ctgan width=90% fig-alt="Matrice des différences entre l'original et la méthode 2" fig-align="center"}
+![Différences méthode 2](img/cor_ctgan.png){#fig-diff-cor-ctgan width=90% fig-alt="Matrice des différences entre l'original et la méthode 2" fig-align="center"}
 :::
 :::
 
 ::::
 
-La comparaison visuelle permet immédiatement de saisir la supériorité de la première méthode sur la seconde pour conserver les relations bivariées.
+La comparaison visuelle permet immédiatement de voir que la 1ere méthode conserve mieux les relations bivariées que la 2eme.
 
 
-## Comparer les nuages d'une analyse factorielle
+## Nuages d'une analyse factorielle
 
 Comparaison de la projection des individus sur le premier plan d'une analyse factorielle.
 
@@ -316,21 +323,21 @@ Comparaison de la projection des individus sur le premier plan d'une analyse fac
 
 ::: {.column width="50%"}
 ::: {style="text-align:center;"}
-![Original](img/acp_original.png){#fig-acp-originale width=90% fig-alt="Individus originaux projetés sur le premier plan d'une ACP" fig-align="center"}
+![Original](img/acp_original.png){#fig-acp-originale width=80% fig-alt="Individus originaux projetés sur le premier plan d'une ACP" fig-align="center"}
 :::
 :::
 
 
 ::: {.column width="50%"}
 ::: {style="text-align:center;"}
-![Perturbé](img/acp_ctgan.png){#fig-acp-ctgan  width=90% fig-alt="Individus bruités projetés sur le premier plan de la même ACP" fig-align="center"}
+![Perturbé](img/acp_ctgan.png){#fig-acp-ctgan  width=80% fig-alt="Individus bruités projetés sur le premier plan de la même ACP" fig-align="center"}
 :::
 :::
 ::::
 
 
 
-## Comparer les résultats d'une régression
+## Résultats d'une régression
 
 ::: {style="text-align:center;"}
 ![Intervalle de confiance des coeeficients d'une régression logistique selon la méthode de traitement des données](img/puf65_intervalle_confiance_glm.png){#fig-ic-coeff-glm  width=90% fig-alt="Intervalles de confiance des coefficients d'une régression logistique en fonction de la méthode de traitement des données" fig-align="center"}
