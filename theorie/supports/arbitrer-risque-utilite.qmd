@@ -634,7 +634,7 @@ Exemples:
 
 
 # Mesurer le risque
-
+<!-- 
 ## Vision bayésienne / retour à Dalenius
 
 Si on repart de la proposition (impossible) de Dalenius, on peut l'envisager dans un cadre bayésien en cherchant à limiter la capacité d'un attaquant à significativement améliorer ses croyances a priori en observant les données diffusées. [Voir @willenborgElementsStatisticalDisclosure2001, p.44 et @machanavajjhalaDiversityPrivacyAnonymity2007]
@@ -644,7 +644,7 @@ Limite de l'approche:
 - Mesure de la capacité d'inférence dépend de chaque variable sensible considérée
 - Un attaquant avec peu d'informations au préalable pourrait avoir une forte augmentation 
   d'info qu'un attaquant disposant de beaucoup d'infos.
-- Une bonne capacité d'inférence ne signifie pas nécessairement une divulgation d'information confidentielle.
+- Une bonne capacité d'inférence ne signifie pas nécessairement une divulgation d'information confidentielle. -->
 
 ## Distinguer les variables
 
@@ -958,13 +958,13 @@ Pour réaliser l'arbitrage, une mesure de risque globale est plus  pratique. On 
 
 ## Mesures probabilistes du risque 
 
-Des mesures plus raffinées sont implémentées dans des outils classiques tels que $\mu$-Argus ou le package R sdcmicro.
+Des mesures plus raffinées sont implémentées dans des outils classiques tels que $\mu$-Argus ou le package `R` `sdcMicro`.
 
 -   Quand on dispose d'un échantillon (donc des $n_k$), on ne connaît en général pas les $N_k$.
 
 -   Mesure du risque individuel conditionnellement à l'échantillon: $r_k = \mathbb{E}(\frac{1}{N_k}|n_k)$.
 
--   Mesure dépendant d'une modélisation de la loi (posterior) de $N_k | n_k$
+-   Mesure dépendant d'une modélisation de la loi (a posteriori) de $N_k | n_k$
 
     -   Modélisation des fréquences des clés dans la population conditionnellement à leur fréquence dans l'échantillon.
 
