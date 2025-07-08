@@ -460,9 +460,7 @@ Attaching package: 'dplyr'</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>key_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sens_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ACTEU"</span>,<span class="st">"ANCCHOM"</span>,<span class="st">"IS_CHOM"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>hhid_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"HHID"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>key_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
@@ -723,41 +721,6 @@ Number of observations violating
 # ℹ 24 more rows</code></pre>
 </div>
 </div>
-<p>On peut aussi regarder quels sont les départements qui ont été supprimés.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identifier les individus dont la combinaison de variable quasi-identifiantes est partagée avec moins de 3 individus en tout (donc qui ne respectent pas la 2-anonymité)</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>ind_pas_k2 <span class="ot">&lt;-</span> <span class="fu">which</span>(sdc_AGE6<span class="sc">@</span>risk<span class="sc">$</span>individual[,<span class="st">"fk"</span>] <span class="sc">&lt;</span> <span class="dv">3</span>)</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraire les lignes concernées</span></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>donnees_pas_k2 <span class="ot">&lt;-</span> sdc_AGE6<span class="sc">@</span>origData[ind_pas_k2, ] <span class="co"># que 62 lignes !!</span></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Les départements des individus qui ne respectent pas le 2-anonymat (et qui sont donc supprimés)</span></span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>donnees_pas_k2 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(DEP) <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 2A 11 09 65 32 12 48 94 14 82 46 92 76 93 2B 31
-28 Levels: 09 11 12 14 27 2A 2B 30 31 32 34 46 48 50 61 65 66 75 76 77 ... 95</code></pre>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>donnees_pas_k2 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(DEP) <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%&gt;%</span> <span class="fu">length</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 16</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(DEP) <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%&gt;%</span> <span class="fu">length</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 28</code></pre>
-</div>
-</div>
-<p>Le département de 77 individus est supprimé, ces individus vivent dans 16 des 28 départements présents dans le jeu de données.</p>
 </section>
 <section id="prioriser-des-variables" class="level3">
 <h3 class="anchored" data-anchor-id="prioriser-des-variables">Prioriser des variables</h3>
@@ -765,40 +728,44 @@ Number of observations violating
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">undolast</span>(sdc_AGE6) <span class="co"># annule la dernière suppression locale</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(sdc_AGE6,</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">k =</span> <span class="dv">2</span>,</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">importance =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">undolast</span>(sdc_AGE6) <span class="co"># annule la dernière suppression locale</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(sdc_AGE6,</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">k =</span> <span class="dv">2</span>,</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">importance =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>sdc_AGE6<span class="sc">@</span>localSuppression<span class="sc">$</span>totalSupps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>sdc_AGE6<span class="sc">@</span>localSuppression<span class="sc">$</span>totalSupps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  AGE6 SEXE DEP DIP7
 1   58    4   2   13</code></pre>
 </div>
 </div>
-<p>Ca ne fonctionne pas donc on reprend l’exemple avec l’âge continu, et on essaye de voir si on peut empêcher de toucher l’âge.</p>
+<p>Ici, l’algorithme propose une autre solution qui permet de supprimer uniquement 2 départements. Cependant, en faisant cela il supprime des cellules dans chacune des variables.</p>
+<p>Parmi les 4 variables quasi-identifiantes on peut décider que le diplôme est la variable la moins importante à conserver.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>sdc_AGE_cont <span class="ot">&lt;-</span> <span class="fu">createSdcObj</span>(lfs_2023,</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">keyVars =</span> <span class="fu">c</span>(<span class="st">"AGE"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>))</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>sdc_AGE_cont <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(sdc_AGE_cont,</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">k =</span> <span class="dv">2</span>,</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>                             <span class="at">importance =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>))</span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>sdc_AGE_cont<span class="sc">@</span>localSuppression<span class="sc">$</span>totalSupps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">undolast</span>(sdc_AGE6) <span class="co"># annule la dernière suppression locale</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(sdc_AGE6,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">k =</span> <span class="dv">2</span>,</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">importance =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>sdc_AGE6<span class="sc">@</span>localSuppression<span class="sc">$</span>totalSupps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>  AGE SEXE  DEP DIP7
-1   3 4288 2365   31</code></pre>
+<pre><code>  AGE6 SEXE DEP DIP7
+1    1    1   2   73</code></pre>
 </div>
 </div>
-<p>On obtient qui n’est pas du tout optimal en termes d’utilité ! Cet exemple permet simplement d’explorer les fonctionnalités du package. On comprend que pour l’exemple précédent avec AGE6 il n’ a pas trouvé d’autre solution que de supprimer des départements.</p>
+<p>Dans ce cas-là, l’algorithme supprime le diplôme pour 73 individus. AGE, SEXE et DEP sont aussi touchés par des suppressions mais celles-ci sont très faibles.</p>
 </section>
 <section id="k-anonymat-pour-des-sous-groupes-de-quasi-identifiants" class="level3">
 <h3 class="anchored" data-anchor-id="k-anonymat-pour-des-sous-groupes-de-quasi-identifiants">k-anonymat pour des sous-groupes de quasi-identifiants</h3>
@@ -807,20 +774,20 @@ Number of observations violating
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">undolast</span>(sdc_AGE6) <span class="co"># annule la dernière suppression locale</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>combinaisons <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">3</span>)</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>niv_k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(sdc_AGE6,</span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>                             <span class="at">k =</span> niv_k,</span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">combs =</span> combinaisons)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">undolast</span>(sdc_AGE6) <span class="co"># annule la dernière suppression locale</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>combinaisons <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">3</span>)</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>niv_k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(sdc_AGE6,</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>                             <span class="at">k =</span> niv_k,</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">combs =</span> combinaisons)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>sdc_AGE6<span class="sc">@</span>localSuppression<span class="sc">$</span>totalSupps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>sdc_AGE6<span class="sc">@</span>localSuppression<span class="sc">$</span>totalSupps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  AGE6 SEXE DEP DIP7
@@ -1300,265 +1267,247 @@ Number of observations violating
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb56" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Appliquer la suppression locale</span></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> pratique/fiches/suppression-locale.html</span></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu"># Pour s'exercer</span></span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>Pour reproduire les résultats et réaliser les exercices, il est possible de travailler </span>
-<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>directement sur le <span class="co">[</span><span class="ot">`datalab` de l'Insee</span><span class="co">](datalab.sspcloud.fr)</span>. Si vous disposez d'un compte, vous pouvez <span class="co">[</span><span class="ot">Ouvrir un service RStudio</span><span class="co">](https://datalab.sspcloud.fr/launcher/ide/rstudio?name=rstudio-formation-protection&amp;version=2.3.1&amp;s3=region-ec97c721&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Frstudio.sh»)</span> ou <span class="co">[</span><span class="ot">Ouvrir un service vscode R-Python</span><span class="co">](https://datalab.sspcloud.fr/launcher/ide/vscode-r-python-julia?name=vscode-formation-protection&amp;version=2.3.5&amp;s3=region-ec97c721&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Fvscode-r-python.sh»)</span>, à votre convenance. Ces services installeront automatiquement les packages </span>
-<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>nécessaires pour réaliser les exercices de l'ensemble des fiches pratiques.</span>
-<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a><span class="fu"># En pratique</span></span>
-<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-18"><a href="#cb56-18" aria-hidden="true" tabindex="-1"></a>Pour installer les packages nécessaires, vous trouverez les instructions à suivre </span>
-<span id="cb56-19"><a href="#cb56-19" aria-hidden="true" tabindex="-1"></a>dans la fiche <span class="co">[</span><span class="ot">Ressources / Installer les packages et les outils sur R</span><span class="co">](../../ressources/fiches/outils-install.html)</span>.  </span>
-<span id="cb56-20"><a href="#cb56-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-21"><a href="#cb56-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-22"><a href="#cb56-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les packages</span></span>
-<span id="cb56-23"><a href="#cb56-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-26"><a href="#cb56-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-27"><a href="#cb56-27" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb56-28"><a href="#cb56-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb56-29"><a href="#cb56-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb56-30"><a href="#cb56-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb56-31"><a href="#cb56-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdcMicro)</span>
-<span id="cb56-32"><a href="#cb56-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb56-33"><a href="#cb56-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-34"><a href="#cb56-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-35"><a href="#cb56-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les données</span></span>
-<span id="cb56-36"><a href="#cb56-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-39"><a href="#cb56-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-40"><a href="#cb56-40" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_import_data.R"</span>)</span>
-<span id="cb56-41"><a href="#cb56-41" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> <span class="fu">import_lfs</span>()</span>
-<span id="cb56-42"><a href="#cb56-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-43"><a href="#cb56-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-44"><a href="#cb56-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-47"><a href="#cb56-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-48"><a href="#cb56-48" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_2023)</span>
-<span id="cb56-49"><a href="#cb56-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-50"><a href="#cb56-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-51"><a href="#cb56-51" aria-hidden="true" tabindex="-1"></a>Pour plus d'informations sur les données, on pourra se reporter à la fiche </span>
-<span id="cb56-52"><a href="#cb56-52" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">"Présentation des données"</span><span class="co">](description-data.html)</span>.</span>
-<span id="cb56-53"><a href="#cb56-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-56"><a href="#cb56-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-57"><a href="#cb56-57" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
-<span id="cb56-58"><a href="#cb56-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-59"><a href="#cb56-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-60"><a href="#cb56-60" aria-hidden="true" tabindex="-1"></a><span class="fu">## Etude du risque</span></span>
-<span id="cb56-61"><a href="#cb56-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-64"><a href="#cb56-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-65"><a href="#cb56-65" aria-hidden="true" tabindex="-1"></a>key_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>)</span>
-<span id="cb56-66"><a href="#cb56-66" aria-hidden="true" tabindex="-1"></a>sens_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ACTEU"</span>,<span class="st">"ANCCHOM"</span>,<span class="st">"IS_CHOM"</span>)</span>
-<span id="cb56-67"><a href="#cb56-67" aria-hidden="true" tabindex="-1"></a>hhid_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"HHID"</span>)</span>
-<span id="cb56-68"><a href="#cb56-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-69"><a href="#cb56-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-72"><a href="#cb56-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-73"><a href="#cb56-73" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">freqCalc</span>(lfs_2023, <span class="at">keyVars =</span> key_vars)</span>
-<span id="cb56-74"><a href="#cb56-74" aria-hidden="true" tabindex="-1"></a>f</span>
-<span id="cb56-75"><a href="#cb56-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-76"><a href="#cb56-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-77"><a href="#cb56-77" aria-hidden="true" tabindex="-1"></a>Le fichier n'est pas 2-anonyme pour 6 687 observations. Ce sont 13 587 qui ne sont pas 3-anonyme.</span>
-<span id="cb56-78"><a href="#cb56-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-81"><a href="#cb56-81" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-82"><a href="#cb56-82" aria-hidden="true" tabindex="-1"></a>f<span class="sc">$</span>fk <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
-<span id="cb56-83"><a href="#cb56-83" aria-hidden="true" tabindex="-1"></a>f<span class="sc">$</span>Fk <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
-<span id="cb56-84"><a href="#cb56-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-85"><a href="#cb56-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-86"><a href="#cb56-86" aria-hidden="true" tabindex="-1"></a>Ici, fk = Fk puisqu'il n'y a pas de poids.</span>
-<span id="cb56-87"><a href="#cb56-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-90"><a href="#cb56-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-91"><a href="#cb56-91" aria-hidden="true" tabindex="-1"></a>indivf <span class="ot">&lt;-</span> <span class="fu">indivRisk</span>(f)</span>
-<span id="cb56-92"><a href="#cb56-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-93"><a href="#cb56-93" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(indivf<span class="sc">$</span>rk[indivf<span class="sc">$</span>rk <span class="sc">&gt;</span> <span class="fl">0.5</span>])</span>
-<span id="cb56-94"><a href="#cb56-94" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(indivf<span class="sc">$</span>rk[indivf<span class="sc">$</span>rk <span class="sc">&gt;=</span> <span class="fl">0.5</span>])</span>
-<span id="cb56-95"><a href="#cb56-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-96"><a href="#cb56-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-97"><a href="#cb56-97" aria-hidden="true" tabindex="-1"></a>On retrouve le même nombre d'observations qu'avec le k-anonymat.</span>
-<span id="cb56-98"><a href="#cb56-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-99"><a href="#cb56-99" aria-hidden="true" tabindex="-1"></a><span class="fu">## Suppression locale</span></span>
-<span id="cb56-100"><a href="#cb56-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-101"><a href="#cb56-101" aria-hidden="true" tabindex="-1"></a>Suppression locale pour atteindre le k-anonymat avec <span class="in">`localSuppression()`</span>:  </span>
-<span id="cb56-102"><a href="#cb56-102" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`obj`</span> : un objet de classe sdcMicroObj ou un dataframe</span>
-<span id="cb56-103"><a href="#cb56-103" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`k`</span> : le seuil de k-anonymat, par défaut k = 2</span>
-<span id="cb56-104"><a href="#cb56-104" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`importance`</span> : vecteur numérique qui représente l'importance des variables qui sont utilisées pour obtenir le k-anonymat. Les variables dont l'importance vaut 1 seront, dans la mesure du possible, conservées</span>
-<span id="cb56-105"><a href="#cb56-105" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`combs`</span> : vecteur numérique qui précise le nombre de variables par combinaison pour lesquelles on veut atteindre le k-anonymat.</span>
-<span id="cb56-106"><a href="#cb56-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-107"><a href="#cb56-107" aria-hidden="true" tabindex="-1"></a><span class="fu">### Première tentative</span></span>
-<span id="cb56-108"><a href="#cb56-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-109"><a href="#cb56-109" aria-hidden="true" tabindex="-1"></a>Dans un premier temps on essaye d'obtenir un fichier 2-anonyme pour ces variables quasi-identifiantes : <span class="in">`AGE`</span>,<span class="in">`SEXE`</span>,<span class="in">`DEP`</span>,<span class="in">`DIP7`</span>.</span>
-<span id="cb56-110"><a href="#cb56-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-113"><a href="#cb56-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-114"><a href="#cb56-114" aria-hidden="true" tabindex="-1"></a>localS_initiale <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(lfs_2023,</span>
-<span id="cb56-115"><a href="#cb56-115" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">k =</span> <span class="dv">2</span>,</span>
-<span id="cb56-116"><a href="#cb56-116" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">keyVar =</span> key_vars)</span>
-<span id="cb56-117"><a href="#cb56-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-118"><a href="#cb56-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-121"><a href="#cb56-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-122"><a href="#cb56-122" aria-hidden="true" tabindex="-1"></a>localS_initiale</span>
-<span id="cb56-123"><a href="#cb56-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-124"><a href="#cb56-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-125"><a href="#cb56-125" aria-hidden="true" tabindex="-1"></a>En supprimant 6687 observations on btient un fichier 2-anonyme.</span>
-<span id="cb56-126"><a href="#cb56-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-129"><a href="#cb56-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-130"><a href="#cb56-130" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(localS_initiale)</span>
-<span id="cb56-131"><a href="#cb56-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-132"><a href="#cb56-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-133"><a href="#cb56-133" aria-hidden="true" tabindex="-1"></a>L'algorithme a choisi de supprimer l'âge de 6672 individus. Le département de résidence de 15 individus est aussi supprimé.</span>
-<span id="cb56-134"><a href="#cb56-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-137"><a href="#cb56-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-138"><a href="#cb56-138" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(localS_initiale<span class="sc">$</span>xAnon)</span>
-<span id="cb56-139"><a href="#cb56-139" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-140"><a href="#cb56-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-141"><a href="#cb56-141" aria-hidden="true" tabindex="-1"></a>On voit par exemple, que l'âge du troisième individus été supprimé.</span>
-<span id="cb56-142"><a href="#cb56-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-143"><a href="#cb56-143" aria-hidden="true" tabindex="-1"></a><span class="fu">### L'âge en classes</span></span>
-<span id="cb56-144"><a href="#cb56-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-145"><a href="#cb56-145" aria-hidden="true" tabindex="-1"></a>La première tentative de suppression peut ne pas convenir car elle supprime beaucoup d'informations. On procède donc à un recodage de la variable d'âge en 6 classes.</span>
-<span id="cb56-146"><a href="#cb56-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-147"><a href="#cb56-147" aria-hidden="true" tabindex="-1"></a>Cette fois-ci on commence par créer un objet sdcMicro (mais on pouvait aussi faire la suppression locale directement à partir du dataframe comme dans l'exemple précédent).</span>
-<span id="cb56-148"><a href="#cb56-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-151"><a href="#cb56-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-152"><a href="#cb56-152" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">createSdcObj</span>(lfs_2023,</span>
-<span id="cb56-153"><a href="#cb56-153" aria-hidden="true" tabindex="-1"></a>                         <span class="at">keyVars =</span> <span class="fu">c</span>(<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>))</span>
-<span id="cb56-154"><a href="#cb56-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-155"><a href="#cb56-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-158"><a href="#cb56-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-159"><a href="#cb56-159" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sdc_AGE6, <span class="st">'kAnon'</span>)</span>
-<span id="cb56-160"><a href="#cb56-160" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-161"><a href="#cb56-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-162"><a href="#cb56-162" aria-hidden="true" tabindex="-1"></a>En discrétisant l'âge en 6 catégories, il n'y a plus que 77 observations qui ne sont pas 2-anonyme, et 267 qui ne sont pas 3-anonyme.</span>
-<span id="cb56-163"><a href="#cb56-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-166"><a href="#cb56-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-167"><a href="#cb56-167" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(sdc_AGE6, <span class="at">k =</span> <span class="dv">2</span>)</span>
-<span id="cb56-168"><a href="#cb56-168" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-169"><a href="#cb56-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-172"><a href="#cb56-172" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-173"><a href="#cb56-173" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sdc_AGE6<span class="sc">@</span>localSuppression<span class="sc">$</span>totalSupps)</span>
-<span id="cb56-174"><a href="#cb56-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-175"><a href="#cb56-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-176"><a href="#cb56-176" aria-hidden="true" tabindex="-1"></a>Pour atteindre le 2-anonymat, l'algorithme a choisi de supprimer les départements de 77 individus. Donc, on supprime des modalités d'une seule variable et moins de cellules. Ce n'est pas surprenant puisque le fichier original contenait moins d'individus qui ne respectaient pas les 2-anonymat.</span>
-<span id="cb56-177"><a href="#cb56-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-178"><a href="#cb56-178" aria-hidden="true" tabindex="-1"></a>On peut essayer de reproduire un graphe proche de celui créé automatiquement quand on utilise un dataframe en entrée.</span>
-<span id="cb56-181"><a href="#cb56-181" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-182"><a href="#cb56-182" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraire les variables manipulées après suppression</span></span>
-<span id="cb56-183"><a href="#cb56-183" aria-hidden="true" tabindex="-1"></a>suppressed <span class="ot">&lt;-</span> <span class="fu">get.sdcMicroObj</span>(sdc_AGE6, <span class="at">type =</span> <span class="st">"manipKeyVars"</span>)</span>
-<span id="cb56-184"><a href="#cb56-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-185"><a href="#cb56-185" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculer le nombre de suppressions (NA) par variable</span></span>
-<span id="cb56-186"><a href="#cb56-186" aria-hidden="true" tabindex="-1"></a>supp_counts <span class="ot">&lt;-</span> <span class="fu">colSums</span>(<span class="fu">is.na</span>(<span class="fu">as.data.frame</span>(suppressed)))</span>
-<span id="cb56-187"><a href="#cb56-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-188"><a href="#cb56-188" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir en data.frame pour ggplot2</span></span>
-<span id="cb56-189"><a href="#cb56-189" aria-hidden="true" tabindex="-1"></a>df_supp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb56-190"><a href="#cb56-190" aria-hidden="true" tabindex="-1"></a>  <span class="at">variable =</span> <span class="fu">names</span>(supp_counts),</span>
-<span id="cb56-191"><a href="#cb56-191" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_suppressions =</span> <span class="fu">as.numeric</span>(supp_counts)</span>
-<span id="cb56-192"><a href="#cb56-192" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb56-193"><a href="#cb56-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-194"><a href="#cb56-194" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogramme ggplot</span></span>
-<span id="cb56-195"><a href="#cb56-195" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_supp, <span class="fu">aes</span>(<span class="at">x =</span> variable, <span class="at">y =</span> n_suppressions)) <span class="sc">+</span></span>
-<span id="cb56-196"><a href="#cb56-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"tomato"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb56-197"><a href="#cb56-197" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n_suppressions), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb56-198"><a href="#cb56-198" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb56-199"><a href="#cb56-199" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Number of suppressions to achieve k-anonymity."</span>,</span>
-<span id="cb56-200"><a href="#cb56-200" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Key variables"</span>,</span>
-<span id="cb56-201"><a href="#cb56-201" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of suppressions"</span></span>
-<span id="cb56-202"><a href="#cb56-202" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb56-203"><a href="#cb56-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb56-204"><a href="#cb56-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-205"><a href="#cb56-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-206"><a href="#cb56-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-207"><a href="#cb56-207" aria-hidden="true" tabindex="-1"></a>On peut récupérer les données modifiées.</span>
-<span id="cb56-210"><a href="#cb56-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-211"><a href="#cb56-211" aria-hidden="true" tabindex="-1"></a>donnees_ls_AGE6 <span class="ot">&lt;-</span> <span class="fu">extractManipData</span>(sdc_AGE6)</span>
-<span id="cb56-212"><a href="#cb56-212" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(donnees_ls_AGE6 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(DEP)))</span>
-<span id="cb56-213"><a href="#cb56-213" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-214"><a href="#cb56-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-215"><a href="#cb56-215" aria-hidden="true" tabindex="-1"></a>On peut regarder les croisements de quasi-identifiants pour lesquels il n'y a plus d'information sur le département.</span>
-<span id="cb56-218"><a href="#cb56-218" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-219"><a href="#cb56-219" aria-hidden="true" tabindex="-1"></a>donnees_ls_AGE6 <span class="sc">%&gt;%</span></span>
-<span id="cb56-220"><a href="#cb56-220" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(DEP)) <span class="sc">%&gt;%</span></span>
-<span id="cb56-221"><a href="#cb56-221" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(AGE6, SEXE, DIP7) <span class="sc">%&gt;%</span></span>
-<span id="cb56-222"><a href="#cb56-222" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">nb_ind =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
-<span id="cb56-223"><a href="#cb56-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-224"><a href="#cb56-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-225"><a href="#cb56-225" aria-hidden="true" tabindex="-1"></a>On peut aussi regarder quels sont les départements qui ont été supprimés.</span>
-<span id="cb56-226"><a href="#cb56-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-229"><a href="#cb56-229" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-230"><a href="#cb56-230" aria-hidden="true" tabindex="-1"></a><span class="co"># Identifier les individus dont la combinaison de variable quasi-identifiantes est partagée avec moins de 3 individus en tout (donc qui ne respectent pas la 2-anonymité)</span></span>
-<span id="cb56-231"><a href="#cb56-231" aria-hidden="true" tabindex="-1"></a>ind_pas_k2 <span class="ot">&lt;-</span> <span class="fu">which</span>(sdc_AGE6<span class="sc">@</span>risk<span class="sc">$</span>individual[,<span class="st">"fk"</span>] <span class="sc">&lt;</span> <span class="dv">3</span>)</span>
-<span id="cb56-232"><a href="#cb56-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-233"><a href="#cb56-233" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraire les lignes concernées</span></span>
-<span id="cb56-234"><a href="#cb56-234" aria-hidden="true" tabindex="-1"></a>donnees_pas_k2 <span class="ot">&lt;-</span> sdc_AGE6<span class="sc">@</span>origData[ind_pas_k2, ] <span class="co"># que 62 lignes !!</span></span>
-<span id="cb56-235"><a href="#cb56-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-236"><a href="#cb56-236" aria-hidden="true" tabindex="-1"></a><span class="co"># Les départements des individus qui ne respectent pas le 2-anonymat (et qui sont donc supprimés)</span></span>
-<span id="cb56-237"><a href="#cb56-237" aria-hidden="true" tabindex="-1"></a>donnees_pas_k2 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(DEP) <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span>
-<span id="cb56-238"><a href="#cb56-238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-239"><a href="#cb56-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-242"><a href="#cb56-242" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-243"><a href="#cb56-243" aria-hidden="true" tabindex="-1"></a>donnees_pas_k2 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(DEP) <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%&gt;%</span> <span class="fu">length</span>()</span>
-<span id="cb56-244"><a href="#cb56-244" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(DEP) <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%&gt;%</span> <span class="fu">length</span>()</span>
-<span id="cb56-245"><a href="#cb56-245" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-246"><a href="#cb56-246" aria-hidden="true" tabindex="-1"></a>Le département de 77 individus est supprimé, ces individus vivent dans 16 des 28 départements présents dans le jeu de données.</span>
-<span id="cb56-247"><a href="#cb56-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-248"><a href="#cb56-248" aria-hidden="true" tabindex="-1"></a><span class="fu">### Prioriser des variables</span></span>
-<span id="cb56-249"><a href="#cb56-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-250"><a href="#cb56-250" aria-hidden="true" tabindex="-1"></a>Peut-être que pour la publication prévue, l'information du département était très importante. Dans ce cas-là on peut préciser que nous souhaitons protéger la variable département dans la mesure du possible.</span>
-<span id="cb56-251"><a href="#cb56-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-254"><a href="#cb56-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-255"><a href="#cb56-255" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">undolast</span>(sdc_AGE6) <span class="co"># annule la dernière suppression locale</span></span>
-<span id="cb56-256"><a href="#cb56-256" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(sdc_AGE6,</span>
-<span id="cb56-257"><a href="#cb56-257" aria-hidden="true" tabindex="-1"></a>                             <span class="at">k =</span> <span class="dv">2</span>,</span>
-<span id="cb56-258"><a href="#cb56-258" aria-hidden="true" tabindex="-1"></a>                             <span class="at">importance =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">4</span>))</span>
-<span id="cb56-259"><a href="#cb56-259" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-260"><a href="#cb56-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-263"><a href="#cb56-263" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-264"><a href="#cb56-264" aria-hidden="true" tabindex="-1"></a>sdc_AGE6<span class="sc">@</span>localSuppression<span class="sc">$</span>totalSupps</span>
-<span id="cb56-265"><a href="#cb56-265" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-266"><a href="#cb56-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-267"><a href="#cb56-267" aria-hidden="true" tabindex="-1"></a>Ca ne fonctionne pas donc on reprend l'exemple avec l'âge continu, et on essaye de voir si on peut empêcher de toucher l'âge.</span>
-<span id="cb56-268"><a href="#cb56-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-271"><a href="#cb56-271" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-272"><a href="#cb56-272" aria-hidden="true" tabindex="-1"></a>sdc_AGE_cont <span class="ot">&lt;-</span> <span class="fu">createSdcObj</span>(lfs_2023,</span>
-<span id="cb56-273"><a href="#cb56-273" aria-hidden="true" tabindex="-1"></a>                         <span class="at">keyVars =</span> <span class="fu">c</span>(<span class="st">"AGE"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>))</span>
-<span id="cb56-274"><a href="#cb56-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-275"><a href="#cb56-275" aria-hidden="true" tabindex="-1"></a>sdc_AGE_cont <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(sdc_AGE_cont,</span>
-<span id="cb56-276"><a href="#cb56-276" aria-hidden="true" tabindex="-1"></a>                             <span class="at">k =</span> <span class="dv">2</span>,</span>
-<span id="cb56-277"><a href="#cb56-277" aria-hidden="true" tabindex="-1"></a>                             <span class="at">importance =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>))</span>
-<span id="cb56-278"><a href="#cb56-278" aria-hidden="true" tabindex="-1"></a>sdc_AGE_cont<span class="sc">@</span>localSuppression<span class="sc">$</span>totalSupps</span>
-<span id="cb56-279"><a href="#cb56-279" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-280"><a href="#cb56-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-281"><a href="#cb56-281" aria-hidden="true" tabindex="-1"></a>On obtient qui n'est pas du tout optimal en termes d'utilité ! Cet exemple permet simplement d'explorer les fonctionnalités du package. On comprend que pour l'exemple précédent avec AGE6 il n' a pas trouvé d'autre solution que de supprimer des départements.</span>
-<span id="cb56-282"><a href="#cb56-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-283"><a href="#cb56-283" aria-hidden="true" tabindex="-1"></a><span class="fu">### k-anonymat pour des sous-groupes de quasi-identifiants</span></span>
-<span id="cb56-284"><a href="#cb56-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-285"><a href="#cb56-285" aria-hidden="true" tabindex="-1"></a>On peut aussi vouloir des niveaux de k-anonymat différents selon le nombre de quasi-identifiants.</span>
-<span id="cb56-286"><a href="#cb56-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-287"><a href="#cb56-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-288"><a href="#cb56-288" aria-hidden="true" tabindex="-1"></a>Par exemple, on souhaite avoir du 2-anonymat pour les combinaisons de 4 quasi-identifiants, 3-anonymat pour les combinaisons de 3 quasi-identifiants.</span>
-<span id="cb56-289"><a href="#cb56-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-292"><a href="#cb56-292" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-293"><a href="#cb56-293" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">undolast</span>(sdc_AGE6) <span class="co"># annule la dernière suppression locale</span></span>
-<span id="cb56-294"><a href="#cb56-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-295"><a href="#cb56-295" aria-hidden="true" tabindex="-1"></a>combinaisons <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">3</span>)</span>
-<span id="cb56-296"><a href="#cb56-296" aria-hidden="true" tabindex="-1"></a>niv_k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb56-297"><a href="#cb56-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-298"><a href="#cb56-298" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(sdc_AGE6,</span>
-<span id="cb56-299"><a href="#cb56-299" aria-hidden="true" tabindex="-1"></a>                             <span class="at">k =</span> niv_k,</span>
-<span id="cb56-300"><a href="#cb56-300" aria-hidden="true" tabindex="-1"></a>                             <span class="at">combs =</span> combinaisons)</span>
-<span id="cb56-301"><a href="#cb56-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-302"><a href="#cb56-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-305"><a href="#cb56-305" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-306"><a href="#cb56-306" aria-hidden="true" tabindex="-1"></a>sdc_AGE6<span class="sc">@</span>localSuppression<span class="sc">$</span>totalSupps</span>
-<span id="cb56-307"><a href="#cb56-307" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-308"><a href="#cb56-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-309"><a href="#cb56-309" aria-hidden="true" tabindex="-1"></a>Pour obtenir un fichier qui respecte ces deux règles de k-anonymat il faut supprimer plus de cellules :</span>
-<span id="cb56-310"><a href="#cb56-310" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>le département de 87 individus</span>
-<span id="cb56-311"><a href="#cb56-311" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>le diplôme de 2 individus</span>
+<div class="sourceCode" id="cb51" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Appliquer la suppression locale</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> pratique/fiches/suppression-locale.html</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="fu"># Pour s'exercer</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>Pour reproduire les résultats et réaliser les exercices, il est possible de travailler </span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>directement sur le <span class="co">[</span><span class="ot">`datalab` de l'Insee</span><span class="co">](datalab.sspcloud.fr)</span>. Si vous disposez d'un compte, vous pouvez <span class="co">[</span><span class="ot">Ouvrir un service RStudio</span><span class="co">](https://datalab.sspcloud.fr/launcher/ide/rstudio?name=rstudio-formation-protection&amp;version=2.3.1&amp;s3=region-ec97c721&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Frstudio.sh»)</span> ou <span class="co">[</span><span class="ot">Ouvrir un service vscode R-Python</span><span class="co">](https://datalab.sspcloud.fr/launcher/ide/vscode-r-python-julia?name=vscode-formation-protection&amp;version=2.3.5&amp;s3=region-ec97c721&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Fvscode-r-python.sh»)</span>, à votre convenance. Ces services installeront automatiquement les packages </span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>nécessaires pour réaliser les exercices de l'ensemble des fiches pratiques.</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="fu"># En pratique</span></span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>Pour installer les packages nécessaires, vous trouverez les instructions à suivre </span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>dans la fiche <span class="co">[</span><span class="ot">Ressources / Installer les packages et les outils sur R</span><span class="co">](../../ressources/fiches/outils-install.html)</span>.  </span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les packages</span></span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-27"><a href="#cb51-27" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb51-28"><a href="#cb51-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb51-29"><a href="#cb51-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb51-30"><a href="#cb51-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb51-31"><a href="#cb51-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdcMicro)</span>
+<span id="cb51-32"><a href="#cb51-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb51-33"><a href="#cb51-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-34"><a href="#cb51-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-35"><a href="#cb51-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les données</span></span>
+<span id="cb51-36"><a href="#cb51-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-39"><a href="#cb51-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-40"><a href="#cb51-40" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_import_data.R"</span>)</span>
+<span id="cb51-41"><a href="#cb51-41" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> <span class="fu">import_lfs</span>()</span>
+<span id="cb51-42"><a href="#cb51-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-43"><a href="#cb51-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-44"><a href="#cb51-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-47"><a href="#cb51-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-48"><a href="#cb51-48" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_2023)</span>
+<span id="cb51-49"><a href="#cb51-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-50"><a href="#cb51-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-51"><a href="#cb51-51" aria-hidden="true" tabindex="-1"></a>Pour plus d'informations sur les données, on pourra se reporter à la fiche </span>
+<span id="cb51-52"><a href="#cb51-52" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">"Présentation des données"</span><span class="co">](description-data.html)</span>.</span>
+<span id="cb51-53"><a href="#cb51-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-56"><a href="#cb51-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-57"><a href="#cb51-57" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb51-58"><a href="#cb51-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-59"><a href="#cb51-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-60"><a href="#cb51-60" aria-hidden="true" tabindex="-1"></a><span class="fu">## Etude du risque</span></span>
+<span id="cb51-61"><a href="#cb51-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-64"><a href="#cb51-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-65"><a href="#cb51-65" aria-hidden="true" tabindex="-1"></a>key_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>)</span>
+<span id="cb51-66"><a href="#cb51-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-67"><a href="#cb51-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-70"><a href="#cb51-70" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-71"><a href="#cb51-71" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">freqCalc</span>(lfs_2023, <span class="at">keyVars =</span> key_vars)</span>
+<span id="cb51-72"><a href="#cb51-72" aria-hidden="true" tabindex="-1"></a>f</span>
+<span id="cb51-73"><a href="#cb51-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-74"><a href="#cb51-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-75"><a href="#cb51-75" aria-hidden="true" tabindex="-1"></a>Le fichier n'est pas 2-anonyme pour 6 687 observations. Ce sont 13 587 qui ne sont pas 3-anonyme.</span>
+<span id="cb51-76"><a href="#cb51-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-79"><a href="#cb51-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-80"><a href="#cb51-80" aria-hidden="true" tabindex="-1"></a>f<span class="sc">$</span>fk <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb51-81"><a href="#cb51-81" aria-hidden="true" tabindex="-1"></a>f<span class="sc">$</span>Fk <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb51-82"><a href="#cb51-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-83"><a href="#cb51-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-84"><a href="#cb51-84" aria-hidden="true" tabindex="-1"></a>Ici, fk = Fk puisqu'il n'y a pas de poids.</span>
+<span id="cb51-85"><a href="#cb51-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-88"><a href="#cb51-88" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-89"><a href="#cb51-89" aria-hidden="true" tabindex="-1"></a>indivf <span class="ot">&lt;-</span> <span class="fu">indivRisk</span>(f)</span>
+<span id="cb51-90"><a href="#cb51-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-91"><a href="#cb51-91" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(indivf<span class="sc">$</span>rk[indivf<span class="sc">$</span>rk <span class="sc">&gt;</span> <span class="fl">0.5</span>])</span>
+<span id="cb51-92"><a href="#cb51-92" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(indivf<span class="sc">$</span>rk[indivf<span class="sc">$</span>rk <span class="sc">&gt;=</span> <span class="fl">0.5</span>])</span>
+<span id="cb51-93"><a href="#cb51-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-94"><a href="#cb51-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-95"><a href="#cb51-95" aria-hidden="true" tabindex="-1"></a>On retrouve le même nombre d'observations qu'avec le k-anonymat.</span>
+<span id="cb51-96"><a href="#cb51-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-97"><a href="#cb51-97" aria-hidden="true" tabindex="-1"></a><span class="fu">## Suppression locale</span></span>
+<span id="cb51-98"><a href="#cb51-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-99"><a href="#cb51-99" aria-hidden="true" tabindex="-1"></a>Suppression locale pour atteindre le k-anonymat avec <span class="in">`localSuppression()`</span>:  </span>
+<span id="cb51-100"><a href="#cb51-100" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`obj`</span> : un objet de classe sdcMicroObj ou un dataframe</span>
+<span id="cb51-101"><a href="#cb51-101" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`k`</span> : le seuil de k-anonymat, par défaut k = 2</span>
+<span id="cb51-102"><a href="#cb51-102" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`importance`</span> : vecteur numérique qui représente l'importance des variables qui sont utilisées pour obtenir le k-anonymat. Les variables dont l'importance vaut 1 seront, dans la mesure du possible, conservées</span>
+<span id="cb51-103"><a href="#cb51-103" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`combs`</span> : vecteur numérique qui précise le nombre de variables par combinaison pour lesquelles on veut atteindre le k-anonymat.</span>
+<span id="cb51-104"><a href="#cb51-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-105"><a href="#cb51-105" aria-hidden="true" tabindex="-1"></a><span class="fu">### Première tentative</span></span>
+<span id="cb51-106"><a href="#cb51-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-107"><a href="#cb51-107" aria-hidden="true" tabindex="-1"></a>Dans un premier temps on essaye d'obtenir un fichier 2-anonyme pour ces variables quasi-identifiantes : <span class="in">`AGE`</span>,<span class="in">`SEXE`</span>,<span class="in">`DEP`</span>,<span class="in">`DIP7`</span>.</span>
+<span id="cb51-108"><a href="#cb51-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-111"><a href="#cb51-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-112"><a href="#cb51-112" aria-hidden="true" tabindex="-1"></a>localS_initiale <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(lfs_2023,</span>
+<span id="cb51-113"><a href="#cb51-113" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">k =</span> <span class="dv">2</span>,</span>
+<span id="cb51-114"><a href="#cb51-114" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">keyVar =</span> key_vars)</span>
+<span id="cb51-115"><a href="#cb51-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-116"><a href="#cb51-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-119"><a href="#cb51-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-120"><a href="#cb51-120" aria-hidden="true" tabindex="-1"></a>localS_initiale</span>
+<span id="cb51-121"><a href="#cb51-121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-122"><a href="#cb51-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-123"><a href="#cb51-123" aria-hidden="true" tabindex="-1"></a>En supprimant 6687 observations on btient un fichier 2-anonyme.</span>
+<span id="cb51-124"><a href="#cb51-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-127"><a href="#cb51-127" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-128"><a href="#cb51-128" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(localS_initiale)</span>
+<span id="cb51-129"><a href="#cb51-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-130"><a href="#cb51-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-131"><a href="#cb51-131" aria-hidden="true" tabindex="-1"></a>L'algorithme a choisi de supprimer l'âge de 6672 individus. Le département de résidence de 15 individus est aussi supprimé.</span>
+<span id="cb51-132"><a href="#cb51-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-135"><a href="#cb51-135" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-136"><a href="#cb51-136" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(localS_initiale<span class="sc">$</span>xAnon)</span>
+<span id="cb51-137"><a href="#cb51-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-138"><a href="#cb51-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-139"><a href="#cb51-139" aria-hidden="true" tabindex="-1"></a>On voit par exemple, que l'âge du troisième individus été supprimé.</span>
+<span id="cb51-140"><a href="#cb51-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-141"><a href="#cb51-141" aria-hidden="true" tabindex="-1"></a><span class="fu">### L'âge en classes</span></span>
+<span id="cb51-142"><a href="#cb51-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-143"><a href="#cb51-143" aria-hidden="true" tabindex="-1"></a>La première tentative de suppression peut ne pas convenir car elle supprime beaucoup d'informations. On procède donc à un recodage de la variable d'âge en 6 classes.</span>
+<span id="cb51-144"><a href="#cb51-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-145"><a href="#cb51-145" aria-hidden="true" tabindex="-1"></a>Cette fois-ci on commence par créer un objet sdcMicro (mais on pouvait aussi faire la suppression locale directement à partir du dataframe comme dans l'exemple précédent).</span>
+<span id="cb51-146"><a href="#cb51-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-149"><a href="#cb51-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-150"><a href="#cb51-150" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">createSdcObj</span>(lfs_2023,</span>
+<span id="cb51-151"><a href="#cb51-151" aria-hidden="true" tabindex="-1"></a>                         <span class="at">keyVars =</span> <span class="fu">c</span>(<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>))</span>
+<span id="cb51-152"><a href="#cb51-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-153"><a href="#cb51-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-156"><a href="#cb51-156" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-157"><a href="#cb51-157" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sdc_AGE6, <span class="st">'kAnon'</span>)</span>
+<span id="cb51-158"><a href="#cb51-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-159"><a href="#cb51-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-160"><a href="#cb51-160" aria-hidden="true" tabindex="-1"></a>En discrétisant l'âge en 6 catégories, il n'y a plus que 77 observations qui ne sont pas 2-anonyme, et 267 qui ne sont pas 3-anonyme.</span>
+<span id="cb51-161"><a href="#cb51-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-164"><a href="#cb51-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-165"><a href="#cb51-165" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(sdc_AGE6, <span class="at">k =</span> <span class="dv">2</span>)</span>
+<span id="cb51-166"><a href="#cb51-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-167"><a href="#cb51-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-170"><a href="#cb51-170" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-171"><a href="#cb51-171" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sdc_AGE6<span class="sc">@</span>localSuppression<span class="sc">$</span>totalSupps)</span>
+<span id="cb51-172"><a href="#cb51-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-173"><a href="#cb51-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-174"><a href="#cb51-174" aria-hidden="true" tabindex="-1"></a>Pour atteindre le 2-anonymat, l'algorithme a choisi de supprimer les départements de 77 individus. Donc, on supprime des modalités d'une seule variable et moins de cellules. Ce n'est pas surprenant puisque le fichier original contenait moins d'individus qui ne respectaient pas les 2-anonymat.</span>
+<span id="cb51-175"><a href="#cb51-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-176"><a href="#cb51-176" aria-hidden="true" tabindex="-1"></a>On peut essayer de reproduire un graphe proche de celui créé automatiquement quand on utilise un dataframe en entrée.</span>
+<span id="cb51-179"><a href="#cb51-179" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-180"><a href="#cb51-180" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraire les variables manipulées après suppression</span></span>
+<span id="cb51-181"><a href="#cb51-181" aria-hidden="true" tabindex="-1"></a>suppressed <span class="ot">&lt;-</span> <span class="fu">get.sdcMicroObj</span>(sdc_AGE6, <span class="at">type =</span> <span class="st">"manipKeyVars"</span>)</span>
+<span id="cb51-182"><a href="#cb51-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-183"><a href="#cb51-183" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculer le nombre de suppressions (NA) par variable</span></span>
+<span id="cb51-184"><a href="#cb51-184" aria-hidden="true" tabindex="-1"></a>supp_counts <span class="ot">&lt;-</span> <span class="fu">colSums</span>(<span class="fu">is.na</span>(<span class="fu">as.data.frame</span>(suppressed)))</span>
+<span id="cb51-185"><a href="#cb51-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-186"><a href="#cb51-186" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir en data.frame pour ggplot2</span></span>
+<span id="cb51-187"><a href="#cb51-187" aria-hidden="true" tabindex="-1"></a>df_supp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb51-188"><a href="#cb51-188" aria-hidden="true" tabindex="-1"></a>  <span class="at">variable =</span> <span class="fu">names</span>(supp_counts),</span>
+<span id="cb51-189"><a href="#cb51-189" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_suppressions =</span> <span class="fu">as.numeric</span>(supp_counts)</span>
+<span id="cb51-190"><a href="#cb51-190" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb51-191"><a href="#cb51-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-192"><a href="#cb51-192" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogramme ggplot</span></span>
+<span id="cb51-193"><a href="#cb51-193" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_supp, <span class="fu">aes</span>(<span class="at">x =</span> variable, <span class="at">y =</span> n_suppressions)) <span class="sc">+</span></span>
+<span id="cb51-194"><a href="#cb51-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"tomato"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb51-195"><a href="#cb51-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n_suppressions), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb51-196"><a href="#cb51-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb51-197"><a href="#cb51-197" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Number of suppressions to achieve k-anonymity."</span>,</span>
+<span id="cb51-198"><a href="#cb51-198" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Key variables"</span>,</span>
+<span id="cb51-199"><a href="#cb51-199" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of suppressions"</span></span>
+<span id="cb51-200"><a href="#cb51-200" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb51-201"><a href="#cb51-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb51-202"><a href="#cb51-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-203"><a href="#cb51-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-204"><a href="#cb51-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-205"><a href="#cb51-205" aria-hidden="true" tabindex="-1"></a>On peut récupérer les données modifiées.</span>
+<span id="cb51-208"><a href="#cb51-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-209"><a href="#cb51-209" aria-hidden="true" tabindex="-1"></a>donnees_ls_AGE6 <span class="ot">&lt;-</span> <span class="fu">extractManipData</span>(sdc_AGE6)</span>
+<span id="cb51-210"><a href="#cb51-210" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(donnees_ls_AGE6 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(DEP)))</span>
+<span id="cb51-211"><a href="#cb51-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-212"><a href="#cb51-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-213"><a href="#cb51-213" aria-hidden="true" tabindex="-1"></a>On peut regarder les croisements de quasi-identifiants pour lesquels il n'y a plus d'information sur le département.</span>
+<span id="cb51-216"><a href="#cb51-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-217"><a href="#cb51-217" aria-hidden="true" tabindex="-1"></a>donnees_ls_AGE6 <span class="sc">%&gt;%</span></span>
+<span id="cb51-218"><a href="#cb51-218" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(DEP)) <span class="sc">%&gt;%</span></span>
+<span id="cb51-219"><a href="#cb51-219" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(AGE6, SEXE, DIP7) <span class="sc">%&gt;%</span></span>
+<span id="cb51-220"><a href="#cb51-220" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">nb_ind =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb51-221"><a href="#cb51-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-222"><a href="#cb51-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-223"><a href="#cb51-223" aria-hidden="true" tabindex="-1"></a><span class="fu">### Prioriser des variables</span></span>
+<span id="cb51-224"><a href="#cb51-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-225"><a href="#cb51-225" aria-hidden="true" tabindex="-1"></a>Peut-être que pour la publication prévue, l'information du département était très importante. Dans ce cas-là on peut préciser que nous souhaitons protéger la variable département dans la mesure du possible.</span>
+<span id="cb51-226"><a href="#cb51-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-229"><a href="#cb51-229" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-230"><a href="#cb51-230" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">undolast</span>(sdc_AGE6) <span class="co"># annule la dernière suppression locale</span></span>
+<span id="cb51-231"><a href="#cb51-231" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(sdc_AGE6,</span>
+<span id="cb51-232"><a href="#cb51-232" aria-hidden="true" tabindex="-1"></a>                             <span class="at">k =</span> <span class="dv">2</span>,</span>
+<span id="cb51-233"><a href="#cb51-233" aria-hidden="true" tabindex="-1"></a>                             <span class="at">importance =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb51-234"><a href="#cb51-234" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-235"><a href="#cb51-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-238"><a href="#cb51-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-239"><a href="#cb51-239" aria-hidden="true" tabindex="-1"></a>sdc_AGE6<span class="sc">@</span>localSuppression<span class="sc">$</span>totalSupps</span>
+<span id="cb51-240"><a href="#cb51-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-241"><a href="#cb51-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-242"><a href="#cb51-242" aria-hidden="true" tabindex="-1"></a>Ici, l'algorithme propose une autre solution qui permet de supprimer uniquement 2 départements. Cependant, en faisant cela il supprime des cellules dans chacune des variables.</span>
+<span id="cb51-243"><a href="#cb51-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-244"><a href="#cb51-244" aria-hidden="true" tabindex="-1"></a>Parmi les 4 variables quasi-identifiantes on peut décider que le diplôme est la variable la moins importante à conserver.</span>
+<span id="cb51-245"><a href="#cb51-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-248"><a href="#cb51-248" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-249"><a href="#cb51-249" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">undolast</span>(sdc_AGE6) <span class="co"># annule la dernière suppression locale</span></span>
+<span id="cb51-250"><a href="#cb51-250" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(sdc_AGE6,</span>
+<span id="cb51-251"><a href="#cb51-251" aria-hidden="true" tabindex="-1"></a>                             <span class="at">k =</span> <span class="dv">2</span>,</span>
+<span id="cb51-252"><a href="#cb51-252" aria-hidden="true" tabindex="-1"></a>                             <span class="at">importance =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>))</span>
+<span id="cb51-253"><a href="#cb51-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-254"><a href="#cb51-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-257"><a href="#cb51-257" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-258"><a href="#cb51-258" aria-hidden="true" tabindex="-1"></a>sdc_AGE6<span class="sc">@</span>localSuppression<span class="sc">$</span>totalSupps</span>
+<span id="cb51-259"><a href="#cb51-259" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-260"><a href="#cb51-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-261"><a href="#cb51-261" aria-hidden="true" tabindex="-1"></a>Dans ce cas-là, l'algorithme supprime le diplôme pour 73 individus. AGE, SEXE et DEP sont aussi touchés par des suppressions mais celles-ci sont très faibles.</span>
+<span id="cb51-262"><a href="#cb51-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-263"><a href="#cb51-263" aria-hidden="true" tabindex="-1"></a><span class="fu">### k-anonymat pour des sous-groupes de quasi-identifiants</span></span>
+<span id="cb51-264"><a href="#cb51-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-265"><a href="#cb51-265" aria-hidden="true" tabindex="-1"></a>On peut aussi vouloir des niveaux de k-anonymat différents selon le nombre de quasi-identifiants.</span>
+<span id="cb51-266"><a href="#cb51-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-267"><a href="#cb51-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-268"><a href="#cb51-268" aria-hidden="true" tabindex="-1"></a>Par exemple, on souhaite avoir du 2-anonymat pour les combinaisons de 4 quasi-identifiants, 3-anonymat pour les combinaisons de 3 quasi-identifiants.</span>
+<span id="cb51-269"><a href="#cb51-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-272"><a href="#cb51-272" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-273"><a href="#cb51-273" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">undolast</span>(sdc_AGE6) <span class="co"># annule la dernière suppression locale</span></span>
+<span id="cb51-274"><a href="#cb51-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-275"><a href="#cb51-275" aria-hidden="true" tabindex="-1"></a>combinaisons <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">3</span>)</span>
+<span id="cb51-276"><a href="#cb51-276" aria-hidden="true" tabindex="-1"></a>niv_k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb51-277"><a href="#cb51-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-278"><a href="#cb51-278" aria-hidden="true" tabindex="-1"></a>sdc_AGE6 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(sdc_AGE6,</span>
+<span id="cb51-279"><a href="#cb51-279" aria-hidden="true" tabindex="-1"></a>                             <span class="at">k =</span> niv_k,</span>
+<span id="cb51-280"><a href="#cb51-280" aria-hidden="true" tabindex="-1"></a>                             <span class="at">combs =</span> combinaisons)</span>
+<span id="cb51-281"><a href="#cb51-281" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-282"><a href="#cb51-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-285"><a href="#cb51-285" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-286"><a href="#cb51-286" aria-hidden="true" tabindex="-1"></a>sdc_AGE6<span class="sc">@</span>localSuppression<span class="sc">$</span>totalSupps</span>
+<span id="cb51-287"><a href="#cb51-287" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-288"><a href="#cb51-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-289"><a href="#cb51-289" aria-hidden="true" tabindex="-1"></a>Pour obtenir un fichier qui respecte ces deux règles de k-anonymat il faut supprimer plus de cellules :</span>
+<span id="cb51-290"><a href="#cb51-290" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>le département de 87 individus</span>
+<span id="cb51-291"><a href="#cb51-291" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>le diplôme de 2 individus</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
