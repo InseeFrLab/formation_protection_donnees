@@ -53,8 +53,6 @@ lfs_2023 %>% head()
 
 ```{r}
 key_vars <- c("AGE","SEXE","DEP","DIP7")
-sens_vars <- c("ACTEU","ANCCHOM","IS_CHOM")
-hhid_vars <- c("HHID")
 ```
 
 ```{r}
@@ -184,25 +182,6 @@ donnees_ls_AGE6 %>%
   summarise(nb_ind = n(), .groups = "drop")
 ```
 
-On peut aussi regarder quels sont les départements qui ont été supprimés.
-
-```{r}
-# Identifier les individus dont la combinaison de variable quasi-identifiantes est partagée avec moins de 3 individus en tout (donc qui ne respectent pas la 2-anonymité)
-ind_pas_k2 <- which(sdc_AGE6@risk$individual[,"fk"] < 3)
-
-# Extraire les lignes concernées
-donnees_pas_k2 <- sdc_AGE6@origData[ind_pas_k2, ] # que 62 lignes !!
-
-# Les départements des individus qui ne respectent pas le 2-anonymat (et qui sont donc supprimés)
-donnees_pas_k2 %>% pull(DEP) %>% unique()
-```
-
-```{r}
-donnees_pas_k2 %>% pull(DEP) %>% unique() %>% length()
-lfs_2023 %>% pull(DEP) %>% unique() %>% length()
-```
-Le département de 77 individus est supprimé, ces individus vivent dans 16 des 28 départements présents dans le jeu de données.
-
 ### Prioriser des variables
 
 Peut-être que pour la publication prévue, l'information du département était très importante. Dans ce cas-là on peut préciser que nous souhaitons protéger la variable département dans la mesure du possible.
@@ -211,26 +190,29 @@ Peut-être que pour la publication prévue, l'information du département était
 sdc_AGE6 <- undolast(sdc_AGE6) # annule la dernière suppression locale
 sdc_AGE6 <- localSuppression(sdc_AGE6,
                              k = 2,
-                             importance = c(4,4,1,4))
+                             importance = c(4,3,1,2))
 ```
 
 ```{r}
 sdc_AGE6@localSuppression$totalSupps
 ```
 
-Ca ne fonctionne pas donc on reprend l'exemple avec l'âge continu, et on essaye de voir si on peut empêcher de toucher l'âge.
+Ici, l'algorithme propose une autre solution qui permet de supprimer uniquement 2 départements. Cependant, en faisant cela il supprime des cellules dans chacune des variables.
+
+Parmi les 4 variables quasi-identifiantes on peut décider que le diplôme est la variable la moins importante à conserver.
 
 ```{r}
-sdc_AGE_cont <- createSdcObj(lfs_2023,
-                         keyVars = c("AGE","SEXE","DEP","DIP7"))
-
-sdc_AGE_cont <- localSuppression(sdc_AGE_cont,
+sdc_AGE6 <- undolast(sdc_AGE6) # annule la dernière suppression locale
+sdc_AGE6 <- localSuppression(sdc_AGE6,
                              k = 2,
-                             importance = c(1,4,4,4))
-sdc_AGE_cont@localSuppression$totalSupps
+                             importance = c(1,1,1,4))
 ```
 
-On obtient qui n'est pas du tout optimal en termes d'utilité ! Cet exemple permet simplement d'explorer les fonctionnalités du package. On comprend que pour l'exemple précédent avec AGE6 il n' a pas trouvé d'autre solution que de supprimer des départements.
+```{r}
+sdc_AGE6@localSuppression$totalSupps
+```
+
+Dans ce cas-là, l'algorithme supprime le diplôme pour 73 individus. AGE, SEXE et DEP sont aussi touchés par des suppressions mais celles-ci sont très faibles.
 
 ### k-anonymat pour des sous-groupes de quasi-identifiants
 

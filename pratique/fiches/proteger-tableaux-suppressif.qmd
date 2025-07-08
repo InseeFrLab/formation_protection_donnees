@@ -8,7 +8,7 @@ Cette fiche pratique présente une façon de protéger des tableaux en utilisant
 # Initialisation
 
 Installation du package rtauargus.
-```{r installation_rtauargus, warning=FALSE, message=FALSE}
+```{r installation_rtauargus, warning=FALSE, message=FALSE, eval = FALSE}
 remotes::install_github(
   'InseeFrLab/rtauargus',
   dependencies = TRUE,
@@ -20,7 +20,7 @@ remotes::install_github(
 
 Import des packages.
 ```{r import_packages, warning=FALSE, message=FALSE}
-library(tidyverse)
+library(dplyr)
 library(rtauargus)
 ```
 
@@ -28,7 +28,7 @@ Modifier le chemin ci-dessous :
 ```{r loc_tauargus, warning=FALSE, message=FALSE}
 # préciser le chemin de Tau-Argus avant d'utiliser tab_rtauargus() et 
 # tab_multi_manger() car ces fonctions appelent Tau-Argus
-loc_tauargus <- "chemin_vers/TauArgus.exe"
+loc_tauargus <- "C:/Users/INSEE_User/Downloads/TauArgus4.2.0b5Windows32bit/TauArgus4.2.0b5/TauArgus.exe"
 options(rtauargus.tauargus_exe = loc_tauargus)
 ```
 
@@ -57,8 +57,7 @@ Les arguments de la fonction sont les suivants :
 Nous créons un jeu de données entreprises (1 ligne = 1 entreprise) pour lesquelles 
 on dispose d'informations telles que l'activité, la catégorie juridique, 
 la géographie d'implantation (variables NUTS) et la tranche d'effectifs. Pour 
-chaque entreprise on dispose également du chiffre d'affaires (CA) selon le type de produits (salades, 
-pizzas, batavias, légumes rouges, etc.).
+chaque entreprise on dispose également du chiffre d'affaires (CA) selon le type de produits (salades, pizzas, batavias, légumes rouges, etc.).
 
 ```{r creation_micro}
 #| echo: false
@@ -419,15 +418,15 @@ ne doit pas apparaître dans le fichier .hrc** qui lui est fourni.
 
 Le bon fichier est donc le suivant :
 
-@A  
+A  
 @@A1  
 @@A2  
-@B  
+B  
 @@B1  
 @@B2  
 @@@B21  
 @@@B22  
-@C  
+C  
 
 
 ### Automatiquement
