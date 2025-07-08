@@ -87,10 +87,12 @@ Suppression locale univariée avec `localSupp()` :
 -   keyVar : variable dont certaines modalités peuvent être supprimées
 
 ```{r}
+#| eval: false
 localS <- localSupp(f, keyVar = "AGE6", threshold = 0.5)
 ```
 
 ```{r}
+#| eval: false
 f2 <- freqCalc(localS$freqCalc, keyVars = keyVars, w = 8)
 indivf2 <- indivRisk(f2)
 indivf2$rk
