@@ -10,6 +10,13 @@ dans la fiche [Ressources / Installer les packages et les outils sur R](../../re
 
 
 ```{r}
+#| eval: false
+#| echo: false
+setwd("./pratique/fiches")
+```
+
+
+```{r}
 #| echo: false
 #| message: false
 #| output: false
