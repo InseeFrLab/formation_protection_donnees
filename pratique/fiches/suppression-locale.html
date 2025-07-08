@@ -317,8 +317,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#en-pratique" id="toc-en-pratique" class="nav-link active" data-scroll-target="#en-pratique">En pratique</a>
+  <ul class="collapse">
+  <li><a href="#les-packages" id="toc-les-packages" class="nav-link" data-scroll-target="#les-packages">Les packages</a></li>
+  <li><a href="#les-données" id="toc-les-données" class="nav-link" data-scroll-target="#les-données">Les données</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -326,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Appliquer la suppression locale</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Appliquer la suppression locale</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -343,10 +353,282 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Pour s’exercer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pour reproduire les résultats et réaliser les exercices, il est possible de travailler directement sur le <a href="datalab.sspcloud.fr"><code>datalab</code> de l’Insee</a>. Si vous disposez d’un compte, vous pouvez <a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?name=rstudio-formation-protection&amp;version=2.3.1&amp;s3=region-ec97c721&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Frstudio.sh»">Ouvrir un service RStudio</a> ou <a href="https://datalab.sspcloud.fr/launcher/ide/vscode-r-python-julia?name=vscode-formation-protection&amp;version=2.3.5&amp;s3=region-ec97c721&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Fvscode-r-python.sh»">Ouvrir un service vscode R-Python</a>, à votre convenance. Ces services installeront automatiquement les packages nécessaires pour réaliser les exercices de l’ensemble des fiches pratiques.</p>
+</div>
+</div>
+<section id="en-pratique" class="level1">
+<h1>En pratique</h1>
+<p>Pour installer les packages nécessaires, vous trouverez les instructions à suivre dans la fiche <a href="../../ressources/fiches/outils-install.html">Ressources / Installer les packages et les outils sur R</a>.</p>
+<section id="les-packages" class="level2">
+<h2 class="anchored" data-anchor-id="les-packages">Les packages</h2>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+</div>
+</section>
+<section id="les-données" class="level2">
+<h2 class="anchored" data-anchor-id="les-données">Les données</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_import_data.R"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> <span class="fu">import_lfs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_2023)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      REG    DEP    ARR   SEXE   AGE   AGE6  ACTEU   DIP7  PCS1Q ANCCHOM  HHID
+   &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;int&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt;  &lt;fctr&gt; &lt;int&gt;
+1:     28     76    761      1    53     50      1      4     30      99  3558
+2:     28     76    761      2    43     25      1      7     52      99  3558
+3:     28     76    761      2    17     15      3      5     99      99  3558
+4:     28     76    761      1    17     15      3      4     99      99  3558
+5:     11     92    922      1    42     25      1      7     62      99  5973
+6:     11     92    922      2    54     50      1      7     62      99  5973
+   HH_TAILLE HH_AGE HH_DIP HH_PCS IS_CHOM
+      &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt;   &lt;int&gt;
+1:         4     53      4     30       0
+2:         4     53      4     30       0
+3:         4     53      4     30       0
+4:         4     53      4     30       0
+5:         2     54      7     62       0
+6:         2     54      7     62       0</code></pre>
+</div>
+</div>
+<p>Pour plus d’informations sur les données, on pourra se reporter à la fiche <a href="description-data.html">“Présentation des données”</a>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      REG    DEP    ARR   SEXE   AGE   AGE6  ACTEU   DIP7  PCS1Q ANCCHOM  HHID
+   &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;int&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt;  &lt;fctr&gt; &lt;int&gt;
+1:     28     76    761      1    53     50      1      4     30      99  3558
+2:     28     76    761      2    43     25      1      7     52      99  3558
+3:     28     76    761      2    17     15      3      5     99      99  3558
+4:     28     76    761      1    17     15      3      4     99      99  3558
+5:     11     92    922      1    42     25      1      7     62      99  5973
+6:     11     92    922      2    54     50      1      7     62      99  5973
+   HH_TAILLE HH_AGE HH_DIP HH_PCS IS_CHOM
+      &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt;   &lt;int&gt;
+1:         4     53      4     30       0
+2:         4     53      4     30       0
+3:         4     53      4     30       0
+4:         4     53      4     30       0
+5:         2     54      7     62       0
+6:         2     54      7     62       0</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>key_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sens_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ACTEU"</span>,<span class="st">"ANCCHOM"</span>,<span class="st">"IS_CHOM"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>hhid_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"HHID"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">freqCalc</span>(lfs_2023, <span class="at">keyVars =</span> key_vars)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+ --------------------------</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>6687 obs. violate 2-anonymity </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>13587 obs. violate 3-anonymity </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code> --------------------------</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>f<span class="sc">$</span>fk <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 3 1 6 2 5</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>f<span class="sc">$</span>Fk <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 3 1 6 2 5</code></pre>
+</div>
+</div>
+<p>Ici, fk = Fk puisqu’il n’y a pas de poids.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>indivf <span class="ot">&lt;-</span> <span class="fu">indivRisk</span>(f)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>indivf<span class="sc">$</span>rk <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5000000 0.3333333 1.0000000 0.1666667 0.5000000 0.2000000</code></pre>
+</div>
+</div>
+<p>Fort risque individuel pour le troisième individu des données.</p>
+<p>Suppression locale univariée avec <code>localSupp()</code> : - obj : objet de classe freqCalc ou sdcMicroObj-class (ici f est un objet freqCalc) - threshold : seuil de risque individuel - keyVar : variable dont certaines modalités peuvent être supprimées</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>localS <span class="ot">&lt;-</span> <span class="fu">localSupp</span>(f, <span class="at">keyVar =</span> <span class="st">"AGE6"</span>, <span class="at">threshold =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="fu">freqCalc</span>(localS<span class="sc">$</span>freqCalc, <span class="at">keyVars =</span> keyVars, <span class="at">w =</span> <span class="dv">8</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>indivf2 <span class="ot">&lt;-</span> <span class="fu">indivRisk</span>(f2)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>indivf2<span class="sc">$</span>rk</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(indivf<span class="sc">$</span>rk, indivf2<span class="sc">$</span>rk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Suppression locale pour atteindre le k-anonymat avec <code>localSuppression()</code>:<br>
+- obj : un objet de classe sdcMicroObj ou un dataframe - k : le seuil de k-anonymat, par défaut k = 2 -</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>localS2 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(lfs_2023,</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">k =</span> <span class="dv">2</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">keyVar =</span> key_vars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>localS2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+-----------------------
+Total number of suppressions in the key variables: 6687 (new: 6687)
+
+Number of suppressions by key variables:
+(in parenthesis, the total number suppressions is shown)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          AGE  SEXE     DEP  DIP7
+1 6672 (6672) 0 (0) 15 (15) 0 (0)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+2-anonymity == TRUE
+-----------------------</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(localS2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="suppression-locale_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>6672 individus pour lesquels on supprime l’âge.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(localS2<span class="sc">$</span>xAnon)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  AGE SEXE DEP DIP7
+1  53    1  76    4
+2  43    2  76    7
+3  NA    2  76    5
+4  17    1  76    4
+5  42    1  92    7
+6  54    2  92    7</code></pre>
+</div>
+</div>
+<p>A présent, faisons la même chose avec l’âge en classes.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>f_age6 <span class="ot">&lt;-</span> <span class="fu">freqCalc</span>(lfs_2023, <span class="at">keyVars =</span> <span class="fu">c</span>(<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>))</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>f_age6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+ --------------------------</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>77 obs. violate 2-anonymity </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>267 obs. violate 3-anonymity </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code> --------------------------</code></pre>
+</div>
+</div>
+<p>Beaucoup moins d’individus ne respectent pas les 2- et 3-anonymat.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>localS3 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(lfs_2023,</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">keyVar =</span> <span class="fu">c</span>(<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(localS3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="suppression-locale_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Cette fois-ci on supprime des modalités uniquement sur le département. On en supprime beaucoup moins que précédemment ce qui n’est pas surprenant puisque le fichier original contenait moin d’individus qui ne respectent pas les 2- et 3-anonymat.</p>
 
 
 <!-- -->
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -812,9 +1094,153 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Appliquer la suppression locale</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Appliquer la suppression locale</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> pratique/fiches/suppression-locale.html</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="fu"># Pour s'exercer</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>Pour reproduire les résultats et réaliser les exercices, il est possible de travailler </span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>directement sur le <span class="co">[</span><span class="ot">`datalab` de l'Insee</span><span class="co">](datalab.sspcloud.fr)</span>. Si vous disposez d'un compte, vous pouvez <span class="co">[</span><span class="ot">Ouvrir un service RStudio</span><span class="co">](https://datalab.sspcloud.fr/launcher/ide/rstudio?name=rstudio-formation-protection&amp;version=2.3.1&amp;s3=region-ec97c721&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Frstudio.sh»)</span> ou <span class="co">[</span><span class="ot">Ouvrir un service vscode R-Python</span><span class="co">](https://datalab.sspcloud.fr/launcher/ide/vscode-r-python-julia?name=vscode-formation-protection&amp;version=2.3.5&amp;s3=region-ec97c721&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Fvscode-r-python.sh»)</span>, à votre convenance. Ces services installeront automatiquement les packages </span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>nécessaires pour réaliser les exercices de l'ensemble des fiches pratiques.</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="fu"># En pratique</span></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>Pour installer les packages nécessaires, vous trouverez les instructions à suivre </span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>dans la fiche <span class="co">[</span><span class="ot">Ressources / Installer les packages et les outils sur R</span><span class="co">](../../ressources/fiches/outils-install.html)</span>.  </span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les packages</span></span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"./pratique/fiches"</span>)</span>
+<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-36"><a href="#cb38-36" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb38-37"><a href="#cb38-37" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb38-38"><a href="#cb38-38" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb38-39"><a href="#cb38-39" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb38-40"><a href="#cb38-40" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdcMicro)</span>
+<span id="cb38-41"><a href="#cb38-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-42"><a href="#cb38-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-43"><a href="#cb38-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## Les données</span></span>
+<span id="cb38-44"><a href="#cb38-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-47"><a href="#cb38-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-48"><a href="#cb38-48" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_import_data.R"</span>)</span>
+<span id="cb38-49"><a href="#cb38-49" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> <span class="fu">import_lfs</span>()</span>
+<span id="cb38-50"><a href="#cb38-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-51"><a href="#cb38-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-52"><a href="#cb38-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-55"><a href="#cb38-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-56"><a href="#cb38-56" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_2023)</span>
+<span id="cb38-57"><a href="#cb38-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-58"><a href="#cb38-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-59"><a href="#cb38-59" aria-hidden="true" tabindex="-1"></a>Pour plus d'informations sur les données, on pourra se reporter à la fiche </span>
+<span id="cb38-60"><a href="#cb38-60" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">"Présentation des données"</span><span class="co">](description-data.html)</span>.</span>
+<span id="cb38-61"><a href="#cb38-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-64"><a href="#cb38-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-65"><a href="#cb38-65" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb38-66"><a href="#cb38-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-67"><a href="#cb38-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-68"><a href="#cb38-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-71"><a href="#cb38-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-72"><a href="#cb38-72" aria-hidden="true" tabindex="-1"></a>key_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>)</span>
+<span id="cb38-73"><a href="#cb38-73" aria-hidden="true" tabindex="-1"></a>sens_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ACTEU"</span>,<span class="st">"ANCCHOM"</span>,<span class="st">"IS_CHOM"</span>)</span>
+<span id="cb38-74"><a href="#cb38-74" aria-hidden="true" tabindex="-1"></a>hhid_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"HHID"</span>)</span>
+<span id="cb38-75"><a href="#cb38-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-76"><a href="#cb38-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-79"><a href="#cb38-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-80"><a href="#cb38-80" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">freqCalc</span>(lfs_2023, <span class="at">keyVars =</span> key_vars)</span>
+<span id="cb38-81"><a href="#cb38-81" aria-hidden="true" tabindex="-1"></a>f</span>
+<span id="cb38-82"><a href="#cb38-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-83"><a href="#cb38-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-86"><a href="#cb38-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-87"><a href="#cb38-87" aria-hidden="true" tabindex="-1"></a>f<span class="sc">$</span>fk <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb38-88"><a href="#cb38-88" aria-hidden="true" tabindex="-1"></a>f<span class="sc">$</span>Fk <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb38-89"><a href="#cb38-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-90"><a href="#cb38-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-91"><a href="#cb38-91" aria-hidden="true" tabindex="-1"></a>Ici, fk = Fk puisqu'il n'y a pas de poids.</span>
+<span id="cb38-92"><a href="#cb38-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-95"><a href="#cb38-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-96"><a href="#cb38-96" aria-hidden="true" tabindex="-1"></a>indivf <span class="ot">&lt;-</span> <span class="fu">indivRisk</span>(f)</span>
+<span id="cb38-97"><a href="#cb38-97" aria-hidden="true" tabindex="-1"></a>indivf<span class="sc">$</span>rk <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb38-98"><a href="#cb38-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-99"><a href="#cb38-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-100"><a href="#cb38-100" aria-hidden="true" tabindex="-1"></a>Fort risque individuel pour le troisième individu des données.</span>
+<span id="cb38-101"><a href="#cb38-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-102"><a href="#cb38-102" aria-hidden="true" tabindex="-1"></a>Suppression locale univariée avec <span class="in">`localSupp()`</span> :</span>
+<span id="cb38-103"><a href="#cb38-103" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>obj : objet de classe freqCalc ou sdcMicroObj-class (ici f est un objet freqCalc)</span>
+<span id="cb38-104"><a href="#cb38-104" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>threshold : seuil de risque individuel</span>
+<span id="cb38-105"><a href="#cb38-105" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>keyVar : variable dont certaines modalités peuvent être supprimées</span>
+<span id="cb38-106"><a href="#cb38-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-109"><a href="#cb38-109" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-110"><a href="#cb38-110" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb38-111"><a href="#cb38-111" aria-hidden="true" tabindex="-1"></a>localS <span class="ot">&lt;-</span> <span class="fu">localSupp</span>(f, <span class="at">keyVar =</span> <span class="st">"AGE6"</span>, <span class="at">threshold =</span> <span class="fl">0.5</span>)</span>
+<span id="cb38-112"><a href="#cb38-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-113"><a href="#cb38-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-116"><a href="#cb38-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-117"><a href="#cb38-117" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb38-118"><a href="#cb38-118" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="fu">freqCalc</span>(localS<span class="sc">$</span>freqCalc, <span class="at">keyVars =</span> keyVars, <span class="at">w =</span> <span class="dv">8</span>)</span>
+<span id="cb38-119"><a href="#cb38-119" aria-hidden="true" tabindex="-1"></a>indivf2 <span class="ot">&lt;-</span> <span class="fu">indivRisk</span>(f2)</span>
+<span id="cb38-120"><a href="#cb38-120" aria-hidden="true" tabindex="-1"></a>indivf2<span class="sc">$</span>rk</span>
+<span id="cb38-121"><a href="#cb38-121" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(indivf<span class="sc">$</span>rk, indivf2<span class="sc">$</span>rk)</span>
+<span id="cb38-122"><a href="#cb38-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-123"><a href="#cb38-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-124"><a href="#cb38-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-125"><a href="#cb38-125" aria-hidden="true" tabindex="-1"></a>Suppression locale pour atteindre le k-anonymat avec <span class="in">`localSuppression()`</span>:  </span>
+<span id="cb38-126"><a href="#cb38-126" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>obj : un objet de classe sdcMicroObj ou un dataframe</span>
+<span id="cb38-127"><a href="#cb38-127" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>k : le seuil de k-anonymat, par défaut k = 2</span>
+<span id="cb38-128"><a href="#cb38-128" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span></span>
+<span id="cb38-129"><a href="#cb38-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-132"><a href="#cb38-132" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-133"><a href="#cb38-133" aria-hidden="true" tabindex="-1"></a>localS2 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(lfs_2023,</span>
+<span id="cb38-134"><a href="#cb38-134" aria-hidden="true" tabindex="-1"></a>                            <span class="at">k =</span> <span class="dv">2</span>,</span>
+<span id="cb38-135"><a href="#cb38-135" aria-hidden="true" tabindex="-1"></a>                            <span class="at">keyVar =</span> key_vars)</span>
+<span id="cb38-136"><a href="#cb38-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-137"><a href="#cb38-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-140"><a href="#cb38-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-141"><a href="#cb38-141" aria-hidden="true" tabindex="-1"></a>localS2</span>
+<span id="cb38-142"><a href="#cb38-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-143"><a href="#cb38-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-146"><a href="#cb38-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-147"><a href="#cb38-147" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(localS2)</span>
+<span id="cb38-148"><a href="#cb38-148" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-149"><a href="#cb38-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-150"><a href="#cb38-150" aria-hidden="true" tabindex="-1"></a>6672 individus pour lesquels on supprime l'âge.</span>
+<span id="cb38-151"><a href="#cb38-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-154"><a href="#cb38-154" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-155"><a href="#cb38-155" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(localS2<span class="sc">$</span>xAnon)</span>
+<span id="cb38-156"><a href="#cb38-156" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-157"><a href="#cb38-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-158"><a href="#cb38-158" aria-hidden="true" tabindex="-1"></a>A présent, faisons la même chose avec l'âge en classes.</span>
+<span id="cb38-159"><a href="#cb38-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-162"><a href="#cb38-162" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-163"><a href="#cb38-163" aria-hidden="true" tabindex="-1"></a>f_age6 <span class="ot">&lt;-</span> <span class="fu">freqCalc</span>(lfs_2023, <span class="at">keyVars =</span> <span class="fu">c</span>(<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>))</span>
+<span id="cb38-164"><a href="#cb38-164" aria-hidden="true" tabindex="-1"></a>f_age6</span>
+<span id="cb38-165"><a href="#cb38-165" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-166"><a href="#cb38-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-167"><a href="#cb38-167" aria-hidden="true" tabindex="-1"></a>Beaucoup moins d'individus ne respectent pas les 2- et 3-anonymat.</span>
+<span id="cb38-168"><a href="#cb38-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-171"><a href="#cb38-171" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-172"><a href="#cb38-172" aria-hidden="true" tabindex="-1"></a>localS3 <span class="ot">&lt;-</span> <span class="fu">localSuppression</span>(lfs_2023,</span>
+<span id="cb38-173"><a href="#cb38-173" aria-hidden="true" tabindex="-1"></a>                            <span class="at">keyVar =</span> <span class="fu">c</span>(<span class="st">"AGE6"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>))</span>
+<span id="cb38-174"><a href="#cb38-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-175"><a href="#cb38-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-178"><a href="#cb38-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-179"><a href="#cb38-179" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(localS3)</span>
+<span id="cb38-180"><a href="#cb38-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-181"><a href="#cb38-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-182"><a href="#cb38-182" aria-hidden="true" tabindex="-1"></a>Cette fois-ci on supprime des modalités uniquement sur le département. On en supprime beaucoup moins que précédemment ce qui n'est pas surprenant puisque le fichier original contenait moin d'individus qui ne respectent pas les 2- et 3-anonymat.</span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

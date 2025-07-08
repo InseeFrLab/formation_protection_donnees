@@ -501,7 +501,7 @@
 <section id="un-exemple" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Un exemple</h2>
 <div style="text-align:center;">
-<div id="fig-types-fichiers" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Adapter les fichiers aux publics">
+<div id="fig-types-fichiers" class="quarto-float quarto-figure quarto-figure-center" alt="Adapter les fichiers aux publics" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-types-fichiers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/types_fichiers_confidentialite.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Adapter les fichiers aux publics">
@@ -599,7 +599,7 @@ Figure&nbsp;1: Adapter les fichiers au type de public (Source: Insee)
 </ul>
 </div>
 <div style="text-align:center;">
-<div id="fig-trade-off-sm" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Arbitrage risque-utilité">
+<div id="fig-trade-off-sm" class="quarto-float quarto-figure quarto-figure-center" alt="Arbitrage risque-utilité" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-trade-off-sm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/trade_off_graph_smiley.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Arbitrage risque-utilité">
@@ -889,7 +889,7 @@ Table&nbsp;2: Un exemple de divulgation d’attributs par inférence
 <section id="différenciation-par-recoupement" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Différenciation par recoupement</h2>
 <div style="text-align:center;">
-<div id="fig-diff-rec1" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Exemple de différenciation par recoupement">
+<div id="fig-diff-rec1" class="quarto-float quarto-figure quarto-figure-center" alt="Exemple de différenciation par recoupement" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-diff-rec1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/diff_geo_recoupment1.png" class="quarto-figure quarto-figure-center" style="height:80.0%" alt="Exemple de différenciation par recoupement">
@@ -904,7 +904,7 @@ Figure&nbsp;3: Exemple de différenciation par recoupement en France entre un d�
 <section id="différenciation-par-recoupement-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Différenciation par recoupement</h2>
 <div style="text-align:center;">
-<div id="fig-diff-rec2" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Exemple de différenciation par recoupement">
+<div id="fig-diff-rec2" class="quarto-float quarto-figure quarto-figure-center" alt="Exemple de différenciation par recoupement" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-diff-rec2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/diff_geo_recoupement2.png" class="quarto-figure quarto-figure-center" style="height:80.0%" alt="Exemple de différenciation par recoupement">
@@ -919,17 +919,17 @@ Figure&nbsp;4: Zoom sur le problème de différenciation
 <section>
 <section id="mesurer-le-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="5">
 <h1><span class="header-section-number">5</span> Mesurer le risque</h1>
+<!-- 
+## Vision bayésienne / retour à Dalenius
 
-</section>
-<section id="vision-bayésienne-retour-à-dalenius" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Vision bayésienne / retour à Dalenius</h2>
-<p>Si on repart de la proposition (impossible) de Dalenius, on peut l’envisager dans un cadre bayésien en cherchant à limiter la capacité d’un attaquant à significativement améliorer ses croyances a priori en observant les données diffusées. <span class="citation" data-cites="willenborgElementsStatisticalDisclosure2001">Machanavajjhala et al. (<a href="#/biblio" role="doc-biblioref" onclick="">2007</a>)</span></p>
-<p>Limite de l’approche:</p>
-<ul>
-<li>Mesure de la capacité d’inférence dépend de chaque variable sensible considérée</li>
-<li>Un attaquant avec peu d’informations au préalable pourrait avoir une forte augmentation d’info qu’un attaquant disposant de beaucoup d’infos.</li>
-<li>Une bonne capacité d’inférence ne signifie pas nécessairement une divulgation d’information confidentielle.</li>
-</ul>
+Si on repart de la proposition (impossible) de Dalenius, on peut l'envisager dans un cadre bayésien en cherchant à limiter la capacité d'un attaquant à significativement améliorer ses croyances a priori en observant les données diffusées. [Voir @willenborgElementsStatisticalDisclosure2001, p.44 et @machanavajjhalaDiversityPrivacyAnonymity2007]
+
+Limite de l'approche:
+
+- Mesure de la capacité d'inférence dépend de chaque variable sensible considérée
+- Un attaquant avec peu d'informations au préalable pourrait avoir une forte augmentation 
+  d'info qu'un attaquant disposant de beaucoup d'infos.
+- Une bonne capacité d'inférence ne signifie pas nécessairement une divulgation d'information confidentielle. -->
 </section>
 <section id="distinguer-les-variables" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Distinguer les variables</h2>
@@ -1383,11 +1383,11 @@ Table&nbsp;5: Un fichier 2-anonyme mais pas assez diversifié
 </section>
 <section id="mesures-probabilistes-du-risque-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Mesures probabilistes du risque</h2>
-<p>Des mesures plus raffinées sont implémentées dans des outils classiques tels que <span class="math inline">\(\mu\)</span>-Argus ou le package R sdcmicro.</p>
+<p>Des mesures plus raffinées sont implémentées dans des outils classiques tels que <span class="math inline">\(\mu\)</span>-Argus ou le package <code>R</code> <code>sdcMicro</code>.</p>
 <ul>
 <li><p>Quand on dispose d’un échantillon (donc des <span class="math inline">\(n_k\)</span>), on ne connaît en général pas les <span class="math inline">\(N_k\)</span>.</p></li>
 <li><p>Mesure du risque individuel conditionnellement à l’échantillon: <span class="math inline">\(r_k = \mathbb{E}(\frac{1}{N_k}|n_k)\)</span>.</p></li>
-<li><p>Mesure dépendant d’une modélisation de la loi (posterior) de <span class="math inline">\(N_k | n_k\)</span></p>
+<li><p>Mesure dépendant d’une modélisation de la loi (a posteriori) de <span class="math inline">\(N_k | n_k\)</span></p>
 <ul>
 <li><p>Modélisation des fréquences des clés dans la population conditionnellement à leur fréquence dans l’échantillon.</p></li>
 <li><p>Par une binomiale négative par exemple dans <span class="citation" data-cites="Benedetti_Franconi_1998">Benedetti et Franconi (<a href="#/biblio" role="doc-biblioref" onclick="">1998</a>)</span>.</p></li>
@@ -1493,9 +1493,6 @@ Sweeney, Latanya. 2000. <span>«&nbsp;Simple <span>Demographics</span> <span>Oft
 </div>
 <div id="ref-sweeney_k-anonymity_2002" class="csl-entry" role="listitem">
 ———. 2002. <span>«&nbsp;k-<span>ANONYMITY</span>: <span>A</span> <span>MODEL</span> <span>FOR</span> <span>PROTECTING</span> <span>PRIVACY</span>&nbsp;»</span>. <em>International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems</em> 10 (05): 557‑70. <a href="https://doi.org/10.1142/S0218488502001648">https://doi.org/10.1142/S0218488502001648</a>.
-</div>
-<div id="ref-willenborgElementsStatisticalDisclosure2001" class="csl-entry" role="listitem">
-Willenborg, Leon, et Ton De Waal. 2001. <em>Elements of <span>Statistical Disclosure Control</span></em>. Édité par P. Bickel, P. Diggle, S. Fienberg, K. Krickeberg, I. Olkin, N. Wermuth, et S. Zeger. Vol. 155. Lecture <span>Notes</span> in <span>Statistics</span>. New York, NY: Springer New York. <a href="https://doi.org/10.1007/978-1-4613-0121-9">https://doi.org/10.1007/978-1-4613-0121-9</a>.
 </div>
 </div>
 <!---
