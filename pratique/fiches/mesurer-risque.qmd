@@ -313,7 +313,7 @@ On observe en particulier que $77$ individus sont uniques sur les clés utilisé
 ou pour d'autres valeurs de $k$, on peut faire, par exemple, pour $k=10$:
 
 ```{r}
-mean(lfs_sdc@risk$individual[,2] < 10)*100
+mean(lfs_sdc@risk$individual[,"fk"] < 10)*100
 ```
 
 
@@ -428,21 +428,198 @@ lfs_sdc_samp <- sdcMicro::createSdcObj(
 )
 ```
 
-
+Le risque global moyen de ré-identification est alors (en %):
 ```{r}
-lfs_sdc_samp@risk$global$risk
+lfs_sdc_samp@risk$global$risk * 100
 ```
+
+En prenant en compte les poids de l'échantillon, on a supposé en réalité le scénario d'attaque suivant:
+
+- l'attaquant cherche à ré-identifier des personnes de l'échantillon à partir d'informations qu'il dispose sur la population
+- mais il ne sait pas si un individu a été enquêté ou non.
+
+Ainsi cette mesure de risque est pertinente si la connaissance de l'inclusion d'une personne dans l'échantillon est jugée trop peu réaliste.
+
+En revanche, si l'inclusion d'une unité est certaine ou presque, il est préférable de mesurer ce risque au niveau de l'échantillon. C'est le cas par exemple pour les enquêtes entreprises qui incluent échantillonnent systématiquement  les très grandes entreprises. 
+
+Au niveau individuel, le risque de ré-identification dans a population est également beaucoup plus faible: 
 
 ```{r}
 head(lfs_sdc_samp@risk$individual)
 ```
 
-
 ```{r}
 hist(lfs_sdc_samp@risk$individual[,"risk"]*100)
 ```
 
+```{r}
+all_risks <- lfs_sdc_samp@risk$individual |>
+  as.data.frame() |>
+  mutate(risk_sample = 1/fk, risk_pop=1/Fk) 
+```
+
+```{r}
+all_risks |>
+  ggplot(aes(x=risk_pop, y=risk)) +
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, color = 'darkred')
+```
+
+```{r}
+all_risks |>
+  ggplot(aes(x=risk_sample, y=risk)) +
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, color = 'darkred')
+```
+
+```{r}
+all_risks |>
+  ggplot(aes(x=risk_sample, y=risk_pop)) +
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0, color = 'darkred')
+```
+
+
+Regardons l'individu le plus à risque:
+```{r}
+max_risk <- which.max(lfs_sdc_samp@risk$individual[,"risk"])
+lfs_sdc_samp@risk$individual[max_risk,]
+lfs_samp |> slice(max_risk)
+```
+
 :::
+
+
+## Exercice pratique
+
+Quel est le risque de ré-identification dans le fichier public mis à disposition par l'Insee sur son site internet ?
+
+Le fichier détail et sa documentation sont disponibles [ici](https://www.insee.fr/fr/statistiques/6654604).
+
+Téléchargeons le fichier:
+
+```{r}
+#| eval: false
+options(timeout = 6000)
+
+download.file(
+  destfile = "lfs_micro_fr_2023.zip",
+  url = "https://www.insee.fr/fr/statistiques/fichier/8241122/FD_csv_EEC23.zip"
+)
+
+unzip(zipfile = "lfs_micro_fr_2023.zip", exdir = ".")
+
+```
+
+```{r}
+#| eval: false
+puf_lfs = data.table::fread(
+  "FD_csv_EEC23.csv"
+) %>% 
+  # On conserve uniquement les ménages dont la personne est âgée entre 15 et 89 ans
+  filter(CHAMP_M_15_89 == 1) %>% 
+  select(-CHAMP_M_15_89)
+```
+
+```{r}
+#| eval: false
+dim(puf_lfs)
+```
+
+La documentation des variables:
+
+```{r}
+#| eval: false
+doc_lfs <- data.table::fread(
+  "Varmod_EEC_2023.csv"
+) |>   
+  select(COD_VAR, LIB_VAR) |>
+  unique()|>
+  as.data.frame()
+doc_lfs
+```
+
+Quelles variables du jeu pourraient servir à la ré-identification des individus enquêtés ?
+
+Imaginons que l'attaquant dispose d'un fichier client très riche sur une très grande partie de la population françasise. Dans un tel scénario, nous sommes amenés à avoir une définition extensive des variables quasi-identifiantes:
+
+```{r}
+#| eval: false
+qi_1 <- c(
+  "SEXE",
+  "AGE6", # la classe d'âge (6 catégories)
+  "ACTEU", # le statut d'activité de la personne
+  "DIP7", # le niveau de diplôme
+  "METRODOM", # le lieu de résidence Hexagone ou Territoires Ultra-Marins
+  "APCS1", # Catégorie socio-professionnelle du dernier emploi (6 classes)
+  "STATUT", # Statut dans l'emploi (salarié, indépendant)
+  "STCOMM2020", #Statut de la commune dans l'unité urbaine (information publique si on suppose que l'attauqant dispose des adresses des personnes)
+  "SALTYP", # Nature du contrat (Fonctionnaire, CDI, CDD, etc.)
+  "PCS1Q" # Catégorie socio-professionnelle de l'emploi principal
+)
+```
+
+Déterminons le niveau de risque de ré-identification:
+
+```{r}
+#| eval: false
+puf_sdc <- sdcMicro::createSdcObj(
+  puf_lfs,
+  keyVars = qi_1,
+  weightVar = "EXTRIAN"
+)
+```
+
+Le niveau d'anonyité de l'échantillon:
+```{r}
+#| eval: false
+print(puf_sdc, 'kAnon')
+```
+
+Il existe des uniques dans l'échantillon (1818). 
+
+Le risque de ré-identification évaluée par la mesure globale fournie par `sdcMicro` est évaluée à 0.00078, soit moins de 0.1% de risque de ré-identification, ce qui est très faible.
+
+```{r}
+#| eval: false
+puf_sdc@risk$global$risk
+```
+
+Si la mesure globale est très faible, est-ce qu'il demeure des cas individuels problématiques. En particulier: quel est le risque de ré-identification des uniques de l'échantillon ?
+
+```{r}
+#| eval: false
+risk_unique_echantillon <- puf_sdc@risk$individual |>
+  as.data.frame()|>
+  filter(fk == 1)
+
+risk_unique_echantillon |>
+  pull(risk) |>
+  quantile(probs=seq(0,1,.1))
+```
+
+Dans ce scénario d'attaque, supposons que toute attaque avec une chance de ré-identification supérieure à 50% est problématique:
+
+```{r}
+#| eval: false
+risk_unique_echantillon |> 
+  filter(risk > 0.5) |>
+  arrange(-risk)
+```
+
+Il reste 11 individus, dont 1 avec un risque quasi certain d'être ré-identifié dans le scénario que nous nous sommes fixés.
+
+```{r}
+#| eval: false
+max_risk_puf <- which.max(puf_sdc@risk$individual[,"risk"])
+puf_sdc@risk$individual[max_risk,]
+puf_lfs |> slice(max_risk) |> select(all_of(qi_1))
+```
+
+### Exercice
+
+Quelles sont les limites du scénario envisagé ci-dessus ?
+
 
 ### References
 
