@@ -322,9 +322,8 @@ hhid_vars <- c("HHID")
 Les comptages par croisement des modalités des variables quasi-identifiantes:
 
 ```{r}
-#| eval: false
 lfs_sdc <- sdcMicro::createSdcObj(
-  lfs_2023 |> select(-ARR),
+  lfs_2023,
   keyVars = key_vars
 )
 ```
