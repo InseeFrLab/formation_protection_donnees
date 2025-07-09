@@ -12,10 +12,12 @@ sudo apt update -y
 # Téléchargement de toutes les fiches de la formation
 mkdir -p ~/work/formation_protection_donnees/pratique/fiches
 mkdir -p ~/work/formation_protection_donnees/pratique/R
+mkdir -p ~/work/formation_protection_donnees/data
 
 # Téléchargement du fichier DESCRIPTION.md du dépôt GitHub
 cd ~/work/formation_protection_donnees/
 curl -O https://raw.githubusercontent.com/InseeFrLab/formation_protection_donnees/main/DESCRIPTION
+curl -O https://raw.githubusercontent.com/InseeFrLab/formation_protection_donnees/main/formation_protection_donnees.Rproj
 
 # Téléchargement de tous les fichiers .qmd depuis le dossier fiches du dépôt GitHub
 cd ~/work/formation_protection_donnees/pratique/fiches/
@@ -24,10 +26,17 @@ for file_url in $(curl -s "$gh_api_url" | grep '"download_url":' | grep '.qmd"' 
     curl -O "$file_url"
 done
 
-# Téléchargement de tous les fichiers .qmd depuis le dossier R du dépôt GitHub
+# Téléchargement de tous les fichiers .R depuis le dossier R du dépôt GitHub
 cd ~/work/formation_protection_donnees/pratique/R/
 gh_api_url="https://api.github.com/repos/InseeFrLab/formation_protection_donnees/contents/pratique/R"
 for file_url in $(curl -s "$gh_api_url" | grep '"download_url":' | grep '.R"' | cut -d '"' -f 4); do
+    curl -O "$file_url"
+done
+
+# Téléchargement des données depuis le dossier fiches du dépôt GitHub
+cd ~/work/formation_protection_donnees/data
+gh_api_url="https://api.github.com/repos/InseeFrLab/formation_protection_donnees/contents/data"
+for file_url in $(curl -s "$gh_api_url" | grep '"download_url":' | grep '.csv"' | cut -d '"' -f 4); do
     curl -O "$file_url"
 done
 
