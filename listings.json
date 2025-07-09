@@ -25,11 +25,10 @@
     ]
   },
   {
-    "listing": "/pratique/fiches/perturbatif.html",
+    "listing": "/pratique/fiches/arbitrage.html",
     "items": [
-      "/pratique/fiches/proteger-tableaux-cellkey.html",
-      "/pratique/fiches/proteger-micro-swapping.html",
-      "/pratique/fiches/proteger-micro-pram.html"
+      "/pratique/fiches/mesurer-risque.html",
+      "/pratique/fiches/mesurer-utilite.html"
     ]
   },
   {
@@ -43,10 +42,11 @@
     ]
   },
   {
-    "listing": "/pratique/fiches/arbitrage.html",
+    "listing": "/pratique/fiches/perturbatif.html",
     "items": [
-      "/pratique/fiches/mesurer-risque.html",
-      "/pratique/fiches/mesurer-utilite.html"
+      "/pratique/fiches/proteger-tableaux-cellkey.html",
+      "/pratique/fiches/proteger-micro-swapping.html",
+      "/pratique/fiches/proteger-micro-pram.html"
     ]
   },
   {
