@@ -314,7 +314,7 @@ On définit les variables selon les différentes catégories suivantes:
 Pour cet exercice, nous ferons les choix suivants:
 
 ```{r}
-key_vars <- c("AGE","SEXE","DEP","DIP7")
+key_vars <- c("AGE6","SEXE","DEP","DIP7")
 sens_vars <- c("ACTEU","ANCCHOM","IS_CHOM")
 hhid_vars <- c("HHID")
 ```
@@ -322,97 +322,53 @@ hhid_vars <- c("HHID")
 Les comptages par croisement des modalités des variables quasi-identifiantes:
 
 ```{r}
-
-```
-
-La part des individus ne respectant pas appartenant à des groupes de moins de $k$ individus est fournie par la table ci-dessous:
-
-```{r}
-mesurer_risk_reidentif <- function(data, key_vars, ks){
-  groupes_QI <- data |> 
-    count(across(all_of(key_vars))) |>
-    arrange(n)
-  risk_quantif <- map(
-  ks,
-  \(k){
-    groupes_QI |>
-      summarise(part = sum(n[n<k])/sum(n)*100, .groups="drop")|>
-      mutate(k=k)
-  }
-  ) |>
-    purrr::list_rbind()
-}
-```
-
-```{r}
-risk_mes <- mesurer_risk_reidentif(lfs_2023, key_vars, ks= 2:10)
-```
-
-```{r}
-#| echo: false
-#| fig-cap: "Part d'individus à risque de ré-identification en fonction du niveau d'anonymité choisi"
-risk_mes |>
-  select(k, part) |>
-  knitr::kable(digits=1)
-```
-
-Comme l'âge détaillé est une variable utilisée dans les quasi-identifiants, la part d'individus à risque de réidentification est assez importante (plus de la moitié des individus dès lors que $k\geq4$).
-
-Si on choisit de ne diffuser que la variable de tranche d'âge, on réduit sensiblement ce risque:
-
-```{r}
-key_vars2 <- c("AGE6","SEXE","DEP","DIP7")
-risk_mes2 <- mesurer_risk_reidentif(lfs_2023, key_vars2, ks= 2:10)
-```
-
-```{r}
-#| echo: false
-#| fig-cap: "Part d'individus à risque de ré-identification en fonction du niveau d'anonymité choisi"
-risk_mes2 |>
-  select(k, part) |>
-  knitr::kable(digits=1)
-```
-
-Dès lors, avec $k=10$, on dénombre `7.3%` d'individus à risque de ré-identification.
-
-
-On peut retrouver ces mêmes résultats avec le package `sdcMicro`:
-
-```{r}
+#| eval: false
 lfs_sdc <- sdcMicro::createSdcObj(
-  lfs_2023,
-  keyVars = key_vars2
+  lfs_2023 |> select(-ARR),
+  keyVars = key_vars
 )
 ```
 
+
+Le tableau ci-dessous présente le nombre et la part d'individus du fichier ne répondant pas 
+au critère du $k$-anonymat, en fonction de la valeur de $k$.
+
 ```{r}
-print(lfs_sdc, 'kAnon')
+ks <- 2:10
+data.frame(
+  k = ks,
+  nb_ind_risk = sapply(ks, \(k) sum(lfs_sdc@risk$individual[,"fk"] < k))
+) |>
+  mutate(part_ind_risk = nb_ind_risk / nrow(lfs_2023) * 100) |>
+  knitr::kable(digits=1)
 ```
 
-La part d'individus à risque de ré-identification pour $k=10$:
-```{r}
-mean(lfs_sdc@risk$individual[,2] < 10)*100
-```
+On dénombre 77 individus uniques et jusqu'à 7.3% d'individus à risque si nous nous fixons comme objectif de 
+respecter un $10$-anonymat dans notre fichier.
+
+Pour traiter les individus à risque, on se propose d'utiliser un targeted record swapping.
 
 ## Préparation pour le swapping
 
 ```{r}
-risk_variables <- c("AGE6","SEXE","DIP7")
-hierarchy <- c("REG", "DEP")
-similar <- list(
-  c("REG","AGE6","SEXE"), 
-  c("REG","SEXE"), 
+risk_variables <- c("DEP", "AGE6","SEXE","DIP7") # les variables permettant de mesurer le risque de ré-identification
+hierarchy <- c("REG", "DEP") # permet de renseigner l'existence d'une hiérarchie entre les var géographiques
+carry_along <- c("ARR")
+similar <- list( # Contraintes de similarité sur les individus échangés
+  c("REG","AGE6","SEXE"),  # priorité 1
+  c("REG","SEXE"), # priorité 2 ...
   c("REG","AGE6"), 
   c("AGE6","SEXE"),
-  "REG"
+  "REG",
+  "SEXE"
   )
-carry_along <- "ARR"
 hid <- "ID" # swapping d'individus
 ```
 
+
+La fonction de swapping implémentée dans `sdcMicro` nécessite de transformer toutes les variables en `integer`.
 ```{r}
 lfs_2023_pr_swap <- lfs_2023 |>
-  # select(all_of(c(risk_variables, hierarchy, unlist(similar), sens_vars, hhid_vars))) |>
   mutate(across(everything(), as.integer))|>
   mutate(ID = 1:n())
 ```
@@ -420,11 +376,13 @@ lfs_2023_pr_swap <- lfs_2023 |>
 
 ## Swapper les individus
 
-Les paramètres:
+
+On choisit de nous fixer comme objectif de traiter tous les individus ne respectant pas 
+le $5$-anonymat et d'échanger au moins $1$% des individus.
 
 ```{r}
 k_anonymity <- 5
-swaprate <- .1
+swaprate <- .01
 ```
 
 ```{r}
@@ -438,18 +396,30 @@ lfs_swapped <- recordSwap(
   k_anonymity = k_anonymity,
   swaprate = swaprate,
   return_swapped_id = TRUE,
-  seed = 123456
+  seed = 123456 # pour la reproductibilité
 )
 ```
 
-Le taux de swapping réel:
+Le taux de swapping réel est légèrement inférieur au taux de swapping attendu (c'est-à-dire $2\times2.4=4.8\%$):
 
 ```{r}
-lfs_swapped %>% summarise(mean(ID != ID_swapped))
+lfs_swapped %>% summarise(mean(ID != ID_swapped)) * 100
 ```
 
+En réalité, un certain nombre d'individus à risque ont été échangés entre eux :
+
 ```{r}
-lfs_swapped %>% group_by(REG) %>%
+ind_risk <- which(lfs_sdc@risk$individual[,"fk"] < 5)
+lfs_swapped |>
+  slice(ind_risk) |>
+  filter(ID_swapped %in% ind_risk) |>
+  nrow() /2
+```
+
+
+```{r}
+lfs_swapped %>% 
+  group_by(REG) %>%
   summarise(mean(ID != ID_swapped))
 ```
 
@@ -457,13 +427,12 @@ lfs_swapped %>% group_by(REG) %>%
 ### Un exemple d'échange
 
 ```{r}
-head(lfs_swapped, 5)
+premier_couple <- lfs_swapped |> slice(ind_risk[1]) |>
+  bind_rows(lfs_swapped |> filter(ID_swapped == ind_risk[1]))
 ```
 
-Par exemple, l'individu 3 a été échangé:
-
 ```{r}
-lfs_2023 |> slice(c(3,lfs_swapped|>slice(3)|>pull(ID_swapped)))
+premier_couple 
 ```
 
 On peut remarquer que ces individus sont similaires sur la région, le sexe et l'âge (`AGE6`).
@@ -485,14 +454,17 @@ lfs_swapped
 str(lfs_swapped)
 ```
 
-<!-- 
+On procède à l'échange des géographies entre les individus:
+
 ```{r}
-# lfs_pert <- bind_cols(
-#   lfs_2023_pr_swap |> select(REG, DEP, ARR),
-#   lfs_swapped |> select(-REG, -DEP, -ARR) |> arrange(ID_swapped) 
-# ) 
+lfs_pert <- lfs_swapped |>
+  select(-REG, -DEP, -ARR, -ID_swapped)|>
+  full_join(
+    lfs_swapped |> select(REG, DEP, ARR, ID=ID_swapped),
+    by = "ID"
+  )
 ```
- -->
+
 
 ## Swapper les ménages
 
@@ -522,10 +494,44 @@ lfs_swapped_hh %>% summarise(mean(HHID != HHID_swapped))
 ```
 
 
-
-
 ## Mesurer la perte d'utilité 
 
+
+```{r}
+reg_sex_age <- lfs_swapped |> count(REG, SEXE, AGE6, name="n_p") |>
+  left_join(lfs_2023_pr_swap |> count(REG, SEXE, AGE6, name = "n_o"))|>
+  mutate(n_p = ifelse(is.na(n_p), 0, n_p))|>
+  mutate(n_o = ifelse(is.na(n_o), 0, n_o))
+```
+
+Mesure de l'écart absolu moyen :
+```{r}
+mean(abs(reg_sex_age$n_p - reg_sex_age$n_o))
+```
+
+Visualisation des distributions:
+
+```{r}
+reg_sex_age |> mutate(cl = 1:n()) |>
+  tidyr::pivot_longer(n_p:n_o, names_to = "type", values_to = "n") |>
+  ggplot() +
+  geom_bar(aes(x=cl, y=n, fill=type), stat = "identity", position = "dodge")
+```
+
+
+```{r}
+dep_sex_age <- lfs_swapped |> count(DEP, SEXE, AGE6, name="n_p") |>
+  left_join(lfs_2023_pr_swap |> count(DEP, SEXE, AGE6, name = "n_o")) |>
+  mutate(n_p = ifelse(is.na(n_p), 0, n_p))|>
+  mutate(n_o = ifelse(is.na(n_o), 0, n_o)) |>
+  mutate(diff_abs = abs(n_p - n_o))
+
+mean(dep_sex_age$diff_abs)
+```
+
+```{r}
+summary(dep_sex_age$diff_abs)
+```
 
 On se propose de  comparer les intervalles de confiance des coefficients d'un modèle logistique 
 pour évaluer la perte d'information engendrée par le swapping.
@@ -544,8 +550,11 @@ la population étudiante et retraitée.
 
 
 ```{r}
-m_original <- glm(IS_CHOM ~ SEXE + AGE6 + DIP7, data = lfs_2023 |> filter(ACTEU != 3))
-m_swapped <- glm(IS_CHOM ~ SEXE + AGE6 + DIP7, data = lfs_2023 |> filter(ACTEU != 3))
+lfs_2023_pr_glm <- lfs_2023_pr_swap |> mutate(across(-IS_CHOM, as.character))
+lfs_pert_pr_glm <- lfs_swapped |> mutate(across(-IS_CHOM, as.character))
+
+m_original <- glm(IS_CHOM ~ REG + SEXE + AGE6 + DIP7, data = lfs_2023_pr_glm |> filter(ACTEU != 3))
+m_swapped <- glm(IS_CHOM ~ REG + SEXE + AGE6 + DIP7, data = lfs_pert_pr_glm |> filter(ACTEU != 3))
 
 mes_modeles <- list(
   "original" = m_original,
