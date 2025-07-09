@@ -4,10 +4,10 @@
 # https://datalab.sspcloud.fr/launcher/ide/rstudio?name=rstudio-formation-protection&version=2.3.1&s3=region-ec97c721&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Frstudio.sh»
 
 sudo apt update -y
-# sudo apt install tree -y
-# sudo apt install cmake -y
-# sudo apt install zlib1g-dev -y
-# sudo apt install libglpk-dev -y
+sudo apt install tree -y
+sudo apt install cmake -y
+sudo apt install zlib1g-dev -y
+sudo apt install libglpk-dev -y
 
 # Clônage du projet
 cd ~/work/
