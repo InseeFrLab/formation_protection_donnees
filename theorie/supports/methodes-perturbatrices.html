@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.33">
 
   <title>La protection des données statistiques publiques – Les méthodes perturbatrices</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -365,7 +365,6 @@ Table&nbsp;1: : Les méthodes pour gérer la protection des données
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-compt-orig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered">
-<caption>Nombre d’entreprises en fonction de leur implantation et du caractère polluant de leurs activités</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Caractéristique</th>
@@ -464,7 +463,6 @@ Table&nbsp;2: Nombre d’entreprises en fonction de leur implantation et du cara
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-compt-arr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered">
-<caption>Application d’un arrondi déterministe de base <span class="math inline">\(b=5\)</span> (Moyenne des écarts absolus: <span class="math inline">\(1.4\)</span>.)</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Caractéristique</th>
@@ -540,7 +538,6 @@ Table&nbsp;3: Application d’un arrondi déterministe de base <span class="math
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-compt-smcr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered">
-<caption>Application d’un algorithme de type Small Count Rounding (Moyenne des écarts absolus: <span class="math inline">\(1.07\)</span>.)</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Caractéristique</th>
@@ -621,7 +618,6 @@ Les valeurs des cellules sensibles sont perturbées pour respecter un **interval
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-compt-arr-ctr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered">
-<caption>Application d’un arrondi contrôlé avec une base <span class="math inline">\(b=5\)</span> (Moyenne des écarts absolus: <span class="math inline">\(1.5\)</span>.)</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Caractéristique</th>
@@ -730,7 +726,6 @@ Moyenne des écarts absolus: $0.933$.
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-compt-ckm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered">
-<caption>Application de la CKM avec <span class="math inline">\(D = 5\)</span> et <span class="math inline">\(V = 3\)</span> (Moyenne des écarts absolus: <span class="math inline">\(1.1\)</span>)</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Caractéristique</th>
@@ -788,7 +783,7 @@ Table&nbsp;6: Application de la CKM avec <span class="math inline">\(D = 5\)</sp
 <section id="etape-1-création-dune-clé-individuelle-aléatoire" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Etape 1: Création d’une clé individuelle aléatoire</h2>
 <div style="text-align:center;">
-<div id="fig-mat-trans" class="quarto-float quarto-figure quarto-figure-center" alt="Ajout des clés individuelles aux micro-données" data-fig-align="center">
+<div id="fig-mat-trans" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Ajout des clés individuelles aux micro-données">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/ckm-ind-cles.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Ajout des clés individuelles aux micro-données">
@@ -820,7 +815,7 @@ Supposons que la base $\mathcal{B}$ soit composé des 6 individus suivant et qu'
 <section id="etape-2-construction-du-tableau" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Etape 2: Construction du tableau</h2>
 <div style="text-align:center;">
-<div id="fig-mat-trans" class="quarto-float quarto-figure quarto-figure-center" alt="Construction du tableau et des clés de chaque case" data-fig-align="center">
+<div id="fig-mat-trans" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Construction du tableau et des clés de chaque case">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/ckm-table-depart.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Construction du tableau et des clés de chaque case">
@@ -848,7 +843,7 @@ On a :
 <section id="etape-3-les-probabilités-de-transition" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Etape 3: Les probabilités de transition</h2>
 <div style="text-align:center;">
-<div id="fig-mat-trans" class="quarto-float quarto-figure quarto-figure-center" alt="Matrice de transition pour D=2 et V=1" data-fig-align="center">
+<div id="fig-mat-trans" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Matrice de transition pour D=2 et V=1">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/ckm-mat-trans.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Matrice de transition pour D=2 et V=1">
@@ -872,7 +867,7 @@ Figure&nbsp;3: Matrice de transition pour D=2 et V=1
 <section id="etape-4-déterminer-la-perturbation-à-injecter" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Etape 4 : Déterminer la perturbation à injecter</h2>
 <div style="text-align:center;">
-<div id="fig-tab-pert" class="quarto-float quarto-figure quarto-figure-center" alt="La perturbation à injecter" data-fig-align="center">
+<div id="fig-tab-pert" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="La perturbation à injecter">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-tab-pert-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/ckm-table-pert.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="La perturbation à injecter">
@@ -910,7 +905,7 @@ Figure&nbsp;4: La perturbation à injecter” fig-align=“center
 <section id="etape-5-construire-le-tableau-final" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Etape 5 : Construire le tableau final</h2>
 <div style="text-align:center;">
-<div id="fig-tab-finale" class="quarto-float quarto-figure quarto-figure-center" alt="Table après perturbation" data-fig-align="center">
+<div id="fig-tab-finale" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Table après perturbation">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-tab-finale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/ckm-table-finale.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Table après perturbation">
@@ -938,7 +933,6 @@ Figure&nbsp;5: Table après perturbation
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover">
-<caption>Avantages et onconvénients de la méthode des clés aléatoires</caption>
 <colgroup>
 <col style="width: 41%">
 <col style="width: 58%">
@@ -1001,7 +995,6 @@ Table&nbsp;7: Avantages et onconvénients de la méthode des clés aléatoires
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered">
-<caption>Des données individuelles avec des uniques sur les croisements Âge <span class="math inline">\(\times\)</span> Région</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Région</th>
@@ -1074,7 +1067,6 @@ Table&nbsp;8: Des données individuelles avec des uniques sur les croisements Â
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered">
-<caption>Des données individuelles avec des uniques sur les croisements Âge <span class="math inline">\(\times\)</span> Région</caption>
 <colgroup>
 <col style="width: 30%">
 <col style="width: 35%">
@@ -1180,7 +1172,7 @@ Table&nbsp;9: Des données individuelles avec des uniques sur les croisements Â
 <section id="minimiser-la-variance-intra-groupe" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Minimiser la variance intra-groupe</h2>
 <div style="text-align:center;">
-<div id="fig-within" class="quarto-float quarto-figure quarto-figure-center" alt="Minimisation de la variance intra-groupe" data-fig-align="center">
+<div id="fig-within" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Minimisation de la variance intra-groupe">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-within-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/within.png" class="quarto-figure quarto-figure-center" style="width:50.0%" alt="Minimisation de la variance intra-groupe">
@@ -1200,7 +1192,6 @@ Figure&nbsp;6: Table après perturbation
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-bruit-add-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover">
-<caption>Avantages et inconvénients de l’injection d’un bruit additif</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Avantages</th>
@@ -1268,7 +1259,6 @@ Table&nbsp;10: Avantages et inconvénients de l’injection d’un bruit additif
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-bruit-add-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover">
-<caption>Avantages et inconvénients de l’injection d’un bruit additif</caption>
 <colgroup>
 <col style="width: 42%">
 <col style="width: 57%">
@@ -1344,7 +1334,7 @@ Table&nbsp;11: Avantages et inconvénients de l’injection d’un bruit additif
 <section id="un-exemple-7" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Un exemple</h2>
 <div style="text-align:center;">
-<div id="fig-swap-avt" class="quarto-float quarto-figure quarto-figure-center" alt="Avant swapping" data-fig-align="center">
+<div id="fig-swap-avt" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Avant swapping">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-swap-avt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/swapping-exemple-avant.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Avant swapping">
@@ -1359,7 +1349,7 @@ Figure&nbsp;7: Avant Swapping
 <section id="un-exemple-8" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Un exemple</h2>
 <div style="text-align:center;">
-<div id="fig-swap-apr" class="quarto-float quarto-figure quarto-figure-center" alt="Après swapping" data-fig-align="center">
+<div id="fig-swap-apr" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Après swapping">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-swap-apr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/swapping-exemple-apres.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Après swapping">
@@ -1377,7 +1367,6 @@ Figure&nbsp;8: Après Swapping
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-trs-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover">
-<caption>Avantages et inconvénients du TRS</caption>
 <colgroup>
 <col style="width: 45%">
 <col style="width: 54%">
@@ -1769,7 +1758,6 @@ Table&nbsp;12: Avantages et inconvénients du TRS
 <figure class="quarto-float quarto-float-tbl">
 <div aria-describedby="tbl-pram-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover">
-<caption>Avantages et inconvénients de PRAM</caption>
 <colgroup>
 <col style="width: 53%">
 <col style="width: 46%">
