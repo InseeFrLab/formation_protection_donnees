@@ -11,6 +11,7 @@ listing:
     - "proteger-tableaux-suppressif.qmd"
     - "analyse-demande.qmd"
     - "analyse-automatique.qmd"
+    - "suppression-locale.qmd"
   sort: false
   type: grid
   image-height: 300px
