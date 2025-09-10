@@ -91,8 +91,6 @@ réduire ces risques.
 ## La micro-agrégation
 
 
-Pour 
-
 ```{r}
 lfs_sdc <- microaggregation(
   lfs_sdc,
