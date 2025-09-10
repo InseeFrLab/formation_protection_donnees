@@ -351,15 +351,14 @@ Pour traiter les individus à risque, on se propose d'utiliser un targeted recor
 ## Préparation pour le swapping
 
 ```{r}
-risk_variables <- c("DEP", "AGE6","SEXE","DIP7") # les variables permettant de mesurer le risque de ré-identification
+risk_variables <- c("AGE6","SEXE","DIP7") # les variables permettant de mesurer le risque de ré-identification
 hierarchy <- c("REG", "DEP") # permet de renseigner l'existence d'une hiérarchie entre les var géographiques
 carry_along <- c("ARR")
 similar <- list( # Contraintes de similarité sur les individus échangés
   c("REG","AGE6","SEXE"),  # priorité 1
-  c("REG","SEXE"), # priorité 2 ...
+  c("AGE6","SEXE"), # priorité 2 ...
+  c("REG","SEXE"), 
   c("REG","AGE6"), 
-  c("AGE6","SEXE"),
-  "REG",
   "SEXE"
   )
 hid <- "ID" # swapping d'individus
@@ -378,11 +377,14 @@ lfs_2023_pr_swap <- lfs_2023 |>
 
 
 On choisit de nous fixer comme objectif de traiter tous les individus ne respectant pas 
-le $5$-anonymat et d'échanger au moins $1$% des individus.
+le $5$-anonymat et d'échanger au moins $10$% des individus. Le premier critère 
+consiste à rendre obligatoire l'échange des individus ne respectant le 
+niveau d'anonymat requis. Le second quant à lui fixe un minimum global d'échanges 
+à atteindre.
 
 ```{r}
 k_anonymity <- 5
-swaprate <- .01
+swaprate <- .1
 ```
 
 ```{r}
@@ -391,7 +393,7 @@ lfs_swapped <- recordSwap(
   hid = hid,
   hierarchy = hierarchy,
   similar = similar,
-  risk_variables = risk_variables,
+  risk_variables = key_vars,
   carry_along = carry_along,
   k_anonymity = k_anonymity,
   swaprate = swaprate,
@@ -403,7 +405,10 @@ lfs_swapped <- recordSwap(
 Le taux de swapping réel est légèrement inférieur au taux de swapping attendu (c'est-à-dire $2\times2.4=4.8\%$):
 
 ```{r}
-lfs_swapped %>% summarise(mean(ID != ID_swapped)) * 100
+lfs_swapped |> summarise(
+  part_indiv_risq = mean(ID %in% ind_risk)*100,
+  tx_swap_reel = mean(ID != ID_swapped) * 100
+)
 ```
 
 En réalité, un certain nombre d'individus à risque ont été échangés entre eux :
@@ -416,11 +421,39 @@ lfs_swapped |>
   nrow() /2
 ```
 
+Et quelques individus, ne figurant pas dans la liste des individus à risque, 
+ont également été échangés entre eux:
 
 ```{r}
-lfs_swapped %>% 
+lfs_swapped |>
+    filter(ID != ID_swapped) |>
+    summarise(n_echanges_no_risque = sum(!ID_swapped %in% ind_risk & !ID %in% ind_risk)/2)
+```
+
+Le taux d'échange est très différent selon les régions, dépendant du nombre 
+d'individus problématiques en termes de risque de divulgation au sein de chacune d'elles:
+
+```{r}
+lfs_swapped |> 
   group_by(REG) %>%
-  summarise(mean(ID != ID_swapped))
+  summarise(
+    part_indiv_risq = mean(ID %in% ind_risk)*100,
+    tx_swap_reel = mean(ID != ID_swapped) *100
+  ) 
+```
+
+La fonction fait en sorte d'atteindre le taux de swapping souhaité (dans notre 
+cas $10\%$ dans chacune des régions). Cela explique pourquoi le taux de swapping 
+global observé peut être légèrement supérieur au taux de swapping fixé initialement.
+
+
+## La base après swapping
+
+La base de données fournit les informations individuelles de chaque individu 
+dans leur nouvelle localisation.
+
+```{r}
+str(lfs_swapped)
 ```
 
 
@@ -435,48 +468,72 @@ premier_couple <- lfs_swapped |> slice(ind_risk[1]) |>
 premier_couple 
 ```
 
-On peut remarquer que ces individus sont similaires sur la région, le sexe et l'âge (`AGE6`).
+On peut remarquer que ces individus ne sont similaires que sur les variables 
+de similarité que sont le sexe et l'âge (`AGE6`). En revanche, l'échange a eu 
+lieu entre deux individus de régions différentes: l'individu n°3 résidant 
+dans la région $2$ originellement a été échangé avec un individu résidant 
+dans la région $1$.
 
 
-<!-- 
+### Echanges selon l'ordre des priorités de similarité
+
+```{r}
+lfs_swap_vs_orig <- lfs_swapped |>
+  full_join(lfs_2023_pr_swap, by = "ID", suffix = c("_s","_o")) |> 
+  filter(ID != ID_swapped) |>
+  mutate(
+    test1 = REG_s == REG_o,
+    test2 = SEXE_s == SEXE_o,
+    test3 = AGE6_s == AGE6_o
+  ) 
+
+lfs_swap_vs_orig |>
+  # filter(ID %in% ind_risk) |>
+  summarise(
+    prior_reg_sex_age = sum(test1 & test2 & test3),
+    prior_sex_age = sum(!test1 & test2 & test3),
+    prior_reg_sex = sum(test1 & test2 & !test3),
+    prior_reg_age = sum(test1 & !test2 & test3),
+    prior_reg = sum(test1 & !test2 & !test3),
+    prior_sex = sum(!test1 & test2 & !test3),
+  ) |>
+  tidyr::pivot_longer(everything(), names_to = "ordre_priorite", values_to = "NB") 
+```
+$2~494$ individus ont été échangés avec des individus résidant dans la même 
+région, de même sexe et de la même catégorie d'âge. En revanche, $1~480$ individus
+(en réalité les individus à risque) ont été échangés avec des individus de même 
+sexe et de même âge, mais résidant en dehors de la région. 
+
+
+Notons que dans cet exemple, tous les individus ayant été échangés avec des 
+individus de même sexe et de même âge, le swapping ne génère pas d'incohérence 
+dans la composition des ménages: leur taille et leur composition adultes/enfants 
+restant parfaitement préservées.
+
+<!--
+
 #### Vérifier que les individus à risque ont bien été swappés
 
 ```{r}
 lfs_swapped 
 ```
 
-#### Intégrité de la composition des ménages
- -->
+-->
+ 
+ 
+## Echanger les ménages
 
-## La base swappée
-
-```{r}
-str(lfs_swapped)
-```
-
-On procède à l'échange des géographies entre les individus:
+Et si on avait échangé les ménages plutôt que les individus, qu'en aurait-il 
+été ?
 
 ```{r}
-lfs_pert <- lfs_swapped |>
-  select(-REG, -DEP, -ARR, -ID_swapped)|>
-  full_join(
-    lfs_swapped |> select(REG, DEP, ARR, ID=ID_swapped),
-    by = "ID"
-  )
-```
-
-
-## Swapper les ménages
-
-```{r}
-hid <- "HHID" # swapping de ménages
-similar <- list(c("HH_TAILLE", "HH_AGE"), c("HH_TAILLE"), c("HH_AGE"))
+similarHH <- list(c("HH_TAILLE", "HH_AGE"), c("HH_TAILLE"), c("HH_AGE"))
 
 lfs_swapped_hh <- recordSwap(
   data = lfs_2023_pr_swap,
-  hid = hid,
+  hid = "HHID", # identifiant des ménages
   hierarchy = hierarchy,
-  similar = similar,
+  similar = similarHH,
   risk_variables = risk_variables,
   carry_along = carry_along,
   k_anonymity = k_anonymity,
@@ -487,54 +544,120 @@ lfs_swapped_hh <- recordSwap(
 ```
 
 
-#### Taux de swapping des ménages vs taux de swapping des individus
+### Taux de swapping observé
+
+Combien d'individus ont-ils été échangés ? 
 
 ```{r}
-lfs_swapped_hh %>% summarise(mean(HHID != HHID_swapped)) 
+lfs_swapped_hh |> summarise(tx_swap_reel = mean(HHID != HHID_swapped)*100) 
 ```
+On observe que le taux de swapping observé est supérieur au taux observé lorsque 
+l'échange n'est opéré qu'au niveau individuel.
 
 
 ## Mesurer la perte d'utilité 
 
+Il est important de mesurer l'effet des traitements opérés sur la qualité des 
+données qui seront transmises auprès du public. La mesure de la perte d'information 
+peut s'opérer sur de nombreuses dimensions possibles. Le mieux est de se focaliser 
+sur les besoins prioritaires en termes de restitution de l'information.
+
+### Robustesse de certains comptages
 
 ```{r}
-reg_sex_age <- lfs_swapped |> count(REG, SEXE, AGE6, name="n_p") |>
+reg_sex_age1 <- lfs_swapped |> count(REG, SEXE, AGE6, name="n_p") |>
+  left_join(lfs_2023_pr_swap |> count(REG, SEXE, AGE6, name = "n_o"))|>
+  mutate(n_p = ifelse(is.na(n_p), 0, n_p))|>
+  mutate(n_o = ifelse(is.na(n_o), 0, n_o))
+
+reg_sex_age2 <- lfs_swapped_hh |> count(REG, SEXE, AGE6, name="n_p") |>
   left_join(lfs_2023_pr_swap |> count(REG, SEXE, AGE6, name = "n_o"))|>
   mutate(n_p = ifelse(is.na(n_p), 0, n_p))|>
   mutate(n_o = ifelse(is.na(n_o), 0, n_o))
 ```
 
-Mesure de l'écart absolu moyen :
+Comparons pour les deux swappings (individus et ménages) l'écart absolu moyen du 
+tableau croisant le niveau régional, le sexe et l'âge des individus:
+
 ```{r}
-mean(abs(reg_sex_age$n_p - reg_sex_age$n_o))
+data.frame(
+  mad_swap_indiv = mean(abs(reg_sex_age1$n_p - reg_sex_age1$n_o)),
+  mad_swap_menag = mean(abs(reg_sex_age2$n_p - reg_sex_age2$n_o))
+)
 ```
 
-Visualisation des distributions:
+La conservation des marges régionales `SEXE*AGE` est de très bonne qualité dans 
+le premier cas. En revanche, dans le cas d'un swapping de ménages, ces marges 
+ont été plus fortement modifiées. Cela s'explique par le fait que dans le premier cas, 
+les trois variables (région, sexe et age) font partie des variables de similarité, 
+mais pas dans le second.
+
+
+En comparant les distributions entre elles, on observe qu'elles sont très proches,
+excepté pour la région $4$, région plus petite et contenant le plus d'individus 
+à risque.
 
 ```{r}
-reg_sex_age |> mutate(cl = 1:n()) |>
-  tidyr::pivot_longer(n_p:n_o, names_to = "type", values_to = "n") |>
+reg_sex_age1 |>
+  full_join(reg_sex_age2 |> select(-n_o) |> rename(n_sm = n_p), by=c("REG","SEXE","AGE6")) |>
+  tidyr::pivot_longer(n_p:n_sm, names_to = "type", values_to = "n") |>
+  mutate(n = ifelse(is.na(n), 0, n)) |>
+  mutate(type = case_when(type == "n_o"~"original",type=="n_p"~"swap_ind",TRUE~"swap_men")) |>
   ggplot() +
-  geom_bar(aes(x=cl, y=n, fill=type), stat = "identity", position = "dodge")
+  geom_bar(aes(x=AGE6, y=n, fill=type), stat = "identity", position = "dodge") +
+  scale_fill_brewer("data", palette = 7, type="qual") +
+  facet_grid(REG~SEXE, scales="free", label = "label_both") +
+  ggtitle("Distributions par sexe, âge et région, selon les données utilisées") +
+  theme_minimal()
 ```
 
+Testons un autre tableau, en prenant une variable qui n'a pas été sélectionnée
+parmi les variables de similarité.
 
 ```{r}
-dep_sex_age <- lfs_swapped |> count(DEP, SEXE, AGE6, name="n_p") |>
-  left_join(lfs_2023_pr_swap |> count(DEP, SEXE, AGE6, name = "n_o")) |>
+reg_sex_dip1 <- lfs_swapped |> count(REG, SEXE, DIP7, name="n_p") |>
+  left_join(lfs_2023_pr_swap |> count(REG, SEXE, DIP7, name = "n_o")) |>
   mutate(n_p = ifelse(is.na(n_p), 0, n_p))|>
   mutate(n_o = ifelse(is.na(n_o), 0, n_o)) |>
-  mutate(diff_abs = abs(n_p - n_o))
+  mutate(diff_abs = abs(n_p - n_o)) |>
+  mutate(diff_rel = ifelse(n_o > 0, diff_abs/n_o*100, (n_p>0)*100))
 
-mean(dep_sex_age$diff_abs)
+
+reg_sex_dip2 <- lfs_swapped_hh |> count(REG, SEXE, DIP7, name="n_p") |>
+  left_join(lfs_2023_pr_swap |> count(REG, SEXE, DIP7, name = "n_o")) |>
+  mutate(n_p = ifelse(is.na(n_p), 0, n_p))|>
+  mutate(n_o = ifelse(is.na(n_o), 0, n_o)) |>
+  mutate(diff_abs = abs(n_p - n_o)) |>
+  mutate(diff_rel = ifelse(n_o > 0, diff_abs/n_o*100, (n_p>0)*100))
+
+
+data.frame(
+  mad_swap_indiv = mean(abs(reg_sex_dip1$n_p - reg_sex_dip1$n_o)),
+  mad_swap_menag = mean(abs(reg_sex_dip2$n_p - reg_sex_dip2$n_o))
+)
 ```
+
 
 ```{r}
-summary(dep_sex_age$diff_abs)
+reg_sex_dip1 |>
+  full_join(reg_sex_dip2 |> select(-n_o) |> rename(n_sm = n_p), by=c("REG","SEXE","DIP7")) |>
+  tidyr::pivot_longer(n_p:n_sm, names_to = "type", values_to = "n") |>
+  mutate(n = ifelse(is.na(n), 0, n)) |>
+  mutate(type = case_when(type == "n_o"~"original",type=="n_p"~"swap_ind",TRUE~"swap_men")) |>
+  ggplot() +
+  geom_bar(aes(x=DIP7, y=n, fill=type), stat = "identity", position = "dodge") +
+  scale_fill_brewer("data", palette = 7, type="qual") +
+  facet_grid(REG~SEXE, scales="free", label = "label_both") +
+  ggtitle("Distributions par sexe, diplôme et région, selon les données utilisées") +
+  theme_minimal()
 ```
 
+
+### Analyse statistique 
+
 On se propose de  comparer les intervalles de confiance des coefficients d'un modèle logistique 
-pour évaluer la perte d'information engendrée par le swapping.
+pour évaluer la perte d'information engendrée par le swapping. L'idée est de tester 
+les limites d'utilisation du jeu de données traité par les futurs utilisateurs.
 
 ```{r}
 source("../R/fun_cio.R")
@@ -552,13 +675,16 @@ la population étudiante et retraitée.
 ```{r}
 lfs_2023_pr_glm <- lfs_2023_pr_swap |> mutate(across(-IS_CHOM, as.character))
 lfs_pert_pr_glm <- lfs_swapped |> mutate(across(-IS_CHOM, as.character))
+lfs_pert_hh_pr_glm <- lfs_swapped_hh |> mutate(across(-IS_CHOM, as.character))
 
 m_original <- glm(IS_CHOM ~ REG + SEXE + AGE6 + DIP7, data = lfs_2023_pr_glm |> filter(ACTEU != 3))
 m_swapped <- glm(IS_CHOM ~ REG + SEXE + AGE6 + DIP7, data = lfs_pert_pr_glm |> filter(ACTEU != 3))
+m_swapped_hh <- glm(IS_CHOM ~ REG + SEXE + AGE6 + DIP7, data = lfs_pert_hh_pr_glm |> filter(ACTEU != 3))
 
 mes_modeles <- list(
   "original" = m_original,
-  "swapped" = m_swapped
+  "swapped_indiv" = m_swapped,
+  "swapped_menag" = m_swapped_hh
 )
 
 all_cios <- get_all_confints(mes_modeles)
@@ -566,14 +692,86 @@ all_cios <- get_all_confints(mes_modeles)
 
 
 ```{r}
-graph_cios(all_cios, titre = "Superposition des intervalles de confiance\ndes Odds Ratio du modèle selon le jeu de données") +
-  theme(axis.text.y =  element_text(size = 8))
+graph_cios(
+  all_cios |> filter(substr(vars, 1, 4) %in% c("DEP1","AGE6","DIP7")), titre = "Superposition des intervalles de confiance à 95%\ndes Odds Ratio du modèle logistique selon le jeu de données") 
 ```
+
+Le modèle conduit aux mêmes conclusions quelque soit les traitements opérés 
+que celles tenues àpartir du jeu original. Dans ce cas simple, la perturbation 
+rend possible une analyse statistique multivariée.
 
 
 ## Exercice 
 
-Comparer la perte d'information de différents taux de swapping.
-Vous utiliserez la mesure de perte d'information que vous souhaitez.
+Comparer la perte d'information de différents taux de swapping ou de différents
+niveaux d'anonymité. Vous utiliserez la mesure de perte d'information 
+que vous souhaitez.
+
+
+```{r, message=FALSE}
+params <- expand.grid(
+  k_anonymity = 2:10,
+  swaprate = 0.1,
+  KEEP.OUT.ATTRS = FALSE,
+  stringsAsFactors = FALSE
+) |>
+  as.data.frame()
+
+set.seed(123456)
+map_ru <- purrr::map(
+  seq_along(params$k_anonymity),
+  \(i){
+    k <- params$k_anonymity[i]
+    s <- params$swaprate[i]
+    
+    data_swapped <- recordSwap(
+      data = lfs_2023_pr_swap,
+      hid = "ID",
+      hierarchy = hierarchy,
+      similar = similar,
+      risk_variables = risk_variables,
+      carry_along = carry_along,
+      k_anonymity = k,
+      swaprate = s,
+      return_swapped_id = TRUE
+      # seed = 123456 # pour la reproductibilité
+    )
+    
+    dep_sex_dip_pcs <- data_swapped |> count(DEP,  SEXE, DIP7, PCS1Q, name="n_p") |>
+      left_join(lfs_2023_pr_swap |> count(DEP,  SEXE, DIP7, PCS1Q, name = "n_o")) |>
+      mutate(n_p = ifelse(is.na(n_p), 0, n_p))|>
+      mutate(n_o = ifelse(is.na(n_o), 0, n_o)) |>
+      mutate(diff_abs = abs(n_p - n_o)) |>
+      mutate(diff_rel = ifelse(n_o > 0, diff_abs/n_o*100, (n_p>0)*100))
+
+    
+    return(
+      data.frame(
+        k = k,
+        s = s, 
+        sr_reel = as.numeric(data_swapped |> summarise(mean(ID != ID_swapped)) * 100),
+        mdr = mean(dep_sex_dip_pcs$diff_rel)
+      )
+    )
+  }
+) |>
+  purrr::list_rbind()
+
+```
+
+```{r}
+map_ru |>
+  ggplot() +
+  geom_point(aes(x=mdr, y=k), color = "forestgreen")  +
+  labs(x = "Ecart relatif moyen (en %)", y = "Niveau d'anonymité") +
+  scale_x_continuous(limits = c(1,1.6), expand = c(0,0)) +
+  ggtitle(
+    "Protection vs Perte d'information",
+    subtitle = 
+    "Le niveau de protection est mesuré le niveau d'anonymat et
+    la perte d'information par l'écart relatif moyen observé
+    dans le tableau DEP*SEXE*DIP*PCS") +
+  theme_minimal()
+```
 
 
