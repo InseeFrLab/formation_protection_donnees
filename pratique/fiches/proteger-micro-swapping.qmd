@@ -402,9 +402,10 @@ lfs_swapped <- recordSwap(
 )
 ```
 
-Le taux de swapping réel est légèrement inférieur au taux de swapping attendu (c'est-à-dire $2\times2.4=4.8\%$):
+Le taux de swapping réel est légèrement supérieur au taux de swapping demandé `r swaprate`:
 
 ```{r}
+ind_risk <- which(lfs_sdc@risk$individual[,"fk"] < 5)
 lfs_swapped |> summarise(
   part_indiv_risq = mean(ID %in% ind_risk)*100,
   tx_swap_reel = mean(ID != ID_swapped) * 100
@@ -414,7 +415,6 @@ lfs_swapped |> summarise(
 En réalité, un certain nombre d'individus à risque ont été échangés entre eux :
 
 ```{r}
-ind_risk <- which(lfs_sdc@risk$individual[,"fk"] < 5)
 lfs_swapped |>
   slice(ind_risk) |>
   filter(ID_swapped %in% ind_risk) |>
@@ -708,7 +708,11 @@ niveaux d'anonymité. Vous utiliserez la mesure de perte d'information
 que vous souhaitez.
 
 
-```{r, message=FALSE}
+```{r}
+#| message: false
+#| eval: false
+#| code-fold: true
+
 params <- expand.grid(
   k_anonymity = 2:10,
   swaprate = 0.1,
@@ -756,10 +760,13 @@ map_ru <- purrr::map(
   }
 ) |>
   purrr::list_rbind()
-
 ```
 
 ```{r}
+#| message: false
+#| eval: false
+#| code-fold: true
+
 map_ru |>
   ggplot() +
   geom_point(aes(x=mdr, y=k), color = "forestgreen")  +
