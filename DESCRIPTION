@@ -33,6 +33,6 @@ BugReports: https://github.com/atelier-protection-donnees/atelier-protection-don
 Depends: R (>= 4.2.0), dplyr, purrr, readr, ggplot2, knitr, rmarkdown, quarto,
     sdcTable, cellKey, sdcMicro, GaussSuppression, synthpop, rtauargus (>= 1.3.0),
     DT, kableExtra, SmallCountRounding
-Remotes: InseeFrLab/rtauargus
+Remotes: InseeFrLab/rtauargus, ropensci-review-tools/babelquarto
 License: GPL (>= 2)
 VignetteBuilder: knitr, rmarkdown, quarto
