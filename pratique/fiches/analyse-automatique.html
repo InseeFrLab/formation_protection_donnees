@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Insee, Département des Méthodes Statistiques">
 
 <title>Analyse automatique des métadonnées pour la protection des données tabulées – La protection des données statistiques publiques</title>
 <style>
@@ -67,18 +68,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-a22146182daa579f2012ec545510eba8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-104287a9823dd9e883582d02b112ae30.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-a22146182daa579f2012ec545510eba8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-524e969e4829b5bad812ff2d85554016.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-c9acb146a15dc017f2cbbb31ce4922d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-524e969e4829b5bad812ff2d85554016.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -93,20 +95,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
   }
 }</script>
-<link href="../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<link href="../../site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
 <script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="../../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
 <script src="../../site_libs/datatables-binding-0.34.0/datatables.js"></script>
@@ -293,8 +295,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <span class="navbar-title">La protection des données statistiques publiques</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Recherche"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Basculer la navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -318,7 +320,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -329,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
   <li><a href="#initialisation" id="toc-initialisation" class="nav-link active" data-scroll-target="#initialisation">Initialisation</a></li>
@@ -347,13 +349,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Analyse automatique des métadonnées pour la protection des données tabulées</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Analyse automatique des métadonnées pour la protection des données tabulées</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Montrer tout le code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Cacher tout le code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Voir les sources</a></li></ul></div></div>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Auteur·rice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Insee, Département des Méthodes Statistiques </p>
+          </div>
+  </div>
     
   
     
@@ -372,20 +380,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'InseeFrLab/rtauargus'</span>,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dependencies =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">build_vignettes =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">upgrade =</span> <span class="st">'never'</span>,</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ref =</span> <span class="st">"v-1.2.999-dev"</span> <span class="co"># version dev avec la fonction d'analyse automatique</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Import des packages.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rtauargus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rtauargus)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -582,26 +590,26 @@ Informations complémentaires : il n'y a que deux types de salades les batavias 
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-f22d66d5c666c2e1f8b3" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-f22d66d5c666c2e1f8b3">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26"],["T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12","T13","T14","T15","T16","T17","T18","T19","T20","T21","T22","T23","T24","T25","T26"],["ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france"],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],["ca_pizzas","ca_pizzas","ca_pizzas","ca_pizzas","ca_pizzas","ca_pizzas","ca_pizzas","ca_pizzas","ca_batavia","ca_batavia","ca_batavia","ca_batavia","ca_batavia","ca_batavia","ca_mache","ca_mache","ca_mache","ca_mache","ca_mache","ca_mache","ca_salades","ca_salades","ca_salades","ca_salades","ca_salades","ca_salades"],[null,null,null,null,null,null,null,null,"hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades"],["Nuts2","Nuts3","A10","A10","A21","A21","A88","A88","A10","A10","A21","A21","A88","A88","A10","A10","A21","A21","A88","A88","A10","A10","A21","A21","A88","A88"],["hrc_nuts","hrc_nuts","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf"],["TREFF","TREFF","Nuts2","Nuts3","Nuts2","Nuts3","Nuts2","Nuts3","TREFF","CJ","TREFF","CJ","TREFF","CJ","TREFF","CJ","TREFF","CJ","TREFF","CJ","TREFF","CJ","TREFF","CJ","TREFF","CJ"],[null,null,"hrc_nuts","hrc_nuts","hrc_nuts","hrc_nuts","hrc_nuts","hrc_nuts",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>table_name<\/th>\n      <th>field<\/th>\n      <th>hrc_field<\/th>\n      <th>indicator<\/th>\n      <th>hrc_indicator<\/th>\n      <th>spanning_1<\/th>\n      <th>hrc_spanning_1<\/th>\n      <th>spanning_2<\/th>\n      <th>hrc_spanning_2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"table_name","targets":1},{"name":"field","targets":2},{"name":"hrc_field","targets":3},{"name":"indicator","targets":4},{"name":"hrc_indicator","targets":5},{"name":"spanning_1","targets":6},{"name":"hrc_spanning_1","targets":7},{"name":"spanning_2","targets":8},{"name":"hrc_spanning_2","targets":9}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-106689c174dc6a1f714b" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-106689c174dc6a1f714b">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26"],["T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12","T13","T14","T15","T16","T17","T18","T19","T20","T21","T22","T23","T24","T25","T26"],["ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france"],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],["ca_pizzas","ca_pizzas","ca_pizzas","ca_pizzas","ca_pizzas","ca_pizzas","ca_pizzas","ca_pizzas","ca_batavia","ca_batavia","ca_batavia","ca_batavia","ca_batavia","ca_batavia","ca_mache","ca_mache","ca_mache","ca_mache","ca_mache","ca_mache","ca_salades","ca_salades","ca_salades","ca_salades","ca_salades","ca_salades"],[null,null,null,null,null,null,null,null,"hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades","hrc_salades"],["Nuts2","Nuts3","A10","A10","A21","A21","A88","A88","A10","A10","A21","A21","A88","A88","A10","A10","A21","A21","A88","A88","A10","A10","A21","A21","A88","A88"],["hrc_nuts","hrc_nuts","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf","hrc_naf"],["TREFF","TREFF","Nuts2","Nuts3","Nuts2","Nuts3","Nuts2","Nuts3","TREFF","CJ","TREFF","CJ","TREFF","CJ","TREFF","CJ","TREFF","CJ","TREFF","CJ","TREFF","CJ","TREFF","CJ","TREFF","CJ"],[null,null,"hrc_nuts","hrc_nuts","hrc_nuts","hrc_nuts","hrc_nuts","hrc_nuts",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>table_name<\/th>\n      <th>field<\/th>\n      <th>hrc_field<\/th>\n      <th>indicator<\/th>\n      <th>hrc_indicator<\/th>\n      <th>spanning_1<\/th>\n      <th>hrc_spanning_1<\/th>\n      <th>spanning_2<\/th>\n      <th>hrc_spanning_2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"table_name","targets":1},{"name":"field","targets":2},{"name":"hrc_field","targets":3},{"name":"indicator","targets":4},{"name":"hrc_indicator","targets":5},{"name":"spanning_1","targets":6},{"name":"hrc_spanning_1","targets":7},{"name":"spanning_2","targets":8},{"name":"hrc_spanning_2","targets":9}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>On peut ensuite faire appel à la fonction <code>analyse_metadata()</code>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cluster_demande1 <span class="ot">&lt;-</span> <span class="fu">analyse_metadata</span>(demande1, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cluster_demande1 <span class="ot">&lt;-</span> <span class="fu">analyse_metadata</span>(demande1, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>N.B. si l’on souhaite avoir plus de détails sur les étapes de l’analyse on indique <code>verbose = TRUE</code>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(cluster_demande1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(cluster_demande1)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-5c27183f74846c59226c" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-5c27183f74846c59226c">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],["ent_france.hrc_salades","ent_france.hrc_salades","ent_france.ca_pizzas","ent_france.ca_pizzas"],["T10.T12.T14.T16.T18.T20.T22.T24.T26","T11.T13.T15.T17.T19.T21.T23.T25.T9","T1.T2","T3.T4.T5.T6.T7.T8"],["ent_france","ent_france","ent_france","ent_france"],["SALADES","SALADES","ca_pizzas","ca_pizzas"],["HRC_NAF","HRC_NAF","HRC_NUTS","HRC_NAF"],["CJ","TREFF","TREFF","HRC_NUTS"],["HRC_SALADES^h","HRC_SALADES^h",null,null],["hrc_naf","hrc_naf","hrc_nuts","hrc_naf"],[null,null,null,"hrc_nuts"],["hrc_salades","hrc_salades",null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>cluster<\/th>\n      <th>table_name<\/th>\n      <th>field<\/th>\n      <th>indicator<\/th>\n      <th>spanning_1<\/th>\n      <th>spanning_2<\/th>\n      <th>spanning_3<\/th>\n      <th>hrc_spanning_1<\/th>\n      <th>hrc_spanning_2<\/th>\n      <th>hrc_spanning_3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"cluster","targets":1},{"name":"table_name","targets":2},{"name":"field","targets":3},{"name":"indicator","targets":4},{"name":"spanning_1","targets":5},{"name":"spanning_2","targets":6},{"name":"spanning_3","targets":7},{"name":"hrc_spanning_1","targets":8},{"name":"hrc_spanning_2","targets":9},{"name":"hrc_spanning_3","targets":10}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-a73fbaf3fe64f7dba6a9" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-a73fbaf3fe64f7dba6a9">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],["ent_france.hrc_salades","ent_france.hrc_salades","ent_france.ca_pizzas","ent_france.ca_pizzas"],["T10.T12.T14.T16.T18.T20.T22.T24.T26","T11.T13.T15.T17.T19.T21.T23.T25.T9","T1.T2","T3.T4.T5.T6.T7.T8"],["ent_france","ent_france","ent_france","ent_france"],["SALADES","SALADES","ca_pizzas","ca_pizzas"],["HRC_NAF","HRC_NAF","HRC_NUTS","HRC_NAF"],["CJ","TREFF","TREFF","HRC_NUTS"],["HRC_SALADES^h","HRC_SALADES^h",null,null],["hrc_naf","hrc_naf","hrc_nuts","hrc_naf"],[null,null,null,"hrc_nuts"],["hrc_salades","hrc_salades",null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>cluster<\/th>\n      <th>table_name<\/th>\n      <th>field<\/th>\n      <th>indicator<\/th>\n      <th>spanning_1<\/th>\n      <th>spanning_2<\/th>\n      <th>spanning_3<\/th>\n      <th>hrc_spanning_1<\/th>\n      <th>hrc_spanning_2<\/th>\n      <th>hrc_spanning_3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"cluster","targets":1},{"name":"table_name","targets":2},{"name":"field","targets":3},{"name":"indicator","targets":4},{"name":"spanning_1","targets":5},{"name":"spanning_2","targets":6},{"name":"spanning_3","targets":7},{"name":"hrc_spanning_1","targets":8},{"name":"hrc_spanning_2","targets":9},{"name":"hrc_spanning_3","targets":10}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Finalement, pour protéger les 26 tableaux qui seront publiés il suffit de protéger 4 tableaux. Les tableaux sont liés deux à deux, autrement dit il y a deux clusters (<em>ent_france.hrc_salades</em> et <em>ent_france.ca_pizzas</em>). Il faudra donc faire appel deux fois à <code>rtauargus::tab_multi_manager()</code>.</p>
@@ -616,7 +624,7 @@ Informations complémentaires : il n'y a que deux types de salades les batavias 
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dupliquer les tableaux concernés</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dupliquer les tableaux concernés</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>tab_dupliquer <span class="ot">&lt;-</span> cluster_demande1[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>), , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Renommer les tableaux (_bis) et les hiérarchies correspondantes (_alt)</span></span>
@@ -631,11 +639,11 @@ Informations complémentaires : il n'y a que deux types de salades les batavias 
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>cluster_demande1bis <span class="ot">&lt;-</span> <span class="fu">rbind</span>(cluster_demande1, tab_dupliquer)</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualisation</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(cluster_demande1bis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(cluster_demande1bis)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-ef394b15c203cae77bd9" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-ef394b15c203cae77bd9">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","11","21","41"],["ent_france.hrc_salades","ent_france.hrc_salades","ent_france.ca_pizzas","ent_france.ca_pizzas","ent_france.hrc_salades","ent_france.hrc_salades","ent_france.ca_pizzas"],["T10.T12.T14.T16.T18.T20.T22.T24.T26","T11.T13.T15.T17.T19.T21.T23.T25.T9","T1.T2","T3.T4.T5.T6.T7.T8","T10.T12.T14.T16.T18.T20.T22.T24.T26_bis","T11.T13.T15.T17.T19.T21.T23.T25.T9_bis","T3.T4.T5.T6.T7.T8_bis"],["ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france"],["SALADES","SALADES","ca_pizzas","ca_pizzas","SALADES","SALADES","ca_pizzas"],["HRC_NAF","HRC_NAF","HRC_NUTS","HRC_NAF","HRC_NAF","HRC_NAF","HRC_NAF"],["CJ","TREFF","TREFF","HRC_NUTS","CJ","TREFF","HRC_NUTS"],["HRC_SALADES^h","HRC_SALADES^h",null,null,"HRC_SALADES^h","HRC_SALADES^h",null],["hrc_naf","hrc_naf","hrc_nuts","hrc_naf","hrc_naf_alt","hrc_naf_alt","hrc_naf_alt"],[null,null,null,"hrc_nuts",null,null,"hrc_nuts"],["hrc_salades","hrc_salades",null,null,"hrc_salades","hrc_salades",null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>cluster<\/th>\n      <th>table_name<\/th>\n      <th>field<\/th>\n      <th>indicator<\/th>\n      <th>spanning_1<\/th>\n      <th>spanning_2<\/th>\n      <th>spanning_3<\/th>\n      <th>hrc_spanning_1<\/th>\n      <th>hrc_spanning_2<\/th>\n      <th>hrc_spanning_3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"cluster","targets":1},{"name":"table_name","targets":2},{"name":"field","targets":3},{"name":"indicator","targets":4},{"name":"spanning_1","targets":5},{"name":"spanning_2","targets":6},{"name":"spanning_3","targets":7},{"name":"hrc_spanning_1","targets":8},{"name":"hrc_spanning_2","targets":9},{"name":"hrc_spanning_3","targets":10}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-2fe17ffd68a3996d91ee" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-2fe17ffd68a3996d91ee">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","11","21","41"],["ent_france.hrc_salades","ent_france.hrc_salades","ent_france.ca_pizzas","ent_france.ca_pizzas","ent_france.hrc_salades","ent_france.hrc_salades","ent_france.ca_pizzas"],["T10.T12.T14.T16.T18.T20.T22.T24.T26","T11.T13.T15.T17.T19.T21.T23.T25.T9","T1.T2","T3.T4.T5.T6.T7.T8","T10.T12.T14.T16.T18.T20.T22.T24.T26_bis","T11.T13.T15.T17.T19.T21.T23.T25.T9_bis","T3.T4.T5.T6.T7.T8_bis"],["ent_france","ent_france","ent_france","ent_france","ent_france","ent_france","ent_france"],["SALADES","SALADES","ca_pizzas","ca_pizzas","SALADES","SALADES","ca_pizzas"],["HRC_NAF","HRC_NAF","HRC_NUTS","HRC_NAF","HRC_NAF","HRC_NAF","HRC_NAF"],["CJ","TREFF","TREFF","HRC_NUTS","CJ","TREFF","HRC_NUTS"],["HRC_SALADES^h","HRC_SALADES^h",null,null,"HRC_SALADES^h","HRC_SALADES^h",null],["hrc_naf","hrc_naf","hrc_nuts","hrc_naf","hrc_naf_alt","hrc_naf_alt","hrc_naf_alt"],[null,null,null,"hrc_nuts",null,null,"hrc_nuts"],["hrc_salades","hrc_salades",null,null,"hrc_salades","hrc_salades",null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>cluster<\/th>\n      <th>table_name<\/th>\n      <th>field<\/th>\n      <th>indicator<\/th>\n      <th>spanning_1<\/th>\n      <th>spanning_2<\/th>\n      <th>spanning_3<\/th>\n      <th>hrc_spanning_1<\/th>\n      <th>hrc_spanning_2<\/th>\n      <th>hrc_spanning_3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"cluster","targets":1},{"name":"table_name","targets":2},{"name":"field","targets":3},{"name":"indicator","targets":4},{"name":"spanning_1","targets":5},{"name":"spanning_2","targets":6},{"name":"spanning_3","targets":7},{"name":"hrc_spanning_1","targets":8},{"name":"hrc_spanning_2","targets":9},{"name":"hrc_spanning_3","targets":10}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
@@ -684,12 +692,12 @@ Informations complémentaires : il n'y a que deux types de salades les batavias 
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "Copié");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "Copié");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -710,13 +718,14 @@ Informations complémentaires : il n'y a que deux types de salades les batavias 
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1108,8 +1117,8 @@ Informations complémentaires : il n'y a que deux types de salades les batavias 
       }
     }
   });
-  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Code source</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Analyse automatique des métadonnées pour la protection des données tabulées</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1257,7 +1266,7 @@ Informations complémentaires : il n'y a que deux types de salades les batavias 
 <span id="cb7-150"><a href="#cb7-150" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualisation</span></span>
 <span id="cb7-151"><a href="#cb7-151" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(cluster_demande1bis)</span>
 <span id="cb7-152"><a href="#cb7-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
