@@ -4,8 +4,13 @@ project:
 execute:
   freeze: auto
 
+author: "Insee, Département des Méthodes Statistiques"
+
 website:
   title: "La protection des données statistiques publiques"
+  description: |
+    "Formation en ligne sur la protection des données statistiques contre 
+    les risques de divulgation à destination des producteurs de statistiques publiques."
   navbar:
     right:
       - href: index.qmd
@@ -48,3 +53,19 @@ format:
     citation-location: margin
     cap-location: bottom
     bibliography: references-SDC.bib
+
+babelquarto:
+  languagecodes:
+  - name: en
+    text: "Version in en"
+  - name: fr
+    text: "Version in fr"
+  mainlanguage: 'fr'
+  languages: ['en']
+title-en: "Statistical Disclosure Control for Public Statistics"
+description-en: |
+  "Online training on the protection of statistical data against 
+  disclosure risks for public statistics producers."
+author-en: "INSEE, Department of Statistical Methods"
+lang: fr
+

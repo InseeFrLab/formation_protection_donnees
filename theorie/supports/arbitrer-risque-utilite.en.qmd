@@ -1,0 +1,1047 @@
+---
+title: The disclosure risks
+subtitle: |
+  **[Define, assess, decide]{.orange}**
+order: 1
+href: theorie/supports/arbitrer-risque-utilite.html
+image: ../../images/theorie.png
+slide-number: true
+header: |
+  [Retour à l'accueil](https://inseefrlab.github.io/formation_protection_donnees)
+footer: |
+  The disclosure risks
+# uncomment for French presentations:
+lang: en-EN
+# for blind readers:
+slide-tone: false
+# for @olevitt:
+# chalkboard: # press the B key to toggle chalkboard
+#   theme: whiteboard
+# uncomment to use the multiplex mode:
+#multiplex: true
+format:
+  onyxia-revealjs:
+    number-sections: true
+    number-depth: 1
+    toc: true
+    toc-depth: 1
+    toc-title: Sommaire
+tbl-cap-location: bottom
+include-in-header: 
+  text: |
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  # pick the light mode (onyxia-revealjs) or the dark mode (onyxia-dark-revealjs)
+  #onyxia-dark-revealjs:
+controls: true
+css: custom.css
+# from: markdown+emoji
+# listing:
+#   id: sample-listings
+#   contents: teaching
+#   sort: "date desc"
+#   type: table
+bibliography: ../../references-SDC.bib
+# csl: ../style.csl  # Décommentez besoin d'un style de biblio spécifique
+---
+
+# Introduction {.unnumbered}
+
+## Context
+
+On se placera dans le contexte suivant:
+
+- Un institut statistique collecte des données individuelles.
+- On suppose qu'il respecte les réglements en vigueur en termes de protection des données individuelles (par exemple le RGPD en Europe).
+- L'institut cherche à diffuser des statistiques agrégées ou des fichiers de données individuelles à visée statistique.
+
+## Problématique
+
+::: {.callout-tip icon=true}
+### Problématique de l'ensemble de l'atelier
+
+Comment diffuser de l'information statistique sans porter atteinte aux personnes (physiques ou morales) auprès desquelles l'information a été collectée ?
+:::
+
+## Protéger: un enjeu pour la statistique publique
+
+_Les missions [de la statistique publique] ne dépendent pas seulement de sa capacité à maîtriser les outils ou les méthodes nécessaires à la production d'une information de qualité, mais aussi de [__sa capacité à protéger et à garantir la confidentialité des données qui lui sont confiées__]{style="color:green;"}. Cette protection est la condition pour continuer à disposer de ces données._ [@redor_confidentialite_2023]
+
+
+
+## A la recherche d'une définition
+
+::: {.callout-note icon=false}
+## Une définition maximaliste de la divulgation...
+
+T. Dalenius propose en 1977 la définition suivante:
+
+_"Si la publication des statistiques $T(D)$ permet de déterminer la valeur de données statistiques confidentielles de façon plus précise qu’il ne serait possible sans accès à $T(D)$, alors une divulgation a eu lieu."_ [@dalenius_privacy_1977].
+:::
+
+::: {.callout-important icon=false}
+## ... impossible à tenir
+
+Cette définition ne prend pas en compte l'information auxiliaire déjà disponible
+:::
+
+::: {.callout-tip icon=false}
+## Un exemple de divulgation impossible à protéger
+
+Des études montrent un lien de corrélation entre le fait de fumer et la survenue d'un cancer des poumons $\Rightarrow$ si, on (une compagnie d'assurance) sait qu'un individu est fumeur, alors on peut lui imputer un risque important d'avoir un cancer, information qui va très probablement générer un préjudice à cette personne.
+
+:::
+
+## A la recherche d'une définition
+
+Il faut tenir compte de deux réalités:
+
+- l'utilisateur dispose d'une **information auxiliaire**.
+- l'**inférence statistique** est l'un des moyens de connaissances offertes par la publication de statistiques.
+
+$\Rightarrow$ **une protection inconditionnelle et totale n'est pas possible.**
+
+
+
+## Besoin de maîtriser les risques
+
+La protection de données se définit à travers:  
+
+- la maîtrise des risques de divulgation
+- et le besoin de continuer à diffuser de l'information statistique.
+
+$\Rightarrow$ **Besoin d'arbitrer entre les deux composantes.**
+
+# Un arbitrage nécessaire
+
+## Arbitrer
+
+Protéger des données confidentielles, c'est **arbitrer** entre:
+
+-   leur **utilité** pour la connaissance et le débat public;
+
+-   leur **risque intrinsèque**: toute donnée diffusée peut divulguer une information sur un individu ou un groupe d'individus.
+
+::: {style="text-align:center;"}
+![Arbitrer](img/trade_off_balance.png){width=40% fig-alt="Arbitrage Risque-Utilité" fig-align="center"}
+:::
+
+## Deux écueils
+
+-   Ne pas diffuser rendrait la statistique publique inutile.
+
+-   Tout diffuser rendrait la statistique publique dangereuse.
+
+
+::: {style="text-align:center;"}
+![Arbitrer](img/trade_off_graph.png){width=80% fig-alt="Arbitrage Risque-Utilité" fig-align="center"}
+:::
+
+
+## Problèmes
+
+- Quels sont les risques de divulgation ?
+- Comment mesurer ces risques ?
+- Comment les traiter ?
+
+$\Rightarrow$ Comment les traiter sans *trop* détériorer l'information statistique ?
+
+## Enjeu principal de l'arbitrage:
+
+::: {.callout-note icon=true}
+### Trouver un équilibre entre protection et information
+
+Il s'agit de réaliser un **compromis** entre le fait de minimiser les risques de divulgation des informations confidentielles et minimiser la perte d'information due aux traitements de protection des données.
+:::
+
+::: {.callout-warning icon=true}
+### Pas de méthode magique 
+Il n'existe pas de méthode minimisant le risque et la perte d'information en même temps!
+:::
+
+
+## Un exemple d'arbitrage
+
+Le recensement de la population (RP) en France:
+
+-   Décret de publication spécifique;
+
+-   Utilité des données du RP très forte:
+    -   un certain nombre de lois en dépendent
+    -   dotation financière des communes
+
+-   Risque d'utilisation des données diffusées contre les personnes est jugé faible:
+    -   information peu préjudiciable
+    -   à l'exception de variables sensibles
+
+## Un exemple de divulgation assumée
+
+L'Insee diffuse des données communales même pour les très petites communes: 
+
+[Voir l'exemple de la commune de Rochefourchat](https://www.insee.fr/fr/statistiques/2011101?geo=COM-26274):
+
+- Une commune de $2$ habitants
+- On connaît leur sexe, leur situation conjugale, leur âge, une description grossière de leurs logements, le statut d'occupation de leur logement, leur niveau de diplôme, leur statut d'activité, etc.
+
+
+## L'arbitrage Risque/Utilité: un paradigme
+
+-   Il n'existe pas de risque zéro
+
+-   Aucune méthode ne supprime totalement le risque $\Rightarrow$
+
+    -   Arbitrer est donc inhérent à la protection des données.
+
+    -   Cet arbitrage considéré comme **le paradigme** de la discipline.
+
+
+## Un paradigme criticable
+
+[Voir @cox_risk-utility_2011]
+
+-   S'il aide à savoir **comment penser**...
+
+-   ...il aide moins à savoir **comment agir**.
+
+
+
+## En pratique, un autre arbitrage a lieu
+
+Un arbitrage Coûts/Bénéfices est réalisé:
+
+-   Par le producteur de données: 
+    -   Quels moyens déployer pour quel niveau de protection (temps, moyens financiers)?
+
+-   Par l'attaquant: 
+    -   L'information confidentielle espérée est-elle à la hauteur des moyens nécessaires à sa divulgation ? 
+
+$\Longrightarrow$ Mettre en place des méthodes qui ont un coût adapté au risque objectivé et à la sensibilité des données.
+
+
+
+## Objectiver: définir et mesurer
+
+Pour arbitrer, il faut pouvoir
+
+-   Définir les termes de l'arbitrage 
+
+-   Mesurer les phénomènes.
+
+
+# Besoin d'une gouvernance
+
+## Gouvernance des données
+
+Avant de définir les risques:
+
+- Quels sont les objectifs de diffusion ?
+- Qui accède à quoi avec quels droits ?
+
+::: {.callout-important}
+### Objectif
+Pour mieux maîtriser les risques, prendre conscience du contexte dans lequel ils sont susceptibles d'apparaître.
+
+:::
+
+## Sécuriser l'accès 
+
+- On peut distinguer quatre grands types d'utilisateurs:
+
+  - **grand public et acteurs publics**: statistiques agrégées 
+  - **chercheurs**: statistiques détaillées voire données individuelles
+  - **chargés d'études de la statistique publique**: données individuelles sans identifiants directs
+  - **chargés de collecte**: données individuelles avec identifiants
+
+
+## Adapter l'accès en fonction des besoins des utilisateurs
+
+  - **Principe de minimisation** : chaque utilisateur ne doit accéder qu'aux données strictement nécessaires à ses missions.
+  
+
+## Adapter l'accès en fonction des besoins des utilisateurs
+
+  - **Différenciation des accès** : 
+    - **grand public et acteurs publics**: accès gratuit et sans condition.
+    - **chercheurs**: accès sous conditions strictes (contrats, projets d'utilité publics, environnement sécurisé de travail, etc.).
+    - **chargés d'études**: accès à des données sur serveurs internes soumis à autorisation préalable.
+    - **chargés de collecte**:  accès aux données de collecte pour la seule enquête sur laquelle ils travaillent.
+  
+
+## Adapter l'accès en fonction des besoins des utilisateurs
+
+  - **Assurer un suivi et un contrôle des accès** : chaque accès doit pouvoir être contrôlé et révoqué si besoin.
+
+
+## Adapter le niveau d'anonymisation nécessaire
+
+Plus l'accès est lâche, plus l'anonymisation doit pouvoir être élevé:  
+
+  - **grand public**: 
+    - libre accès $\iff$ protection statistique forte
+
+
+## Adapter le niveau d'anonymisation nécessaire
+
+Plus l'accès est lâche, plus l'anonymisation doit pouvoir être élevé:  
+
+  - **chercheurs et chargés d'études**: 
+    - accès sécurisé $\iff$ protection statistique faible sur les inputs
+    - Mais besoin de traiter/vérifier les outputs publics (**output checking**)
+
+
+## Adapter le niveau d'anonymisation nécessaire
+
+Plus l'accès est lâche, plus l'anonymisation doit pouvoir être élevé:  
+
+  - **chargés de collecte**: 
+    - accès très sécurisé $\iff$ aucune protection statistique des données
+    - Mais nécessité de respecter les réglements sur la protection des données individuelles (RGPD en Europe).
+
+## Un exemple
+
+::: {style="text-align:center;"}
+![Adapter les fichiers au type de public (Source: Insee)](img/types_fichiers_confidentialite.png){#fig-types-fichiers width=90% fig-alt="Adapter les fichiers aux publics" fig-align="center"}
+:::
+
+
+## Gouvernance, Déontologie, Confiance
+
+- La maîtrise de la sécurité des accès et la meilleure gouvernance possible des données ne sont pas des boucliers infaillibles.
+- **Déontologie** forte des statisticiens publics.
+- **Confiance** dans les différents acteurs (chercheurs) à qui on donne accès aux données.
+
+
+## Responsabiliser
+
+Une responsabilisation nécessaire:
+
+- Statisticiens publics (en France loi de 1951 sur le secret statistique)
+- Chercheurs (Risque de révocation des contrats et conséquences sur l'ensemble du laboratoire)
+
+
+
+
+# Une démarche en plusieurs étapes
+
+## Étapes clés du processus de protection des données
+
+::: {style="font-size: 80%;"}
+1.  Est-il nécessaire de protéger les données ?
+
+2.  Quelles sont les caractéristiques et utilisations principales des données ?
+
+3.  Définition et mesure des risques de divulgation
+
+4.  Choix des méthodes de protection des données
+
+5.  Mise en oeuvre des méthodes
+
+6.  Contrôles et documentation
+
+:::
+
+Source:  [@hundepool_handbook_2024]
+
+## Étape 1: Est-il nécessaire de protéger les données ?
+
+::: {style="font-size: 80%;"}
+-   Analyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d'effectuer de traitement pour la protection des données
+
+-   Quel type de diffusion ? (tableaux de données, cartes, microdonnées \...)
+:::
+
+## Étape 2: Caractéristiques et utilisations principales des données (I)
+
+::: {style="font-size: 80%;"}
+-   Analyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection
+
+-   Analyse de la méthodologie de l'enquête
+
+-   Définition des objectifs de l'institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié
+:::
+
+## Étape 2: Caractéristiques et utilisations principales des données (II)
+
+::: {style="font-size: 80%;"}
+-   Analyse des besoins des utilisateurs (variables prioritaires, types d'analyses qui seront réalisées)
+
+-   Analyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)
+:::
+
+## Étape 3: Définition et mesure des risques de divulgation
+
+::: {style="font-size: 80%;"}
+-   Recenser les différents scénarios possibles conduisant à la divulgation des données
+
+    -   En fonction du type de données considérées (données exhaustives, enquêtes) 
+    -   En fonction du public visé (chercheurs, décideurs, grand public)
+
+-   Choisir la ou les mesures du risque de divulgation
+-   Seuil de tolérance au risque à fixer
+:::
+
+## Étape 4: Choix des méthodes
+
+::: {style="font-size: 80%;"}
+-   Choisir une / plusieurs méthode(s) de protection
+
+-   Comparer les méthodes: niveau de risque vs perte d'utilité
+:::
+
+::: {style="text-align:center;"}
+![Arbitrage risque-utilité](img/trade_off_graph_smiley.png){#fig-trade-off-sm width=80% fig-alt="Arbitrage risque-utilité" fig-align="center"}
+:::
+
+
+## Étape 5: Mise en oeuvre des méthodes
+
+::: {style="font-size: 80%;"}
+1.  Choisir un logiciel
+
+2.  Réaliser la mesure des risques de divulgation
+
+3.  Protéger les données
+
+4.  Quantification de la perte d'information
+:::
+
+## Étape 6: Contrôles et documentation
+
+::: {style="font-size: 80%;"}
+- Contrôle du processus de protection
+
+    -   vérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable
+
+- Réalisation d'un document synthétisant les méthodes utilisées et faisant le bilan de la perte d'information
+
+    -   si possible le transmettre aux utilisateurs des données publiées
+    -   peut contenir des avertissements sur les précautions à prendre lors de l'utilisation d'un fichier anonymisé
+:::
+
+# Définir le risque
+
+## Le risque de divulgation
+
+::: {.callout-note icon=true}
+## Définition générale
+
+Risque de divulguer une information confidentielle en publiant des données agrégées ou individuelles.
+:::
+
+## Quatre types de risque de divulgation
+
+-   Risque de divulgation d'identité
+
+-   Risque de divulgation d'attribut
+
+-   Risque de divulgation par inférence
+
+-   Risque de divulgation par différenciation
+
+    -   par \"emboîtement\"
+
+    -   par \"recoupement\"
+
+
+## Risque de divulgation d'identité
+
+::: {.callout-tip}
+## Définition
+
+Risque de reconnaître un individu spécifique dans les données publiées : un attaquant peut identifier une unité à partir de la publication.
+
+:::
+
+Exemples : 
+
+-   Certaines variables comme le nom, l'adresse qui identifient *directement* des individus ou des foyers.
+
+-   Toutes les personnes ayant des caractéristiques très rares (ex : personnes très âgées).
+
+-   87% de la population américaine est unique uniquement à partir du ZIP code, du genre et de la date de naissance [@sweeney_simple_2000].
+
+
+## Remarques
+
+- Les identifiants directs (nom, prénom, adresse) sont utiles pour la collecte mais supprimés des bases à vocation statistique.
+
+- D'autres variables ont un fort pouvoir ré-identifiant (le lieu de résidence,  l'âge, le genre, la profession, le niveau d'éducation, etc.).
+
+- Ré-identifier ne permet as toujours d'obtenir plus d'informations sur les personnes.
+
+
+## Risque de divulgation d'attribut
+
+::: {.callout-tip}
+## Définition
+
+Risque de divulguer une **information sensible** sur un ou plusieurs individus à partir des données diffusées.
+
+:::
+
+Exemples :
+
+-   Une ré-identification conduit souvent à une divulgation d'attribut.
+-   Il est possible de divulguer un attribut sur des groupes entiers.
+
+
+## Divulgation d'un attribut de groupe
+
+ - Divulgation d'une information sensible pour un groupe entier de personnes.
+ - Sans nécessairement avoir besoin de ré-identifier préalablement.
+
+<!-- 
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:2px;font-family:Arial, sans-serif;font-size:30px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:2px;font-family:Arial, sans-serif;font-size:28px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-p8l5{border-color:#9b9b9b;color:#656565;text-align:right;vertical-align:top}
+.tg .tg-o57y{border-color:#9b9b9b;color:#656565;text-align:center;vertical-align:top}
+.tg .tg-8trw{border-color:#9b9b9b;color:#656565;text-align:left;vertical-align:top}
+.tg .tg-ho01{border-color:#9b9b9b;color:#9a0000;font-weight:bold;text-align:right;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-8trw"></th>
+    <th class="tg-o57y">Hommes</th>
+    <th class="tg-o57y">Femmes</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-8trw">Diabétiques</td>
+    <td class="tg-p8l5">30</td>
+    <td class="tg-p8l5">40</td>
+  </tr>
+  <tr>
+    <td class="tg-8trw">Non Diabétiques</td>
+    <td class="tg-p8l5">12</td>
+    <td class="tg-ho01">0</td>
+  </tr>
+</tbody>
+</table> 
+-->
+
+```{r}
+#| label: tbl-div-attr
+#| tbl-cap: Un exemple de divulgation d'attributs de groupe
+#| tbl-cap-location: bottom
+#| echo: false
+library(kableExtra)
+
+df <- data.frame(
+  Femmes = c(30, 12),
+  Hommes = c(40, 0)
+) 
+row.names(df) <- c("Diabétiques", "Non diabétiques")
+
+df |> 
+  kableExtra::kbl(
+    booktabs = T,
+    col.names = c("Femmes", "Hommes"),
+    row.names = TRUE
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = c("hover", "striped"),
+    full_width = F
+  )
+  # kableExtra::kable_classic_2() 
+```
+
+<!-- 
+
+|                 | Hommes | Femmes |
+|-----------------|:------:|:------:|
+| Diabétiques     |     30 |     40 |
+| Non Diabétiques |     12 |  **0** | 
+
+: Un exemple de divulgation d'attributs de groupe -->
+
+
+
+## Risque de divulgation par inférence
+
+::: {.callout-tip}
+### Définition
+
+Risque de pouvoir déduire avec une certitude élevée des informations sensibles sur des individus à partir des données publiées.
+
+:::
+
+-   Corrélation forte d'une information avec une caractéristique sensible.
+-   Proportion très élevée au sein d'un groupe.
+
+```{r}
+#| label: tbl-div-infer
+#| tbl-cap: Un exemple de divulgation d'attributs par inférence
+#| tbl-cap-location: bottom
+#| echo: false
+library(kableExtra)
+
+df <- data.frame(
+  Femmes = c(30, 12),
+  Hommes = c(38, 2)
+) 
+row.names(df) <- c("Diabétiques", "Non diabétiques")
+
+df |> 
+  kableExtra::kbl(
+    booktabs = T,
+    col.names = c("Femmes", "Hommes"),
+    row.names = TRUE
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = c("hover","striped"),
+    full_width = F
+  )
+  # kableExtra::kable_classic_2() 
+```
+
+
+
+## Risque de divulgation par différenciation 
+
+::: {.callout-tip}
+### Définition
+Lorsqu'une information agrégée est diffusée pour divers croisements, il est parfois possible d'en déuire une information additionnelle en différenciant les divers résultats.
+
+:::
+
+::: {style="font-size: 80%;"}
+
+Exemples:
+
+- Différenciation marginale: consiste à utiliser les marges de données tabulées
+- Différenciation par emboîtement géographique: consiste à utiliser des agrégats diffusés sur des zonages emboîtés (variante du premier)
+- Différenciation par recoupement: consiste à utiliser des agrégats diffusés sur des zonages imparfaitement emboîtés
+
+:::
+
+## Différenciation par recoupement
+
+
+::: {style="text-align:center;"}
+![Exemple de différenciation par recoupement en France entre un département et une communauté de communes (EPCI)](img/diff_geo_recoupment1.png){#fig-diff-rec1 height=80% fig-alt="Exemple de différenciation par recoupement" fig-align="center"}
+:::
+
+
+## Différenciation par recoupement
+
+
+::: {style="text-align:center;"}
+![Zoom sur le problème de différenciation](img/diff_geo_recoupement2.png){#fig-diff-rec2 height=80% fig-alt="Exemple de différenciation par recoupement" fig-align="center"}
+:::
+
+
+# Mesurer le risque
+<!-- 
+## Vision bayésienne / retour à Dalenius
+
+Si on repart de la proposition (impossible) de Dalenius, on peut l'envisager dans un cadre bayésien en cherchant à limiter la capacité d'un attaquant à significativement améliorer ses croyances a priori en observant les données diffusées. [Voir @willenborgElementsStatisticalDisclosure2001, p.44 et @machanavajjhalaDiversityPrivacyAnonymity2007]
+
+Limite de l'approche:
+
+- Mesure de la capacité d'inférence dépend de chaque variable sensible considérée
+- Un attaquant avec peu d'informations au préalable pourrait avoir une forte augmentation 
+  d'info qu'un attaquant disposant de beaucoup d'infos.
+- Une bonne capacité d'inférence ne signifie pas nécessairement une divulgation d'information confidentielle. -->
+
+## Distinguer les variables
+
+Dans un jeu de données individuelles, on distinguera:
+
+-   **Identifiants**: Variables permettant d'identifier directement un individu.
+
+-   **Quasi-identifiants**: Variables pouvant conduire à réidentifier un individu à partir d'une information auxiliaire.
+
+-   **Variables sensibles**: Variables pour lesquelles des mesures de protection spécifiques peuvent s'avérer nécessaires.
+
+-   Autres variables
+
+
+## Les identifiants
+
+-   Les identifiants sont retirés très tôt au cours du processus de production pour respecter les réglements sur la protection des données.
+  
+- On supposera par la suite que tous les identifiants directs ont été retirées.
+
+
+## Les quasi-identifiants
+
+
+-   Pour des données individus/ménages: sexe, âge, lieu d'habitation, diplôme, statut marital, etc.
+
+-   Pour des données entreprises: Secteur d'activité, lieu du siège, etc.
+
+-   Liste à déterminer à chaque fois
+
+-   De quelles variables un attaquant dispose-t-il déjà ?
+
+
+## Un exemple
+
+```{r}
+#| label: tbl-type-var
+#| tbl-cap: Différentes types de variables
+#| tbl-cap-location: bottom
+#| echo: false
+library(kableExtra)
+
+df <- data.frame(
+  Nom = c("Johan", "Jeanne", "Johnny","Jeannette"),
+  Adresse = c("3 rue...", "11 bd...", "12 pl...", "8 rue..."),
+  Commune = c("Paris", "Malakoff", "Pithiviers", "Belval"),
+  Age = c(36, 41, 23, 85),
+  Diplôme = c("Bac", "Bac+3", "Bac Pro", ""),
+  Revenus = c(150000, 60000, 25000, 10000)
+)
+
+df |> 
+  kableExtra::kbl(
+    booktabs = T,
+    # col.names = c("Femmes", "Hommes"),
+    row.names = FALSE
+  ) |>
+  kableExtra::add_header_above(
+    c("Identifiants" = 2, 
+      "Quasi Id."=3, 
+      "Sensible"=1), 
+    align = "c"
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = c("hover", "striped", "bordered"),
+    full_width = F
+  )
+  # kableExtra::kable_classic_2() 
+```
+
+
+<!-- 
+::: {#tbl-types-variables tbl-colwidths="[75,25]"}
+  Var. Identifiantes                     Var Quasi-Identifiantes                           Autre Variable            Var. Sensible
+  -------------------- ----------------- ------------------------- --------- ------------- ------------------------- ----------------
+  **Nom**              **Adresse**       **Commune**               **Âge**   **Diplôme**   **Statut d'occupation**   **Revenus**
+  Johan                3, rue \...       Paris                     36        Bac           Actif occupé              *150 000,00 €*
+  Jeanne               115, bd \...      Malakoff                  41        Bac +3        Actif occupé              *60 000,00 €*
+  Jehanne              68, rue \...      Lyon                      52        Bac +5        Chômeur                   *75 000,00 €*
+  Joann                7, chemin \...    Villeurbanne              45        Bac           Actif occupé              *32 000,00 €*
+  Yoann                53, avenue \...   Cerisy-La-Salle           41        BEP           Actif occupé              *19 000,00 €*
+  Jenny                26bis, rue \...   Cherbourg                 26        CAP           Chômeur                   *5 000,00 €*
+  Johnny               12, place \...    Pithiviers                31        Bac Pro       Actif occupé              *25 000,00 €*
+  Jean                 3, impasse \...   Orléans                   48        Bac           Actif occupé              *32 000,00 €*
+  Jeannette            8, chemin ...     Paris                     85        Aucun         Retraité                  *10 000,00 €*
+
+  : Les différents types de variables dans un jeu de données {.striped .bordered}
+::: -->
+
+
+## Quantifier le risque (1): le $k$-anonymat
+
+::: {.callout-note}
+### Le $k$-anonymat [@sweeney_k-anonymity_2002]
+
+ Un jeu de données est considéré comme *k-anonyme* si la combinaison la moins fréquente des modalités des variables quasi-identifiantes compte au moins *k* unités.
+:::
+
+::: {style="font-size: 80%;"}
+
+-   Cette mesure assure que tous les individus sont similaires à au moins $k-1$ autres.
+
+-   **Mesure de risque globale** qui se focalise sur les individus les plus à risque de ré-identification.
+
+-   La probabilité associée au risque pour un individu du fichier d'être ré-identifié est au minimum $1/k$
+
+-   Choix de $k$ en prenant en compte les règles existantes et/ou par arbitrage risque-utilité.
+  
+:::
+
+
+## Le scénario d'attaque envisagé 
+
+::: {.callout-important}
+### Caractéristiques du scénario d'attaque
+
+Le **$k$-anonymat** protège les données d'une attaque de ré-identification lorsque l'attaquant dispose d'une information auxiliaire sur les mêmes individus (un au moins):
+
+- Si l'intrus sait qu'un individu spécifique est dans l'ensemble de données, le $k$-anonymat est une **manière équitable d'évaluer le risque de ré-identification**.
+- L'attaquant procède à un **appariement** entre les deux jeux de données.
+- Les **quasi-identifiants (QI)** servent de clés d'appariement.
+- Plus un individu a des caractéristiques rares sur les QI, meilleure sera la ré-identification.
+  - **Les uniques** sur les QI: la ré-identification sera certaine
+  - Plus un individu est commun, moins la probabilité de ré-identification sera élevée.
+
+:::
+
+## L'importance du scénario
+
+::: {.callout-warning}
+### Une efficacité qui dépend du réalisme du scénario
+
+Assurer un certain niveau d'anonymité permet de réduire le risque de ré-identification, mais :  
+
+- Si l'attaquant dispose de plus d'information auxiliaire $\Rightarrow$ [**sous-estimation**]{style="color:red;"} du risque avec le *$k$-anonymat*.
+- Avec le temps, l'attaquant peut disposer de plus d'informations. Or, le scénario est posé une fois $\Rightarrow$ [**sous-estimation**]{style="color:red;"} du risque avec le *$k$-anonymat*.
+- Si l'attaquant dispose de moins d'information auxiliaire $\Rightarrow$ [**sur-estimation**]{style="color:green;"} du risque avec le *$k$-anonymat*.
+- La qualité des appariements dépend de beaucoup d'autres facteurs (millésimes, qualité des variables, cohérence des champs, etc.) $\Rightarrow$ [**sur-estimation**]{style="color:green;"} du risque avec le *$k$-anonymat*.
+
+:::
+
+## Un exemple
+
+::: {#tbl-1-anonyme .table .table-striped .table-hover .table-bordered .table-sm}
+
+   Id       Age     Genre     Maladie
+  ---- ----------- ------- -------------------------
+  1    \[45;55\[   M          Diabète
+  2    \[45;55\[   M          Hypertension artérielle
+  3    \[45;55\[   F          Cancer
+  4    \[45;55\[   F          Grippe
+  5    \[70;75\[   M          Diabète
+  6    \[45;55\[   M          Diabète
+
+  : Exemple d'un fichier individuel 1-anonyme, l'âge et le genre étant considérés comme quasi-identifiants
+:::
+
+## Limites du $k$-anonymat
+
+::: {style="font-size: 80%;"}
+
+- Forte **dépendance à la qualité/véracité du scénario**   
+  $\Rightarrow$ choix des QI est crucial.  
+  - Le $k$-anonymat sur-estime le risque si l'attaquant dispose de moins d'info que supposé 
+  - Le $k$-anonymat sous-estime le risque si l'attaquant dispose de plus d'info que supposé
+  - Difficile de mesurer la vraisemblance de l'attaque.
+
+- Le $k$-anonymat **ne prend pas en compte les poids d'échantillonnage**.
+    $\Rightarrow$ Appliqué à un échantillon, il sur-estimera le risque de ré-identification.
+- Ne réduit pas les risques de **divulgation d'attributs sensibles**.
+  
+:::
+
+## Quantifier le risque (2): la l-diversité
+
+::: {.callout-note}
+### La l-diversité [@machanavajjhalaDiversityPrivacyAnonymity2007]
+
+Elle s'assure d'une *diversité suffisante des modalités* d'une variable sensible prises par les individus au sein d'une même combinaison de quasi-identifiants.
+
+:::
+
+-   Raffinement du $k$-anonymat.
+
+-   Protection contre la divulgation d'attributs sensibles.
+
+-   Chaque groupe doit contenir au moins $l$ modalités différentes de la variable sensible étudiée (ou $l$ modalités parmi les plus fréquentes).
+   
+-   Choix de la cible $l$ en fonction des règles existantes et/ou d'un arbitrage risque-utilité.
+
+## Un exemple
+
+<!-- Revoir exemple => faire un tableau agrégé (fréquences sur les QI et ventilation par modalités de la var sensible) -->
+
+::: {#tbl-ex-l-divers .table .table-striped .table-hover .table-bordered .table-sm}
+
+     Age        Sexe     Maladie
+  ----------- -------- --------------
+   \[50;55\[     H        Diabète
+   \[50;55\[     H        Diabète
+   \[50;55\[     F         Cancer
+   \[50;55\[     F         Grippe
+   \[50;55\[     H        Diabète
+
+  : Un fichier 2-anonyme mais pas assez diversifié
+:::
+
+
+## Les scénarios d'attaque envisagés
+
+
+[@machanavajjhalaDiversityPrivacyAnonymity2007]
+
+- Manque d'homogénéité
+- Utilisation d'une information auxiliaire
+
+
+## Limites
+
+- Adaptée pour les variables sensibles catégorielles uniquement
+- => mal adaptée pour les variables continues (par exemple CA, niveau de vie, etc.)
+
+
+# Mesures probabilistes du risque
+
+
+## Quelques notations pour aller plus loin
+
+::: {style="font-size: 70%;"}
+
+
+- $N$: la taille de la population
+- $n$: la taille de l'échantillon éventuel
+- $w_i$: le poids de l'individu $i$ dans l'échantillon ($\sum_i{w_i}=N$)
+- $c$: le groupe constitué par un type de croisement des variables quasi-identifiantes.
+  - Par exemple, si les QI sont l'âge et le sexe, $c$ pourra correspondre au croisement $[25; 35] \times Femmes$, ou $[55; 95] \times Hommes$, etc.
+- $N_c$: le nombre d'individus dans la population partageant les caractéristiques $c$
+- $n_c$: le nombre d'individus dans l'échantillon (éventuel) partageant les caractéristiques $c$
+
+
+$\Rightarrow$ Si un fichier exhaustif est $k$-anonyme, alors $\forall c, N_c \geq k$.
+
+:::
+
+
+## Les individus les plus à risque de ré-identification
+
+-   Les **uniques dans la population**: $N_c = 1$
+
+-   Les **uniques dans l'échantillon**: $n_c = 1$
+
+-   Les **uniques dans l'échantillon qui sont également uniques dans la population**: $n_c = 1$ et $\sum\limits_{i \in c}{w_i} = 1$
+
+
+## Mesurer le risque individuel dans un fichier exhaustif
+
+- Le $k$-anonymat et la $l$-diversité sont des mesures globales.  
+  
+- On peut passer au niveau individuel:   
+  
+  - en considérant comme à risque chaque individu d'un groupe de modalités de moins de $k$ individus
+  - en associant à chaque individu de la base de données, une **mesure individuelle du risque de ré-identification**: 
+  
+  $$r_c = \frac{1}{N_c}$$
+
+
+## Mesurer le risque individuel dans un échantillon
+
+::: {.callout-note}
+### Probabilité de ré-identifier un individu dans un échantillon
+
+- *Au niveau de l'échantillon*: 
+  $$r_c = \frac{1}{n_c}$$
+
+  - Si la présence d'un individu dans l'échantillon est connue de l'attaquant, c'est une mesure adéquate.
+  - Sinon, cette mesure sur-estime le risque de ré-identification.
+
+- *Au niveau de la population*, le risque de ré-identification peut être estimé par:
+
+ $$\hat r_c = \frac{1}{\sum\limits_{i \in c}{w_i}}$$
+
+ où $\sum\limits_{i \in c}{w_i}$ est une estimation de $\hat N_c$.
+
+:::
+
+
+## Une mesure globale du risque
+
+Pour réaliser l'arbitrage, une mesure de risque globale est plus  pratique. On pourra considérer:
+
+- **Le nombre d'uniques** (dans l'échantillon ou la population, selon les cas);
+- **Le risque individuel moyen** défini, dans le cadre d'un échantillon, par:
+    $$\tau = \frac{\sum\limits_{c}{n_c \times r_c}}{n}$$
+
+<!-- 
+
+## Le risque individuel
+
+-   Les individus les plus à risque:
+
+    -   Les uniques de population, quand $N_k = 1$
+
+    -   Les uniques dans l'échantillon, quand $n_k = 1$
+
+    -   Les uniques dans l'échantillon qui sont également uniques dans la population, quand $\sum\limits_{i \in k}{w_i} = 1$
+
+-   Les mesures individuelles permettent de cibler les individus les plus à risque.
+
+ -->
+
+
+## Mesures probabilistes du risque 
+
+Des mesures plus raffinées sont implémentées dans des outils classiques tels que $\mu$-Argus ou le package `R` `sdcMicro`.
+
+-   Quand on dispose d'un échantillon (donc des $n_k$), on ne connaît en général pas les $N_k$.
+
+-   Mesure du risque individuel conditionnellement à l'échantillon: $r_k = \mathbb{E}(\frac{1}{N_k}|n_k)$.
+
+-   Mesure dépendant d'une modélisation de la loi (a posteriori) de $N_k | n_k$
+
+    -   Modélisation des fréquences des clés dans la population conditionnellement à leur fréquence dans l'échantillon.
+
+    -   Par une binomiale négative par exemple dans @Benedetti_Franconi_1998.
+
+# Autres mesures
+
+## Le Record Linkage
+
+  -   Mesure *a posteriori* de la distance entre les individus du jeu protégé et ceux du jeu original.
+
+  -   Permet d'évaluer le nombre de correspondances exactes entre données perturbées et originales.
+
+## Les Outliers
+
+  -   Fort risque de ré-identification des individus ayant des valeurs en queue de distribution (par ex. les très hauts revenus des footballeurs)
+
+  -   Une perturbation n'est pas toujours suffisante (Un outlier perturbé reste souvent un outlier).
+
+  -   Détection des outliers à partir des quantiles de la distribution.
+
+# Les scénarios d'attaque
+
+## Définir un scénario d'attaque
+
+::: {.callout-tip}
+### Scénario d'attaque
+Définir des scénarios d'attaque c'est envisager les moyens utilisés par l'attaquant et objectiver les utilisations frauduleuses que nous chercherons à empêcher.
+:::
+
+-   Arbitrage Coûts/Risques (INS)
+
+-   Arbitrage Coûts/Bénéfices (Attaquant)
+
+
+## Les attaques sur données k-anonymes et/ou l-diverses
+
+@cohen_attacks_2022
+
+
+# Conclusion
+
+## En guise de conclusion {.smaller}
+
+-   Il existe de nombreuses façons d'évaluer la perte d'information.
+
+-   Fortement liée au niveau de protection.
+
+-   De nombreuses méthodes pour évaluer la perte d'information, le choix de la mesure dépend entièrement des utilisateurs finaux des données publiées.
+
+-   Difficile d'anticiper toutes les utilisations d'un ensemble de données et donc toutes les mesures associées de perte d'information.
+
+-   Nécessité de faire des concessions sur certaines caractéristiques d'un tableau pour libérer des contraintes ailleurs.
+
+-   On ne peut pas préserver toutes les caractéristiques d'un ensemble de données.
+
+
+# Pour aller plus loin
+
+## Biblio 
+::: {#refs}
+:::
+
+<!---
+## Source généraliste
+
+Hundepool and alt., *Handbook on Statistical Disclosure Control*, Wiley, 2012\
+Une version libre et gratuite est disponible ici: <https://ec.europa.eu/eurostat/cros/system/files/SDC_Handbook.pdf> (2010)
+
+
+## Risques de divulgation
+
+-   Sweeney, L. (2000). Simple demographics often identify people uniquely. *Health* (San Francisco), 671(2000), 1-34.
+
+-   El Emam, K., & Dankar, F. K. (2008). Protecting privacy using k-anonymity. *Journal of the American Medical Informatics Association*, 15(5), 627-637.
+
+## Compromis entre Risque et Utilité:
+
+-   Domingo-Ferrer, J., Mateo-Sanz, J. M., & Torra, V. (2001, May). Comparing SDC methods for microdata on the basis of information loss and disclosure risk. In *Pre-proceedings of ETK-NTTS* (Vol. 2, pp. 807-826).
+--->
