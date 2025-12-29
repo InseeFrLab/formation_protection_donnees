@@ -29,7 +29,7 @@ jobs:
       - name: Render the Quarto site with babelquarto
         run: RRscript -e 'babelquarto::render_site()'
       - name: Achieve site render
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: site_render
           path: _site/
