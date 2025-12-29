@@ -26,10 +26,18 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           cache-version: 2
-      - name: Render and Publish
+      - name: Render the Quarto site with babelquarto
+        run: RRscript -e 'babelquarto::render_site()'
+      - name: Achieve site render
+        uses: actions/upload-artifact@v3
+        with:
+          name: site_render
+          path: _site/
+      - name: Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
+          render: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
