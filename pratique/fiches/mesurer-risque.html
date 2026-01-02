@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
+<link rel="alternate" hreflang="fr" href="/pratique/fiches/mesurer-risque.html" />
+<link rel="alternate" hreflang="en" href="/en/pratique/fiches/mesurer-risque.en.html" />
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.26">
 
@@ -1415,7 +1417,7 @@ Templ, Matthias, Alexander Kowarik, et Bernhard Meindl. 2015. <span>«&nbsp;Stat
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/InseeFrLab\.github\.io\/formation_protection_donnees\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

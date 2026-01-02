@@ -1,0 +1,69 @@
+/* Source: https://github.com/linogaliana/r-geographie/blob/main/slides/custom.css */
+
+.green2, .green2 code, .green2 a { color: #008A25!important; }
+.red2, .red2 code, .red2 a { color: #EE0220!important; }
+.blue2, .blue2 code, .blue2 a { color: #4758AB!important; }
+
+/* Define styles for each row (assuming you want some vertical spacing) */
+.row {
+  margin-bottom: 20px; /* Adjust the margin as needed for spacing between rows */
+}
+
+.centered{
+  justify-content: center;
+}
+
+.container {
+  /*width: 50%;*/ /* Set the desired width for your container */
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.projection-label {
+  font-style: italic;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+  grid-gap: 10px; /* Adjust the gap between grid items as needed */
+  grid-template-rows: auto auto; /* Two rows with automatic height */
+  justify-content: center; /* Center the items horizontally */
+  align-items: center; /* Center the items vertically */
+    max-height: 500px; /* Set your desired maximum height here */
+      overflow: auto; /* Add scrollbars if content exceeds the maximum height */
+}
+
+/* Style for the mapBertin element, spanning two columns */
+.map-bertin {
+  grid-column: span 2; /* Span two columns */
+  /* Add your styles for mapBertin here */
+}
+
+
+/* ajouts clara */
+/* Style pour les tooltips */
+span[title] {
+  border-bottom: 1px dotted #000; /* Soulignement en pointillés */
+  cursor: pointer; /* Curseur en forme de main */
+}
+
+span[title]:hover {
+  color: #007bff; /* Changer la couleur du texte au survol */
+  text-decoration: underline; /* Ajouter un soulignement au survol */
+}
+
+/* Style pour le tooltip (info-bulle) */
+.tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7); /* Fond sombre pour la tooltip */
+  color: white;
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 12px;
+  display: none; /* Masquer par défaut */
+  pointer-events: none; /* Ne pas interférer avec les autres éléments */
+}

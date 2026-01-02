@@ -1,0 +1,492 @@
+[
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#context",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#context",
+    "title": "The disclosure risks",
+    "section": "Context",
+    "text": "Context\nOn se placera dans le contexte suivant:\n\nUn institut statistique collecte des données individuelles.\nOn suppose qu’il respecte les réglements en vigueur en termes de protection des données individuelles (par exemple le RGPD en Europe).\nL’institut cherche à diffuser des statistiques agrégées ou des fichiers de données individuelles à visée statistique."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#problématique",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#problématique",
+    "title": "The disclosure risks",
+    "section": "Problématique",
+    "text": "Problématique\n\n\n\n\n\n\nProblématique de l’ensemble de l’atelier\n\n\nComment diffuser de l’information statistique sans porter atteinte aux personnes (physiques ou morales) auprès desquelles l’information a été collectée ?"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#protéger-un-enjeu-pour-la-statistique-publique",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#protéger-un-enjeu-pour-la-statistique-publique",
+    "title": "The disclosure risks",
+    "section": "Protéger: un enjeu pour la statistique publique",
+    "text": "Protéger: un enjeu pour la statistique publique\nLes missions [de la statistique publique] ne dépendent pas seulement de sa capacité à maîtriser les outils ou les méthodes nécessaires à la production d’une information de qualité, mais aussi de sa capacité à protéger et à garantir la confidentialité des données qui lui sont confiées. Cette protection est la condition pour continuer à disposer de ces données. (Redor 2023)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#a-la-recherche-dune-définition",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#a-la-recherche-dune-définition",
+    "title": "The disclosure risks",
+    "section": "A la recherche d’une définition",
+    "text": "A la recherche d’une définition\n\n\n\nUne définition maximaliste de la divulgation…\n\n\nT. Dalenius propose en 1977 la définition suivante:\n“Si la publication des statistiques \\(T(D)\\) permet de déterminer la valeur de données statistiques confidentielles de façon plus précise qu’il ne serait possible sans accès à \\(T(D)\\), alors une divulgation a eu lieu.” (Dalenius 1977).\n\n\n\n\n\n\n… impossible à tenir\n\n\nCette définition ne prend pas en compte l’information auxiliaire déjà disponible\n\n\n\n\n\n\nUn exemple de divulgation impossible à protéger\n\n\nDes études montrent un lien de corrélation entre le fait de fumer et la survenue d’un cancer des poumons \\(\\Rightarrow\\) si, on (une compagnie d’assurance) sait qu’un individu est fumeur, alors on peut lui imputer un risque important d’avoir un cancer, information qui va très probablement générer un préjudice à cette personne."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#a-la-recherche-dune-définition-1",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#a-la-recherche-dune-définition-1",
+    "title": "The disclosure risks",
+    "section": "A la recherche d’une définition",
+    "text": "A la recherche d’une définition\nIl faut tenir compte de deux réalités:\n\nl’utilisateur dispose d’une information auxiliaire.\nl’inférence statistique est l’un des moyens de connaissances offertes par la publication de statistiques.\n\n\\(\\Rightarrow\\) une protection inconditionnelle et totale n’est pas possible."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#besoin-de-maîtriser-les-risques",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#besoin-de-maîtriser-les-risques",
+    "title": "The disclosure risks",
+    "section": "Besoin de maîtriser les risques",
+    "text": "Besoin de maîtriser les risques\nLa protection de données se définit à travers:\n\nla maîtrise des risques de divulgation\net le besoin de continuer à diffuser de l’information statistique.\n\n\\(\\Rightarrow\\) Besoin d’arbitrer entre les deux composantes."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#arbitrer",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#arbitrer",
+    "title": "The disclosure risks",
+    "section": "Arbitrer",
+    "text": "Arbitrer\nProtéger des données confidentielles, c’est arbitrer entre:\n\nleur utilité pour la connaissance et le débat public;\nleur risque intrinsèque: toute donnée diffusée peut divulguer une information sur un individu ou un groupe d’individus.\n\n\n\n\n\nArbitrer"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#deux-écueils",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#deux-écueils",
+    "title": "The disclosure risks",
+    "section": "Deux écueils",
+    "text": "Deux écueils\n\nNe pas diffuser rendrait la statistique publique inutile.\nTout diffuser rendrait la statistique publique dangereuse.\n\n\n\n\n\nArbitrer"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#problèmes",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#problèmes",
+    "title": "The disclosure risks",
+    "section": "Problèmes",
+    "text": "Problèmes\n\nQuels sont les risques de divulgation ?\nComment mesurer ces risques ?\nComment les traiter ?\n\n\\(\\Rightarrow\\) Comment les traiter sans trop détériorer l’information statistique ?"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#enjeu-principal-de-larbitrage",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#enjeu-principal-de-larbitrage",
+    "title": "The disclosure risks",
+    "section": "Enjeu principal de l’arbitrage:",
+    "text": "Enjeu principal de l’arbitrage:\n\n\n\n\n\n\nTrouver un équilibre entre protection et information\n\n\nIl s’agit de réaliser un compromis entre le fait de minimiser les risques de divulgation des informations confidentielles et minimiser la perte d’information due aux traitements de protection des données.\n\n\n\n\n\n\n\n\n\nPas de méthode magique\n\n\nIl n’existe pas de méthode minimisant le risque et la perte d’information en même temps!"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-darbitrage",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-darbitrage",
+    "title": "The disclosure risks",
+    "section": "Un exemple d’arbitrage",
+    "text": "Un exemple d’arbitrage\nLe recensement de la population (RP) en France:\n\nDécret de publication spécifique;\nUtilité des données du RP très forte:\n\nun certain nombre de lois en dépendent\ndotation financière des communes\n\nRisque d’utilisation des données diffusées contre les personnes est jugé faible:\n\ninformation peu préjudiciable\nà l’exception de variables sensibles"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-de-divulgation-assumée",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-de-divulgation-assumée",
+    "title": "The disclosure risks",
+    "section": "Un exemple de divulgation assumée",
+    "text": "Un exemple de divulgation assumée\nL’Insee diffuse des données communales même pour les très petites communes:\nVoir l’exemple de la commune de Rochefourchat:\n\nUne commune de \\(2\\) habitants\nOn connaît leur sexe, leur situation conjugale, leur âge, une description grossière de leurs logements, le statut d’occupation de leur logement, leur niveau de diplôme, leur statut d’activité, etc."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#larbitrage-risqueutilité-un-paradigme",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#larbitrage-risqueutilité-un-paradigme",
+    "title": "The disclosure risks",
+    "section": "L’arbitrage Risque/Utilité: un paradigme",
+    "text": "L’arbitrage Risque/Utilité: un paradigme\n\nIl n’existe pas de risque zéro\nAucune méthode ne supprime totalement le risque \\(\\Rightarrow\\)\n\nArbitrer est donc inhérent à la protection des données.\nCet arbitrage considéré comme le paradigme de la discipline."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-paradigme-criticable",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#un-paradigme-criticable",
+    "title": "The disclosure risks",
+    "section": "Un paradigme criticable",
+    "text": "Un paradigme criticable\n(Voir Cox, Karr, and Kinney 2011)\n\nS’il aide à savoir comment penser…\n…il aide moins à savoir comment agir."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#en-pratique-un-autre-arbitrage-a-lieu",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#en-pratique-un-autre-arbitrage-a-lieu",
+    "title": "The disclosure risks",
+    "section": "En pratique, un autre arbitrage a lieu",
+    "text": "En pratique, un autre arbitrage a lieu\nUn arbitrage Coûts/Bénéfices est réalisé:\n\nPar le producteur de données:\n\nQuels moyens déployer pour quel niveau de protection (temps, moyens financiers)?\n\nPar l’attaquant:\n\nL’information confidentielle espérée est-elle à la hauteur des moyens nécessaires à sa divulgation ?\n\n\n\\(\\Longrightarrow\\) Mettre en place des méthodes qui ont un coût adapté au risque objectivé et à la sensibilité des données."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#objectiver-définir-et-mesurer",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#objectiver-définir-et-mesurer",
+    "title": "The disclosure risks",
+    "section": "Objectiver: définir et mesurer",
+    "text": "Objectiver: définir et mesurer\nPour arbitrer, il faut pouvoir\n\nDéfinir les termes de l’arbitrage\nMesurer les phénomènes."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#gouvernance-des-données",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#gouvernance-des-données",
+    "title": "The disclosure risks",
+    "section": "Gouvernance des données",
+    "text": "Gouvernance des données\nAvant de définir les risques:\n\nQuels sont les objectifs de diffusion ?\nQui accède à quoi avec quels droits ?\n\n\n\n\n\n\n\nObjectif\n\n\nPour mieux maîtriser les risques, prendre conscience du contexte dans lequel ils sont susceptibles d’apparaître."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#sécuriser-laccès",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#sécuriser-laccès",
+    "title": "The disclosure risks",
+    "section": "Sécuriser l’accès",
+    "text": "Sécuriser l’accès\n\nOn peut distinguer quatre grands types d’utilisateurs:\n\ngrand public et acteurs publics: statistiques agrégées\nchercheurs: statistiques détaillées voire données individuelles\nchargés d’études de la statistique publique: données individuelles sans identifiants directs\nchargés de collecte: données individuelles avec identifiants"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#adapter-laccès-en-fonction-des-besoins-des-utilisateurs",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#adapter-laccès-en-fonction-des-besoins-des-utilisateurs",
+    "title": "The disclosure risks",
+    "section": "Adapter l’accès en fonction des besoins des utilisateurs",
+    "text": "Adapter l’accès en fonction des besoins des utilisateurs\n\nPrincipe de minimisation : chaque utilisateur ne doit accéder qu’aux données strictement nécessaires à ses missions."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#adapter-laccès-en-fonction-des-besoins-des-utilisateurs-1",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#adapter-laccès-en-fonction-des-besoins-des-utilisateurs-1",
+    "title": "The disclosure risks",
+    "section": "Adapter l’accès en fonction des besoins des utilisateurs",
+    "text": "Adapter l’accès en fonction des besoins des utilisateurs\n\nDifférenciation des accès :\n\ngrand public et acteurs publics: accès gratuit et sans condition.\nchercheurs: accès sous conditions strictes (contrats, projets d’utilité publics, environnement sécurisé de travail, etc.).\nchargés d’études: accès à des données sur serveurs internes soumis à autorisation préalable.\nchargés de collecte: accès aux données de collecte pour la seule enquête sur laquelle ils travaillent."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#adapter-laccès-en-fonction-des-besoins-des-utilisateurs-2",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#adapter-laccès-en-fonction-des-besoins-des-utilisateurs-2",
+    "title": "The disclosure risks",
+    "section": "Adapter l’accès en fonction des besoins des utilisateurs",
+    "text": "Adapter l’accès en fonction des besoins des utilisateurs\n\nAssurer un suivi et un contrôle des accès : chaque accès doit pouvoir être contrôlé et révoqué si besoin."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#adapter-le-niveau-danonymisation-nécessaire",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#adapter-le-niveau-danonymisation-nécessaire",
+    "title": "The disclosure risks",
+    "section": "Adapter le niveau d’anonymisation nécessaire",
+    "text": "Adapter le niveau d’anonymisation nécessaire\nPlus l’accès est lâche, plus l’anonymisation doit pouvoir être élevé:\n\ngrand public:\n\nlibre accès \\(\\iff\\) protection statistique forte"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#adapter-le-niveau-danonymisation-nécessaire-1",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#adapter-le-niveau-danonymisation-nécessaire-1",
+    "title": "The disclosure risks",
+    "section": "Adapter le niveau d’anonymisation nécessaire",
+    "text": "Adapter le niveau d’anonymisation nécessaire\nPlus l’accès est lâche, plus l’anonymisation doit pouvoir être élevé:\n\nchercheurs et chargés d’études:\n\naccès sécurisé \\(\\iff\\) protection statistique faible sur les inputs\nMais besoin de traiter/vérifier les outputs publics (output checking)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#adapter-le-niveau-danonymisation-nécessaire-2",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#adapter-le-niveau-danonymisation-nécessaire-2",
+    "title": "The disclosure risks",
+    "section": "Adapter le niveau d’anonymisation nécessaire",
+    "text": "Adapter le niveau d’anonymisation nécessaire\nPlus l’accès est lâche, plus l’anonymisation doit pouvoir être élevé:\n\nchargés de collecte:\n\naccès très sécurisé \\(\\iff\\) aucune protection statistique des données\nMais nécessité de respecter les réglements sur la protection des données individuelles (RGPD en Europe)."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-exemple",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#un-exemple",
+    "title": "The disclosure risks",
+    "section": "Un exemple",
+    "text": "Un exemple\n\n\n\n\n\n\n\nFigure 1: Adapter les fichiers au type de public (Source: Insee)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#gouvernance-déontologie-confiance",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#gouvernance-déontologie-confiance",
+    "title": "The disclosure risks",
+    "section": "Gouvernance, Déontologie, Confiance",
+    "text": "Gouvernance, Déontologie, Confiance\n\nLa maîtrise de la sécurité des accès et la meilleure gouvernance possible des données ne sont pas des boucliers infaillibles.\nDéontologie forte des statisticiens publics.\nConfiance dans les différents acteurs (chercheurs) à qui on donne accès aux données."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#responsabiliser",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#responsabiliser",
+    "title": "The disclosure risks",
+    "section": "Responsabiliser",
+    "text": "Responsabiliser\nUne responsabilisation nécessaire:\n\nStatisticiens publics (en France loi de 1951 sur le secret statistique)\nChercheurs (Risque de révocation des contrats et conséquences sur l’ensemble du laboratoire)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étapes-clés-du-processus-de-protection-des-données",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étapes-clés-du-processus-de-protection-des-données",
+    "title": "The disclosure risks",
+    "section": "Étapes clés du processus de protection des données",
+    "text": "Étapes clés du processus de protection des données\n\n\nEst-il nécessaire de protéger les données ?\nQuelles sont les caractéristiques et utilisations principales des données ?\nDéfinition et mesure des risques de divulgation\nChoix des méthodes de protection des données\nMise en oeuvre des méthodes\nContrôles et documentation\n\n\nSource: (Hundepool et al. 2024)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-1-est-il-nécessaire-de-protéger-les-données",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étape-1-est-il-nécessaire-de-protéger-les-données",
+    "title": "The disclosure risks",
+    "section": "Étape 1: Est-il nécessaire de protéger les données ?",
+    "text": "Étape 1: Est-il nécessaire de protéger les données ?\n\n\nAnalyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d’effectuer de traitement pour la protection des données\nQuel type de diffusion ? (tableaux de données, cartes, microdonnées ...)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-2-caractéristiques-et-utilisations-principales-des-données-i",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étape-2-caractéristiques-et-utilisations-principales-des-données-i",
+    "title": "The disclosure risks",
+    "section": "Étape 2: Caractéristiques et utilisations principales des données (I)",
+    "text": "Étape 2: Caractéristiques et utilisations principales des données (I)\n\n\nAnalyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection\nAnalyse de la méthodologie de l’enquête\nDéfinition des objectifs de l’institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-2-caractéristiques-et-utilisations-principales-des-données-ii",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étape-2-caractéristiques-et-utilisations-principales-des-données-ii",
+    "title": "The disclosure risks",
+    "section": "Étape 2: Caractéristiques et utilisations principales des données (II)",
+    "text": "Étape 2: Caractéristiques et utilisations principales des données (II)\n\n\nAnalyse des besoins des utilisateurs (variables prioritaires, types d’analyses qui seront réalisées)\nAnalyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-3-définition-et-mesure-des-risques-de-divulgation",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étape-3-définition-et-mesure-des-risques-de-divulgation",
+    "title": "The disclosure risks",
+    "section": "Étape 3: Définition et mesure des risques de divulgation",
+    "text": "Étape 3: Définition et mesure des risques de divulgation\n\n\nRecenser les différents scénarios possibles conduisant à la divulgation des données\n\nEn fonction du type de données considérées (données exhaustives, enquêtes)\nEn fonction du public visé (chercheurs, décideurs, grand public)\n\nChoisir la ou les mesures du risque de divulgation\nSeuil de tolérance au risque à fixer"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-4-choix-des-méthodes",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étape-4-choix-des-méthodes",
+    "title": "The disclosure risks",
+    "section": "Étape 4: Choix des méthodes",
+    "text": "Étape 4: Choix des méthodes\n\n\nChoisir une / plusieurs méthode(s) de protection\nComparer les méthodes: niveau de risque vs perte d’utilité\n\n\n\n\n\n\n\n\n\nFigure 2: Arbitrage risque-utilité"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-5-mise-en-oeuvre-des-méthodes",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étape-5-mise-en-oeuvre-des-méthodes",
+    "title": "The disclosure risks",
+    "section": "Étape 5: Mise en oeuvre des méthodes",
+    "text": "Étape 5: Mise en oeuvre des méthodes\n\n\nChoisir un logiciel\nRéaliser la mesure des risques de divulgation\nProtéger les données\nQuantification de la perte d’information"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#étape-6-contrôles-et-documentation",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#étape-6-contrôles-et-documentation",
+    "title": "The disclosure risks",
+    "section": "Étape 6: Contrôles et documentation",
+    "text": "Étape 6: Contrôles et documentation\n\n\nContrôle du processus de protection\n\nvérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable\n\nRéalisation d’un document synthétisant les méthodes utilisées et faisant le bilan de la perte d’information\n\nsi possible le transmettre aux utilisateurs des données publiées\npeut contenir des avertissements sur les précautions à prendre lors de l’utilisation d’un fichier anonymisé"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#le-risque-de-divulgation",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#le-risque-de-divulgation",
+    "title": "The disclosure risks",
+    "section": "Le risque de divulgation",
+    "text": "Le risque de divulgation\n\n\n\n\n\n\nDéfinition générale\n\n\nRisque de divulguer une information confidentielle en publiant des données agrégées ou individuelles."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#quatre-types-de-risque-de-divulgation",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#quatre-types-de-risque-de-divulgation",
+    "title": "The disclosure risks",
+    "section": "Quatre types de risque de divulgation",
+    "text": "Quatre types de risque de divulgation\n\nRisque de divulgation d’identité\nRisque de divulgation d’attribut\nRisque de divulgation par inférence\nRisque de divulgation par différenciation\n\npar \"emboîtement\"\npar \"recoupement\""
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#risque-de-divulgation-didentité",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#risque-de-divulgation-didentité",
+    "title": "The disclosure risks",
+    "section": "Risque de divulgation d’identité",
+    "text": "Risque de divulgation d’identité\n\n\n\n\n\n\nDéfinition\n\n\nRisque de reconnaître un individu spécifique dans les données publiées : un attaquant peut identifier une unité à partir de la publication.\n\n\n\nExemples :\n\nCertaines variables comme le nom, l’adresse qui identifient directement des individus ou des foyers.\nToutes les personnes ayant des caractéristiques très rares (ex : personnes très âgées).\n87% de la population américaine est unique uniquement à partir du ZIP code, du genre et de la date de naissance (Sweeney 2000)."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#remarques",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#remarques",
+    "title": "The disclosure risks",
+    "section": "Remarques",
+    "text": "Remarques\n\nLes identifiants directs (nom, prénom, adresse) sont utiles pour la collecte mais supprimés des bases à vocation statistique.\nD’autres variables ont un fort pouvoir ré-identifiant (le lieu de résidence, l’âge, le genre, la profession, le niveau d’éducation, etc.).\nRé-identifier ne permet as toujours d’obtenir plus d’informations sur les personnes."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#risque-de-divulgation-dattribut",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#risque-de-divulgation-dattribut",
+    "title": "The disclosure risks",
+    "section": "Risque de divulgation d’attribut",
+    "text": "Risque de divulgation d’attribut\n\n\n\n\n\n\nDéfinition\n\n\nRisque de divulguer une information sensible sur un ou plusieurs individus à partir des données diffusées.\n\n\n\nExemples :\n\nUne ré-identification conduit souvent à une divulgation d’attribut.\nIl est possible de divulguer un attribut sur des groupes entiers."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#divulgation-dun-attribut-de-groupe",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#divulgation-dun-attribut-de-groupe",
+    "title": "The disclosure risks",
+    "section": "Divulgation d’un attribut de groupe",
+    "text": "Divulgation d’un attribut de groupe\n\nDivulgation d’une information sensible pour un groupe entier de personnes.\nSans nécessairement avoir besoin de ré-identifier préalablement.\n\n\n\n\n\n\n\n\n\n\n\nFemmes\nHommes\n\n\n\n\nDiabétiques\n30\n40\n\n\nNon diabétiques\n12\n0\n\n\n\n\n\n\nTable 1: Un exemple de divulgation d’attributs de groupe"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#risque-de-divulgation-par-inférence",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#risque-de-divulgation-par-inférence",
+    "title": "The disclosure risks",
+    "section": "Risque de divulgation par inférence",
+    "text": "Risque de divulgation par inférence\n\n\n\n\n\n\nDéfinition\n\n\nRisque de pouvoir déduire avec une certitude élevée des informations sensibles sur des individus à partir des données publiées.\n\n\n\n\nCorrélation forte d’une information avec une caractéristique sensible.\nProportion très élevée au sein d’un groupe.\n\n\n\n\n\n\n\n\n\n\nFemmes\nHommes\n\n\n\n\nDiabétiques\n30\n38\n\n\nNon diabétiques\n12\n2\n\n\n\n\n\n\nTable 2: Un exemple de divulgation d’attributs par inférence"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#risque-de-divulgation-par-différenciation",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#risque-de-divulgation-par-différenciation",
+    "title": "The disclosure risks",
+    "section": "Risque de divulgation par différenciation",
+    "text": "Risque de divulgation par différenciation\n\n\n\n\n\n\nDéfinition\n\n\nLorsqu’une information agrégée est diffusée pour divers croisements, il est parfois possible d’en déuire une information additionnelle en différenciant les divers résultats.\n\n\n\n\nExemples:\n\nDifférenciation marginale: consiste à utiliser les marges de données tabulées\nDifférenciation par emboîtement géographique: consiste à utiliser des agrégats diffusés sur des zonages emboîtés (variante du premier)\nDifférenciation par recoupement: consiste à utiliser des agrégats diffusés sur des zonages imparfaitement emboîtés"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#différenciation-par-recoupement",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#différenciation-par-recoupement",
+    "title": "The disclosure risks",
+    "section": "Différenciation par recoupement",
+    "text": "Différenciation par recoupement\n\n\n\n\n\n\n\nFigure 3: Exemple de différenciation par recoupement en France entre un département et une communauté de communes (EPCI)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#différenciation-par-recoupement-1",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#différenciation-par-recoupement-1",
+    "title": "The disclosure risks",
+    "section": "Différenciation par recoupement",
+    "text": "Différenciation par recoupement\n\n\n\n\n\n\n\nFigure 4: Zoom sur le problème de différenciation"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#distinguer-les-variables",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#distinguer-les-variables",
+    "title": "The disclosure risks",
+    "section": "Distinguer les variables",
+    "text": "Distinguer les variables\nDans un jeu de données individuelles, on distinguera:\n\nIdentifiants: Variables permettant d’identifier directement un individu.\nQuasi-identifiants: Variables pouvant conduire à réidentifier un individu à partir d’une information auxiliaire.\nVariables sensibles: Variables pour lesquelles des mesures de protection spécifiques peuvent s’avérer nécessaires.\nAutres variables"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#les-identifiants",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#les-identifiants",
+    "title": "The disclosure risks",
+    "section": "Les identifiants",
+    "text": "Les identifiants\n\nLes identifiants sont retirés très tôt au cours du processus de production pour respecter les réglements sur la protection des données.\nOn supposera par la suite que tous les identifiants directs ont été retirées."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#les-quasi-identifiants",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#les-quasi-identifiants",
+    "title": "The disclosure risks",
+    "section": "Les quasi-identifiants",
+    "text": "Les quasi-identifiants\n\nPour des données individus/ménages: sexe, âge, lieu d’habitation, diplôme, statut marital, etc.\nPour des données entreprises: Secteur d’activité, lieu du siège, etc.\nListe à déterminer à chaque fois\nDe quelles variables un attaquant dispose-t-il déjà ?"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-1",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-1",
+    "title": "The disclosure risks",
+    "section": "Un exemple",
+    "text": "Un exemple\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIdentifiants\n\n\nQuasi Id.\n\n\nSensible\n\n\n\nNom\nAdresse\nCommune\nAge\nDiplôme\nRevenus\n\n\n\n\nJohan\n3 rue...\nParis\n36\nBac\n150000\n\n\nJeanne\n11 bd...\nMalakoff\n41\nBac+3\n60000\n\n\nJohnny\n12 pl...\nPithiviers\n23\nBac Pro\n25000\n\n\nJeannette\n8 rue...\nBelval\n85\n\n10000\n\n\n\n\n\n\nTable 3: Différentes types de variables"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#quantifier-le-risque-1-le-k-anonymat",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#quantifier-le-risque-1-le-k-anonymat",
+    "title": "The disclosure risks",
+    "section": "Quantifier le risque (1): le \\(k\\)-anonymat",
+    "text": "Quantifier le risque (1): le \\(k\\)-anonymat\n\n\n\n\n\n\nLe \\(k\\)-anonymat (Sweeney 2002)\n\n\nUn jeu de données est considéré comme k-anonyme si la combinaison la moins fréquente des modalités des variables quasi-identifiantes compte au moins k unités.\n\n\n\n\n\nCette mesure assure que tous les individus sont similaires à au moins \\(k-1\\) autres.\nMesure de risque globale qui se focalise sur les individus les plus à risque de ré-identification.\nLa probabilité associée au risque pour un individu du fichier d’être ré-identifié est au minimum \\(1/k\\)\nChoix de \\(k\\) en prenant en compte les règles existantes et/ou par arbitrage risque-utilité."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#le-scénario-dattaque-envisagé",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#le-scénario-dattaque-envisagé",
+    "title": "The disclosure risks",
+    "section": "Le scénario d’attaque envisagé",
+    "text": "Le scénario d’attaque envisagé\n\n\n\n\n\n\nCaractéristiques du scénario d’attaque\n\n\nLe \\(k\\)-anonymat protège les données d’une attaque de ré-identification lorsque l’attaquant dispose d’une information auxiliaire sur les mêmes individus (un au moins):\n\nSi l’intrus sait qu’un individu spécifique est dans l’ensemble de données, le \\(k\\)-anonymat est une manière équitable d’évaluer le risque de ré-identification.\nL’attaquant procède à un appariement entre les deux jeux de données.\nLes quasi-identifiants (QI) servent de clés d’appariement.\nPlus un individu a des caractéristiques rares sur les QI, meilleure sera la ré-identification.\n\nLes uniques sur les QI: la ré-identification sera certaine\nPlus un individu est commun, moins la probabilité de ré-identification sera élevée."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#limportance-du-scénario",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#limportance-du-scénario",
+    "title": "The disclosure risks",
+    "section": "L’importance du scénario",
+    "text": "L’importance du scénario\n\n\n\n\n\n\nUne efficacité qui dépend du réalisme du scénario\n\n\nAssurer un certain niveau d’anonymité permet de réduire le risque de ré-identification, mais :\n\nSi l’attaquant dispose de plus d’information auxiliaire \\(\\Rightarrow\\) sous-estimation du risque avec le \\(k\\)-anonymat.\nAvec le temps, l’attaquant peut disposer de plus d’informations. Or, le scénario est posé une fois \\(\\Rightarrow\\) sous-estimation du risque avec le \\(k\\)-anonymat.\nSi l’attaquant dispose de moins d’information auxiliaire \\(\\Rightarrow\\) sur-estimation du risque avec le \\(k\\)-anonymat.\nLa qualité des appariements dépend de beaucoup d’autres facteurs (millésimes, qualité des variables, cohérence des champs, etc.) \\(\\Rightarrow\\) sur-estimation du risque avec le \\(k\\)-anonymat."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-2",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-2",
+    "title": "The disclosure risks",
+    "section": "Un exemple",
+    "text": "Un exemple\n\n\n\n\n\n\nId\nAge\nGenre\nMaladie\n\n\n\n\n1\n[45;55[\nM\nDiabète\n\n\n2\n[45;55[\nM\nHypertension artérielle\n\n\n3\n[45;55[\nF\nCancer\n\n\n4\n[45;55[\nF\nGrippe\n\n\n5\n[70;75[\nM\nDiabète\n\n\n6\n[45;55[\nM\nDiabète\n\n\n\n\n\nTable 4: Exemple d’un fichier individuel 1-anonyme, l’âge et le genre étant considérés comme quasi-identifiants"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#limites-du-k-anonymat",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#limites-du-k-anonymat",
+    "title": "The disclosure risks",
+    "section": "Limites du \\(k\\)-anonymat",
+    "text": "Limites du \\(k\\)-anonymat\n\n\nForte dépendance à la qualité/véracité du scénario\n\\(\\Rightarrow\\) choix des QI est crucial.\n\nLe \\(k\\)-anonymat sur-estime le risque si l’attaquant dispose de moins d’info que supposé\nLe \\(k\\)-anonymat sous-estime le risque si l’attaquant dispose de plus d’info que supposé\nDifficile de mesurer la vraisemblance de l’attaque.\n\nLe \\(k\\)-anonymat ne prend pas en compte les poids d’échantillonnage. \\(\\Rightarrow\\) Appliqué à un échantillon, il sur-estimera le risque de ré-identification.\nNe réduit pas les risques de divulgation d’attributs sensibles."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#quantifier-le-risque-2-la-l-diversité",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#quantifier-le-risque-2-la-l-diversité",
+    "title": "The disclosure risks",
+    "section": "Quantifier le risque (2): la l-diversité",
+    "text": "Quantifier le risque (2): la l-diversité\n\n\n\n\n\n\nLa l-diversité (Machanavajjhala et al. 2007)\n\n\nElle s’assure d’une diversité suffisante des modalités d’une variable sensible prises par les individus au sein d’une même combinaison de quasi-identifiants.\n\n\n\n\nRaffinement du \\(k\\)-anonymat.\nProtection contre la divulgation d’attributs sensibles.\nChaque groupe doit contenir au moins \\(l\\) modalités différentes de la variable sensible étudiée (ou \\(l\\) modalités parmi les plus fréquentes).\nChoix de la cible \\(l\\) en fonction des règles existantes et/ou d’un arbitrage risque-utilité."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-3",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#un-exemple-3",
+    "title": "The disclosure risks",
+    "section": "Un exemple",
+    "text": "Un exemple\n\n\n\n\n\n\n\nAge\nSexe\nMaladie\n\n\n\n\n[50;55[\nH\nDiabète\n\n\n[50;55[\nH\nDiabète\n\n\n[50;55[\nF\nCancer\n\n\n[50;55[\nF\nGrippe\n\n\n[50;55[\nH\nDiabète\n\n\n\n\n\nTable 5: Un fichier 2-anonyme mais pas assez diversifié"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#les-scénarios-dattaque-envisagés",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#les-scénarios-dattaque-envisagés",
+    "title": "The disclosure risks",
+    "section": "Les scénarios d’attaque envisagés",
+    "text": "Les scénarios d’attaque envisagés\n(Machanavajjhala et al. 2007)\n\nManque d’homogénéité\nUtilisation d’une information auxiliaire"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#limites",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#limites",
+    "title": "The disclosure risks",
+    "section": "Limites",
+    "text": "Limites\n\nAdaptée pour les variables sensibles catégorielles uniquement\n=&gt; mal adaptée pour les variables continues (par exemple CA, niveau de vie, etc.)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#quelques-notations-pour-aller-plus-loin",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#quelques-notations-pour-aller-plus-loin",
+    "title": "The disclosure risks",
+    "section": "Quelques notations pour aller plus loin",
+    "text": "Quelques notations pour aller plus loin\n\n\n\\(N\\): la taille de la population\n\\(n\\): la taille de l’échantillon éventuel\n\\(w_i\\): le poids de l’individu \\(i\\) dans l’échantillon (\\(\\sum_i{w_i}=N\\))\n\\(c\\): le groupe constitué par un type de croisement des variables quasi-identifiantes.\n\nPar exemple, si les QI sont l’âge et le sexe, \\(c\\) pourra correspondre au croisement \\([25; 35] \\times Femmes\\), ou \\([55; 95] \\times Hommes\\), etc.\n\n\\(N_c\\): le nombre d’individus dans la population partageant les caractéristiques \\(c\\)\n\\(n_c\\): le nombre d’individus dans l’échantillon (éventuel) partageant les caractéristiques \\(c\\)\n\n\\(\\Rightarrow\\) Si un fichier exhaustif est \\(k\\)-anonyme, alors \\(\\forall c, N_c \\geq k\\)."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#les-individus-les-plus-à-risque-de-ré-identification",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#les-individus-les-plus-à-risque-de-ré-identification",
+    "title": "The disclosure risks",
+    "section": "Les individus les plus à risque de ré-identification",
+    "text": "Les individus les plus à risque de ré-identification\n\nLes uniques dans la population: \\(N_c = 1\\)\nLes uniques dans l’échantillon: \\(n_c = 1\\)\nLes uniques dans l’échantillon qui sont également uniques dans la population: \\(n_c = 1\\) et \\(\\sum\\limits_{i \\in c}{w_i} = 1\\)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#mesurer-le-risque-individuel-dans-un-fichier-exhaustif",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#mesurer-le-risque-individuel-dans-un-fichier-exhaustif",
+    "title": "The disclosure risks",
+    "section": "Mesurer le risque individuel dans un fichier exhaustif",
+    "text": "Mesurer le risque individuel dans un fichier exhaustif\n\nLe \\(k\\)-anonymat et la \\(l\\)-diversité sont des mesures globales.\nOn peut passer au niveau individuel:\n\nen considérant comme à risque chaque individu d’un groupe de modalités de moins de \\(k\\) individus\nen associant à chaque individu de la base de données, une mesure individuelle du risque de ré-identification:\n\n\\[r_c = \\frac{1}{N_c}\\]"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#mesurer-le-risque-individuel-dans-un-échantillon",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#mesurer-le-risque-individuel-dans-un-échantillon",
+    "title": "The disclosure risks",
+    "section": "Mesurer le risque individuel dans un échantillon",
+    "text": "Mesurer le risque individuel dans un échantillon\n\n\n\n\n\n\nProbabilité de ré-identifier un individu dans un échantillon\n\n\n\nAu niveau de l’échantillon: \\[r_c = \\frac{1}{n_c}\\]\n\nSi la présence d’un individu dans l’échantillon est connue de l’attaquant, c’est une mesure adéquate.\nSinon, cette mesure sur-estime le risque de ré-identification.\n\nAu niveau de la population, le risque de ré-identification peut être estimé par:\n\n\\[\\hat r_c = \\frac{1}{\\sum\\limits_{i \\in c}{w_i}}\\]\noù \\(\\sum\\limits_{i \\in c}{w_i}\\) est une estimation de \\(\\hat N_c\\)."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#une-mesure-globale-du-risque",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#une-mesure-globale-du-risque",
+    "title": "The disclosure risks",
+    "section": "Une mesure globale du risque",
+    "text": "Une mesure globale du risque\nPour réaliser l’arbitrage, une mesure de risque globale est plus pratique. On pourra considérer:\n\nLe nombre d’uniques (dans l’échantillon ou la population, selon les cas);\nLe risque individuel moyen défini, dans le cadre d’un échantillon, par: \\[\\tau = \\frac{\\sum\\limits_{c}{n_c \\times r_c}}{n}\\]"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#mesures-probabilistes-du-risque-1",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#mesures-probabilistes-du-risque-1",
+    "title": "The disclosure risks",
+    "section": "Mesures probabilistes du risque",
+    "text": "Mesures probabilistes du risque\nDes mesures plus raffinées sont implémentées dans des outils classiques tels que \\(\\mu\\)-Argus ou le package R sdcMicro.\n\nQuand on dispose d’un échantillon (donc des \\(n_k\\)), on ne connaît en général pas les \\(N_k\\).\nMesure du risque individuel conditionnellement à l’échantillon: \\(r_k = \\mathbb{E}(\\frac{1}{N_k}|n_k)\\).\nMesure dépendant d’une modélisation de la loi (a posteriori) de \\(N_k | n_k\\)\n\nModélisation des fréquences des clés dans la population conditionnellement à leur fréquence dans l’échantillon.\nPar une binomiale négative par exemple dans Benedetti and Franconi (1998)."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#le-record-linkage",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#le-record-linkage",
+    "title": "The disclosure risks",
+    "section": "Le Record Linkage",
+    "text": "Le Record Linkage\n\nMesure a posteriori de la distance entre les individus du jeu protégé et ceux du jeu original.\nPermet d’évaluer le nombre de correspondances exactes entre données perturbées et originales."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#les-outliers",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#les-outliers",
+    "title": "The disclosure risks",
+    "section": "Les Outliers",
+    "text": "Les Outliers\n\nFort risque de ré-identification des individus ayant des valeurs en queue de distribution (par ex. les très hauts revenus des footballeurs)\nUne perturbation n’est pas toujours suffisante (Un outlier perturbé reste souvent un outlier).\nDétection des outliers à partir des quantiles de la distribution."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#définir-un-scénario-dattaque",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#définir-un-scénario-dattaque",
+    "title": "The disclosure risks",
+    "section": "Définir un scénario d’attaque",
+    "text": "Définir un scénario d’attaque\n\n\n\n\n\n\nScénario d’attaque\n\n\nDéfinir des scénarios d’attaque c’est envisager les moyens utilisés par l’attaquant et objectiver les utilisations frauduleuses que nous chercherons à empêcher.\n\n\n\n\nArbitrage Coûts/Risques (INS)\nArbitrage Coûts/Bénéfices (Attaquant)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#les-attaques-sur-données-k-anonymes-etou-l-diverses",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#les-attaques-sur-données-k-anonymes-etou-l-diverses",
+    "title": "The disclosure risks",
+    "section": "Les attaques sur données k-anonymes et/ou l-diverses",
+    "text": "Les attaques sur données k-anonymes et/ou l-diverses\nCohen (2022)"
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#en-guise-de-conclusion",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#en-guise-de-conclusion",
+    "title": "The disclosure risks",
+    "section": "En guise de conclusion",
+    "text": "En guise de conclusion\n\nIl existe de nombreuses façons d’évaluer la perte d’information.\nFortement liée au niveau de protection.\nDe nombreuses méthodes pour évaluer la perte d’information, le choix de la mesure dépend entièrement des utilisateurs finaux des données publiées.\nDifficile d’anticiper toutes les utilisations d’un ensemble de données et donc toutes les mesures associées de perte d’information.\nNécessité de faire des concessions sur certaines caractéristiques d’un tableau pour libérer des contraintes ailleurs.\nOn ne peut pas préserver toutes les caractéristiques d’un ensemble de données."
+  },
+  {
+    "objectID": "theorie/supports/arbitrer-risque-utilite.html#biblio",
+    "href": "theorie/supports/arbitrer-risque-utilite.html#biblio",
+    "title": "The disclosure risks",
+    "section": "Biblio",
+    "text": "Biblio\n\n\nBenedetti, Roberto, and Luisa Franconi. 1998. “Statistical and Technological Solutions for Controlled Data Dissemination.” Pre-Proceedings of New Techniques and Technologies for Statistics 1: 225_232.\n\n\nCohen, Aloni. 2022. “Attacks on Deidentification’s Defenses.” arXiv. http://arxiv.org/abs/2202.13470.\n\n\nCox, Lawrence H., Alan F. Karr, and Satkartar K. Kinney. 2011. “Risk-Utility Paradigms for Statistical Disclosure Limitation: How to Think, But Not How to Act: Risk-Utility Paradigms for SDL.” International Statistical Review 79 (2): 160–83. https://doi.org/10.1111/j.1751-5823.2011.00140.x.\n\n\nDalenius, Tore. 1977. “Privacy Transformations for Statistical Information Systems.” Journal of Statistical Planning and Inference 1 (1): 73–86. https://doi.org/10.1016/0378-3758(77)90007-6.\n\n\nHundepool, Anco, Josep Domingo-Ferre, Luisa Franconi, Sarah Giessing, Rainer Lenz, Jane Longhurst, Eric Schulte Nordholt, et al. 2024. Handbook on Statistical Disclosure Control. 2nd Edition. ESSNet SDC. https://sdctools.github.io/HandbookSDC/.\n\n\nMachanavajjhala, Ashwin, Daniel Kifer, Johannes Gehrke, and Muthuramakrishnan Venkitasubramaniam. 2007. “L-Diversity: Privacy Beyond k -Anonymity.” ACM Transactions on Knowledge Discovery from Data 1 (1): 3. https://doi.org/10.1145/1217299.1217302.\n\n\nRedor, Patrick. 2023. “Confidentialité Des Données Statistiques : Un Enjeu Majeur Pour Le Service Statistique Public.” Courrier Des Statistiques, no. 9: 46–64. https://www.insee.fr/fr/information/7635823?sommaire=7635842.\n\n\nSweeney, Latanya. 2000. “Simple Demographics Often Identify People Uniquely.” Carnegie Mellon University, Data Privacy Working Paper 3.\n\n\n———. 2002. “K-ANONYMITY: A MODEL FOR PROTECTING PRIVACY.” International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems 10 (05): 557–70. https://doi.org/10.1142/S0218488502001648."
+  }
+]

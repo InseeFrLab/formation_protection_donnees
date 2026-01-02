@@ -1,1 +1,0 @@
-Sitemap: https://InseeFrLab.github.io/formation_protection_donnees/sitemap.xml

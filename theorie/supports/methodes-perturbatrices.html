@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr-FR"><head>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<link rel="alternate" hreflang="fr" href="/theorie/supports/methodes-perturbatrices.html" />
+<link rel="alternate" hreflang="en" href="/en/theorie/supports/methodes-perturbatrices.en.html" />
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -2197,7 +2199,7 @@ Thompson, Gwenda, Stephen Broadfoot, et Daniel Elazar. 2013. <span>«&nbsp;Metho
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/InseeFrLab\.github\.io\/formation_protection_donnees\/");
+            var filterRegex = new RegExp('/' + window.location.host + '/');
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

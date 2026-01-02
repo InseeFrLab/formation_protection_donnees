@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en-EN"><head>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-html/tabby.min.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<html lang="en-EN">
+<head>
+<link rel="alternate" hreflang="fr" href="/theorie/supports/arbitrer-risque-utilite.html" />
+<link rel="alternate" hreflang="en" href="/en/theorie/supports/arbitrer-risque-utilite.en.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script><script src="../../site_libs/quarto-html/tabby.min.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
-
-  <meta name="author" content="Insee, Département des Méthodes Statistiques">
-  <title>La protection des données statistiques publiques – The disclosure risks</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
-  <style>
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+<meta name="author" content="Insee, Département des Méthodes Statistiques">
+<title>Statistical Disclosure Control for Public Statistics – The disclosure risks</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -49,14 +49,14 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ea8535d309a38c52e88d69daf30b07d0.css">
-  <link rel="stylesheet" href="_extensions/InseeFrLab/onyxia/logo.css">
-  <link rel="stylesheet" href="custom.css">
-  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ea8535d309a38c52e88d69daf30b07d0.css">
+<link rel="stylesheet" href="_extensions/InseeFrLab/onyxia/logo.css">
+<link rel="stylesheet" href="custom.css">
+<link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -143,18 +143,18 @@
       margin-right: 0; 
     }
   </style>
-  <script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
-  <link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script><link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">The disclosure risks</h1>
-  <p class="subtitle"></p><p><strong><span class="orange">Define, assess, decide</span></strong></p><p></p>
+<section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center"><h1 class="title">The disclosure risks</h1>
+  <p class="subtitle"></p>
+<p><strong><span class="orange">Define, assess, decide</span></strong></p>
+<p></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -164,40 +164,28 @@ Insee, Département des Méthodes Statistiques
 </div>
 </div>
 
-</section><section id="TOC">
-<nav role="doc-toc"> 
-<h2 id="toc-title">Sommaire</h2>
+</section><section id="TOC"><nav role="doc-toc"><h2 id="toc-title">Sommaire</h2>
 <ul>
 <li><a href="#/introduction" id="/toc-introduction">Introduction</a></li>
-<li><a href="#/un-arbitrage-nécessaire" id="/toc-un-arbitrage-nécessaire"><span class="header-section-number">1</span> Un arbitrage nécessaire</a></li>
+<li><a href="#/un-arbitrage-n%C3%A9cessaire" id="/toc-un-arbitrage-nécessaire"><span class="header-section-number">1</span> Un arbitrage nécessaire</a></li>
 <li><a href="#/besoin-dune-gouvernance" id="/toc-besoin-dune-gouvernance"><span class="header-section-number">2</span> Besoin d’une gouvernance</a></li>
-<li><a href="#/une-démarche-en-plusieurs-étapes" id="/toc-une-démarche-en-plusieurs-étapes"><span class="header-section-number">3</span> Une démarche en plusieurs étapes</a></li>
-<li><a href="#/définir-le-risque" id="/toc-définir-le-risque"><span class="header-section-number">4</span> Définir le risque</a></li>
+<li><a href="#/une-d%C3%A9marche-en-plusieurs-%C3%A9tapes" id="/toc-une-démarche-en-plusieurs-étapes"><span class="header-section-number">3</span> Une démarche en plusieurs étapes</a></li>
+<li><a href="#/d%C3%A9finir-le-risque" id="/toc-définir-le-risque"><span class="header-section-number">4</span> Définir le risque</a></li>
 <li><a href="#/mesurer-le-risque" id="/toc-mesurer-le-risque"><span class="header-section-number">5</span> Mesurer le risque</a></li>
 <li><a href="#/mesures-probabilistes-du-risque" id="/toc-mesures-probabilistes-du-risque"><span class="header-section-number">6</span> Mesures probabilistes du risque</a></li>
 <li><a href="#/autres-mesures" id="/toc-autres-mesures"><span class="header-section-number">7</span> Autres mesures</a></li>
-<li><a href="#/les-scénarios-dattaque" id="/toc-les-scénarios-dattaque"><span class="header-section-number">8</span> Les scénarios d’attaque</a></li>
+<li><a href="#/les-sc%C3%A9narios-dattaque" id="/toc-les-scénarios-dattaque"><span class="header-section-number">8</span> Les scénarios d’attaque</a></li>
 <li><a href="#/conclusion" id="/toc-conclusion"><span class="header-section-number">9</span> Conclusion</a></li>
 <li><a href="#/pour-aller-plus-loin" id="/toc-pour-aller-plus-loin"><span class="header-section-number">10</span> Pour aller plus loin</a></li>
-</ul>
-</nav>
-</section>
-<section>
-<section id="introduction" class="title-slide slide level1 unnumbered center" data-background-image="background.svg" data-background-size="contain">
-<h1>Introduction</h1>
+</ul></nav></section><section><section id="introduction" class="title-slide slide level1 unnumbered center" data-background-image="background.svg" data-background-size="contain"><h1>Introduction</h1>
 
-</section>
-<section id="context" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Context</h2>
+</section><section id="context" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Context</h2>
 <p>On se placera dans le contexte suivant:</p>
 <ul>
 <li>Un institut statistique collecte des données individuelles.</li>
 <li>On suppose qu’il respecte les réglements en vigueur en termes de protection des données individuelles (par exemple le RGPD en Europe).</li>
 <li>L’institut cherche à diffuser des statistiques agrégées ou des fichiers de données individuelles à visée statistique.</li>
-</ul>
-</section>
-<section id="problématique" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Problématique</h2>
+</ul></section><section id="problématique" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Problématique</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -211,13 +199,9 @@ Insee, Département des Méthodes Statistiques
 </div>
 </div>
 </div>
-</section>
-<section id="protéger-un-enjeu-pour-la-statistique-publique" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Protéger: un enjeu pour la statistique publique</h2>
+</section><section id="protéger-un-enjeu-pour-la-statistique-publique" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Protéger: un enjeu pour la statistique publique</h2>
 <p><em>Les missions [de la statistique publique] ne dépendent pas seulement de sa capacité à maîtriser les outils ou les méthodes nécessaires à la production d’une information de qualité, mais aussi de <span style="color:green;"><strong>sa capacité à protéger et à garantir la confidentialité des données qui lui sont confiées</strong></span>. Cette protection est la condition pour continuer à disposer de ces données.</em> <span class="citation" data-cites="redor_confidentialite_2023">(<a href="#/biblio" role="doc-biblioref" onclick="">Redor 2023</a>)</span></p>
-</section>
-<section id="a-la-recherche-dune-définition" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>A la recherche d’une définition</h2>
+</section><section id="a-la-recherche-dune-définition" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>A la recherche d’une définition</h2>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -249,32 +233,24 @@ Insee, Département des Méthodes Statistiques
 </div>
 </div>
 </div>
-</section>
-<section id="a-la-recherche-dune-définition-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>A la recherche d’une définition</h2>
+</section><section id="a-la-recherche-dune-définition-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>A la recherche d’une définition</h2>
 <p>Il faut tenir compte de deux réalités:</p>
 <ul>
 <li>l’utilisateur dispose d’une <strong>information auxiliaire</strong>.</li>
 <li>l’<strong>inférence statistique</strong> est l’un des moyens de connaissances offertes par la publication de statistiques.</li>
 </ul>
 <p><span class="math inline">\(\Rightarrow\)</span> <strong>une protection inconditionnelle et totale n’est pas possible.</strong></p>
-</section>
-<section id="besoin-de-maîtriser-les-risques" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Besoin de maîtriser les risques</h2>
+</section><section id="besoin-de-maîtriser-les-risques" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Besoin de maîtriser les risques</h2>
 <p>La protection de données se définit à travers:</p>
 <ul>
 <li>la maîtrise des risques de divulgation</li>
 <li>et le besoin de continuer à diffuser de l’information statistique.</li>
 </ul>
 <p><span class="math inline">\(\Rightarrow\)</span> <strong>Besoin d’arbitrer entre les deux composantes.</strong></p>
-</section></section>
-<section>
-<section id="un-arbitrage-nécessaire" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="1">
-<h1><span class="header-section-number">1</span> Un arbitrage nécessaire</h1>
+</section></section><section><section id="un-arbitrage-nécessaire" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="1"><h1>
+<span class="header-section-number">1</span> Un arbitrage nécessaire</h1>
 
-</section>
-<section id="arbitrer" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Arbitrer</h2>
+</section><section id="arbitrer" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Arbitrer</h2>
 <p>Protéger des données confidentielles, c’est <strong>arbitrer</strong> entre:</p>
 <ul>
 <li><p>leur <strong>utilité</strong> pour la connaissance et le débat public;</p></li>
@@ -282,39 +258,29 @@ Insee, Département des Méthodes Statistiques
 </ul>
 <div style="text-align:center;">
 <div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/trade_off_balance.png" style="width:40.0%" alt="Arbitrage Risque-Utilité"></p>
-<figcaption>Arbitrer</figcaption>
-</figure>
+<figure><p><img data-src="img/trade_off_balance.png" style="width:40.0%" alt="Arbitrage Risque-Utilité"></p>
+<figcaption>Arbitrer</figcaption></figure>
 </div>
 </div>
-</section>
-<section id="deux-écueils" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Deux écueils</h2>
+</section><section id="deux-écueils" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Deux écueils</h2>
 <ul>
 <li><p>Ne pas diffuser rendrait la statistique publique inutile.</p></li>
 <li><p>Tout diffuser rendrait la statistique publique dangereuse.</p></li>
 </ul>
 <div style="text-align:center;">
 <div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/trade_off_graph.png" style="width:80.0%" alt="Arbitrage Risque-Utilité"></p>
-<figcaption>Arbitrer</figcaption>
-</figure>
+<figure><p><img data-src="img/trade_off_graph.png" style="width:80.0%" alt="Arbitrage Risque-Utilité"></p>
+<figcaption>Arbitrer</figcaption></figure>
 </div>
 </div>
-</section>
-<section id="problèmes" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Problèmes</h2>
+</section><section id="problèmes" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Problèmes</h2>
 <ul>
 <li>Quels sont les risques de divulgation ?</li>
 <li>Comment mesurer ces risques ?</li>
 <li>Comment les traiter ?</li>
 </ul>
 <p><span class="math inline">\(\Rightarrow\)</span> Comment les traiter sans <em>trop</em> détériorer l’information statistique ?</p>
-</section>
-<section id="enjeu-principal-de-larbitrage" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Enjeu principal de l’arbitrage:</h2>
+</section><section id="enjeu-principal-de-larbitrage" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Enjeu principal de l’arbitrage:</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -341,82 +307,69 @@ Insee, Département des Méthodes Statistiques
 </div>
 </div>
 </div>
-</section>
-<section id="un-exemple-darbitrage" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple d’arbitrage</h2>
+</section><section id="un-exemple-darbitrage" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple d’arbitrage</h2>
 <p>Le recensement de la population (RP) en France:</p>
 <ul>
 <li><p>Décret de publication spécifique;</p></li>
-<li><p>Utilité des données du RP très forte:</p>
+<li>
+<p>Utilité des données du RP très forte:</p>
 <ul>
 <li>un certain nombre de lois en dépendent</li>
 <li>dotation financière des communes</li>
-</ul></li>
-<li><p>Risque d’utilisation des données diffusées contre les personnes est jugé faible:</p>
+</ul>
+</li>
+<li>
+<p>Risque d’utilisation des données diffusées contre les personnes est jugé faible:</p>
 <ul>
 <li>information peu préjudiciable</li>
 <li>à l’exception de variables sensibles</li>
-</ul></li>
 </ul>
-</section>
-<section id="un-exemple-de-divulgation-assumée" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple de divulgation assumée</h2>
+</li>
+</ul></section><section id="un-exemple-de-divulgation-assumée" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple de divulgation assumée</h2>
 <p>L’Insee diffuse des données communales même pour les très petites communes:</p>
 <p><a href="https://www.insee.fr/fr/statistiques/2011101?geo=COM-26274">Voir l’exemple de la commune de Rochefourchat</a>:</p>
 <ul>
 <li>Une commune de <span class="math inline">\(2\)</span> habitants</li>
 <li>On connaît leur sexe, leur situation conjugale, leur âge, une description grossière de leurs logements, le statut d’occupation de leur logement, leur niveau de diplôme, leur statut d’activité, etc.</li>
-</ul>
-</section>
-<section id="larbitrage-risqueutilité-un-paradigme" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>L’arbitrage Risque/Utilité: un paradigme</h2>
+</ul></section><section id="larbitrage-risqueutilité-un-paradigme" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>L’arbitrage Risque/Utilité: un paradigme</h2>
 <ul>
 <li><p>Il n’existe pas de risque zéro</p></li>
-<li><p>Aucune méthode ne supprime totalement le risque <span class="math inline">\(\Rightarrow\)</span></p>
+<li>
+<p>Aucune méthode ne supprime totalement le risque <span class="math inline">\(\Rightarrow\)</span></p>
 <ul>
 <li><p>Arbitrer est donc inhérent à la protection des données.</p></li>
 <li><p>Cet arbitrage considéré comme <strong>le paradigme</strong> de la discipline.</p></li>
-</ul></li>
 </ul>
-</section>
-<section id="un-paradigme-criticable" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un paradigme criticable</h2>
+</li>
+</ul></section><section id="un-paradigme-criticable" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un paradigme criticable</h2>
 <p><span class="citation" data-cites="cox_risk-utility_2011">(Voir <a href="#/biblio" role="doc-biblioref" onclick="">Cox, Karr, and Kinney 2011</a>)</span></p>
 <ul>
 <li><p>S’il aide à savoir <strong>comment penser</strong>…</p></li>
 <li><p>…il aide moins à savoir <strong>comment agir</strong>.</p></li>
-</ul>
-</section>
-<section id="en-pratique-un-autre-arbitrage-a-lieu" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>En pratique, un autre arbitrage a lieu</h2>
+</ul></section><section id="en-pratique-un-autre-arbitrage-a-lieu" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>En pratique, un autre arbitrage a lieu</h2>
 <p>Un arbitrage Coûts/Bénéfices est réalisé:</p>
 <ul>
 <li>Par le producteur de données:
 <ul>
 <li>Quels moyens déployer pour quel niveau de protection (temps, moyens financiers)?</li>
-</ul></li>
+</ul>
+</li>
 <li>Par l’attaquant:
 <ul>
 <li>L’information confidentielle espérée est-elle à la hauteur des moyens nécessaires à sa divulgation ?</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p><span class="math inline">\(\Longrightarrow\)</span> Mettre en place des méthodes qui ont un coût adapté au risque objectivé et à la sensibilité des données.</p>
-</section>
-<section id="objectiver-définir-et-mesurer" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Objectiver: définir et mesurer</h2>
+</section><section id="objectiver-définir-et-mesurer" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Objectiver: définir et mesurer</h2>
 <p>Pour arbitrer, il faut pouvoir</p>
 <ul>
 <li><p>Définir les termes de l’arbitrage</p></li>
 <li><p>Mesurer les phénomènes.</p></li>
-</ul>
-</section></section>
-<section>
-<section id="besoin-dune-gouvernance" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="2">
-<h1><span class="header-section-number">2</span> Besoin d’une gouvernance</h1>
+</ul></section></section><section><section id="besoin-dune-gouvernance" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="2"><h1>
+<span class="header-section-number">2</span> Besoin d’une gouvernance</h1>
 
-</section>
-<section id="gouvernance-des-données" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Gouvernance des données</h2>
+</section><section id="gouvernance-des-données" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Gouvernance des données</h2>
 <p>Avant de définir les risques:</p>
 <ul>
 <li>Quels sont les objectifs de diffusion ?</li>
@@ -435,113 +388,100 @@ Insee, Département des Méthodes Statistiques
 </div>
 </div>
 </div>
-</section>
-<section id="sécuriser-laccès" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Sécuriser l’accès</h2>
+</section><section id="sécuriser-laccès" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Sécuriser l’accès</h2>
 <ul>
-<li><p>On peut distinguer quatre grands types d’utilisateurs:</p>
+<li>
+<p>On peut distinguer quatre grands types d’utilisateurs:</p>
 <ul>
-<li><strong>grand public et acteurs publics</strong>: statistiques agrégées</li>
-<li><strong>chercheurs</strong>: statistiques détaillées voire données individuelles</li>
-<li><strong>chargés d’études de la statistique publique</strong>: données individuelles sans identifiants directs</li>
-<li><strong>chargés de collecte</strong>: données individuelles avec identifiants</li>
-</ul></li>
+<li>
+<strong>grand public et acteurs publics</strong>: statistiques agrégées</li>
+<li>
+<strong>chercheurs</strong>: statistiques détaillées voire données individuelles</li>
+<li>
+<strong>chargés d’études de la statistique publique</strong>: données individuelles sans identifiants directs</li>
+<li>
+<strong>chargés de collecte</strong>: données individuelles avec identifiants</li>
 </ul>
-</section>
-<section id="adapter-laccès-en-fonction-des-besoins-des-utilisateurs" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Adapter l’accès en fonction des besoins des utilisateurs</h2>
+</li>
+</ul></section><section id="adapter-laccès-en-fonction-des-besoins-des-utilisateurs" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adapter l’accès en fonction des besoins des utilisateurs</h2>
 <ul>
-<li><strong>Principe de minimisation</strong> : chaque utilisateur ne doit accéder qu’aux données strictement nécessaires à ses missions.</li>
+<li>
+<strong>Principe de minimisation</strong> : chaque utilisateur ne doit accéder qu’aux données strictement nécessaires à ses missions.</li>
+</ul></section><section id="adapter-laccès-en-fonction-des-besoins-des-utilisateurs-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adapter l’accès en fonction des besoins des utilisateurs</h2>
+<ul>
+<li>
+<strong>Différenciation des accès</strong> :
+<ul>
+<li>
+<strong>grand public et acteurs publics</strong>: accès gratuit et sans condition.</li>
+<li>
+<strong>chercheurs</strong>: accès sous conditions strictes (contrats, projets d’utilité publics, environnement sécurisé de travail, etc.).</li>
+<li>
+<strong>chargés d’études</strong>: accès à des données sur serveurs internes soumis à autorisation préalable.</li>
+<li>
+<strong>chargés de collecte</strong>: accès aux données de collecte pour la seule enquête sur laquelle ils travaillent.</li>
 </ul>
-</section>
-<section id="adapter-laccès-en-fonction-des-besoins-des-utilisateurs-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Adapter l’accès en fonction des besoins des utilisateurs</h2>
+</li>
+</ul></section><section id="adapter-laccès-en-fonction-des-besoins-des-utilisateurs-2" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adapter l’accès en fonction des besoins des utilisateurs</h2>
 <ul>
-<li><strong>Différenciation des accès</strong> :
-<ul>
-<li><strong>grand public et acteurs publics</strong>: accès gratuit et sans condition.</li>
-<li><strong>chercheurs</strong>: accès sous conditions strictes (contrats, projets d’utilité publics, environnement sécurisé de travail, etc.).</li>
-<li><strong>chargés d’études</strong>: accès à des données sur serveurs internes soumis à autorisation préalable.</li>
-<li><strong>chargés de collecte</strong>: accès aux données de collecte pour la seule enquête sur laquelle ils travaillent.</li>
-</ul></li>
-</ul>
-</section>
-<section id="adapter-laccès-en-fonction-des-besoins-des-utilisateurs-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Adapter l’accès en fonction des besoins des utilisateurs</h2>
-<ul>
-<li><strong>Assurer un suivi et un contrôle des accès</strong> : chaque accès doit pouvoir être contrôlé et révoqué si besoin.</li>
-</ul>
-</section>
-<section id="adapter-le-niveau-danonymisation-nécessaire" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Adapter le niveau d’anonymisation nécessaire</h2>
+<li>
+<strong>Assurer un suivi et un contrôle des accès</strong> : chaque accès doit pouvoir être contrôlé et révoqué si besoin.</li>
+</ul></section><section id="adapter-le-niveau-danonymisation-nécessaire" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adapter le niveau d’anonymisation nécessaire</h2>
 <p>Plus l’accès est lâche, plus l’anonymisation doit pouvoir être élevé:</p>
 <ul>
-<li><strong>grand public</strong>:
+<li>
+<strong>grand public</strong>:
 <ul>
 <li>libre accès <span class="math inline">\(\iff\)</span> protection statistique forte</li>
-</ul></li>
 </ul>
-</section>
-<section id="adapter-le-niveau-danonymisation-nécessaire-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Adapter le niveau d’anonymisation nécessaire</h2>
+</li>
+</ul></section><section id="adapter-le-niveau-danonymisation-nécessaire-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adapter le niveau d’anonymisation nécessaire</h2>
 <p>Plus l’accès est lâche, plus l’anonymisation doit pouvoir être élevé:</p>
 <ul>
-<li><strong>chercheurs et chargés d’études</strong>:
+<li>
+<strong>chercheurs et chargés d’études</strong>:
 <ul>
 <li>accès sécurisé <span class="math inline">\(\iff\)</span> protection statistique faible sur les inputs</li>
 <li>Mais besoin de traiter/vérifier les outputs publics (<strong>output checking</strong>)</li>
-</ul></li>
 </ul>
-</section>
-<section id="adapter-le-niveau-danonymisation-nécessaire-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Adapter le niveau d’anonymisation nécessaire</h2>
+</li>
+</ul></section><section id="adapter-le-niveau-danonymisation-nécessaire-2" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adapter le niveau d’anonymisation nécessaire</h2>
 <p>Plus l’accès est lâche, plus l’anonymisation doit pouvoir être élevé:</p>
 <ul>
-<li><strong>chargés de collecte</strong>:
+<li>
+<strong>chargés de collecte</strong>:
 <ul>
 <li>accès très sécurisé <span class="math inline">\(\iff\)</span> aucune protection statistique des données</li>
 <li>Mais nécessité de respecter les réglements sur la protection des données individuelles (RGPD en Europe).</li>
-</ul></li>
 </ul>
-</section>
-<section id="un-exemple" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
+</li>
+</ul></section><section id="un-exemple" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
 <div style="text-align:center;">
-<div id="fig-types-fichiers" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Adapter les fichiers aux publics">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-types-fichiers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-types-fichiers" class="quarto-float quarto-figure quarto-figure-center" alt="Adapter les fichiers aux publics" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-types-fichiers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/types_fichiers_confidentialite.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Adapter les fichiers aux publics">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-types-fichiers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Adapter les fichiers au type de public (Source: Insee)
-</figcaption>
-</figure>
+Figure 1: Adapter les fichiers au type de public (Source: Insee)
+</figcaption></figure>
 </div>
 </div>
-</section>
-<section id="gouvernance-déontologie-confiance" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Gouvernance, Déontologie, Confiance</h2>
+</section><section id="gouvernance-déontologie-confiance" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Gouvernance, Déontologie, Confiance</h2>
 <ul>
 <li>La maîtrise de la sécurité des accès et la meilleure gouvernance possible des données ne sont pas des boucliers infaillibles.</li>
-<li><strong>Déontologie</strong> forte des statisticiens publics.</li>
-<li><strong>Confiance</strong> dans les différents acteurs (chercheurs) à qui on donne accès aux données.</li>
-</ul>
-</section>
-<section id="responsabiliser" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Responsabiliser</h2>
+<li>
+<strong>Déontologie</strong> forte des statisticiens publics.</li>
+<li>
+<strong>Confiance</strong> dans les différents acteurs (chercheurs) à qui on donne accès aux données.</li>
+</ul></section><section id="responsabiliser" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Responsabiliser</h2>
 <p>Une responsabilisation nécessaire:</p>
 <ul>
 <li>Statisticiens publics (en France loi de 1951 sur le secret statistique)</li>
 <li>Chercheurs (Risque de révocation des contrats et conséquences sur l’ensemble du laboratoire)</li>
-</ul>
-</section></section>
-<section>
-<section id="une-démarche-en-plusieurs-étapes" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="3">
-<h1><span class="header-section-number">3</span> Une démarche en plusieurs étapes</h1>
+</ul></section></section><section><section id="une-démarche-en-plusieurs-étapes" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="3"><h1>
+<span class="header-section-number">3</span> Une démarche en plusieurs étapes</h1>
 
-</section>
-<section id="étapes-clés-du-processus-de-protection-des-données" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Étapes clés du processus de protection des données</h2>
+</section><section id="étapes-clés-du-processus-de-protection-des-données" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étapes clés du processus de protection des données</h2>
 <div style="font-size: 80%;">
 <ol type="1">
 <li><p>Est-il nécessaire de protéger les données ?</p></li>
@@ -553,18 +493,14 @@ Figure&nbsp;1: Adapter les fichiers au type de public (Source: Insee)
 </ol>
 </div>
 <p>Source: <span class="citation" data-cites="hundepool_handbook_2024">(<a href="#/biblio" role="doc-biblioref" onclick="">Hundepool et al. 2024</a>)</span></p>
-</section>
-<section id="étape-1-est-il-nécessaire-de-protéger-les-données" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Étape 1: Est-il nécessaire de protéger les données ?</h2>
+</section><section id="étape-1-est-il-nécessaire-de-protéger-les-données" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étape 1: Est-il nécessaire de protéger les données ?</h2>
 <div style="font-size: 80%;">
 <ul>
 <li><p>Analyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d’effectuer de traitement pour la protection des données</p></li>
 <li><p>Quel type de diffusion ? (tableaux de données, cartes, microdonnées ...)</p></li>
 </ul>
 </div>
-</section>
-<section id="étape-2-caractéristiques-et-utilisations-principales-des-données-i" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Étape 2: Caractéristiques et utilisations principales des données (I)</h2>
+</section><section id="étape-2-caractéristiques-et-utilisations-principales-des-données-i" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étape 2: Caractéristiques et utilisations principales des données (I)</h2>
 <div style="font-size: 80%;">
 <ul>
 <li><p>Analyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection</p></li>
@@ -572,32 +508,28 @@ Figure&nbsp;1: Adapter les fichiers au type de public (Source: Insee)
 <li><p>Définition des objectifs de l’institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié</p></li>
 </ul>
 </div>
-</section>
-<section id="étape-2-caractéristiques-et-utilisations-principales-des-données-ii" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Étape 2: Caractéristiques et utilisations principales des données (II)</h2>
+</section><section id="étape-2-caractéristiques-et-utilisations-principales-des-données-ii" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étape 2: Caractéristiques et utilisations principales des données (II)</h2>
 <div style="font-size: 80%;">
 <ul>
 <li><p>Analyse des besoins des utilisateurs (variables prioritaires, types d’analyses qui seront réalisées)</p></li>
 <li><p>Analyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)</p></li>
 </ul>
 </div>
-</section>
-<section id="étape-3-définition-et-mesure-des-risques-de-divulgation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Étape 3: Définition et mesure des risques de divulgation</h2>
+</section><section id="étape-3-définition-et-mesure-des-risques-de-divulgation" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étape 3: Définition et mesure des risques de divulgation</h2>
 <div style="font-size: 80%;">
 <ul>
-<li><p>Recenser les différents scénarios possibles conduisant à la divulgation des données</p>
+<li>
+<p>Recenser les différents scénarios possibles conduisant à la divulgation des données</p>
 <ul>
 <li>En fonction du type de données considérées (données exhaustives, enquêtes)</li>
 <li>En fonction du public visé (chercheurs, décideurs, grand public)</li>
-</ul></li>
+</ul>
+</li>
 <li><p>Choisir la ou les mesures du risque de divulgation</p></li>
 <li><p>Seuil de tolérance au risque à fixer</p></li>
 </ul>
 </div>
-</section>
-<section id="étape-4-choix-des-méthodes" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Étape 4: Choix des méthodes</h2>
+</section><section id="étape-4-choix-des-méthodes" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étape 4: Choix des méthodes</h2>
 <div style="font-size: 80%;">
 <ul>
 <li><p>Choisir une / plusieurs méthode(s) de protection</p></li>
@@ -605,20 +537,16 @@ Figure&nbsp;1: Adapter les fichiers au type de public (Source: Insee)
 </ul>
 </div>
 <div style="text-align:center;">
-<div id="fig-trade-off-sm" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Arbitrage risque-utilité">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-trade-off-sm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-trade-off-sm" class="quarto-float quarto-figure quarto-figure-center" alt="Arbitrage risque-utilité" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-trade-off-sm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/trade_off_graph_smiley.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Arbitrage risque-utilité">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trade-off-sm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Arbitrage risque-utilité
-</figcaption>
-</figure>
+Figure 2: Arbitrage risque-utilité
+</figcaption></figure>
 </div>
 </div>
-</section>
-<section id="étape-5-mise-en-oeuvre-des-méthodes" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Étape 5: Mise en oeuvre des méthodes</h2>
+</section><section id="étape-5-mise-en-oeuvre-des-méthodes" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étape 5: Mise en oeuvre des méthodes</h2>
 <div style="font-size: 80%;">
 <ol type="1">
 <li><p>Choisir un logiciel</p></li>
@@ -627,30 +555,28 @@ Figure&nbsp;2: Arbitrage risque-utilité
 <li><p>Quantification de la perte d’information</p></li>
 </ol>
 </div>
-</section>
-<section id="étape-6-contrôles-et-documentation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Étape 6: Contrôles et documentation</h2>
+</section><section id="étape-6-contrôles-et-documentation" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étape 6: Contrôles et documentation</h2>
 <div style="font-size: 80%;">
 <ul>
-<li><p>Contrôle du processus de protection</p>
+<li>
+<p>Contrôle du processus de protection</p>
 <ul>
 <li>vérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable</li>
-</ul></li>
-<li><p>Réalisation d’un document synthétisant les méthodes utilisées et faisant le bilan de la perte d’information</p>
+</ul>
+</li>
+<li>
+<p>Réalisation d’un document synthétisant les méthodes utilisées et faisant le bilan de la perte d’information</p>
 <ul>
 <li>si possible le transmettre aux utilisateurs des données publiées</li>
 <li>peut contenir des avertissements sur les précautions à prendre lors de l’utilisation d’un fichier anonymisé</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </div>
-</section></section>
-<section>
-<section id="définir-le-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="4">
-<h1><span class="header-section-number">4</span> Définir le risque</h1>
+</section></section><section><section id="définir-le-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="4"><h1>
+<span class="header-section-number">4</span> Définir le risque</h1>
 
-</section>
-<section id="le-risque-de-divulgation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Le risque de divulgation</h2>
+</section><section id="le-risque-de-divulgation" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Le risque de divulgation</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -664,22 +590,19 @@ Figure&nbsp;2: Arbitrage risque-utilité
 </div>
 </div>
 </div>
-</section>
-<section id="quatre-types-de-risque-de-divulgation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Quatre types de risque de divulgation</h2>
+</section><section id="quatre-types-de-risque-de-divulgation" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Quatre types de risque de divulgation</h2>
 <ul>
 <li><p>Risque de divulgation d’identité</p></li>
 <li><p>Risque de divulgation d’attribut</p></li>
 <li><p>Risque de divulgation par inférence</p></li>
-<li><p>Risque de divulgation par différenciation</p>
+<li>
+<p>Risque de divulgation par différenciation</p>
 <ul>
 <li><p>par "emboîtement"</p></li>
 <li><p>par "recoupement"</p></li>
-</ul></li>
 </ul>
-</section>
-<section id="risque-de-divulgation-didentité" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Risque de divulgation d’identité</h2>
+</li>
+</ul></section><section id="risque-de-divulgation-didentité" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Risque de divulgation d’identité</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -698,18 +621,12 @@ Figure&nbsp;2: Arbitrage risque-utilité
 <li><p>Certaines variables comme le nom, l’adresse qui identifient <em>directement</em> des individus ou des foyers.</p></li>
 <li><p>Toutes les personnes ayant des caractéristiques très rares (ex : personnes très âgées).</p></li>
 <li><p>87% de la population américaine est unique uniquement à partir du ZIP code, du genre et de la date de naissance <span class="citation" data-cites="sweeney_simple_2000">(<a href="#/biblio" role="doc-biblioref" onclick="">Sweeney 2000</a>)</span>.</p></li>
-</ul>
-</section>
-<section id="remarques" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Remarques</h2>
+</ul></section><section id="remarques" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Remarques</h2>
 <ul>
 <li><p>Les identifiants directs (nom, prénom, adresse) sont utiles pour la collecte mais supprimés des bases à vocation statistique.</p></li>
 <li><p>D’autres variables ont un fort pouvoir ré-identifiant (le lieu de résidence, l’âge, le genre, la profession, le niveau d’éducation, etc.).</p></li>
 <li><p>Ré-identifier ne permet as toujours d’obtenir plus d’informations sur les personnes.</p></li>
-</ul>
-</section>
-<section id="risque-de-divulgation-dattribut" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Risque de divulgation d’attribut</h2>
+</ul></section><section id="risque-de-divulgation-dattribut" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Risque de divulgation d’attribut</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -727,10 +644,7 @@ Figure&nbsp;2: Arbitrage risque-utilité
 <ul>
 <li>Une ré-identification conduit souvent à une divulgation d’attribut.</li>
 <li>Il est possible de divulguer un attribut sur des groupes entiers.</li>
-</ul>
-</section>
-<section id="divulgation-dun-attribut-de-groupe" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Divulgation d’un attribut de groupe</h2>
+</ul></section><section id="divulgation-dun-attribut-de-groupe" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Divulgation d’un attribut de groupe</h2>
 <ul>
 <li>Divulgation d’une information sensible pour un groupe entier de personnes.</li>
 <li>Sans nécessairement avoir besoin de ré-identifier préalablement.</li>
@@ -770,20 +684,16 @@ Figure&nbsp;2: Arbitrage risque-utilité
 </tbody>
 </table>
  
--->
-<div class="cell" data-tbl-cap-location="bottom">
+--><div class="cell" data-tbl-cap-location="bottom">
 <div id="tbl-div-attr" class="cell quarto-float quarto-figure quarto-figure-center" data-tbl-cap-location="bottom">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-div-attr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-div-attr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="table table-hover table-striped do-not-create-environment cell" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">Femmes</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">Hommes</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Diabétiques</td>
@@ -800,9 +710,8 @@ Figure&nbsp;2: Arbitrage risque-utilité
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-div-attr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Un exemple de divulgation d’attributs de groupe
-</figcaption>
-</figure>
+Table 1: Un exemple de divulgation d’attributs de groupe
+</figcaption></figure>
 </div>
 </div>
 <!-- 
@@ -813,9 +722,7 @@ Table&nbsp;1: Un exemple de divulgation d’attributs de groupe
 | Non Diabétiques |     12 |  **0** | 
 
 : Un exemple de divulgation d'attributs de groupe -->
-</section>
-<section id="risque-de-divulgation-par-inférence" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Risque de divulgation par inférence</h2>
+</section><section id="risque-de-divulgation-par-inférence" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Risque de divulgation par inférence</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -835,17 +742,14 @@ Table&nbsp;1: Un exemple de divulgation d’attributs de groupe
 </ul>
 <div class="cell" data-tbl-cap-location="bottom">
 <div id="tbl-div-infer" class="cell quarto-float quarto-figure quarto-figure-center" data-tbl-cap-location="bottom">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-div-infer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-div-infer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="table table-hover table-striped do-not-create-environment cell" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">Femmes</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">Hommes</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Diabétiques</td>
@@ -862,14 +766,11 @@ Table&nbsp;1: Un exemple de divulgation d’attributs de groupe
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-div-infer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: Un exemple de divulgation d’attributs par inférence
-</figcaption>
-</figure>
+Table 2: Un exemple de divulgation d’attributs par inférence
+</figcaption></figure>
 </div>
 </div>
-</section>
-<section id="risque-de-divulgation-par-différenciation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Risque de divulgation par différenciation</h2>
+</section><section id="risque-de-divulgation-par-différenciation" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Risque de divulgation par différenciation</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -891,40 +792,30 @@ Table&nbsp;2: Un exemple de divulgation d’attributs par inférence
 <li>Différenciation par recoupement: consiste à utiliser des agrégats diffusés sur des zonages imparfaitement emboîtés</li>
 </ul>
 </div>
-</section>
-<section id="différenciation-par-recoupement" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Différenciation par recoupement</h2>
+</section><section id="différenciation-par-recoupement" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Différenciation par recoupement</h2>
 <div style="text-align:center;">
-<div id="fig-diff-rec1" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Exemple de différenciation par recoupement">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-diff-rec1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-diff-rec1" class="quarto-float quarto-figure quarto-figure-center" alt="Exemple de différenciation par recoupement" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-diff-rec1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/diff_geo_recoupment1.png" class="quarto-figure quarto-figure-center" style="height:80.0%" alt="Exemple de différenciation par recoupement">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diff-rec1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Exemple de différenciation par recoupement en France entre un département et une communauté de communes (EPCI)
-</figcaption>
-</figure>
+Figure 3: Exemple de différenciation par recoupement en France entre un département et une communauté de communes (EPCI)
+</figcaption></figure>
 </div>
 </div>
-</section>
-<section id="différenciation-par-recoupement-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Différenciation par recoupement</h2>
+</section><section id="différenciation-par-recoupement-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Différenciation par recoupement</h2>
 <div style="text-align:center;">
-<div id="fig-diff-rec2" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Exemple de différenciation par recoupement">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-diff-rec2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-diff-rec2" class="quarto-float quarto-figure quarto-figure-center" alt="Exemple de différenciation par recoupement" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-diff-rec2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/diff_geo_recoupement2.png" class="quarto-figure quarto-figure-center" style="height:80.0%" alt="Exemple de différenciation par recoupement">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diff-rec2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Zoom sur le problème de différenciation
-</figcaption>
-</figure>
+Figure 4: Zoom sur le problème de différenciation
+</figcaption></figure>
 </div>
 </div>
-</section></section>
-<section>
-<section id="mesurer-le-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="5">
-<h1><span class="header-section-number">5</span> Mesurer le risque</h1>
+</section></section><section><section id="mesurer-le-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="5"><h1>
+<span class="header-section-number">5</span> Mesurer le risque</h1>
 <!-- 
 ## Vision bayésienne / retour à Dalenius
 
@@ -936,39 +827,27 @@ Limite de l'approche:
 - Un attaquant avec peu d'informations au préalable pourrait avoir une forte augmentation 
   d'info qu'un attaquant disposant de beaucoup d'infos.
 - Une bonne capacité d'inférence ne signifie pas nécessairement une divulgation d'information confidentielle. -->
-</section>
-<section id="distinguer-les-variables" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Distinguer les variables</h2>
+</section><section id="distinguer-les-variables" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Distinguer les variables</h2>
 <p>Dans un jeu de données individuelles, on distinguera:</p>
 <ul>
 <li><p><strong>Identifiants</strong>: Variables permettant d’identifier directement un individu.</p></li>
 <li><p><strong>Quasi-identifiants</strong>: Variables pouvant conduire à réidentifier un individu à partir d’une information auxiliaire.</p></li>
 <li><p><strong>Variables sensibles</strong>: Variables pour lesquelles des mesures de protection spécifiques peuvent s’avérer nécessaires.</p></li>
 <li><p>Autres variables</p></li>
-</ul>
-</section>
-<section id="les-identifiants" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les identifiants</h2>
+</ul></section><section id="les-identifiants" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les identifiants</h2>
 <ul>
 <li><p>Les identifiants sont retirés très tôt au cours du processus de production pour respecter les réglements sur la protection des données.</p></li>
 <li><p>On supposera par la suite que tous les identifiants directs ont été retirées.</p></li>
-</ul>
-</section>
-<section id="les-quasi-identifiants" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les quasi-identifiants</h2>
+</ul></section><section id="les-quasi-identifiants" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les quasi-identifiants</h2>
 <ul>
 <li><p>Pour des données individus/ménages: sexe, âge, lieu d’habitation, diplôme, statut marital, etc.</p></li>
 <li><p>Pour des données entreprises: Secteur d’activité, lieu du siège, etc.</p></li>
 <li><p>Liste à déterminer à chaque fois</p></li>
 <li><p>De quelles variables un attaquant dispose-t-il déjà ?</p></li>
-</ul>
-</section>
-<section id="un-exemple-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
+</ul></section><section id="un-exemple-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
 <div class="cell" data-tbl-cap-location="bottom">
 <div id="tbl-type-var" class="cell quarto-float quarto-figure quarto-figure-center" data-tbl-cap-location="bottom">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-type-var-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-type-var-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="table table-hover table-striped table-bordered do-not-create-environment cell" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <colgroup>
@@ -1038,9 +917,8 @@ Sensible
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-type-var-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3: Différentes types de variables
-</figcaption>
-</figure>
+Table 3: Différentes types de variables
+</figcaption></figure>
 </div>
 </div>
 <!-- 
@@ -1060,9 +938,7 @@ Table&nbsp;3: Différentes types de variables
 
   : Les différents types de variables dans un jeu de données {.striped .bordered}
 ::: -->
-</section>
-<section id="quantifier-le-risque-1-le-k-anonymat" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Quantifier le risque (1): le <span class="math inline">\(k\)</span>-anonymat</h2>
+</section><section id="quantifier-le-risque-1-le-k-anonymat" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Quantifier le risque (1): le <span class="math inline">\(k\)</span>-anonymat</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1084,9 +960,7 @@ Table&nbsp;3: Différentes types de variables
 <li><p>Choix de <span class="math inline">\(k\)</span> en prenant en compte les règles existantes et/ou par arbitrage risque-utilité.</p></li>
 </ul>
 </div>
-</section>
-<section id="le-scénario-dattaque-envisagé" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Le scénario d’attaque envisagé</h2>
+</section><section id="le-scénario-dattaque-envisagé" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Le scénario d’attaque envisagé</h2>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1103,16 +977,16 @@ Table&nbsp;3: Différentes types de variables
 <li>Les <strong>quasi-identifiants (QI)</strong> servent de clés d’appariement.</li>
 <li>Plus un individu a des caractéristiques rares sur les QI, meilleure sera la ré-identification.
 <ul>
-<li><strong>Les uniques</strong> sur les QI: la ré-identification sera certaine</li>
+<li>
+<strong>Les uniques</strong> sur les QI: la ré-identification sera certaine</li>
 <li>Plus un individu est commun, moins la probabilité de ré-identification sera élevée.</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 </div>
-</section>
-<section id="limportance-du-scénario" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>L’importance du scénario</h2>
+</section><section id="limportance-du-scénario" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>L’importance du scénario</h2>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1132,21 +1006,16 @@ Table&nbsp;3: Différentes types de variables
 </div>
 </div>
 </div>
-</section>
-<section id="un-exemple-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
+</section><section id="un-exemple-2" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
 <div id="tbl-1-anonyme" class="table table-striped table-hover table-bordered table-sm quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-1-anonyme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-1-anonyme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered table-sm small">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Id</th>
 <th style="text-align: center;">Age</th>
 <th style="text-align: center;">Genre</th>
 <th style="text-align: center;">Maladie</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">1</td>
@@ -1188,29 +1057,24 @@ Table&nbsp;3: Différentes types de variables
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-1-anonyme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4: Exemple d’un fichier individuel 1-anonyme, l’âge et le genre étant considérés comme quasi-identifiants
-</figcaption>
-</figure>
+Table 4: Exemple d’un fichier individuel 1-anonyme, l’âge et le genre étant considérés comme quasi-identifiants
+</figcaption></figure>
 </div>
-</section>
-<section id="limites-du-k-anonymat" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Limites du <span class="math inline">\(k\)</span>-anonymat</h2>
+</section><section id="limites-du-k-anonymat" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Limites du <span class="math inline">\(k\)</span>-anonymat</h2>
 <div style="font-size: 80%;">
 <ul>
-<li>Forte <strong>dépendance à la qualité/véracité du scénario</strong><br>
-<span class="math inline">\(\Rightarrow\)</span> choix des QI est crucial.
+<li>Forte <strong>dépendance à la qualité/véracité du scénario</strong><br><span class="math inline">\(\Rightarrow\)</span> choix des QI est crucial.
 <ul>
 <li>Le <span class="math inline">\(k\)</span>-anonymat sur-estime le risque si l’attaquant dispose de moins d’info que supposé</li>
 <li>Le <span class="math inline">\(k\)</span>-anonymat sous-estime le risque si l’attaquant dispose de plus d’info que supposé</li>
 <li>Difficile de mesurer la vraisemblance de l’attaque.</li>
-</ul></li>
+</ul>
+</li>
 <li>Le <span class="math inline">\(k\)</span>-anonymat <strong>ne prend pas en compte les poids d’échantillonnage</strong>. <span class="math inline">\(\Rightarrow\)</span> Appliqué à un échantillon, il sur-estimera le risque de ré-identification.</li>
 <li>Ne réduit pas les risques de <strong>divulgation d’attributs sensibles</strong>.</li>
 </ul>
 </div>
-</section>
-<section id="quantifier-le-risque-2-la-l-diversité" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Quantifier le risque (2): la l-diversité</h2>
+</section><section id="quantifier-le-risque-2-la-l-diversité" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Quantifier le risque (2): la l-diversité</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1229,22 +1093,16 @@ Table&nbsp;4: Exemple d’un fichier individuel 1-anonyme, l’âge et le genre 
 <li><p>Protection contre la divulgation d’attributs sensibles.</p></li>
 <li><p>Chaque groupe doit contenir au moins <span class="math inline">\(l\)</span> modalités différentes de la variable sensible étudiée (ou <span class="math inline">\(l\)</span> modalités parmi les plus fréquentes).</p></li>
 <li><p>Choix de la cible <span class="math inline">\(l\)</span> en fonction des règles existantes et/ou d’un arbitrage risque-utilité.</p></li>
-</ul>
-</section>
-<section id="un-exemple-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
+</ul></section><section id="un-exemple-3" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
 <!-- Revoir exemple => faire un tableau agrégé (fréquences sur les QI et ventilation par modalités de la var sensible) -->
 <div id="tbl-ex-l-divers" class="table table-striped table-hover table-bordered table-sm quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-ex-l-divers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-ex-l-divers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered table-sm small">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Age</th>
 <th style="text-align: center;">Sexe</th>
 <th style="text-align: center;">Maladie</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">[50;55[</td>
@@ -1275,70 +1133,62 @@ Table&nbsp;4: Exemple d’un fichier individuel 1-anonyme, l’âge et le genre 
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-ex-l-divers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;5: Un fichier 2-anonyme mais pas assez diversifié
-</figcaption>
-</figure>
+Table 5: Un fichier 2-anonyme mais pas assez diversifié
+</figcaption></figure>
 </div>
-</section>
-<section id="les-scénarios-dattaque-envisagés" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les scénarios d’attaque envisagés</h2>
+</section><section id="les-scénarios-dattaque-envisagés" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les scénarios d’attaque envisagés</h2>
 <p><span class="citation" data-cites="machanavajjhalaDiversityPrivacyAnonymity2007">(<a href="#/biblio" role="doc-biblioref" onclick="">Machanavajjhala et al. 2007</a>)</span></p>
 <ul>
 <li>Manque d’homogénéité</li>
 <li>Utilisation d’une information auxiliaire</li>
-</ul>
-</section>
-<section id="limites" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Limites</h2>
+</ul></section><section id="limites" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Limites</h2>
 <ul>
 <li>Adaptée pour les variables sensibles catégorielles uniquement</li>
 <li>=&gt; mal adaptée pour les variables continues (par exemple CA, niveau de vie, etc.)</li>
-</ul>
-</section></section>
-<section>
-<section id="mesures-probabilistes-du-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="6">
-<h1><span class="header-section-number">6</span> Mesures probabilistes du risque</h1>
+</ul></section></section><section><section id="mesures-probabilistes-du-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="6"><h1>
+<span class="header-section-number">6</span> Mesures probabilistes du risque</h1>
 
-</section>
-<section id="quelques-notations-pour-aller-plus-loin" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Quelques notations pour aller plus loin</h2>
+</section><section id="quelques-notations-pour-aller-plus-loin" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Quelques notations pour aller plus loin</h2>
 <div style="font-size: 70%;">
 <ul>
-<li><span class="math inline">\(N\)</span>: la taille de la population</li>
-<li><span class="math inline">\(n\)</span>: la taille de l’échantillon éventuel</li>
-<li><span class="math inline">\(w_i\)</span>: le poids de l’individu <span class="math inline">\(i\)</span> dans l’échantillon (<span class="math inline">\(\sum_i{w_i}=N\)</span>)</li>
-<li><span class="math inline">\(c\)</span>: le groupe constitué par un type de croisement des variables quasi-identifiantes.
+<li>
+<span class="math inline">\(N\)</span>: la taille de la population</li>
+<li>
+<span class="math inline">\(n\)</span>: la taille de l’échantillon éventuel</li>
+<li>
+<span class="math inline">\(w_i\)</span>: le poids de l’individu <span class="math inline">\(i\)</span> dans l’échantillon (<span class="math inline">\(\sum_i{w_i}=N\)</span>)</li>
+<li>
+<span class="math inline">\(c\)</span>: le groupe constitué par un type de croisement des variables quasi-identifiantes.
 <ul>
 <li>Par exemple, si les QI sont l’âge et le sexe, <span class="math inline">\(c\)</span> pourra correspondre au croisement <span class="math inline">\([25; 35] \times Femmes\)</span>, ou <span class="math inline">\([55; 95] \times Hommes\)</span>, etc.</li>
-</ul></li>
-<li><span class="math inline">\(N_c\)</span>: le nombre d’individus dans la population partageant les caractéristiques <span class="math inline">\(c\)</span></li>
-<li><span class="math inline">\(n_c\)</span>: le nombre d’individus dans l’échantillon (éventuel) partageant les caractéristiques <span class="math inline">\(c\)</span></li>
+</ul>
+</li>
+<li>
+<span class="math inline">\(N_c\)</span>: le nombre d’individus dans la population partageant les caractéristiques <span class="math inline">\(c\)</span>
+</li>
+<li>
+<span class="math inline">\(n_c\)</span>: le nombre d’individus dans l’échantillon (éventuel) partageant les caractéristiques <span class="math inline">\(c\)</span>
+</li>
 </ul>
 <p><span class="math inline">\(\Rightarrow\)</span> Si un fichier exhaustif est <span class="math inline">\(k\)</span>-anonyme, alors <span class="math inline">\(\forall c, N_c \geq k\)</span>.</p>
 </div>
-</section>
-<section id="les-individus-les-plus-à-risque-de-ré-identification" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les individus les plus à risque de ré-identification</h2>
+</section><section id="les-individus-les-plus-à-risque-de-ré-identification" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les individus les plus à risque de ré-identification</h2>
 <ul>
 <li><p>Les <strong>uniques dans la population</strong>: <span class="math inline">\(N_c = 1\)</span></p></li>
 <li><p>Les <strong>uniques dans l’échantillon</strong>: <span class="math inline">\(n_c = 1\)</span></p></li>
 <li><p>Les <strong>uniques dans l’échantillon qui sont également uniques dans la population</strong>: <span class="math inline">\(n_c = 1\)</span> et <span class="math inline">\(\sum\limits_{i \in c}{w_i} = 1\)</span></p></li>
-</ul>
-</section>
-<section id="mesurer-le-risque-individuel-dans-un-fichier-exhaustif" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Mesurer le risque individuel dans un fichier exhaustif</h2>
+</ul></section><section id="mesurer-le-risque-individuel-dans-un-fichier-exhaustif" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Mesurer le risque individuel dans un fichier exhaustif</h2>
 <ul>
 <li><p>Le <span class="math inline">\(k\)</span>-anonymat et la <span class="math inline">\(l\)</span>-diversité sont des mesures globales.</p></li>
-<li><p>On peut passer au niveau individuel:</p>
+<li>
+<p>On peut passer au niveau individuel:</p>
 <ul>
 <li>en considérant comme à risque chaque individu d’un groupe de modalités de moins de <span class="math inline">\(k\)</span> individus</li>
 <li>en associant à chaque individu de la base de données, une <strong>mesure individuelle du risque de ré-identification</strong>:</li>
 </ul>
-<p><span class="math display">\[r_c = \frac{1}{N_c}\]</span></p></li>
-</ul>
-</section>
-<section id="mesurer-le-risque-individuel-dans-un-échantillon" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Mesurer le risque individuel dans un échantillon</h2>
+<p><span class="math display">\[r_c = \frac{1}{N_c}\]</span></p>
+</li>
+</ul></section><section id="mesurer-le-risque-individuel-dans-un-échantillon" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Mesurer le risque individuel dans un échantillon</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1349,11 +1199,13 @@ Table&nbsp;5: Un fichier 2-anonyme mais pas assez diversifié
 </div>
 <div class="callout-content">
 <ul>
-<li><p><em>Au niveau de l’échantillon</em>: <span class="math display">\[r_c = \frac{1}{n_c}\]</span></p>
+<li>
+<p><em>Au niveau de l’échantillon</em>: <span class="math display">\[r_c = \frac{1}{n_c}\]</span></p>
 <ul>
 <li>Si la présence d’un individu dans l’échantillon est connue de l’attaquant, c’est une mesure adéquate.</li>
 <li>Sinon, cette mesure sur-estime le risque de ré-identification.</li>
-</ul></li>
+</ul>
+</li>
 <li><p><em>Au niveau de la population</em>, le risque de ré-identification peut être estimé par:</p></li>
 </ul>
 <p><span class="math display">\[\hat r_c = \frac{1}{\sum\limits_{i \in c}{w_i}}\]</span></p>
@@ -1361,13 +1213,14 @@ Table&nbsp;5: Un fichier 2-anonyme mais pas assez diversifié
 </div>
 </div>
 </div>
-</section>
-<section id="une-mesure-globale-du-risque" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Une mesure globale du risque</h2>
+</section><section id="une-mesure-globale-du-risque" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Une mesure globale du risque</h2>
 <p>Pour réaliser l’arbitrage, une mesure de risque globale est plus pratique. On pourra considérer:</p>
 <ul>
-<li><strong>Le nombre d’uniques</strong> (dans l’échantillon ou la population, selon les cas);</li>
-<li><strong>Le risque individuel moyen</strong> défini, dans le cadre d’un échantillon, par: <span class="math display">\[\tau = \frac{\sum\limits_{c}{n_c \times r_c}}{n}\]</span></li>
+<li>
+<strong>Le nombre d’uniques</strong> (dans l’échantillon ou la population, selon les cas);</li>
+<li>
+<strong>Le risque individuel moyen</strong> défini, dans le cadre d’un échantillon, par: <span class="math display">\[\tau = \frac{\sum\limits_{c}{n_c \times r_c}}{n}\]</span>
+</li>
 </ul>
 <!-- 
 
@@ -1383,48 +1236,34 @@ Table&nbsp;5: Un fichier 2-anonyme mais pas assez diversifié
 
 -   Les mesures individuelles permettent de cibler les individus les plus à risque.
 
- -->
-</section>
-<section id="mesures-probabilistes-du-risque-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Mesures probabilistes du risque</h2>
+ --></section><section id="mesures-probabilistes-du-risque-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Mesures probabilistes du risque</h2>
 <p>Des mesures plus raffinées sont implémentées dans des outils classiques tels que <span class="math inline">\(\mu\)</span>-Argus ou le package <code>R</code> <code>sdcMicro</code>.</p>
 <ul>
 <li><p>Quand on dispose d’un échantillon (donc des <span class="math inline">\(n_k\)</span>), on ne connaît en général pas les <span class="math inline">\(N_k\)</span>.</p></li>
 <li><p>Mesure du risque individuel conditionnellement à l’échantillon: <span class="math inline">\(r_k = \mathbb{E}(\frac{1}{N_k}|n_k)\)</span>.</p></li>
-<li><p>Mesure dépendant d’une modélisation de la loi (a posteriori) de <span class="math inline">\(N_k | n_k\)</span></p>
+<li>
+<p>Mesure dépendant d’une modélisation de la loi (a posteriori) de <span class="math inline">\(N_k | n_k\)</span></p>
 <ul>
 <li><p>Modélisation des fréquences des clés dans la population conditionnellement à leur fréquence dans l’échantillon.</p></li>
 <li><p>Par une binomiale négative par exemple dans <span class="citation" data-cites="Benedetti_Franconi_1998">Benedetti and Franconi (<a href="#/biblio" role="doc-biblioref" onclick="">1998</a>)</span>.</p></li>
-</ul></li>
 </ul>
-</section></section>
-<section>
-<section id="autres-mesures" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="7">
-<h1><span class="header-section-number">7</span> Autres mesures</h1>
+</li>
+</ul></section></section><section><section id="autres-mesures" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="7"><h1>
+<span class="header-section-number">7</span> Autres mesures</h1>
 
-</section>
-<section id="le-record-linkage" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Le Record Linkage</h2>
+</section><section id="le-record-linkage" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Le Record Linkage</h2>
 <ul>
 <li><p>Mesure <em>a posteriori</em> de la distance entre les individus du jeu protégé et ceux du jeu original.</p></li>
 <li><p>Permet d’évaluer le nombre de correspondances exactes entre données perturbées et originales.</p></li>
-</ul>
-</section>
-<section id="les-outliers" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les Outliers</h2>
+</ul></section><section id="les-outliers" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les Outliers</h2>
 <ul>
 <li><p>Fort risque de ré-identification des individus ayant des valeurs en queue de distribution (par ex. les très hauts revenus des footballeurs)</p></li>
 <li><p>Une perturbation n’est pas toujours suffisante (Un outlier perturbé reste souvent un outlier).</p></li>
 <li><p>Détection des outliers à partir des quantiles de la distribution.</p></li>
-</ul>
-</section></section>
-<section>
-<section id="les-scénarios-dattaque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="8">
-<h1><span class="header-section-number">8</span> Les scénarios d’attaque</h1>
+</ul></section></section><section><section id="les-scénarios-dattaque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="8"><h1>
+<span class="header-section-number">8</span> Les scénarios d’attaque</h1>
 
-</section>
-<section id="définir-un-scénario-dattaque" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Définir un scénario d’attaque</h2>
+</section><section id="définir-un-scénario-dattaque" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Définir un scénario d’attaque</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1441,19 +1280,12 @@ Table&nbsp;5: Un fichier 2-anonyme mais pas assez diversifié
 <ul>
 <li><p>Arbitrage Coûts/Risques (INS)</p></li>
 <li><p>Arbitrage Coûts/Bénéfices (Attaquant)</p></li>
-</ul>
-</section>
-<section id="les-attaques-sur-données-k-anonymes-etou-l-diverses" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les attaques sur données k-anonymes et/ou l-diverses</h2>
+</ul></section><section id="les-attaques-sur-données-k-anonymes-etou-l-diverses" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les attaques sur données k-anonymes et/ou l-diverses</h2>
 <p><span class="citation" data-cites="cohen_attacks_2022">Cohen (<a href="#/biblio" role="doc-biblioref" onclick="">2022</a>)</span></p>
-</section></section>
-<section>
-<section id="conclusion" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="9">
-<h1><span class="header-section-number">9</span> Conclusion</h1>
+</section></section><section><section id="conclusion" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="9"><h1>
+<span class="header-section-number">9</span> Conclusion</h1>
 
-</section>
-<section id="en-guise-de-conclusion" class="slide level2 smaller" data-background-image="background.svg" data-background-size="contain">
-<h2>En guise de conclusion</h2>
+</section><section id="en-guise-de-conclusion" class="slide level2 smaller" data-background-image="background.svg" data-background-size="contain"><h2>En guise de conclusion</h2>
 <ul>
 <li><p>Il existe de nombreuses façons d’évaluer la perte d’information.</p></li>
 <li><p>Fortement liée au niveau de protection.</p></li>
@@ -1461,15 +1293,10 @@ Table&nbsp;5: Un fichier 2-anonyme mais pas assez diversifié
 <li><p>Difficile d’anticiper toutes les utilisations d’un ensemble de données et donc toutes les mesures associées de perte d’information.</p></li>
 <li><p>Nécessité de faire des concessions sur certaines caractéristiques d’un tableau pour libérer des contraintes ailleurs.</p></li>
 <li><p>On ne peut pas préserver toutes les caractéristiques d’un ensemble de données.</p></li>
-</ul>
-</section></section>
-<section>
-<section id="pour-aller-plus-loin" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="10">
-<h1><span class="header-section-number">10</span> Pour aller plus loin</h1>
+</ul></section></section><section><section id="pour-aller-plus-loin" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="10"><h1>
+<span class="header-section-number">10</span> Pour aller plus loin</h1>
 
-</section>
-<section id="biblio" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain">
-<h2>Biblio</h2>
+</section><section id="biblio" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain"><h2>Biblio</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Benedetti_Franconi_1998" class="csl-entry" role="listitem">
 Benedetti, Roberto, and Luisa Franconi. 1998. <span>“Statistical and Technological Solutions for Controlled Data Dissemination.”</span> <em>Pre-Proceedings of New Techniques and Technologies for Statistics</em> 1: 225_232.
@@ -1519,30 +1346,15 @@ Une version libre et gratuite est disponible ici: <https://ec.europa.eu/eurostat
 
 
 </section></section>
-    </div>
+</div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
 <p>The disclosure risks</p>
 </div>
-</div></div>
+</div>
+</div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../../site_libs/revealjs/plugin/search/search.js"></script><script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -1733,9 +1545,7 @@ Une version libre et gratuite est disponible ici: <https://ec.europa.eu/eurostat
           RevealZoom
         ]
       });
-    </script>
-    
-    <script>
+    </script><script>
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
@@ -1770,9 +1580,7 @@ Une version libre et gratuite est disponible ici: <https://ec.europa.eu/eurostat
         }
 
       })();
-    </script>
-
-    <script id="quarto-html-after-body" type="application/javascript">
+    </script><script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
         tabsets.forEach(function(tabset) {
@@ -1842,7 +1650,7 @@ Une version libre et gratuite est disponible ici: <https://ec.europa.eu/eurostat
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/InseeFrLab\.github\.io\/formation_protection_donnees\/");
+            var filterRegex = new RegExp("\/en");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
@@ -1940,6 +1748,5 @@ Une version libre et gratuite est disponible ici: <https://ec.europa.eu/eurostat
         }
       });
       </script>
-    
-
-</body></html>
+</body>
+</html>
