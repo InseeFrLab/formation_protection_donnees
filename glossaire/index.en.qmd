@@ -1,0 +1,16 @@
+---
+title: "Glossary"
+description: |
+  Definition of the main technical terms encountered on the site.
+order: 4
+href: glossaire/index.en.html
+image: ../images/glossaire.png
+page-layout: full
+toc: false
+---
+
+
+# M {.unlisted}
+
+[]{#Microdata .anchor}**Microdata:** A microdata dataset is the equivalent of an individual data dataset, in which each record (each row) corresponds to the information of a statistical unit (individual, household, company, etc.), information from a survey, a directory or an administrative file.
+
