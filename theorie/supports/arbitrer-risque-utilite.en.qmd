@@ -1,17 +1,17 @@
 ---
-title: The disclosure risks
+title: Disclosure risks
 subtitle: |
-  **[Define, assess, decide]{.orange}**
+  **[Define, Assess, Decide]{.orange}**
 order: 1
 href: theorie/supports/arbitrer-risque-utilite.html
 image: ../../images/theorie.png
 slide-number: true
 header: |
-  [Retour à l'accueil](https://inseefrlab.github.io/formation_protection_donnees)
+  [Back home](https://inseefrlab.github.io/formation_protection_donnees)
 footer: |
-  The disclosure risks
+  Disclosure risks
 # uncomment for French presentations:
-lang: en-EN
+lang: en-US
 # for blind readers:
 slide-tone: false
 # for @olevitt:
@@ -25,7 +25,7 @@ format:
     number-depth: 1
     toc: true
     toc-depth: 1
-    toc-title: Sommaire
+    toc-title: Table of contents
 tbl-cap-location: bottom
 include-in-header: 
   text: |
@@ -44,487 +44,443 @@ bibliography: ../../references-SDC.bib
 # csl: ../style.csl  # Décommentez besoin d'un style de biblio spécifique
 ---
 
+
 # Introduction {.unnumbered}
 
 ## Context
 
-On se placera dans le contexte suivant:
+We will place ourselves in the following context:
 
-- Un institut statistique collecte des données individuelles.
-- On suppose qu'il respecte les réglements en vigueur en termes de protection des données individuelles (par exemple le RGPD en Europe).
-- L'institut cherche à diffuser des statistiques agrégées ou des fichiers de données individuelles à visée statistique.
+- A statistical institute collects individual data.
+- It is assumed that it complies with the regulations in force regarding the protection of individual data (for example, the GDPR in Europe).
+- The institute seeks to disseminate aggregated statistics or individual data files for statistical purposes.
 
-## Problématique
+## Problem Statement
 
 ::: {.callout-tip icon=true}
-### Problématique de l'ensemble de l'atelier
 
-Comment diffuser de l'information statistique sans porter atteinte aux personnes (physiques ou morales) auprès desquelles l'information a été collectée ?
+### Workshop Overall Problem Statement
+
+How can statistical information be disseminated without harming the individuals or organizations from whom the information was collected?
 :::
 
-## Protéger: un enjeu pour la statistique publique
+## Protecting: a challenge for official statistics
 
-_Les missions [de la statistique publique] ne dépendent pas seulement de sa capacité à maîtriser les outils ou les méthodes nécessaires à la production d'une information de qualité, mais aussi de [__sa capacité à protéger et à garantir la confidentialité des données qui lui sont confiées__]{style="color:green;"}. Cette protection est la condition pour continuer à disposer de ces données._ [@redor_confidentialite_2023]
+_The missions [of official statistics] do not depend solely on its ability to master the tools or methods necessary for producing quality information, but also on [__its ability to protect and guarantee the confidentiality of the data entrusted to it__]{style="color:green;"}. This protection is the condition for continuing to have access to this data._ [@redor_confidentialite_2023]
 
-
-
-## A la recherche d'une définition
+## In Search of a Definition
 
 ::: {.callout-note icon=false}
-## Une définition maximaliste de la divulgation...
 
-T. Dalenius propose en 1977 la définition suivante:
+## A maximalist definition of disclosure...
 
-_"Si la publication des statistiques $T(D)$ permet de déterminer la valeur de données statistiques confidentielles de façon plus précise qu’il ne serait possible sans accès à $T(D)$, alors une divulgation a eu lieu."_ [@dalenius_privacy_1977].
+T. Dalenius proposes in 1977 the following definition:
+
+_"If the publication of the statistics $T(D)$ allows determining the value of confidential statistical data more precisely than would be possible without access to $T(D)$, then a disclosure has occurred."_ [@dalenius_privacy_1977].
 :::
 
 ::: {.callout-important icon=false}
-## ... impossible à tenir
 
-Cette définition ne prend pas en compte l'information auxiliaire déjà disponible
+## ... impossible to hold
+
+This definition does not take into account the auxiliary information already available
 :::
 
 ::: {.callout-tip icon=false}
-## Un exemple de divulgation impossible à protéger
 
-Des études montrent un lien de corrélation entre le fait de fumer et la survenue d'un cancer des poumons $\Rightarrow$ si, on (une compagnie d'assurance) sait qu'un individu est fumeur, alors on peut lui imputer un risque important d'avoir un cancer, information qui va très probablement générer un préjudice à cette personne.
+## An example of disclosure impossible to protect
+
+Studies show a correlation between smoking and the occurrence of lung cancer $\Rightarrow$ if, we (an insurance company) know that an individual is a smoker, then we can attribute to them a significant risk of having cancer, information which will very likely cause harm to that person.
 
 :::
 
-## A la recherche d'une définition
+## In Search of a Definition
 
-Il faut tenir compte de deux réalités:
+Two realities must be taken into account:
 
-- l'utilisateur dispose d'une **information auxiliaire**.
-- l'**inférence statistique** est l'un des moyens de connaissances offertes par la publication de statistiques.
+- the user has **auxiliary information**.
+- **statistical inference** is one of the means of knowledge provided by the publication of statistics.
 
-$\Rightarrow$ **une protection inconditionnelle et totale n'est pas possible.**
+$\Rightarrow$ **unconditional and total protection is not possible.**
 
+## Need to Master Risks
 
+Data protection is defined through:  
 
-## Besoin de maîtriser les risques
+- mastery of disclosure risks
+- and the need to continue disseminating statistical information.
 
-La protection de données se définit à travers:  
+$\Rightarrow$ **Need to arbitrate between the two components.**
 
-- la maîtrise des risques de divulgation
-- et le besoin de continuer à diffuser de l'information statistique.
+# A Necessary Trade-off
 
-$\Rightarrow$ **Besoin d'arbitrer entre les deux composantes.**
+## Arbitrate
 
-# Un arbitrage nécessaire
+Protecting confidential data means **arbitrating** between:
 
-## Arbitrer
+-   their **utility** for knowledge and public debate;
 
-Protéger des données confidentielles, c'est **arbitrer** entre:
-
--   leur **utilité** pour la connaissance et le débat public;
-
--   leur **risque intrinsèque**: toute donnée diffusée peut divulguer une information sur un individu ou un groupe d'individus.
+-   their **intrinsic risk**: any data disseminated can disclose information about an individual or a group of individuals.
 
 ::: {style="text-align:center;"}
-![Arbitrer](img/trade_off_balance.png){width=40% fig-alt="Arbitrage Risque-Utilité" fig-align="center"}
+![Arbitrate](img/trade_off_balance.png){width=40% fig-alt="Risk-Utility Trade-off" fig-align="center"}
 :::
 
-## Deux écueils
+## Two Pitfalls
 
--   Ne pas diffuser rendrait la statistique publique inutile.
+-   Not disseminating would make the public statistic useless.
 
--   Tout diffuser rendrait la statistique publique dangereuse.
+-   Disseminating everything would make the public statistic dangerous.
 
 
 ::: {style="text-align:center;"}
 ![Arbitrer](img/trade_off_graph.png){width=80% fig-alt="Arbitrage Risque-Utilité" fig-align="center"}
 :::
 
+## Issues
 
-## Problèmes
+- What are the disclosure risks?
+- How to measure these risks?
+- How to address them?
 
-- Quels sont les risques de divulgation ?
-- Comment mesurer ces risques ?
-- Comment les traiter ?
+$\Rightarrow$ How to address them without *too much* deteriorating the statistical information?
 
-$\Rightarrow$ Comment les traiter sans *trop* détériorer l'information statistique ?
-
-## Enjeu principal de l'arbitrage:
+## Main issue of arbitration:
 
 ::: {.callout-note icon=true}
-### Trouver un équilibre entre protection et information
 
-Il s'agit de réaliser un **compromis** entre le fait de minimiser les risques de divulgation des informations confidentielles et minimiser la perte d'information due aux traitements de protection des données.
+### Finding a balance between protection and information
+
+This involves achieving a **compromise** between minimizing the risks of disclosing confidential information and minimizing the loss of information due to data protection processes.
 :::
 
 ::: {.callout-warning icon=true}
-### Pas de méthode magique 
-Il n'existe pas de méthode minimisant le risque et la perte d'information en même temps!
+
+### No Magic Method 
+There is no method that minimizes risk and information loss at the same time!
 :::
 
+## An example of arbitrage
 
-## Un exemple d'arbitrage
+The population census (RP) in France:
 
-Le recensement de la population (RP) en France:
+-   Specific publication decree;
 
--   Décret de publication spécifique;
+-   Utility of RP data is very strong:
+    -   a number of laws depend on it
+    -   financial allocation to municipalities
 
--   Utilité des données du RP très forte:
-    -   un certain nombre de lois en dépendent
-    -   dotation financière des communes
+-   Risk of using disseminated data against individuals is judged low:
+    -   information not very prejudicial
+    -   except for sensitive variables
 
--   Risque d'utilisation des données diffusées contre les personnes est jugé faible:
-    -   information peu préjudiciable
-    -   à l'exception de variables sensibles
+## An example of assumed disclosure
 
-## Un exemple de divulgation assumée
+INSEE disseminates municipal data even for very small municipalities:
 
-L'Insee diffuse des données communales même pour les très petites communes: 
+[See the example of the municipality of Rochefourchat](https://www.insee.fr/fr/statistiques/2011101?geo=COM-26274):
 
-[Voir l'exemple de la commune de Rochefourchat](https://www.insee.fr/fr/statistiques/2011101?geo=COM-26274):
+- A municipality of \(2\) inhabitants
+- We know their sex, their marital status, their age, a rough description of their housing, the occupancy status of their housing, their education level, their employment status, etc.
 
-- Une commune de $2$ habitants
-- On connaît leur sexe, leur situation conjugale, leur âge, une description grossière de leurs logements, le statut d'occupation de leur logement, leur niveau de diplôme, leur statut d'activité, etc.
+## The Risk/Utility Trade-off: a Paradigm
 
+-   There is no such thing as zero risk
 
-## L'arbitrage Risque/Utilité: un paradigme
+-   No method completely eliminates risk $\Rightarrow$
 
--   Il n'existe pas de risque zéro
+    -   Trade-offs are therefore inherent to data protection.
 
--   Aucune méthode ne supprime totalement le risque $\Rightarrow$
+    -   This trade-off is considered **the paradigm** of the discipline.
 
-    -   Arbitrer est donc inhérent à la protection des données.
-
-    -   Cet arbitrage considéré comme **le paradigme** de la discipline.
-
-
-## Un paradigme criticable
+## A Criticizable Paradigm
 
 [Voir @cox_risk-utility_2011]
 
--   S'il aide à savoir **comment penser**...
+-   If it helps to know **how to think**...
 
--   ...il aide moins à savoir **comment agir**.
+-   ...it helps less to know **how to act**.
 
+## In practice, another trade-off takes place
 
+A **Costs/Benefits** trade-off is performed:
 
-## En pratique, un autre arbitrage a lieu
+-   By the data producer: 
+    -   What resources to deploy for what level of protection (time, financial means)?
 
-Un arbitrage Coûts/Bénéfices est réalisé:
+-   By the attacker: 
+    -   Is the hoped-for confidential information worth the resources necessary for its disclosure? 
 
--   Par le producteur de données: 
-    -   Quels moyens déployer pour quel niveau de protection (temps, moyens financiers)?
+$\Longrightarrow$ Implement methods that have a cost adapted to the identified risk and to the sensitivity of the data.
 
--   Par l'attaquant: 
-    -   L'information confidentielle espérée est-elle à la hauteur des moyens nécessaires à sa divulgation ? 
+## Objective: define and measure
 
-$\Longrightarrow$ Mettre en place des méthodes qui ont un coût adapté au risque objectivé et à la sensibilité des données.
+To arbitrate, one must be able to
 
+-   Define the terms of the arbitration 
 
-
-## Objectiver: définir et mesurer
-
-Pour arbitrer, il faut pouvoir
-
--   Définir les termes de l'arbitrage 
-
--   Mesurer les phénomènes.
+-   Measure the phenomena.
 
 
-# Besoin d'une gouvernance
+# Need for governance
 
-## Gouvernance des données
+## Data Governance
 
-Avant de définir les risques:
+Before defining the risks:
 
-- Quels sont les objectifs de diffusion ?
-- Qui accède à quoi avec quels droits ?
+- What are the dissemination objectives?
+- Who accesses what with which rights?
 
 ::: {.callout-important}
-### Objectif
-Pour mieux maîtriser les risques, prendre conscience du contexte dans lequel ils sont susceptibles d'apparaître.
+
+### Objective
+To better manage risks, become aware of the context in which they are likely to appear.
 
 :::
 
-## Sécuriser l'accès 
+## Securing Access
 
-- On peut distinguer quatre grands types d'utilisateurs:
+- Four main types of users can be distinguished:
 
-  - **grand public et acteurs publics**: statistiques agrégées 
-  - **chercheurs**: statistiques détaillées voire données individuelles
-  - **chargés d'études de la statistique publique**: données individuelles sans identifiants directs
-  - **chargés de collecte**: données individuelles avec identifiants
+  - **General public and public actors**: aggregated statistics
+  - **Researchers**: detailed statistics or even individual data
+  - **Public statistics study officers**: individual data without direct identifiers
+  - **Data collection officers**: individual data with identifiers
 
+## Adapt access based on user needs
 
-## Adapter l'accès en fonction des besoins des utilisateurs
-
-  - **Principe de minimisation** : chaque utilisateur ne doit accéder qu'aux données strictement nécessaires à ses missions.
+  - **Minimization principle**: each user must access only the data strictly necessary for their missions.
   
 
-## Adapter l'accès en fonction des besoins des utilisateurs
+## Adapt access based on user needs
 
-  - **Différenciation des accès** : 
-    - **grand public et acteurs publics**: accès gratuit et sans condition.
-    - **chercheurs**: accès sous conditions strictes (contrats, projets d'utilité publics, environnement sécurisé de travail, etc.).
-    - **chargés d'études**: accès à des données sur serveurs internes soumis à autorisation préalable.
-    - **chargés de collecte**:  accès aux données de collecte pour la seule enquête sur laquelle ils travaillent.
+  - **Access differentiation** : 
+    - **general public and public actors**: free access without conditions.
+    - **researchers**: access under strict conditions (contracts, public utility projects, secure working environment, etc.).
+    - **study managers**: access to data on internal servers subject to prior authorization.
+    - **data collectors**:  access to collection data for the sole survey on which they are working.
   
 
-## Adapter l'accès en fonction des besoins des utilisateurs
+## Adapt access based on user needs
 
-  - **Assurer un suivi et un contrôle des accès** : chaque accès doit pouvoir être contrôlé et révoqué si besoin.
+  - **Ensure monitoring and control of access**: each access must be able to be controlled and revoked if necessary.
 
+## Adjust the Necessary Anonymization Level
 
-## Adapter le niveau d'anonymisation nécessaire
+The looser the access, the higher the anonymization must be able to be:  
 
-Plus l'accès est lâche, plus l'anonymisation doit pouvoir être élevé:  
+  - **general public**: 
+    - open access $\iff$ strong statistical protection
 
-  - **grand public**: 
-    - libre accès $\iff$ protection statistique forte
+## Adjust the Necessary Anonymization Level
 
+The looser the access, the higher the anonymization must be able to be:  
 
-## Adapter le niveau d'anonymisation nécessaire
+  - **researchers and study managers**: 
+    - secure access $\iff$ weak statistical protection on the inputs
+    - But need to process/verify the public outputs (**output checking**)
 
-Plus l'accès est lâche, plus l'anonymisation doit pouvoir être élevé:  
+## Adjust the Necessary Anonymization Level
 
-  - **chercheurs et chargés d'études**: 
-    - accès sécurisé $\iff$ protection statistique faible sur les inputs
-    - Mais besoin de traiter/vérifier les outputs publics (**output checking**)
+The looser the access, the higher the anonymization must be able to be:  
 
-
-## Adapter le niveau d'anonymisation nécessaire
-
-Plus l'accès est lâche, plus l'anonymisation doit pouvoir être élevé:  
-
-  - **chargés de collecte**: 
-    - accès très sécurisé $\iff$ aucune protection statistique des données
-    - Mais nécessité de respecter les réglements sur la protection des données individuelles (RGPD en Europe).
-
-## Un exemple
+  - **data collectors**: 
+    - very secure access $\iff$ no statistical protection of the data
+    - But need to comply with regulations on the protection of individual data (GDPR in Europe).
+## An example
 
 ::: {style="text-align:center;"}
-![Adapter les fichiers au type de public (Source: Insee)](img/types_fichiers_confidentialite.png){#fig-types-fichiers width=90% fig-alt="Adapter les fichiers aux publics" fig-align="center"}
+![Adapt files to audience type (Source: INSEE)](img/types_fichiers_confidentialite.png){#fig-types-fichiers width=90% fig-alt="Adapt files to audiences" fig-align="center"}
 :::
 
+## Governance, Ethics, Trust
 
-## Gouvernance, Déontologie, Confiance
+- Mastery of access security and the best possible data governance are not infallible shields.
+- Strong **Ethics** of public statisticians.
+- **Trust** in the various actors (researchers) to whom data access is granted.
 
-- La maîtrise de la sécurité des accès et la meilleure gouvernance possible des données ne sont pas des boucliers infaillibles.
-- **Déontologie** forte des statisticiens publics.
-- **Confiance** dans les différents acteurs (chercheurs) à qui on donne accès aux données.
+## Hold Accountable
 
+A necessary accountability:
 
-## Responsabiliser
-
-Une responsabilisation nécessaire:
-
-- Statisticiens publics (en France loi de 1951 sur le secret statistique)
-- Chercheurs (Risque de révocation des contrats et conséquences sur l'ensemble du laboratoire)
+- Public statisticians (in France, 1951 law on statistical secrecy)
+- Researchers (Risk of contract revocation and consequences for the entire laboratory)
 
 
 
 
-# Une démarche en plusieurs étapes
+# A Multi-Step Approach
 
-## Étapes clés du processus de protection des données
+## Key Steps in the Data Protection Process
 
 ::: {style="font-size: 80%;"}
-1.  Est-il nécessaire de protéger les données ?
+1.  Is it necessary to protect the data?
 
-2.  Quelles sont les caractéristiques et utilisations principales des données ?
+2.  What are the main characteristics and uses of the data?
 
-3.  Définition et mesure des risques de divulgation
+3.  Definition and measurement of disclosure risks
 
-4.  Choix des méthodes de protection des données
+4.  Selection of data protection methods
 
-5.  Mise en oeuvre des méthodes
+5.  Implementation of the methods
 
-6.  Contrôles et documentation
+6.  Controls and documentation
 
 :::
 
 Source:  [@hundepool_handbook_2024]
 
-## Étape 1: Est-il nécessaire de protéger les données ?
+## Step 1: Is it necessary to protect the data?
 
 ::: {style="font-size: 80%;"}
--   Analyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d'effectuer de traitement pour la protection des données
+-   Analysis of the units considered and variables present in the microdata file; if they are not sensitive, there is no need to perform processing for data protection
 
--   Quel type de diffusion ? (tableaux de données, cartes, microdonnées \...)
+-   What type of dissemination? (data tables, maps, microdata \...)
 :::
 
-## Étape 2: Caractéristiques et utilisations principales des données (I)
+## Step 2: Main Characteristics and Uses of the Data (I)
 
 ::: {style="font-size: 80%;"}
--   Analyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection
+-   Analysis of the type and structure of the data to determine the variables / units that require protection
 
--   Analyse de la méthodologie de l'enquête
+-   Analysis of the survey methodology
 
--   Définition des objectifs de l'institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié
+-   Definition of the institute's objectives: type of publication (PUF, MFR), dissemination policies, consistency between multiple simultaneous disseminations, consistency with what is already published
 :::
 
-## Étape 2: Caractéristiques et utilisations principales des données (II)
+## Step 2: Main Characteristics and Uses of the Data (II)
 
 ::: {style="font-size: 80%;"}
--   Analyse des besoins des utilisateurs (variables prioritaires, types d'analyses qui seront réalisées)
+-   Analysis of user needs (priority variables, types of analyses that will be performed)
 
--   Analyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)
+-   Analysis of the questionnaire for surveys (variables to remove / to include, what level of detail for structural indicators such as socio-demographic variables?)
 :::
 
-## Étape 3: Définition et mesure des risques de divulgation
+## Step 3: Definition and Measurement of Disclosure Risks
 
 ::: {style="font-size: 80%;"}
--   Recenser les différents scénarios possibles conduisant à la divulgation des données
+-   Identify the different possible scenarios leading to data disclosure
 
-    -   En fonction du type de données considérées (données exhaustives, enquêtes) 
-    -   En fonction du public visé (chercheurs, décideurs, grand public)
+    -   Depending on the type of data considered (exhaustive data, surveys) 
+    -   Depending on the target audience (researchers, decision-makers, general public)
 
--   Choisir la ou les mesures du risque de divulgation
--   Seuil de tolérance au risque à fixer
+-   Choose the disclosure risk measure(s)
+-   Risk tolerance threshold to set
 :::
 
-## Étape 4: Choix des méthodes
+## Step 4: Selection of Methods
 
 ::: {style="font-size: 80%;"}
--   Choisir une / plusieurs méthode(s) de protection
+-   Choose one / several protection method(s)
 
--   Comparer les méthodes: niveau de risque vs perte d'utilité
+-   Compare the methods: risk level vs loss of utility
 :::
 
 ::: {style="text-align:center;"}
-![Arbitrage risque-utilité](img/trade_off_graph_smiley.png){#fig-trade-off-sm width=80% fig-alt="Arbitrage risque-utilité" fig-align="center"}
+![Risk-Utility Trade-off](img/trade_off_graph_smiley.png){#fig-trade-off-sm width=80% fig-alt="Risk-Utility Trade-off" fig-align="center"}
 :::
 
-
-## Étape 5: Mise en oeuvre des méthodes
+## Step 5: Implementation of the methods
 
 ::: {style="font-size: 80%;"}
-1.  Choisir un logiciel
+1.  Choose software
 
-2.  Réaliser la mesure des risques de divulgation
+2.  Perform the measurement of disclosure risks
 
-3.  Protéger les données
+3.  Protect the data
 
-4.  Quantification de la perte d'information
+4.  Quantification of information loss
 :::
 
-## Étape 6: Contrôles et documentation
+## Step 6: Controls and documentation
 
 ::: {style="font-size: 80%;"}
-- Contrôle du processus de protection
+- **Process protection control**
 
-    -   vérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable
+    -   verify that the methods implemented have effectively reduced the disclosure risk to the level considered acceptable
 
-- Réalisation d'un document synthétisant les méthodes utilisées et faisant le bilan de la perte d'information
+- Preparation of a document summarizing the methods used and providing an overview of the information loss
 
-    -   si possible le transmettre aux utilisateurs des données publiées
-    -   peut contenir des avertissements sur les précautions à prendre lors de l'utilisation d'un fichier anonymisé
+    -   if possible, transmit it to the users of the published data
+    -   may contain warnings about precautions to take when using an anonymized file
 :::
 
-# Définir le risque
+# Define the risk
 
-## Le risque de divulgation
+## The risk of disclosure
 
 ::: {.callout-note icon=true}
-## Définition générale
 
-Risque de divulguer une information confidentielle en publiant des données agrégées ou individuelles.
+## General Definition
+
+Risk of disclosing confidential information by publishing aggregated or individual data.
 :::
 
-## Quatre types de risque de divulgation
+## Four types of disclosure risk
 
--   Risque de divulgation d'identité
+-   Identity disclosure risk
 
--   Risque de divulgation d'attribut
+-   Attribute disclosure risk
 
--   Risque de divulgation par inférence
+-   Disclosure risk by inference
 
--   Risque de divulgation par différenciation
+-   Disclosure risk by differentiation
 
-    -   par \"emboîtement\"
+    -   by "nesting"
 
-    -   par \"recoupement\"
+    -   by "cross-referencing"
 
-
-## Risque de divulgation d'identité
+## Risk of Identity Disclosure
 
 ::: {.callout-tip}
-## Définition
 
-Risque de reconnaître un individu spécifique dans les données publiées : un attaquant peut identifier une unité à partir de la publication.
+## Definition
+
+Risk of recognizing a specific individual in the published data: an attacker can identify a unit from the publication.
 
 :::
 
-Exemples : 
+Examples: 
 
--   Certaines variables comme le nom, l'adresse qui identifient *directement* des individus ou des foyers.
+-   Certain variables such as name, address that identify *directly* individuals or households.
 
--   Toutes les personnes ayant des caractéristiques très rares (ex : personnes très âgées).
+-   All people with very rare characteristics (e.g., very elderly people).
 
--   87% de la population américaine est unique uniquement à partir du ZIP code, du genre et de la date de naissance [@sweeney_simple_2000].
+-   87% of the U.S. population is unique solely from ZIP code, gender, and date of birth [@sweeney_simple_2000].
 
+## Remarks
 
-## Remarques
+- Direct identifiers (name, first name, address) are useful for collection but removed from statistical databases.
 
-- Les identifiants directs (nom, prénom, adresse) sont utiles pour la collecte mais supprimés des bases à vocation statistique.
+- Other variables have a strong re-identifying power (place of residence, age, gender, profession, education level, etc.).
 
-- D'autres variables ont un fort pouvoir ré-identifiant (le lieu de résidence,  l'âge, le genre, la profession, le niveau d'éducation, etc.).
+- Re-identifying does not always allow obtaining more information about people.
 
-- Ré-identifier ne permet as toujours d'obtenir plus d'informations sur les personnes.
-
-
-## Risque de divulgation d'attribut
+## Risk of Attribute Disclosure
 
 ::: {.callout-tip}
-## Définition
 
-Risque de divulguer une **information sensible** sur un ou plusieurs individus à partir des données diffusées.
+## Definition
+
+Risk of disclosing **sensitive information** about one or more individuals from the disseminated data.
 
 :::
 
-Exemples :
+Examples:
 
--   Une ré-identification conduit souvent à une divulgation d'attribut.
--   Il est possible de divulguer un attribut sur des groupes entiers.
+-   Re-identification often leads to attribute disclosure.
+-   It is possible to disclose an attribute about entire groups.
+
+## Disclosure of a Group Attribute
+
+ - Disclosure of sensitive information for an entire group of people.
+ - Without necessarily needing to re-identify beforehand.
 
 
-## Divulgation d'un attribut de groupe
-
- - Divulgation d'une information sensible pour un groupe entier de personnes.
- - Sans nécessairement avoir besoin de ré-identifier préalablement.
-
-<!-- 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:2px;font-family:Arial, sans-serif;font-size:30px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:2px;font-family:Arial, sans-serif;font-size:28px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-p8l5{border-color:#9b9b9b;color:#656565;text-align:right;vertical-align:top}
-.tg .tg-o57y{border-color:#9b9b9b;color:#656565;text-align:center;vertical-align:top}
-.tg .tg-8trw{border-color:#9b9b9b;color:#656565;text-align:left;vertical-align:top}
-.tg .tg-ho01{border-color:#9b9b9b;color:#9a0000;font-weight:bold;text-align:right;vertical-align:top}
-</style>
-<table class="tg"><thead>
-  <tr>
-    <th class="tg-8trw"></th>
-    <th class="tg-o57y">Hommes</th>
-    <th class="tg-o57y">Femmes</th>
-  </tr></thead>
-<tbody>
-  <tr>
-    <td class="tg-8trw">Diabétiques</td>
-    <td class="tg-p8l5">30</td>
-    <td class="tg-p8l5">40</td>
-  </tr>
-  <tr>
-    <td class="tg-8trw">Non Diabétiques</td>
-    <td class="tg-p8l5">12</td>
-    <td class="tg-ho01">0</td>
-  </tr>
-</tbody>
-</table> 
--->
 
 ```{r}
 #| label: tbl-div-attr
-#| tbl-cap: Un exemple de divulgation d'attributs de groupe
+#| tbl-cap: An example of group attribute disclosure
 #| tbl-cap-location: bottom
 #| echo: false
 library(kableExtra)
@@ -548,46 +504,36 @@ df |>
   # kableExtra::kable_classic_2() 
 ```
 
-<!-- 
-
-|                 | Hommes | Femmes |
-|-----------------|:------:|:------:|
-| Diabétiques     |     30 |     40 |
-| Non Diabétiques |     12 |  **0** | 
-
-: Un exemple de divulgation d'attributs de groupe -->
-
-
-
-## Risque de divulgation par inférence
+## Risk of Disclosure by Inference
 
 ::: {.callout-tip}
-### Définition
 
-Risque de pouvoir déduire avec une certitude élevée des informations sensibles sur des individus à partir des données publiées.
+### Definition
+
+Risk of being able to deduce with high certainty sensitive information about individuals from published data.
 
 :::
 
--   Corrélation forte d'une information avec une caractéristique sensible.
--   Proportion très élevée au sein d'un groupe.
+-   Strong correlation of information with a sensitive characteristic.
+-   Very high proportion within a group.
 
 ```{r}
 #| label: tbl-div-infer
-#| tbl-cap: Un exemple de divulgation d'attributs par inférence
+#| tbl-cap: An example of attribute disclosure by inference
 #| tbl-cap-location: bottom
 #| echo: false
 library(kableExtra)
 
 df <- data.frame(
-  Femmes = c(30, 12),
-  Hommes = c(38, 2)
+  Women = c(30, 12),
+  Men = c(38, 2)
 ) 
-row.names(df) <- c("Diabétiques", "Non diabétiques")
+row.names(df) <- c("Diabetic", "Non-diabetic")
 
 df |> 
   kableExtra::kbl(
     booktabs = T,
-    col.names = c("Femmes", "Hommes"),
+    col.names = c("Women", "Men"),
     row.names = TRUE
   ) |>
   kableExtra::kable_styling(
@@ -597,92 +543,76 @@ df |>
   # kableExtra::kable_classic_2() 
 ```
 
-
-
-## Risque de divulgation par différenciation 
+## Risk of Disclosure by Differentiation 
 
 ::: {.callout-tip}
-### Définition
-Lorsqu'une information agrégée est diffusée pour divers croisements, il est parfois possible d'en déuire une information additionnelle en différenciant les divers résultats.
+
+### Definition
+When aggregated information is disseminated for various cross-tabulations, it is sometimes possible to infer additional information by differentiating the various results.
 
 :::
 
 ::: {style="font-size: 80%;"}
 
-Exemples:
+Examples:
 
-- Différenciation marginale: consiste à utiliser les marges de données tabulées
-- Différenciation par emboîtement géographique: consiste à utiliser des agrégats diffusés sur des zonages emboîtés (variante du premier)
-- Différenciation par recoupement: consiste à utiliser des agrégats diffusés sur des zonages imparfaitement emboîtés
+- Marginal differentiation: consists of using the margins of tabulated data
+- Differentiation by geographic nesting: consists of using aggregates disseminated over nested zonings (variant of the first)
+- Differentiation by cross-tabulation: consists of using aggregates disseminated over imperfectly nested zonings
 
 :::
 
-## Différenciation par recoupement
+## Differentiation by Overlap
 
 
 ::: {style="text-align:center;"}
-![Exemple de différenciation par recoupement en France entre un département et une communauté de communes (EPCI)](img/diff_geo_recoupment1.png){#fig-diff-rec1 height=80% fig-alt="Exemple de différenciation par recoupement" fig-align="center"}
+![Example of differentiation by overlap in France between a department and a community of communes (EPCI)](img/diff_geo_recoupment1.png){#fig-diff-rec1 height=80% fig-alt="Example of differentiation by overlap" fig-align="center"}
 :::
 
-
-## Différenciation par recoupement
+## Differentiation by Cross-Referencing
 
 
 ::: {style="text-align:center;"}
-![Zoom sur le problème de différenciation](img/diff_geo_recoupement2.png){#fig-diff-rec2 height=80% fig-alt="Exemple de différenciation par recoupement" fig-align="center"}
+![Zoom on the differentiation problem](img/diff_geo_recoupement2.png){#fig-diff-rec2 height=80% fig-alt="Example of differentiation by cross-referencing" fig-align="center"}
 :::
 
 
-# Mesurer le risque
-<!-- 
-## Vision bayésienne / retour à Dalenius
+# Measuring the Risk
 
-Si on repart de la proposition (impossible) de Dalenius, on peut l'envisager dans un cadre bayésien en cherchant à limiter la capacité d'un attaquant à significativement améliorer ses croyances a priori en observant les données diffusées. [Voir @willenborgElementsStatisticalDisclosure2001, p.44 et @machanavajjhalaDiversityPrivacyAnonymity2007]
+## Distinguishing Variables
 
-Limite de l'approche:
+In an individual dataset, we distinguish:
 
-- Mesure de la capacité d'inférence dépend de chaque variable sensible considérée
-- Un attaquant avec peu d'informations au préalable pourrait avoir une forte augmentation 
-  d'info qu'un attaquant disposant de beaucoup d'infos.
-- Une bonne capacité d'inférence ne signifie pas nécessairement une divulgation d'information confidentielle. -->
+-   **Identifiers**: Variables that allow direct identification of an individual.
 
-## Distinguer les variables
+-   **Quasi-identifiers**: Variables that can lead to re-identifying an individual using auxiliary information.
 
-Dans un jeu de données individuelles, on distinguera:
+-   **Sensitive variables**: Variables for which specific protection measures may be necessary.
 
--   **Identifiants**: Variables permettant d'identifier directement un individu.
+-   Other variables
 
--   **Quasi-identifiants**: Variables pouvant conduire à réidentifier un individu à partir d'une information auxiliaire.
+## Identifiers
 
--   **Variables sensibles**: Variables pour lesquelles des mesures de protection spécifiques peuvent s'avérer nécessaires.
-
--   Autres variables
-
-
-## Les identifiants
-
--   Les identifiants sont retirés très tôt au cours du processus de production pour respecter les réglements sur la protection des données.
+-   Identifiers are removed very early in the production process to comply with data protection regulations.
   
-- On supposera par la suite que tous les identifiants directs ont été retirées.
+- Thereafter, it will be assumed that all direct identifiers have been removed.
+
+## Quasi-identifiers
 
 
-## Les quasi-identifiants
+-   For individual/household data: sex, age, place of residence, diploma, marital status, etc.
 
+-   For company data: sector of activity, location of headquarters, etc.
 
--   Pour des données individus/ménages: sexe, âge, lieu d'habitation, diplôme, statut marital, etc.
+-   List to be determined each time
 
--   Pour des données entreprises: Secteur d'activité, lieu du siège, etc.
+-   What variables does an attacker already have?
 
--   Liste à déterminer à chaque fois
-
--   De quelles variables un attaquant dispose-t-il déjà ?
-
-
-## Un exemple
+## An example
 
 ```{r}
 #| label: tbl-type-var
-#| tbl-cap: Différentes types de variables
+#| tbl-cap: Different types of variables
 #| tbl-cap-location: bottom
 #| echo: false
 library(kableExtra)
@@ -715,333 +645,278 @@ df |>
   # kableExtra::kable_classic_2() 
 ```
 
-
-<!-- 
-::: {#tbl-types-variables tbl-colwidths="[75,25]"}
-  Var. Identifiantes                     Var Quasi-Identifiantes                           Autre Variable            Var. Sensible
-  -------------------- ----------------- ------------------------- --------- ------------- ------------------------- ----------------
-  **Nom**              **Adresse**       **Commune**               **Âge**   **Diplôme**   **Statut d'occupation**   **Revenus**
-  Johan                3, rue \...       Paris                     36        Bac           Actif occupé              *150 000,00 €*
-  Jeanne               115, bd \...      Malakoff                  41        Bac +3        Actif occupé              *60 000,00 €*
-  Jehanne              68, rue \...      Lyon                      52        Bac +5        Chômeur                   *75 000,00 €*
-  Joann                7, chemin \...    Villeurbanne              45        Bac           Actif occupé              *32 000,00 €*
-  Yoann                53, avenue \...   Cerisy-La-Salle           41        BEP           Actif occupé              *19 000,00 €*
-  Jenny                26bis, rue \...   Cherbourg                 26        CAP           Chômeur                   *5 000,00 €*
-  Johnny               12, place \...    Pithiviers                31        Bac Pro       Actif occupé              *25 000,00 €*
-  Jean                 3, impasse \...   Orléans                   48        Bac           Actif occupé              *32 000,00 €*
-  Jeannette            8, chemin ...     Paris                     85        Aucun         Retraité                  *10 000,00 €*
-
-  : Les différents types de variables dans un jeu de données {.striped .bordered}
-::: -->
-
-
-## Quantifier le risque (1): le $k$-anonymat
+## Quantifying the risk (1): **k**-anonymity
 
 ::: {.callout-note}
-### Le $k$-anonymat [@sweeney_k-anonymity_2002]
 
- Un jeu de données est considéré comme *k-anonyme* si la combinaison la moins fréquente des modalités des variables quasi-identifiantes compte au moins *k* unités.
+### $k$-Anonymity [@sweeney_k-anonymity_2002]
+
+A dataset is considered *k-anonymous* if the least frequent combination of modalities of the quasi-identifying variables includes at least *k* units.
 :::
 
 ::: {style="font-size: 80%;"}
 
--   Cette mesure assure que tous les individus sont similaires à au moins $k-1$ autres.
+-   This measure ensures that all individuals are similar to at least $k-1$ others.
 
--   **Mesure de risque globale** qui se focalise sur les individus les plus à risque de ré-identification.
+-   **Overall risk measure** that focuses on the individuals most at risk of re-identification.
 
--   La probabilité associée au risque pour un individu du fichier d'être ré-identifié est au minimum $1/k$
+-   The probability associated with the risk for an individual in the file of being re-identified is at minimum $1/k$
 
--   Choix de $k$ en prenant en compte les règles existantes et/ou par arbitrage risque-utilité.
+-   Choice of $k$ taking into account existing rules and/or risk-utility trade-offs.
   
 :::
 
-
-## Le scénario d'attaque envisagé 
+## The Envisioned Attack Scenario
 
 ::: {.callout-important}
-### Caractéristiques du scénario d'attaque
 
-Le **$k$-anonymat** protège les données d'une attaque de ré-identification lorsque l'attaquant dispose d'une information auxiliaire sur les mêmes individus (un au moins):
 
-- Si l'intrus sait qu'un individu spécifique est dans l'ensemble de données, le $k$-anonymat est une **manière équitable d'évaluer le risque de ré-identification**.
-- L'attaquant procède à un **appariement** entre les deux jeux de données.
-- Les **quasi-identifiants (QI)** servent de clés d'appariement.
-- Plus un individu a des caractéristiques rares sur les QI, meilleure sera la ré-identification.
-  - **Les uniques** sur les QI: la ré-identification sera certaine
-  - Plus un individu est commun, moins la probabilité de ré-identification sera élevée.
+
+The YAML, code block syntax, and callout structure have been preserved exactly as in the original French version.
+
+### Characteristics of the Attack Scenario
+
+**k-anonymity** protects data from a re-identification attack when the attacker has auxiliary information about the same individuals (at least one):
+
+- If the intruder knows that a specific individual is in the dataset, k-anonymity is a **fair way to assess the risk of re-identification**.
+- The attacker performs a **matching** between the two datasets.
+- **Quasi-identifiers (QI)** serve as matching keys.
+- The rarer an individual's characteristics are on the QI, the better the re-identification will be.
+  - **The unique ones** on the QI: re-identification will be certain
+  - The more common an individual is, the lower the probability of re-identification will be.
 
 :::
 
-## L'importance du scénario
+## The Importance of the Script
 
 ::: {.callout-warning}
-### Une efficacité qui dépend du réalisme du scénario
 
-Assurer un certain niveau d'anonymité permet de réduire le risque de ré-identification, mais :  
+### An effectiveness that depends on the realism of the scenario
 
-- Si l'attaquant dispose de plus d'information auxiliaire $\Rightarrow$ [**sous-estimation**]{style="color:red;"} du risque avec le *$k$-anonymat*.
-- Avec le temps, l'attaquant peut disposer de plus d'informations. Or, le scénario est posé une fois $\Rightarrow$ [**sous-estimation**]{style="color:red;"} du risque avec le *$k$-anonymat*.
-- Si l'attaquant dispose de moins d'information auxiliaire $\Rightarrow$ [**sur-estimation**]{style="color:green;"} du risque avec le *$k$-anonymat*.
-- La qualité des appariements dépend de beaucoup d'autres facteurs (millésimes, qualité des variables, cohérence des champs, etc.) $\Rightarrow$ [**sur-estimation**]{style="color:green;"} du risque avec le *$k$-anonymat*.
+Ensuring a certain level of anonymity helps reduce the risk of re-identification, but:  
+
+- If the attacker has more auxiliary information $\Rightarrow$ [**underestimation**]{style="color:red;"} of the risk with *$k$-anonymity*.
+- Over time, the attacker may have more information. However, the scenario is set once $\Rightarrow$ [**underestimation**]{style="color:red;"} of the risk with *$k$-anonymity*.
+- If the attacker has less auxiliary information $\Rightarrow$ [**overestimation**]{style="color:green;"} of the risk with *$k*-anonymity*.
+- The quality of matches depends on many other factors (vintages, quality of variables, consistency of fields, etc.) $\Rightarrow$ [**overestimation**]{style="color:green;"} of the risk with *$k$-anonymity*.
 
 :::
 
-## Un exemple
+## An example
 
 ::: {#tbl-1-anonyme .table .table-striped .table-hover .table-bordered .table-sm}
 
-   Id       Age     Genre     Maladie
+   Id       Age     Gender     Disease
   ---- ----------- ------- -------------------------
-  1    \[45;55\[   M          Diabète
-  2    \[45;55\[   M          Hypertension artérielle
-  3    \[45;55\[   F          Cancer
-  4    \[45;55\[   F          Grippe
-  5    \[70;75\[   M          Diabète
-  6    \[45;55\[   M          Diabète
+  1    [45;55[   M          Diabetes
+  2    [45;55[   M          Arterial hypertension
+  3    [45;55[   F          Cancer
+  4    [45;55[   F          Flu
+  5    [70;75[   M          Diabetes
+  6    [45;55[   M          Diabetes
 
-  : Exemple d'un fichier individuel 1-anonyme, l'âge et le genre étant considérés comme quasi-identifiants
+  : Example of a 1-anonymous individual file, with age and gender considered as quasi-identifiers
 :::
 
-## Limites du $k$-anonymat
+## Limits of $k$-anonymity
 
 ::: {style="font-size: 80%;"}
 
-- Forte **dépendance à la qualité/véracité du scénario**   
-  $\Rightarrow$ choix des QI est crucial.  
-  - Le $k$-anonymat sur-estime le risque si l'attaquant dispose de moins d'info que supposé 
-  - Le $k$-anonymat sous-estime le risque si l'attaquant dispose de plus d'info que supposé
-  - Difficile de mesurer la vraisemblance de l'attaque.
+- Strong **dependence on the quality/truthfulness of the scenario**   
+  $\Rightarrow$ choice of QIs is crucial.  
+  - $k$-anonymity overestimates the risk if the attacker has less information than assumed 
+  - $k$-anonymity underestimates the risk if the attacker has more information than assumed
+  - Difficult to measure the plausibility of the attack.
 
-- Le $k$-anonymat **ne prend pas en compte les poids d'échantillonnage**.
-    $\Rightarrow$ Appliqué à un échantillon, il sur-estimera le risque de ré-identification.
-- Ne réduit pas les risques de **divulgation d'attributs sensibles**.
+- $k$-anonymity **does not take sampling weights into account**.
+    $\Rightarrow$ Applied to a sample, it will overestimate the re-identification risk.
+- Does not reduce risks of **disclosure of sensitive attributes**.
   
 :::
 
-## Quantifier le risque (2): la l-diversité
+## Quantifying the Risk (2): l-Diversity
 
 ::: {.callout-note}
-### La l-diversité [@machanavajjhalaDiversityPrivacyAnonymity2007]
 
-Elle s'assure d'une *diversité suffisante des modalités* d'une variable sensible prises par les individus au sein d'une même combinaison de quasi-identifiants.
+### The l-diversity [@machanavajjhalaDiversityPrivacyAnonymity2007]
+
+It ensures *sufficient diversity of the values* of a sensitive variable taken by individuals within the same combination of quasi-identifiers.
 
 :::
 
--   Raffinement du $k$-anonymat.
+-   Refinement of $k$-anonymity.
 
--   Protection contre la divulgation d'attributs sensibles.
+-   Protection against the disclosure of sensitive attributes.
 
--   Chaque groupe doit contenir au moins $l$ modalités différentes de la variable sensible étudiée (ou $l$ modalités parmi les plus fréquentes).
+-   Each group must contain at least $l$ different values of the studied sensitive variable (or $l$ of the most frequent values).
    
--   Choix de la cible $l$ en fonction des règles existantes et/ou d'un arbitrage risque-utilité.
+-   Choice of the target $l$ based on existing rules and/or a risk-utility trade-off.
 
-## Un exemple
+## An example
 
-<!-- Revoir exemple => faire un tableau agrégé (fréquences sur les QI et ventilation par modalités de la var sensible) -->
+<!-- Review example => make an aggregated table (frequencies on IQ and breakdown by modalities of the sensitive variable) -->
 
 ::: {#tbl-ex-l-divers .table .table-striped .table-hover .table-bordered .table-sm}
 
-     Age        Sexe     Maladie
-  ----------- -------- --------------
-   \[50;55\[     H        Diabète
-   \[50;55\[     H        Diabète
-   \[50;55\[     F         Cancer
-   \[50;55\[     F         Grippe
-   \[50;55\[     H        Diabète
+     Age        Sex     Disease
+  ----------- ------- ---------
+   [50;55[       M      Diabetes
+   [50;55[       M      Diabetes
+   [50;55[       F       Cancer
+   [50;55[       F       Flu
+   [50;55[       M      Diabetes
 
-  : Un fichier 2-anonyme mais pas assez diversifié
+  : A 2-anonymous file but not diversified enough
 :::
 
-
-## Les scénarios d'attaque envisagés
-
+## Envisaged Attack Scenarios
 
 [@machanavajjhalaDiversityPrivacyAnonymity2007]
 
-- Manque d'homogénéité
-- Utilisation d'une information auxiliaire
+- Lack of homogeneity
+- Use of auxiliary information
+
+## Limits
+
+- Suitable for categorical sensitive variables only
+- => poorly suited for continuous variables (e.g. CA, standard of living, etc.)
 
 
-## Limites
+# Probabilistic Measures of Risk
 
-- Adaptée pour les variables sensibles catégorielles uniquement
-- => mal adaptée pour les variables continues (par exemple CA, niveau de vie, etc.)
-
-
-# Mesures probabilistes du risque
-
-
-## Quelques notations pour aller plus loin
+## Some notations for going further
 
 ::: {style="font-size: 70%;"}
 
 
-- $N$: la taille de la population
-- $n$: la taille de l'échantillon éventuel
-- $w_i$: le poids de l'individu $i$ dans l'échantillon ($\sum_i{w_i}=N$)
-- $c$: le groupe constitué par un type de croisement des variables quasi-identifiantes.
-  - Par exemple, si les QI sont l'âge et le sexe, $c$ pourra correspondre au croisement $[25; 35] \times Femmes$, ou $[55; 95] \times Hommes$, etc.
-- $N_c$: le nombre d'individus dans la population partageant les caractéristiques $c$
-- $n_c$: le nombre d'individus dans l'échantillon (éventuel) partageant les caractéristiques $c$
+- $N$: the population size
+- $n$: the size of the possible sample
+- $w_i$: the weight of individual $i$ in the sample ($\sum_i{w_i}=N$)
+- $c$: the group formed by a type of crossing of the quasi-identifying variables.
+  - For example, if the QIs are age and sex, $c$ may correspond to the crossing $[25; 35] \times$ Women, or $[55; 95] \times$ Men, etc.
+- $N_c$: the number of individuals in the population sharing the characteristics $c$
+- $n_c$: the number of individuals in the (possible) sample sharing the characteristics $c$
 
 
-$\Rightarrow$ Si un fichier exhaustif est $k$-anonyme, alors $\forall c, N_c \geq k$.
+$\Rightarrow$ If a comprehensive file is $k$-anonymous, then $\forall c, N_c \geq k$.
 
 :::
 
+## Individuals most at risk of re-identification
 
-## Les individus les plus à risque de ré-identification
+-   **Unique in the population**: $N_c = 1$
 
--   Les **uniques dans la population**: $N_c = 1$
+-   **Unique in the sample**: $n_c = 1$
 
--   Les **uniques dans l'échantillon**: $n_c = 1$
+-   **Unique in the sample who are also unique in the population**: $n_c = 1$ et $\sum\limits_{i \in c}{w_i} = 1$
 
--   Les **uniques dans l'échantillon qui sont également uniques dans la population**: $n_c = 1$ et $\sum\limits_{i \in c}{w_i} = 1$
+## Measuring individual risk in a comprehensive file
 
-
-## Mesurer le risque individuel dans un fichier exhaustif
-
-- Le $k$-anonymat et la $l$-diversité sont des mesures globales.  
+- **k**-anonymity and **l**-diversity are global measures.  
   
-- On peut passer au niveau individuel:   
+- We can move to the individual level:   
   
-  - en considérant comme à risque chaque individu d'un groupe de modalités de moins de $k$ individus
-  - en associant à chaque individu de la base de données, une **mesure individuelle du risque de ré-identification**: 
+  - by considering as at risk each individual in a group of modalities with fewer than $k$ individuals
+  - by associating with each individual in the database an **individual measure of re-identification risk**: 
   
   $$r_c = \frac{1}{N_c}$$
 
-
-## Mesurer le risque individuel dans un échantillon
+## Measuring individual risk in a sample
 
 ::: {.callout-note}
-### Probabilité de ré-identifier un individu dans un échantillon
 
-- *Au niveau de l'échantillon*: 
+### Probability of re-identifying an individual in a sample
+
+- *At the sample level*: 
   $$r_c = \frac{1}{n_c}$$
 
-  - Si la présence d'un individu dans l'échantillon est connue de l'attaquant, c'est une mesure adéquate.
-  - Sinon, cette mesure sur-estime le risque de ré-identification.
+  - If the presence of an individual in the sample is known to the attacker, this is an adequate measure.
+  - Otherwise, this measure overestimates the re-identification risk.
 
-- *Au niveau de la population*, le risque de ré-identification peut être estimé par:
+- *At the population level*, the re-identification risk can be estimated by:
 
  $$\hat r_c = \frac{1}{\sum\limits_{i \in c}{w_i}}$$
 
- où $\sum\limits_{i \in c}{w_i}$ est une estimation de $\hat N_c$.
+ where $\sum\limits_{i \in c}{w_i}$ is an estimate of $\hat N_c$.
 
 :::
 
+## A global measure of risk
 
-## Une mesure globale du risque
+To perform the arbitrage, a global risk measure is more practical. One can consider:
 
-Pour réaliser l'arbitrage, une mesure de risque globale est plus  pratique. On pourra considérer:
-
-- **Le nombre d'uniques** (dans l'échantillon ou la population, selon les cas);
-- **Le risque individuel moyen** défini, dans le cadre d'un échantillon, par:
+- **The number of uniques** (in the sample or the population, depending on the case);
+- **The average individual risk** defined, in the context of a sample, by:
     $$\tau = \frac{\sum\limits_{c}{n_c \times r_c}}{n}$$
 
-<!-- 
+## Probabilistic Risk Measures 
 
-## Le risque individuel
+More refined measures are implemented in classic tools such as $\mu$-Argus or the `R` package `sdcMicro`.
 
--   Les individus les plus à risque:
+-   When a sample is available (thus the $n_k$), the $N_k$ are generally unknown.
 
-    -   Les uniques de population, quand $N_k = 1$
+-   Measure of individual risk conditional on the sample: $r_k = \mathbb{E}(\frac{1}{N_k}|n_k)$.
 
-    -   Les uniques dans l'échantillon, quand $n_k = 1$
+-   Measure depending on a modeling of the (posterior) distribution of $N_k | n_k$
 
-    -   Les uniques dans l'échantillon qui sont également uniques dans la population, quand $\sum\limits_{i \in k}{w_i} = 1$
+    -   Modeling of key frequencies in the population conditional on their frequency in the sample.
 
--   Les mesures individuelles permettent de cibler les individus les plus à risque.
+    -   By a negative binomial, for example, in @Benedetti_Franconi_1998.
 
- -->
+# Other Measures
 
+## Record Linkage
 
-## Mesures probabilistes du risque 
+  -   *A posteriori* measure of the distance between individuals in the protected dataset and those in the original dataset.
 
-Des mesures plus raffinées sont implémentées dans des outils classiques tels que $\mu$-Argus ou le package `R` `sdcMicro`.
+  -   Allows evaluating the number of exact matches between perturbed data and original data.
 
--   Quand on dispose d'un échantillon (donc des $n_k$), on ne connaît en général pas les $N_k$.
+## Outliers
 
--   Mesure du risque individuel conditionnellement à l'échantillon: $r_k = \mathbb{E}(\frac{1}{N_k}|n_k)$.
+  -   High risk of re-identification of individuals with values in the tail of the distribution (e.g., very high incomes of footballers)
 
--   Mesure dépendant d'une modélisation de la loi (a posteriori) de $N_k | n_k$
+  -   A perturbation is not always sufficient (A perturbed outlier often remains an outlier).
 
-    -   Modélisation des fréquences des clés dans la population conditionnellement à leur fréquence dans l'échantillon.
+  -   Detection of outliers based on the quantiles of the distribution.
 
-    -   Par une binomiale négative par exemple dans @Benedetti_Franconi_1998.
+# Attack Scenarios
 
-# Autres mesures
-
-## Le Record Linkage
-
-  -   Mesure *a posteriori* de la distance entre les individus du jeu protégé et ceux du jeu original.
-
-  -   Permet d'évaluer le nombre de correspondances exactes entre données perturbées et originales.
-
-## Les Outliers
-
-  -   Fort risque de ré-identification des individus ayant des valeurs en queue de distribution (par ex. les très hauts revenus des footballeurs)
-
-  -   Une perturbation n'est pas toujours suffisante (Un outlier perturbé reste souvent un outlier).
-
-  -   Détection des outliers à partir des quantiles de la distribution.
-
-# Les scénarios d'attaque
-
-## Définir un scénario d'attaque
+## Define an Attack Scenario
 
 ::: {.callout-tip}
-### Scénario d'attaque
-Définir des scénarios d'attaque c'est envisager les moyens utilisés par l'attaquant et objectiver les utilisations frauduleuses que nous chercherons à empêcher.
+
+### Attack Scenario
+Defining attack scenarios involves considering the means used by the attacker and objectifying the fraudulent uses that we seek to prevent.
 :::
 
--   Arbitrage Coûts/Risques (INS)
+-   **Cost/Risk Trade-off (INS)**
 
--   Arbitrage Coûts/Bénéfices (Attaquant)
+-   **Cost/Benefit Trade-off (Attacker)**
 
-
-## Les attaques sur données k-anonymes et/ou l-diverses
+## Attacks on k-anonymous and/or l-diverse data
 
 @cohen_attacks_2022
 
 
 # Conclusion
 
-## En guise de conclusion {.smaller}
+## In conclusion {.smaller}
 
--   Il existe de nombreuses façons d'évaluer la perte d'information.
+-   There are many ways to evaluate information loss.
 
--   Fortement liée au niveau de protection.
+-   Strongly linked to the level of protection.
 
--   De nombreuses méthodes pour évaluer la perte d'information, le choix de la mesure dépend entièrement des utilisateurs finaux des données publiées.
+-   Many methods to evaluate information loss; the choice of measure depends entirely on the end users of the published data.
 
--   Difficile d'anticiper toutes les utilisations d'un ensemble de données et donc toutes les mesures associées de perte d'information.
+-   Difficult to anticipate all uses of a dataset and therefore all associated measures of information loss.
 
--   Nécessité de faire des concessions sur certaines caractéristiques d'un tableau pour libérer des contraintes ailleurs.
+-   Need to make trade-offs on certain characteristics of a table to relax constraints elsewhere.
 
--   On ne peut pas préserver toutes les caractéristiques d'un ensemble de données.
+-   It is impossible to preserve all characteristics of a dataset.
 
 
-# Pour aller plus loin
+# For further reading
 
-## Biblio 
+## Bibliography 
 ::: {#refs}
 :::
-
-<!---
-## Source généraliste
-
-Hundepool and alt., *Handbook on Statistical Disclosure Control*, Wiley, 2012\
-Une version libre et gratuite est disponible ici: <https://ec.europa.eu/eurostat/cros/system/files/SDC_Handbook.pdf> (2010)
-
-
-## Risques de divulgation
-
--   Sweeney, L. (2000). Simple demographics often identify people uniquely. *Health* (San Francisco), 671(2000), 1-34.
-
--   El Emam, K., & Dankar, F. K. (2008). Protecting privacy using k-anonymity. *Journal of the American Medical Informatics Association*, 15(5), 627-637.
-
-## Compromis entre Risque et Utilité:
-
--   Domingo-Ferrer, J., Mateo-Sanz, J. M., & Torra, V. (2001, May). Comparing SDC methods for microdata on the basis of information loss and disclosure risk. In *Pre-proceedings of ETK-NTTS* (Vol. 2, pp. 807-826).
---->

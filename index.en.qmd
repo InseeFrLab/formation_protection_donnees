@@ -1,0 +1,24 @@
+---
+listing:
+  id: chapitres-en
+  contents:
+  - theorie/*.en.qmd
+  - pratique/*.en.qmd
+  - ressources/*.en.qmd
+  - glossaire/*.en.qmd
+  - '!theorie/supports/*.en.qmd'
+  - '!pratique/fiches/*.en.qmd'
+  sort: order
+  type: grid
+  image-height: 300px
+  grid-columns: 4
+page-layout: full
+toc: false
+---
+
+This site offers a range of theoretical and practical resources to help you learn about statistical data protection.
+
+::: {#chapitres-en}
+:::
+
+

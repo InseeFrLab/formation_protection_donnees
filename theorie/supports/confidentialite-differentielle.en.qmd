@@ -1,0 +1,9 @@
+---
+title: Differential privacy
+subtitle: |
+  **[DP]{.orange}**
+order: 5
+href: theorie/supports/confidentialite-differentielle.html
+image: ../../images/theorie.png
+---
+

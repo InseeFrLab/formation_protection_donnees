@@ -1,0 +1,28 @@
+---
+title: "A little bit of theory"
+description: |
+  Understand the main challenges of data protection and master the key concepts and methods.
+order: 1
+href: theorie/index.en.html
+image: ../images/theorie.png
+listing:
+  id: theorie-en
+  contents:
+    - "supports/*.en.qmd"
+    - "!supports/tour-des-methodes.qmd"
+    - "!supports/confidentialite-differentielle.qmd"
+  sort: "order"
+  type: grid
+  image-height: 300px
+  grid-columns: 4
+page-layout: full
+toc: false
+---
+
+<!-- ## Resources
+
+- [Balance risk and utility](supports/arbitrer-risque-utilite.qmd)
+- [A quick overview of available methods](supports/tour-des-methodes.qmd)
+- [Processing tabular data](supports/donnees-tabulees.qmd)
+- [Processing individual data](supports/donnees-individuelles.qmd)
+- [Differential privacy](supports/confidentialite-differentielle.qmd) -->

@@ -1,0 +1,15 @@
+---
+title: About
+---
+
+# Origin of the project
+
+This project arose from a desire to share knowledge and materials with public statisticians responsible for ensuring the protection of statistical data
+before it is released to the public.
+
+# Authors
+
+- Julien Jamme, INSEE
+- Clara Baudry, INSEE
+
+
