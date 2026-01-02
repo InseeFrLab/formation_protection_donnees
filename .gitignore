@@ -1,3 +1,13 @@
 /.quarto/
 .Rproj.user
-/pratique/fiches/data/*
+pratique/fiches/data/*
+init-scripts/api-keys.R
+init-scripts/init-perplexity.sh
+_freeze/*
+!_freeze/pratique/fiches/proteger-tableaux-suppressif/
+!_freeze/pratique/fiches/proteger-tableaux-suppressif/**
+!_freeze/therorie/supports/methodes-suppressives/
+!_freeze/therorie/supports/methodes-suppressives/**
+!_freeze/site_libs/
+!_freeze/site_libs/**
+_site/
