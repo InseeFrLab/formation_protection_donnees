@@ -1,0 +1,19 @@
+---
+title: "Advanced topics"
+description: |
+  Explore topics such as synthetic data generation and applications of differential privacy.
+order: 4
+href: pratique/fiches/sujets-avances.en.html
+image: ../../images/pratique.png
+listing:
+  id: avances-en
+  contents:
+    - "generer-synth.en.qmd"
+    - "confidentialite-differentielle.en.qmd"
+  sort: false
+  type: grid
+  image-height: 300px
+  grid-columns: 3
+page-layout: full
+toc: false
+---

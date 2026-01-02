@@ -1,0 +1,37 @@
+---
+title: In practice
+description: Learn how to manipulate concepts, assess risks, and use methods.
+order: 2
+href: pratique/index.en.html
+image: ../images/pratique.png
+listing:
+  id: pratique-en
+  contents:
+  - fiches/suppressif.en.qmd
+  - fiches/perturbatif.en.qmd
+  - fiches/arbitrage.en.qmd
+  - fiches/sujets-avances.en.qmd
+  - fiches/description-data.en.qmd
+  sort: false
+  type: grid
+  image-height: 300px
+  grid-columns: 3
+page-layout: full
+toc: false
+---
+
+::: {.callout-tip}
+
+# To practice
+
+To reproduce the results and complete the exercises, you can work
+directly on the[`datalab`](datalab.sspcloud.fr)[INSEE website](datalab.sspcloud.fr).
+
+If you have an account, you can[open an RStudio service](https://datalab.sspcloud.fr/launcher/ide/rstudio?name=rstudio-formation-protection-exos&version=2.3.1&s3=region-ec97c721&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Frstudio-exos.sh»)or[an R-Python vscode service](https://datalab.sspcloud.fr/launcher/ide/vscode-r-python-julia?name=vscode-formation-protection-exos&version=2.3.5&s3=region-ec97c721&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation_protection_donnees%2Frefs%2Fheads%2Fmain%2Finit-scripts%2Fvscode-r-python-exos.sh»), whichever you prefer.
+
+These services will automatically install the packages
+needed to complete the exercises in all of the practical worksheets.
+
+:::
+
+

@@ -1,0 +1,19 @@
+---
+title: "Balancing risk and utility"
+description: |
+  Tools available to perform the trade-off
+order: 3
+href: pratique/fiches/arbitrage.en.html
+image: ../../images/pratique.png
+listing:
+  id: arbitrage-en
+  contents:
+    - "mesurer-risque.en.qmd"
+    - "mesurer-utilite.en.qmd"
+  sort: false
+  type: grid
+  image-height: 300px
+  grid-columns: 3
+page-layout: full
+toc: false
+---

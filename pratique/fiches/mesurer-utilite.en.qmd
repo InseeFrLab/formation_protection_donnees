@@ -1,0 +1,4 @@
+---
+title: Assessing the loss of information
+order: 6
+---

@@ -1,0 +1,288 @@
+---
+title: Protéger des tableaux avec la méthode des clés aléatoires
+image: ../../images/pratique.png
+code-block-bg: true
+code-block-border-left: "#bf9aff"
+code-fold: show
+---
+
+# Objectif
+
+Cette fiche présente la manière d'appliquer la méthode des clés aléatoires avec le package `cellKey`. 
+
+L'objectif principal consiste à bien maîtriser les étapes successives permettant d'appliquer la méthode.
+
+Les détails de cette méthode sont présentés [ici](theorie/supports/methodes-perturbatrices.html).
+
+
+# Les packages
+
+Pour installer les packages nécessaires, vous trouverez les instructions à suivre 
+dans la fiche [Ressources / Installer les packages et les outils sur R](../../ressources/fiches/outils-install.html).  
+
+
+```{r}
+#| eval: false
+#| echo: false
+setwd("./pratique/fiches")
+```
+
+```{r}
+#| message: false
+library(readr)
+library(purrr)
+library(dplyr)
+library(ptable)
+library(cellKey)
+```
+
+# Les données
+
+```{r}
+source("../R/fun_import_data.R")
+lfs_2023 <- import_lfs() |>
+    mutate(across(where(is.factor), as.character))
+```
+
+
+```{r}
+head(lfs_2023)
+```
+
+Pour plus d'informations sur les données, on pourra se reporter à la fiche 
+["Présentation des données"](description-data.html).  
+
+# Définition du besoin
+
+A partir des données individuelles, on souhaite diffuser l'ensemble des tableaux:
+
+- `tableau1`: `REG*SEXE*AGE6*ACTEU`
+- `tableau2`: `REG*SEXE*AGE6*DIP7`
+- `tableau3`: `REG*SEXE*AGE6*PCS1Q`
+
+# Avec le package `cellKey` 
+
+## Etape 1: Création d'une clé individuelle aléatoire
+
+Pour pouvoir reproduire la même perturbation éventuellement plus tard, il est important de choisir 
+une graine aléatoire (`seed`). Cet argument intégré à la fonction `cellKey::ck_generate_rkeys` permet 
+de regénérer les mêmes nombres aléatoires à chaque fois. 
+
+::: {.callout-tip}
+### Gestion des clés individuelles dans une chaîne de production
+
+En production, il serait préférable de générer les clés une fois et de stocker le jeu de données 
+avec les clés créées une fois. L'argument `seed` permet de générer la même séquence 
+de nombres aléatoires, mais cette reproductibilité dépend du type de machine sur laquelle cette séquence
+est générée: sur une machine `Linux`, il n'est pas garantie que le résultat soit identique à une machine 
+`Windows`.
+
+Les clés aléatoires sont le seul élément vraiement aléatoire dans la méthode dite des clés aléatoires (CKM),
+il est donc important de les conserver de manière sécurisée avec le jeu de données individuelles et de ne les transmettre 
+qu'aux personnes disposant des droits.
+
+:::
+
+```{r}
+lfs_2023$rk <- ck_generate_rkeys(dat = lfs_2023, nr_digits = 7, seed=441960)
+```
+
+Cette opération crée une colonne supplémentaire, ici appelée `rk`(pour `record key`), dont la distribution 
+est uniforme, comme souhaitée:
+
+```{r}
+hist(lfs_2023$rk)
+```
+
+
+## Etape 2: Construction du tableau
+
+### Préparation des variables
+
+Avec le package `cellKey`, il faut spécifier chaque variable: modalités, emboîtements éventuels et la modalité du total.
+
+```{r}
+dim_reg <- hier_create(
+    root = "Total", 
+    nodes = sort(unique(lfs_2023$REG))
+)
+hier_display(dim_reg)
+```
+
+
+```{r}
+dim_sexe <- hier_create(
+    root = "Total", 
+    nodes = sort(unique(lfs_2023$SEXE))
+)
+hier_display(dim_sexe)
+```
+
+
+```{r}
+dim_age6 <- hier_create(
+    root = "Total", 
+    nodes = sort(unique(lfs_2023$AGE6))
+)
+hier_display(dim_age6)
+```
+
+
+```{r}
+dim_acteu <- hier_create(
+    root = "Total", 
+    nodes = sort(unique(lfs_2023$ACTEU))
+)
+hier_display(dim_acteu)
+```
+
+```{r}
+dims_vars <- list(REG=dim_reg, SEXE=dim_sexe, AGE6=dim_age6, ACTEU = dim_acteu)
+```
+
+```{r}
+tableau1 <- ck_setup(
+  x = lfs_2023,
+  rkey = "rk",
+  dims = dims_vars
+)
+```
+
+`tableau1`est un objet `R6`, et non directement un tableau.
+
+```{r}
+class(tableau1)
+```
+
+L'ensemble des méthodes (fonctions qui s'appliquent à un objet) sont disponibles en utilisant la fonction `str(tableau1)`.
+
+
+On peut, par exemple,  contruire le tableau des comptages originaux :
+
+```{r}
+tableau1$freqtab() |> head()
+```
+
+On peut s'apercevoir que la fonction a bien calculé l'ensemble des marges du tableau et pas seulement les croisements les plus fins.
+
+
+## Etape 3: Construire la matrice de transition
+
+Pour construire la matrice de transition, on utilse le package `ptable`de la manière suivante:
+
+Les paramètres principaux sont:
+
+- `D`: l'amplitude de la déviation
+- `V`: la variance du bruit
+- `js`: le seuil d'interdiction des petites valeurs
+
+::: {.callout-important}
+### Le calcul de la matrice de transition
+
+La matrice de transition est construite de façon à respecter au mieux les contraintes suivantes:
+
+- chaque distribution est sans biais
+- chaque distribution est de variance maximale `V`
+- les zéros ne sont pas perturbés
+- aucun comptage pertrubé n'est strictement négatif
+- si $js>0$, les valeurs comprises entre $1$ et $js-1$ sont interdites.
+
+Dans le package `ptable`, les distributions sont optimisées pour maximiser leur entropie.
+
+Avec tout cela, certaines combinaisons de paramètres ne permettent pas de construire une matrice, souvent en raison 
+d'une variance trop faible.
+
+:::
+
+Choisissons pour l'exemple: `D=10`, `V=10`, `js=4`. Avec ce dernier paramètre, on choisit de ne pas avoir de comptages égaux à `1`, `2` ou `3` dans notre tableau final.
+```{r}
+ptab1 <- create_cnt_ptable(D = 10, V = 10, js = 4)
+```
+
+
+Observons les distributions de probabilités proposées:
+
+```{r}
+#| fig-height: 10
+#| fig-width: 12
+plot(ptab1, type="d")
+```
+
+
+## Etape 4: Déterminer la perturbation 
+
+La perturbation est appliquée directement par une fonction du package `cellKey`, mais il est important de noter que la table de perturbation est directement accessible dans l'objet `ptab`que nous venons de créer:
+
+```{r}
+ptab1@pTable |> head()
+```
+
+On applique cette table de perturbation à l'objet `tableau1` construit précédemment:
+
+```{r}
+params1 <- ck_params_cnts(ptab = ptab1)
+tableau1$params_cnts_set(val = params1, v = "total")
+```
+
+## Etape 5: Construire le tableau perturbé
+
+On s'appuie sur la méthode `perturb()` de notre objet `tableau1`. Celle-ci appliquera la perturbation en utilisant les clés individuelles et la matrice de transition.
+```{r}
+tableau1$perturb(v = "total")
+```
+
+
+Pour récupérer le résultat:
+
+```{r}
+tableau1$freqtab(v = "total")
+```
+
+
+## Analyser les résultats
+
+Il est important de pouvoir se faire une idée de la déformation que la perturbation a produite nos données.
+
+Le package `cellKey` propose un ensemble de métriques, dont:
+
+- `d1`: les écarts absolus entre données originales et perturbées.
+- `d2`: les écarts absolus relatifs entre données originales et perturbées.
+- `d3`: les écarts absolus entre les racines carrées des données originales et perturbées.
+
+```{r}
+tableau1$measures_cnts(v = "total", exclude_zeros = TRUE)
+```
+
+En moyenne, la perturbation a générée une déviation de $\pm2.52$ dans les cases de notre tableau.
+
+
+## Exercice 1
+
+Reproduire le résultat de la perturbation pour la case `REG=11,SEXE=1,AGE6=25,ACTEU=2`, dont les valeurs originales et perturbées sont les suivantes:
+
+```{r}
+tableau1$freqtab(v = "total") |>
+    filter(REG=="11",SEXE=="1",AGE6=="25", ACTEU=="2")
+```
+
+
+Pour cela vous aurez besoin:
+
+- de construire la clé de la case correspondante à partir des données individuelles
+- d'utiliser la table de perturbation `ptab1@pTable` pour récupérer la perturbation à appliquer sur votre case.
+
+Retrouvez-vous le même résultat que `cellKey`.
+
+## Exercice 2:
+
+Appliquer à nouveau la perturbation sur `tableau1`, en posant `js=0`. Les résultats sont-ils de meilleure qualité?
+
+
+## Exercice 3:
+
+Appliquer un arrondi de base `10` au `tableau1`. Les résultats sont-ils de meilleure qualité ?
+
+## Exercice 4:
+
+Appliquer la méthode aux deux autres tableaux de données.
+Comme ces tableaux ont des cases communes, vous vérifierez que les résultats sont bien identiques sur celles-ci.

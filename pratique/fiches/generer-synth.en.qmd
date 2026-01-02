@@ -1,0 +1,72 @@
+---
+title: Générer des données synthétiques
+order: 5
+---
+
+```{r}
+#| eval: false
+#| echo: false
+setwd("/Users/julienjamme/Documents/Code/formation_protection_donnees/pratique/fiches")
+```
+
+```{r}
+#| echo: true
+#| output: false
+library(readr)
+library(purrr)
+library(dplyr)
+library(synthpop)
+```
+
+## Importons les données
+
+```{r}
+source("../R/fun_import_data.R")
+lfs_2023 <- import_lfs()
+```
+
+
+```{r}
+head(lfs_2023)
+```
+
+Pour plus d'informations sur les données, on pourra se reporter à la fiche 
+["Présentation des données"](description-data.html).  
+
+
+## Préparation des données
+
+```{r}
+lfs_orig <- lfs_2023 |> 
+    select(-starts_with("HH")) |>
+    select(-ARR) |>
+    mutate(across(-AGE, as.character))
+```
+
+## Ordre des variables
+
+L'ordre des variables joue un rôle considérable sur les temps de traitements et sur la qualité 
+de la synthétisation. Par expérience, un ordre relativement efficace consiste à ordonner les variables
+en plaçant les variables numériques avant les variables catgéorielles et en classant les 
+variables catégorielles par ordre croissant de nombre de modalités.
+
+```{r}
+seq1 <- lfs_orig |> select(where(is.character)) |> 
+    unique() |> 
+    tidyr::pivot_longer(everything(), names_to = "var", values_to = "mod") |>
+    unique() |>
+    count(var) |>
+    arrange(n) |>
+    pull(var)
+```
+
+## Synthétiser
+```{r}
+lfs_syn <- synthpop::syn(lfs_orig |> select(-AGE), method = "cart", visit.sequence = seq1)
+```
+
+## Risque / Utilité
+
+```{r}
+synthpop::disclosure(lfs_syn, lfs_orig, keys = c("AGE6", "SEXE", "REG", "DEP"), target = c("IS_CHOM"))
+```

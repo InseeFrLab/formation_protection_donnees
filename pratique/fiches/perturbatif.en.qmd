@@ -1,0 +1,20 @@
+---
+title: "Practical perturbative methods"
+description: |
+  Learn how to apply perturbative methods using R or Python.
+order: 2
+href: pratique/fiches/perturbatif.en.html
+image: ../../images/pratique.png
+listing:
+  id: perturbatif-en
+  contents:
+    - "proteger-tableaux-cellkey.en.qmd"
+    - "proteger-micro-swapping.en.qmd"
+    - "proteger-micro-pram.en.qmd"
+  sort: false
+  type: grid
+  image-height: 300px
+  grid-columns: 3
+page-layout: full
+toc: false
+---

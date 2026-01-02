@@ -1,0 +1,134 @@
+---
+title: Apply micro-agregation
+href: pratique/fiches/proteger-micro-agregation.en.html
+code-block-bg: true
+code-block-border-left: "#bf9aff"
+code-fold: show
+---
+
+La micro-agrégation consiste à regrouper les individus d'un jeu de données individuelles selon une mesure de proximité calculée sur des variables d'iintérêt. Une fois ces groupes constitués, la valeur des individus dans chaque groupe homogène sur la variable d'intérêt est remplacée par une même valeur, par exemple la moyenne ou la médiane.
+
+Cette méthode est particulièrement adaptée pour atteindre un objectif fixé à l'avance en termes de $k$-anonymat, dès lors que des variables continues (ou des variables catégorielles ordinales) sont présentes dans la liste des variables quasi-identifiantes.
+
+La façon de procéder à l'agrégation dépend principalement de trois éléments:
+
+- comment est mesurée l'homogénéité des groupes ?
+- quel algorithme permet de les constituer ?
+- comment est réalisée l'agrégation une fois les groupes ocnstitués ? 
+
+
+## Les packages
+
+```{r}
+#| eval: false
+#| echo: false
+setwd("./pratique/fiches")
+```
+
+
+```{r}
+#| echo: false
+library(readr)
+library(purrr)
+library(dplyr)
+library(ggplot2)
+library(sdcMicro)
+```
+
+## Les données
+
+```{r}
+source("../R/fun_import_data.R")
+lfs_2023 <- import_lfs()
+```
+
+
+```{r}
+head(lfs_2023)
+```
+
+Pour plus d'informations sur les données, on pourra se reporter à la fiche 
+["Présentation des données"](description-data.html).  
+
+
+## Mesurons les risques du fichier
+
+Nous choisirons les variables quasi-identifiantes suivantes:
+```{r}
+key_vars <- c("AGE","SEXE","DEP","DIP7")
+```
+
+
+```{r}
+lfs_sdc <- sdcMicro::createSdcObj(
+  lfs_2023 |> mutate(AGE = as.double(AGE)),
+  keyVars = key_vars,
+  numVars = "AGE"
+)
+```
+
+
+Le tableau ci-dessous présente le nombre et la part d'individus du fichier ne répondant pas 
+au critère du $k$-anonymat, en fonction de la valeur de $k$.
+
+```{r}
+ks <- 2:10
+data.frame(
+  k = ks,
+  nb_ind_risk = sapply(ks, \(k) sum(lfs_sdc@risk$individual[,"fk"] < k))
+) |>
+  mutate(part_ind_risk = nb_ind_risk / nrow(lfs_2023) * 100) |>
+  knitr::kable(digits=1)
+```
+
+En choisissant de diffuser l'âge détaillé, la part d'individus à risque de 
+ré-identification est très élevée (19,6% pour k=2 et 69,2% pour k=5, par exemple).
+
+Voyons si l'application d'un algorithme de micro-agrégation permettrait de 
+réduire ces risques.
+
+
+## La micro-agrégation
+
+
+```{r}
+lfs_sdc <- microaggregation(
+  lfs_sdc,
+  variables = 'AGE',
+  aggr = 1000,
+  method = "mdav",
+  clustermethod = "clara",
+  measure = "median"
+)
+```
+
+
+```{r}
+pert <- lfs_2023 |> 
+  bind_cols(AGE_ma = lfs_sdc@manipNumVars |> pull(AGE))
+```
+
+
+```{r}
+table(pert$AGE_ma != pert$AGE)
+```
+
+
+```{r}
+head(pert |> select(DEP, SEXE, DIP7, AGE, AGE_ma))
+```
+
+
+```{r}
+pert_sdc <- sdcMicro::createSdcObj(
+  pert,
+  keyVars = c("DEP","SEXE","AGE_ma","DIP7")
+)
+
+data.frame(
+  k = ks,
+  nb_ind_risk = sapply(ks, \(k) sum(pert_sdc@risk$individual[,"fk"] < k))
+) |>
+  mutate(part_ind_risk = nb_ind_risk / nrow(lfs_2023) * 100) |>
+  knitr::kable(digits=1)
+```
