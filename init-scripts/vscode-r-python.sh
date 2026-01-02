@@ -35,3 +35,6 @@ Rscript -e "install.packages('synthpop', repos='${REPOSITR}', dependencies=TRUE)
 # Installation de la dernière version de rtauargus
 Rscript -e "install.packages('remotes', repos='${REPOSITR}')"
 Rscript -e "remotes::install_github('InseeFrLab/rtauargus', dependencies = TRUE, build_vignettes = FALSE, upgrade = 'never')"
+
+# Installation de packages python nécessaires
+pip install tiktoken
