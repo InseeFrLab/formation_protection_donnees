@@ -13,7 +13,13 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
+      
+      - name: Install libglpk-dev
+        run: |
+          sudo apt install cmake -y
+          sudo apt install zlib1g-dev -y
+          sudo apt install libglpk-dev -y
+      
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
@@ -28,11 +34,6 @@ jobs:
           cache-version: 2
           packages: |
             github::ropensci-review-tools/babelquarto@v0.1.0
-      - name: Install libglpk-dev
-        run: |
-          sudo apt install cmake -y
-          sudo apt install zlib1g-dev -y
-          sudo apt install libglpk-dev -y
       - name: Render the Quarto site with babelquarto
         run: Rscript -e 'babelquarto::render_website()'
       - name: Achieve site render
