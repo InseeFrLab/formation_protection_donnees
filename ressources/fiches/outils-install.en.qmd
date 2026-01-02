@@ -1,0 +1,85 @@
+---
+title: Install packages and tools on R
+description: Where can I find and how do I install the recommended tools and packages?
+order: 2
+href: ressources/fiches/outils-install.en.html
+image: ../../images/ressources.png
+code-fold: false
+---
+
+## R{#sec-install-packages}
+
+```{r rpackages}
+#| eval: false
+#| echo: true
+
+# Construction de l'URL du dépôt
+REPOSITR="https://packagemanager.posit.co/cran/latest"
+
+# Installation des packages R recommandés
+# install.packages('tidyverse', repos=REPOSITR, dependencies=TRUE)
+# install.packages('ggraph', repos=REPOSITR, dependencies=TRUE)
+install.packages('sdcMicro', repos=REPOSITR, dependencies=TRUE)
+install.packages('GaussSuppression', repos=REPOSITR, dependencies=TRUE)
+install.packages('cellKey', repos=REPOSITR, dependencies=TRUE)
+install.packages('synthpop', repos=REPOSITR, dependencies=TRUE)
+
+```
+
+## packages
+
+### The package`rtauargus`
+
+offers to install the version with an experimental extension:
+
+### Package
+
+```{r rtauargus}
+#| eval: false
+#| echo: true
+
+# Installation de la dernière version de rtauargus 
+# (version avec extension expérimentale)
+install.packages('remotes', repos=REPOSITR)
+remotes::install_github(
+    'InseeFrLab/rtauargus',
+    dependencies = TRUE,
+    build_vignettes = FALSE,
+    upgrade = 'never',
+    ref = "v-1.2.999-dev"
+)
+
+```
+
+### documentation:
+
+- [sdcMicro](http://sdctools.github.io/sdcMicro/)
+- [cellKey](https://sdctools.github.io/cellKey/)
+- [rtauargus](https://inseefrlab.github.io/rtauargus/)
+- [synthpop](https://synthpop.org.uk/)
+
+## Software
+
+### `Tau-ARGUS (Windows / 32 bits)`
+
+- The latest version is available on GitHub at this address:  
+  <https://github.com/sdcTools/tauargus/releases/latest>
+- Download the file`TauArgusXXXX.zip`where`XXXX`corresponds to the number of the latest version
+- Once installed, simply unzip the file to the desired location on your machine.
+
+To launch`Tau-ARGUS`, simply double-click on the file`TauArgus.exe`in the root directory of the unzipped folder.
+
+Some documentation—a little outdated—can be downloaded[here](https://research.cbs.nl/casc/Software/TauManualV4.1.pdf)
+
+### `Mu-ARGUS (Windows / 64 bits)`
+
+The latest version is also available on GitHub at this address:
+<https://github.com/sdcTools/tauargus/releases/latest>
+
+The installation procedure is identical to that of`Tau-ARGUS`.
+
+Some documentation (a bit old) can be downloaded at this address:
+
+<https://research.cbs.nl/casc/Software/MUmanual5.1.3.pdf>
+
+

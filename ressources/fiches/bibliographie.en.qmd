@@ -1,0 +1,25 @@
+---
+title: "Indicative bibliography"
+description: |
+  References for further reading.
+order: 1
+href: ressources/fiches/bibliographie.en.html
+image: ../../images/ressources.png
+---
+
+
+<!--- Add references in each section / sheet by linking to the available .bib file --->
+
+## General resources
+
+- [Handbook on Statistical Disclosure Control](https://sdctools.github.io/HandbookSDC/)
+
+## Suppressive methods
+
+- [Manuel de protection des données tabulées (French version)](https://inseefrlab.github.io/manuel-protection-tableaux/)
+
+## Dealing with microdata
+
+- [La gestion de la confidentialité des données individuelles (INSEE) (French version)](https://www.insee.fr/fr/statistiques/2535625)
+- [Statistical Disclosure Control for Microdata — A Practice Guide for sdcMicro](https://sdcpractice.readthedocs.io)
+- [Statistical Disclosure Control for Microdata — Theory](https://sdctheory.readthedocs.io)

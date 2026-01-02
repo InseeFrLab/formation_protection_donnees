@@ -1,0 +1,19 @@
+---
+title: "Resources"
+description: |
+  Find additional resources (articles, documentation, tools) to go further.
+order: 3
+href: ressources/index.en.html
+image: ../images/ressources.png
+listing:
+  id: ressources-en
+  contents:
+    - "fiches/*.en.qmd"
+  sort: "order"
+  type: grid
+  image-height: 300px
+  grid-columns: 4
+page-layout: full
+toc: false
+---
+
