@@ -489,38 +489,7 @@ Exemples :
  - Divulgation d'une information sensible pour un groupe entier de personnes.
  - Sans nécessairement avoir besoin de ré-identifier préalablement.
 
-<!-- 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:2px;font-family:Arial, sans-serif;font-size:30px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:2px;font-family:Arial, sans-serif;font-size:28px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-p8l5{border-color:#9b9b9b;color:#656565;text-align:right;vertical-align:top}
-.tg .tg-o57y{border-color:#9b9b9b;color:#656565;text-align:center;vertical-align:top}
-.tg .tg-8trw{border-color:#9b9b9b;color:#656565;text-align:left;vertical-align:top}
-.tg .tg-ho01{border-color:#9b9b9b;color:#9a0000;font-weight:bold;text-align:right;vertical-align:top}
-</style>
-<table class="tg"><thead>
-  <tr>
-    <th class="tg-8trw"></th>
-    <th class="tg-o57y">Hommes</th>
-    <th class="tg-o57y">Femmes</th>
-  </tr></thead>
-<tbody>
-  <tr>
-    <td class="tg-8trw">Diabétiques</td>
-    <td class="tg-p8l5">30</td>
-    <td class="tg-p8l5">40</td>
-  </tr>
-  <tr>
-    <td class="tg-8trw">Non Diabétiques</td>
-    <td class="tg-p8l5">12</td>
-    <td class="tg-ho01">0</td>
-  </tr>
-</tbody>
-</table> 
--->
+
 
 ```{r}
 #| label: tbl-div-attr
@@ -547,15 +516,6 @@ df |>
   )
   # kableExtra::kable_classic_2() 
 ```
-
-<!-- 
-
-|                 | Hommes | Femmes |
-|-----------------|:------:|:------:|
-| Diabétiques     |     30 |     40 |
-| Non Diabétiques |     12 |  **0** | 
-
-: Un exemple de divulgation d'attributs de groupe -->
 
 
 
@@ -634,17 +594,7 @@ Exemples:
 
 
 # Mesurer le risque
-<!-- 
-## Vision bayésienne / retour à Dalenius
 
-Si on repart de la proposition (impossible) de Dalenius, on peut l'envisager dans un cadre bayésien en cherchant à limiter la capacité d'un attaquant à significativement améliorer ses croyances a priori en observant les données diffusées. [Voir @willenborgElementsStatisticalDisclosure2001, p.44 et @machanavajjhalaDiversityPrivacyAnonymity2007]
-
-Limite de l'approche:
-
-- Mesure de la capacité d'inférence dépend de chaque variable sensible considérée
-- Un attaquant avec peu d'informations au préalable pourrait avoir une forte augmentation 
-  d'info qu'un attaquant disposant de beaucoup d'infos.
-- Une bonne capacité d'inférence ne signifie pas nécessairement une divulgation d'information confidentielle. -->
 
 ## Distinguer les variables
 
@@ -714,25 +664,6 @@ df |>
   )
   # kableExtra::kable_classic_2() 
 ```
-
-
-<!-- 
-::: {#tbl-types-variables tbl-colwidths="[75,25]"}
-  Var. Identifiantes                     Var Quasi-Identifiantes                           Autre Variable            Var. Sensible
-  -------------------- ----------------- ------------------------- --------- ------------- ------------------------- ----------------
-  **Nom**              **Adresse**       **Commune**               **Âge**   **Diplôme**   **Statut d'occupation**   **Revenus**
-  Johan                3, rue \...       Paris                     36        Bac           Actif occupé              *150 000,00 €*
-  Jeanne               115, bd \...      Malakoff                  41        Bac +3        Actif occupé              *60 000,00 €*
-  Jehanne              68, rue \...      Lyon                      52        Bac +5        Chômeur                   *75 000,00 €*
-  Joann                7, chemin \...    Villeurbanne              45        Bac           Actif occupé              *32 000,00 €*
-  Yoann                53, avenue \...   Cerisy-La-Salle           41        BEP           Actif occupé              *19 000,00 €*
-  Jenny                26bis, rue \...   Cherbourg                 26        CAP           Chômeur                   *5 000,00 €*
-  Johnny               12, place \...    Pithiviers                31        Bac Pro       Actif occupé              *25 000,00 €*
-  Jean                 3, impasse \...   Orléans                   48        Bac           Actif occupé              *32 000,00 €*
-  Jeannette            8, chemin ...     Paris                     85        Aucun         Retraité                  *10 000,00 €*
-
-  : Les différents types de variables dans un jeu de données {.striped .bordered}
-::: -->
 
 
 ## Quantifier le risque (1): le $k$-anonymat
@@ -939,21 +870,7 @@ Pour réaliser l'arbitrage, une mesure de risque globale est plus  pratique. On 
 - **Le risque individuel moyen** défini, dans le cadre d'un échantillon, par:
     $$\tau = \frac{\sum\limits_{c}{n_c \times r_c}}{n}$$
 
-<!-- 
 
-## Le risque individuel
-
--   Les individus les plus à risque:
-
-    -   Les uniques de population, quand $N_k = 1$
-
-    -   Les uniques dans l'échantillon, quand $n_k = 1$
-
-    -   Les uniques dans l'échantillon qui sont également uniques dans la population, quand $\sum\limits_{i \in k}{w_i} = 1$
-
--   Les mesures individuelles permettent de cibler les individus les plus à risque.
-
- -->
 
 
 ## Mesures probabilistes du risque 
@@ -1027,21 +944,3 @@ Définir des scénarios d'attaque c'est envisager les moyens utilisés par l'att
 ## Biblio 
 ::: {#refs}
 :::
-
-<!---
-## Source généraliste
-
-Hundepool and alt., *Handbook on Statistical Disclosure Control*, Wiley, 2012\
-Une version libre et gratuite est disponible ici: <https://ec.europa.eu/eurostat/cros/system/files/SDC_Handbook.pdf> (2010)
-
-
-## Risques de divulgation
-
--   Sweeney, L. (2000). Simple demographics often identify people uniquely. *Health* (San Francisco), 671(2000), 1-34.
-
--   El Emam, K., & Dankar, F. K. (2008). Protecting privacy using k-anonymity. *Journal of the American Medical Informatics Association*, 15(5), 627-637.
-
-## Compromis entre Risque et Utilité:
-
--   Domingo-Ferrer, J., Mateo-Sanz, J. M., & Torra, V. (2001, May). Comparing SDC methods for microdata on the basis of information loss and disclosure risk. In *Pre-proceedings of ETK-NTTS* (Vol. 2, pp. 807-826).
---->
