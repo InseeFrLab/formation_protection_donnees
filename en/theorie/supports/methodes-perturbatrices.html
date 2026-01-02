@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="en-EN">
+<head>
+<link rel="alternate" hreflang="fr" href="/theorie/supports/methodes-perturbatrices.html" />
+<link rel="alternate" hreflang="en" href="/en/theorie/supports/methodes-perturbatrices.en.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script><script src="../../site_libs/quarto-html/tabby.min.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+<meta name="author" content="Insee, Département des Méthodes Statistiques">
+<title>Statistical Disclosure Control for Public Statistics – Perturbative methods</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+<style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ea8535d309a38c52e88d69daf30b07d0.css">
+<link rel="stylesheet" href="_extensions/InseeFrLab/onyxia/logo.css">
+<link rel="stylesheet" href="custom.css">
+<link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center"><h1 class="title">Perturbative methods</h1>
+  <p class="subtitle"></p>
+<p><strong><span class="orange">For tabular data or microdata</span></strong></p>
+<p></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Insee, Département des Méthodes Statistiques 
+</div>
+</div>
+</div>
+
+</section><section id="TOC"><nav role="doc-toc"><h2 id="toc-title">Sommaire</h2>
+<ul>
+<li><a href="#/introduction" id="/toc-introduction">Introduction</a></li>
+<li><a href="#/post-tabulation-methods" id="/toc-post-tabulation-methods"><span class="header-section-number">1</span> Post-Tabulation Methods</a></li>
+<li><a href="#/rounding-methods-and-related-methods" id="/toc-rounding-methods-and-related-methods"><span class="header-section-number">2</span> Rounding Methods and Related Methods</a></li>
+<li><a href="#/the-random-keys-method-ckm" id="/toc-the-random-keys-method-ckm"><span class="header-section-number">3</span> The random keys method (CKM)</a></li>
+<li><a href="#/microaggregation" id="/toc-microaggregation"><span class="header-section-number">4</span> Microaggregation</a></li>
+<li><a href="#/additive-noise-injection" id="/toc-additive-noise-injection"><span class="header-section-number">5</span> Additive Noise Injection</a></li>
+<li><a href="#/targeted-record-swapping-trs" id="/toc-targeted-record-swapping-trs"><span class="header-section-number">6</span> Targeted Record Swapping (TRS)</a></li>
+<li><a href="#/post-randomisation-method-pram" id="/toc-post-randomisation-method-pram"><span class="header-section-number">7</span> Post-Randomisation Method (PRAM)</a></li>
+<li><a href="#/synthetic-data" id="/toc-synthetic-data"><span class="header-section-number">8</span> Synthetic Data</a></li>
+</ul></nav></section><section><section id="introduction" class="title-slide slide level1 unnumbered center" data-background-image="background.svg" data-background-size="contain"><h1>Introduction</h1>
+
+</section><section id="objectives" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Objectives</h2>
+<div style="font-size: 80%;">
+<ul>
+<li>What are the perturbative methods that allow limiting disclosure risks?<br>
+</li>
+<li>Which methods apply to tabular data, and which to individual data?<br>
+</li>
+<li>What type of risk do the methods protect us from?<br>
+</li>
+<li>What are the consequences on information loss?</li>
+</ul>
+</div>
+</section><section id="main-methods-available" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Main methods available</h2>
+<div id="tbl-class-meth" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-class-meth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#C44D58;border-spacing:0;}
+.tg td{background-color:#F9CDAD;border-color:#C44D58;border-style:solid;border-width:2px;color:#002b36;
+  font-family:Arial, sans-serif;font-size:24px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#FE4365;border-color:#C44D58;border-style:solid;border-width:1px;color:#fdf6e3;
+  font-family:Arial, sans-serif;font-size:28px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-ouj0{border-color:#fdf6e3;text-align:center;vertical-align:top}
+.tg .tg-ukzp{border-color:#fdf6e3;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-jusz{background-color:#fe4365;border-color:#fdf6e3;color:#fdf6e3;font-weight:bold;text-align:center;vertical-align:top}
+</style>
+<table class="tg">
+<thead><tr>
+<th class="tg-ukzp">
+</th>
+<th class="tg-ukzp" colspan="2">
+Methods
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="tg-jusz">
+Treatments
+</td>
+<td class="tg-jusz">
+Non-Perturbative
+</td>
+<td class="tg-jusz">
+Perturbative
+</td>
+</tr>
+<tr>
+<td class="tg-jusz" rowspan="3">
+<br>Before tabulation <br>(on micro-data)<br>
+</td>
+<td class="tg-ouj0">
+Resampling
+</td>
+<td class="tg-ouj0">
+Noise injection
+</td>
+</tr>
+<tr>
+<td class="tg-ouj0">
+Variable recoding
+</td>
+<td class="tg-ouj0">
+Micro-aggregation
+</td>
+</tr>
+<tr>
+<td class="tg-ouj0">
+Local suppression
+</td>
+<td class="tg-ouj0">
+Swapping (rank or targeted)
+</td>
+</tr>
+<tr>
+<td class="tg-jusz" rowspan="3">
+<br>After tabulation <br>(on aggregated data)<br>
+</td>
+<td class="tg-ouj0">
+Variable recoding
+</td>
+<td class="tg-ouj0">
+Rounding
+</td>
+</tr>
+<tr>
+<td class="tg-ouj0">
+Cell suppression
+</td>
+<td class="tg-ouj0">
+Random keys
+</td>
+</tr>
+<tr>
+<td class="tg-ouj0">
+</td>
+<td class="tg-ouj0">
+Differential privacy algorithm
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-class-meth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table 1: : Methods for managing data protection
+</figcaption></figure>
+</div>
+<p>There is also another technique consisting of producing synthetic data.</p>
+</section><section id="perturbative-vs.-suppressive" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Perturbative vs. Suppressive</h2>
+<p>In which cases should perturbative methods be preferred over suppressive methods?</p>
+<ul>
+<li>Handling complex disseminations that are difficult to treat with suppressive methods:
+<ul>
+<li>numerous tables (industrial dissemination),</li>
+<li>dissemination at multiple moments</li>
+<li>geographic or nomenclature differentiation</li>
+</ul>
+</li>
+<li>Controlling the loss of utility more finely:
+<ul>
+<li>a possible trade-off in general by adjusting the noise parameters</li>
+<li>no suppression =&gt; information available and manipulable</li>
+</ul>
+</li>
+<li>An institutional framework that authorizes such use</li>
+</ul></section><section id="perturbative-vs.-suppressive-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Perturbative vs. Suppressive</h2>
+<p>Some limitations of perturbative methods:</p>
+<ul>
+<li>In some cases, loss of basic data characteristics (additivity in tables)</li>
+<li>A less immediate perception of secrecy handling compared to blanking</li>
+<li>Necessary education for the public regarding data usage</li>
+<li>Historical secrecy rules to revisit, as they are adapted for suppressive methods</li>
+</ul></section></section><section><section id="post-tabulation-methods" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="1"><h1>
+<span class="header-section-number">1</span> Post-Tabulation Methods</h1>
+
+</section><section id="post-tabulation-methods-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Post-tabulation methods</h2>
+<ul>
+<li>Methods that are applied to aggregated data</li>
+<li>Some methods (particularly rounding) are more suitable for counts than for volumes</li>
+<li>Perturbation of all or part of the tables according to the method</li>
+</ul></section><section id="some-challenges" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Some Challenges?</h2>
+<p>When perturbing data in tables:</p>
+<ul>
+<li>Should everything be perturbed or only part of it?</li>
+<li>How to ensure coherence between tables?</li>
+<li>Should additivity be preserved within tables?</li>
+</ul>
+<p>By answering these questions, one will orient towards one method rather than another.</p>
+</section></section><section><section id="rounding-methods-and-related-methods" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="2"><h1>
+<span class="header-section-number">2</span> Rounding Methods and Related Methods</h1>
+
+</section><section id="rounding-methods-and-related-approaches" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Rounding Methods and Related Approaches</h2>
+<ul>
+<li>Deterministic rounding</li>
+<li>Random rounding</li>
+<li>Small Count Rounding</li>
+<li>Controlled Rounding</li>
+</ul>
+<p>Methods primarily adapted for count tables.</p>
+<p>For more information: <a href="">https://sdctools.github.io/HandbookSDC/05-frequency-tables.html#sec-Rounding_freq</a> <span class="citation" data-cites="hundepool_handbook_2024">(<a href="#/references" role="doc-biblioref" onclick="">Hundepool et al. 2024</a>)</span></p>
+</section><section id="an-example" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An example</h2>
+<p>Suppose the following counting table (sensitive information in <strong>bold</strong>)</p>
+<div id="tbl-compt-orig" class="table table-striped table-hover table-bordered quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-compt-orig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table table-striped table-hover table-bordered">
+<thead><tr class="header">
+<th style="text-align: center;">Characteristic</th>
+<th style="text-align: center;">North</th>
+<th style="text-align: center;">West</th>
+<th style="text-align: center;">South</th>
+<th style="text-align: center;">East</th>
+<th style="text-align: center;">Total</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Polluting</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Non-Polluting</td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">47</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-compt-orig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table 2: Number of companies according to their location and the polluting nature of their activities
+</figcaption></figure>
+</div>
+</section><section id="deterministic-or-random-rounding" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Deterministic or Random Rounding</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Rounding</strong></p>
+</div>
+<div class="callout-content">
+<p>Rounding a count <span class="math inline">\(x\)</span> means bringing its value to a multiple of the chosen rounding base <span class="math inline">\(b\)</span>:</p>
+<ul>
+<li>Either to the nearest multiple (deterministic rounding)
+<ul>
+<li>=&gt; A deterministic rounding always returns the same value</li>
+</ul>
+</li>
+<li>Or, randomly, to one of the two nearest multiples (random rounding).
+<ul>
+<li>The rounding is unbiased by choosing the appropriate probabilities.</li>
+<li>This technique offers better protection</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(b=10\)</span> and <span class="math inline">\(x=23\)</span>:</p>
+<ul>
+<li>Deterministic rounding: <span class="math inline">\(x^\prime = 20\)</span>.</li>
+<li>Random rounding:
+<ul>
+<li>
+<span class="math inline">\(x^\prime = 20\)</span> with probability of <span class="math inline">\(0.7\)</span> or</li>
+<li>
+<span class="math inline">\(x^\prime = 30\)</span> probability of <span class="math inline">\(0.3\)</span>.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section><section id="an-example-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An example</h2>
+<div id="tbl-compt-arr" class="table table-striped table-hover table-bordered quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-compt-arr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table table-striped table-hover table-bordered">
+<thead><tr class="header">
+<th style="text-align: center;">Characteristic</th>
+<th style="text-align: center;">North</th>
+<th style="text-align: center;">West</th>
+<th style="text-align: center;">South</th>
+<th style="text-align: center;">East</th>
+<th style="text-align: center;">Total</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Polluting</td>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: center;"><strong>30</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Non-Polluting</td>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: center;"><strong>20</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;"><strong>45</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-compt-arr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table 3: Application of a deterministic base rounding <span class="math inline">\(b=5\)</span> (Average of absolute deviations: <span class="math inline">\(1.4\)</span>.)
+</figcaption></figure>
+</div>
+</section><section id="rounding-of-small-counts" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Rounding of Small Counts</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Small Count Rounding</strong></p>
+</div>
+<div class="callout-content">
+<p>Algorithm applied to data tables ensuring:</p>
+<ul>
+<li>rounding of <strong>small counts</strong> (i.e., the most sensitive ones) in a base <span class="math inline">\(b\)</span>
+</li>
+<li>additional counts are adjusted to:
+<ul>
+<li>preserve additivity in the tables</li>
+<li>and minimize the overall perturbation</li>
+</ul>
+</li>
+</ul>
+<p>Technique implemented in the R package <code>SmallCountRounding</code></p>
+</div>
+</div>
+</div>
+</section><section id="an-example-2" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An Example</h2>
+<div id="tbl-compt-smcr" class="table table-striped table-hover table-bordered quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-compt-smcr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table table-striped table-hover table-bordered">
+<thead><tr class="header">
+<th style="text-align: center;">Characteristic</th>
+<th style="text-align: center;">North</th>
+<th style="text-align: center;">West</th>
+<th style="text-align: center;">South</th>
+<th style="text-align: center;">East</th>
+<th style="text-align: center;">Total</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Polluting</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Non-Polluting</td>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;"><strong>18</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;"><strong>11</strong></td>
+<td style="text-align: center;"><strong>14</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;"><strong>45</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-compt-smcr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table 4: Application of a Small Count Rounding type algorithm (Mean absolute deviation: <span class="math inline">\(1.07\)</span>.)
+</figcaption></figure>
+</div>
+</section><section id="controlled-rounding" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Controlled Rounding</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Controlled Rounding</strong></p>
+</div>
+<div class="callout-content">
+<p>Algorithm applied to data tables ensuring:</p>
+<ul>
+<li>rounding of all counts to a base <span class="math inline">\(b\)</span>
+</li>
+<li>while ensuring:
+<ul>
+<li>preservation of additivity in the tables</li>
+<li>minimization of the sum of absolute differences between original and rounded values</li>
+</ul>
+</li>
+</ul>
+<p>Technique implemented in the software <code>Tau-ARGUS</code></p>
+</div>
+</div>
+</div>
+</section><section id="an-example-3" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An example</h2>
+<div id="tbl-compt-arr-ctr" class="table table-striped table-hover table-bordered quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-compt-arr-ctr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table table-striped table-hover table-bordered">
+<thead><tr class="header">
+<th style="text-align: center;">Characteristic</th>
+<th style="text-align: center;">North</th>
+<th style="text-align: center;">West</th>
+<th style="text-align: center;">South</th>
+<th style="text-align: center;">East</th>
+<th style="text-align: center;">Total</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Polluting</td>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: center;"><strong>25</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Non-Polluting</td>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: center;"><strong>20</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>20</strong></td>
+<td style="text-align: center;"><strong>45</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-compt-arr-ctr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table 5: Application of controlled rounding with a base <span class="math inline">\(b=5\)</span> (Average of absolute deviations: <span class="math inline">\(1.5\)</span>.)
+</figcaption></figure>
+</div>
+</section></section><section><section id="the-random-keys-method-ckm" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="3"><h1>
+<span class="header-section-number">3</span> The random keys method (CKM)</h1>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The Random Keys Method</strong></p>
+</div>
+<div class="callout-content">
+<p>A method that consists of deviating all counts independently from one another:</p>
+<ul>
+<li>each count is deviated by a value between <span class="math inline">\(-D\)</span> and <span class="math inline">\(+D\)</span>, where <span class="math inline">\(D\)</span> is a parameter of the method;</li>
+<li>a cell is always perturbed in the same way through the use of <strong>individual keys</strong>
+</li>
+<li>a null count is not perturbed;</li>
+<li>the amount of noise injected into the tables has variance <span class="math inline">\(V\)</span>, another parameter of the method.</li>
+</ul>
+<p>Sources: <span class="citation" data-cites="thompson_methodology_2013">Thompson, Broadfoot, and Elazar (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span>, <span class="citation" data-cites="chipperfield_australian_2016">Chipperfield, Gow, and Loong (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span>, <span class="citation" data-cites="giesing_concepts_2019">Gießing and Tent (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span></p>
+</div>
+</div>
+</div>
+</section><section id="probability-distribution" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Probability Distribution</h2>
+<p>Properties:</p>
+<ul>
+<li><p>A maximum deviation D and a variance V are fixed upstream</p></li>
+<li><p>The injected noise is unbiased</p></li>
+<li><p>The probability law of the injected deviation is defined from a transition matrix</p></li>
+</ul></section><section id="an-example-4" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An example</h2>
+<div id="tbl-compt-ckm" class="table table-striped table-hover table-bordered quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-compt-ckm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table table-striped table-hover table-bordered">
+<thead><tr class="header">
+<th style="text-align: center;">Characteristic</th>
+<th style="text-align: center;">North</th>
+<th style="text-align: center;">West</th>
+<th style="text-align: center;">South</th>
+<th style="text-align: center;">East</th>
+<th style="text-align: center;">Total</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Polluting</td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: center;"><strong>28</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Non-Polluting</td>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: center;"><strong>20</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: center;"><strong>16</strong></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: center;"><strong>21</strong></td>
+<td style="text-align: center;"><strong>46</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-compt-ckm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table 6: Application of the CKM with <span class="math inline">\(D = 5\)</span> and <span class="math inline">\(V = 3\)</span> (Average of absolute deviations: <span class="math inline">\(1.1\)</span>)
+</figcaption></figure>
+</div>
+</section><section id="uses" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Uses</h2>
+<p>The method is used by several NSIs:</p>
+<ul>
+<li><p>Since 2006, ABS has provided an online querying tool to obtain data from its quinquennial census. The data is protected with the CKM. (<a href="https://tablebuilder.abs.gov.au" class="uri">https://tablebuilder.abs.gov.au</a>)</p></li>
+<li><p>The CKM is one of the methods recommended by Eurostat to protect the 2021 European Census data.</p></li>
+<li><p>In this context, Destatis uses the CKM to disseminate data on 500m grids.</p></li>
+<li><p>2024/2025: the Insee disseminates data on the Neighborhoods of the City Policy (QPV).</p></li>
+</ul></section><section id="step-1-creation-of-a-random-individual-key" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Step 1: Creation of a Random Individual Key</h2>
+<div style="text-align:center;">
+<div id="fig-mat-trans" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Ajout des clés individuelles aux micro-données">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="img/ckm-ind-cles.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Ajout des clés individuelles aux micro-données">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure 1: Arbitrer
+</figcaption></figure>
+</div>
+</div>
+</section><section id="step-2-construction-of-the-table" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Step 2: Construction of the table</h2>
+<div style="text-align:center;">
+<div id="fig-mat-trans" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Construction of the table and the keys for each cell">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="img/ckm-table-depart.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Construction of the table and the keys for each cell">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure 2: Construction of the table and the keys for each cell
+</figcaption></figure>
+</div>
+</div>
+</section><section id="step-3-transition-probabilities" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Step 3: Transition Probabilities</h2>
+<div style="text-align:center;">
+<div id="fig-mat-trans" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Transition matrix for D=2 and V=1">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="img/ckm-mat-trans.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Transition matrix for D=2 and V=1">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure 3: Transition matrix for D=2 and V=1
+</figcaption></figure>
+</div>
+</div>
+</section><section id="step-4-determine-the-perturbation-to-inject" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Step 4: Determine the perturbation to inject</h2>
+<div style="text-align:center;">
+<div id="fig-tab-pert" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="The perturbation to inject">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-tab-pert-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="img/ckm-table-pert.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="The perturbation to inject">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tab-pert-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure 4: The perturbation to inject” fig-align=“center
+</figcaption></figure>
+</div>
+</div>
+</section><section id="step-5-build-the-final-table" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Step 5: Build the final table</h2>
+<div style="text-align:center;">
+<div id="fig-tab-finale" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Table after perturbation">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-tab-finale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="img/ckm-table-finale.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Table after perturbation">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tab-finale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure 5: Table after perturbation
+</figcaption></figure>
+</div>
+</div>
+</section><section id="advantages-disadvantages" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Advantages / Disadvantages</h2>
+<div id="tbl-ckm-avtg-incv" class="table table-striped table-hover quarto-float quarto-figure quarto-figure-center" style="font-size: 70%;">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table table-striped table-hover">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 58%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: center;">Advantages</th>
+<th style="text-align: center;">Disadvantages</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Easy to implement</td>
+<td style="text-align: center;">Loss of additivity</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Table consistency</td>
+<td style="text-align: center;">Perception of secret management less straightforward</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Reduces differentiation risks</td>
+<td style="text-align: center;">Accumulation of noise for second-order statistics (ratios for example)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Compatible with querying</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Compatible with custom dissemination</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Better utility than rounding at equal protection level</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table 7: Advantages and disadvantages of the random key method
+</figcaption></figure>
+</div>
+</section></section><section><section id="microaggregation" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="4"><h1>
+<span class="header-section-number">4</span> Microaggregation</h1>
+<ul>
+<li><p>Perturbative method, more suited to continuous variables, but may be adapted to ordered categorical variables</p></li>
+<li>
+<p>Main idea:</p>
+<ul>
+<li><p><strong>Create small homogeneous groups</strong> by taking into account the values of selected variables</p></li>
+<li><p><strong>Replace the values</strong> of all individuals belonging to the group <strong>with a single value</strong> (may be the average value of values observed in the group)</p></li>
+</ul>
+</li>
+</ul></section><section id="an-example-5" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An Example</h2>
+<div id="tbl-ckm-avtg-incv" class="table table-striped table-hover table-bordered quarto-float quarto-figure quarto-figure-center" style="font-size: 70%;">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table table-striped table-hover table-bordered">
+<thead><tr class="header">
+<th style="text-align: center;">Region</th>
+<th style="text-align: center;">Age</th>
+<th style="text-align: center;">Hours Worked per Week</th>
+<th style="text-align: center;">Monthly Income</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">1000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">2000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">52</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1100</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">2500</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1900</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">46</td>
+<td style="text-align: center;">1500</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">38</td>
+<td style="text-align: center;">800</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">1200</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table 8: Individual data with unique observations on Age <span class="math inline">\(\times\)</span> Region intersections
+</figcaption></figure>
+</div>
+</section><section id="an-example-6" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An example</h2>
+<div id="tbl-ckm-avtg-incv" class="table table-striped table-hover table-bordered quarto-float quarto-figure quarto-figure-center" style="font-size: 70%;">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table table-striped table-hover table-bordered">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 38%">
+<col style="width: 18%">
+<col style="width: 11%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: center;">Region</th>
+<th style="text-align: center;">Age</th>
+<th style="text-align: center;">Hours worked per week</th>
+<th style="text-align: center;">Monthly income</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span style="background-color:#fbff91;">92</span></td>
+<td style="text-align: center;"><span style="background-color:#fbff91;"><del>36</del> 31</span></td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">1000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span style="background-color:#ff796d;">75</span></td>
+<td style="text-align: center;"><span style="background-color:#ff796d;"><del>41</del> 45</span></td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">2000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span style="background-color:#ff796d;">75</span></td>
+<td style="text-align: center;"><span style="background-color:#ff796d;"><del>52</del> 45</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1100</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span style="background-color:#baf2c2;">94</span></td>
+<td style="text-align: center;"><span style="background-color:#baf2c2;"><del>45</del> 47</span></td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">2500</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span style="background-color:#ff796d;">75</span></td>
+<td style="text-align: center;"><span style="background-color:#ff796d;"><del>41</del> 45</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1900</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span style="background-color:#fbff91;">92</span></td>
+<td style="text-align: center;"><span style="background-color:#fbff91;"><del>26</del> 31</span></td>
+<td style="text-align: center;">46</td>
+<td style="text-align: center;">1500</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span style="background-color:#fbff91;">92</span></td>
+<td style="text-align: center;"><span style="background-color:#fbff91;"><del>31</del> 31</span></td>
+<td style="text-align: center;">38</td>
+<td style="text-align: center;">800</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span style="background-color:#baf2c2;">94</span></td>
+<td style="text-align: center;"><span style="background-color:#baf2c2;"><del>48</del> 47</span></td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">1200</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table 9: Individual data with uniques on the Age <span class="math inline">\(\times\)</span> Region crossings
+</figcaption></figure>
+</div>
+<ul>
+<li>
+<span class="math inline">\(\mu_{red} = 45\)</span>, <span class="math inline">\(\mu_{yellow} = 31\)</span>, <span class="math inline">\(\mu_{green} = 47\)</span>
+</li>
+</ul></section><section id="parameters" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Parameters</h2>
+<p>A large number of possible outputs for this method depending on:</p>
+<ul>
+<li><p>the chosen definition of homogeneity</p></li>
+<li><p>the algorithm used to build the groups</p></li>
+<li><p>the determination of the replacement value</p></li>
+</ul>
+<p>The parameters to define:</p>
+<ul>
+<li><p>Size <span class="math inline">\(g\)</span> of each group (the larger the group size, the greater the loss of information, and the larger it is, the higher the level of protection ..)</p></li>
+<li><p>Which variables are used to calculate the distance?</p></li>
+<li><p>Which statistics to choose once the groups have been formed? (mean, median?)</p></li>
+</ul></section><section id="minimize-within-group-variance" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Minimize within-group variance</h2>
+<div style="text-align:center;">
+<div id="fig-within" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Minimization of within-group variance">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-within-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="img/within.png" class="quarto-figure quarto-figure-center" style="width:50.0%" alt="Minimization of within-group variance">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-within-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure 6: Table after perturbation
+</figcaption></figure>
+</div>
+</div>
+<p>The algorithm seeks to minimize the sum of within-group squared errors:</p>
+<p><span class="math display">\[SSE = \sum_{i=1}^g\sum_{j \in i} (x_{ij}-\bar x_{i})^T(x_{ij}-\bar x_{i})\]</span></p>
+</section><section id="advantages-disadvantages-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Advantages / Disadvantages</h2>
+<div id="tbl-bruit-add-avtg-incv" class="table table-striped table-hover quarto-float quarto-figure quarto-figure-center" style="font-size: 70%;">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-bruit-add-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table table-striped table-hover">
+<thead><tr class="header">
+<th style="text-align: center;">Advantages</th>
+<th style="text-align: center;">Disadvantages</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Suitable for <span class="math inline">\(k\)</span>-anonymity</td>
+<td style="text-align: center;">High computation time</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Statistically relevant classes</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-bruit-add-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table 10: Advantages and disadvantages of injecting additive noise
+</figcaption></figure>
+</div>
+</section></section><section><section id="additive-noise-injection" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="5"><h1>
+<span class="header-section-number">5</span> Additive Noise Injection</h1>
+
+</section><section id="noise-injection" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Noise Injection</h2>
+<ul>
+<li><p>Method adapted for handling continuous variables</p></li>
+<li><p>In general, an unbiased additive noise with fixed variance is injected</p></li>
+<li><p>Main challenge: how to add noise while preserving the characteristics of the variables and any potential relationships between them?</p></li>
+</ul></section><section id="perturbation-by-additive-noise" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Perturbation by Additive Noise</h2>
+<ul>
+<li>Noise is added to each observed value</li>
+<li>Generally zero-mean Gaussian noise</li>
+<li>Suitable for continuous variables of low amplitude</li>
+</ul></section><section id="independent-additive-noises" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Independent Additive Noises</h2>
+<ul>
+<li><p>Each variable is noised independently of the other variables</p></li>
+<li><p>The means and covariances of each perturbed variable are preserved</p></li>
+<li><p>But, the variances and the correlation coefficients are not preserved</p></li>
+</ul></section><section id="correlated-additive-noise" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Correlated Additive Noise</h2>
+<ul>
+<li><p>The variance-covariance matrix of the noise is proportional to the variance-covariance matrix of the original values</p></li>
+<li><p>Preservation of the mean and correlation coefficients</p></li>
+<li><p>Preferable to adding independent noise because unbiased estimates can be obtained for several important statistics</p></li>
+</ul></section><section id="advantages-disadvantages-2" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Advantages / Disadvantages</h2>
+<div id="tbl-bruit-add-avtg-incv" class="table table-striped table-hover quarto-float quarto-figure quarto-figure-center" style="font-size: 70%;">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-bruit-add-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table table-striped table-hover">
+<colgroup>
+<col style="width: 42%">
+<col style="width: 57%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: center;">Advantages</th>
+<th style="text-align: center;">Disadvantages</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Processing of sensitive continuous variables</td>
+<td style="text-align: center;">Not suitable for handling outliers with large values</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Preservation of important statistics</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-bruit-add-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table 11: Advantages and disadvantages of additive noise injection
+</figcaption></figure>
+</div>
+</section></section><section><section id="targeted-record-swapping-trs" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="6"><h1>
+<span class="header-section-number">6</span> Targeted Record Swapping (TRS)</h1>
+
+</section><section id="targeted-record-swapping-trs-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Targeted Record Swapping (TRS)</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition</strong></p>
+</div>
+<div class="callout-content">
+<p><code>Target Record Swapping (TRS)</code> is a method applied directly to an individual dataset to reduce re-identification risks.</p>
+<p>It consists of swapping the location of certain individuals deemed at risk with other individuals from another geographic entity.</p>
+<p>Hence its name: <em>swapping</em>, that is, the exchange, will concern units from the database (the <em>records</em>) detected in advance, thus becoming the <em>targets</em> on which the exchange will focus.</p>
+</div>
+</div>
+</div>
+</section><section id="at-risk-individuals-targets" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>At-risk individuals (targets)</h2>
+<ul>
+<li>Targets at-risk individuals:
+<ul>
+<li>Detection by <span class="math inline">\(k\)</span>-anonymity: crossings of quasi-identifiers of fewer than <span class="math inline">\(k\)</span> individuals</li>
+<li>Detection by <span class="math inline">\(l\)</span>-diversity: homogeneity of a group on a sensitive variable</li>
+<li>Probabilistic measure of individual risk</li>
+<li>Primarily a risk of re-identification</li>
+</ul>
+</li>
+</ul></section><section id="a-very-widely-used-method" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>A very widely used method</h2>
+<ul>
+<li><p>Insee: European census 2021 data</p></li>
+<li><p>Eurostat recommends this method (coupled with CKM) for disseminating the European Census</p></li>
+<li><p>US Census Bureau: US Census 2010</p></li>
+<li><p>ONS (UK): Census since 2010</p></li>
+</ul></section><section id="an-example-7" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An example</h2>
+<div style="text-align:center;">
+<div id="fig-swap-avt" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Before swapping">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-swap-avt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="img/swapping-exemple-avant.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Before swapping">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-swap-avt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure 7: Before Swapping
+</figcaption></figure>
+</div>
+</div>
+</section><section id="an-example-8" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An Example</h2>
+<div style="text-align:center;">
+<div id="fig-swap-apr" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="After swapping">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-swap-apr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="img/swapping-exemple-apres.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="After swapping">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-swap-apr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure 8: After Swapping
+</figcaption></figure>
+</div>
+</div>
+</section><section id="advantages-disadvantages-3" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Advantages / Disadvantages</h2>
+<div id="tbl-trs-avtg-incv" class="table table-striped table-hover quarto-float quarto-figure quarto-figure-center" style="font-size: 70%;">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-trs-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table table-striped table-hover">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 54%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: center;">Advantages</th>
+<th style="text-align: center;">Disadvantages</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Effective for handling different types of risk</td>
+<td style="text-align: center;">Requires setting a large number of parameters (risk measure, similarity variables, swapping rate)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Flexible method, adaptable to very different cases (household-individual structures for example)</td>
+<td style="text-align: center;">Noise injected into the data is not really controllable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Preserves aggregates at the geographic level within which swapping was performed.</td>
+<td style="text-align: center;">Generates local bias in the data</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Maintains additivity of tables generated from noisy micro-data.</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-trs-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table 12: Advantages and disadvantages of TRS
+</figcaption></figure>
+</div>
+</section></section><section><section id="post-randomisation-method-pram" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="7"><h1>
+<span class="header-section-number">7</span> Post-Randomisation Method (PRAM)</h1>
+
+</section><section id="pram-method" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>PRAM Method</h2>
+<ul>
+<li><p>Allows processing <strong>sensitive</strong> <strong>categorical</strong> <strong>variables</strong> by adding noise to the data.</p></li>
+<li><p>Consists of randomly modifying the assignment of individuals to a given class.</p></li>
+<li><p>Method particularly useful for handling <strong>disclosures of sensitive attributes</strong>: an attacker cannot have any certainty about the attribute of an observation.</p></li>
+</ul></section><section id="an-example-9" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An example</h2>
+<table><tbody>
+<tr class="odd">
+<td style="text-align: center;">Region</td>
+<td style="text-align: center;">Age</td>
+<td>Professional situation</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">14</td>
+<td>Inactive</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td>Unemployed</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">52</td>
+<td>Active</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">45</td>
+<td>Active</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td>Unemployed</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">26</td>
+<td>Active</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">31</td>
+<td>Active</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">14</td>
+<td>Inactive</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Inactive: 2 ind., Unemployed = 2 ind., Active = 4 ind.</li>
+</ul></section><section id="an-example-10" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An example</h2>
+<table><tbody>
+<tr class="odd">
+<td style="text-align: center;">Region</td>
+<td style="text-align: center;">Age</td>
+<td style="text-align: right;">Employment Status</td>
+<td style="text-align: center;">Employment Status (PRAM)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: right;">Inactive</td>
+<td style="text-align: center;"><span style="color: red">Unemployed</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: right;">Unemployed</td>
+<td style="text-align: center;"><span style="color: red">Employed</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">52</td>
+<td style="text-align: right;">Employed</td>
+<td style="text-align: center;"><span style="color: blue">Employed</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: right;">Employed</td>
+<td style="text-align: center;"><span style="color: blue">Employed</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: right;">Unemployed</td>
+<td style="text-align: center;"><span style="color: red">Inactive</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: right;">Employed</td>
+<td style="text-align: center;"><span style="color: blue">Employed</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: right;">Employed</td>
+<td style="text-align: center;"><span style="color: red">Unemployed</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: right;">Inactive</td>
+<td style="text-align: center;"><span style="color: blue">Inactive</span></td>
+</tr>
+</tbody></table>
+<ul>
+<li>Inactive: 2 ind., Unemployed = 2 ind., Employed = 4 ind.</li>
+</ul></section><section id="an-example-11" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An example</h2>
+<table><tbody>
+<tr class="odd">
+<td style="text-align: center;">Region</td>
+<td style="text-align: center;">Age</td>
+<td style="text-align: right;">Pro. situation</td>
+<td style="text-align: center;">Pro. situation (PRAM)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;"><span style="color: red"><strong>14</strong></span></td>
+<td style="text-align: right;">Inactive</td>
+<td style="text-align: center;"><span style="color: red"><strong>Unemployed</strong></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: right;">Unemployed</td>
+<td style="text-align: center;">Active</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">52</td>
+<td style="text-align: right;">Active</td>
+<td style="text-align: center;">Active</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: right;">Active</td>
+<td style="text-align: center;">Active</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: right;">Unemployed</td>
+<td style="text-align: center;">Inactive</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: right;">Active</td>
+<td style="text-align: center;">Active</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: right;">Active</td>
+<td style="text-align: center;">Unemployed</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: right;">Inactive</td>
+<td style="text-align: center;">Inactive</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Watch out for inconsistencies!</li>
+</ul></section><section id="the-transition-matrix" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>The transition matrix</h2>
+<p>We need to define a <span style="color: red"><strong>transition matrix</strong></span> to specify the transition probabilities.</p>
+<ul>
+<li><p>Let <span class="math inline">\(\xi\)</span> be the initial categorical variable with <span class="math inline">\(K\)</span> categories <span class="math inline">\(1 \dots K\)</span><br><span class="math inline">\(\rightarrow\)</span> in the example, <span class="math inline">\(\xi\)</span> = Professional situation, K = 3</p></li>
+<li><p>Let <span class="math inline">\(X\)</span> be the same categorical variable in the perturbed dataset<br><span class="math inline">\(\rightarrow\)</span> in the example, <span class="math inline">\(X\)</span> = Professional situation (PRAM) ## The transition matrix We can define the transition matrix <span class="math inline">\(P\)</span>,</p></li>
+</ul>
+<p><span class="math display">\[P =(p_{kl})_{1 \leq k,l \leq K}\]</span></p>
+<p>where <span class="math inline">\(p_{kl} = P(X =l|\xi = k)\)</span></p>
+
+<img data-src="./img/matrice_transition_PRAM.png" class="quarto-figure quarto-figure-center r-stretch" style="width:5.0%"></section><section id="how-to-choose-the-transition-matrix" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>How to Choose the Transition Matrix?</h2>
+<ul>
+<li>
+<p>PRAM randomly changes the population counts:</p>
+<p><span class="math display">\[\mathbb{E}\begin{pmatrix} N^{pram}_{I} \\N^{pram}_{E}\\ N^{pram}_{U} \end{pmatrix} = P^{T} \begin{pmatrix}N_{I} \\N_{E}\\ N_{U} \end{pmatrix}\]</span></p>
+</li>
+<li><p>Depending on P <strong><span style="color: red">and the original counts</span></strong>, the margins can be greatly disturbed!</p></li>
+<li><p>High diagonal coefficients may be insufficient</p></li>
+</ul></section><section id="a-numerical-example" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>A Numerical Example</h2>
+<ul>
+<li>
+<p>Original Margins</p>
+<table>
+<thead><tr class="header">
+<th style="text-align: right;">Ina</th>
+<th>ctive Ac</th>
+<th>tive U</th>
+<th style="text-align: left;">nemployed</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Frequency (million)</td>
+<td>16.8</td>
+<td>49</td>
+<td style="text-align: left;">4.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Percentage</td>
+<td>24 %</td>
+<td>70 %</td>
+<td style="text-align: left;">6 %</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>Transition Matrix <span class="math inline">\(P\)</span> :</p></li>
+</ul>
+<img data-src="./img/matrice_transition_PRAM.png" class="quarto-figure quarto-figure-center r-stretch"></section><section id="a-numerical-example-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>A numerical example</h2>
+<p>We can now calculate the perturbed margins!</p>
+<ul>
+<li>
+<p><strong>Original margins</strong></p>
+<table>
+<thead><tr class="header">
+<th>Status</th>
+<th>Inactive</th>
+<th>Active</th>
+<th>Unemployed</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Frequency (million)</td>
+<td>17</td>
+<td>49</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>Percentage</td>
+<td>24%</td>
+<td>70%</td>
+<td>6%</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>New margins</strong></p>
+<table>
+<colgroup>
+<col style="width: 32%">
+<col style="width: 14%">
+<col style="width: 11%">
+<col style="width: 40%">
+</colgroup>
+<thead><tr class="header">
+<th>Status</th>
+<th>Inactive</th>
+<th>Active</th>
+<th>Unemployed</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Frequency</td>
+<td>14</td>
+<td>41</td>
+<td><strong><span style="color:red">16</span></strong></td>
+</tr>
+<tr class="even">
+<td>Percentage</td>
+<td>20%</td>
+<td>58%</td>
+<td><span style="color:red">22 %</span></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul></section><section id="pram-invariant" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>PRAM Invariant</h2>
+<ul>
+<li><p>Possibility of choosing the matrix <span class="math inline">\(P\)</span> such that the perturbation is unbiased <span class="math inline">\(\rightarrow\)</span> PRAM invariant</p></li>
+<li><p>Given that : <span class="math display">\[\mathbb{E}\begin{pmatrix} N^{pram}_{I} \\N^{pram}_{E}\\ N^{pram}_{U} \end{pmatrix} = P^{T} \begin{pmatrix}N_{I} \\N_{E}\\ N_{U} \end{pmatrix}\]</span></p></li>
+<li><p>For this, it is necessary to choose <span class="math inline">\(P\)</span> such that the original marginal frequencies are an eigenvector of <span class="math inline">\(P\)</span> associated with the eigenvalue <span class="math inline">\(1\)</span>.</p></li>
+</ul></section><section id="measuring-the-level-of-protection" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Measuring the level of protection</h2>
+<ul>
+<li><p>PRAM deliberately introduces a measurement error <span class="math inline">\(\rightarrow\)</span> k-anonymity or l-diversity cannot be used</p></li>
+<li><p>Level of protection measured from the method’s parameters (transition matrix).</p></li>
+<li><p>Idea: make the rarity of certain modalities sufficiently uncertain to infer <span class="math inline">\(\rightarrow\)</span> posterior odds ratio</p></li>
+</ul></section><section id="measuring-the-level-of-protection-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Measuring the level of protection</h2>
+<p><span class="math display">\[POST\_ODDS(k) = \frac{P(\xi = k|X=k)}{P(\xi \neq k|X=k)} = \frac{p_{kk}P(\xi = k)}{\sum_{l \neq k}p_{lk}P(\xi=l)}\]</span></p>
+<ul>
+<li>
+<span class="math inline">\(p_{kk}\)</span> are known and depend on the sampling design</li>
+<li>
+<span class="math inline">\(P(\xi = k)\)</span> can be difficult to estimate</li>
+<li>we can roughly estimate <span class="math inline">\(P(\xi = k)\)</span> by <span class="math inline">\(\frac{T_\xi(k)}{n}\)</span>
+</li>
+</ul></section><section id="interpretation" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Interpretation</h2>
+<p>We observe k in the perturbed game:</p>
+<ul>
+<li><p>If <span class="math inline">\(POST\_ODDS(k) &gt; 1\)</span>, then the original value is more likely <strong><span class="math inline">\(k\)</span></strong> rather than another value.</p></li>
+<li><p>If <span class="math inline">\(POST\_ODDS(k) &lt; 1\)</span>, then the original value is more likely <strong>another value</strong> than <span class="math inline">\(k\)</span>.</p></li>
+</ul></section><section id="advantages-disadvantages-4" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Advantages / Disadvantages</h2>
+<div id="tbl-pram-avtg-incv" class="table table-striped table-hover quarto-float quarto-figure quarto-figure-center" style="font-size: 70%;">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-pram-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table table-striped table-hover">
+<colgroup>
+<col style="width: 53%">
+<col style="width: 46%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: center;">Advantages</th>
+<th style="text-align: center;">Disadvantages</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Allows providing the level of protection associated with injected noise by calculating inverse transition probabilities</td>
+<td style="text-align: center;">Creation of potentially impossible combinations (e.g., retired child).</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Preserves the additivity of tables generated from noisy microdata.</td>
+<td style="text-align: center;">Difficult to define a protection matrix that accounts for relationships with all variables.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-pram-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table 13: Advantages and disadvantages of PRAM
+</figcaption></figure>
+</div>
+</section></section><section><section id="synthetic-data" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="8"><h1>
+<span class="header-section-number">8</span> Synthetic Data</h1>
+<ul>
+<li><p>Idea: Generate all or part of individual data.</p></li>
+<li>
+<p>Two types of synthesis:</p>
+<ul>
+<li><p>Complete synthesis: all variables and all individuals are generated.</p></li>
+<li><p>Partial synthesis: Only certain variables are generated (mainly sensitive variables).</p></li>
+</ul>
+</li>
+</ul></section><section id="sequential-modeling" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Sequential Modeling</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Fully Conditional Specification</strong></p>
+</div>
+<div class="callout-content">
+<p>Each variable in the dataset is modeled sequentially and conditionally on the previous variables.</p>
+<p>To generate the <span class="math inline">\(p^e\)</span> variable, we seek to model its conditional distribution:</p>
+<p><span class="math display">\[f_{X_p | X_1 , X_2 , \dots , X_{p-1}}\]</span></p>
+<p>Commonly used statistical models: - parametric models (linear or logistic regression) - tree-based methods: CART, Boosting, random forest, XGBoost.</p>
+</div>
+</div>
+</div>
+</section><section id="deep-learning-methods-i" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Deep Learning Methods (I)</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tabular Variational Auto Encoder (TVAE)</strong></p>
+</div>
+<div class="callout-content">
+<p>Autoencoding consists of combining <strong>an encoding phase</strong> that reduces the dimension of the data to learn the most important features and <strong>a decoding phase</strong> to reconstruct data in their original dimension.</p>
+</div>
+</div>
+</div>
+</section><section id="deep-learning-methods-ii" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Deep Learning Methods (II)</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Conditional Tabular Generative Adversarial Network (CTGAN)</strong></p>
+</div>
+<div class="callout-content">
+<p>GANs are very popular in image generation. CTGANs are an adaptation of GANs for generating tabular data (microdata or aggregated data). A generator constructs synthetic data and submits it to a discriminator whose objective is to distinguish this generated data from the original data.</p>
+</div>
+</div>
+</div>
+</section><section id="references" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain"><h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-chipperfield_australian_2016" class="csl-entry" role="listitem">
+Chipperfield, James, Daniel Gow, and Bronwyn Loong. 2016. <span>“The <span>Australian</span> <span>Bureau</span> of <span>Statistics</span> and Releasing Frequency Tables via a Remote Server.”</span> <em>Statistical Journal of the IAOS</em> 32 (1): 53–64. <a href="https://doi.org/10.3233/SJI-160969">https://doi.org/10.3233/SJI-160969</a>.
+</div>
+<div id="ref-giesing_concepts_2019" class="csl-entry" role="listitem">
+Gießing, Sarah, and Reinhard Tent. 2019. <span>“Concepts for Generalising Tools Implementing the Cell Key Method to the Case of Continuous Variables.”</span> In <em><span>UNECE</span> - <span>Expert</span> <span>Meeting</span> on <span>Statistical</span> <span>Data</span> <span>Confidentiality</span></em>. the Hague. <a href="https://unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2019/mtg1/SDC2019_S2_Germany_Giessing_Tent_AD.pdf">https://unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2019/mtg1/SDC2019_S2_Germany_Giessing_Tent_AD.pdf</a>.
+</div>
+<div id="ref-hundepool_handbook_2024" class="csl-entry" role="listitem">
+Hundepool, Anco, Josep Domingo-Ferre, Luisa Franconi, Sarah Giessing, Rainer Lenz, Jane Longhurst, Eric Schulte Nordholt, et al. 2024. <em>Handbook on <span>Statistical</span> <span>Disclosure</span> <span>Control</span></em>. 2nd Edition. ESSNet SDC. <a href="https://sdctools.github.io/HandbookSDC/">https://sdctools.github.io/HandbookSDC/</a>.
+</div>
+<div id="ref-thompson_methodology_2013" class="csl-entry" role="listitem">
+Thompson, Gwenda, Stephen Broadfoot, and Daniel Elazar. 2013. <span>“Methodology for the <span>Automatic</span> <span>Confidentialisation</span> of <span>Statistical</span> <span>Outputs</span> from <span>Remote</span> <span>Servers</span> at the <span>Australian</span> <span>Bureau</span> of <span>Statistics</span>.”</span> In <em>Joint <span>UNECE</span>/<span>Eurostat</span> Work Session on Statistical Data Confidentiality</em>. Ottawa. <a href="https://unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2013/Topic_1_ABS.pdf">https://unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2013/Topic_1_ABS.pdf</a>.
+</div>
+</div>
+
+
+</section></section>
+</div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Perturbative methods</p>
+</div>
+</div>
+</div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../../site_libs/revealjs/plugin/search/search.js"></script><script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script><script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("\/en");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+</body>
+</html>

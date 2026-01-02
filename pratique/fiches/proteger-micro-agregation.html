@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
 <link rel="alternate" hreflang="fr" href="/pratique/fiches/proteger-micro-agregation.html" />
 <link rel="alternate" hreflang="en" href="/en/pratique/fiches/proteger-micro-agregation.en.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.26">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Insee, Département des Méthodes Statistiques">
-
 <title>Appliquer la Mciro-Agrégation – La protection des données statistiques publiques</title>
 <style>
 code{white-space: pre-wrap;}
@@ -59,27 +57,12 @@ div.sourceCode
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
-
-
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script><script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script><script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-ee2342c85b385a9f1e4dcc5adf89ea0a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-b57ea8551da85a3f5a419d309197adda.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/bootstrap/bootstrap-ee2342c85b385a9f1e4dcc5adf89ea0a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
@@ -109,12 +92,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Envoyer",
     "search-label": "Recherche"
   }
-}</script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -140,10 +118,9 @@ window.Quarto = {
   typesetMath
 };
 </script>
-
 </head>
-
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light">
+<script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -305,12 +282,8 @@ window.Quarto = {
     } else {
       toggleColorMode(false);
     }
-  </script>
-
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  </script><div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">La protection des données statistiques publiques</span>
@@ -322,7 +295,10 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
+<li class="nav-item"><div class="dropdown" id="languages-links-parent">
+<button class="btn btn-primary dropdown-toggle babelquarto-languages-button" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> Version in fr</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/en/pratique/fiches/proteger-micro-agregation.html" id="language-link-en">Version in en</a></li></ul>
+</div></li>
+<li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Accueil</span></a>
   </li>  
@@ -339,36 +315,35 @@ window.Quarto = {
 <span class="menu-text">À propos</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Sur cette page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#les-packages" id="toc-les-packages" class="nav-link active" data-scroll-target="#les-packages">Les packages</a></li>
-  <li><a href="#les-données" id="toc-les-données" class="nav-link" data-scroll-target="#les-données">Les données</a></li>
+<li><a href="#les-packages" id="toc-les-packages" class="nav-link active" data-scroll-target="#les-packages">Les packages</a></li>
+  <li><a href="#les-donn%C3%A9es" id="toc-les-données" class="nav-link" data-scroll-target="#les-données">Les données</a></li>
   <li><a href="#mesurons-les-risques-du-fichier" id="toc-mesurons-les-risques-du-fichier" class="nav-link" data-scroll-target="#mesurons-les-risques-du-fichier">Mesurons les risques du fichier</a></li>
-  <li><a href="#la-micro-agrégation" id="toc-la-micro-agrégation" class="nav-link" data-scroll-target="#la-micro-agrégation">La micro-agrégation</a></li>
-  </ul>
-</nav>
-    </div>
+  <li><a href="#la-micro-agr%C3%A9gation" id="toc-la-micro-agrégation" class="nav-link" data-scroll-target="#la-micro-agrégation">La micro-agrégation</a></li>
+  </ul></nav>
+</div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Appliquer la Mciro-Agrégation</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Montrer tout le code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Cacher tout le code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Voir les sources</a></li></ul></div></div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<div class="quarto-title-block"><div>
+<h1 class="title">Appliquer la Mciro-Agrégation</h1>
+<button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu">
+<li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Montrer tout le code</a></li>
+<li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Cacher tout le code</a></li>
+<li><hr class="dropdown-divider"></li>
+<li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Voir les sources</a></li>
+</ul>
+</div></div>
 </div>
 
 
@@ -388,10 +363,7 @@ window.Quarto = {
   
 
 
-</header>
-
-
-<p>La micro-agrégation consiste à regrouper les individus d’un jeu de données individuelles selon une mesure de proximité calculée sur des variables d’iintérêt. Une fois ces groupes constitués, la valeur des individus dans chaque groupe homogène sur la variable d’intérêt est remplacée par une même valeur, par exemple la moyenne ou la médiane.</p>
+</header><p>La micro-agrégation consiste à regrouper les individus d’un jeu de données individuelles selon une mesure de proximité calculée sur des variables d’iintérêt. Une fois ces groupes constitués, la valeur des individus dans chaque groupe homogène sur la variable d’intérêt est remplacée par une même valeur, par exemple la moyenne ou la médiane.</p>
 <p>Cette méthode est particulièrement adaptée pour atteindre un objectif fixé à l’avance en termes de <span class="math inline">\(k\)</span>-anonymat, dès lors que des variables continues (ou des variables catégorielles ordinales) sont présentes dans la liste des variables quasi-identifiantes.</p>
 <p>La façon de procéder à l’agrégation dépend principalement de trois éléments:</p>
 <ul>
@@ -399,8 +371,7 @@ window.Quarto = {
 <li>quel algorithme permet de les constituer ?</li>
 <li>comment est réalisée l’agrégation une fois les groupes ocnstitués ?</li>
 </ul>
-<section id="les-packages" class="level2">
-<h2 class="anchored" data-anchor-id="les-packages">Les packages</h2>
+<section id="les-packages" class="level2"><h2 class="anchored" data-anchor-id="les-packages">Les packages</h2>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>
@@ -417,22 +388,21 @@ Attaching package: 'dplyr'</code></pre>
     intersect, setdiff, setequal, union</code></pre>
 </div>
 </div>
-</section>
-<section id="les-données" class="level2">
-<h2 class="anchored" data-anchor-id="les-données">Les données</h2>
+</section><section id="les-données" class="level2"><h2 class="anchored" data-anchor-id="les-données">Les données</h2>
 <div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_import_data.R"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> <span class="fu">import_lfs</span>()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_import_data.R"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> <span class="fu">import_lfs</span>()</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
 </details>
 </div>
 <div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_2023)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lfs_2023)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>      REG    DEP    ARR   SEXE   AGE   AGE6  ACTEU   DIP7  PCS1Q ANCCHOM  HHID
    &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;int&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt;  &lt;fctr&gt; &lt;int&gt;
 1:     28     76    761      1    53     50      1      4     30      99  3558
@@ -452,47 +422,45 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 <p>Pour plus d’informations sur les données, on pourra se reporter à la fiche <a href="description-data.html">“Présentation des données”</a>.</p>
-</section>
-<section id="mesurons-les-risques-du-fichier" class="level2">
-<h2 class="anchored" data-anchor-id="mesurons-les-risques-du-fichier">Mesurons les risques du fichier</h2>
+</section><section id="mesurons-les-risques-du-fichier" class="level2"><h2 class="anchored" data-anchor-id="mesurons-les-risques-du-fichier">Mesurons les risques du fichier</h2>
 <p>Nous choisirons les variables quasi-identifiantes suivantes:</p>
 <div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>key_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>key_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AGE"</span>,<span class="st">"SEXE"</span>,<span class="st">"DEP"</span>,<span class="st">"DIP7"</span>)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
 </details>
 </div>
 <div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lfs_sdc <span class="ot">&lt;-</span> sdcMicro<span class="sc">::</span><span class="fu">createSdcObj</span>(</span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lfs_sdc <span class="ot">&lt;-</span> sdcMicro<span class="sc">::</span><span class="fu">createSdcObj</span>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  lfs_2023 <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">AGE =</span> <span class="fu">as.double</span>(AGE)),</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">keyVars =</span> key_vars,</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">numVars =</span> <span class="st">"AGE"</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
 </details>
 </div>
 <p>Le tableau ci-dessous présente le nombre et la part d’individus du fichier ne répondant pas au critère du <span class="math inline">\(k\)</span>-anonymat, en fonction de la valeur de <span class="math inline">\(k\)</span>.</p>
 <div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ks <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">10</span></span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ks <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">10</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">k =</span> ks,</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">nb_ind_risk =</span> <span class="fu">sapply</span>(ks, \(k) <span class="fu">sum</span>(lfs_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual[,<span class="st">"fk"</span>] <span class="sc">&lt;</span> k))</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">part_ind_risk =</span> nb_ind_risk <span class="sc">/</span> <span class="fu">nrow</span>(lfs_2023) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits=</span><span class="dv">1</span>)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output-display">
 <table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: right;">k</th>
 <th style="text-align: right;">nb_ind_risk</th>
 <th style="text-align: right;">part_ind_risk</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">2</td>
@@ -545,46 +513,46 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <p>En choisissant de diffuser l’âge détaillé, la part d’individus à risque de ré-identification est très élevée (19,6% pour k=2 et 69,2% pour k=5, par exemple).</p>
 <p>Voyons si l’application d’un algorithme de micro-agrégation permettrait de réduire ces risques.</p>
-</section>
-<section id="la-micro-agrégation" class="level2">
-<h2 class="anchored" data-anchor-id="la-micro-agrégation">La micro-agrégation</h2>
+</section><section id="la-micro-agrégation" class="level2"><h2 class="anchored" data-anchor-id="la-micro-agrégation">La micro-agrégation</h2>
 <div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>lfs_sdc <span class="ot">&lt;-</span> <span class="fu">microaggregation</span>(</span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>lfs_sdc <span class="ot">&lt;-</span> <span class="fu">microaggregation</span>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  lfs_sdc,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="st">'AGE'</span>,</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">aggr =</span> <span class="dv">1000</span>,</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"mdav"</span>,</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">clustermethod =</span> <span class="st">"clara"</span>,</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">measure =</span> <span class="st">"median"</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
 </details>
 </div>
 <div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pert <span class="ot">&lt;-</span> lfs_2023 <span class="sc">|&gt;</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(<span class="at">AGE_ma =</span> lfs_sdc<span class="sc">@</span>manipNumVars <span class="sc">|&gt;</span> <span class="fu">pull</span>(AGE))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pert <span class="ot">&lt;-</span> lfs_2023 <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(<span class="at">AGE_ma =</span> lfs_sdc<span class="sc">@</span>manipNumVars <span class="sc">|&gt;</span> <span class="fu">pull</span>(AGE))</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
 </details>
 </div>
 <div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pert<span class="sc">$</span>AGE_ma <span class="sc">!=</span> pert<span class="sc">$</span>AGE)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pert<span class="sc">$</span>AGE_ma <span class="sc">!=</span> pert<span class="sc">$</span>AGE)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>
 FALSE  TRUE 
 16093 17960 </code></pre>
 </div>
 </div>
 <div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pert <span class="sc">|&gt;</span> <span class="fu">select</span>(DEP, SEXE, DIP7, AGE, AGE_ma))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pert <span class="sc">|&gt;</span> <span class="fu">select</span>(DEP, SEXE, DIP7, AGE, AGE_ma))</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>      DEP   SEXE   DIP7   AGE AGE_ma
    &lt;fctr&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;int&gt;  &lt;num&gt;
 1:     76      1      4    53     53
@@ -596,9 +564,8 @@ FALSE  TRUE
 </div>
 </div>
 <div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pert_sdc <span class="ot">&lt;-</span> sdcMicro<span class="sc">::</span><span class="fu">createSdcObj</span>(</span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pert_sdc <span class="ot">&lt;-</span> sdcMicro<span class="sc">::</span><span class="fu">createSdcObj</span>(</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  pert,</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">keyVars =</span> <span class="fu">c</span>(<span class="st">"DEP"</span>,<span class="st">"SEXE"</span>,<span class="st">"AGE_ma"</span>,<span class="st">"DIP7"</span>)</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>)</span>
@@ -608,17 +575,16 @@ FALSE  TRUE
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">nb_ind_risk =</span> <span class="fu">sapply</span>(ks, \(k) <span class="fu">sum</span>(pert_sdc<span class="sc">@</span>risk<span class="sc">$</span>individual[,<span class="st">"fk"</span>] <span class="sc">&lt;</span> k))</span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">part_ind_risk =</span> nb_ind_risk <span class="sc">/</span> <span class="fu">nrow</span>(lfs_2023) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">|&gt;</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits=</span><span class="dv">1</span>)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output-display">
 <table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: right;">k</th>
 <th style="text-align: right;">nb_ind_risk</th>
 <th style="text-align: right;">part_ind_risk</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">2</td>
@@ -673,10 +639,7 @@ FALSE  TRUE
 
 <!-- -->
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1139,8 +1102,14 @@ FALSE  TRUE
       }
     }
   });
-  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Code source</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Code source</h5>
+<button class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold">
+<div class="sourceCode" id="cb17" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Appliquer la Mciro-Agrégation</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> pratique/fiches/proteger-micro-agregation.html</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="an">code-block-bg:</span><span class="co"> true</span></span>
@@ -1274,24 +1243,23 @@ FALSE  TRUE
 <span id="cb17-156"><a href="#cb17-156" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">part_ind_risk =</span> nb_ind_risk <span class="sc">/</span> <span class="fu">nrow</span>(lfs_2023) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">|&gt;</span></span>
 <span id="cb17-157"><a href="#cb17-157" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits=</span><span class="dv">1</span>)</span>
 <span id="cb17-158"><a href="#cb17-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-</code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
-</div></div></div></div></div>
+</code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button>
+</div>
+</div></div>
+</div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>© 2025 - Insee</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
+       
     </div>
     <div class="nav-footer-right">
 <p>Site réalisé avec Quarto</p>
 </div>
   </div>
 </footer>
-
-
-
-
-</body></html>
+</body>
+</html>

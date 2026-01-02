@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html lang="fr-FR"><head>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<html lang="fr-FR">
+<head>
 <link rel="alternate" hreflang="fr" href="/theorie/supports/mesurer-utilite.html" />
 <link rel="alternate" hreflang="en" href="/en/theorie/supports/mesurer-utilite.en.html" />
-<script src="../../site_libs/quarto-html/tabby.min.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script><script src="../../site_libs/quarto-html/tabby.min.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
-
-  <meta name="author" content="Insee, Département des Méthodes Statistiques">
-  <title>La protection des données statistiques publiques – Mesurer l’utilité</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
-  <style>
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+<meta name="author" content="Insee, Département des Méthodes Statistiques">
+<title>La protection des données statistiques publiques – Mesurer l’utilité</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -31,14 +29,14 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ea8535d309a38c52e88d69daf30b07d0.css">
-  <link rel="stylesheet" href="_extensions/InseeFrLab/onyxia/logo.css">
-  <link rel="stylesheet" href="custom.css">
-  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ea8535d309a38c52e88d69daf30b07d0.css">
+<link rel="stylesheet" href="_extensions/InseeFrLab/onyxia/logo.css">
+<link rel="stylesheet" href="custom.css">
+<link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -125,16 +123,17 @@
       margin-right: 0; 
     }
   </style>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Mesurer l’utilité</h1>
-  <p class="subtitle"></p><p><strong><span class="orange">Contrôler la perte d’information</span></strong></p><p></p>
+<section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center"><h1 class="title">Mesurer l’utilité</h1>
+  <p class="subtitle"></p>
+<p><strong><span class="orange">Contrôler la perte d’information</span></strong></p>
+<p></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -144,40 +143,29 @@ Insee, Département des Méthodes Statistiques
 </div>
 </div>
 
-</section><section id="TOC">
-<nav role="doc-toc"> 
-<h2 id="toc-title">Sommaire</h2>
+</section><section id="TOC"><nav role="doc-toc"><h2 id="toc-title">Sommaire</h2>
 <ul>
-<li><a href="#/définir" id="/toc-définir"><span class="header-section-number">1</span> Définir</a></li>
-<li><a href="#/données-continues" id="/toc-données-continues"><span class="header-section-number">2</span> Données continues</a></li>
-<li><a href="#/données-catégorielles" id="/toc-données-catégorielles"><span class="header-section-number">3</span> Données catégorielles</a></li>
+<li><a href="#/d%C3%A9finir" id="/toc-définir"><span class="header-section-number">1</span> Définir</a></li>
+<li><a href="#/donn%C3%A9es-continues" id="/toc-données-continues"><span class="header-section-number">2</span> Données continues</a></li>
+<li><a href="#/donn%C3%A9es-cat%C3%A9gorielles" id="/toc-données-catégorielles"><span class="header-section-number">3</span> Données catégorielles</a></li>
 <li><a href="#/sappuyer-sur-la-visualisation" id="/toc-sappuyer-sur-la-visualisation"><span class="header-section-number">4</span> S’appuyer sur la visualisation</a></li>
-</ul>
-</nav>
-</section>
-<section>
-<section id="définir" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="1">
-<h1><span class="header-section-number">1</span> Définir</h1>
+</ul></nav></section><section><section id="définir" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="1"><h1>
+<span class="header-section-number">1</span> Définir</h1>
 
-</section>
-<section id="comment-la-définir" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Comment la définir ?</h2>
+</section><section id="comment-la-définir" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Comment la définir ?</h2>
 <ul>
 <li>Le processus de protection des données entraîne nécessairement une perte d’information</li>
 </ul>
 <div class="columns">
 <div class="column" style="width:49%;">
 <div id="tbl-ut-max" class="table table-striped table-hover table-bordered table-sm quarto-float quarto-figure quarto-figure-center" style="font-size: 80%;">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-ut-max-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-ut-max-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered table-sm small">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Région</th>
 <th style="text-align: center;">Âge</th>
 <th style="text-align: center;">Statut</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">92</td>
@@ -223,24 +211,22 @@ Insee, Département des Méthodes Statistiques
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-ut-max-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: risque = 100 % , Perte d’info = 0 %
-</figcaption>
-</figure>
+Table 1: risque = 100 % , Perte d’info = 0 %
+</figcaption></figure>
 </div>
-</div><div class="column" style="width:2%;">
+</div>
+<div class="column" style="width:2%;">
 
-</div><div class="column" style="width:49%;">
+</div>
+<div class="column" style="width:49%;">
 <div id="tbl-ut-min" class="table table-striped table-hover table-bordered table-sm quarto-float quarto-figure quarto-figure-center" style="font-size: 80%;">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-ut-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-ut-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered table-sm small">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Région</th>
 <th style="text-align: center;">Âge</th>
 <th style="text-align: center;">Statut</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">∅</td>
@@ -286,71 +272,54 @@ Table&nbsp;1: risque = 100 % , Perte d’info = 0 %
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-ut-min-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: risque = 0 % , Perte d’info = 100 %
-</figcaption>
-</figure>
+Table 2: risque = 0 % , Perte d’info = 100 %
+</figcaption></figure>
 </div>
-</div></div>
-</section>
-<section id="quels-usages-des-données" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Quels usages des données ?</h2>
+</div>
+</div>
+</section><section id="quels-usages-des-données" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Quels usages des données ?</h2>
 <ul>
 <li><p>En <strong>fonction des utilisateurs finaux</strong>, le concept de perte d’information peut changer</p></li>
 <li><p>Connaître les <strong>utilisations</strong> qui seront faites des données (ex. régression, aggrégats, moyennes)</p></li>
 <li><p>Il n’est pas recommandé de publier plusieurs versions protégées du même jeu de données pour chaque type d’utilisateur <span class="math inline">\(\rightarrow\)</span> risques de divulgation importants par différenciation.</p></li>
-</ul>
-</section>
-<section id="idée-principale" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Idée principale</h2>
+</ul></section><section id="idée-principale" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Idée principale</h2>
 <p>Deux moyens de mesurer la perte d’information :</p>
 <ol type="1">
 <li><p><strong>Comparer les enregistrements bruts</strong> entre le jeu de données original et le jeu de données protégé</p></li>
 <li><p><strong>Comparer certaines statistiques</strong> calculées sur les jeux de données originaux et protégés</p></li>
-</ol>
-</section></section>
-<section>
-<section id="données-continues" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="2">
-<h1><span class="header-section-number">2</span> Données continues</h1>
+</ol></section></section><section><section id="données-continues" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="2"><h1>
+<span class="header-section-number">2</span> Données continues</h1>
 
-</section>
-<section id="notations" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Notations</h2>
+</section><section id="notations" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Notations</h2>
 <p>Pour les <strong>données continues</strong>, formellement :</p>
 <ul>
 <li><p><span class="math inline">\(I_1,\dots, I_n\)</span>, <span class="math inline">\(n\)</span> enregistrements individuels</p></li>
 <li><p><span class="math inline">\(Z_1,..,Z_p\)</span>, <span class="math inline">\(p\)</span> données continues</p></li>
 <li><p><span class="math inline">\(X\)</span> la matrice de données originale, <span class="math inline">\(X^{'}\)</span> la matrice de données protégée</p></li>
-</ul>
-</section>
-<section id="distance-entre-matrices" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Distance entre matrices</h2>
+</ul></section><section id="distance-entre-matrices" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Distance entre matrices</h2>
 <ul>
-<li><strong>Erreur quadratique moyenne</strong> : somme des différences au carré entre les deux matrices, composante par compasante, divisée par le nombre de coefficients d’une matrice (même pour les deux) <span class="math display">\[\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n(x_{ij}-x^{'}_{ij})^2\]</span></li>
-</ul>
-</section>
-<section id="distance-entre-matrices-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Distance entre matrices</h2>
+<li>
+<strong>Erreur quadratique moyenne</strong> : somme des différences au carré entre les deux matrices, composante par compasante, divisée par le nombre de coefficients d’une matrice (même pour les deux) <span class="math display">\[\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n(x_{ij}-x^{'}_{ij})^2\]</span>
+</li>
+</ul></section><section id="distance-entre-matrices-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Distance entre matrices</h2>
 <ul>
-<li><strong>Erreur absolue moyenne</strong> : somme des différences absolues entre les deux matrices, composante par composante, divisée par le nombre de coefficients d’une matrice (même pour les deux) <span class="math display">\[\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n|x_{ij}-x^{'}_{ij}|\]</span></li>
-</ul>
-</section>
-<section id="distance-entre-matrices-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Distance entre matrices</h2>
+<li>
+<strong>Erreur absolue moyenne</strong> : somme des différences absolues entre les deux matrices, composante par composante, divisée par le nombre de coefficients d’une matrice (même pour les deux) <span class="math display">\[\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n|x_{ij}-x^{'}_{ij}|\]</span>
+</li>
+</ul></section><section id="distance-entre-matrices-2" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Distance entre matrices</h2>
 <ul>
-<li><strong>Variation moyenne</strong> : somme des variations absolues en pourcentage des composantes de la matrice protégée par rapport à la matrice de données originale <span class="math display">\[\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{|x_{ij}|}\]</span></li>
+<li>
+<strong>Variation moyenne</strong> : somme des variations absolues en pourcentage des composantes de la matrice protégée par rapport à la matrice de données originale <span class="math display">\[\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{|x_{ij}|}\]</span>
+</li>
 </ul>
 <p>Avec <span class="math inline">\(x_{ij} \ne 0\)</span>.</p>
 <p>“En moyenne, chaque cellule a été modifiée de x% par rapport à la valeur d’origine.”</p>
-</section>
-<section id="un-exemple" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
+</section><section id="un-exemple" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
 <div class="columns">
 <div class="column" style="width:49%;">
 <div id="tbl-ex-haut" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-ex-haut-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table>
-<tbody>
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-ex-haut-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table><tbody>
 <tr class="odd">
 <td style="text-align: center;">Sexe</td>
 <td style="text-align: center;">Rég</td>
@@ -375,22 +344,20 @@ Table&nbsp;2: risque = 0 % , Perte d’info = 100 %
 <td style="text-align: center;"><span style="color: blue">52</span></td>
 <td style="text-align: center;"><span style="color: blue">5</span></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-ex-haut-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3: Heures travaillées par semaine par sexe, âge et région (données originales <span style="color: blue"><span class="math inline">\(X\)</span></span>)
-</figcaption>
-</figure>
+Table 3: Heures travaillées par semaine par sexe, âge et région (données originales <span style="color: blue"><span class="math inline">\(X\)</span></span>)
+</figcaption></figure>
 </div>
-</div><div class="column" style="width:2%;">
+</div>
+<div class="column" style="width:2%;">
 
-</div><div class="column" style="width:49%;">
+</div>
+<div class="column" style="width:49%;">
 <div id="tbl-perturbees" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-perturbees-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table>
-<tbody>
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-perturbees-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table><tbody>
 <tr class="odd">
 <td style="text-align: center;">Sexe</td>
 <td style="text-align: center;">Rég</td>
@@ -415,275 +382,218 @@ Table&nbsp;3: Heures travaillées par semaine par sexe, âge et région (donnée
 <td style="text-align: center;"><span style="color: blue">58</span></td>
 <td style="text-align: center;"><span style="color: blue">2</span></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-perturbees-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4: Heures travaillées par semaine par sexe, âge et région (données perturbées <span style="color: blue"><span class="math inline">\(X^{'}\)</span></span>)
-</figcaption>
-</figure>
+Table 4: Heures travaillées par semaine par sexe, âge et région (données perturbées <span style="color: blue"><span class="math inline">\(X^{'}\)</span></span>)
+</figcaption></figure>
 </div>
-</div></div>
-</section>
-<section id="un-exemple-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
+</div>
+</div>
+</section><section id="un-exemple-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
 <ul>
-<li><strong>Erreur quadratique moyenne</strong> =</li>
+<li>
+<strong>Erreur quadratique moyenne</strong> =</li>
 </ul>
 <p><span class="math inline">\(\frac{(36-34)^2+(41-48)^2+(52-58)^2+(17-23)^2+(35-35)^2+(5-2)^2}{6}=22\)</span></p>
 <ul>
-<li><strong>Erreur absolue moyenne</strong> =</li>
+<li>
+<strong>Erreur absolue moyenne</strong> =</li>
 </ul>
 <p><span class="math inline">\(\frac{|36-34|+|41-48|+|52-58|+|17-23|+|35-35|+|5-2|}{6}=4\)</span></p>
 <ul>
-<li><strong>Variation moyenne</strong> =</li>
+<li>
+<strong>Variation moyenne</strong> =</li>
 </ul>
 <p><span class="math inline">\(\frac{\frac{|36-34|}{36}+\frac{|41-48|}{41}+\frac{|52-58|}{52}+\frac{|17-23|}{17}+\frac{|35-35|}{35}+\frac{|5-2|}{5}}{6}=0.15\)</span></p>
-</section>
-<section id="effet-de-taille-variation-moyenne" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Effet de taille variation moyenne</h2>
+</section><section id="effet-de-taille-variation-moyenne" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Effet de taille variation moyenne</h2>
 <p>La variation moyenne dépend de la taille de <span class="math inline">\(x_{ij}\)</span> :</p>
 <ul>
 <li><p><span class="math inline">\(x_{ij}\)</span> grande <span class="math inline">\(\rightarrow\)</span> même une différence importante <span class="math inline">\(|x_{ij} - x^{'}_{ij}|\)</span> donne un ratio faible</p></li>
 <li><p><span class="math inline">\(x_{ij}\)</span> petite <span class="math inline">\(\rightarrow\)</span> même un petit écart absolu <span class="math inline">\(|x_{ij} - x^{'}_{ij}|\)</span> donne un ratio élevé</p></li>
-</ul>
-</section>
-<section id="corriger-leffet-de-taille" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Corriger l’effet de taille</h2>
+</ul></section><section id="corriger-leffet-de-taille" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Corriger l’effet de taille</h2>
 <p>Pour que le ratio ne dépende pas de la taille de <span class="math inline">\(x_{ij}\)</span> on utilise une autre mesure : <span class="math display">\[\frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x^{'}_{ij}|}{\sqrt{2}S_j}\]</span> avec <span class="math inline">\(S_j\)</span> l’écart type de la <span class="math inline">\(j\)</span>-ème variable</p>
 <p>Permet de comparer les variations à variabilité “normale” de la variable.</p>
-</section>
-<section id="mesures-spécifiques" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Mesures spécifiques</h2>
+</section><section id="mesures-spécifiques" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Mesures spécifiques</h2>
 <ul>
 <li><p>Comparaisons univariées (comparaison de la distribution d’une variable avant et après perturbation).</p></li>
 <li><p>Comparaisons bivariées: Corrélations linéaires par exemple.</p></li>
 <li><p>Comparaison multivariées: Comparaison des plans d’une analyse en composante principale.</p></li>
 <li><p>Comparaison des paramètres d’une régression, etc.</p></li>
-</ul>
-</section></section>
-<section>
-<section id="données-catégorielles" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="3">
-<h1><span class="header-section-number">3</span> Données catégorielles</h1>
+</ul></section></section><section><section id="données-catégorielles" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="3"><h1>
+<span class="header-section-number">3</span> Données catégorielles</h1>
 
-</section>
-<section id="différentes-comparaisons" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Différentes comparaisons</h2>
+</section><section id="différentes-comparaisons" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Différentes comparaisons</h2>
 <p>Pour les <strong>variables catégorielles</strong>, 3 idées principales pour évaluer la perte d’information avec des données catégorielles :</p>
 <ul>
-<li><p><strong>Comparaison directe</strong> des valeurs des variables</p>
+<li>
+<p><strong>Comparaison directe</strong> des valeurs des variables</p>
 <ul>
 <li><p>Écarts absolus moyens</p></li>
 <li><p>Écarts absolus relatifs moyens</p></li>
-</ul></li>
+</ul>
+</li>
 <li><p>Comparaison des <strong>tables de contingence</strong></p></li>
 <li><p>Mesures basées sur <strong>l’entropie</strong></p></li>
-</ul>
-</section>
-<section id="mesure-basée-sur-lentropie" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Mesure basée sur l’entropie</h2>
+</ul></section><section id="mesure-basée-sur-lentropie" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Mesure basée sur l’entropie</h2>
 <ul>
 <li><p>L’entropie mesure l’incertitude induite par une distribution de probabilité donnée : <span class="math display">\[H(V|V^\prime=j) = - \sum_{i=1}^K P(V=i|V^\prime = j) \log(P(V=i|V^\prime = j))\]</span></p></li>
 <li><p>Selon la méthode, il peut être difficile d’évaluer la quantité <span class="math inline">\(P(V=i|V^{'} = j)\)</span></p></li>
 <li><p>Risque global <span class="math display">\[R = \sum_{r \in enregistrements} H(V|V^\prime=\underset{valeur protégée}{\underbrace{j_{r}}})\]</span></p></li>
-</ul>
-</section>
-<section id="mesurer-la-qualité-dune-inférence" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Mesurer la qualité d’une inférence</h2>
+</ul></section><section id="mesurer-la-qualité-dune-inférence" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Mesurer la qualité d’une inférence</h2>
 <ul>
-<li><span class="math inline">\(K = 5\)</span> catégories, soit <span class="math inline">\(j = 4\)</span>, et examinons <span class="math inline">\(P(V=i|V^{'} = 4)_{1\leq i\leq 5}\)</span></li>
+<li>
+<span class="math inline">\(K = 5\)</span> catégories, soit <span class="math inline">\(j = 4\)</span>, et examinons <span class="math inline">\(P(V=i|V^{'} = 4)_{1\leq i\leq 5}\)</span>
+</li>
 </ul>
 <div class="columns">
 <div class="column" style="width:33%;">
 <div style="text-align:center;">
 <div id="fig-bruit-dirac" class="quarto-float quarto-figure quarto-figure-center" alt="Bruit nul" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-bruit-dirac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-bruit-dirac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/Dirac.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Bruit nul">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bruit-dirac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Dirac
-</figcaption>
-</figure>
+Figure 1: Dirac
+</figcaption></figure>
 </div>
 </div>
-</div><div class="column" style="width:33%;">
+</div>
+<div class="column" style="width:33%;">
 <div style="text-align:center;">
 <div id="fig-bruit-compromis" class="quarto-float quarto-figure quarto-figure-center" alt="Compromis" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-bruit-compromis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-bruit-compromis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/Compromise.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Compromis">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bruit-compromis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Compromis
-</figcaption>
-</figure>
+Figure 2: Compromis
+</figcaption></figure>
 </div>
 </div>
-</div><div class="column" style="width:33%;">
+</div>
+<div class="column" style="width:33%;">
 <div style="text-align:center;">
 <div id="fig-bruit-unif" class="quarto-float quarto-figure quarto-figure-center" alt="Bruit fort" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-bruit-unif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-bruit-unif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/uniform.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Bruit fort">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bruit-unif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Bruit fort
-</figcaption>
-</figure>
+Figure 3: Bruit fort
+</figcaption></figure>
 </div>
 </div>
-</div></div>
+</div>
+</div>
 <ul>
 <li>Compromis entre risque et perte d’information !</li>
-</ul>
-</section>
-<section id="mesures-globales" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Mesures globales</h2>
+</ul></section><section id="mesures-globales" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Mesures globales</h2>
 <ul>
 <li>Écarts absolus moyens ou relatifs</li>
-<li>Distance de Hellinger<br>
-<span class="math display">\[HD(\mathbf{X}, \mathbf{X}') = \frac{1}{\sqrt{2}} \sqrt{\sum_{j = 1}^M \left(\sqrt{\frac{x'_j}{\sum_{j=1}^M x'_j}} - \sqrt{\frac{x_j}{\sum_{j=1}^M x_j}}\right)^2}\]</span></li>
-</ul>
-</section>
-<section id="métriques-spécifiques-pour-tableau-de-contingence" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Métriques spécifiques pour tableau de contingence</h2>
+<li>Distance de Hellinger<br><span class="math display">\[HD(\mathbf{X}, \mathbf{X}') = \frac{1}{\sqrt{2}} \sqrt{\sum_{j = 1}^M \left(\sqrt{\frac{x'_j}{\sum_{j=1}^M x'_j}} - \sqrt{\frac{x_j}{\sum_{j=1}^M x_j}}\right)^2}\]</span>
+</li>
+</ul></section><section id="métriques-spécifiques-pour-tableau-de-contingence" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Métriques spécifiques pour tableau de contingence</h2>
 <ul>
 <li>Comparaison des V de Cramer (basée sur la statistique du <span class="math inline">\(\chi^2\)</span>)</li>
 <li>Comparaison du 1er plan factoriel d’une analyse factorielle des correspondances.</li>
-</ul>
-</section></section>
-<section>
-<section id="sappuyer-sur-la-visualisation" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="4">
-<h1><span class="header-section-number">4</span> S’appuyer sur la visualisation</h1>
+</ul></section></section><section><section id="sappuyer-sur-la-visualisation" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="4"><h1>
+<span class="header-section-number">4</span> S’appuyer sur la visualisation</h1>
 
-</section>
-<section id="de-nombreuses-possibilités" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>De nombreuses possibilités</h2>
+</section><section id="de-nombreuses-possibilités" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>De nombreuses possibilités</h2>
 <ul>
 <li>Univarié: histogrammes, boîtes à moustaches, diagrammes en barres</li>
 <li>Bivarié: Matrices de corrélations, Diagrammes en mosaïques, Plan d’une analyse factorielle des correspondances, etc.</li>
 <li>Multivarié: 1er plan d’une analyse factorielle (ACP, ACM, AFDM)</li>
-</ul>
-</section>
-<section id="matrice-de-corrélation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Matrice de corrélation</h2>
+</ul></section><section id="matrice-de-corrélation" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Matrice de corrélation</h2>
 <div class="columns">
 <div class="column" style="width:33%;">
 <div style="text-align:center;">
 <div id="fig-cor-original" class="quarto-float quarto-figure quarto-figure-center" alt="Matrice originale des corrélations" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-cor-original-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-cor-original-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/cor_original.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Matrice originale des corrélations">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cor-original-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Originale
-</figcaption>
-</figure>
+Figure 4: Originale
+</figcaption></figure>
 </div>
 </div>
-</div><div class="column" style="width:33%;">
+</div>
+<div class="column" style="width:33%;">
 <div style="text-align:center;">
 <div id="fig-diff-cor-cart" class="quarto-float quarto-figure quarto-figure-center" alt="Matrice des différences entre l'original et la méthode 1" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-diff-cor-cart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-diff-cor-cart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/cor_cart.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Matrice des différences entre l'original et la méthode 1">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diff-cor-cart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Différences méthode 1
-</figcaption>
-</figure>
+Figure 5: Différences méthode 1
+</figcaption></figure>
 </div>
 </div>
-</div><div class="column" style="width:33%;">
+</div>
+<div class="column" style="width:33%;">
 <div style="text-align:center;">
 <div id="fig-diff-cor-ctgan" class="quarto-float quarto-figure quarto-figure-center" alt="Matrice des différences entre l'original et la méthode 2" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-diff-cor-ctgan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-diff-cor-ctgan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/cor_ctgan.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Matrice des différences entre l'original et la méthode 2">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diff-cor-ctgan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: Différences méthode 2
-</figcaption>
-</figure>
+Figure 6: Différences méthode 2
+</figcaption></figure>
 </div>
 </div>
-</div></div>
+</div>
+</div>
 <p>La comparaison visuelle permet immédiatement de voir que la 1ere méthode conserve mieux les relations bivariées que la 2eme.</p>
-</section>
-<section id="nuages-dune-analyse-factorielle" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Nuages d’une analyse factorielle</h2>
+</section><section id="nuages-dune-analyse-factorielle" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Nuages d’une analyse factorielle</h2>
 <p>Comparaison de la projection des individus sur le premier plan d’une analyse factorielle.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div style="text-align:center;">
 <div id="fig-acp-originale" class="quarto-float quarto-figure quarto-figure-center" alt="Individus originaux projetés sur le premier plan d'une ACP" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-acp-originale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-acp-originale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/acp_original.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Individus originaux projetés sur le premier plan d'une ACP">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-acp-originale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Original
-</figcaption>
-</figure>
+Figure 7: Original
+</figcaption></figure>
 </div>
 </div>
-</div><div class="column" style="width:50%;">
+</div>
+<div class="column" style="width:50%;">
 <div style="text-align:center;">
 <div id="fig-acp-ctgan" class="quarto-float quarto-figure quarto-figure-center" alt="Individus bruités projetés sur le premier plan de la même ACP" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-acp-ctgan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-acp-ctgan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/acp_ctgan.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Individus bruités projetés sur le premier plan de la même ACP">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-acp-ctgan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8: Perturbé
-</figcaption>
-</figure>
+Figure 8: Perturbé
+</figcaption></figure>
 </div>
 </div>
-</div></div>
-</section>
-<section id="résultats-dune-régression" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Résultats d’une régression</h2>
+</div>
+</div>
+</section><section id="résultats-dune-régression" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Résultats d’une régression</h2>
 <div style="text-align:center;">
 <div id="fig-ic-coeff-glm" class="quarto-float quarto-figure quarto-figure-center" alt="Intervalles de confiance des coefficients d'une régression logistique en fonction de la méthode de traitement des données" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-ic-coeff-glm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-ic-coeff-glm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/puf65_intervalle_confiance_glm.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Intervalles de confiance des coefficients d'une régression logistique en fonction de la méthode de traitement des données">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic-coeff-glm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: Intervalle de confiance des coeeficients d’une régression logistique selon la méthode de traitement des données
-</figcaption>
-</figure>
+Figure 9: Intervalle de confiance des coeeficients d’une régression logistique selon la méthode de traitement des données
+</figcaption></figure>
 </div>
 </div>
 
 
 </section></section>
-    </div>
+</div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
 <p>Mesurer l’utilité</p>
 </div>
-</div></div>
+</div>
+</div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../../site_libs/revealjs/plugin/search/search.js"></script><script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -874,8 +784,7 @@ Figure&nbsp;9: Intervalle de confiance des coeeficients d’une régression logi
           RevealZoom
         ]
       });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
+    </script><script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
         tabsets.forEach(function(tabset) {
@@ -1043,6 +952,5 @@ Figure&nbsp;9: Intervalle de confiance des coeeficients d’une régression logi
         }
       });
       </script>
-    
-
-</body></html>
+</body>
+</html>

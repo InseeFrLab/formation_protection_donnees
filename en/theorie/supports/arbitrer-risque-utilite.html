@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-EN">
+<html lang="en-US">
 <head>
 <link rel="alternate" hreflang="fr" href="/theorie/supports/arbitrer-risque-utilite.html" />
 <link rel="alternate" hreflang="en" href="/en/theorie/supports/arbitrer-risque-utilite.en.html" />
@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.26">
 <meta name="author" content="Insee, Département des Méthodes Statistiques">
-<title>Statistical Disclosure Control for Public Statistics – The disclosure risks</title>
+<title>Statistical Disclosure Control for Public Statistics – Disclosure risks</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -151,9 +151,9 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center"><h1 class="title">The disclosure risks</h1>
+<section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center"><h1 class="title">Disclosure risks</h1>
   <p class="subtitle"></p>
-<p><strong><span class="orange">Define, assess, decide</span></strong></p>
+<p><strong><span class="orange">Define, Assess, Decide</span></strong></p>
 <p></p>
 
 <div class="quarto-title-authors">
@@ -164,108 +164,109 @@ Insee, Département des Méthodes Statistiques
 </div>
 </div>
 
-</section><section id="TOC"><nav role="doc-toc"><h2 id="toc-title">Sommaire</h2>
+</section><section id="TOC"><nav role="doc-toc"><h2 id="toc-title">Table of contents</h2>
 <ul>
 <li><a href="#/introduction" id="/toc-introduction">Introduction</a></li>
-<li><a href="#/un-arbitrage-n%C3%A9cessaire" id="/toc-un-arbitrage-nécessaire"><span class="header-section-number">1</span> Un arbitrage nécessaire</a></li>
-<li><a href="#/besoin-dune-gouvernance" id="/toc-besoin-dune-gouvernance"><span class="header-section-number">2</span> Besoin d’une gouvernance</a></li>
-<li><a href="#/une-d%C3%A9marche-en-plusieurs-%C3%A9tapes" id="/toc-une-démarche-en-plusieurs-étapes"><span class="header-section-number">3</span> Une démarche en plusieurs étapes</a></li>
-<li><a href="#/d%C3%A9finir-le-risque" id="/toc-définir-le-risque"><span class="header-section-number">4</span> Définir le risque</a></li>
-<li><a href="#/mesurer-le-risque" id="/toc-mesurer-le-risque"><span class="header-section-number">5</span> Mesurer le risque</a></li>
-<li><a href="#/mesures-probabilistes-du-risque" id="/toc-mesures-probabilistes-du-risque"><span class="header-section-number">6</span> Mesures probabilistes du risque</a></li>
-<li><a href="#/autres-mesures" id="/toc-autres-mesures"><span class="header-section-number">7</span> Autres mesures</a></li>
-<li><a href="#/les-sc%C3%A9narios-dattaque" id="/toc-les-scénarios-dattaque"><span class="header-section-number">8</span> Les scénarios d’attaque</a></li>
+<li><a href="#/a-necessary-trade-off" id="/toc-a-necessary-trade-off"><span class="header-section-number">1</span> A Necessary Trade-off</a></li>
+<li><a href="#/need-for-governance" id="/toc-need-for-governance"><span class="header-section-number">2</span> Need for governance</a></li>
+<li><a href="#/a-multi-step-approach" id="/toc-a-multi-step-approach"><span class="header-section-number">3</span> A Multi-Step Approach</a></li>
+<li><a href="#/define-the-risk" id="/toc-define-the-risk"><span class="header-section-number">4</span> Define the risk</a></li>
+<li><a href="#/measuring-the-risk" id="/toc-measuring-the-risk"><span class="header-section-number">5</span> Measuring the Risk</a></li>
+<li><a href="#/probabilistic-measures-of-risk" id="/toc-probabilistic-measures-of-risk"><span class="header-section-number">6</span> Probabilistic Measures of Risk</a></li>
+<li><a href="#/other-measures" id="/toc-other-measures"><span class="header-section-number">7</span> Other Measures</a></li>
+<li><a href="#/attack-scenarios" id="/toc-attack-scenarios"><span class="header-section-number">8</span> Attack Scenarios</a></li>
 <li><a href="#/conclusion" id="/toc-conclusion"><span class="header-section-number">9</span> Conclusion</a></li>
-<li><a href="#/pour-aller-plus-loin" id="/toc-pour-aller-plus-loin"><span class="header-section-number">10</span> Pour aller plus loin</a></li>
+<li><a href="#/for-further-reading" id="/toc-for-further-reading"><span class="header-section-number">10</span> For further reading</a></li>
 </ul></nav></section><section><section id="introduction" class="title-slide slide level1 unnumbered center" data-background-image="background.svg" data-background-size="contain"><h1>Introduction</h1>
 
 </section><section id="context" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Context</h2>
-<p>On se placera dans le contexte suivant:</p>
+<p>We will place ourselves in the following context:</p>
 <ul>
-<li>Un institut statistique collecte des données individuelles.</li>
-<li>On suppose qu’il respecte les réglements en vigueur en termes de protection des données individuelles (par exemple le RGPD en Europe).</li>
-<li>L’institut cherche à diffuser des statistiques agrégées ou des fichiers de données individuelles à visée statistique.</li>
-</ul></section><section id="problématique" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Problématique</h2>
+<li>A statistical institute collects individual data.</li>
+<li>It is assumed that it complies with the regulations in force regarding the protection of individual data (for example, the GDPR in Europe).</li>
+<li>The institute seeks to disseminate aggregated statistics or individual data files for statistical purposes.</li>
+</ul></section><section id="problem-statement" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Problem Statement</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Problématique de l’ensemble de l’atelier</strong></p>
+<p><strong>Workshop Overall Problem Statement</strong></p>
 </div>
 <div class="callout-content">
-<p>Comment diffuser de l’information statistique sans porter atteinte aux personnes (physiques ou morales) auprès desquelles l’information a été collectée ?</p>
+<p>How can statistical information be disseminated without harming the individuals or organizations from whom the information was collected?</p>
 </div>
 </div>
 </div>
-</section><section id="protéger-un-enjeu-pour-la-statistique-publique" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Protéger: un enjeu pour la statistique publique</h2>
-<p><em>Les missions [de la statistique publique] ne dépendent pas seulement de sa capacité à maîtriser les outils ou les méthodes nécessaires à la production d’une information de qualité, mais aussi de <span style="color:green;"><strong>sa capacité à protéger et à garantir la confidentialité des données qui lui sont confiées</strong></span>. Cette protection est la condition pour continuer à disposer de ces données.</em> <span class="citation" data-cites="redor_confidentialite_2023">(<a href="#/biblio" role="doc-biblioref" onclick="">Redor 2023</a>)</span></p>
-</section><section id="a-la-recherche-dune-définition" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>A la recherche d’une définition</h2>
+</section><section id="protecting-a-challenge-for-official-statistics" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Protecting: a challenge for official statistics</h2>
+<p><em>The missions [of official statistics] do not depend solely on its ability to master the tools or methods necessary for producing quality information, but also on <span style="color:green;"><strong>its ability to protect and guarantee the confidentiality of the data entrusted to it</strong></span>. This protection is the condition for continuing to have access to this data.</em> <span class="citation" data-cites="redor_confidentialite_2023">(<a href="#/bibliography" role="doc-biblioref" onclick="">Redor 2023</a>)</span></p>
+</section><section id="in-search-of-a-definition" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>In Search of a Definition</h2>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Une définition maximaliste de la divulgation…</strong></p>
+<p><strong>A maximalist definition of disclosure…</strong></p>
 </div>
 <div class="callout-content">
-<p>T. Dalenius propose en 1977 la définition suivante:</p>
-<p><em>“Si la publication des statistiques <span class="math inline">\(T(D)\)</span> permet de déterminer la valeur de données statistiques confidentielles de façon plus précise qu’il ne serait possible sans accès à <span class="math inline">\(T(D)\)</span>, alors une divulgation a eu lieu.”</em> <span class="citation" data-cites="dalenius_privacy_1977">(<a href="#/biblio" role="doc-biblioref" onclick="">Dalenius 1977</a>)</span>.</p>
+<p>T. Dalenius proposes in 1977 the following definition:</p>
+<p><em>“If the publication of the statistics <span class="math inline">\(T(D)\)</span> allows determining the value of confidential statistical data more precisely than would be possible without access to <span class="math inline">\(T(D)\)</span>, then a disclosure has occurred.”</em> <span class="citation" data-cites="dalenius_privacy_1977">(<a href="#/bibliography" role="doc-biblioref" onclick="">Dalenius 1977</a>)</span>.</p>
 </div>
 </div>
 </div>
 <div class="callout callout-important no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>… impossible à tenir</strong></p>
+<p><strong>… impossible to hold</strong></p>
 </div>
 <div class="callout-content">
-<p>Cette définition ne prend pas en compte l’information auxiliaire déjà disponible</p>
+<p>This definition does not take into account the auxiliary information already available</p>
 </div>
 </div>
 </div>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Un exemple de divulgation impossible à protéger</strong></p>
+<p><strong>An example of disclosure impossible to protect</strong></p>
 </div>
 <div class="callout-content">
-<p>Des études montrent un lien de corrélation entre le fait de fumer et la survenue d’un cancer des poumons <span class="math inline">\(\Rightarrow\)</span> si, on (une compagnie d’assurance) sait qu’un individu est fumeur, alors on peut lui imputer un risque important d’avoir un cancer, information qui va très probablement générer un préjudice à cette personne.</p>
+<p>Studies show a correlation between smoking and the occurrence of lung cancer <span class="math inline">\(\Rightarrow\)</span> if, we (an insurance company) know that an individual is a smoker, then we can attribute to them a significant risk of having cancer, information which will very likely cause harm to that person.</p>
 </div>
 </div>
 </div>
-</section><section id="a-la-recherche-dune-définition-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>A la recherche d’une définition</h2>
-<p>Il faut tenir compte de deux réalités:</p>
+</section><section id="in-search-of-a-definition-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>In Search of a Definition</h2>
+<p>Two realities must be taken into account:</p>
 <ul>
-<li>l’utilisateur dispose d’une <strong>information auxiliaire</strong>.</li>
-<li>l’<strong>inférence statistique</strong> est l’un des moyens de connaissances offertes par la publication de statistiques.</li>
+<li>the user has <strong>auxiliary information</strong>.</li>
+<li>
+<strong>statistical inference</strong> is one of the means of knowledge provided by the publication of statistics.</li>
 </ul>
-<p><span class="math inline">\(\Rightarrow\)</span> <strong>une protection inconditionnelle et totale n’est pas possible.</strong></p>
-</section><section id="besoin-de-maîtriser-les-risques" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Besoin de maîtriser les risques</h2>
-<p>La protection de données se définit à travers:</p>
+<p><span class="math inline">\(\Rightarrow\)</span> <strong>unconditional and total protection is not possible.</strong></p>
+</section><section id="need-to-master-risks" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Need to Master Risks</h2>
+<p>Data protection is defined through:</p>
 <ul>
-<li>la maîtrise des risques de divulgation</li>
-<li>et le besoin de continuer à diffuser de l’information statistique.</li>
+<li>mastery of disclosure risks</li>
+<li>and the need to continue disseminating statistical information.</li>
 </ul>
-<p><span class="math inline">\(\Rightarrow\)</span> <strong>Besoin d’arbitrer entre les deux composantes.</strong></p>
-</section></section><section><section id="un-arbitrage-nécessaire" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="1"><h1>
-<span class="header-section-number">1</span> Un arbitrage nécessaire</h1>
+<p><span class="math inline">\(\Rightarrow\)</span> <strong>Need to arbitrate between the two components.</strong></p>
+</section></section><section><section id="a-necessary-trade-off" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="1"><h1>
+<span class="header-section-number">1</span> A Necessary Trade-off</h1>
 
-</section><section id="arbitrer" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Arbitrer</h2>
-<p>Protéger des données confidentielles, c’est <strong>arbitrer</strong> entre:</p>
+</section><section id="arbitrate" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Arbitrate</h2>
+<p>Protecting confidential data means <strong>arbitrating</strong> between:</p>
 <ul>
-<li><p>leur <strong>utilité</strong> pour la connaissance et le débat public;</p></li>
-<li><p>leur <strong>risque intrinsèque</strong>: toute donnée diffusée peut divulguer une information sur un individu ou un groupe d’individus.</p></li>
+<li><p>their <strong>utility</strong> for knowledge and public debate;</p></li>
+<li><p>their <strong>intrinsic risk</strong>: any data disseminated can disclose information about an individual or a group of individuals.</p></li>
 </ul>
 <div style="text-align:center;">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="img/trade_off_balance.png" style="width:40.0%" alt="Arbitrage Risque-Utilité"></p>
-<figcaption>Arbitrer</figcaption></figure>
+<figure><p><img data-src="img/trade_off_balance.png" style="width:40.0%" alt="Risk-Utility Trade-off"></p>
+<figcaption>Arbitrate</figcaption></figure>
 </div>
 </div>
-</section><section id="deux-écueils" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Deux écueils</h2>
+</section><section id="two-pitfalls" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Two Pitfalls</h2>
 <ul>
-<li><p>Ne pas diffuser rendrait la statistique publique inutile.</p></li>
-<li><p>Tout diffuser rendrait la statistique publique dangereuse.</p></li>
+<li><p>Not disseminating would make the public statistic useless.</p></li>
+<li><p>Disseminating everything would make the public statistic dangerous.</p></li>
 </ul>
 <div style="text-align:center;">
 <div class="quarto-figure quarto-figure-center">
@@ -273,24 +274,24 @@ Insee, Département des Méthodes Statistiques
 <figcaption>Arbitrer</figcaption></figure>
 </div>
 </div>
-</section><section id="problèmes" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Problèmes</h2>
+</section><section id="issues" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Issues</h2>
 <ul>
-<li>Quels sont les risques de divulgation ?</li>
-<li>Comment mesurer ces risques ?</li>
-<li>Comment les traiter ?</li>
+<li>What are the disclosure risks?</li>
+<li>How to measure these risks?</li>
+<li>How to address them?</li>
 </ul>
-<p><span class="math inline">\(\Rightarrow\)</span> Comment les traiter sans <em>trop</em> détériorer l’information statistique ?</p>
-</section><section id="enjeu-principal-de-larbitrage" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Enjeu principal de l’arbitrage:</h2>
+<p><span class="math inline">\(\Rightarrow\)</span> How to address them without <em>too much</em> deteriorating the statistical information?</p>
+</section><section id="main-issue-of-arbitration" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Main issue of arbitration:</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Trouver un équilibre entre protection et information</strong></p>
+<p><strong>Finding a balance between protection and information</strong></p>
 </div>
 <div class="callout-content">
-<p>Il s’agit de réaliser un <strong>compromis</strong> entre le fait de minimiser les risques de divulgation des informations confidentielles et minimiser la perte d’information due aux traitements de protection des données.</p>
+<p>This involves achieving a <strong>compromise</strong> between minimizing the risks of disclosing confidential information and minimizing the loss of information due to data protection processes.</p>
 </div>
 </div>
 </div>
@@ -300,80 +301,80 @@ Insee, Département des Méthodes Statistiques
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Pas de méthode magique</strong></p>
+<p><strong>No Magic Method</strong></p>
 </div>
 <div class="callout-content">
-<p>Il n’existe pas de méthode minimisant le risque et la perte d’information en même temps!</p>
+<p>There is no method that minimizes risk and information loss at the same time!</p>
 </div>
 </div>
 </div>
-</section><section id="un-exemple-darbitrage" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple d’arbitrage</h2>
-<p>Le recensement de la population (RP) en France:</p>
+</section><section id="an-example-of-arbitrage" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An example of arbitrage</h2>
+<p>The population census (RP) in France:</p>
 <ul>
-<li><p>Décret de publication spécifique;</p></li>
+<li><p>Specific publication decree;</p></li>
 <li>
-<p>Utilité des données du RP très forte:</p>
+<p>Utility of RP data is very strong:</p>
 <ul>
-<li>un certain nombre de lois en dépendent</li>
-<li>dotation financière des communes</li>
+<li>a number of laws depend on it</li>
+<li>financial allocation to municipalities</li>
 </ul>
 </li>
 <li>
-<p>Risque d’utilisation des données diffusées contre les personnes est jugé faible:</p>
+<p>Risk of using disseminated data against individuals is judged low:</p>
 <ul>
-<li>information peu préjudiciable</li>
-<li>à l’exception de variables sensibles</li>
+<li>information not very prejudicial</li>
+<li>except for sensitive variables</li>
 </ul>
 </li>
-</ul></section><section id="un-exemple-de-divulgation-assumée" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple de divulgation assumée</h2>
-<p>L’Insee diffuse des données communales même pour les très petites communes:</p>
-<p><a href="https://www.insee.fr/fr/statistiques/2011101?geo=COM-26274">Voir l’exemple de la commune de Rochefourchat</a>:</p>
+</ul></section><section id="an-example-of-assumed-disclosure" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An example of assumed disclosure</h2>
+<p>INSEE disseminates municipal data even for very small municipalities:</p>
+<p><a href="https://www.insee.fr/fr/statistiques/2011101?geo=COM-26274">See the example of the municipality of Rochefourchat</a>:</p>
 <ul>
-<li>Une commune de <span class="math inline">\(2\)</span> habitants</li>
-<li>On connaît leur sexe, leur situation conjugale, leur âge, une description grossière de leurs logements, le statut d’occupation de leur logement, leur niveau de diplôme, leur statut d’activité, etc.</li>
-</ul></section><section id="larbitrage-risqueutilité-un-paradigme" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>L’arbitrage Risque/Utilité: un paradigme</h2>
+<li>A municipality of (2) inhabitants</li>
+<li>We know their sex, their marital status, their age, a rough description of their housing, the occupancy status of their housing, their education level, their employment status, etc.</li>
+</ul></section><section id="the-riskutility-trade-off-a-paradigm" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>The Risk/Utility Trade-off: a Paradigm</h2>
 <ul>
-<li><p>Il n’existe pas de risque zéro</p></li>
+<li><p>There is no such thing as zero risk</p></li>
 <li>
-<p>Aucune méthode ne supprime totalement le risque <span class="math inline">\(\Rightarrow\)</span></p>
+<p>No method completely eliminates risk <span class="math inline">\(\Rightarrow\)</span></p>
 <ul>
-<li><p>Arbitrer est donc inhérent à la protection des données.</p></li>
-<li><p>Cet arbitrage considéré comme <strong>le paradigme</strong> de la discipline.</p></li>
+<li><p>Trade-offs are therefore inherent to data protection.</p></li>
+<li><p>This trade-off is considered <strong>the paradigm</strong> of the discipline.</p></li>
 </ul>
 </li>
-</ul></section><section id="un-paradigme-criticable" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un paradigme criticable</h2>
-<p><span class="citation" data-cites="cox_risk-utility_2011">(Voir <a href="#/biblio" role="doc-biblioref" onclick="">Cox, Karr, and Kinney 2011</a>)</span></p>
+</ul></section><section id="a-criticizable-paradigm" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>A Criticizable Paradigm</h2>
+<p><span class="citation" data-cites="cox_risk-utility_2011">(Voir <a href="#/bibliography" role="doc-biblioref" onclick="">Cox, Karr, and Kinney 2011</a>)</span></p>
 <ul>
-<li><p>S’il aide à savoir <strong>comment penser</strong>…</p></li>
-<li><p>…il aide moins à savoir <strong>comment agir</strong>.</p></li>
-</ul></section><section id="en-pratique-un-autre-arbitrage-a-lieu" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>En pratique, un autre arbitrage a lieu</h2>
-<p>Un arbitrage Coûts/Bénéfices est réalisé:</p>
+<li><p>If it helps to know <strong>how to think</strong>…</p></li>
+<li><p>…it helps less to know <strong>how to act</strong>.</p></li>
+</ul></section><section id="in-practice-another-trade-off-takes-place" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>In practice, another trade-off takes place</h2>
+<p>A <strong>Costs/Benefits</strong> trade-off is performed:</p>
 <ul>
-<li>Par le producteur de données:
+<li>By the data producer:
 <ul>
-<li>Quels moyens déployer pour quel niveau de protection (temps, moyens financiers)?</li>
+<li>What resources to deploy for what level of protection (time, financial means)?</li>
 </ul>
 </li>
-<li>Par l’attaquant:
+<li>By the attacker:
 <ul>
-<li>L’information confidentielle espérée est-elle à la hauteur des moyens nécessaires à sa divulgation ?</li>
+<li>Is the hoped-for confidential information worth the resources necessary for its disclosure?</li>
 </ul>
 </li>
 </ul>
-<p><span class="math inline">\(\Longrightarrow\)</span> Mettre en place des méthodes qui ont un coût adapté au risque objectivé et à la sensibilité des données.</p>
-</section><section id="objectiver-définir-et-mesurer" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Objectiver: définir et mesurer</h2>
-<p>Pour arbitrer, il faut pouvoir</p>
+<p><span class="math inline">\(\Longrightarrow\)</span> Implement methods that have a cost adapted to the identified risk and to the sensitivity of the data.</p>
+</section><section id="objective-define-and-measure" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Objective: define and measure</h2>
+<p>To arbitrate, one must be able to</p>
 <ul>
-<li><p>Définir les termes de l’arbitrage</p></li>
-<li><p>Mesurer les phénomènes.</p></li>
-</ul></section></section><section><section id="besoin-dune-gouvernance" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="2"><h1>
-<span class="header-section-number">2</span> Besoin d’une gouvernance</h1>
+<li><p>Define the terms of the arbitration</p></li>
+<li><p>Measure the phenomena.</p></li>
+</ul></section></section><section><section id="need-for-governance" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="2"><h1>
+<span class="header-section-number">2</span> Need for governance</h1>
 
-</section><section id="gouvernance-des-données" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Gouvernance des données</h2>
-<p>Avant de définir les risques:</p>
+</section><section id="data-governance" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Data Governance</h2>
+<p>Before defining the risks:</p>
 <ul>
-<li>Quels sont les objectifs de diffusion ?</li>
-<li>Qui accède à quoi avec quels droits ?</li>
+<li>What are the dissemination objectives?</li>
+<li>Who accesses what with which rights?</li>
 </ul>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -381,310 +382,274 @@ Insee, Département des Méthodes Statistiques
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Objectif</strong></p>
+<p><strong>Objective</strong></p>
 </div>
 <div class="callout-content">
-<p>Pour mieux maîtriser les risques, prendre conscience du contexte dans lequel ils sont susceptibles d’apparaître.</p>
+<p>To better manage risks, become aware of the context in which they are likely to appear.</p>
 </div>
 </div>
 </div>
-</section><section id="sécuriser-laccès" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Sécuriser l’accès</h2>
+</section><section id="securing-access" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Securing Access</h2>
 <ul>
 <li>
-<p>On peut distinguer quatre grands types d’utilisateurs:</p>
+<p>Four main types of users can be distinguished:</p>
 <ul>
 <li>
-<strong>grand public et acteurs publics</strong>: statistiques agrégées</li>
+<strong>General public and public actors</strong>: aggregated statistics</li>
 <li>
-<strong>chercheurs</strong>: statistiques détaillées voire données individuelles</li>
+<strong>Researchers</strong>: detailed statistics or even individual data</li>
 <li>
-<strong>chargés d’études de la statistique publique</strong>: données individuelles sans identifiants directs</li>
+<strong>Public statistics study officers</strong>: individual data without direct identifiers</li>
 <li>
-<strong>chargés de collecte</strong>: données individuelles avec identifiants</li>
+<strong>Data collection officers</strong>: individual data with identifiers</li>
 </ul>
 </li>
-</ul></section><section id="adapter-laccès-en-fonction-des-besoins-des-utilisateurs" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adapter l’accès en fonction des besoins des utilisateurs</h2>
+</ul></section><section id="adapt-access-based-on-user-needs" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adapt access based on user needs</h2>
 <ul>
 <li>
-<strong>Principe de minimisation</strong> : chaque utilisateur ne doit accéder qu’aux données strictement nécessaires à ses missions.</li>
-</ul></section><section id="adapter-laccès-en-fonction-des-besoins-des-utilisateurs-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adapter l’accès en fonction des besoins des utilisateurs</h2>
+<strong>Minimization principle</strong>: each user must access only the data strictly necessary for their missions.</li>
+</ul></section><section id="adapt-access-based-on-user-needs-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adapt access based on user needs</h2>
 <ul>
 <li>
-<strong>Différenciation des accès</strong> :
+<strong>Access differentiation</strong> :
 <ul>
 <li>
-<strong>grand public et acteurs publics</strong>: accès gratuit et sans condition.</li>
+<strong>general public and public actors</strong>: free access without conditions.</li>
 <li>
-<strong>chercheurs</strong>: accès sous conditions strictes (contrats, projets d’utilité publics, environnement sécurisé de travail, etc.).</li>
+<strong>researchers</strong>: access under strict conditions (contracts, public utility projects, secure working environment, etc.).</li>
 <li>
-<strong>chargés d’études</strong>: accès à des données sur serveurs internes soumis à autorisation préalable.</li>
+<strong>study managers</strong>: access to data on internal servers subject to prior authorization.</li>
 <li>
-<strong>chargés de collecte</strong>: accès aux données de collecte pour la seule enquête sur laquelle ils travaillent.</li>
+<strong>data collectors</strong>: access to collection data for the sole survey on which they are working.</li>
 </ul>
 </li>
-</ul></section><section id="adapter-laccès-en-fonction-des-besoins-des-utilisateurs-2" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adapter l’accès en fonction des besoins des utilisateurs</h2>
+</ul></section><section id="adapt-access-based-on-user-needs-2" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adapt access based on user needs</h2>
 <ul>
 <li>
-<strong>Assurer un suivi et un contrôle des accès</strong> : chaque accès doit pouvoir être contrôlé et révoqué si besoin.</li>
-</ul></section><section id="adapter-le-niveau-danonymisation-nécessaire" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adapter le niveau d’anonymisation nécessaire</h2>
-<p>Plus l’accès est lâche, plus l’anonymisation doit pouvoir être élevé:</p>
+<strong>Ensure monitoring and control of access</strong>: each access must be able to be controlled and revoked if necessary.</li>
+</ul></section><section id="adjust-the-necessary-anonymization-level" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adjust the Necessary Anonymization Level</h2>
+<p>The looser the access, the higher the anonymization must be able to be:</p>
 <ul>
 <li>
-<strong>grand public</strong>:
+<strong>general public</strong>:
 <ul>
-<li>libre accès <span class="math inline">\(\iff\)</span> protection statistique forte</li>
+<li>open access <span class="math inline">\(\iff\)</span> strong statistical protection</li>
 </ul>
 </li>
-</ul></section><section id="adapter-le-niveau-danonymisation-nécessaire-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adapter le niveau d’anonymisation nécessaire</h2>
-<p>Plus l’accès est lâche, plus l’anonymisation doit pouvoir être élevé:</p>
+</ul></section><section id="adjust-the-necessary-anonymization-level-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adjust the Necessary Anonymization Level</h2>
+<p>The looser the access, the higher the anonymization must be able to be:</p>
 <ul>
 <li>
-<strong>chercheurs et chargés d’études</strong>:
+<strong>researchers and study managers</strong>:
 <ul>
-<li>accès sécurisé <span class="math inline">\(\iff\)</span> protection statistique faible sur les inputs</li>
-<li>Mais besoin de traiter/vérifier les outputs publics (<strong>output checking</strong>)</li>
+<li>secure access <span class="math inline">\(\iff\)</span> weak statistical protection on the inputs</li>
+<li>But need to process/verify the public outputs (<strong>output checking</strong>)</li>
 </ul>
 </li>
-</ul></section><section id="adapter-le-niveau-danonymisation-nécessaire-2" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adapter le niveau d’anonymisation nécessaire</h2>
-<p>Plus l’accès est lâche, plus l’anonymisation doit pouvoir être élevé:</p>
+</ul></section><section id="adjust-the-necessary-anonymization-level-2" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Adjust the Necessary Anonymization Level</h2>
+<p>The looser the access, the higher the anonymization must be able to be:</p>
 <ul>
 <li>
-<strong>chargés de collecte</strong>:
+<strong>data collectors</strong>:
 <ul>
-<li>accès très sécurisé <span class="math inline">\(\iff\)</span> aucune protection statistique des données</li>
-<li>Mais nécessité de respecter les réglements sur la protection des données individuelles (RGPD en Europe).</li>
+<li>very secure access <span class="math inline">\(\iff\)</span> no statistical protection of the data</li>
+<li>But need to comply with regulations on the protection of individual data (GDPR in Europe). ## An example</li>
 </ul>
 </li>
-</ul></section><section id="un-exemple" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
+</ul>
 <div style="text-align:center;">
-<div id="fig-types-fichiers" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Adapter les fichiers aux publics">
+<div id="fig-types-fichiers" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Adapt files to audiences">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-types-fichiers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="img/types_fichiers_confidentialite.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Adapter les fichiers aux publics">
+<img data-src="img/types_fichiers_confidentialite.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Adapt files to audiences">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-types-fichiers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 1: Adapter les fichiers au type de public (Source: Insee)
+Figure 1: Adapt files to audience type (Source: INSEE)
 </figcaption></figure>
 </div>
 </div>
-</section><section id="gouvernance-déontologie-confiance" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Gouvernance, Déontologie, Confiance</h2>
+</section><section id="governance-ethics-trust" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Governance, Ethics, Trust</h2>
 <ul>
-<li>La maîtrise de la sécurité des accès et la meilleure gouvernance possible des données ne sont pas des boucliers infaillibles.</li>
+<li>Mastery of access security and the best possible data governance are not infallible shields.</li>
+<li>Strong <strong>Ethics</strong> of public statisticians.</li>
 <li>
-<strong>Déontologie</strong> forte des statisticiens publics.</li>
-<li>
-<strong>Confiance</strong> dans les différents acteurs (chercheurs) à qui on donne accès aux données.</li>
-</ul></section><section id="responsabiliser" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Responsabiliser</h2>
-<p>Une responsabilisation nécessaire:</p>
+<strong>Trust</strong> in the various actors (researchers) to whom data access is granted.</li>
+</ul></section><section id="hold-accountable" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Hold Accountable</h2>
+<p>A necessary accountability:</p>
 <ul>
-<li>Statisticiens publics (en France loi de 1951 sur le secret statistique)</li>
-<li>Chercheurs (Risque de révocation des contrats et conséquences sur l’ensemble du laboratoire)</li>
-</ul></section></section><section><section id="une-démarche-en-plusieurs-étapes" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="3"><h1>
-<span class="header-section-number">3</span> Une démarche en plusieurs étapes</h1>
+<li>Public statisticians (in France, 1951 law on statistical secrecy)</li>
+<li>Researchers (Risk of contract revocation and consequences for the entire laboratory)</li>
+</ul></section></section><section><section id="a-multi-step-approach" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="3"><h1>
+<span class="header-section-number">3</span> A Multi-Step Approach</h1>
 
-</section><section id="étapes-clés-du-processus-de-protection-des-données" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étapes clés du processus de protection des données</h2>
+</section><section id="key-steps-in-the-data-protection-process" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Key Steps in the Data Protection Process</h2>
 <div style="font-size: 80%;">
 <ol type="1">
-<li><p>Est-il nécessaire de protéger les données ?</p></li>
-<li><p>Quelles sont les caractéristiques et utilisations principales des données ?</p></li>
-<li><p>Définition et mesure des risques de divulgation</p></li>
-<li><p>Choix des méthodes de protection des données</p></li>
-<li><p>Mise en oeuvre des méthodes</p></li>
-<li><p>Contrôles et documentation</p></li>
+<li><p>Is it necessary to protect the data?</p></li>
+<li><p>What are the main characteristics and uses of the data?</p></li>
+<li><p>Definition and measurement of disclosure risks</p></li>
+<li><p>Selection of data protection methods</p></li>
+<li><p>Implementation of the methods</p></li>
+<li><p>Controls and documentation</p></li>
 </ol>
 </div>
-<p>Source: <span class="citation" data-cites="hundepool_handbook_2024">(<a href="#/biblio" role="doc-biblioref" onclick="">Hundepool et al. 2024</a>)</span></p>
-</section><section id="étape-1-est-il-nécessaire-de-protéger-les-données" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étape 1: Est-il nécessaire de protéger les données ?</h2>
+<p>Source: <span class="citation" data-cites="hundepool_handbook_2024">(<a href="#/bibliography" role="doc-biblioref" onclick="">Hundepool et al. 2024</a>)</span></p>
+</section><section id="step-1-is-it-necessary-to-protect-the-data" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Step 1: Is it necessary to protect the data?</h2>
 <div style="font-size: 80%;">
 <ul>
-<li><p>Analyse des unités considérées et variables présentes dans le fichier de microdonnées, si elles ne sont pas sensibles pas besoin d’effectuer de traitement pour la protection des données</p></li>
-<li><p>Quel type de diffusion ? (tableaux de données, cartes, microdonnées ...)</p></li>
+<li><p>Analysis of the units considered and variables present in the microdata file; if they are not sensitive, there is no need to perform processing for data protection</p></li>
+<li><p>What type of dissemination? (data tables, maps, microdata ...)</p></li>
 </ul>
 </div>
-</section><section id="étape-2-caractéristiques-et-utilisations-principales-des-données-i" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étape 2: Caractéristiques et utilisations principales des données (I)</h2>
+</section><section id="step-2-main-characteristics-and-uses-of-the-data-i" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Step 2: Main Characteristics and Uses of the Data (I)</h2>
 <div style="font-size: 80%;">
 <ul>
-<li><p>Analyse du type et de la structure des données pour déterminer les variables / unités qui nécessitent une protection</p></li>
-<li><p>Analyse de la méthodologie de l’enquête</p></li>
-<li><p>Définition des objectifs de l’institut : type de publication (PUF, MFR), politiques de diffusion, cohérence entre plusieurs diffusions simultanées, cohérence avec ce qui est déjà publié</p></li>
+<li><p>Analysis of the type and structure of the data to determine the variables / units that require protection</p></li>
+<li><p>Analysis of the survey methodology</p></li>
+<li><p>Definition of the institute’s objectives: type of publication (PUF, MFR), dissemination policies, consistency between multiple simultaneous disseminations, consistency with what is already published</p></li>
 </ul>
 </div>
-</section><section id="étape-2-caractéristiques-et-utilisations-principales-des-données-ii" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étape 2: Caractéristiques et utilisations principales des données (II)</h2>
+</section><section id="step-2-main-characteristics-and-uses-of-the-data-ii" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Step 2: Main Characteristics and Uses of the Data (II)</h2>
 <div style="font-size: 80%;">
 <ul>
-<li><p>Analyse des besoins des utilisateurs (variables prioritaires, types d’analyses qui seront réalisées)</p></li>
-<li><p>Analyse du questionnaire pour les enquêtes (variables à retirer / à inclure, quel niveau de détail pour les indicateurs structurels telles que les variables socio-démographique ?)</p></li>
+<li><p>Analysis of user needs (priority variables, types of analyses that will be performed)</p></li>
+<li><p>Analysis of the questionnaire for surveys (variables to remove / to include, what level of detail for structural indicators such as socio-demographic variables?)</p></li>
 </ul>
 </div>
-</section><section id="étape-3-définition-et-mesure-des-risques-de-divulgation" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étape 3: Définition et mesure des risques de divulgation</h2>
+</section><section id="step-3-definition-and-measurement-of-disclosure-risks" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Step 3: Definition and Measurement of Disclosure Risks</h2>
 <div style="font-size: 80%;">
 <ul>
 <li>
-<p>Recenser les différents scénarios possibles conduisant à la divulgation des données</p>
+<p>Identify the different possible scenarios leading to data disclosure</p>
 <ul>
-<li>En fonction du type de données considérées (données exhaustives, enquêtes)</li>
-<li>En fonction du public visé (chercheurs, décideurs, grand public)</li>
+<li>Depending on the type of data considered (exhaustive data, surveys)</li>
+<li>Depending on the target audience (researchers, decision-makers, general public)</li>
 </ul>
 </li>
-<li><p>Choisir la ou les mesures du risque de divulgation</p></li>
-<li><p>Seuil de tolérance au risque à fixer</p></li>
+<li><p>Choose the disclosure risk measure(s)</p></li>
+<li><p>Risk tolerance threshold to set</p></li>
 </ul>
 </div>
-</section><section id="étape-4-choix-des-méthodes" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étape 4: Choix des méthodes</h2>
+</section><section id="step-4-selection-of-methods" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Step 4: Selection of Methods</h2>
 <div style="font-size: 80%;">
 <ul>
-<li><p>Choisir une / plusieurs méthode(s) de protection</p></li>
-<li><p>Comparer les méthodes: niveau de risque vs perte d’utilité</p></li>
+<li><p>Choose one / several protection method(s)</p></li>
+<li><p>Compare the methods: risk level vs loss of utility</p></li>
 </ul>
 </div>
 <div style="text-align:center;">
-<div id="fig-trade-off-sm" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Arbitrage risque-utilité">
+<div id="fig-trade-off-sm" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Risk-Utility Trade-off">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-trade-off-sm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="img/trade_off_graph_smiley.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Arbitrage risque-utilité">
+<img data-src="img/trade_off_graph_smiley.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Risk-Utility Trade-off">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trade-off-sm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 2: Arbitrage risque-utilité
+Figure 2: Risk-Utility Trade-off
 </figcaption></figure>
 </div>
 </div>
-</section><section id="étape-5-mise-en-oeuvre-des-méthodes" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étape 5: Mise en oeuvre des méthodes</h2>
+</section><section id="step-5-implementation-of-the-methods" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Step 5: Implementation of the methods</h2>
 <div style="font-size: 80%;">
 <ol type="1">
-<li><p>Choisir un logiciel</p></li>
-<li><p>Réaliser la mesure des risques de divulgation</p></li>
-<li><p>Protéger les données</p></li>
-<li><p>Quantification de la perte d’information</p></li>
+<li><p>Choose software</p></li>
+<li><p>Perform the measurement of disclosure risks</p></li>
+<li><p>Protect the data</p></li>
+<li><p>Quantification of information loss</p></li>
 </ol>
 </div>
-</section><section id="étape-6-contrôles-et-documentation" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Étape 6: Contrôles et documentation</h2>
+</section><section id="step-6-controls-and-documentation" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Step 6: Controls and documentation</h2>
 <div style="font-size: 80%;">
 <ul>
 <li>
-<p>Contrôle du processus de protection</p>
+<p><strong>Process protection control</strong></p>
 <ul>
-<li>vérifier que les méthodes mises en oeuvre ont bien permis de réduire le risque de divulgation au niveau considéré comme acceptable</li>
+<li>verify that the methods implemented have effectively reduced the disclosure risk to the level considered acceptable</li>
 </ul>
 </li>
 <li>
-<p>Réalisation d’un document synthétisant les méthodes utilisées et faisant le bilan de la perte d’information</p>
+<p>Preparation of a document summarizing the methods used and providing an overview of the information loss</p>
 <ul>
-<li>si possible le transmettre aux utilisateurs des données publiées</li>
-<li>peut contenir des avertissements sur les précautions à prendre lors de l’utilisation d’un fichier anonymisé</li>
+<li>if possible, transmit it to the users of the published data</li>
+<li>may contain warnings about precautions to take when using an anonymized file</li>
 </ul>
 </li>
 </ul>
 </div>
-</section></section><section><section id="définir-le-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="4"><h1>
-<span class="header-section-number">4</span> Définir le risque</h1>
+</section></section><section><section id="define-the-risk" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="4"><h1>
+<span class="header-section-number">4</span> Define the risk</h1>
 
-</section><section id="le-risque-de-divulgation" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Le risque de divulgation</h2>
+</section><section id="the-risk-of-disclosure" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>The risk of disclosure</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Définition générale</strong></p>
+<p><strong>General Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>Risque de divulguer une information confidentielle en publiant des données agrégées ou individuelles.</p>
+<p>Risk of disclosing confidential information by publishing aggregated or individual data.</p>
 </div>
 </div>
 </div>
-</section><section id="quatre-types-de-risque-de-divulgation" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Quatre types de risque de divulgation</h2>
+</section><section id="four-types-of-disclosure-risk" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Four types of disclosure risk</h2>
 <ul>
-<li><p>Risque de divulgation d’identité</p></li>
-<li><p>Risque de divulgation d’attribut</p></li>
-<li><p>Risque de divulgation par inférence</p></li>
+<li><p>Identity disclosure risk</p></li>
+<li><p>Attribute disclosure risk</p></li>
+<li><p>Disclosure risk by inference</p></li>
 <li>
-<p>Risque de divulgation par différenciation</p>
+<p>Disclosure risk by differentiation</p>
 <ul>
-<li><p>par "emboîtement"</p></li>
-<li><p>par "recoupement"</p></li>
+<li><p>by “nesting”</p></li>
+<li><p>by “cross-referencing”</p></li>
 </ul>
 </li>
-</ul></section><section id="risque-de-divulgation-didentité" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Risque de divulgation d’identité</h2>
+</ul></section><section id="risk-of-identity-disclosure" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Risk of Identity Disclosure</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Définition</strong></p>
+<p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>Risque de reconnaître un individu spécifique dans les données publiées : un attaquant peut identifier une unité à partir de la publication.</p>
+<p>Risk of recognizing a specific individual in the published data: an attacker can identify a unit from the publication.</p>
 </div>
 </div>
 </div>
-<p>Exemples :</p>
+<p>Examples:</p>
 <ul>
-<li><p>Certaines variables comme le nom, l’adresse qui identifient <em>directement</em> des individus ou des foyers.</p></li>
-<li><p>Toutes les personnes ayant des caractéristiques très rares (ex : personnes très âgées).</p></li>
-<li><p>87% de la population américaine est unique uniquement à partir du ZIP code, du genre et de la date de naissance <span class="citation" data-cites="sweeney_simple_2000">(<a href="#/biblio" role="doc-biblioref" onclick="">Sweeney 2000</a>)</span>.</p></li>
-</ul></section><section id="remarques" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Remarques</h2>
+<li><p>Certain variables such as name, address that identify <em>directly</em> individuals or households.</p></li>
+<li><p>All people with very rare characteristics (e.g., very elderly people).</p></li>
+<li><p>87% of the U.S. population is unique solely from ZIP code, gender, and date of birth <span class="citation" data-cites="sweeney_simple_2000">(<a href="#/bibliography" role="doc-biblioref" onclick="">Sweeney 2000</a>)</span>.</p></li>
+</ul></section><section id="remarks" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Remarks</h2>
 <ul>
-<li><p>Les identifiants directs (nom, prénom, adresse) sont utiles pour la collecte mais supprimés des bases à vocation statistique.</p></li>
-<li><p>D’autres variables ont un fort pouvoir ré-identifiant (le lieu de résidence, l’âge, le genre, la profession, le niveau d’éducation, etc.).</p></li>
-<li><p>Ré-identifier ne permet as toujours d’obtenir plus d’informations sur les personnes.</p></li>
-</ul></section><section id="risque-de-divulgation-dattribut" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Risque de divulgation d’attribut</h2>
+<li><p>Direct identifiers (name, first name, address) are useful for collection but removed from statistical databases.</p></li>
+<li><p>Other variables have a strong re-identifying power (place of residence, age, gender, profession, education level, etc.).</p></li>
+<li><p>Re-identifying does not always allow obtaining more information about people.</p></li>
+</ul></section><section id="risk-of-attribute-disclosure" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Risk of Attribute Disclosure</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Définition</strong></p>
+<p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>Risque de divulguer une <strong>information sensible</strong> sur un ou plusieurs individus à partir des données diffusées.</p>
+<p>Risk of disclosing <strong>sensitive information</strong> about one or more individuals from the disseminated data.</p>
 </div>
 </div>
 </div>
-<p>Exemples :</p>
+<p>Examples:</p>
 <ul>
-<li>Une ré-identification conduit souvent à une divulgation d’attribut.</li>
-<li>Il est possible de divulguer un attribut sur des groupes entiers.</li>
-</ul></section><section id="divulgation-dun-attribut-de-groupe" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Divulgation d’un attribut de groupe</h2>
+<li>Re-identification often leads to attribute disclosure.</li>
+<li>It is possible to disclose an attribute about entire groups.</li>
+</ul></section><section id="disclosure-of-a-group-attribute" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Disclosure of a Group Attribute</h2>
 <ul>
-<li>Divulgation d’une information sensible pour un groupe entier de personnes.</li>
-<li>Sans nécessairement avoir besoin de ré-identifier préalablement.</li>
+<li>Disclosure of sensitive information for an entire group of people.</li>
+<li>Without necessarily needing to re-identify beforehand.</li>
 </ul>
-<!-- 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:2px;font-family:Arial, sans-serif;font-size:30px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:2px;font-family:Arial, sans-serif;font-size:28px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-p8l5{border-color:#9b9b9b;color:#656565;text-align:right;vertical-align:top}
-.tg .tg-o57y{border-color:#9b9b9b;color:#656565;text-align:center;vertical-align:top}
-.tg .tg-8trw{border-color:#9b9b9b;color:#656565;text-align:left;vertical-align:top}
-.tg .tg-ho01{border-color:#9b9b9b;color:#9a0000;font-weight:bold;text-align:right;vertical-align:top}
-</style>
-
-<table class="tg" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th class="tg-8trw" data-quarto-table-cell-role="th"></th>
-<th class="tg-o57y" data-quarto-table-cell-role="th">Hommes</th>
-<th class="tg-o57y" data-quarto-table-cell-role="th">Femmes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td class="tg-8trw">Diabétiques</td>
-<td class="tg-p8l5">30</td>
-<td class="tg-p8l5">40</td>
-</tr>
-<tr class="even">
-<td class="tg-8trw">Non Diabétiques</td>
-<td class="tg-p8l5">12</td>
-<td class="tg-ho01">0</td>
-</tr>
-</tbody>
-</table>
- 
---><div class="cell" data-tbl-cap-location="bottom">
+<div class="cell" data-tbl-cap-location="bottom">
 <div id="tbl-div-attr" class="cell quarto-float quarto-figure quarto-figure-center" data-tbl-cap-location="bottom">
 <figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-div-attr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -710,35 +675,27 @@ Figure 2: Arbitrage risque-utilité
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-div-attr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table 1: Un exemple de divulgation d’attributs de groupe
+Table 1: An example of group attribute disclosure
 </figcaption></figure>
 </div>
 </div>
-<!-- 
-
-|                 | Hommes | Femmes |
-|-----------------|:------:|:------:|
-| Diabétiques     |     30 |     40 |
-| Non Diabétiques |     12 |  **0** | 
-
-: Un exemple de divulgation d'attributs de groupe -->
-</section><section id="risque-de-divulgation-par-inférence" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Risque de divulgation par inférence</h2>
+</section><section id="risk-of-disclosure-by-inference" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Risk of Disclosure by Inference</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Définition</strong></p>
+<p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>Risque de pouvoir déduire avec une certitude élevée des informations sensibles sur des individus à partir des données publiées.</p>
+<p>Risk of being able to deduce with high certainty sensitive information about individuals from published data.</p>
 </div>
 </div>
 </div>
 <ul>
-<li>Corrélation forte d’une information avec une caractéristique sensible.</li>
-<li>Proportion très élevée au sein d’un groupe.</li>
+<li>Strong correlation of information with a sensitive characteristic.</li>
+<li>Very high proportion within a group.</li>
 </ul>
 <div class="cell" data-tbl-cap-location="bottom">
 <div id="tbl-div-infer" class="cell quarto-float quarto-figure quarto-figure-center" data-tbl-cap-location="bottom">
@@ -747,17 +704,17 @@ Table 1: Un exemple de divulgation d’attributs de groupe
 <table class="table table-hover table-striped do-not-create-environment cell" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Femmes</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Hommes</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Women</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Men</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Diabétiques</td>
+<td style="text-align: left;">Diabetic</td>
 <td style="text-align: right;">30</td>
 <td style="text-align: right;">38</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Non diabétiques</td>
+<td style="text-align: left;">Non-diabetic</td>
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">2</td>
 </tr>
@@ -766,85 +723,75 @@ Table 1: Un exemple de divulgation d’attributs de groupe
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-div-infer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table 2: Un exemple de divulgation d’attributs par inférence
+Table 2: An example of attribute disclosure by inference
 </figcaption></figure>
 </div>
 </div>
-</section><section id="risque-de-divulgation-par-différenciation" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Risque de divulgation par différenciation</h2>
+</section><section id="risk-of-disclosure-by-differentiation" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Risk of Disclosure by Differentiation</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Définition</strong></p>
+<p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>Lorsqu’une information agrégée est diffusée pour divers croisements, il est parfois possible d’en déuire une information additionnelle en différenciant les divers résultats.</p>
+<p>When aggregated information is disseminated for various cross-tabulations, it is sometimes possible to infer additional information by differentiating the various results.</p>
 </div>
 </div>
 </div>
 <div style="font-size: 80%;">
-<p>Exemples:</p>
+<p>Examples:</p>
 <ul>
-<li>Différenciation marginale: consiste à utiliser les marges de données tabulées</li>
-<li>Différenciation par emboîtement géographique: consiste à utiliser des agrégats diffusés sur des zonages emboîtés (variante du premier)</li>
-<li>Différenciation par recoupement: consiste à utiliser des agrégats diffusés sur des zonages imparfaitement emboîtés</li>
+<li>Marginal differentiation: consists of using the margins of tabulated data</li>
+<li>Differentiation by geographic nesting: consists of using aggregates disseminated over nested zonings (variant of the first)</li>
+<li>Differentiation by cross-tabulation: consists of using aggregates disseminated over imperfectly nested zonings</li>
 </ul>
 </div>
-</section><section id="différenciation-par-recoupement" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Différenciation par recoupement</h2>
+</section><section id="differentiation-by-overlap" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Differentiation by Overlap</h2>
 <div style="text-align:center;">
-<div id="fig-diff-rec1" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Exemple de différenciation par recoupement">
+<div id="fig-diff-rec1" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Example of differentiation by overlap">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-diff-rec1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="img/diff_geo_recoupment1.png" class="quarto-figure quarto-figure-center" style="height:80.0%" alt="Exemple de différenciation par recoupement">
+<img data-src="img/diff_geo_recoupment1.png" class="quarto-figure quarto-figure-center" style="height:80.0%" alt="Example of differentiation by overlap">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diff-rec1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 3: Exemple de différenciation par recoupement en France entre un département et une communauté de communes (EPCI)
+Figure 3: Example of differentiation by overlap in France between a department and a community of communes (EPCI)
 </figcaption></figure>
 </div>
 </div>
-</section><section id="différenciation-par-recoupement-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Différenciation par recoupement</h2>
+</section><section id="differentiation-by-cross-referencing" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Differentiation by Cross-Referencing</h2>
 <div style="text-align:center;">
-<div id="fig-diff-rec2" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Exemple de différenciation par recoupement">
+<div id="fig-diff-rec2" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Example of differentiation by cross-referencing">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-diff-rec2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="img/diff_geo_recoupement2.png" class="quarto-figure quarto-figure-center" style="height:80.0%" alt="Exemple de différenciation par recoupement">
+<img data-src="img/diff_geo_recoupement2.png" class="quarto-figure quarto-figure-center" style="height:80.0%" alt="Example of differentiation by cross-referencing">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diff-rec2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 4: Zoom sur le problème de différenciation
+Figure 4: Zoom on the differentiation problem
 </figcaption></figure>
 </div>
 </div>
-</section></section><section><section id="mesurer-le-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="5"><h1>
-<span class="header-section-number">5</span> Mesurer le risque</h1>
-<!-- 
-## Vision bayésienne / retour à Dalenius
+</section></section><section><section id="measuring-the-risk" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="5"><h1>
+<span class="header-section-number">5</span> Measuring the Risk</h1>
 
-Si on repart de la proposition (impossible) de Dalenius, on peut l'envisager dans un cadre bayésien en cherchant à limiter la capacité d'un attaquant à significativement améliorer ses croyances a priori en observant les données diffusées. [Voir @willenborgElementsStatisticalDisclosure2001, p.44 et @machanavajjhalaDiversityPrivacyAnonymity2007]
-
-Limite de l'approche:
-
-- Mesure de la capacité d'inférence dépend de chaque variable sensible considérée
-- Un attaquant avec peu d'informations au préalable pourrait avoir une forte augmentation 
-  d'info qu'un attaquant disposant de beaucoup d'infos.
-- Une bonne capacité d'inférence ne signifie pas nécessairement une divulgation d'information confidentielle. -->
-</section><section id="distinguer-les-variables" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Distinguer les variables</h2>
-<p>Dans un jeu de données individuelles, on distinguera:</p>
+</section><section id="distinguishing-variables" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Distinguishing Variables</h2>
+<p>In an individual dataset, we distinguish:</p>
 <ul>
-<li><p><strong>Identifiants</strong>: Variables permettant d’identifier directement un individu.</p></li>
-<li><p><strong>Quasi-identifiants</strong>: Variables pouvant conduire à réidentifier un individu à partir d’une information auxiliaire.</p></li>
-<li><p><strong>Variables sensibles</strong>: Variables pour lesquelles des mesures de protection spécifiques peuvent s’avérer nécessaires.</p></li>
-<li><p>Autres variables</p></li>
-</ul></section><section id="les-identifiants" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les identifiants</h2>
+<li><p><strong>Identifiers</strong>: Variables that allow direct identification of an individual.</p></li>
+<li><p><strong>Quasi-identifiers</strong>: Variables that can lead to re-identifying an individual using auxiliary information.</p></li>
+<li><p><strong>Sensitive variables</strong>: Variables for which specific protection measures may be necessary.</p></li>
+<li><p>Other variables</p></li>
+</ul></section><section id="identifiers" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Identifiers</h2>
 <ul>
-<li><p>Les identifiants sont retirés très tôt au cours du processus de production pour respecter les réglements sur la protection des données.</p></li>
-<li><p>On supposera par la suite que tous les identifiants directs ont été retirées.</p></li>
-</ul></section><section id="les-quasi-identifiants" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les quasi-identifiants</h2>
+<li><p>Identifiers are removed very early in the production process to comply with data protection regulations.</p></li>
+<li><p>Thereafter, it will be assumed that all direct identifiers have been removed.</p></li>
+</ul></section><section id="quasi-identifiers" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Quasi-identifiers</h2>
 <ul>
-<li><p>Pour des données individus/ménages: sexe, âge, lieu d’habitation, diplôme, statut marital, etc.</p></li>
-<li><p>Pour des données entreprises: Secteur d’activité, lieu du siège, etc.</p></li>
-<li><p>Liste à déterminer à chaque fois</p></li>
-<li><p>De quelles variables un attaquant dispose-t-il déjà ?</p></li>
-</ul></section><section id="un-exemple-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
+<li><p>For individual/household data: sex, age, place of residence, diploma, marital status, etc.</p></li>
+<li><p>For company data: sector of activity, location of headquarters, etc.</p></li>
+<li><p>List to be determined each time</p></li>
+<li><p>What variables does an attacker already have?</p></li>
+</ul></section><section id="an-example" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An example</h2>
 <div class="cell" data-tbl-cap-location="bottom">
 <div id="tbl-type-var" class="cell quarto-float quarto-figure quarto-figure-center" data-tbl-cap-location="bottom">
 <figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-type-var-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -917,386 +864,360 @@ Sensible
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-type-var-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table 3: Différentes types de variables
+Table 3: Different types of variables
 </figcaption></figure>
 </div>
 </div>
-<!-- 
-::: {#tbl-types-variables tbl-colwidths="[75,25]"}
-  Var. Identifiantes                     Var Quasi-Identifiantes                           Autre Variable            Var. Sensible
-  -------------------- ----------------- ------------------------- --------- ------------- ------------------------- ----------------
-  **Nom**              **Adresse**       **Commune**               **Âge**   **Diplôme**   **Statut d'occupation**   **Revenus**
-  Johan                3, rue \...       Paris                     36        Bac           Actif occupé              *150 000,00 €*
-  Jeanne               115, bd \...      Malakoff                  41        Bac +3        Actif occupé              *60 000,00 €*
-  Jehanne              68, rue \...      Lyon                      52        Bac +5        Chômeur                   *75 000,00 €*
-  Joann                7, chemin \...    Villeurbanne              45        Bac           Actif occupé              *32 000,00 €*
-  Yoann                53, avenue \...   Cerisy-La-Salle           41        BEP           Actif occupé              *19 000,00 €*
-  Jenny                26bis, rue \...   Cherbourg                 26        CAP           Chômeur                   *5 000,00 €*
-  Johnny               12, place \...    Pithiviers                31        Bac Pro       Actif occupé              *25 000,00 €*
-  Jean                 3, impasse \...   Orléans                   48        Bac           Actif occupé              *32 000,00 €*
-  Jeannette            8, chemin ...     Paris                     85        Aucun         Retraité                  *10 000,00 €*
-
-  : Les différents types de variables dans un jeu de données {.striped .bordered}
-::: -->
-</section><section id="quantifier-le-risque-1-le-k-anonymat" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Quantifier le risque (1): le <span class="math inline">\(k\)</span>-anonymat</h2>
+</section><section id="quantifying-the-risk-1-k-anonymity" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Quantifying the risk (1): <strong>k</strong>-anonymity</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Le <span class="math inline">\(k\)</span>-anonymat <span class="citation" data-cites="sweeney_k-anonymity_2002">(<a href="#/biblio" role="doc-biblioref" onclick="">Sweeney 2002</a>)</span></strong></p>
+<p><strong><span class="math inline">\(k\)</span>-Anonymity <span class="citation" data-cites="sweeney_k-anonymity_2002">(<a href="#/bibliography" role="doc-biblioref" onclick="">Sweeney 2002</a>)</span></strong></p>
 </div>
 <div class="callout-content">
-<p>Un jeu de données est considéré comme <em>k-anonyme</em> si la combinaison la moins fréquente des modalités des variables quasi-identifiantes compte au moins <em>k</em> unités.</p>
+<p>A dataset is considered <em>k-anonymous</em> if the least frequent combination of modalities of the quasi-identifying variables includes at least <em>k</em> units.</p>
 </div>
 </div>
 </div>
 <div style="font-size: 80%;">
 <ul>
-<li><p>Cette mesure assure que tous les individus sont similaires à au moins <span class="math inline">\(k-1\)</span> autres.</p></li>
-<li><p><strong>Mesure de risque globale</strong> qui se focalise sur les individus les plus à risque de ré-identification.</p></li>
-<li><p>La probabilité associée au risque pour un individu du fichier d’être ré-identifié est au minimum <span class="math inline">\(1/k\)</span></p></li>
-<li><p>Choix de <span class="math inline">\(k\)</span> en prenant en compte les règles existantes et/ou par arbitrage risque-utilité.</p></li>
+<li><p>This measure ensures that all individuals are similar to at least <span class="math inline">\(k-1\)</span> others.</p></li>
+<li><p><strong>Overall risk measure</strong> that focuses on the individuals most at risk of re-identification.</p></li>
+<li><p>The probability associated with the risk for an individual in the file of being re-identified is at minimum <span class="math inline">\(1/k\)</span></p></li>
+<li><p>Choice of <span class="math inline">\(k\)</span> taking into account existing rules and/or risk-utility trade-offs.</p></li>
 </ul>
 </div>
-</section><section id="le-scénario-dattaque-envisagé" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Le scénario d’attaque envisagé</h2>
+</section><section id="the-envisioned-attack-scenario" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>The Envisioned Attack Scenario</h2>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Caractéristiques du scénario d’attaque</strong></p>
+<p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p>Le <strong><span class="math inline">\(k\)</span>-anonymat</strong> protège les données d’une attaque de ré-identification lorsque l’attaquant dispose d’une information auxiliaire sur les mêmes individus (un au moins):</p>
+<p>The YAML, code block syntax, and callout structure have been preserved exactly as in the original French version.</p>
+<h3 data-background-image="background.svg" data-background-size="contain" id="characteristics-of-the-attack-scenario">Characteristics of the Attack Scenario</h3>
+<p><strong>k-anonymity</strong> protects data from a re-identification attack when the attacker has auxiliary information about the same individuals (at least one):</p>
 <ul>
-<li>Si l’intrus sait qu’un individu spécifique est dans l’ensemble de données, le <span class="math inline">\(k\)</span>-anonymat est une <strong>manière équitable d’évaluer le risque de ré-identification</strong>.</li>
-<li>L’attaquant procède à un <strong>appariement</strong> entre les deux jeux de données.</li>
-<li>Les <strong>quasi-identifiants (QI)</strong> servent de clés d’appariement.</li>
-<li>Plus un individu a des caractéristiques rares sur les QI, meilleure sera la ré-identification.
+<li>If the intruder knows that a specific individual is in the dataset, k-anonymity is a <strong>fair way to assess the risk of re-identification</strong>.</li>
+<li>The attacker performs a <strong>matching</strong> between the two datasets.</li>
+<li>
+<strong>Quasi-identifiers (QI)</strong> serve as matching keys.</li>
+<li>The rarer an individual’s characteristics are on the QI, the better the re-identification will be.
 <ul>
 <li>
-<strong>Les uniques</strong> sur les QI: la ré-identification sera certaine</li>
-<li>Plus un individu est commun, moins la probabilité de ré-identification sera élevée.</li>
+<strong>The unique ones</strong> on the QI: re-identification will be certain</li>
+<li>The more common an individual is, the lower the probability of re-identification will be.</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 </div>
-</section><section id="limportance-du-scénario" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>L’importance du scénario</h2>
+</section><section id="the-importance-of-the-script" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>The Importance of the Script</h2>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Une efficacité qui dépend du réalisme du scénario</strong></p>
+<p><strong>An effectiveness that depends on the realism of the scenario</strong></p>
 </div>
 <div class="callout-content">
-<p>Assurer un certain niveau d’anonymité permet de réduire le risque de ré-identification, mais :</p>
+<p>Ensuring a certain level of anonymity helps reduce the risk of re-identification, but:</p>
 <ul>
-<li>Si l’attaquant dispose de plus d’information auxiliaire <span class="math inline">\(\Rightarrow\)</span> <span style="color:red;"><strong>sous-estimation</strong></span> du risque avec le <em><span class="math inline">\(k\)</span>-anonymat</em>.</li>
-<li>Avec le temps, l’attaquant peut disposer de plus d’informations. Or, le scénario est posé une fois <span class="math inline">\(\Rightarrow\)</span> <span style="color:red;"><strong>sous-estimation</strong></span> du risque avec le <em><span class="math inline">\(k\)</span>-anonymat</em>.</li>
-<li>Si l’attaquant dispose de moins d’information auxiliaire <span class="math inline">\(\Rightarrow\)</span> <span style="color:green;"><strong>sur-estimation</strong></span> du risque avec le <em><span class="math inline">\(k\)</span>-anonymat</em>.</li>
-<li>La qualité des appariements dépend de beaucoup d’autres facteurs (millésimes, qualité des variables, cohérence des champs, etc.) <span class="math inline">\(\Rightarrow\)</span> <span style="color:green;"><strong>sur-estimation</strong></span> du risque avec le <em><span class="math inline">\(k\)</span>-anonymat</em>.</li>
+<li>If the attacker has more auxiliary information <span class="math inline">\(\Rightarrow\)</span> <span style="color:red;"><strong>underestimation</strong></span> of the risk with <em><span class="math inline">\(k\)</span>-anonymity</em>.</li>
+<li>Over time, the attacker may have more information. However, the scenario is set once <span class="math inline">\(\Rightarrow\)</span> <span style="color:red;"><strong>underestimation</strong></span> of the risk with <em><span class="math inline">\(k\)</span>-anonymity</em>.</li>
+<li>If the attacker has less auxiliary information <span class="math inline">\(\Rightarrow\)</span> <span style="color:green;"><strong>overestimation</strong></span> of the risk with <em>$k</em>-anonymity*.</li>
+<li>The quality of matches depends on many other factors (vintages, quality of variables, consistency of fields, etc.) <span class="math inline">\(\Rightarrow\)</span> <span style="color:green;"><strong>overestimation</strong></span> of the risk with <em><span class="math inline">\(k\)</span>-anonymity</em>.</li>
 </ul>
 </div>
 </div>
 </div>
-</section><section id="un-exemple-2" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
+</section><section id="an-example-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An example</h2>
 <div id="tbl-1-anonyme" class="table table-striped table-hover table-bordered table-sm quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-1-anonyme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered table-sm small">
 <thead><tr class="header">
 <th style="text-align: center;">Id</th>
 <th style="text-align: center;">Age</th>
-<th style="text-align: center;">Genre</th>
-<th style="text-align: center;">Maladie</th>
+<th style="text-align: right;">Gender</th>
+<th style="text-align: center;">Disease</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">1</td>
-<td style="text-align: center;">[45;55[</td>
-<td style="text-align: center;">M</td>
-<td style="text-align: center;">Diabète</td>
+<td style="text-align: center;">[45;55[ M</td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Diabetes</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
-<td style="text-align: center;">[45;55[</td>
-<td style="text-align: center;">M</td>
-<td style="text-align: center;">Hypertension artérielle</td>
+<td style="text-align: center;">[45;55[ M</td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Arterial hypertension</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">3</td>
-<td style="text-align: center;">[45;55[</td>
-<td style="text-align: center;">F</td>
+<td style="text-align: center;">[45;55[ F</td>
+<td style="text-align: right;"></td>
 <td style="text-align: center;">Cancer</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4</td>
-<td style="text-align: center;">[45;55[</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">Grippe</td>
+<td style="text-align: center;">[45;55[ F</td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Flu</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">5</td>
-<td style="text-align: center;">[70;75[</td>
-<td style="text-align: center;">M</td>
-<td style="text-align: center;">Diabète</td>
+<td style="text-align: center;">[70;75[ M</td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Diabetes</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">6</td>
-<td style="text-align: center;">[45;55[</td>
-<td style="text-align: center;">M</td>
-<td style="text-align: center;">Diabète</td>
+<td style="text-align: center;">[45;55[ M</td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Diabetes</td>
 </tr>
 </tbody>
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-1-anonyme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table 4: Exemple d’un fichier individuel 1-anonyme, l’âge et le genre étant considérés comme quasi-identifiants
+Table 4: Example of a 1-anonymous individual file, with age and gender considered as quasi-identifiers
 </figcaption></figure>
 </div>
-</section><section id="limites-du-k-anonymat" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Limites du <span class="math inline">\(k\)</span>-anonymat</h2>
+</section><section id="limits-of-k-anonymity" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Limits of <span class="math inline">\(k\)</span>-anonymity</h2>
 <div style="font-size: 80%;">
 <ul>
-<li>Forte <strong>dépendance à la qualité/véracité du scénario</strong><br><span class="math inline">\(\Rightarrow\)</span> choix des QI est crucial.
+<li>Strong <strong>dependence on the quality/truthfulness of the scenario</strong><br><span class="math inline">\(\Rightarrow\)</span> choice of QIs is crucial.
 <ul>
-<li>Le <span class="math inline">\(k\)</span>-anonymat sur-estime le risque si l’attaquant dispose de moins d’info que supposé</li>
-<li>Le <span class="math inline">\(k\)</span>-anonymat sous-estime le risque si l’attaquant dispose de plus d’info que supposé</li>
-<li>Difficile de mesurer la vraisemblance de l’attaque.</li>
+<li>
+<span class="math inline">\(k\)</span>-anonymity overestimates the risk if the attacker has less information than assumed</li>
+<li>
+<span class="math inline">\(k\)</span>-anonymity underestimates the risk if the attacker has more information than assumed</li>
+<li>Difficult to measure the plausibility of the attack.</li>
 </ul>
 </li>
-<li>Le <span class="math inline">\(k\)</span>-anonymat <strong>ne prend pas en compte les poids d’échantillonnage</strong>. <span class="math inline">\(\Rightarrow\)</span> Appliqué à un échantillon, il sur-estimera le risque de ré-identification.</li>
-<li>Ne réduit pas les risques de <strong>divulgation d’attributs sensibles</strong>.</li>
+<li>
+<span class="math inline">\(k\)</span>-anonymity <strong>does not take sampling weights into account</strong>. <span class="math inline">\(\Rightarrow\)</span> Applied to a sample, it will overestimate the re-identification risk.</li>
+<li>Does not reduce risks of <strong>disclosure of sensitive attributes</strong>.</li>
 </ul>
 </div>
-</section><section id="quantifier-le-risque-2-la-l-diversité" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Quantifier le risque (2): la l-diversité</h2>
+</section><section id="quantifying-the-risk-2-l-diversity" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Quantifying the Risk (2): l-Diversity</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>La l-diversité <span class="citation" data-cites="machanavajjhalaDiversityPrivacyAnonymity2007">(<a href="#/biblio" role="doc-biblioref" onclick="">Machanavajjhala et al. 2007</a>)</span></strong></p>
+<p><strong>The l-diversity <span class="citation" data-cites="machanavajjhalaDiversityPrivacyAnonymity2007">(<a href="#/bibliography" role="doc-biblioref" onclick="">Machanavajjhala et al. 2007</a>)</span></strong></p>
 </div>
 <div class="callout-content">
-<p>Elle s’assure d’une <em>diversité suffisante des modalités</em> d’une variable sensible prises par les individus au sein d’une même combinaison de quasi-identifiants.</p>
+<p>It ensures <em>sufficient diversity of the values</em> of a sensitive variable taken by individuals within the same combination of quasi-identifiers.</p>
 </div>
 </div>
 </div>
 <ul>
-<li><p>Raffinement du <span class="math inline">\(k\)</span>-anonymat.</p></li>
-<li><p>Protection contre la divulgation d’attributs sensibles.</p></li>
-<li><p>Chaque groupe doit contenir au moins <span class="math inline">\(l\)</span> modalités différentes de la variable sensible étudiée (ou <span class="math inline">\(l\)</span> modalités parmi les plus fréquentes).</p></li>
-<li><p>Choix de la cible <span class="math inline">\(l\)</span> en fonction des règles existantes et/ou d’un arbitrage risque-utilité.</p></li>
-</ul></section><section id="un-exemple-3" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
-<!-- Revoir exemple => faire un tableau agrégé (fréquences sur les QI et ventilation par modalités de la var sensible) -->
+<li><p>Refinement of <span class="math inline">\(k\)</span>-anonymity.</p></li>
+<li><p>Protection against the disclosure of sensitive attributes.</p></li>
+<li><p>Each group must contain at least <span class="math inline">\(l\)</span> different values of the studied sensitive variable (or <span class="math inline">\(l\)</span> of the most frequent values).</p></li>
+<li><p>Choice of the target <span class="math inline">\(l\)</span> based on existing rules and/or a risk-utility trade-off.</p></li>
+</ul></section><section id="an-example-2" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>An example</h2>
+<!-- Review example => make an aggregated table (frequencies on IQ and breakdown by modalities of the sensitive variable) -->
 <div id="tbl-ex-l-divers" class="table table-striped table-hover table-bordered table-sm quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-ex-l-divers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered table-sm small">
 <thead><tr class="header">
 <th style="text-align: center;">Age</th>
-<th style="text-align: center;">Sexe</th>
-<th style="text-align: center;">Maladie</th>
+<th style="text-align: center;">Sex</th>
+<th style="text-align: right;">Disease</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">[50;55[</td>
-<td style="text-align: center;">H</td>
-<td style="text-align: center;">Diabète</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: right;">Diabetes</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">[50;55[</td>
-<td style="text-align: center;">H</td>
-<td style="text-align: center;">Diabète</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: right;">Diabetes</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">[50;55[</td>
 <td style="text-align: center;">F</td>
-<td style="text-align: center;">Cancer</td>
+<td style="text-align: right;">Cancer</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">[50;55[</td>
 <td style="text-align: center;">F</td>
-<td style="text-align: center;">Grippe</td>
+<td style="text-align: right;">Flu</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">[50;55[</td>
-<td style="text-align: center;">H</td>
-<td style="text-align: center;">Diabète</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: right;">Diabetes</td>
 </tr>
 </tbody>
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-ex-l-divers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table 5: Un fichier 2-anonyme mais pas assez diversifié
+Table 5: A 2-anonymous file but not diversified enough
 </figcaption></figure>
 </div>
-</section><section id="les-scénarios-dattaque-envisagés" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les scénarios d’attaque envisagés</h2>
-<p><span class="citation" data-cites="machanavajjhalaDiversityPrivacyAnonymity2007">(<a href="#/biblio" role="doc-biblioref" onclick="">Machanavajjhala et al. 2007</a>)</span></p>
+</section><section id="envisaged-attack-scenarios" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Envisaged Attack Scenarios</h2>
+<p><span class="citation" data-cites="machanavajjhalaDiversityPrivacyAnonymity2007">(<a href="#/bibliography" role="doc-biblioref" onclick="">Machanavajjhala et al. 2007</a>)</span></p>
 <ul>
-<li>Manque d’homogénéité</li>
-<li>Utilisation d’une information auxiliaire</li>
-</ul></section><section id="limites" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Limites</h2>
+<li>Lack of homogeneity</li>
+<li>Use of auxiliary information</li>
+</ul></section><section id="limits" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Limits</h2>
 <ul>
-<li>Adaptée pour les variables sensibles catégorielles uniquement</li>
-<li>=&gt; mal adaptée pour les variables continues (par exemple CA, niveau de vie, etc.)</li>
-</ul></section></section><section><section id="mesures-probabilistes-du-risque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="6"><h1>
-<span class="header-section-number">6</span> Mesures probabilistes du risque</h1>
+<li>Suitable for categorical sensitive variables only</li>
+<li>=&gt; poorly suited for continuous variables (e.g. CA, standard of living, etc.)</li>
+</ul></section></section><section><section id="probabilistic-measures-of-risk" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="6"><h1>
+<span class="header-section-number">6</span> Probabilistic Measures of Risk</h1>
 
-</section><section id="quelques-notations-pour-aller-plus-loin" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Quelques notations pour aller plus loin</h2>
+</section><section id="some-notations-for-going-further" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Some notations for going further</h2>
 <div style="font-size: 70%;">
 <ul>
 <li>
-<span class="math inline">\(N\)</span>: la taille de la population</li>
+<span class="math inline">\(N\)</span>: the population size</li>
 <li>
-<span class="math inline">\(n\)</span>: la taille de l’échantillon éventuel</li>
+<span class="math inline">\(n\)</span>: the size of the possible sample</li>
 <li>
-<span class="math inline">\(w_i\)</span>: le poids de l’individu <span class="math inline">\(i\)</span> dans l’échantillon (<span class="math inline">\(\sum_i{w_i}=N\)</span>)</li>
+<span class="math inline">\(w_i\)</span>: the weight of individual <span class="math inline">\(i\)</span> in the sample (<span class="math inline">\(\sum_i{w_i}=N\)</span>)</li>
 <li>
-<span class="math inline">\(c\)</span>: le groupe constitué par un type de croisement des variables quasi-identifiantes.
+<span class="math inline">\(c\)</span>: the group formed by a type of crossing of the quasi-identifying variables.
 <ul>
-<li>Par exemple, si les QI sont l’âge et le sexe, <span class="math inline">\(c\)</span> pourra correspondre au croisement <span class="math inline">\([25; 35] \times Femmes\)</span>, ou <span class="math inline">\([55; 95] \times Hommes\)</span>, etc.</li>
+<li>For example, if the QIs are age and sex, <span class="math inline">\(c\)</span> may correspond to the crossing <span class="math inline">\([25; 35] \times\)</span> Women, or <span class="math inline">\([55; 95] \times\)</span> Men, etc.</li>
 </ul>
 </li>
 <li>
-<span class="math inline">\(N_c\)</span>: le nombre d’individus dans la population partageant les caractéristiques <span class="math inline">\(c\)</span>
+<span class="math inline">\(N_c\)</span>: the number of individuals in the population sharing the characteristics <span class="math inline">\(c\)</span>
 </li>
 <li>
-<span class="math inline">\(n_c\)</span>: le nombre d’individus dans l’échantillon (éventuel) partageant les caractéristiques <span class="math inline">\(c\)</span>
+<span class="math inline">\(n_c\)</span>: the number of individuals in the (possible) sample sharing the characteristics <span class="math inline">\(c\)</span>
 </li>
 </ul>
-<p><span class="math inline">\(\Rightarrow\)</span> Si un fichier exhaustif est <span class="math inline">\(k\)</span>-anonyme, alors <span class="math inline">\(\forall c, N_c \geq k\)</span>.</p>
+<p><span class="math inline">\(\Rightarrow\)</span> If a comprehensive file is <span class="math inline">\(k\)</span>-anonymous, then <span class="math inline">\(\forall c, N_c \geq k\)</span>.</p>
 </div>
-</section><section id="les-individus-les-plus-à-risque-de-ré-identification" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les individus les plus à risque de ré-identification</h2>
+</section><section id="individuals-most-at-risk-of-re-identification" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Individuals most at risk of re-identification</h2>
 <ul>
-<li><p>Les <strong>uniques dans la population</strong>: <span class="math inline">\(N_c = 1\)</span></p></li>
-<li><p>Les <strong>uniques dans l’échantillon</strong>: <span class="math inline">\(n_c = 1\)</span></p></li>
-<li><p>Les <strong>uniques dans l’échantillon qui sont également uniques dans la population</strong>: <span class="math inline">\(n_c = 1\)</span> et <span class="math inline">\(\sum\limits_{i \in c}{w_i} = 1\)</span></p></li>
-</ul></section><section id="mesurer-le-risque-individuel-dans-un-fichier-exhaustif" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Mesurer le risque individuel dans un fichier exhaustif</h2>
+<li><p><strong>Unique in the population</strong>: <span class="math inline">\(N_c = 1\)</span></p></li>
+<li><p><strong>Unique in the sample</strong>: <span class="math inline">\(n_c = 1\)</span></p></li>
+<li><p><strong>Unique in the sample who are also unique in the population</strong>: <span class="math inline">\(n_c = 1\)</span> et <span class="math inline">\(\sum\limits_{i \in c}{w_i} = 1\)</span></p></li>
+</ul></section><section id="measuring-individual-risk-in-a-comprehensive-file" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Measuring individual risk in a comprehensive file</h2>
 <ul>
-<li><p>Le <span class="math inline">\(k\)</span>-anonymat et la <span class="math inline">\(l\)</span>-diversité sont des mesures globales.</p></li>
+<li><p><strong>k</strong>-anonymity and <strong>l</strong>-diversity are global measures.</p></li>
 <li>
-<p>On peut passer au niveau individuel:</p>
+<p>We can move to the individual level:</p>
 <ul>
-<li>en considérant comme à risque chaque individu d’un groupe de modalités de moins de <span class="math inline">\(k\)</span> individus</li>
-<li>en associant à chaque individu de la base de données, une <strong>mesure individuelle du risque de ré-identification</strong>:</li>
+<li>by considering as at risk each individual in a group of modalities with fewer than <span class="math inline">\(k\)</span> individuals</li>
+<li>by associating with each individual in the database an <strong>individual measure of re-identification risk</strong>:</li>
 </ul>
 <p><span class="math display">\[r_c = \frac{1}{N_c}\]</span></p>
 </li>
-</ul></section><section id="mesurer-le-risque-individuel-dans-un-échantillon" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Mesurer le risque individuel dans un échantillon</h2>
+</ul></section><section id="measuring-individual-risk-in-a-sample" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Measuring individual risk in a sample</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Probabilité de ré-identifier un individu dans un échantillon</strong></p>
+<p><strong>Probability of re-identifying an individual in a sample</strong></p>
 </div>
 <div class="callout-content">
 <ul>
 <li>
-<p><em>Au niveau de l’échantillon</em>: <span class="math display">\[r_c = \frac{1}{n_c}\]</span></p>
+<p><em>At the sample level</em>: <span class="math display">\[r_c = \frac{1}{n_c}\]</span></p>
 <ul>
-<li>Si la présence d’un individu dans l’échantillon est connue de l’attaquant, c’est une mesure adéquate.</li>
-<li>Sinon, cette mesure sur-estime le risque de ré-identification.</li>
+<li>If the presence of an individual in the sample is known to the attacker, this is an adequate measure.</li>
+<li>Otherwise, this measure overestimates the re-identification risk.</li>
 </ul>
 </li>
-<li><p><em>Au niveau de la population</em>, le risque de ré-identification peut être estimé par:</p></li>
+<li><p><em>At the population level</em>, the re-identification risk can be estimated by:</p></li>
 </ul>
 <p><span class="math display">\[\hat r_c = \frac{1}{\sum\limits_{i \in c}{w_i}}\]</span></p>
-<p>où <span class="math inline">\(\sum\limits_{i \in c}{w_i}\)</span> est une estimation de <span class="math inline">\(\hat N_c\)</span>.</p>
+<p>where <span class="math inline">\(\sum\limits_{i \in c}{w_i}\)</span> is an estimate of <span class="math inline">\(\hat N_c\)</span>.</p>
 </div>
 </div>
 </div>
-</section><section id="une-mesure-globale-du-risque" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Une mesure globale du risque</h2>
-<p>Pour réaliser l’arbitrage, une mesure de risque globale est plus pratique. On pourra considérer:</p>
+</section><section id="a-global-measure-of-risk" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>A global measure of risk</h2>
+<p>To perform the arbitrage, a global risk measure is more practical. One can consider:</p>
 <ul>
 <li>
-<strong>Le nombre d’uniques</strong> (dans l’échantillon ou la population, selon les cas);</li>
+<strong>The number of uniques</strong> (in the sample or the population, depending on the case);</li>
 <li>
-<strong>Le risque individuel moyen</strong> défini, dans le cadre d’un échantillon, par: <span class="math display">\[\tau = \frac{\sum\limits_{c}{n_c \times r_c}}{n}\]</span>
+<strong>The average individual risk</strong> defined, in the context of a sample, by: <span class="math display">\[\tau = \frac{\sum\limits_{c}{n_c \times r_c}}{n}\]</span>
 </li>
-</ul>
-<!-- 
-
-## Le risque individuel
-
--   Les individus les plus à risque:
-
-    -   Les uniques de population, quand $N_k = 1$
-
-    -   Les uniques dans l'échantillon, quand $n_k = 1$
-
-    -   Les uniques dans l'échantillon qui sont également uniques dans la population, quand $\sum\limits_{i \in k}{w_i} = 1$
-
--   Les mesures individuelles permettent de cibler les individus les plus à risque.
-
- --></section><section id="mesures-probabilistes-du-risque-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Mesures probabilistes du risque</h2>
-<p>Des mesures plus raffinées sont implémentées dans des outils classiques tels que <span class="math inline">\(\mu\)</span>-Argus ou le package <code>R</code> <code>sdcMicro</code>.</p>
+</ul></section><section id="probabilistic-risk-measures" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Probabilistic Risk Measures</h2>
+<p>More refined measures are implemented in classic tools such as <span class="math inline">\(\mu\)</span>-Argus or the <code>R</code> package <code>sdcMicro</code>.</p>
 <ul>
-<li><p>Quand on dispose d’un échantillon (donc des <span class="math inline">\(n_k\)</span>), on ne connaît en général pas les <span class="math inline">\(N_k\)</span>.</p></li>
-<li><p>Mesure du risque individuel conditionnellement à l’échantillon: <span class="math inline">\(r_k = \mathbb{E}(\frac{1}{N_k}|n_k)\)</span>.</p></li>
+<li><p>When a sample is available (thus the <span class="math inline">\(n_k\)</span>), the <span class="math inline">\(N_k\)</span> are generally unknown.</p></li>
+<li><p>Measure of individual risk conditional on the sample: <span class="math inline">\(r_k = \mathbb{E}(\frac{1}{N_k}|n_k)\)</span>.</p></li>
 <li>
-<p>Mesure dépendant d’une modélisation de la loi (a posteriori) de <span class="math inline">\(N_k | n_k\)</span></p>
+<p>Measure depending on a modeling of the (posterior) distribution of <span class="math inline">\(N_k | n_k\)</span></p>
 <ul>
-<li><p>Modélisation des fréquences des clés dans la population conditionnellement à leur fréquence dans l’échantillon.</p></li>
-<li><p>Par une binomiale négative par exemple dans <span class="citation" data-cites="Benedetti_Franconi_1998">Benedetti and Franconi (<a href="#/biblio" role="doc-biblioref" onclick="">1998</a>)</span>.</p></li>
+<li><p>Modeling of key frequencies in the population conditional on their frequency in the sample.</p></li>
+<li><p>By a negative binomial, for example, in <span class="citation" data-cites="Benedetti_Franconi_1998">Benedetti and Franconi (<a href="#/bibliography" role="doc-biblioref" onclick="">1998</a>)</span>.</p></li>
 </ul>
 </li>
-</ul></section></section><section><section id="autres-mesures" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="7"><h1>
-<span class="header-section-number">7</span> Autres mesures</h1>
+</ul></section></section><section><section id="other-measures" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="7"><h1>
+<span class="header-section-number">7</span> Other Measures</h1>
 
-</section><section id="le-record-linkage" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Le Record Linkage</h2>
+</section><section id="record-linkage" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Record Linkage</h2>
 <ul>
-<li><p>Mesure <em>a posteriori</em> de la distance entre les individus du jeu protégé et ceux du jeu original.</p></li>
-<li><p>Permet d’évaluer le nombre de correspondances exactes entre données perturbées et originales.</p></li>
-</ul></section><section id="les-outliers" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les Outliers</h2>
+<li><p><em>A posteriori</em> measure of the distance between individuals in the protected dataset and those in the original dataset.</p></li>
+<li><p>Allows evaluating the number of exact matches between perturbed data and original data.</p></li>
+</ul></section><section id="outliers" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Outliers</h2>
 <ul>
-<li><p>Fort risque de ré-identification des individus ayant des valeurs en queue de distribution (par ex. les très hauts revenus des footballeurs)</p></li>
-<li><p>Une perturbation n’est pas toujours suffisante (Un outlier perturbé reste souvent un outlier).</p></li>
-<li><p>Détection des outliers à partir des quantiles de la distribution.</p></li>
-</ul></section></section><section><section id="les-scénarios-dattaque" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="8"><h1>
-<span class="header-section-number">8</span> Les scénarios d’attaque</h1>
+<li><p>High risk of re-identification of individuals with values in the tail of the distribution (e.g., very high incomes of footballers)</p></li>
+<li><p>A perturbation is not always sufficient (A perturbed outlier often remains an outlier).</p></li>
+<li><p>Detection of outliers based on the quantiles of the distribution.</p></li>
+</ul></section></section><section><section id="attack-scenarios" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="8"><h1>
+<span class="header-section-number">8</span> Attack Scenarios</h1>
 
-</section><section id="définir-un-scénario-dattaque" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Définir un scénario d’attaque</h2>
+</section><section id="define-an-attack-scenario" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Define an Attack Scenario</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Scénario d’attaque</strong></p>
+<p><strong>Attack Scenario</strong></p>
 </div>
 <div class="callout-content">
-<p>Définir des scénarios d’attaque c’est envisager les moyens utilisés par l’attaquant et objectiver les utilisations frauduleuses que nous chercherons à empêcher.</p>
+<p>Defining attack scenarios involves considering the means used by the attacker and objectifying the fraudulent uses that we seek to prevent.</p>
 </div>
 </div>
 </div>
 <ul>
-<li><p>Arbitrage Coûts/Risques (INS)</p></li>
-<li><p>Arbitrage Coûts/Bénéfices (Attaquant)</p></li>
-</ul></section><section id="les-attaques-sur-données-k-anonymes-etou-l-diverses" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les attaques sur données k-anonymes et/ou l-diverses</h2>
-<p><span class="citation" data-cites="cohen_attacks_2022">Cohen (<a href="#/biblio" role="doc-biblioref" onclick="">2022</a>)</span></p>
+<li><p><strong>Cost/Risk Trade-off (INS)</strong></p></li>
+<li><p><strong>Cost/Benefit Trade-off (Attacker)</strong></p></li>
+</ul></section><section id="attacks-on-k-anonymous-andor-l-diverse-data" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Attacks on k-anonymous and/or l-diverse data</h2>
+<p><span class="citation" data-cites="cohen_attacks_2022">Cohen (<a href="#/bibliography" role="doc-biblioref" onclick="">2022</a>)</span></p>
 </section></section><section><section id="conclusion" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="9"><h1>
 <span class="header-section-number">9</span> Conclusion</h1>
 
-</section><section id="en-guise-de-conclusion" class="slide level2 smaller" data-background-image="background.svg" data-background-size="contain"><h2>En guise de conclusion</h2>
+</section><section id="in-conclusion" class="slide level2 smaller" data-background-image="background.svg" data-background-size="contain"><h2>In conclusion</h2>
 <ul>
-<li><p>Il existe de nombreuses façons d’évaluer la perte d’information.</p></li>
-<li><p>Fortement liée au niveau de protection.</p></li>
-<li><p>De nombreuses méthodes pour évaluer la perte d’information, le choix de la mesure dépend entièrement des utilisateurs finaux des données publiées.</p></li>
-<li><p>Difficile d’anticiper toutes les utilisations d’un ensemble de données et donc toutes les mesures associées de perte d’information.</p></li>
-<li><p>Nécessité de faire des concessions sur certaines caractéristiques d’un tableau pour libérer des contraintes ailleurs.</p></li>
-<li><p>On ne peut pas préserver toutes les caractéristiques d’un ensemble de données.</p></li>
-</ul></section></section><section><section id="pour-aller-plus-loin" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="10"><h1>
-<span class="header-section-number">10</span> Pour aller plus loin</h1>
+<li><p>There are many ways to evaluate information loss.</p></li>
+<li><p>Strongly linked to the level of protection.</p></li>
+<li><p>Many methods to evaluate information loss; the choice of measure depends entirely on the end users of the published data.</p></li>
+<li><p>Difficult to anticipate all uses of a dataset and therefore all associated measures of information loss.</p></li>
+<li><p>Need to make trade-offs on certain characteristics of a table to relax constraints elsewhere.</p></li>
+<li><p>It is impossible to preserve all characteristics of a dataset.</p></li>
+</ul></section></section><section><section id="for-further-reading" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="10"><h1>
+<span class="header-section-number">10</span> For further reading</h1>
 
-</section><section id="biblio" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain"><h2>Biblio</h2>
+</section><section id="bibliography" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain"><h2>Bibliography</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Benedetti_Franconi_1998" class="csl-entry" role="listitem">
 Benedetti, Roberto, and Luisa Franconi. 1998. <span>“Statistical and Technological Solutions for Controlled Data Dissemination.”</span> <em>Pre-Proceedings of New Techniques and Technologies for Statistics</em> 1: 225_232.
@@ -1326,30 +1247,13 @@ Sweeney, Latanya. 2000. <span>“Simple <span>Demographics</span> <span>Often</s
 ———. 2002. <span>“K-<span>ANONYMITY</span>: <span>A</span> <span>MODEL</span> <span>FOR</span> <span>PROTECTING</span> <span>PRIVACY</span>.”</span> <em>International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems</em> 10 (05): 557–70. <a href="https://doi.org/10.1142/S0218488502001648">https://doi.org/10.1142/S0218488502001648</a>.
 </div>
 </div>
-<!---
-## Source généraliste
-
-Hundepool and alt., *Handbook on Statistical Disclosure Control*, Wiley, 2012\
-Une version libre et gratuite est disponible ici: <https://ec.europa.eu/eurostat/cros/system/files/SDC_Handbook.pdf> (2010)
-
-
-## Risques de divulgation
-
--   Sweeney, L. (2000). Simple demographics often identify people uniquely. *Health* (San Francisco), 671(2000), 1-34.
-
--   El Emam, K., & Dankar, F. K. (2008). Protecting privacy using k-anonymity. *Journal of the American Medical Informatics Association*, 15(5), 627-637.
-
-## Compromis entre Risque et Utilité:
-
--   Domingo-Ferrer, J., Mateo-Sanz, J. M., & Torra, V. (2001, May). Comparing SDC methods for microdata on the basis of information loss and disclosure risk. In *Pre-proceedings of ETK-NTTS* (Vol. 2, pp. 807-826).
---->
 
 
 </section></section>
 </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>The disclosure risks</p>
+<p>Disclosure risks</p>
 </div>
 </div>
 </div>

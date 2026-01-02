@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html lang="fr-FR"><head>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<html lang="fr-FR">
+<head>
 <link rel="alternate" hreflang="fr" href="/theorie/supports/methodes-perturbatrices.html" />
 <link rel="alternate" hreflang="en" href="/en/theorie/supports/methodes-perturbatrices.en.html" />
-<script src="../../site_libs/quarto-html/tabby.min.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script><script src="../../site_libs/quarto-html/tabby.min.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
-
-  <meta name="author" content="Insee, Département des Méthodes Statistiques">
-  <title>La protection des données statistiques publiques – Les méthodes perturbatrices</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
-  <style>
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+<meta name="author" content="Insee, Département des Méthodes Statistiques">
+<title>La protection des données statistiques publiques – Les méthodes perturbatrices</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -51,14 +49,14 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ea8535d309a38c52e88d69daf30b07d0.css">
-  <link rel="stylesheet" href="_extensions/InseeFrLab/onyxia/logo.css">
-  <link rel="stylesheet" href="custom.css">
-  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ea8535d309a38c52e88d69daf30b07d0.css">
+<link rel="stylesheet" href="_extensions/InseeFrLab/onyxia/logo.css">
+<link rel="stylesheet" href="custom.css">
+<link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -145,16 +143,17 @@
       margin-right: 0; 
     }
   </style>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Les méthodes perturbatrices</h1>
-  <p class="subtitle"></p><p><strong><span class="orange">Pour données tabulées ou individuelles</span></strong></p><p></p>
+<section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center"><h1 class="title">Les méthodes perturbatrices</h1>
+  <p class="subtitle"></p>
+<p><strong><span class="orange">Pour données tabulées ou individuelles</span></strong></p>
+<p></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -164,29 +163,20 @@ Insee, Département des Méthodes Statistiques
 </div>
 </div>
 
-</section><section id="TOC">
-<nav role="doc-toc"> 
-<h2 id="toc-title">Sommaire</h2>
+</section><section id="TOC"><nav role="doc-toc"><h2 id="toc-title">Sommaire</h2>
 <ul>
 <li><a href="#/introduction" id="/toc-introduction">Introduction</a></li>
-<li><a href="#/les-méthodes-post-tabulation" id="/toc-les-méthodes-post-tabulation"><span class="header-section-number">1</span> Les méthodes post-tabulation</a></li>
-<li><a href="#/méthodes-darrondi-et-apparentées" id="/toc-méthodes-darrondi-et-apparentées"><span class="header-section-number">2</span> Méthodes d’arrondi et apparentées</a></li>
-<li><a href="#/la-méthode-des-clés-aléatoires-ckm" id="/toc-la-méthode-des-clés-aléatoires-ckm"><span class="header-section-number">3</span> La méthode des clés aléatoires (CKM)</a></li>
-<li><a href="#/la-microagrégation" id="/toc-la-microagrégation"><span class="header-section-number">4</span> La microagrégation</a></li>
+<li><a href="#/les-m%C3%A9thodes-post-tabulation" id="/toc-les-méthodes-post-tabulation"><span class="header-section-number">1</span> Les méthodes post-tabulation</a></li>
+<li><a href="#/m%C3%A9thodes-darrondi-et-apparent%C3%A9es" id="/toc-méthodes-darrondi-et-apparentées"><span class="header-section-number">2</span> Méthodes d’arrondi et apparentées</a></li>
+<li><a href="#/la-m%C3%A9thode-des-cl%C3%A9s-al%C3%A9atoires-ckm" id="/toc-la-méthode-des-clés-aléatoires-ckm"><span class="header-section-number">3</span> La méthode des clés aléatoires (CKM)</a></li>
+<li><a href="#/la-microagr%C3%A9gation" id="/toc-la-microagrégation"><span class="header-section-number">4</span> La microagrégation</a></li>
 <li><a href="#/injection-de-bruit" id="/toc-injection-de-bruit"><span class="header-section-number">5</span> Injection de bruit</a></li>
 <li><a href="#/targeted-record-swapping-trs" id="/toc-targeted-record-swapping-trs"><span class="header-section-number">6</span> Targeted Record Swapping (TRS)</a></li>
 <li><a href="#/post-randomisation-method-pram" id="/toc-post-randomisation-method-pram"><span class="header-section-number">7</span> Post-Randomisation Method (PRAM)</a></li>
-<li><a href="#/les-données-synthétiques" id="/toc-les-données-synthétiques"><span class="header-section-number">8</span> Les données synthétiques</a></li>
-</ul>
-</nav>
-</section>
-<section>
-<section id="introduction" class="title-slide slide level1 unnumbered center" data-background-image="background.svg" data-background-size="contain">
-<h1>Introduction</h1>
+<li><a href="#/les-donn%C3%A9es-synth%C3%A9tiques" id="/toc-les-données-synthétiques"><span class="header-section-number">8</span> Les données synthétiques</a></li>
+</ul></nav></section><section><section id="introduction" class="title-slide slide level1 unnumbered center" data-background-image="background.svg" data-background-size="contain"><h1>Introduction</h1>
 
-</section>
-<section id="objectifs" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Objectifs</h2>
+</section><section id="objectifs" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Objectifs</h2>
 <div style="font-size: 80%;">
 <ul>
 <li>Quelles sont les méthodes perturbatrices qui permettent de limiter les risques de divulgation ?<br>
@@ -198,12 +188,9 @@ Insee, Département des Méthodes Statistiques
 <li>Quels sont les conséquences sur la perte d’information ?</li>
 </ul>
 </div>
-</section>
-<section id="les-méthodes-principales-à-disposition" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les méthodes principales à disposition</h2>
+</section><section id="les-méthodes-principales-à-disposition" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les méthodes principales à disposition</h2>
 <div id="tbl-class-meth" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-class-meth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-class-meth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <style type="text/css">
 .tg  {border-collapse:collapse;border-color:#C44D58;border-spacing:0;}
 .tg td{background-color:#F9CDAD;border-color:#C44D58;border-style:solid;border-width:2px;color:#002b36;
@@ -215,15 +202,13 @@ Insee, Département des Méthodes Statistiques
 .tg .tg-jusz{background-color:#fe4365;border-color:#fdf6e3;color:#fdf6e3;font-weight:bold;text-align:center;vertical-align:top}
 </style>
 <table class="tg">
-<thead>
-<tr>
+<thead><tr>
 <th class="tg-ukzp">
 </th>
 <th class="tg-ukzp" colspan="2">
 Méthodes
 </th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td class="tg-jusz">
@@ -293,14 +278,11 @@ Algo de confidentialité différentielle
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-class-meth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: : Les méthodes pour gérer la protection des données
-</figcaption>
-</figure>
+Table 1: : Les méthodes pour gérer la protection des données
+</figcaption></figure>
 </div>
 <p>Il existe aussi une autre technique consistant à produire des données synthétiques.</p>
-</section>
-<section id="perturbatif-vs-suppressif" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Perturbatif vs suppressif</h2>
+</section><section id="perturbatif-vs-suppressif" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Perturbatif vs suppressif</h2>
 <p>Dans quels cas préférer les méthodes perturbatrices aux méthodes suppressives?</p>
 <ul>
 <li>Prise en charge de diffusions complexes à traiter avec des méthodes suppressives:
@@ -308,40 +290,31 @@ Table&nbsp;1: : Les méthodes pour gérer la protection des données
 <li>nombreux tableaux (diffusion industrielle),</li>
 <li>diffusion en plusieurs moments</li>
 <li>différenciation géographique ou de nomenclature</li>
-</ul></li>
+</ul>
+</li>
 <li>Contrôler la perte d’utilité plus finement:
 <ul>
 <li>un arbitrage possible en général en jouant sur les paramètres du bruit</li>
 <li>pas de suppression =&gt; une information disponible et manipulable</li>
-</ul></li>
-<li>Un cadre institutionnel qui autorise un tel usage</li>
 </ul>
-</section>
-<section id="perturbatif-vs-suppressif-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Perturbatif vs suppressif</h2>
+</li>
+<li>Un cadre institutionnel qui autorise un tel usage</li>
+</ul></section><section id="perturbatif-vs-suppressif-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Perturbatif vs suppressif</h2>
 <p>Certaines limites des méthodes perturbatrices:</p>
 <ul>
 <li>Dans certains cas, perte de caractéristiques basiques des données (additivité dans les tableaux)</li>
 <li>Une perception du traitement du secret moins immédiate qu’avec le blanchiment</li>
 <li>Une pédagogie nécessaire vis-à-vis du public pour l’utilisation des données</li>
 <li>Des règles historiques de secret à revisiter car adaptées pour des méthodes suppressives</li>
-</ul>
-</section></section>
-<section>
-<section id="les-méthodes-post-tabulation" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="1">
-<h1><span class="header-section-number">1</span> Les méthodes post-tabulation</h1>
+</ul></section></section><section><section id="les-méthodes-post-tabulation" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="1"><h1>
+<span class="header-section-number">1</span> Les méthodes post-tabulation</h1>
 
-</section>
-<section id="les-méthodes-post-tabulation-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les méthodes post-tabulation</h2>
+</section><section id="les-méthodes-post-tabulation-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les méthodes post-tabulation</h2>
 <ul>
 <li>Méthodes qui sont appliquées sur les données agrégées</li>
 <li>Certaines méthodes (en particulier les arrondis) sont plus adaptées aux comptages qu’aux volumes</li>
 <li>Perturbation de tout ou partie des tableaux selon la méthode</li>
-</ul>
-</section>
-<section id="quelques-enjeux" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Quelques enjeux ?</h2>
+</ul></section><section id="quelques-enjeux" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Quelques enjeux ?</h2>
 <p>En perturbant les données dans des tableaux:</p>
 <ul>
 <li>Faut-il tout perturber ou seulement une partie ?</li>
@@ -349,14 +322,10 @@ Table&nbsp;1: : Les méthodes pour gérer la protection des données
 <li>Faut-il préserver l’additivité au sein des tabeaux ?</li>
 </ul>
 <p>En répondant à ces questions, on s’orientera vers une méthode plutôt qu’une autre.</p>
-</section></section>
-<section>
-<section id="méthodes-darrondi-et-apparentées" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="2">
-<h1><span class="header-section-number">2</span> Méthodes d’arrondi et apparentées</h1>
+</section></section><section><section id="méthodes-darrondi-et-apparentées" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="2"><h1>
+<span class="header-section-number">2</span> Méthodes d’arrondi et apparentées</h1>
 
-</section>
-<section id="méthodes-darrondi-et-apparentées-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Méthodes d’arrondi et apparentées</h2>
+</section><section id="méthodes-darrondi-et-apparentées-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Méthodes d’arrondi et apparentées</h2>
 <ul>
 <li>Arrondis déterministes</li>
 <li>Arrondis aléatoires</li>
@@ -364,25 +333,20 @@ Table&nbsp;1: : Les méthodes pour gérer la protection des données
 <li>Controlled Rounding</li>
 </ul>
 <p>Des méthodes principalement adaptées aux tableaux de comptages.</p>
-<p>Pour plus d’informations: <a href="">https://sdctools.github.io/HandbookSDC/05-frequency-tables.html#sec-Rounding_freq</a> <span class="citation" data-cites="hundepool_handbook_2024">(<a href="#/références" role="doc-biblioref" onclick="">Hundepool et al. 2024</a>)</span></p>
-</section>
-<section id="un-exemple" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
+<p>Pour plus d’informations: <a href="">https://sdctools.github.io/HandbookSDC/05-frequency-tables.html#sec-Rounding_freq</a> <span class="citation" data-cites="hundepool_handbook_2024">(<a href="#/r%C3%A9f%C3%A9rences" role="doc-biblioref" onclick="">Hundepool et al. 2024</a>)</span></p>
+</section><section id="un-exemple" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
 <p>Supposons le tableau de comptage suivant (en gras les informations jugées sensibles)</p>
 <div id="tbl-compt-orig" class="table table-striped table-hover table-bordered quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-compt-orig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-compt-orig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Caractéristique</th>
 <th style="text-align: center;">Nord</th>
 <th style="text-align: center;">Ouest</th>
 <th style="text-align: center;">Sud</th>
 <th style="text-align: center;">Est</th>
 <th style="text-align: center;">Total</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Polluante</td>
@@ -412,13 +376,10 @@ Table&nbsp;1: : Les méthodes pour gérer la protection des données
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-compt-orig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: Nombre d’entreprises en fonction de leur implantation et du caractère polluant de leurs activités
-</figcaption>
-</figure>
+Table 2: Nombre d’entreprises en fonction de leur implantation et du caractère polluant de leurs activités
+</figcaption></figure>
 </div>
-</section>
-<section id="arrondis-déterministes-ou-aléatoires" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Arrondis déterministes ou aléatoires</h2>
+</section><section id="arrondis-déterministes-ou-aléatoires" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Arrondis déterministes ou aléatoires</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -433,12 +394,14 @@ Table&nbsp;2: Nombre d’entreprises en fonction de leur implantation et du cara
 <li>Soit au multiple le plus proche (arrondi déterministe)
 <ul>
 <li>=&gt; Un arrondi déterministe renvoie toujours la même valeur</li>
-</ul></li>
+</ul>
+</li>
 <li>Soit, aléatoirement, à l’un des deux multiples les plus proches (arrondi aléatoire).
 <ul>
 <li>L’arrondi est sans biais en choisissant les probabilités adéquates.</li>
 <li>Cette technique offre une meilleure protection</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -457,30 +420,28 @@ Table&nbsp;2: Nombre d’entreprises en fonction de leur implantation et du cara
 <li>Arrondi déterministe: <span class="math inline">\(x^\prime = 20\)</span>.</li>
 <li>Arrondi aléatoire:
 <ul>
-<li><span class="math inline">\(x^\prime = 20\)</span> avec probabilité de <span class="math inline">\(0.7\)</span> ou</li>
-<li><span class="math inline">\(x^\prime = 30\)</span> probabilité de <span class="math inline">\(0.3\)</span>.</li>
-</ul></li>
+<li>
+<span class="math inline">\(x^\prime = 20\)</span> avec probabilité de <span class="math inline">\(0.7\)</span> ou</li>
+<li>
+<span class="math inline">\(x^\prime = 30\)</span> probabilité de <span class="math inline">\(0.3\)</span>.</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 </div>
-</section>
-<section id="un-exemple-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
+</section><section id="un-exemple-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
 <div id="tbl-compt-arr" class="table table-striped table-hover table-bordered quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-compt-arr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-compt-arr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Caractéristique</th>
 <th style="text-align: center;">Nord</th>
 <th style="text-align: center;">Ouest</th>
 <th style="text-align: center;">Sud</th>
 <th style="text-align: center;">Est</th>
 <th style="text-align: center;">Total</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Polluante</td>
@@ -510,13 +471,10 @@ Table&nbsp;2: Nombre d’entreprises en fonction de leur implantation et du cara
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-compt-arr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3: Application d’un arrondi déterministe de base <span class="math inline">\(b=5\)</span> (Moyenne des écarts absolus: <span class="math inline">\(1.4\)</span>.)
-</figcaption>
-</figure>
+Table 3: Application d’un arrondi déterministe de base <span class="math inline">\(b=5\)</span> (Moyenne des écarts absolus: <span class="math inline">\(1.4\)</span>.)
+</figcaption></figure>
 </div>
-</section>
-<section id="arrondis-des-petits-comptages" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Arrondis des petits comptages</h2>
+</section><section id="arrondis-des-petits-comptages" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Arrondis des petits comptages</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -528,34 +486,31 @@ Table&nbsp;3: Application d’un arrondi déterministe de base <span class="math
 <div class="callout-content">
 <p>Algorithme appliqué à des tableaux de données assurant:</p>
 <ul>
-<li>l’arrondi des petits comptages (cad les plus sensibles) dans une base <span class="math inline">\(b\)</span></li>
+<li>l’arrondi des petits comptages (cad les plus sensibles) dans une base <span class="math inline">\(b\)</span>
+</li>
 <li>des comptages supplémentaires sont déviés pour:
 <ul>
 <li>conserver l’additivité dans les tableaux</li>
 <li>et minimiser la perturbation globale</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p>Technique implémentée dans le package <code>R</code> <code>SmallCountRounding</code></p>
 </div>
 </div>
 </div>
-</section>
-<section id="un-exemple-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
+</section><section id="un-exemple-2" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
 <div id="tbl-compt-smcr" class="table table-striped table-hover table-bordered quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-compt-smcr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-compt-smcr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Caractéristique</th>
 <th style="text-align: center;">Nord</th>
 <th style="text-align: center;">Ouest</th>
 <th style="text-align: center;">Sud</th>
 <th style="text-align: center;">Est</th>
 <th style="text-align: center;">Total</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Polluante</td>
@@ -585,13 +540,10 @@ Table&nbsp;3: Application d’un arrondi déterministe de base <span class="math
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-compt-smcr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4: Application d’un algorithme de type Small Count Rounding (Moyenne des écarts absolus: <span class="math inline">\(1.07\)</span>.)
-</figcaption>
-</figure>
+Table 4: Application d’un algorithme de type Small Count Rounding (Moyenne des écarts absolus: <span class="math inline">\(1.07\)</span>.)
+</figcaption></figure>
 </div>
-</section>
-<section id="arrondi-contrôlé" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Arrondi contrôlé</h2>
+</section><section id="arrondi-contrôlé" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Arrondi contrôlé</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -603,39 +555,31 @@ Table&nbsp;4: Application d’un algorithme de type Small Count Rounding (Moyenn
 <div class="callout-content">
 <p>Algorithme appliqué à des tableaux de données assurant:</p>
 <ul>
-<li>l’arrondi de tous les comptages selon une base <span class="math inline">\(b\)</span></li>
+<li>l’arrondi de tous les comptages selon une base <span class="math inline">\(b\)</span>
+</li>
 <li>tout en assurant:
 <ul>
 <li>la conservation de l’additivité dans les tableaux</li>
 <li>la minimisation de la somme des différences absolues entre valeurs originales et arrondies</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p>Technique implémentée dans le logiciel <code>Tau-ARGUS</code></p>
 </div>
 </div>
 </div>
-<!---
-## Controlled Tabular adjustment (CTA)
-
-Les valeurs des cellules sensibles sont perturbées pour respecter un **intervalle de protection**. Les autres cellules sont ajustées pour restaurer l'additivité dans les tableaux.
---->
-</section>
-<section id="un-exemple-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
+</section><section id="un-exemple-3" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
 <div id="tbl-compt-arr-ctr" class="table table-striped table-hover table-bordered quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-compt-arr-ctr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-compt-arr-ctr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Caractéristique</th>
 <th style="text-align: center;">Nord</th>
 <th style="text-align: center;">Ouest</th>
 <th style="text-align: center;">Sud</th>
 <th style="text-align: center;">Est</th>
 <th style="text-align: center;">Total</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Polluante</td>
@@ -665,39 +609,11 @@ Les valeurs des cellules sensibles sont perturbées pour respecter un **interval
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-compt-arr-ctr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;5: Application d’un arrondi contrôlé avec une base <span class="math inline">\(b=5\)</span> (Moyenne des écarts absolus: <span class="math inline">\(1.5\)</span>.)
-</figcaption>
-</figure>
+Table 5: Application d’un arrondi contrôlé avec une base <span class="math inline">\(b=5\)</span> (Moyenne des écarts absolus: <span class="math inline">\(1.5\)</span>.)
+</figcaption></figure>
 </div>
-<!---
-## Controlled Tabular Adjustment 
-::: frame
-
-avec un intervalle de protection = $[0;5]$
-
-         Région                                    
-  ----- -------- -------- -------- ------- ------- ----
-   3-7    Nord    Ouest     Est      Sud    Total  
-          Oui     **5**    **16**   **0**     7     28
-   2-7    Non     **6**    **0**    **0**    13     19
-   2-7   Total    **11**     16     **0**    20     47
-
-Moyenne des écarts absolus: $0.933$.
-:::
-
-## Avantages / inconvénients
-
-  **Avantages**                                                      **Inconvénients**
-  ------------------------------------------------------------------ -------------------------------------------------------------------------------------------------------
-  Conservation de l'additivité                                       CR et CTA: Recherche de la solution optimale sur grands tableaux très couteuse en temps (optim. lin.)
-  SCR: Algorithme très efficace sur R                                CR: Une perte d'information parfois excessive
-  Perception de la protection (en particulier des petites valeurs)   Difficile à utiliser dans le cadre d'une diffusion complexe
-
---->
-</section></section>
-<section>
-<section id="la-méthode-des-clés-aléatoires-ckm" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="3">
-<h1><span class="header-section-number">3</span> La méthode des clés aléatoires (CKM)</h1>
+</section></section><section><section id="la-méthode-des-clés-aléatoires-ckm" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="3"><h1>
+<span class="header-section-number">3</span> La méthode des clés aléatoires (CKM)</h1>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -710,40 +626,33 @@ Moyenne des écarts absolus: $0.933$.
 <p>Méthode qui consiste à dévier tous les comptages indépendamment les uns des autres:</p>
 <ul>
 <li>chaque comptage est dévié d’une valeur comprise entre <span class="math inline">\(-D\)</span> et <span class="math inline">\(+D\)</span>, <span class="math inline">\(D\)</span> étant un paramètre de la méthode;</li>
-<li>une case est toujours perturbée de la même manière grâce à l’utilisation de <strong>clés individuelles</strong></li>
+<li>une case est toujours perturbée de la même manière grâce à l’utilisation de <strong>clés individuelles</strong>
+</li>
 <li>un comptage nul n’est pas perturbé;</li>
 <li>la quantité de bruit injecté dans les tableaux est de variance <span class="math inline">\(V\)</span>, un autre paramètre de la méthode.</li>
 </ul>
-<p>Sources: <span class="citation" data-cites="thompson_methodology_2013">Thompson, Broadfoot, et Elazar (<a href="#/références" role="doc-biblioref" onclick="">2013</a>)</span>, <span class="citation" data-cites="chipperfield_australian_2016">Chipperfield, Gow, et Loong (<a href="#/références" role="doc-biblioref" onclick="">2016</a>)</span>, <span class="citation" data-cites="giesing_concepts_2019">Gießing et Tent (<a href="#/références" role="doc-biblioref" onclick="">2019</a>)</span></p>
+<p>Sources: <span class="citation" data-cites="thompson_methodology_2013">Thompson, Broadfoot, et Elazar (<a href="#/r%C3%A9f%C3%A9rences" role="doc-biblioref" onclick="">2013</a>)</span>, <span class="citation" data-cites="chipperfield_australian_2016">Chipperfield, Gow, et Loong (<a href="#/r%C3%A9f%C3%A9rences" role="doc-biblioref" onclick="">2016</a>)</span>, <span class="citation" data-cites="giesing_concepts_2019">Gießing et Tent (<a href="#/r%C3%A9f%C3%A9rences" role="doc-biblioref" onclick="">2019</a>)</span></p>
 </div>
 </div>
 </div>
-</section>
-<section id="la-distribution-de-probabilités" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>La distribution de probabilités</h2>
+</section><section id="la-distribution-de-probabilités" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>La distribution de probabilités</h2>
 <p>Propriétés :</p>
 <ul>
 <li><p>Une déviation maximale D et une variance V sont fixés en amont</p></li>
 <li><p>Le bruit injecté est sans biais</p></li>
 <li><p>La loi de probabilité de la déviation injectée est définie à partir d’une matrice de transition</p></li>
-</ul>
-</section>
-<section id="un-exemple-4" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
+</ul></section><section id="un-exemple-4" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
 <div id="tbl-compt-ckm" class="table table-striped table-hover table-bordered quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-compt-ckm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-compt-ckm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Caractéristique</th>
 <th style="text-align: center;">Nord</th>
 <th style="text-align: center;">Ouest</th>
 <th style="text-align: center;">Sud</th>
 <th style="text-align: center;">Est</th>
 <th style="text-align: center;">Total</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Polluante</td>
@@ -773,184 +682,83 @@ Moyenne des écarts absolus: $0.933$.
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-compt-ckm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6: Application de la CKM avec <span class="math inline">\(D = 5\)</span> et <span class="math inline">\(V = 3\)</span> (Moyenne des écarts absolus: <span class="math inline">\(1.1\)</span>)
-</figcaption>
-</figure>
+Table 6: Application de la CKM avec <span class="math inline">\(D = 5\)</span> et <span class="math inline">\(V = 3\)</span> (Moyenne des écarts absolus: <span class="math inline">\(1.1\)</span>)
+</figcaption></figure>
 </div>
-</section>
-<section id="les-usages" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les usages</h2>
+</section><section id="les-usages" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les usages</h2>
 <p>La méthode est utilisée par plusieurs INS:</p>
 <ul>
 <li><p>Depuis 2006, ABS met à disposition un outil de requêtage en ligne pour obtenir des données de son recensement quinquennal. Les données sont protégées avec la CKM. (<a href="https://tablebuilder.abs.gov.au" class="uri">https://tablebuilder.abs.gov.au</a>)</p></li>
 <li><p>La CKM est une des méthodes préconisées par Eurostat pour protéger les données du Census européen 2021.</p></li>
 <li><p>Dans ce cadre, Destatis utilise la CKM pour diffuser des données sur des grilles de 500m.</p></li>
 <li><p>2024/2025: l’Insee diffuse les données sur les Quartiers de la Politique de la Ville (QPV).</p></li>
-</ul>
-</section>
-<section id="etape-1-création-dune-clé-individuelle-aléatoire" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Etape 1: Création d’une clé individuelle aléatoire</h2>
+</ul></section><section id="etape-1-création-dune-clé-individuelle-aléatoire" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Etape 1: Création d’une clé individuelle aléatoire</h2>
 <div style="text-align:center;">
-<div id="fig-mat-trans" class="quarto-float quarto-figure quarto-figure-center" alt="Ajout des clés individuelles aux micro-données" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-mat-trans" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Ajout des clés individuelles aux micro-données">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/ckm-ind-cles.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Ajout des clés individuelles aux micro-données">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Arbitrer
-</figcaption>
-</figure>
+Figure 1: Arbitrer
+</figcaption></figure>
 </div>
 </div>
-<!---
-Supposons que la base $\mathcal{B}$ soit composé des 6 individus suivant et qu'à chacun on associe une clé :
-
-::: {#tbl-ckm-ind .table .table-striped .table-hover .table-bordered}
-
-  **id**   **Ville**   **Ecole**    **KEY**
--------- ----------- ----------- -----------
-    1       Rennes       Ensai     0.9177275
-    2        Paris       Mines     0.1850062
-    3       Rennes       Ensai     0.6266963
-    4        Lyon      Centrale    0.1117820
-    5      Marseille   Centrale    0.6496634
-    6        Lille     Centrale    0.2813433
-
-: Ajout d'une clé aléatoire dans le jeu de données individuelles
-:::
---->
-</section>
-<section id="etape-2-construction-du-tableau" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Etape 2: Construction du tableau</h2>
+</section><section id="etape-2-construction-du-tableau" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Etape 2: Construction du tableau</h2>
 <div style="text-align:center;">
-<div id="fig-mat-trans" class="quarto-float quarto-figure quarto-figure-center" alt="Construction du tableau et des clés de chaque case" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-mat-trans" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Construction du tableau et des clés de chaque case">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/ckm-table-depart.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Construction du tableau et des clés de chaque case">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Construction du tableau et des clés de chaque case
-</figcaption>
-</figure>
+Figure 2: Construction du tableau et des clés de chaque case
+</figcaption></figure>
 </div>
 </div>
-<!-- 
-Nous souhaitons diffuser le nombre d'individus selon leur école.
-
-On a :
-
-::: center
-   **Ecole**   **i**   **individus**   **Skey**     **CK**
-  ----------- ------- --------------- ----------- -----------
-     Ensai       2         {1,3}       1.544424    0.544425
-     Mines       1          {2}        0.1805062   0.1805062
-   Centrale      3        {4,5,6}      1.0422789    0.42789
-     Total       6     {1,2,3,4,5,6}   2.772219    0.772219
-::: -->
-</section>
-<section id="etape-3-les-probabilités-de-transition" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Etape 3: Les probabilités de transition</h2>
+</section><section id="etape-3-les-probabilités-de-transition" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Etape 3: Les probabilités de transition</h2>
 <div style="text-align:center;">
-<div id="fig-mat-trans" class="quarto-float quarto-figure quarto-figure-center" alt="Matrice de transition pour D=2 et V=1" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-mat-trans" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Matrice de transition pour D=2 et V=1">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/ckm-mat-trans.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Matrice de transition pour D=2 et V=1">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mat-trans-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Matrice de transition pour D=2 et V=1
-</figcaption>
-</figure>
+Figure 3: Matrice de transition pour D=2 et V=1
+</figcaption></figure>
 </div>
 </div>
-<!---
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![Probabilités de transition pour $D = 3$ et $V = 1.5$](methodes-perturbatrices_files/figure-revealjs/fig-cnt-table-1.png){#fig-cnt-table fig-align='center' width=960}
-:::
-:::
-
---->
-</section>
-<section id="etape-4-déterminer-la-perturbation-à-injecter" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Etape 4 : Déterminer la perturbation à injecter</h2>
+</section><section id="etape-4-déterminer-la-perturbation-à-injecter" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Etape 4 : Déterminer la perturbation à injecter</h2>
 <div style="text-align:center;">
-<div id="fig-tab-pert" class="quarto-float quarto-figure quarto-figure-center" alt="La perturbation à injecter" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-tab-pert-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-tab-pert" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="La perturbation à injecter">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-tab-pert-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/ckm-table-pert.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="La perturbation à injecter">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tab-pert-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: La perturbation à injecter” fig-align=“center
-</figcaption>
-</figure>
+Figure 4: La perturbation à injecter” fig-align=“center
+</figcaption></figure>
 </div>
 </div>
-<!-- 
-   i   j       p        v     p_int_lb     p_int_ub
-  --- --- ------------ ---- ------------ ------------
-   0   0   1.00000000   0    0.00000000   1.00000000
-   1   0   0.37967089   -1   0.00000000   0.37967089
-   1   1   0.37967089   0    0.37967089   0.75934178
-   1   2   0.13660124   1    0.75934178   0.89594302
-   1   3   0.06910130   2    0.89594302   0.96504432
-   1   4   0.03495568   3    0.96504432   1.00000000
-   2   0   0.11466600   -2   0.00000000   0.11466600
-   2   1   0.24491770   -1   0.11466600   0.35958370
-   2   2   0.30449462   0    0.35958370   0.66407832
-   2   3   0.22034995   1    0.66407832   0.88442827
-   2   4   0.09281544   2    0.88442827   0.97724371
-   2   5   0.02275629   3    0.97724371   1.00000000
-   3   0   0.01792237   -3   0.00000000   0.01792237
-   3   1   0.08898737   -2   0.01792237   0.10690974
-   3   2   0.23274919   -1   0.10690974   0.33965893
-   3   3   0.32068214   0    0.33965893   0.66034107
-   3   4   0.23274919   1    0.66034107   0.89309026
-   3   5   0.08898737   2    0.89309026   0.98207763
-   3   6   0.01792237   3    0.98207763   1.00000000
-::: -->
-</section>
-<section id="etape-5-construire-le-tableau-final" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Etape 5 : Construire le tableau final</h2>
+</section><section id="etape-5-construire-le-tableau-final" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Etape 5 : Construire le tableau final</h2>
 <div style="text-align:center;">
-<div id="fig-tab-finale" class="quarto-float quarto-figure quarto-figure-center" alt="Table après perturbation" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-tab-finale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-tab-finale" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Table après perturbation">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-tab-finale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/ckm-table-finale.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Table après perturbation">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tab-finale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Table après perturbation
-</figcaption>
-</figure>
+Figure 5: Table après perturbation
+</figcaption></figure>
 </div>
 </div>
-<!-- 
-::: center
-   **Ecole**   **Valeur originale i**   **Valeur pertubée j**     
-  ----------- ------------------------ ----------------------- -- --
-     Ensai               2                        2               
-     Mines               1                        0               
-   Centrale              3                        3               
-     Total               6                        7               
-:::
-::: -->
-</section>
-<section id="avantages-inconvénients" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Avantages / inconvénients</h2>
+</section><section id="avantages-inconvénients" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Avantages / inconvénients</h2>
 <div id="tbl-ckm-avtg-incv" class="table table-striped table-hover quarto-float quarto-figure quarto-figure-center" style="font-size: 70%;">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover">
 <colgroup>
 <col style="width: 41%">
 <col style="width: 58%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Avantages</th>
 <th style="text-align: center;">Inconvénients</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Facile d’implémentation</td>
@@ -980,37 +788,30 @@ Figure&nbsp;5: Table après perturbation
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;7: Avantages et onconvénients de la méthode des clés aléatoires
-</figcaption>
-</figure>
+Table 7: Avantages et onconvénients de la méthode des clés aléatoires
+</figcaption></figure>
 </div>
-</section></section>
-<section>
-<section id="la-microagrégation" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="4">
-<h1><span class="header-section-number">4</span> La microagrégation</h1>
+</section></section><section><section id="la-microagrégation" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="4"><h1>
+<span class="header-section-number">4</span> La microagrégation</h1>
 <ul>
 <li><p>Méthode perturbatrice, plus adaptée aux variables continues, mais peut-être adaptée aux variables catégorielles ordonnées</p></li>
-<li><p>Idée principale :</p>
+<li>
+<p>Idée principale :</p>
 <ul>
 <li><p><strong>Créer des petits groupes homogènes</strong> en prenant en compte les valeurs des variables sélectionnées</p></li>
 <li><p><strong>Remplacer les valeurs</strong> de tous les individus appartenant au groupe <strong>par une unique valeur</strong> (peut être la valeur moyenne de valeurs observées dans le groupe)</p></li>
-</ul></li>
 </ul>
-</section>
-<section id="un-exemple-5" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
+</li>
+</ul></section><section id="un-exemple-5" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
 <div id="tbl-ckm-avtg-incv" class="table table-striped table-hover table-bordered quarto-float quarto-figure quarto-figure-center" style="font-size: 70%;">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Région</th>
 <th style="text-align: center;">Âge</th>
 <th style="text-align: center;">Heures travaillées par semaine</th>
 <th style="text-align: center;">Revenu mensuel</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">92</td>
@@ -1064,16 +865,12 @@ Table&nbsp;7: Avantages et onconvénients de la méthode des clés aléatoires
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;8: Des données individuelles avec des uniques sur les croisements Âge <span class="math inline">\(\times\)</span> Région
-</figcaption>
-</figure>
+Table 8: Des données individuelles avec des uniques sur les croisements Âge <span class="math inline">\(\times\)</span> Région
+</figcaption></figure>
 </div>
-</section>
-<section id="un-exemple-6" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
+</section><section id="un-exemple-6" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
 <div id="tbl-ckm-avtg-incv" class="table table-striped table-hover table-bordered quarto-float quarto-figure quarto-figure-center" style="font-size: 70%;">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-bordered">
 <colgroup>
 <col style="width: 30%">
@@ -1081,14 +878,12 @@ Table&nbsp;8: Des données individuelles avec des uniques sur les croisements Â
 <col style="width: 23%">
 <col style="width: 10%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Région</th>
 <th style="text-align: center;">Âge</th>
 <th style="text-align: center;">Heures travaillées par semaine</th>
 <th style="text-align: center;">Revenu mensuel</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><span style="background-color:#fbff91;">92</span></td>
@@ -1142,28 +937,14 @@ Table&nbsp;8: Des données individuelles avec des uniques sur les croisements Â
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-ckm-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;9: Des données individuelles avec des uniques sur les croisements Âge <span class="math inline">\(\times\)</span> Région
-</figcaption>
-</figure>
+Table 9: Des données individuelles avec des uniques sur les croisements Âge <span class="math inline">\(\times\)</span> Région
+</figcaption></figure>
 </div>
-<p><!-- -------- ----------- -------------------- ------------
-   Région      Age      Heures travaillées     Poids
-                           par semaine       de sondage
-     92     ~~36~~ 31           17              1000
-     [red]{style="color:green;"}75     ~~41~~ 45           35              2000
-     75     ~~52~~ 45           0               1100
-     94     ~~45~~ 47           35              2500
-     75     ~~41~~ 45           0               1900
-     92     ~~26~~ 31           46              1500
-     92     ~~31~~ 31           38              800
-     94     ~~48~~ 47           30              1200
-  -------- ----------- -------------------- ------------ --></p>
 <ul>
-<li><span class="math inline">\(\mu_{red} = 45\)</span>, <span class="math inline">\(\mu_{yellow} = 31\)</span>, <span class="math inline">\(\mu_{green} = 47\)</span></li>
-</ul>
-</section>
-<section id="paramètres" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Paramètres</h2>
+<li>
+<span class="math inline">\(\mu_{red} = 45\)</span>, <span class="math inline">\(\mu_{yellow} = 31\)</span>, <span class="math inline">\(\mu_{green} = 47\)</span>
+</li>
+</ul></section><section id="paramètres" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Paramètres</h2>
 <p>Un grand nombre de sorties possibles pour cette méthode selon :</p>
 <ul>
 <li><p>la définition d’homogénéité choisie</p></li>
@@ -1175,37 +956,27 @@ Table&nbsp;9: Des données individuelles avec des uniques sur les croisements Â
 <li><p>Taille <span class="math inline">\(g\)</span> de chaque groupe (plus la taille du groupe est grande, plus grande sera la perte d’information, et plus celle-ci est grande, plus le niveau de protection est élevé ..)</p></li>
 <li><p>Quelles variables sont utilisées pour calculer la distance ?</p></li>
 <li><p>Quelles statistiques choisir une fois que les groupes ont été formés ? (moyenne, médiane ?)</p></li>
-</ul>
-</section>
-<section id="minimiser-la-variance-intra-groupe" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Minimiser la variance intra-groupe</h2>
+</ul></section><section id="minimiser-la-variance-intra-groupe" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Minimiser la variance intra-groupe</h2>
 <div style="text-align:center;">
-<div id="fig-within" class="quarto-float quarto-figure quarto-figure-center" alt="Minimisation de la variance intra-groupe" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-within-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-within" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Minimisation de la variance intra-groupe">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-within-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/within.png" class="quarto-figure quarto-figure-center" style="width:50.0%" alt="Minimisation de la variance intra-groupe">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-within-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: Table après perturbation
-</figcaption>
-</figure>
+Figure 6: Table après perturbation
+</figcaption></figure>
 </div>
 </div>
 <p>L’algorithme cherche à minimiser la somme des carrés intra-groupe:</p>
 <p><span class="math display">\[SSE = \sum_{i=1}^g\sum_{j \in i} (x_{ij}-\bar x_{i})^T(x_{ij}-\bar x_{i})\]</span></p>
-</section>
-<section id="avantages-inconvénients-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Avantages / inconvénients</h2>
+</section><section id="avantages-inconvénients-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Avantages / inconvénients</h2>
 <div id="tbl-bruit-add-avtg-incv" class="table table-striped table-hover quarto-float quarto-figure quarto-figure-center" style="font-size: 70%;">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-bruit-add-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-bruit-add-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Avantages</th>
 <th style="text-align: center;">Inconvénients</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Adapté au <span class="math inline">\(k\)</span>-anonymat</td>
@@ -1219,64 +990,44 @@ Figure&nbsp;6: Table après perturbation
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-bruit-add-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;10: Avantages et inconvénients de l’injection d’un bruit additif
-</figcaption>
-</figure>
+Table 10: Avantages et inconvénients de l’injection d’un bruit additif
+</figcaption></figure>
 </div>
-</section></section>
-<section>
-<section id="injection-de-bruit" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="5">
-<h1><span class="header-section-number">5</span> Injection de bruit</h1>
+</section></section><section><section id="injection-de-bruit" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="5"><h1>
+<span class="header-section-number">5</span> Injection de bruit</h1>
 
-</section>
-<section id="injection-de-bruit-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Injection de bruit</h2>
+</section><section id="injection-de-bruit-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Injection de bruit</h2>
 <ul>
 <li><p>Méthode adaptée pour traiter les variables continues</p></li>
 <li><p>En général, on injecte un bruit additif sans biais et à variance fixe</p></li>
 <li><p>Enjeu principal: comment bruiter en préservant les caractéristiuqes des variables et de leurs éventuels liens ?</p></li>
-</ul>
-</section>
-<section id="perturbation-par-un-bruit-additif" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Perturbation par un bruit additif</h2>
+</ul></section><section id="perturbation-par-un-bruit-additif" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Perturbation par un bruit additif</h2>
 <ul>
 <li>Un bruit est ajouté à chaque valeur observée</li>
 <li>Généralement un bruit gaussien d’espérance nulle</li>
 <li>Adapté aux variables continues de faible amplitude</li>
-</ul>
-</section>
-<section id="bruits-additifs-indépendants" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Bruits additifs indépendants</h2>
+</ul></section><section id="bruits-additifs-indépendants" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Bruits additifs indépendants</h2>
 <ul>
 <li><p>Chaque variable est bruitée indépendamment des autres variables</p></li>
 <li><p>Les moyennes et covariances de chaque variable perturbée sont préservées</p></li>
 <li><p>Mais, les variances et les coefficients de corrélation ne sont pas conservés</p></li>
-</ul>
-</section>
-<section id="bruits-additifs-corrélés" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Bruits additifs corrélés</h2>
+</ul></section><section id="bruits-additifs-corrélés" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Bruits additifs corrélés</h2>
 <ul>
 <li><p>La matrice de variance-covariance des bruits est proportionnelle à la matrice de variance covariance des valeurs originales</p></li>
 <li><p>Conservation de la moyenne et des coefficients de corrélation</p></li>
 <li><p>Préférable à l’ajout des bruits indépendants car on peut obtenir des estimations non biaisées pour plusieurs statistiques importantes</p></li>
-</ul>
-</section>
-<section id="avantages-inconvénients-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Avantages / inconvénients</h2>
+</ul></section><section id="avantages-inconvénients-2" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Avantages / inconvénients</h2>
 <div id="tbl-bruit-add-avtg-incv" class="table table-striped table-hover quarto-float quarto-figure quarto-figure-center" style="font-size: 70%;">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-bruit-add-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-bruit-add-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover">
 <colgroup>
 <col style="width: 42%">
 <col style="width: 57%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Avantages</th>
 <th style="text-align: center;">Inconvénients</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Traitement de variables sensibles continues</td>
@@ -1290,18 +1041,13 @@ Table&nbsp;10: Avantages et inconvénients de l’injection d’un bruit additif
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-bruit-add-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;11: Avantages et inconvénients de l’injection d’un bruit additif
-</figcaption>
-</figure>
+Table 11: Avantages et inconvénients de l’injection d’un bruit additif
+</figcaption></figure>
 </div>
-</section></section>
-<section>
-<section id="targeted-record-swapping-trs" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="6">
-<h1><span class="header-section-number">6</span> Targeted Record Swapping (TRS)</h1>
+</section></section><section><section id="targeted-record-swapping-trs" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="6"><h1>
+<span class="header-section-number">6</span> Targeted Record Swapping (TRS)</h1>
 
-</section>
-<section id="targeted-record-swapping-trs-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Targeted Record Swapping (TRS)</h2>
+</section><section id="targeted-record-swapping-trs-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Targeted Record Swapping (TRS)</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1317,9 +1063,7 @@ Table&nbsp;11: Avantages et inconvénients de l’injection d’un bruit additif
 </div>
 </div>
 </div>
-</section>
-<section id="les-individus-à-risque-cibles" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les individus à risque (cibles)</h2>
+</section><section id="les-individus-à-risque-cibles" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les individus à risque (cibles)</h2>
 <ul>
 <li>Cible les individus à risque:
 <ul>
@@ -1327,64 +1071,48 @@ Table&nbsp;11: Avantages et inconvénients de l’injection d’un bruit additif
 <li>Détection par <span class="math inline">\(l\)</span>-diversité: homogénéité d’un groupe sur une variable sensible</li>
 <li>Mesure probabiliste du risque individuel</li>
 <li>Principalement un risque de ré-identification</li>
-</ul></li>
 </ul>
-</section>
-<section id="une-méthode-très-utilisée" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Une méthode très utilisée</h2>
+</li>
+</ul></section><section id="une-méthode-très-utilisée" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Une méthode très utilisée</h2>
 <ul>
 <li><p>Insee: Données européennes du recensement 2021</p></li>
 <li><p>Eurostat préconise cette méthode (couplée à la CKM) pour la diffusion du Census européen</p></li>
 <li><p>US Census Bureau: Recensement US 2010</p></li>
 <li><p>ONS (UK): Recensement depuis 2010</p></li>
-</ul>
-</section>
-<section id="un-exemple-7" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
+</ul></section><section id="un-exemple-7" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
 <div style="text-align:center;">
-<div id="fig-swap-avt" class="quarto-float quarto-figure quarto-figure-center" alt="Avant swapping" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-swap-avt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-swap-avt" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Avant swapping">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-swap-avt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/swapping-exemple-avant.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Avant swapping">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-swap-avt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Avant Swapping
-</figcaption>
-</figure>
+Figure 7: Avant Swapping
+</figcaption></figure>
 </div>
 </div>
-</section>
-<section id="un-exemple-8" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
+</section><section id="un-exemple-8" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
 <div style="text-align:center;">
-<div id="fig-swap-apr" class="quarto-float quarto-figure quarto-figure-center" alt="Après swapping" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-swap-apr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-swap-apr" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Après swapping">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-swap-apr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/swapping-exemple-apres.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Après swapping">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-swap-apr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8: Après Swapping
-</figcaption>
-</figure>
+Figure 8: Après Swapping
+</figcaption></figure>
 </div>
 </div>
-</section>
-<section id="avantages-inconvénients-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Avantages / inconvénients</h2>
+</section><section id="avantages-inconvénients-3" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Avantages / inconvénients</h2>
 <div id="tbl-trs-avtg-incv" class="table table-striped table-hover quarto-float quarto-figure quarto-figure-center" style="font-size: 70%;">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-trs-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-trs-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover">
 <colgroup>
 <col style="width: 45%">
 <col style="width: 54%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Avantages</th>
 <th style="text-align: center;">Inconvénients</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Efficace pour traiter différents types de risque</td>
@@ -1406,28 +1134,19 @@ Figure&nbsp;8: Après Swapping
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-trs-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;12: Avantages et inconvénients du TRS
-</figcaption>
-</figure>
+Table 12: Avantages et inconvénients du TRS
+</figcaption></figure>
 </div>
-</section></section>
-<section>
-<section id="post-randomisation-method-pram" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="7">
-<h1><span class="header-section-number">7</span> Post-Randomisation Method (PRAM)</h1>
+</section></section><section><section id="post-randomisation-method-pram" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="7"><h1>
+<span class="header-section-number">7</span> Post-Randomisation Method (PRAM)</h1>
 
-</section>
-<section id="méthode-pram" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Méthode PRAM</h2>
+</section><section id="méthode-pram" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Méthode PRAM</h2>
 <ul>
 <li><p>Permet de traiter les <strong>variables</strong> sensibles <strong>catégorielles</strong> en bruitant les données.</p></li>
 <li><p>Consiste à modifier aléatoirement l’appartenance des individus à une classe donnée.</p></li>
 <li><p>Méthode particulièrement intéressante pour traiter les <strong>divulgations d’attributs sensibles</strong> : un attaquant ne peut avoir aucune certitude sur l’attribut d’une observation.</p></li>
-</ul>
-</section>
-<section id="un-exemple-9" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
-<table>
-<tbody>
+</ul></section><section id="un-exemple-9" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
+<table><tbody>
 <tr class="odd">
 <td style="text-align: center;">Region</td>
 <td style="text-align: center;">Age</td>
@@ -1473,16 +1192,11 @@ Table&nbsp;12: Avantages et inconvénients du TRS
 <td style="text-align: center;">14</td>
 <td style="text-align: left;">Inactif</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <ul>
 <li>Inactif : 2 ind., Chômeur = 2 ind., Actif = 4 ind.</li>
-</ul>
-</section>
-<section id="un-exemple-10" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
-<table>
-<tbody>
+</ul></section><section id="un-exemple-10" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
+<table><tbody>
 <tr class="odd">
 <td style="text-align: center;">Region</td>
 <td style="text-align: center;">Age</td>
@@ -1537,16 +1251,11 @@ Table&nbsp;12: Avantages et inconvénients du TRS
 <td style="text-align: center;">Inactif</td>
 <td style="text-align: center;"><span style="color: blue">Inactif</span></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <ul>
 <li>Inactif : 2 ind., Chômeur = 2 ind., Actif = 4 ind.</li>
-</ul>
-</section>
-<section id="un-exemple-11" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple</h2>
-<table>
-<tbody>
+</ul></section><section id="un-exemple-11" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple</h2>
+<table><tbody>
 <tr class="odd">
 <td style="text-align: center;">Region</td>
 <td style="text-align: center;">Age</td>
@@ -1601,51 +1310,38 @@ Table&nbsp;12: Avantages et inconvénients du TRS
 <td style="text-align: right;">Inactif</td>
 <td style="text-align: center;">Inactif</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <ul>
 <li>Attention aux incohérences !</li>
-</ul>
-</section>
-<section id="la-matrice-de-transition" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>La matrice de transition</h2>
+</ul></section><section id="la-matrice-de-transition" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>La matrice de transition</h2>
 <p>On a besoin de définir une <span style="color: red"><strong>matrice de transition</strong></span> pour pouvoir définir les probabilités de transition.</p>
 <ul>
-<li><p>Soit <span class="math inline">\(\xi\)</span> la variable catégorielle initiale avec <span class="math inline">\(K\)</span> catégories <span class="math inline">\(1 \dots K\)</span><br>
-<span class="math inline">\(\rightarrow\)</span> dans l’exemple, <span class="math inline">\(\xi\)</span> = Situation professionnelle, K = 3</p></li>
-<li><p>Soit <span class="math inline">\(X\)</span> la même variable catégorielle dans le jeu de données perturbé<br>
-<span class="math inline">\(\rightarrow\)</span> dans l’exemple, <span class="math inline">\(X\)</span> = Situation professionnelle (PRAM)</p></li>
-</ul>
-</section>
-<section id="la-matrice-de-transition-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>La matrice de transition</h2>
+<li><p>Soit <span class="math inline">\(\xi\)</span> la variable catégorielle initiale avec <span class="math inline">\(K\)</span> catégories <span class="math inline">\(1 \dots K\)</span><br><span class="math inline">\(\rightarrow\)</span> dans l’exemple, <span class="math inline">\(\xi\)</span> = Situation professionnelle, K = 3</p></li>
+<li><p>Soit <span class="math inline">\(X\)</span> la même variable catégorielle dans le jeu de données perturbé<br><span class="math inline">\(\rightarrow\)</span> dans l’exemple, <span class="math inline">\(X\)</span> = Situation professionnelle (PRAM)</p></li>
+</ul></section><section id="la-matrice-de-transition-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>La matrice de transition</h2>
 <p>On peut définir la matrice de transition <span class="math inline">\(P\)</span>,</p>
 <p><span class="math display">\[P =(p_{kl})_{1 \leq k,l \leq K}\]</span></p>
 <p>où <span class="math inline">\(p_{kl} = P(X =l|\xi = k)\)</span></p>
 
-<img data-src="./img/matrice_transition_PRAM.png" class="quarto-figure quarto-figure-center r-stretch" style="width:5.0%"></section>
-<section id="comment-choisir-la-matrice-de-transition" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Comment choisir la matrice de transition ?</h2>
+<img data-src="./img/matrice_transition_PRAM.png" class="quarto-figure quarto-figure-center r-stretch" style="width:5.0%"></section><section id="comment-choisir-la-matrice-de-transition" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Comment choisir la matrice de transition ?</h2>
 <ul>
-<li><p>PRAM change aléatoirement les comptages de la population :</p>
-<p><span class="math display">\[\mathbb{E}\begin{pmatrix} N^{pram}_{I} \\N^{pram}_{E}\\ N^{pram}_{U} \end{pmatrix} = P^{T} \begin{pmatrix}N_{I} \\N_{E}\\ N_{U} \end{pmatrix}\]</span></p></li>
+<li>
+<p>PRAM change aléatoirement les comptages de la population :</p>
+<p><span class="math display">\[\mathbb{E}\begin{pmatrix} N^{pram}_{I} \\N^{pram}_{E}\\ N^{pram}_{U} \end{pmatrix} = P^{T} \begin{pmatrix}N_{I} \\N_{E}\\ N_{U} \end{pmatrix}\]</span></p>
+</li>
 <li><p>Selon P <strong><span style="color: red">et les comptages originaux</span></strong>, les marges peuvent être beaucoup perturbées !</p></li>
 <li><p>Des coefficients diagonaux élevés peuvent être insuffisants</p></li>
-</ul>
-</section>
-<section id="un-exemple-numérique" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple numérique</h2>
+</ul></section><section id="un-exemple-numérique" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple numérique</h2>
 <ul>
-<li><p>Marges originales</p>
+<li>
+<p>Marges originales</p>
 <table>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: right;">Ina</th>
 <th>ctif Act</th>
 <th>if Chô</th>
 <th style="text-align: left;">meur</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">Fréquence (million)</td>
@@ -1660,25 +1356,22 @@ Table&nbsp;12: Avantages et inconvénients du TRS
 <td style="text-align: left;">6 %</td>
 </tr>
 </tbody>
-</table></li>
+</table>
+</li>
 <li><p>Matrice de transition <span class="math inline">\(P\)</span> :</p></li>
 </ul>
-
-<img data-src="./img/matrice_transition_PRAM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="un-exemple-numérique-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Un exemple numérique</h2>
+<img data-src="./img/matrice_transition_PRAM.png" class="quarto-figure quarto-figure-center r-stretch"></section><section id="un-exemple-numérique-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Un exemple numérique</h2>
 <p>On peut maintenant calculer les marges perturbées !</p>
 <ul>
-<li><p>Marges originales</p>
+<li>
+<p>Marges originales</p>
 <table>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th>Statut</th>
 <th>Inactif</th>
 <th>Actif</th>
 <th>Chômeur</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td>Fréquence (million)</td>
@@ -1693,8 +1386,10 @@ Table&nbsp;12: Avantages et inconvénients du TRS
 <td>6%</td>
 </tr>
 </tbody>
-</table></li>
-<li><p>Nouvelles marges</p>
+</table>
+</li>
+<li>
+<p>Nouvelles marges</p>
 <table>
 <colgroup>
 <col style="width: 35%">
@@ -1702,14 +1397,12 @@ Table&nbsp;12: Avantages et inconvénients du TRS
 <col style="width: 11%">
 <col style="width: 38%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th>Statut</th>
 <th>Inactif</th>
 <th>Actif</th>
 <th>Chômeur</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td>Fréquence</td>
@@ -1724,58 +1417,44 @@ Table&nbsp;12: Avantages et inconvénients du TRS
 <td><span style="color:red">22 %</span></td>
 </tr>
 </tbody>
-</table></li>
-</ul>
-</section>
-<section id="pram-invariant" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>PRAM Invariant</h2>
+</table>
+</li>
+</ul></section><section id="pram-invariant" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>PRAM Invariant</h2>
 <ul>
 <li><p>Possibilité de choisir la matrice <span class="math inline">\(P\)</span> de telle sorte que la perturbation soit sans biais <span class="math inline">\(\rightarrow\)</span> PRAM invariant</p></li>
 <li><p>Etant donné que : <span class="math display">\[\mathbb{E}\begin{pmatrix} N^{pram}_{I} \\N^{pram}_{E}\\ N^{pram}_{U} \end{pmatrix} = P^{T} \begin{pmatrix}N_{I} \\N_{E}\\ N_{U} \end{pmatrix}\]</span></p></li>
 <li><p>Il faut, pour cela, choisir <span class="math inline">\(P\)</span> telle que les fréquences marginales originales soient un vecteur propre de <span class="math inline">\(P\)</span> associé à la valeur propre <span class="math inline">\(1\)</span>.</p></li>
-</ul>
-</section>
-<section id="mesurer-le-niveau-de-protection" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Mesurer le niveau de protection</h2>
+</ul></section><section id="mesurer-le-niveau-de-protection" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Mesurer le niveau de protection</h2>
 <ul>
 <li><p>PRAM introduit délibérement une erreur de mesure <span class="math inline">\(\rightarrow\)</span> on ne peut pas utilisé le k-anonymat ou la l-diversité</p></li>
 <li><p>Niveau de protection mesuré à partir des paramètres de la méthode (matrice de transition).</p></li>
 <li><p>Idée: faire en sorte que la rareté de certaines modalités soit rendue suffisamment incertaine à inférer <span class="math inline">\(\rightarrow\)</span> posterior odds ratio</p></li>
-</ul>
-</section>
-<section id="mesurer-le-niveau-de-protection-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Mesurer le niveau de protection</h2>
+</ul></section><section id="mesurer-le-niveau-de-protection-1" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Mesurer le niveau de protection</h2>
 <p><span class="math display">\[POST\_ODDS(k) = \frac{P(\xi = k|X=k)}{P(\xi \neq k|X=k)} = \frac{p_{kk}P(\xi = k)}{\sum_{l \neq k}p_{lk}P(\xi=l)}\]</span></p>
 <ul>
-<li><span class="math inline">\(p_{kk}\)</span> sont connus et dépendent du plan de sondage</li>
-<li><span class="math inline">\(P(\xi = k)\)</span> peut être difficile à estimer</li>
-<li>on peut estimer grossièrement <span class="math inline">\(P(\xi = k)\)</span> par <span class="math inline">\(\frac{T_\xi(k)}{n}\)</span></li>
-</ul>
-</section>
-<section id="interprétation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Interprétation</h2>
+<li>
+<span class="math inline">\(p_{kk}\)</span> sont connus et dépendent du plan de sondage</li>
+<li>
+<span class="math inline">\(P(\xi = k)\)</span> peut être difficile à estimer</li>
+<li>on peut estimer grossièrement <span class="math inline">\(P(\xi = k)\)</span> par <span class="math inline">\(\frac{T_\xi(k)}{n}\)</span>
+</li>
+</ul></section><section id="interprétation" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Interprétation</h2>
 <p>On observe k dans le jeu pertubé :</p>
 <ul>
 <li><p>Si <span class="math inline">\(POST\_ODDS(k) &gt; 1\)</span>, alors la valeur originale est plus probablement <strong><span class="math inline">\(k\)</span></strong> plutôt qu’une autre valeur.</p></li>
 <li><p>Si <span class="math inline">\(POST\_ODDS(k) &lt; 1\)</span>, alors la valeur originale est plus probablement une <strong>autre valeur</strong> que <span class="math inline">\(k\)</span>.</p></li>
-</ul>
-</section>
-<section id="avantages-inconvénients-4" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Avantages / inconvénients</h2>
+</ul></section><section id="avantages-inconvénients-4" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Avantages / inconvénients</h2>
 <div id="tbl-pram-avtg-incv" class="table table-striped table-hover quarto-float quarto-figure quarto-figure-center" style="font-size: 70%;">
-<figure class="quarto-float quarto-float-tbl">
-<div aria-describedby="tbl-pram-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl"><div aria-describedby="tbl-pram-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover">
 <colgroup>
 <col style="width: 53%">
 <col style="width: 46%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: center;">Avantages</th>
 <th style="text-align: center;">Inconvénients</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Permet de fournir le niveau de protection associé au bruit injecté en calculant les probabilités de transition inverses</td>
@@ -1789,25 +1468,21 @@ Table&nbsp;12: Avantages et inconvénients du TRS
 </table>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-pram-avtg-incv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;13: Avantages et inconvénients de PRAM
-</figcaption>
-</figure>
+Table 13: Avantages et inconvénients de PRAM
+</figcaption></figure>
 </div>
-</section></section>
-<section>
-<section id="les-données-synthétiques" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="8">
-<h1><span class="header-section-number">8</span> Les données synthétiques</h1>
+</section></section><section><section id="les-données-synthétiques" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain" data-number="8"><h1>
+<span class="header-section-number">8</span> Les données synthétiques</h1>
 <ul>
 <li><p>Idée: Générer tout ou partie des données individuelles.</p></li>
-<li><p>Deux types de synthèse:</p>
+<li>
+<p>Deux types de synthèse:</p>
 <ul>
 <li><p>Synthèse complète: toutes les variables et tous les individus sont générés.</p></li>
 <li><p>Synthèse partielle: Seulement certaines variables sont générées (principalement les variables sensibles).</p></li>
-</ul></li>
 </ul>
-</section>
-<section id="modélisation-séquentielle" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Modélisation séquentielle</h2>
+</li>
+</ul></section><section id="modélisation-séquentielle" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Modélisation séquentielle</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1824,9 +1499,7 @@ Table&nbsp;13: Avantages et inconvénients de PRAM
 </div>
 </div>
 </div>
-</section>
-<section id="les-méthodes-deep-learning-i" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les méthodes Deep Learning (I)</h2>
+</section><section id="les-méthodes-deep-learning-i" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les méthodes Deep Learning (I)</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1840,9 +1513,7 @@ Table&nbsp;13: Avantages et inconvénients de PRAM
 </div>
 </div>
 </div>
-</section>
-<section id="les-méthodes-deep-learning-ii" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les méthodes Deep Learning (II)</h2>
+</section><section id="les-méthodes-deep-learning-ii" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Les méthodes Deep Learning (II)</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1856,50 +1527,33 @@ Table&nbsp;13: Avantages et inconvénients de PRAM
 </div>
 </div>
 </div>
-</section>
-<section id="références" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain">
-<h2>Références</h2>
+</section><section id="références" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain"><h2>Références</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-chipperfield_australian_2016" class="csl-entry" role="listitem">
-Chipperfield, James, Daniel Gow, et Bronwyn Loong. 2016. <span>«&nbsp;The <span>Australian</span> <span>Bureau</span> of <span>Statistics</span> and releasing frequency tables via a remote server&nbsp;»</span>. <em>Statistical Journal of the IAOS</em> 32 (1): 53‑64. <a href="https://doi.org/10.3233/SJI-160969">https://doi.org/10.3233/SJI-160969</a>.
+Chipperfield, James, Daniel Gow, et Bronwyn Loong. 2016. <span>« The <span>Australian</span> <span>Bureau</span> of <span>Statistics</span> and releasing frequency tables via a remote server »</span>. <em>Statistical Journal of the IAOS</em> 32 (1): 53‑64. <a href="https://doi.org/10.3233/SJI-160969">https://doi.org/10.3233/SJI-160969</a>.
 </div>
 <div id="ref-giesing_concepts_2019" class="csl-entry" role="listitem">
-Gießing, Sarah, et Reinhard Tent. 2019. <span>«&nbsp;Concepts for generalising tools implementing the cell key method to the case of continuous variables&nbsp;»</span>. In <em><span>UNECE</span> - <span>Expert</span> <span>Meeting</span> on <span>Statistical</span> <span>Data</span> <span>Confidentiality</span></em>. the Hague. <a href="https://unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2019/mtg1/SDC2019_S2_Germany_Giessing_Tent_AD.pdf">https://unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2019/mtg1/SDC2019_S2_Germany_Giessing_Tent_AD.pdf</a>.
+Gießing, Sarah, et Reinhard Tent. 2019. <span>« Concepts for generalising tools implementing the cell key method to the case of continuous variables »</span>. In <em><span>UNECE</span> - <span>Expert</span> <span>Meeting</span> on <span>Statistical</span> <span>Data</span> <span>Confidentiality</span></em>. the Hague. <a href="https://unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2019/mtg1/SDC2019_S2_Germany_Giessing_Tent_AD.pdf">https://unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2019/mtg1/SDC2019_S2_Germany_Giessing_Tent_AD.pdf</a>.
 </div>
 <div id="ref-hundepool_handbook_2024" class="csl-entry" role="listitem">
 Hundepool, Anco, Josep Domingo-Ferre, Luisa Franconi, Sarah Giessing, Rainer Lenz, Jane Longhurst, Eric Schulte Nordholt, et al. 2024. <em>Handbook on <span>Statistical</span> <span>Disclosure</span> <span>Control</span></em>. 2nd Edition. ESSNet SDC. <a href="https://sdctools.github.io/HandbookSDC/">https://sdctools.github.io/HandbookSDC/</a>.
 </div>
 <div id="ref-thompson_methodology_2013" class="csl-entry" role="listitem">
-Thompson, Gwenda, Stephen Broadfoot, et Daniel Elazar. 2013. <span>«&nbsp;Methodology for the <span>Automatic</span> <span>Confidentialisation</span> of <span>Statistical</span> <span>Outputs</span> from <span>Remote</span> <span>Servers</span> at the <span>Australian</span> <span>Bureau</span> of <span>Statistics</span>&nbsp;»</span>. In <em>Joint <span>UNECE</span>/<span>Eurostat</span> work session on statistical data confidentiality</em>. Ottawa. <a href="https://unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2013/Topic_1_ABS.pdf">https://unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2013/Topic_1_ABS.pdf</a>.
+Thompson, Gwenda, Stephen Broadfoot, et Daniel Elazar. 2013. <span>« Methodology for the <span>Automatic</span> <span>Confidentialisation</span> of <span>Statistical</span> <span>Outputs</span> from <span>Remote</span> <span>Servers</span> at the <span>Australian</span> <span>Bureau</span> of <span>Statistics</span> »</span>. In <em>Joint <span>UNECE</span>/<span>Eurostat</span> work session on statistical data confidentiality</em>. Ottawa. <a href="https://unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2013/Topic_1_ABS.pdf">https://unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2013/Topic_1_ABS.pdf</a>.
 </div>
 </div>
 
 
 </section></section>
-    </div>
+</div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
 <p>Les méthodes de protection statistique des données confidentielles</p>
 </div>
-</div></div>
+</div>
+</div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../../site_libs/revealjs/plugin/search/search.js"></script><script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -2090,46 +1744,7 @@ Thompson, Gwenda, Stephen Broadfoot, et Daniel Elazar. 2013. <span>«&nbsp;Metho
           RevealZoom
         ]
       });
-    </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
-    <script id="quarto-html-after-body" type="application/javascript">
+    </script><script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
         tabsets.forEach(function(tabset) {
@@ -2297,6 +1912,5 @@ Thompson, Gwenda, Stephen Broadfoot, et Daniel Elazar. 2013. <span>«&nbsp;Metho
         }
       });
       </script>
-    
-
-</body></html>
+</body>
+</html>

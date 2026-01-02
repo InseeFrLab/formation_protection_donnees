@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
 <link rel="alternate" hreflang="fr" href="/pratique/fiches/proteger-micro-pram.html" />
 <link rel="alternate" hreflang="en" href="/en/pratique/fiches/proteger-micro-pram.en.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.26">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Insee, Département des Méthodes Statistiques">
-
 <title>Appliquer PRAM – La protection des données statistiques publiques</title>
 <style>
 code{white-space: pre-wrap;}
@@ -59,27 +57,12 @@ div.sourceCode
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
-
-
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script><script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script><script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-524e969e4829b5bad812ff2d85554016.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-c9acb146a15dc017f2cbbb31ce4922d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/bootstrap/bootstrap-524e969e4829b5bad812ff2d85554016.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
@@ -109,12 +92,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Envoyer",
     "search-label": "Recherche"
   }
-}</script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -140,10 +118,9 @@ window.Quarto = {
   typesetMath
 };
 </script>
-
 </head>
-
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light">
+<script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -305,12 +282,8 @@ window.Quarto = {
     } else {
       toggleColorMode(false);
     }
-  </script>
-
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  </script><div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">La protection des données statistiques publiques</span>
@@ -322,7 +295,10 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
+<li class="nav-item"><div class="dropdown" id="languages-links-parent">
+<button class="btn btn-primary dropdown-toggle babelquarto-languages-button" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> Version in fr</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/en/pratique/fiches/proteger-micro-pram.html" id="language-link-en">Version in en</a></li></ul>
+</div></li>
+<li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Accueil</span></a>
   </li>  
@@ -339,45 +315,48 @@ window.Quarto = {
 <span class="menu-text">À propos</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Sur cette page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#les-données" id="toc-les-données" class="nav-link active" data-scroll-target="#les-données">Les données</a></li>
+<li><a href="#les-donn%C3%A9es" id="toc-les-données" class="nav-link active" data-scroll-target="#les-données">Les données</a></li>
   <li><a href="#mesurer-le-risque" id="toc-mesurer-le-risque" class="nav-link" data-scroll-target="#mesurer-le-risque">Mesurer le risque</a></li>
-  <li><a href="#appliquer-pram" id="toc-appliquer-pram" class="nav-link" data-scroll-target="#appliquer-pram">Appliquer PRAM</a>
+  <li>
+<a href="#appliquer-pram" id="toc-appliquer-pram" class="nav-link" data-scroll-target="#appliquer-pram">Appliquer PRAM</a>
   <ul class="collapse">
-  <li><a href="#pram-général" id="toc-pram-général" class="nav-link" data-scroll-target="#pram-général">PRAM général</a>
+<li>
+<a href="#pram-g%C3%A9n%C3%A9ral" id="toc-pram-général" class="nav-link" data-scroll-target="#pram-général">PRAM général</a>
   <ul class="collapse">
-  <li><a href="#définir-la-matrice-de-transition" id="toc-définir-la-matrice-de-transition" class="nav-link" data-scroll-target="#définir-la-matrice-de-transition">1. Définir la matrice de transition</a></li>
-  <li><a href="#appliquer-un-pram-général" id="toc-appliquer-un-pram-général" class="nav-link" data-scroll-target="#appliquer-un-pram-général">2. Appliquer un pram général</a></li>
+<li><a href="#d%C3%A9finir-la-matrice-de-transition" id="toc-définir-la-matrice-de-transition" class="nav-link" data-scroll-target="#définir-la-matrice-de-transition">1. Définir la matrice de transition</a></li>
+  <li><a href="#appliquer-un-pram-g%C3%A9n%C3%A9ral" id="toc-appliquer-un-pram-général" class="nav-link" data-scroll-target="#appliquer-un-pram-général">2. Appliquer un pram général</a></li>
   <li><a href="#analyser-les-changements" id="toc-analyser-les-changements" class="nav-link" data-scroll-target="#analyser-les-changements">3. Analyser les changements</a></li>
-  </ul></li>
-  <li><a href="#pram-invariant" id="toc-pram-invariant" class="nav-link" data-scroll-target="#pram-invariant">PRAM invariant</a></li>
-  </ul></li>
-  <li><a href="#utilite" id="toc-utilite" class="nav-link" data-scroll-target="#utilite">Utilité</a></li>
   </ul>
-</nav>
-    </div>
+</li>
+  <li><a href="#pram-invariant" id="toc-pram-invariant" class="nav-link" data-scroll-target="#pram-invariant">PRAM invariant</a></li>
+  </ul>
+</li>
+  <li><a href="#utilite" id="toc-utilite" class="nav-link" data-scroll-target="#utilite">Utilité</a></li>
+  </ul></nav>
+</div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Appliquer PRAM</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Montrer tout le code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Cacher tout le code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Voir les sources</a></li></ul></div></div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<div class="quarto-title-block"><div>
+<h1 class="title">Appliquer PRAM</h1>
+<button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu">
+<li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Montrer tout le code</a></li>
+<li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Cacher tout le code</a></li>
+<li><hr class="dropdown-divider"></li>
+<li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Voir les sources</a></li>
+</ul>
+</div></div>
 </div>
 
 
@@ -397,32 +376,30 @@ window.Quarto = {
   
 
 
-</header>
-
-
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdcMicro)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</header><div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdcMicro)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
 </details>
 </div>
-<section id="les-données" class="level1">
-<h1>Les données</h1>
+<section id="les-données" class="level1"><h1>Les données</h1>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_import_data.R"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> <span class="fu">import_lfs</span>()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/fun_import_data.R"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> <span class="fu">import_lfs</span>()</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
 </details>
 </div>
 <p>Nous allons étudier un extrait des données de l’Enquête emploi en continu de l’Insee.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(lfs_2023)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(lfs_2023)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>Classes 'data.table' and 'data.frame':  34053 obs. of  16 variables:
  $ REG      : Factor w/ 4 levels "11","28","76",..: 2 2 2 2 1 1 1 1 1 3 ...
  $ DEP      : Factor w/ 28 levels "09","11","12",..: 19 19 19 19 25 25 26 21 21 9 ...
@@ -445,37 +422,45 @@ window.Quarto = {
 </div>
 <p>On y trouve les variables suivantes :</p>
 <ul>
-<li><code>DEP</code> : département de résidence</li>
-<li><code>SEXE</code> : sexe (1 = homme, 2 = femme)</li>
-<li><code>AGE</code> : âge de l’individu</li>
-<li><code>AGE6</code> : âge en 5 tranches (15 = 15-25, 25 = 25-49, 50 = 50-64, 65 = 65-89, 90 = 90 ans ou plus)</li>
-<li><code>ACTEU</code> : statut d’activité (1 = emploi, 2 = chômage, 3 = inactivité)</li>
-<li><code>DIP7</code> : diplôme le plus élevé obtenu (1 = bac+5 ou plus, 2 = bac +3/4, 3 = bac+2, 4 = bac, 5 = CAP, 6 = brevet, 7 = aucun diplôme, 9 = non réponse)</li>
-<li><code>PCS1Q</code> : emploi principal (10 = agriculteurs, 20 = artisans, 30 = cadres, 40 = professions intermédiaires, 51 = employés qualifiés, 52 = employés peu qualifiés, 61 = ouvriers qualifiés, 62 = ouvriers peu qualifiés, 00 = non codé, 99 = non réponse)</li>
-<li><code>ANCCHOM</code> : ancienneté au chômage</li>
-<li><code>HHID</code> : identifiant du cluster</li>
-<li><code>POIDS</code> : poids de sondage</li>
+<li>
+<code>DEP</code> : département de résidence</li>
+<li>
+<code>SEXE</code> : sexe (1 = homme, 2 = femme)</li>
+<li>
+<code>AGE</code> : âge de l’individu</li>
+<li>
+<code>AGE6</code> : âge en 5 tranches (15 = 15-25, 25 = 25-49, 50 = 50-64, 65 = 65-89, 90 = 90 ans ou plus)</li>
+<li>
+<code>ACTEU</code> : statut d’activité (1 = emploi, 2 = chômage, 3 = inactivité)</li>
+<li>
+<code>DIP7</code> : diplôme le plus élevé obtenu (1 = bac+5 ou plus, 2 = bac +3/4, 3 = bac+2, 4 = bac, 5 = CAP, 6 = brevet, 7 = aucun diplôme, 9 = non réponse)</li>
+<li>
+<code>PCS1Q</code> : emploi principal (10 = agriculteurs, 20 = artisans, 30 = cadres, 40 = professions intermédiaires, 51 = employés qualifiés, 52 = employés peu qualifiés, 61 = ouvriers qualifiés, 62 = ouvriers peu qualifiés, 00 = non codé, 99 = non réponse)</li>
+<li>
+<code>ANCCHOM</code> : ancienneté au chômage</li>
+<li>
+<code>HHID</code> : identifiant du cluster</li>
+<li>
+<code>POIDS</code> : poids de sondage</li>
 </ul>
 <p>Dans cette fiche on s’intéressera à la variable <code>ACTEU</code>. Pour une meilleure compréhension on recode ses modalités.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lfs_2023<span class="sc">$</span>ACTEU <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(lfs_2023<span class="sc">$</span>ACTEU,</span>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lfs_2023<span class="sc">$</span>ACTEU <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(lfs_2023<span class="sc">$</span>ACTEU,</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">emploi =</span> <span class="st">"1"</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">chomage =</span> <span class="st">"2"</span>,</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">inactif =</span> <span class="st">"3"</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
 </details>
 </div>
-</section>
-<section id="mesurer-le-risque" class="level1">
-<h1>Mesurer le risque</h1>
+</section><section id="mesurer-le-risque" class="level1"><h1>Mesurer le risque</h1>
 <p>La <strong>l-diversité</strong> semble être une mesure de risque adéquate pour savoir s’il faut appliquer PRAM. En effet, elle nous indique si certaines modalités d’une variable catégorielle sont peu représentées dans la population (ou l’échantillon).</p>
 <p>Une <strong>classe d’équivalence</strong> (ensemble de lignes ayant les mêmes quasi-identifiants) est l-diverse si elle <strong>contient au moins l valeurs bien distinctes de la variable</strong> confidentielle.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>key_vars1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"DEP"</span>, <span class="st">"SEXE"</span>, <span class="st">"AGE6"</span>, <span class="st">"DIP7"</span>) <span class="co"># quasi-identifiants</span></span>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>key_vars1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"DEP"</span>, <span class="st">"SEXE"</span>, <span class="st">"AGE6"</span>, <span class="st">"DIP7"</span>) <span class="co"># quasi-identifiants</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>sdc_object1 <span class="ot">&lt;-</span> <span class="fu">createSdcObj</span>(</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dat=</span>lfs_2023,</span>
@@ -488,9 +473,10 @@ window.Quarto = {
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>sdc_object_ldiv <span class="ot">&lt;-</span> <span class="fu">ldiversity</span>(sdc_object1,<span class="at">ldiv_index =</span> <span class="st">"ACTEU"</span>)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>sdc_object_ldiv<span class="sc">@</span>risk<span class="sc">$</span>ldiversity</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>sdc_object_ldiv<span class="sc">@</span>risk<span class="sc">$</span>ldiversity</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stderr">
 <pre><code>--------------------------</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -506,13 +492,13 @@ window.Quarto = {
 </div>
 <p>On voit que pour chacune des combinaisons il y a entre 1 et 3 valeurs de <code>ACTEU</code> différentes. La moitié des observations ont un l-diversité de 1 ou 2 (médiane = 2). Le fichier n’est pas assez protégé.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>risque_ind_original <span class="ot">&lt;-</span> sdc_object1<span class="sc">@</span>originalRisk<span class="sc">$</span>individual</span>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>risque_ind_original <span class="ot">&lt;-</span> sdc_object1<span class="sc">@</span>originalRisk<span class="sc">$</span>individual</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(risque_ind_original)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(risque_ind_original)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>           risk fk Fk  hier_risk
 [1,] 0.02777778 36 36 0.40027671
 [2,] 0.04166667 24 24 0.40027671
@@ -523,19 +509,14 @@ window.Quarto = {
 </div>
 </div>
 <p>La colonne <code>fk</code> donne, pour chaque combinaison unique de DEP, SEXE, AGE6 et DIP7, le nombre d’individus dans l’échantillon. Et <code>Fk</code> infère le nombre d’individus dans la population pour ces mêmes combinaisons. Ici, on travaille sur un jeu de données exhaustifs (pas de poids de sondages) donc <code>fk</code> = <code>Fk</code>.</p>
-</section>
-<section id="appliquer-pram" class="level1">
-<h1>Appliquer PRAM</h1>
+</section><section id="appliquer-pram" class="level1"><h1>Appliquer PRAM</h1>
 <p>La méthode de protection des données PRAM est une <strong>méthode perturbatrice</strong> appliquée sur les microdonnées. Elle permet d’<strong>intervertir les modalités d’une variable catégorielle sensible</strong> pour certains individus afin qu’un attaquant ne puisse pas savoir s’il s’agit du veritable effectif ou non.</p>
-<section id="pram-général" class="level2">
-<h2 class="anchored" data-anchor-id="pram-général">PRAM général</h2>
-<section id="définir-la-matrice-de-transition" class="level3">
-<h3 class="anchored" data-anchor-id="définir-la-matrice-de-transition">1. Définir la matrice de transition</h3>
+<section id="pram-général" class="level2"><h2 class="anchored" data-anchor-id="pram-général">PRAM général</h2>
+<section id="définir-la-matrice-de-transition" class="level3"><h3 class="anchored" data-anchor-id="définir-la-matrice-de-transition">1. Définir la matrice de transition</h3>
 <p>La matrice de transition présente la <strong>probabilité qu’une modalité soit changée en une autre</strong> pour tous les changements possibles.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.7</span>,<span class="fl">0.2</span>,<span class="fl">0.1</span>,</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.3</span>, <span class="fl">0.6</span>, <span class="fl">0.1</span>,</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.8</span></span>
@@ -545,9 +526,10 @@ window.Quarto = {
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(mat) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(mat) <span class="ot">&lt;-</span> <span class="fu">levels</span>(lfs_2023<span class="sc">$</span>ACTEU)</span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mat)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mat)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>        emploi chomage inactif
 emploi     0.7     0.2     0.1
 chomage    0.3     0.6     0.1
@@ -555,14 +537,11 @@ inactif    0.1     0.1     0.8</code></pre>
 </div>
 </div>
 <p>Dans cet exemple, la probabilité qu’un individu en emploi reste en emploi est de 70%, alors que la probabilité qu’un individu en emploi passe au chômage est de 20%.</p>
-</section>
-<section id="appliquer-un-pram-général" class="level3">
-<h3 class="anchored" data-anchor-id="appliquer-un-pram-général">2. Appliquer un pram général</h3>
+</section><section id="appliquer-un-pram-général" class="level3"><h3 class="anchored" data-anchor-id="appliquer-un-pram-général">2. Appliquer un pram général</h3>
 <p>On appelle la fonction <code>pram()</code> et on précise la matrice de transition avec le paramètre <code>pd</code>.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>) <span class="co"># graine pour la reproductibilité des résultats</span></span>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>) <span class="co"># graine pour la reproductibilité des résultats</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>pram_1 <span class="ot">&lt;-</span> <span class="fu">pram</span>(</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  lfs_2023, <span class="co"># données</span></span>
@@ -571,9 +550,10 @@ inactif    0.1     0.1     0.8</code></pre>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">alpha =</span> <span class="cn">NA</span></span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pram_1)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pram_1)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Variable: ACTEU</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -614,9 +594,8 @@ Transitions:</code></pre>
 <p>Le <code>summary()</code> renvoit les informations principales sur les modifications des microdonnées. On voit la réalisation des échanges de modalités en comparant les fréquences avant et après perturbation.</p>
 <p>On peut calculer la <strong>matrice de transition empirique</strong> de l’application de PRAM.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lfs_2023<span class="sc">$</span>ACTEU_pram1 <span class="ot">&lt;-</span> pram_1<span class="sc">$</span>ACTEU_pram</span>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lfs_2023<span class="sc">$</span>ACTEU_pram1 <span class="ot">&lt;-</span> pram_1<span class="sc">$</span>ACTEU_pram</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="sc">%&gt;%</span> </span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(ACTEU, ACTEU_pram1) <span class="sc">%&gt;%</span> </span>
@@ -625,9 +604,10 @@ Transitions:</code></pre>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>n) <span class="sc">%&gt;%</span> </span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(</span>
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> ACTEU_pram1, <span class="at">values_from =</span> part, <span class="at">names_prefix =</span> <span class="st">"PRAM_"</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
 # Groups:   ACTEU [3]
   ACTEU   PRAM_emploi PRAM_chomage PRAM_inactif
@@ -637,57 +617,49 @@ Transitions:</code></pre>
 3 inactif        9.91         9.72        80.4 </code></pre>
 </div>
 </div>
-</section>
-<section id="analyser-les-changements" class="level3">
-<h3 class="anchored" data-anchor-id="analyser-les-changements">3. Analyser les changements</h3>
-<section id="indicateurs" class="level4">
-<h4 class="anchored" data-anchor-id="indicateurs">Indicateurs</h4>
+</section><section id="analyser-les-changements" class="level3"><h3 class="anchored" data-anchor-id="analyser-les-changements">3. Analyser les changements</h3>
+<section id="indicateurs" class="level4"><h4 class="anchored" data-anchor-id="indicateurs">Indicateurs</h4>
 <p>Une fois que le jeu de données est perturbé, il est nécessaire de <strong>comparer des indicateurs avant et après la perturbation</strong>. Cet aspect d’analyse de la perte d’utilité sera développé dans le paragraphe <a href="#utilite">dédié</a>.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">ATTENTION</span><span class="co"> ce type de PRAM n'est pas invariant: les estimatons sont biaisées</span></span>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">ATTENTION</span><span class="co"> ce type de PRAM n'est pas invariant: les estimatons sont biaisées</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcul du taux de chômage</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="sc">%&gt;%</span> </span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">taux_chomage =</span> <span class="fu">sum</span>(ACTEU <span class="sc">==</span> <span class="st">"chomage"</span>)<span class="sc">/</span><span class="fu">sum</span>(ACTEU <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"emploi"</span>,<span class="st">"chomage"</span>)) <span class="sc">*</span><span class="dv">100</span>,</span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">taux_chomage_pram =</span> <span class="fu">sum</span>(ACTEU_pram1 <span class="sc">==</span> <span class="st">"chomage"</span>)<span class="sc">/</span><span class="fu">sum</span>(ACTEU_pram1 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"emploi"</span>,<span class="st">"chomage"</span>)) <span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>  taux_chomage taux_chomage_pram
 1     7.467105          29.55695</code></pre>
 </div>
 </div>
 <p>La perturbation injectée par l’utilisation de pram modifie grandement le taux de chômage : 7 dans les données originales, et 30 dans les données protégées. Les <strong>estimations sont biaisées</strong>.</p>
-</section>
-<section id="invariance-globale" class="level4">
-<h4 class="anchored" data-anchor-id="invariance-globale">Invariance globale</h4>
+</section><section id="invariance-globale" class="level4"><h4 class="anchored" data-anchor-id="invariance-globale">Invariance globale</h4>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="sc">%&gt;%</span> </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(ACTEU <span class="sc">==</span> ACTEU_pram1))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(ACTEU <span class="sc">==</span> ACTEU_pram1))</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>  mean(ACTEU == ACTEU_pram1)
 1                  0.7461898</code></pre>
 </div>
 </div>
-<p>Dans 75% des cas (i.e.&nbsp;des lignes du fichier), le statut d’activité dans le fichier original est le même que celui dans le fichier modifié avec pram.</p>
+<p>Dans 75% des cas (i.e. des lignes du fichier), le statut d’activité dans le fichier original est le même que celui dans le fichier modifié avec pram.</p>
 <p>Une variante de pram permet d’obtenir des estimateurs non-biaisés : le <strong>pram invariant</strong>.</p>
-</section>
-<section id="post-odds" class="level4">
-<h4 class="anchored" data-anchor-id="post-odds">Post odds</h4>
+</section><section id="post-odds" class="level4"><h4 class="anchored" data-anchor-id="post-odds">Post odds</h4>
 <p>Les post odds sont des <strong>mesures de risque</strong> que l’on calcule <strong>a posteriori</strong>, une fois que pram est appliqué.</p>
 <p>On rappelle la formule présentée dans la partie théorique : <span class="math display">\[POST\_ODDS(k) = \frac{P(\xi = k|X=k)}{P(\xi \neq k|X=k)} = \frac{p_{kk}P(\xi = k)}{\sum_{l \neq k}p_{lk}P(\xi=l)}\]</span></p>
 <p><span class="math inline">\(p_{kk}\)</span> la probabilité que la modalité de ACTEU d’une observation dans le fichier perturbé soit la même que dans le fichier original.</p>
 <p><span class="math inline">\(\sum_{l \neq k}p_{lk}\)</span> la probabilité que la modalité de ACTEU d’une observation dans le fichier perturbé soit différente que celle du fichier original.</p>
 <p><span class="math inline">\(P(\xi = k)\)</span> est estimé par <span class="math inline">\(T_{\xi}(k)\)</span> la fréquence de cette modalité dans les données originales.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>post_odds <span class="ot">&lt;-</span> <span class="cf">function</span>(donnees_perturbees,var_orig,var_pram){</span>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>post_odds <span class="ot">&lt;-</span> <span class="cf">function</span>(donnees_perturbees,var_orig,var_pram){</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Estimer la matrice de transition</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fréquences conditionnelles P(ACTEU_pram = k | ACTEU = l)</span></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  mat_transition <span class="ot">&lt;-</span> donnees_perturbees <span class="sc">%&gt;%</span></span>
@@ -734,9 +706,10 @@ Transitions:</code></pre>
 <span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(post_odds_result)</span>
 <span id="cb29-46"><a href="#cb29-46" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-48"><a href="#cb29-48" aria-hidden="true" tabindex="-1"></a><span class="fu">post_odds</span>(lfs_2023,<span class="st">"ACTEU"</span>,<span class="st">"ACTEU_pram1"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<span id="cb29-48"><a href="#cb29-48" aria-hidden="true" tabindex="-1"></a><span class="fu">post_odds</span>(lfs_2023,<span class="st">"ACTEU"</span>,<span class="st">"ACTEU_pram1"</span>)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   valeur_pram post_odds
   &lt;fct&gt;           &lt;dbl&gt;
@@ -746,15 +719,10 @@ Transitions:</code></pre>
 </div>
 </div>
 <p>La modalité “chomage” est inférieur à 1, donc quand une observation a la modalité “chomage” dans le fichier perturbé elle ne l’est sans doute pas dans le fichier original. Ce n’est pas le cas pour “inactif” et “emploi”.</p>
-</section>
-</section>
-</section>
-<section id="pram-invariant" class="level2">
-<h2 class="anchored" data-anchor-id="pram-invariant">PRAM invariant</h2>
+</section></section></section><section id="pram-invariant" class="level2"><h2 class="anchored" data-anchor-id="pram-invariant">PRAM invariant</h2>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>pram_2 <span class="ot">&lt;-</span> <span class="fu">pram</span>(</span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  lfs_2023 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>ACTEU_pram1),</span>
@@ -762,9 +730,10 @@ Transitions:</code></pre>
 <span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">pd =</span> <span class="fl">0.8</span> <span class="co"># valeur minimale des probabilités sur la diagonale, valeur par défaut</span></span>
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pram_2) <span class="co">#liste</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pram_2) <span class="co">#liste</span></span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Variable: ACTEU</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -804,11 +773,11 @@ Transitions:</code></pre>
 </div>
 <p>On peut voir la matrice de transition qui a été générée à partir de <code>pd = 0.8</code>.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(pram_2)<span class="sc">$</span>pram_params<span class="sc">$</span>ACTEU<span class="sc">$</span>Rs</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(pram_2)<span class="sc">$</span>pram_params<span class="sc">$</span>ACTEU<span class="sc">$</span>Rs</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>            emploi     chomage    inactif
 emploi  0.96411739 0.009017262 0.02686535
 chomage 0.11174255 0.797453779 0.09080367
@@ -817,16 +786,16 @@ inactif 0.02867472 0.007821071 0.96350421</code></pre>
 </div>
 <p>Chaque élément de la diagonale vaut au moins 0.8, les autres probabilités sont distribuées de manière uniforme. Toutes les lignes somment à 1.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Récupérer la variable perturbée</span></span>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Récupérer la variable perturbée</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>lfs_2023<span class="sc">$</span>ACTEU_pram2 <span class="ot">&lt;-</span> pram_2<span class="sc">$</span>ACTEU_pram</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># invariance globale</span></span>
 <span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="sc">%&gt;%</span> </span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(ACTEU <span class="sc">==</span> ACTEU_pram2))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(ACTEU <span class="sc">==</span> ACTEU_pram2))</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>  mean(ACTEU == ACTEU_pram2)
 1                  0.9587408</code></pre>
 </div>
@@ -834,26 +803,26 @@ inactif 0.02867472 0.007821071 0.96350421</code></pre>
 <p>Dans 96% des cas, le statut d’activité dans le fichier original est le même que celui dans le fichier modifié avec pram.</p>
 <p><em>Le taux de chômage dans l’échantillon est-il biaisé ?</em></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="sc">%&gt;%</span> </span>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="sc">%&gt;%</span> </span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">taux_chomage =</span> <span class="fu">sum</span>(ACTEU <span class="sc">==</span> <span class="dv">2</span>)<span class="sc">/</span><span class="fu">sum</span>(ACTEU <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) <span class="sc">*</span><span class="dv">100</span>,</span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">taux_chomage_pram =</span> <span class="fu">sum</span>(ACTEU_pram2 <span class="sc">==</span> <span class="dv">2</span>)<span class="sc">/</span><span class="fu">sum</span>(ACTEU_pram2 <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) <span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>  taux_chomage taux_chomage_pram
 1          NaN               NaN</code></pre>
 </div>
 </div>
 <p>Le taux de chômage dans les données originales est de 7.4% et il est de 7.5% dans les données modifiées par pram. L’utilisation d’un <strong>pram invariant</strong> permet de conserver des <strong>marges proches de celles originales sur la variable modifiée</strong>.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">post_odds</span>(lfs_2023,<span class="st">"ACTEU"</span>,<span class="st">"ACTEU_pram2"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">post_odds</span>(lfs_2023,<span class="st">"ACTEU"</span>,<span class="st">"ACTEU_pram2"</span>)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   valeur_pram post_odds
   &lt;fct&gt;           &lt;dbl&gt;
@@ -862,18 +831,16 @@ inactif 0.02867472 0.007821071 0.96350421</code></pre>
 3 chomage          3.99</code></pre>
 </div>
 </div>
-</section>
-</section>
-<section id="utilite" class="level1">
-<h1>Utilité</h1>
+</section></section><section id="utilite" class="level1"><h1>Utilité</h1>
 <p>Il existe un de nombreuses façons d’estimer l’utilité des données perturbées, la mesure que l’on choisit dépend de ce qu’on souhaite faire avec les données perturbées.</p>
 <p>Ici, imaginons que l’on souhaite <strong>expliquer le chômage à partir des données</strong>. On va étudier l’impact des deux PRAM réalisés sur les coefficients d’une <strong>régression</strong> cherchant à expliquer le chômage.</p>
 <p>La variable <code>IS_CHOM</code> est une indicatrice du chômage déjà présente dans les données. Cependant, <code>IS_CHOM</code> découle directement de <code>ACTEU</code> il faut donc créer une nouvelle variable <code>IS_CHOM</code> à partir de la variable modifiée <code>ACTEU_pram1</code> (ou <code>ACTEU_pram2</code>).</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> lfs_2023 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">IS_CHOM_pram1 =</span> <span class="fu">as.numeric</span>(ACTEU_pram1 <span class="sc">==</span> <span class="st">"chomage"</span>))</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> lfs_2023 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">IS_CHOM_pram2 =</span> <span class="fu">as.numeric</span>(ACTEU_pram2 <span class="sc">==</span> <span class="st">"chomage"</span>))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> lfs_2023 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">IS_CHOM_pram1 =</span> <span class="fu">as.numeric</span>(ACTEU_pram1 <span class="sc">==</span> <span class="st">"chomage"</span>))</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>lfs_2023 <span class="ot">&lt;-</span> lfs_2023 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">IS_CHOM_pram2 =</span> <span class="fu">as.numeric</span>(ACTEU_pram2 <span class="sc">==</span> <span class="st">"chomage"</span>))</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
 </details>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -890,24 +857,24 @@ Avertissement
 </div>
 </div>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">'../R/fun_cio.R'</span>)</span>
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">'../R/fun_cio.R'</span>)</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>mod_orig <span class="ot">&lt;-</span> <span class="fu">glm</span>(IS_CHOM <span class="sc">~</span> SEXE <span class="sc">+</span> AGE6 <span class="sc">+</span> DIP7, <span class="at">data =</span> lfs_2023)</span>
 <span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>mod_pram1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(IS_CHOM_pram1 <span class="sc">~</span> SEXE <span class="sc">+</span> AGE6 <span class="sc">+</span> DIP7, <span class="at">data =</span> lfs_2023)</span>
 <span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>mod_pram2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(IS_CHOM_pram2 <span class="sc">~</span> SEXE <span class="sc">+</span> AGE6 <span class="sc">+</span> DIP7, <span class="at">data =</span> lfs_2023)</span>
 <span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>all_cios <span class="ot">&lt;-</span> <span class="fu">get_all_confints</span>(<span class="fu">list</span>(<span class="st">"original"</span> <span class="ot">=</span> mod_orig, <span class="st">"pram_general"</span> <span class="ot">=</span> mod_pram1, <span class="st">"pram_invariant"</span> <span class="ot">=</span> mod_pram2))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>all_cios <span class="ot">&lt;-</span> <span class="fu">get_all_confints</span>(<span class="fu">list</span>(<span class="st">"original"</span> <span class="ot">=</span> mod_orig, <span class="st">"pram_general"</span> <span class="ot">=</span> mod_pram1, <span class="st">"pram_invariant"</span> <span class="ot">=</span> mod_pram2))</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(vars)`</code></pre>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(all_cios)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(all_cios)</span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 8
   modele         vars     low    up low_orig up_orig    cio   num
   &lt;chr&gt;          &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
@@ -920,18 +887,17 @@ Avertissement
 </div>
 </div>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">graph_cios</span>(all_cios) <span class="sc">+</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(<span class="at">axis.text.y =</span>  <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>)) </span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">graph_cios</span>(all_cios) <span class="sc">+</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(<span class="at">axis.text.y =</span>  <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>)) </span></code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button>
+</div>
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: ggplot2</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="proteger-micro-pram_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="proteger-micro-pram_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -943,10 +909,7 @@ Avertissement
 
 <!-- -->
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1409,8 +1372,14 @@ Avertissement
       }
     }
   });
-  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Code source</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb54" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Code source</h5>
+<button class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold">
+<div class="sourceCode" id="cb54" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Appliquer PRAM</span></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1741,24 +1710,23 @@ Avertissement
 <span id="cb54-369"><a href="#cb54-369" aria-hidden="true" tabindex="-1"></a>En revanche, pour la modalité <span class="in">`DIP77`</span> par exemple, l'odds ratio du pram général n'est pas significativement différent de 1 au seuil de 5% alors qu'il l'est dans le modèle à partir des données originales.</span>
 <span id="cb54-370"><a href="#cb54-370" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-371"><a href="#cb54-371" aria-hidden="true" tabindex="-1"></a>Ainsi, le pram général protège bien les données mais les perturbe beaucoup ce qui empêche de faire de bonnes analyses. </span>
-</code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
-</div></div></div></div></div>
+</code></pre></div>
+<button title="Copier vers le presse-papier" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button>
+</div>
+</div></div>
+</div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>© 2025 - Insee</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
+       
     </div>
     <div class="nav-footer-right">
 <p>Site réalisé avec Quarto</p>
 </div>
   </div>
 </footer>
-
-
-
-
-</body></html>
+</body>
+</html>
