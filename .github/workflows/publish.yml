@@ -32,8 +32,9 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           cache-version: 2
-          packages: |
+          extra-packages: |
             github::ropensci-review-tools/babelquarto@v0.1.0
+            github::InseeFrLab/rtauargus
       - name: Render the Quarto site with babelquarto
         run: Rscript -e 'babelquarto::render_website()'
       - name: Achieve site render
