@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
 <head>
-<link rel="alternate" hreflang="fr" href="/pratique/fiches/mesurer-risque.html" />
-<link rel="alternate" hreflang="en" href="/en/pratique/fiches/mesurer-risque.en.html" />
+<link rel="alternate" hreflang="fr" href="https://inseefrlab.github.io/formation_protection_donnees/pratique/fiches/mesurer-risque.html" />
+<link rel="alternate" hreflang="en" href="https://inseefrlab.github.io/formation_protection_donnees/en/pratique/fiches/mesurer-risque.en.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Insee, Département des Méthodes Statistiques">
 <title>Les mesures du risque de divulgation – La protection des données statistiques publiques</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -60,7 +63,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -78,14 +80,14 @@ div.csl-indent {
   margin-left: 2em;
 }</style>
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script><script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script><script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script><script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ee2342c85b385a9f1e4dcc5adf89ea0a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-b57ea8551da85a3f5a419d309197adda.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-ee2342c85b385a9f1e4dcc5adf89ea0a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-765ca8b2fb7c4b9fb7a125d4497de838.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-50aff79ee40ca509dca5f77113d561a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-765ca8b2fb7c4b9fb7a125d4497de838.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -112,7 +114,7 @@ div.csl-indent {
     "search-submit-button-title": "Envoyer",
     "search-label": "Recherche"
   }
-}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -139,7 +141,7 @@ window.Quarto = {
 };
 </script>
 </head>
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed slimcontent quarto-light">
 <script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -316,7 +318,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item"><div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle babelquarto-languages-button" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> Version in fr</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/en/pratique/fiches/mesurer-risque.html" id="language-link-en">Version in en</a></li></ul>
+<button class="btn btn-primary dropdown-toggle babelquarto-languages-button" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> 🇫🇷 Français</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://inseefrlab.github.io/formation_protection_donnees/en/pratique/fiches/mesurer-risque.html" id="language-link-en">🇬🇧 English</a></li></ul>
 </div></li>
 <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
@@ -331,6 +333,14 @@ window.Quarto = {
 <span class="menu-text">En pratique</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../../ressources/index.html"> 
+<span class="menu-text">Ressources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../glossaire/index.html"> 
+<span class="menu-text">Glossaire</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">À propos</span></a>
   </li>  
@@ -340,8 +350,116 @@ window.Quarto = {
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../pratique/fiches/mesurer-risque.html">Les mesures du risque de divulgation</a></li></ol></nav><a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/description-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Présentation des données</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/mesurer-risque.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Les mesures du risque de divulgation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/mesurer-utilite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mesurer la perte d’information</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/suppressif.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pratiquer les méthodes suppressives</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/proteger-tableaux-suppressif.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Protéger des tableaux avec une méthode suppressive</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/proteger-tableaux-cellkey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Protéger des tableaux avec la méthode des clés aléatoires</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/perturbatif.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pratiquer les méthodes perturbatrices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/proteger-micro-agregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appliquer la Mciro-Agrégation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/proteger-micro-pram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appliquer PRAM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/proteger-micro-swapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appliquer le Target Record Swapping</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/generer-synth.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Générer des données synthétiques</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/confidentialite-differentielle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appliquer des mécanismes de confidentialité différentielle</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/arbitrage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Arbitrer entre risque et utilité</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/analyse-automatique.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analyse automatique des métadonnées pour la protection des données tabulées</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/analyse-demande.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analyser une demande</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pratique/fiches/sujets-avances.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Des sujets pour aller plus loin</span></a>
+  </div>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sur cette page</h2>
@@ -944,7 +1062,7 @@ Number of observations violating
 <li><span class="math inline">\(Fk = \sum_{i \in S}{  w_i \times 1(i \in k)}\)</span></li>
 </ul>
 <p>où <span class="math inline">\(S\)</span> désigne l’échantillon (le fichier) et <span class="math inline">\(w_i\)</span> le poids de l’individu <span class="math inline">\(i \in S\)</span>.</p>
-<p>En revanche, la colonne <code>risk</code> n’est pas calculée directement à partir des <span class="math inline">\(F_k\)</span>. En effet, un tel risque est jugé trop conservateur et conduit à surestimer le risque de ré-identification <span class="citation" data-cites="templ_statistical_2015 Rinott_Shlomo_2006">(<a href="#ref-templ_statistical_2015" role="doc-biblioref">Templ, Kowarik, et Meindl 2015</a>; et <a href="#ref-Rinott_Shlomo_2006" role="doc-biblioref">Rinott et Shlomo 2006</a>)</span>. En effet, les <span class="math inline">\(F_k\)</span> sont en réalité des estimations. Une approche bayésienne est préférée (voir <a href="theorie/supports/arbitrer-risque-utilite.html">la présentation sur les mesures de risque</a> pour plus de détails).</p>
+<p>En revanche, la colonne <code>risk</code> n’est pas calculée directement à partir des <span class="math inline">\(F_k\)</span>. En effet, un tel risque est jugé trop conservateur et conduit à surestimer le risque de ré-identification <span class="citation" data-cites="templ_statistical_2015 Rinott_Shlomo_2006">(<a href="#ref-templ_statistical_2015" role="doc-biblioref">Templ et al. 2015</a>; et <a href="#ref-Rinott_Shlomo_2006" role="doc-biblioref">Rinott et Shlomo 2006</a>)</span>. En effet, les <span class="math inline">\(F_k\)</span> sont en réalité des estimations. Une approche bayésienne est préférée (voir <a href="theorie/supports/arbitrer-risque-utilite.html">la présentation sur les mesures de risque</a> pour plus de détails).</p>
 <div class="cell">
 <details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">14789</span>)</span>
@@ -1098,7 +1216,7 @@ Number of observations violating
 </div>
 </div>
 <div class="no-row-height column-margin column-container"><div id="ref-Rinott_Shlomo_2006" class="csl-entry" role="listitem">
-Rinott, Yosef, et Natalie Shlomo. 2006. <span>« A Generalized Negative Binomial Smoothing Model for Sample Disclosure Risk Estimation »</span>. In <em>Privacy in Statistical Databases</em>, édité par Josep Domingo-Ferrer et Luisa Franconi, 82‑93. Berlin, Heidelberg: Springer. <a href="https://doi.org/10.1007/11930242_8">https://doi.org/10.1007/11930242_8</a>.
+Rinott, Yosef, et Natalie Shlomo. 2006. <span>« A Generalized Negative Binomial Smoothing Model for Sample Disclosure Risk Estimation »</span>. In <em>Privacy in Statistical Databases</em>, édité par Josep Domingo-Ferrer et Luisa Franconi. Springer. <a href="https://doi.org/10.1007/11930242_8">https://doi.org/10.1007/11930242_8</a>.
 </div></div>
 <div class="no-row-height column-margin column-container"><div id="ref-templ_statistical_2015" class="csl-entry" role="listitem">
 Templ, Matthias, Alexander Kowarik, et Bernhard Meindl. 2015. <span>« Statistical <span>Disclosure</span> <span>Control</span> for <span>Micro</span>-<span>Data</span> <span>Using</span> the <em>R</em> <span>Package</span> <strong>sdcMicro</strong> »</span>. <em>Journal of Statistical Software</em> 67 (4). <a href="https://doi.org/10.18637/jss.v067.i04">https://doi.org/10.18637/jss.v067.i04</a>.
@@ -1381,7 +1499,7 @@ Templ, Matthias, Alexander Kowarik, et Bernhard Meindl. 2015. <span>« Statisti
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/inseefrlab\.github\.io\/formation_protection_donnees");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-EN">
 <head>
-<link rel="alternate" hreflang="fr" href="/theorie/supports/mesurer-utilite.html" />
-<link rel="alternate" hreflang="en" href="/en/theorie/supports/mesurer-utilite.en.html" />
+<link rel="alternate" hreflang="fr" href="https://inseefrlab.github.io/formation_protection_donnees/theorie/supports/mesurer-utilite.html" />
+<link rel="alternate" hreflang="en" href="https://inseefrlab.github.io/formation_protection_donnees/en/theorie/supports/mesurer-utilite.en.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="../../site_libs/clipboard/clipboard.min.js"></script><script src="../../site_libs/quarto-html/tabby.min.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.38">
 <meta name="author" content="Insee, Département des Méthodes Statistiques">
 <title>Statistical Disclosure Control for Public Statistics – Assessing Utility</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -17,6 +17,9 @@
 <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
 <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
 <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -29,7 +32,7 @@
       vertical-align: middle;
     }
   </style>
-<link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ea8535d309a38c52e88d69daf30b07d0.css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-c04a83ec71f912e5167c964db8a16515.css">
 <link rel="stylesheet" href="_extensions/InseeFrLab/onyxia/logo.css">
 <link rel="stylesheet" href="custom.css">
 <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -131,9 +134,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center"><h1 class="title">Assessing Utility</h1>
-  <p class="subtitle"></p>
-<p><strong><span class="orange">Control the loss of information</span></strong></p>
-<p></p>
+  <p class="subtitle"><strong><span class="orange">Control the loss of information</span></strong></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -449,7 +450,7 @@ Table 4: Hours worked per week by sex, age and region (perturbed data <span sty
 <div class="columns">
 <div class="column" style="width:33%;">
 <div style="text-align:center;">
-<div id="fig-bruit-dirac" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="No noise">
+<div id="fig-bruit-dirac" class="quarto-float quarto-figure quarto-figure-center" alt="No noise" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-bruit-dirac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/Dirac.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="No noise">
 </div>
@@ -461,7 +462,7 @@ Figure 1: Dirac
 </div>
 <div class="column" style="width:33%;">
 <div style="text-align:center;">
-<div id="fig-bruit-compromis" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Compromise">
+<div id="fig-bruit-compromis" class="quarto-float quarto-figure quarto-figure-center" alt="Compromise" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-bruit-compromis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/Compromise.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Compromise">
 </div>
@@ -473,7 +474,7 @@ Figure 2: Compromis
 </div>
 <div class="column" style="width:33%;">
 <div style="text-align:center;">
-<div id="fig-bruit-unif" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Strong noise">
+<div id="fig-bruit-unif" class="quarto-float quarto-figure quarto-figure-center" alt="Strong noise" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-bruit-unif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/uniform.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Strong noise">
 </div>
@@ -507,7 +508,7 @@ Figure 3: Bruit fort
 <div class="columns">
 <div class="column" style="width:33%;">
 <div style="text-align:center;">
-<div id="fig-cor-original" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Original correlation matrix">
+<div id="fig-cor-original" class="quarto-float quarto-figure quarto-figure-center" alt="Original correlation matrix" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-cor-original-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/cor_original.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Original correlation matrix">
 </div>
@@ -519,7 +520,7 @@ Figure 4: Original
 </div>
 <div class="column" style="width:33%;">
 <div style="text-align:center;">
-<div id="fig-diff-cor-cart" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Matrix of differences between original and method 1">
+<div id="fig-diff-cor-cart" class="quarto-float quarto-figure quarto-figure-center" alt="Matrix of differences between original and method 1" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-diff-cor-cart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/cor_cart.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Matrix of differences between original and method 1">
 </div>
@@ -531,7 +532,7 @@ Figure 5: Differences method 1
 </div>
 <div class="column" style="width:33%;">
 <div style="text-align:center;">
-<div id="fig-diff-cor-ctgan" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Matrix of differences between original and method 2">
+<div id="fig-diff-cor-ctgan" class="quarto-float quarto-figure quarto-figure-center" alt="Matrix of differences between original and method 2" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-diff-cor-ctgan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/cor_ctgan.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Matrix of differences between original and method 2">
 </div>
@@ -548,7 +549,7 @@ Figure 6: Differences method 2
 <div class="columns">
 <div class="column" style="width:50%;">
 <div style="text-align:center;">
-<div id="fig-acp-originale" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Original individuals projected on the first plane of a PCA">
+<div id="fig-acp-originale" class="quarto-float quarto-figure quarto-figure-center" alt="Original individuals projected on the first plane of a PCA" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-acp-originale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/acp_original.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Original individuals projected on the first plane of a PCA">
 </div>
@@ -560,7 +561,7 @@ Figure 7: Original
 </div>
 <div class="column" style="width:50%;">
 <div style="text-align:center;">
-<div id="fig-acp-ctgan" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Noisy individuals projected on the first plane of the same PCA">
+<div id="fig-acp-ctgan" class="quarto-float quarto-figure quarto-figure-center" alt="Noisy individuals projected on the first plane of the same PCA" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-acp-ctgan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/acp_ctgan.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Noisy individuals projected on the first plane of the same PCA">
 </div>
@@ -573,7 +574,7 @@ Figure 8: Perturbed
 </div>
 </section><section id="results-of-a-regression" class="slide level2" data-background-image="background.svg" data-background-size="contain"><h2>Results of a regression</h2>
 <div style="text-align:center;">
-<div id="fig-ic-coeff-glm" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center" alt="Confidence intervals of logistic regression coefficients depending on the data processing method">
+<div id="fig-ic-coeff-glm" class="quarto-float quarto-figure quarto-figure-center" alt="Confidence intervals of logistic regression coefficients depending on the data processing method" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-ic-coeff-glm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img data-src="img/puf65_intervalle_confiance_glm.png" class="quarto-figure quarto-figure-center" style="width:90.0%" alt="Confidence intervals of logistic regression coefficients depending on the data processing method">
 </div>
@@ -854,7 +855,7 @@ Figure 9: Confidence interval of logistic regression coefficients according to 
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("\/en");
+            var filterRegex = new RegExp("https:\/\/inseefrlab\.github\.io\/formation_protection_donnees\/en");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
