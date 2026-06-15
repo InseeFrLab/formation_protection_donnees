@@ -11,3 +11,5 @@ _freeze/*
 !_freeze/site_libs/
 !_freeze/site_libs/**
 _site/
+
+**/*.quarto_ipynb

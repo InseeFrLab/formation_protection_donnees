@@ -1,0 +1,53 @@
+# Profil babelquarto pour la version anglaise du site.
+# Ce fichier est lu par babelquarto lors de la passe de rendu EN
+# et vient écraser (_quarto.yml) via utils::modifyList().
+# Il ne contient QUE les clés qui diffèrent de la version française.
+
+website:
+  navbar:
+    right:
+      - href: index.qmd
+        text: "Home"
+      - href: theorie/index.qmd
+        text: "A bit of theory"
+      - href: pratique/index.qmd
+        text: "In practice"
+      - href: ressources/index.qmd
+        text: "Resources"
+      - href: glossaire/index.qmd
+        text: "Glossary"
+      - href: about.qmd
+        text: "About"
+  page-footer:
+    left: "© 2025 - INSEE"
+    right: "Site built with Quarto"
+  sidebar:
+    - title: "A bit of theory"
+      style: "docked"
+      contents:
+        - theorie/supports/arbitrer-risque-utilite.qmd
+        - theorie/supports/methodes-suppressives.qmd
+        - theorie/supports/methodes-perturbatrices.qmd
+        - theorie/supports/mesurer-utilite.qmd
+        - theorie/supports/confidentialite-differentielle.qmd
+    - title: "In practice"
+      style: "docked"
+      contents:
+        - pratique/fiches/description-data.qmd
+        - pratique/fiches/mesurer-risque.qmd
+        - pratique/fiches/mesurer-utilite.qmd
+        - pratique/fiches/suppressif.qmd
+        - pratique/fiches/proteger-tableaux-suppressif.qmd
+        - pratique/fiches/proteger-tableaux-cellkey.qmd
+        - pratique/fiches/perturbatif.qmd
+        - pratique/fiches/proteger-micro-agregation.qmd
+        - pratique/fiches/proteger-micro-pram.qmd
+        - pratique/fiches/proteger-micro-swapping.qmd
+        - pratique/fiches/generer-synth.qmd
+        - pratique/fiches/confidentialite-differentielle.qmd
+        - pratique/fiches/arbitrage.qmd
+        - pratique/fiches/analyse-automatique.qmd
+        - pratique/fiches/analyse-demande.qmd
+        - pratique/fiches/sujets-avances.qmd
+
+lang: en

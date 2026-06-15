@@ -3,7 +3,7 @@ title: Disclosure risks
 subtitle: |
   **[Define, Assess, Decide]{.orange}**
 order: 1
-href: theorie/supports/arbitrer-risque-utilite.html
+href: theorie/supports/arbitrer-risque-utilite.en.html
 image: ../../images/theorie.png
 slide-number: true
 header: |

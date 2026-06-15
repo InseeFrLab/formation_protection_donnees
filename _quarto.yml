@@ -8,6 +8,7 @@ author: "Insee, Département des Méthodes Statistiques"
 
 website:
   title: "La protection des données statistiques publiques"
+  site-url: "https://inseefrlab.github.io/formation_protection_donnees"
   description: |
     "Formation en ligne sur la protection des données statistiques contre 
     les risques de divulgation à destination des producteurs de statistiques publiques."
@@ -19,6 +20,10 @@ website:
         text: "Un peu de théorie"
       - href: pratique/index.qmd
         text: "En pratique"
+      - href: ressources/index.qmd
+        text: "Ressources"
+      - href: glossaire/index.qmd
+        text: "Glossaire"
       - href: about.qmd
         text: "À propos"
   page-footer:
@@ -28,17 +33,30 @@ website:
     - title: "Un peu de théorie"
       style: "docked"
       contents:
-        - theorie/arbitrer-risque-utilite.qmd
-        - theorie/donnees-tabulees.qmd
-        - theorie/donnees-individuelles.qmd
-        - theorie/confidentialite-differentielle.qmd
+        - theorie/supports/arbitrer-risque-utilite.qmd
+        - theorie/supports/methodes-suppressives.qmd
+        - theorie/supports/methodes-perturbatrices.qmd
+        - theorie/supports/mesurer-utilite.qmd
+        - theorie/supports/confidentialite-differentielle.qmd
     - title: "En pratique"
       style: "docked"
       contents:
-        - pratique/arbitrer-risque-utilite-pratique.qmd
-        - pratique/donnees-tabulees-pratique.qmd
-        - pratique/donnees-individuelles-pratique.qmd
-        - pratique/confidentialite-differentielle-pratique.qmd
+        - pratique/fiches/description-data.qmd
+        - pratique/fiches/mesurer-risque.qmd
+        - pratique/fiches/mesurer-utilite.qmd
+        - pratique/fiches/suppressif.qmd
+        - pratique/fiches/proteger-tableaux-suppressif.qmd
+        - pratique/fiches/proteger-tableaux-cellkey.qmd
+        - pratique/fiches/perturbatif.qmd
+        - pratique/fiches/proteger-micro-agregation.qmd
+        - pratique/fiches/proteger-micro-pram.qmd
+        - pratique/fiches/proteger-micro-swapping.qmd
+        - pratique/fiches/generer-synth.qmd
+        - pratique/fiches/confidentialite-differentielle.qmd
+        - pratique/fiches/arbitrage.qmd
+        - pratique/fiches/analyse-automatique.qmd
+        - pratique/fiches/analyse-demande.qmd
+        - pratique/fiches/sujets-avances.qmd
 
 format:
   html:
@@ -55,17 +73,22 @@ format:
     bibliography: references-SDC.bib
 
 babelquarto:
-  languagecodes:
-  - name: en
-    text: "Version in en"
-  - name: fr
-    text: "Version in fr"
   mainlanguage: 'fr'
   languages: ['en']
+  # Emplacement du bouton de bascule : 'navbar' (défaut pour website) ou 'sidebar'
+  languagelinks: navbar
+  languagecodes:
+  - name: fr
+    text: "🇫🇷 Français"
+  - name: en
+    text: "🇬🇧 English"
+
+# Métadonnées traduites — babelquarto remplace automatiquement ces clés
+# lors de la passe de rendu EN
 title-en: "Statistical Disclosure Control for Public Statistics"
 description-en: |
   "Online training on the protection of statistical data against 
   disclosure risks for public statistics producers."
 author-en: "INSEE, Department of Statistical Methods"
-lang: fr
 
+lang: fr
