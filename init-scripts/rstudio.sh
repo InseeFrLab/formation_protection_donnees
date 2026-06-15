@@ -26,12 +26,11 @@ fi
 REPOSITR="https://packagemanager.posit.co/cran/__linux__/${UBUNTUNAME}/latest/"
 
 # Installation des packages R nécessaires
-# Rscript -e "install.packages('tidyverse', repos='${REPOSITR}', dependencies=TRUE)"
-Rscript -e "install.packages('sdcMicro', repos='${REPOSITR}', dependencies=TRUE)"
-Rscript -e "install.packages('GaussSuppression', repos='${REPOSITR}', dependencies=TRUE)"
-Rscript -e "install.packages('cellKey', repos='${REPOSITR}', dependencies=TRUE)"
-Rscript -e "install.packages('synthpop', repos='${REPOSITR}', dependencies=TRUE)"
+Rscript -e "install.packages('remotes', repos='${REPOSITR}')"
+Rscript -e "remotes::install_deps(upgrade = 'always', repos='${REPOSITR}')"
+
+# Installation de babelquarto from ropensci
+Rscript -e "install.packages('babelquarto', repos = c('https://ropensci.r-universe.dev', 'https://cloud.r-project.org'))"
 
 # Installation de la dernière version de rtauargus
-Rscript -e "install.packages('remotes', repos='${REPOSITR}')"
 Rscript -e "remotes::install_github('InseeFrLab/rtauargus', dependencies = TRUE, build_vignettes = FALSE, upgrade = 'never')"

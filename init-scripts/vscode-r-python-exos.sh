@@ -43,3 +43,5 @@ REPOSITR="https://packagemanager.posit.co/cran/__linux__/${UBUNTUNAME}/latest/"
 
 Rscript -e "install.packages('remotes', repos='${REPOSITR}')"
 Rscript -e "remotes::install_deps(upgrade = 'always', repos='${REPOSITR}')"
+
+Rscript -e "remotes::install_github('InseeFrLab/rtauargus', dependencies = TRUE, build_vignettes = FALSE, upgrade = 'never')"
