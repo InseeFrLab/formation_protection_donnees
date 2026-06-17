@@ -3,14 +3,14 @@ title: "A little bit of theory"
 description: |
   Understand the main challenges of data protection and master the key concepts and methods.
 order: 1
-href: theorie/index.en.html
+href: theorie/index.html
 image: ../images/theorie.png
 listing:
   id: theorie-en
   contents:
-    - "supports/*.en.qmd"
-    - "!supports/tour-des-methodes.en.qmd"
-    - "!supports/confidentialite-differentielle.en.qmd"
+    - "supports/*.qmd"
+    - "!supports/tour-des-methodes.qmd"
+    - "!supports/confidentialite-differentielle.qmd"
   sort: "order"
   type: grid
   image-height: 300px

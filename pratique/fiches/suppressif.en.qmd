@@ -3,15 +3,15 @@ title: "Practical suppressive methods"
 description: |
   Learn how to apply suppressive methods using R.
 order: 2
-href: pratique/fiches/suppressif.en.html
+href: pratique/fiches/suppressif.html
 image: ../../images/pratique.png
 listing:
   id: suppressif-en
   contents:
-    - "proteger-tableaux-suppressif.en.qmd"
-    - "analyse-demande.en.qmd"
-    - "analyse-automatique.en.qmd"
-    - "suppression-locale.en.qmd"
+    - "proteger-tableaux-suppressif.qmd"
+    - "analyse-demande.qmd"
+    - "analyse-automatique.qmd"
+    - "suppression-locale.qmd"
   sort: false
   type: grid
   image-height: 300px

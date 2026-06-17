@@ -1,6 +1,6 @@
 ---
 title: Assessing the disclosure risks
-href: pratique/fiches/mesurer-risque.en.html
+href: pratique/fiches/mesurer-risque.html
 code-block-bg: true
 code-block-border-left: "#bf9aff"
 code-fold: show

@@ -3,7 +3,7 @@ title: "Glossary"
 description: |
   Definition of the main technical terms encountered on the site.
 order: 4
-href: glossaire/index.en.html
+href: glossaire/index.html
 image: ../images/glossaire.png
 page-layout: full
 toc: false

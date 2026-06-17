@@ -1,6 +1,6 @@
 ---
 title: About
-href: about.en.html
+href: about.html
 ---
 
 # Origin of the project

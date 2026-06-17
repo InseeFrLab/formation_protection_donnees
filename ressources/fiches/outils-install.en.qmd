@@ -2,7 +2,7 @@
 title: Install packages and tools on R
 description: Where can I find and how do I install the recommended tools and packages?
 order: 2
-href: ressources/fiches/outils-install.en.html
+href: ressources/fiches/outils-install.html
 image: ../../images/ressources.png
 code-fold: false
 ---

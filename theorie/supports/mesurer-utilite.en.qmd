@@ -3,7 +3,7 @@ title: Assessing Utility
 subtitle: |
   **[Control the loss of information]{.orange}**
 order: 5
-href: theorie/supports/mesurer-utilite.en.html
+href: theorie/supports/mesurer-utilite.html
 image: ../../images/theorie.png
 slide-number: true
 header: |

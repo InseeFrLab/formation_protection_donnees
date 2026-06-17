@@ -1,14 +1,14 @@
 ---
-href: index.en.html
+href: index.html
 listing:
   id: chapitres-en
   contents:
-  - theorie/*.en.qmd
-  - pratique/*.en.qmd
-  - ressources/*.en.qmd
-  - glossaire/*.en.qmd
-  - '!theorie/supports/*.en.qmd'
-  - '!pratique/fiches/*.en.qmd'
+  - theorie/*.qmd
+  - pratique/*.qmd
+  - ressources/*.qmd
+  - glossaire/*.qmd
+  - '!theorie/supports/*.qmd'
+  - '!pratique/fiches/*.qmd'
   sort: order
   type: grid
   image-height: 300px

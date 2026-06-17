@@ -1,12 +1,12 @@
 ---
 title: Description of the data
-href: pratique/fiches/description-data.en.html
+href: pratique/fiches/description-data.html
 image: ../../images/description-data.png
 ---
 
 
 Pour installer les packages nécessaires, vous trouverez les instructions à suivre 
-dans la fiche [Ressources / Installer les packages et les outils sur R](../../ressources/fiches/outils-install.en.html). 
+dans la fiche [Ressources / Installer les packages et les outils sur R](../../ressources/fiches/outils-install.html). 
 
 
 ```{r}

@@ -3,7 +3,7 @@ title: Suppressive methods
 subtitle: |
   **[For tabular data]{.orange}**
 order: 2
-href: theorie/supports/methodes-suppressives.en.html
+href: theorie/supports/methodes-suppressives.html
 image: ../../images/theorie.png
 # date: 
 slide-number: true

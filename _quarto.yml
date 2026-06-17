@@ -7,57 +7,8 @@ execute:
 author: "Insee, Département des Méthodes Statistiques"
 
 website:
-  title: "La protection des données statistiques publiques"
   site-url: "https://inseefrlab.github.io/formation_protection_donnees"
-  description: |
-    "Formation en ligne sur la protection des données statistiques contre 
-    les risques de divulgation à destination des producteurs de statistiques publiques."
-  navbar:
-    right:
-      - href: index.qmd
-        text: "Accueil"
-      - href: theorie/index.qmd
-        text: "Un peu de théorie"
-      - href: pratique/index.qmd
-        text: "En pratique"
-      - href: ressources/index.qmd
-        text: "Ressources"
-      - href: glossaire/index.qmd
-        text: "Glossaire"
-      - href: about.qmd
-        text: "À propos"
-  page-footer:
-    left: "© 2025 - Insee"
-    right: "Site réalisé avec Quarto"
-  sidebar:
-    - title: "Un peu de théorie"
-      style: "docked"
-      contents:
-        - theorie/supports/arbitrer-risque-utilite.qmd
-        - theorie/supports/methodes-suppressives.qmd
-        - theorie/supports/methodes-perturbatrices.qmd
-        - theorie/supports/mesurer-utilite.qmd
-        - theorie/supports/confidentialite-differentielle.qmd
-    - title: "En pratique"
-      style: "docked"
-      contents:
-        - pratique/fiches/description-data.qmd
-        - pratique/fiches/mesurer-risque.qmd
-        - pratique/fiches/mesurer-utilite.qmd
-        - pratique/fiches/suppressif.qmd
-        - pratique/fiches/proteger-tableaux-suppressif.qmd
-        - pratique/fiches/proteger-tableaux-cellkey.qmd
-        - pratique/fiches/perturbatif.qmd
-        - pratique/fiches/proteger-micro-agregation.qmd
-        - pratique/fiches/proteger-micro-pram.qmd
-        - pratique/fiches/proteger-micro-swapping.qmd
-        - pratique/fiches/generer-synth.qmd
-        - pratique/fiches/confidentialite-differentielle.qmd
-        - pratique/fiches/arbitrage.qmd
-        - pratique/fiches/analyse-automatique.qmd
-        - pratique/fiches/analyse-demande.qmd
-        - pratique/fiches/sujets-avances.qmd
-
+  
 format:
   html:
     theme: 
@@ -83,12 +34,5 @@ babelquarto:
   - name: en
     text: "🇬🇧 English"
 
-# Métadonnées traduites — babelquarto remplace automatiquement ces clés
-# lors de la passe de rendu EN
-title-en: "Statistical Disclosure Control for Public Statistics"
-description-en: |
-  "Online training on the protection of statistical data against 
-  disclosure risks for public statistics producers."
-author-en: "INSEE, Department of Statistical Methods"
 
 lang: fr

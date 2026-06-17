@@ -1,6 +1,6 @@
 ---
 title: Apply micro-agregation
-href: pratique/fiches/proteger-micro-agregation.en.html
+href: pratique/fiches/proteger-micro-agregation.html
 code-block-bg: true
 code-block-border-left: "#bf9aff"
 code-fold: show

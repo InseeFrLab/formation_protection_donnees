@@ -1,32 +1,27 @@
-# Profil babelquarto pour la version anglaise du site.
-# Ce fichier est lu par babelquarto lors de la passe de rendu EN
-# et vient écraser (_quarto.yml) via utils::modifyList().
-# Il ne contient QUE les clés qui diffèrent de la version française.
-
 website:
-  title: "Statistical Disclosure Control for Official Statistics"
+  title: "La protection des données statistiques publiques"
   description: |
-    "Online training on the protection of statistical data against 
-    disclosure risks for public statistics."
+    "Formation en ligne sur la protection des données statistiques contre 
+    les risques de divulgation à destination des producteurs de statistiques publiques."
+  page-footer:
+    left: "© 2025 - Insee"
+    right: "Site réalisé avec Quarto"
   navbar:
     right:
       - href: index.qmd
-        text: "Home"
+        text: "Accueil"
       - href: theorie/index.qmd
-        text: "A bit of theory"
+        text: "Un peu de théorie"
       - href: pratique/index.qmd
-        text: "In practice"
+        text: "En pratique"
       - href: ressources/index.qmd
-        text: "Resources"
+        text: "Ressources"
       - href: glossaire/index.qmd
-        text: "Glossary"
+        text: "Glossaire"
       - href: about.qmd
-        text: "About"
-  page-footer:
-    left: "© 2025 - INSEE"
-    right: "Site built with Quarto"
+        text: "À propos"
   sidebar:
-    - title: "A bit of theory"
+    - title: "Un peu de théorie"
       style: "docked"
       contents:
         - theorie/supports/arbitrer-risque-utilite.qmd
@@ -34,7 +29,7 @@ website:
         - theorie/supports/methodes-perturbatrices.qmd
         - theorie/supports/mesurer-utilite.qmd
         - theorie/supports/confidentialite-differentielle.qmd
-    - title: "In practice"
+    - title: "En pratique"
       style: "docked"
       contents:
         - pratique/fiches/description-data.qmd
@@ -54,6 +49,4 @@ website:
         - pratique/fiches/analyse-demande.qmd
         - pratique/fiches/sujets-avances.qmd
 
-author: "INSEE, Department of Statistical Methods"
-
-lang: en
+lang: fr

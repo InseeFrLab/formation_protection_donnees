@@ -1,6 +1,6 @@
 ---
 title: Appliquer la suppression locale
-href: pratique/fiches/suppression-locale.en.html
+href: pratique/fiches/suppression-locale.html
 
 ---
 

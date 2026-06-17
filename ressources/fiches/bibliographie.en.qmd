@@ -3,7 +3,7 @@ title: "Indicative bibliography"
 description: |
   References for further reading.
 order: 1
-href: ressources/fiches/bibliographie.en.html
+href: ressources/fiches/bibliographie.html
 image: ../../images/ressources.png
 ---
 

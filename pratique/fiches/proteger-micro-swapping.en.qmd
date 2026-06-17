@@ -1,6 +1,6 @@
 ---
 title: Appliquer le Target Record Swapping
-href: pratique/fiches/proteger-micro-swapping.en.html
+href: pratique/fiches/proteger-micro-swapping.html
 code-block-bg: true
 code-block-border-left: "#bf9aff"
 code-fold: show

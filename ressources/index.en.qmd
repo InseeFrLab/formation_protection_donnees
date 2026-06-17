@@ -3,12 +3,12 @@ title: "Resources"
 description: |
   Find additional resources (articles, documentation, tools) to go further.
 order: 3
-href: ressources/index.en.html
+href: ressources/index.html
 image: ../images/ressources.png
 listing:
   id: ressources-en
   contents:
-    - "fiches/*.en.qmd"
+    - "fiches/*.qmd"
   sort: "order"
   type: grid
   image-height: 300px

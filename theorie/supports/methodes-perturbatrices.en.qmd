@@ -3,7 +3,7 @@ title: Perturbative methods
 subtitle: |
   **[For tabular data or microdata]{.orange}**
 order: 3
-href: theorie/supports/methodes-perturbatrices.en.html
+href: theorie/supports/methodes-perturbatrices.html
 image: ../../images/theorie.png
 # date: 
 slide-number: true
