@@ -7,8 +7,8 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="author" content="Insee, Département des Méthodes Statistiques">
-<title>Protéger des tableaux avec une méthode suppressive – Statistical Disclosure Control for Public Statistics</title>
+<meta name="author" content="INSEE, Department of Statistical Methods">
+<title>Protéger des tableaux avec une méthode suppressive – Statistical Disclosure Control for Official Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -289,7 +289,7 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Statistical Disclosure Control for Public Statistics</span>
+    <span class="navbar-title">Statistical Disclosure Control for Official Statistics</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -302,30 +302,6 @@ window.Quarto = {
 <button class="btn btn-primary dropdown-toggle babelquarto-languages-button" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> 🇬🇧 English</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://inseefrlab.github.io/formation_protection_donnees/pratique/fiches/proteger-tableaux-suppressif.html" id="language-link-fr">🇫🇷 Français</a></li></ul>
 </div></li>
 <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">Accueil</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../theorie/index.html"> 
-<span class="menu-text">Un peu de théorie</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../pratique/index.html"> 
-<span class="menu-text">En pratique</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../ressources/index.html"> 
-<span class="menu-text">Ressources</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../glossaire/index.html"> 
-<span class="menu-text">Glossaire</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">À propos</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -554,7 +530,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Insee, Département des Méthodes Statistiques </p>
+             <p>INSEE, Department of Statistical Methods </p>
           </div>
   </div>
     
@@ -674,7 +650,7 @@ window.Quarto = {
  $ nb_obs     : num  19554 17371 20839 20224 17122 ...
  $ salades_tot: num  1.74e+09 1.54e+09 1.82e+09 1.86e+09 1.57e+09 ...
  $ salades_max: num  137073 137203 140522 144429 140834 ...
- - attr(*, ".internal.selfref")=&lt;pointer: 0x55ac4b459af0&gt; </code></pre>
+ - attr(*, ".internal.selfref")=&lt;pointer: 0x55a009f99af0&gt; </code></pre>
 </div>
 </div>
 </section><section id="calculer-plusieurs-indicateurs-en-même-temps" class="level2"><h2 class="anchored" data-anchor-id="calculer-plusieurs-indicateurs-en-même-temps">Calculer plusieurs indicateurs en même temps</h2>
@@ -707,7 +683,7 @@ window.Quarto = {
  $ tomates_tot: num  1.54e+11 6.20e+10 1.83e+10 4.44e+10 4.62e+10 ...
  $ pizzas_max : num  899871 898861 899157 898798 899906 ...
  $ tomates_max: num  499928 499883 494816 499526 499837 ...
- - attr(*, ".internal.selfref")=&lt;pointer: 0x55ac4b459af0&gt; </code></pre>
+ - attr(*, ".internal.selfref")=&lt;pointer: 0x55a009f99af0&gt; </code></pre>
 </div>
 </div>
 </section></section><section id="poser-le-secret-primaire" class="level1"><h1>Poser le secret primaire</h1>
@@ -1398,7 +1374,7 @@ Informations complémentaires : il n'y a que deux types de salades les batavias 
  $ nb_obs    : num  608493 239202 75471 171537 184607 ...
  $ pizzas_tot: num  2.34e+11 9.00e+10 3.14e+10 6.65e+10 7.09e+10 ...
  $ pizzas_max: num  899871 898861 899157 898798 899906 ...
- - attr(*, ".internal.selfref")=&lt;pointer: 0x55ac4b459af0&gt; </code></pre>
+ - attr(*, ".internal.selfref")=&lt;pointer: 0x55a009f99af0&gt; </code></pre>
 </div>
 </div>
 <p>On tabule ensuite pour les indicateurs “chiffre d’affaires vente mâches, batavia et salades”. N.B. il faut créer une nouvelle variable de croisement.</p>
@@ -1495,7 +1471,7 @@ FALSE  TRUE
   ..$ is_secret_freq: logi [1:516] FALSE FALSE FALSE FALSE FALSE FALSE ...
   ..$ is_secret_dom : logi [1:516] FALSE FALSE FALSE FALSE FALSE FALSE ...
   ..$ is_secret_prim: logi [1:516] FALSE FALSE FALSE FALSE FALSE FALSE ...
-  ..- attr(*, ".internal.selfref")=&lt;pointer: 0x55ac4b459af0&gt; 
+  ..- attr(*, ".internal.selfref")=&lt;pointer: 0x55a009f99af0&gt; 
  $ pizza_nuts_naf  :Classes 'data.table' and 'data.frame':  11943 obs. of  8 variables:
   ..$ naf           : chr [1:11943] "BE" "MN" "OQ" "RU" ...
   ..$ nuts          : chr [1:11943] "Total" "Total" "Total" "Total" ...
@@ -1505,7 +1481,7 @@ FALSE  TRUE
   ..$ is_secret_freq: logi [1:11943] FALSE FALSE FALSE FALSE FALSE FALSE ...
   ..$ is_secret_dom : logi [1:11943] FALSE FALSE FALSE FALSE FALSE FALSE ...
   ..$ is_secret_prim: logi [1:11943] FALSE FALSE FALSE FALSE FALSE FALSE ...
-  ..- attr(*, ".internal.selfref")=&lt;pointer: 0x55ac4b459af0&gt; </code></pre>
+  ..- attr(*, ".internal.selfref")=&lt;pointer: 0x55a009f99af0&gt; </code></pre>
 </div>
 </div>
 <p>Pour le cluster des salades.</p>

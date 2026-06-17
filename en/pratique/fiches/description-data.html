@@ -7,8 +7,8 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="author" content="Insee, Département des Méthodes Statistiques">
-<title>Description of the data – Statistical Disclosure Control for Public Statistics</title>
+<meta name="author" content="INSEE, Department of Statistical Methods">
+<title>Description of the data – Statistical Disclosure Control for Official Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -269,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Statistical Disclosure Control for Public Statistics</span>
+    <span class="navbar-title">Statistical Disclosure Control for Official Statistics</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -282,30 +282,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <button class="btn btn-primary dropdown-toggle babelquarto-languages-button" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> 🇬🇧 English</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://inseefrlab.github.io/formation_protection_donnees/pratique/fiches/description-data.html" id="language-link-fr">🇫🇷 Français</a></li></ul>
 </div></li>
 <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">Accueil</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../theorie/index.html"> 
-<span class="menu-text">Un peu de théorie</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../pratique/index.html"> 
-<span class="menu-text">En pratique</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../ressources/index.html"> 
-<span class="menu-text">Ressources</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../glossaire/index.html"> 
-<span class="menu-text">Glossaire</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">À propos</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -475,7 +451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Insee, Département des Méthodes Statistiques </p>
+             <p>INSEE, Department of Statistical Methods </p>
           </div>
   </div>
     
@@ -485,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>Pour installer les packages nécessaires, vous trouverez les instructions à suivre dans la fiche <a href="../../ressources/fiches/outils-install.en.html">Ressources / Installer les packages et les outils sur R</a>.</p>
+</header><p>Pour installer les packages nécessaires, vous trouverez les instructions à suivre dans la fiche <a href="../../ressources/fiches/outils-install.html">Ressources / Installer les packages et les outils sur R</a>.</p>
 <section id="présentation" class="level2"><h2 class="anchored" data-anchor-id="présentation">Présentation</h2>
 <p>Les données utilisées dans la plupart des fiches pratiques sont sont un jeu fictif inspiré du fichier public de l’échantillon annuel de l’Enquête Emploi en Continu <a href="https://www.insee.fr/fr/statistiques/6654604">mis à disposition par l’Insee sur son site internet</a>.</p>
 <p>Le code de construction des données est consultable sur <a href="https://github.com/InseeFrLab/formation_protection_donnees/blob/main/pratique/R/prepa_data.R">le dépôt github du projet</a>. Ce code intervient de plusieurs façons sur les données publiques:</p>
@@ -537,7 +513,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  $ HH_DIP   : Factor w/ 9 levels "1","2","3","4",..: 4 4 4 4 7 7 7 7 7 5 ...
  $ HH_PCS   : Factor w/ 10 levels "0","10","20",..: 4 4 4 4 9 9 7 10 10 8 ...
  $ IS_CHOM  : int  0 0 0 0 0 0 0 0 0 0 ...
- - attr(*, ".internal.selfref")=&lt;pointer: 0x5642814ccaf0&gt; </code></pre>
+ - attr(*, ".internal.selfref")=&lt;pointer: 0x55b8c0e2aaf0&gt; </code></pre>
 </div>
 </div>
 <p>Les variables du jeu de données sont les suivantes:</p>
@@ -561,8 +537,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-5024eda6c918c904d81a" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-5024eda6c918c904d81a">{"x":{"filter":"none","vertical":false,"caption":"<caption>Variables et leurs modalités<\/caption>","data":[["ACTEU","ACTEU","ACTEU","AGE6","AGE6","AGE6","AGE6","AGE6","AGE6","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","SEXE","SEXE"],["Statut d'activité au sens du Bureau International du Travail (BIT)","Statut d'activité au sens du Bureau International du Travail (BIT)","Statut d'activité au sens du Bureau International du Travail (BIT)","","","","","","","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Sexe","Sexe"],[1,2,3,0,15,25,50,65,90,1,2,3,4,5,6,7,8,9,null,1,2,3,4,5,6,7,9,null,0,10,20,30,40,51,52,61,62,null,1,2],["Emploi","Chômage","Non Inactivité","14 ans ou moins","15-24 ans","25-49 ans","50-64 ans","65-89 ans","90 ans ou plus","Moins d'un mois","De 1 mois à moins de 3 mois","De 3 mois à moins de 6 mois","De 6 mois à moins de 12 mois","De 12 mois à moins de 18 mois","De 18 mois à moins de 24 mois","De 2 ans à moins de 4 ans","4 ans ou plus","Non réponse","Hors champ","Diplôme de nvieau bac+5 ou plus (doctorat, master ou équivalent)","Diplôme de nvieau bac+3/4 (licence, maîtrise ou équivalent)","Diplôme de nvieau bac+2 (DUT, BTS, Deug ou équivalent)","Bac général, technologique, professionnel ou équivalent","CAP, BEP ou équivalent","BEPC, DNB, brevet des collèges","Aucun diplôme, certificat d'études primaires","Non réponse","Hors champ","Non codé","Agriculteurs exploitants","Artisans, commerçants et chefs d'entreprise","Cadres et professions intellectuelles supérieures","Professions intermédiaires","Employés qualifiés","Employés peu qualifiés","Ouvriers qualifiés","Ouvriers peu qualifiés","Hors champ","Homme","Femme"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Variable<\/th>\n      <th>Libellé_Var<\/th>\n      <th>Modalité<\/th>\n      <th>Libellé_Mod<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"name":"Variable","targets":0},{"name":"Libellé_Var","targets":1},{"name":"Modalité","targets":2},{"name":"Libellé_Mod","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-a57179c1a570effa95c2" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-a57179c1a570effa95c2">{"x":{"filter":"none","vertical":false,"caption":"<caption>Variables et leurs modalités<\/caption>","data":[["ACTEU","ACTEU","ACTEU","AGE6","AGE6","AGE6","AGE6","AGE6","AGE6","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","ANCCHOM","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","DIP7","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","PCS1Q","SEXE","SEXE"],["Statut d'activité au sens du Bureau International du Travail (BIT)","Statut d'activité au sens du Bureau International du Travail (BIT)","Statut d'activité au sens du Bureau International du Travail (BIT)","","","","","","","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Ancienneté au chômage","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Diplôme le plus élevé obtenu (7 postes)","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Catégorie socio-professionnelle (PCS) de l'emploi principal - Niveau 1 qualifié/peu qualifié","Sexe","Sexe"],[1,2,3,0,15,25,50,65,90,1,2,3,4,5,6,7,8,9,null,1,2,3,4,5,6,7,9,null,0,10,20,30,40,51,52,61,62,null,1,2],["Emploi","Chômage","Non Inactivité","14 ans ou moins","15-24 ans","25-49 ans","50-64 ans","65-89 ans","90 ans ou plus","Moins d'un mois","De 1 mois à moins de 3 mois","De 3 mois à moins de 6 mois","De 6 mois à moins de 12 mois","De 12 mois à moins de 18 mois","De 18 mois à moins de 24 mois","De 2 ans à moins de 4 ans","4 ans ou plus","Non réponse","Hors champ","Diplôme de nvieau bac+5 ou plus (doctorat, master ou équivalent)","Diplôme de nvieau bac+3/4 (licence, maîtrise ou équivalent)","Diplôme de nvieau bac+2 (DUT, BTS, Deug ou équivalent)","Bac général, technologique, professionnel ou équivalent","CAP, BEP ou équivalent","BEPC, DNB, brevet des collèges","Aucun diplôme, certificat d'études primaires","Non réponse","Hors champ","Non codé","Agriculteurs exploitants","Artisans, commerçants et chefs d'entreprise","Cadres et professions intellectuelles supérieures","Professions intermédiaires","Employés qualifiés","Employés peu qualifiés","Ouvriers qualifiés","Ouvriers peu qualifiés","Hors champ","Homme","Femme"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Variable<\/th>\n      <th>Libellé_Var<\/th>\n      <th>Modalité<\/th>\n      <th>Libellé_Mod<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"name":"Variable","targets":0},{"name":"Libellé_Var","targets":1},{"name":"Modalité","targets":2},{"name":"Libellé_Mod","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
@@ -1041,13 +1017,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold">
 <div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Description of the data</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> pratique/fiches/description-data.en.html</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> pratique/fiches/description-data.html</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> ../../images/description-data.png</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>Pour installer les packages nécessaires, vous trouverez les instructions à suivre </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>dans la fiche <span class="co">[</span><span class="ot">Ressources / Installer les packages et les outils sur R</span><span class="co">](../../ressources/fiches/outils-install.en.html)</span>. </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>dans la fiche <span class="co">[</span><span class="ot">Ressources / Installer les packages et les outils sur R</span><span class="co">](../../ressources/fiches/outils-install.html)</span>. </span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>

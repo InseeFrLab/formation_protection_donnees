@@ -7,9 +7,9 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="author" content="Insee, Département des Méthodes Statistiques">
+<meta name="author" content="INSEE, Department of Statistical Methods">
 <meta name="description" content="Learn how to apply suppressive methods using R.">
-<title>Practical suppressive methods – Statistical Disclosure Control for Public Statistics</title>
+<title>Practical suppressive methods – Statistical Disclosure Control for Official Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -106,9 +106,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
 
     const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -318,7 +318,7 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Statistical Disclosure Control for Public Statistics</span>
+    <span class="navbar-title">Statistical Disclosure Control for Official Statistics</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -331,30 +331,6 @@ window.Quarto = {
 <button class="btn btn-primary dropdown-toggle babelquarto-languages-button" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> 🇬🇧 English</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://inseefrlab.github.io/formation_protection_donnees/pratique/fiches/suppressif.html" id="language-link-fr">🇫🇷 Français</a></li></ul>
 </div></li>
 <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">Accueil</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../theorie/index.html"> 
-<span class="menu-text">Un peu de théorie</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../pratique/index.html"> 
-<span class="menu-text">En pratique</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../ressources/index.html"> 
-<span class="menu-text">Ressources</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../glossaire/index.html"> 
-<span class="menu-text">Glossaire</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">À propos</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -516,7 +492,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Insee, Département des Méthodes Statistiques </p>
+             <p>INSEE, Department of Statistical Methods </p>
           </div>
   </div>
     
@@ -528,7 +504,85 @@ window.Quarto = {
 
 </header><!-- --><div class="quarto-listing quarto-listing-container-grid" id="listing-suppressif-en">
 <div class="list grid quarto-listing-cols-3">
-
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1781686695909" data-listing-reading-time-sort="25" data-listing-word-count-sort="4952">
+<a href="../../pratique/fiches/proteger-tableaux-suppressif.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 300px;"> </div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Protéger des tableaux avec une méthode suppressive
+</h5>
+<div class="card-text listing-description delink">
+Cette fiche pratique présente une façon de protéger des tableaux en utilisant une méthode suppressive grâce au package <code>rtauargus</code> qui appelle Tau-Argus depuis R. Le code peut…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+INSEE, Department of Statistical Methods
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1781686695908" data-listing-reading-time-sort="6" data-listing-word-count-sort="1153">
+<a href="../../pratique/fiches/analyse-demande.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 300px;"> </div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Analyser une demande
+</h5>
+<div class="card-text listing-description delink">
+On souhaite diffuser 4 tableaux :<br>
+- T1 : population par âge (5 classes), par sexe et par département<br>
+- T2 : population par sexe, par diplôme et par département<br>
+- T3 …<br>
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+INSEE, Department of Statistical Methods
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1781686695908" data-listing-reading-time-sort="5" data-listing-word-count-sort="969">
+<a href="../../pratique/fiches/analyse-automatique.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 300px;"> </div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Analyse automatique des métadonnées pour la protection des données tabulées
+</h5>
+<div class="card-text listing-description delink">
+L’analyse de la demande peut être faite “à la main”, c’est-à-dire en suivant toutes les étapes présentées dans la partie “Analyser la demande” du cours. Cette fiche présente…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+INSEE, Department of Statistical Methods
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1781686695909" data-listing-reading-time-sort="6" data-listing-word-count-sort="1078">
+<a href="../../pratique/fiches/suppression-locale.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading="lazy" src="suppression-locale_files/figure-html/unnamed-chunk-11-1.png" style="height: 300px;" class="thumbnail-image card-img"></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Appliquer la suppression locale
+</h5>
+<div class="card-text listing-description delink">
+Pour reproduire les résultats et réaliser les exercices, il est possible de travailler directement sur le <code>datalab</code> de l’Insee. Si vous disposez d’un compte, vous pouvez Ouvrir…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+INSEE, Department of Statistical Methods
+</div>
+</div>
+</div>
+</div></a>
+</div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -1006,15 +1060,15 @@ window.Quarto = {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> |</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  Learn how to apply suppressive methods using R.</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">order:</span><span class="co"> 2</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> pratique/fiches/suppressif.en.html</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> pratique/fiches/suppressif.html</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> ../../images/pratique.png</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  id: suppressif-en</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  contents:</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    - "proteger-tableaux-suppressif.en.qmd"</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">    - "analyse-demande.en.qmd"</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">    - "analyse-automatique.en.qmd"</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">    - "suppression-locale.en.qmd"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    - "proteger-tableaux-suppressif.qmd"</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">    - "analyse-demande.qmd"</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">    - "analyse-automatique.qmd"</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">    - "suppression-locale.qmd"</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">  sort: false</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">  type: grid</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">  image-height: 300px</span></span>

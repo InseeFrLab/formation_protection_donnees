@@ -7,9 +7,9 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="author" content="Insee, Département des Méthodes Statistiques">
+<meta name="author" content="INSEE, Department of Statistical Methods">
 <meta name="description" content="Find additional resources (articles, documentation, tools) to go further.">
-<title>Resources – Statistical Disclosure Control for Public Statistics</title>
+<title>Resources – Statistical Disclosure Control for Official Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -106,9 +106,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
 
     const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -318,7 +318,7 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Statistical Disclosure Control for Public Statistics</span>
+    <span class="navbar-title">Statistical Disclosure Control for Official Statistics</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -332,30 +332,6 @@ window.Quarto = {
 </div></li>
 <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Accueil</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../theorie/index.html"> 
-<span class="menu-text">Un peu de théorie</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../pratique/index.html"> 
-<span class="menu-text">En pratique</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../ressources/index.html" aria-current="page"> 
-<span class="menu-text">Ressources</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../glossaire/index.html"> 
-<span class="menu-text">Glossaire</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">À propos</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -367,7 +343,7 @@ window.Quarto = {
 <span class="menu-text">In practice</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../ressources/index.html"> 
+    <a class="nav-link active" href="../ressources/index.html" aria-current="page"> 
 <span class="menu-text">Resources</span></a>
   </li>  
   <li class="nav-item">
@@ -408,7 +384,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Insee, Département des Méthodes Statistiques </p>
+             <p>INSEE, Department of Statistical Methods </p>
           </div>
   </div>
     
@@ -420,7 +396,46 @@ window.Quarto = {
 
 </header><!-- --><div class="quarto-listing quarto-listing-container-grid" id="listing-ressources-en">
 <div class="list grid quarto-listing-cols-4">
-
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1781686695910" data-listing-reading-time-sort="1" data-listing-word-count-sort="63">
+<a href="../ressources/fiches/bibliographie.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../images/ressources.png" class="thumbnail-image card-img" style="height: 300px;"></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Indicative bibliography
+</h5>
+<div class="card-text listing-description delink">
+<p>References for further reading.</p>
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+INSEE, Department of Statistical Methods
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1781686695910" data-listing-reading-time-sort="1" data-listing-word-count-sort="186">
+<a href="../ressources/fiches/outils-install.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../images/ressources.png" class="thumbnail-image card-img" style="height: 300px;"></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Install packages and tools on R
+</h5>
+<div class="card-text listing-description delink">
+<p>Where can I find and how do I install the recommended tools and packages?</p>
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+INSEE, Department of Statistical Methods
+</div>
+</div>
+</div>
+</div></a>
+</div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -898,12 +913,12 @@ window.Quarto = {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> |</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  Find additional resources (articles, documentation, tools) to go further.</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">order:</span><span class="co"> 3</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> ressources/index.en.html</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> ressources/index.html</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> ../images/ressources.png</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  id: ressources-en</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  contents:</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    - "fiches/*.en.qmd"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    - "fiches/*.qmd"</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">  sort: "order"</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">  type: grid</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">  image-height: 300px</span></span>

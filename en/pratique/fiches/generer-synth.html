@@ -7,8 +7,8 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="author" content="Insee, Département des Méthodes Statistiques">
-<title>Générer des données synthétiques – Statistical Disclosure Control for Public Statistics</title>
+<meta name="author" content="INSEE, Department of Statistical Methods">
+<title>Générer des données synthétiques – Statistical Disclosure Control for Official Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -264,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Statistical Disclosure Control for Public Statistics</span>
+    <span class="navbar-title">Statistical Disclosure Control for Official Statistics</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -277,30 +277,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <button class="btn btn-primary dropdown-toggle babelquarto-languages-button" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> 🇬🇧 English</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://inseefrlab.github.io/formation_protection_donnees/pratique/fiches/generer-synth.html" id="language-link-fr">🇫🇷 Français</a></li></ul>
 </div></li>
 <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">Accueil</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../theorie/index.html"> 
-<span class="menu-text">Un peu de théorie</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../pratique/index.html"> 
-<span class="menu-text">En pratique</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../ressources/index.html"> 
-<span class="menu-text">Ressources</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../glossaire/index.html"> 
-<span class="menu-text">Glossaire</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">À propos</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -472,7 +448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Insee, Département des Méthodes Statistiques </p>
+             <p>INSEE, Department of Statistical Methods </p>
           </div>
   </div>
     
@@ -576,7 +552,7 @@ Synthesis
 </details><div class="cell-output cell-output-stdout">
 <pre><code>-------------------Synthesis 1 --------------------
 Table for target IS_CHOM from GT alone with keys has 2 rows 240 colums.
-Table for target  IS_CHOM from GT &amp; SD with all key combinations has 2 rows 244 colums.</code></pre>
+Table for target  IS_CHOM from GT &amp; SD with all key combinations has 2 rows 242 colums.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Disclosure measures from synthesis for 34053 records in original data.
@@ -585,7 +561,7 @@ Identity  measures for keys REG DEP SEXE AGE6
 and attribute measures for IS_CHOM from the same keys
             Identity (UiO/repU) Attrib (Dorig/DiSCO)
 Original                   0.01                20.71
-Synthesis 1                0.00                16.27
+Synthesis 1                0.00                24.73
 
 The 1 way distributions of IS_CHOM has a large contribution to disclosure from level Check  IS_CHOM  level  0 
 Please add 'check_1way' to to.print (e.g. print(disclosure_result, to.print = 'check_1way'),
@@ -594,7 +570,7 @@ Consider excluding this level with the not.targetlev parameter to the disclosure
 
 
 Details of target-key pairs contributing disproportionately to disclosure of IS_CHOM 
-35 pairs need checks 
+37 pairs need checks 
 
 Please examine component $check_2way of the disclosure object and look at original data.
 Consider excluding these key-target pairs with some the following parameters to disclosure:

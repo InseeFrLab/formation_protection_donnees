@@ -7,8 +7,8 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="author" content="Insee, Département des Méthodes Statistiques">
-<title>Statistical Disclosure Control for Public Statistics</title>
+<meta name="author" content="INSEE, Department of Statistical Methods">
+<title>Statistical Disclosure Control for Official Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -105,9 +105,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
 
     const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -317,7 +317,7 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Statistical Disclosure Control for Public Statistics</span>
+    <span class="navbar-title">Statistical Disclosure Control for Official Statistics</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -331,30 +331,6 @@ window.Quarto = {
 </div></li>
 <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Accueil</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./theorie/index.html"> 
-<span class="menu-text">Un peu de théorie</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./pratique/index.html"> 
-<span class="menu-text">En pratique</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./ressources/index.html"> 
-<span class="menu-text">Ressources</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./glossaire/index.html"> 
-<span class="menu-text">Glossaire</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">À propos</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -404,7 +380,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Insee, Département des Méthodes Statistiques </p>
+             <p>INSEE, Department of Statistical Methods </p>
           </div>
   </div>
     
@@ -417,7 +393,86 @@ window.Quarto = {
 </header><p>This site offers a range of theoretical and practical resources to help you learn about statistical data protection.</p>
 <div id="listing-chapitres-en" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-4">
-
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1781686695910" data-listing-reading-time-sort="1" data-listing-word-count-sort="22">
+<a href="./theorie/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./images/theorie.png" class="thumbnail-image card-img" style="height: 300px;"></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+A little bit of theory
+</h5>
+<div class="card-text listing-description delink">
+<p>Understand the main challenges of data protection and master the key concepts and methods.</p>
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+INSEE, Department of Statistical Methods
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1781686695909" data-listing-reading-time-sort="1" data-listing-word-count-sort="46">
+<a href="./pratique/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./images/pratique.png" class="thumbnail-image card-img" style="height: 300px;"></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+In practice
+</h5>
+<div class="card-text listing-description delink">
+<p>Learn how to manipulate concepts, assess risks, and use methods.</p>
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+INSEE, Department of Statistical Methods
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1781686695910" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<a href="./ressources/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./images/ressources.png" class="thumbnail-image card-img" style="height: 300px;"></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Resources
+</h5>
+<div class="card-text listing-description delink">
+<p>Find additional resources (articles, documentation, tools) to go further.</p>
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+INSEE, Department of Statistical Methods
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1781686695903" data-listing-reading-time-sort="1" data-listing-word-count-sort="41">
+<a href="./glossaire/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./images/glossaire.png" class="thumbnail-image card-img" style="height: 300px;"></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Glossary
+</h5>
+<div class="card-text listing-description delink">
+<p>Definition of the main technical terms encountered on the site.</p>
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+INSEE, Department of Statistical Methods
+</div>
+</div>
+</div>
+</div></a>
+</div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
@@ -898,16 +953,16 @@ window.Quarto = {
 <div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> index.en.html</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">href:</span><span class="co"> index.html</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  id: chapitres-en</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  contents:</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  - theorie/*.en.qmd</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  - pratique/*.en.qmd</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  - ressources/*.en.qmd</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - glossaire/*.en.qmd</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - '!theorie/supports/*.en.qmd'</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - '!pratique/fiches/*.en.qmd'</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  - theorie/*.qmd</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  - pratique/*.qmd</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  - ressources/*.qmd</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - glossaire/*.qmd</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - '!theorie/supports/*.qmd'</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - '!pratique/fiches/*.qmd'</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">  sort: order</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">  type: grid</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">  image-height: 300px</span></span>
